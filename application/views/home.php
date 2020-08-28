@@ -34,6 +34,10 @@
     .fa {
         font-weight: 900;
     }
+
+    .col-sm-12 {
+        margin-bottom: 10px;
+    }
 </style>
 <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bg_login.jpg); top: 0; padding-top: 20px;">
     <div class="container container-fullscreen">

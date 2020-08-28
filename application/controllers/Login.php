@@ -31,10 +31,12 @@ class Login extends CI_Controller {
             );
             $data = $this->objlogin->user_login($arr);
             if ($data) {
+                $token = $this->objlogin->update_user_token($data['cust_id']);
                 $session = array(
                     'cid' => $data['cust_id'],
                     'cname' => $data['first_name'],
                     'email' => $data['email'],
+                     'token' => $token,
                     'userType' => 'user'
                 );
                 $this->session->set_userdata($session);
@@ -49,10 +51,12 @@ class Login extends CI_Controller {
     function register_login($cust_id) {
         $data = $this->objlogin->register_login($cust_id);
         if ($data) {
+             $token = $this->objlogin->update_user_token($data['cust_id']);
             $session = array(
                 'cid' => $data['cust_id'],
                 'cname' => $data['first_name'],
                 'email' => $data['email'],
+                'token' => $token,
                 'userType' => 'user'
             );
             $this->session->set_userdata($session);
@@ -67,6 +71,7 @@ class Login extends CI_Controller {
         $this->session->unset_userdata('cname');
         $this->session->unset_userdata('fullname');
         $this->session->unset_userdata('email');
+        $this->session->unset_userdata('token');
         $this->session->unset_userdata('userType');
         header('location:' . base_url() . 'login');
     }
@@ -113,12 +118,13 @@ class Login extends CI_Controller {
                         'jti' => $response_array->jti
                     );
                     $this->db->update("customer_master", $set_update_array, array("cust_id" => $user_details->cust_id));
-
+                    $token = $this->objlogin->update_user_token($user_details->cust_id);
                     $session = array(
                         'cid' => $user_details->cust_id,
                         'cname' => $user_details->first_name,
                         'fullname' => $user_details->first_name . " " . $user_details->last_name,
                         'email' => $user_details->email,
+                         'token' => $token,
                         'userType' => 'user'
                     );
                     $this->session->set_userdata($session);
@@ -161,11 +167,13 @@ class Login extends CI_Controller {
                     $cust_id = $this->db->insert_id();
                     $user_details = $this->db->get_where("customer_master", array("cust_id" => $cust_id))->row();
                     if (!empty($user_details)) {
+                         $token = $this->objlogin->update_user_token($user_details->cust_id);
                         $session = array(
                             'cid' => $user_details->cust_id,
                             'cname' => $user_details->first_name,
                             'fullname' => $user_details->first_name . " " . $user_details->last_name,
                             'email' => $user_details->email,
+                            'token' => $token,
                             'userType' => 'user'
                         );
                         $this->session->set_userdata($session);

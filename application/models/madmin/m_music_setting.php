@@ -1,4 +1,5 @@
 <?php
+
 class M_music_setting extends CI_Model {
 
     public function __construct() {

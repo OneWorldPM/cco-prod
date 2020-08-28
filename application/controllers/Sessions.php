@@ -12,6 +12,10 @@ class Sessions extends CI_Controller {
         if ($login_type != 'user') {
             redirect('login');
         }
+        $get_user_token_details = $this->common->get_user_details($this->session->userdata('cid'));
+        if ($this->session->userdata('token') != $get_user_token_details->token) {
+            redirect('login');
+        }
         $this->load->model('user/m_sessions', 'objsessions');
     }
 
@@ -52,7 +56,7 @@ class Sessions extends CI_Controller {
         $data["sessions"] = $this->objsessions->viewSessionsData($sessions_id);
         $data["session_resource"] = $this->objsessions->get_session_resource($sessions_id);
         $data['music_setting'] = $this->objsessions->get_music_setting();
-       
+
         $this->load->view('header');
         $this->load->view('view_sessions', $data);
         $this->load->view('footer');
