@@ -1,0 +1,48 @@
+.navbar .navbar-collapse {
+    background-color: #657476 !important;
+    border-bottom: 0px solid #c8c7cc !important;
+}
+.app-sidebar-fixed .navbar .navbar-header {
+    background-color: #657476 !important;
+}
+html body {
+    height: 100%;
+    background-color: #e8e8e8;
+    direction: ltr;
+}
+
+#sidebar {
+    background: #000 !important;
+}
+
+.frist_section_in_left_navication{
+    background: #000 !important;
+}
+
+.second_section_in_left_navication{
+    background: #1B1D22 !important;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 66;
+    right: 0;
+    overflow:auto;    
+}
+
+
+#sidebar nav > ul > li > a .item-media > i {
+    color: grey !important;
+}
+
+#sidebar > div nav > ul {
+    border-top: 0px solid #c8c7cc !important;
+}
+
+#sidebar nav > ul > li.active {
+    background: #3e3e3e !important;
+}
+
+#app > footer {
+    background: #e8e8e8 !important;
+}

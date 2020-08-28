@@ -1,0 +1,3 @@
+question,poll_type_id,option_1,option_2,option_3,option_4,option_5,option_6,option_7,option_8,option_9,option_10
+question ?,1,option 1,option 2,option 3,option 4,option 5,option 6,option 7,,,
+question 2 ?,2,option 1,option 2,option 3,option 4,,,,,,
