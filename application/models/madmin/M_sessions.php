@@ -803,7 +803,7 @@ class M_sessions extends CI_Model {
                     if ($end_date_time != "") {
                         $total_time = $end_date_time - $start_date_time;
                     } else {
-                        $end_date_time = 0;
+                        $end_date_time = $start_date_time+250;
                         $total_time = 250;
                     }
                     $sessions_history_login[] = array(
