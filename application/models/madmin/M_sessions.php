@@ -798,6 +798,14 @@ class M_sessions extends CI_Model {
             $sessions_history_login = array();
             if ($sessions_history->num_rows() > 0) {
                 foreach ($sessions_history->result() as $val) {
+                    $start_date_time = strtotime($val->start_date_time);
+                    $end_date_time = strtotime($val->end_date_time);
+                    if ($end_date_time != "") {
+                        $total_time = $end_date_time - $start_date_time;
+                    } else {
+                        $end_date_time = 0;
+                        $total_time = 250;
+                    }
                     $sessions_history_login[] = array(
                         'client_data' => '',
                         'alertness' => 0,
@@ -811,9 +819,9 @@ class M_sessions extends CI_Model {
                         'access' => 50,
                         'access_str' => 'Attendee',
                         'ip_addr' => $val->ip_address,
-                        'created' => strtotime($val->start_date_time),
-                        'last_seen' => strtotime($val->end_date_time),
-                        'total_time' => "",
+                        'created' => $start_date_time,
+                        'last_seen' => $end_date_time,
+                        'total_time' => $total_time,
                         'user_agent' => $val->operating_system . ' - ' . $val->computer_type,
                         'private_notes' => "",
                         'state_changes' => array("0" => array("0" => 1592865240, "1" => 0), "0" => array("0" => 1592865240, "1" => 0)),
@@ -823,8 +831,9 @@ class M_sessions extends CI_Model {
             }
 
             $this->db->select('*');
-            $this->db->from('sessions_poll_question');
-            $this->db->where("sessions_id", $sessions_id);
+            $this->db->from('sessions_poll_question s');
+            $this->db->join('poll_type p', 's.poll_type_id=p.poll_type_id');
+            $this->db->where("s.sessions_id", $sessions_id);
             $sessions_poll_question = $this->db->get();
             $polls = array();
             if ($sessions_poll_question->num_rows() > 0) {
@@ -865,7 +874,7 @@ class M_sessions extends CI_Model {
 
                 $polls[] = array(
                     'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
-                    'text' => $sessions_poll_question->question,
+                    'text' => $sessions_poll_question->poll_type . " : " . $sessions_poll_question->question,
                     'options' => $options,
                     'total_votes' => $total_votes
                 );
@@ -910,10 +919,10 @@ class M_sessions extends CI_Model {
                 'questions' => $questions,
                 'charting' => $charting
             );
-            $json_array = array("data" => json_encode($create_array), "session_reference" => (int)$result_sessions->sessions_id, "session_id" => (int)$result_sessions->sessions_id);
-			
-	    $data_to_post = "data=".json_encode($create_array)."&session_reference=".(int)$result_sessions->sessions_id."&session_id=".(int)$result_sessions->sessions_id; //if http_build_query causes any problem with JSON data, send this parameter directly in post.
-			
+            $json_array = array("data" => json_encode($create_array), "session_reference" => (int) $result_sessions->sessions_id, "session_id" => (int) $result_sessions->sessions_id);
+
+            $data_to_post = "data=" . json_encode($create_array) . "&session_reference=" . (int) $result_sessions->sessions_id . "&session_id=" . (int) $result_sessions->sessions_id; //if http_build_query causes any problem with JSON data, send this parameter directly in post.
+
             $url = "https://uat.clinicaloptions.com/api/CrmLiveEvents/SaveEventReport";
             $headers = array(
                 'Content-Type:application/json',
@@ -956,6 +965,14 @@ class M_sessions extends CI_Model {
             $sessions_history_login = array();
             if ($sessions_history->num_rows() > 0) {
                 foreach ($sessions_history->result() as $val) {
+                    $start_date_time = strtotime($val->start_date_time);
+                    $end_date_time = strtotime($val->end_date_time);
+                    if ($end_date_time != "") {
+                        $total_time = $end_date_time - $start_date_time;
+                    } else {
+                        $end_date_time = 0;
+                        $total_time = 250;
+                    }
                     $sessions_history_login[] = array(
                         'client_data' => '',
                         'alertness' => 0,
@@ -969,9 +986,9 @@ class M_sessions extends CI_Model {
                         'access' => 50,
                         'access_str' => 'Attendee',
                         'ip_addr' => $val->ip_address,
-                        'created' => strtotime($val->start_date_time),
-                        'last_seen' => strtotime($val->end_date_time),
-                        'total_time' => "",
+                        'created' => $start_date_time,
+                        'last_seen' => $end_date_time,
+                        'total_time' => $total_time,
                         'user_agent' => $val->operating_system . ' - ' . $val->computer_type,
                         'private_notes' => "",
                         'state_changes' => array("0" => array("0" => 1592865240, "1" => 0), "0" => array("0" => 1592865240, "1" => 0)),
@@ -981,8 +998,9 @@ class M_sessions extends CI_Model {
             }
 
             $this->db->select('*');
-            $this->db->from('sessions_poll_question');
-            $this->db->where("sessions_id", $sessions_id);
+            $this->db->from('sessions_poll_question s');
+            $this->db->join('poll_type p', 's.poll_type_id=p.poll_type_id');
+            $this->db->where("s.sessions_id", $sessions_id);
             $sessions_poll_question = $this->db->get();
             $polls = array();
             if ($sessions_poll_question->num_rows() > 0) {
@@ -1023,7 +1041,7 @@ class M_sessions extends CI_Model {
 
                 $polls[] = array(
                     'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
-                    'text' => $sessions_poll_question->question,
+                    'text' => $sessions_poll_question->poll_type . " : " . $sessions_poll_question->question,
                     'options' => $options,
                     'total_votes' => $total_votes
                 );
@@ -1068,9 +1086,12 @@ class M_sessions extends CI_Model {
                 'questions' => $questions,
                 'charting' => $charting
             );
-           $json_array = json_encode(array("data" => $create_array, "session_reference" => (int)$result_sessions->sessions_id, "session_id" => (int)$result_sessions->sessions_id));
+            $json_array = array("data" => json_encode($create_array), "session_reference" => (int) $result_sessions->sessions_id, "session_id" => (int) $result_sessions->sessions_id);
+
+            $data_to_post = "data=" . json_encode($create_array) . "&session_reference=" . (int) $result_sessions->sessions_id . "&session_id=" . (int) $result_sessions->sessions_id; //if http_build_query causes any problem with JSON data, send this parameter directly in post.
+
             echo "<pre>";
-            print_r($json_array);
+            print_r(json_encode($create_array));
             die;
         } else {
             return FALSE;
