@@ -79,12 +79,13 @@ class Login extends CI_Controller {
     function cco_authentication() {
         $token = $this->input->get('token');
         $response_array = json_decode(base64_decode(str_replace('_', '/', str_replace('-', '+', explode('.', $token)[1]))));
+		
         if (isset($response_array) && !empty($response_array)) {
             $identifier = $response_array->identity->identifier;
             $member_id = substr($identifier, 4);
             $curl = curl_init();
             curl_setopt_array($curl, array(
-                CURLOPT_URL => "https://uat.clinicaloptions.com/api/external?memberid=f44afd5c-d385-4ef2-8a8f-5370044c9647&SecurityToken=OUqrB8i6Bc002GZGtZHod49QVBdPjEo4qu1vxnHWmnhe5MSf7kW1v62yXhINaal7JK3tuC3Z0gBuGEpwh8l5SQ%3D%3D",
+                CURLOPT_URL => "https://uat.clinicaloptions.com/api/external?memberid=".$member_id."&SecurityToken=OUqrB8i6Bc002GZGtZHod49QVBdPjEo4qu1vxnHWmnhe5MSf7kW1v62yXhINaal7JK3tuC3Z0gBuGEpwh8l5SQ%3D%3D",
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_SSL_VERIFYPEER => FALSE,
                 CURLOPT_ENCODING => "",
@@ -101,6 +102,7 @@ class Login extends CI_Controller {
                 $or_where = '(email = "' . $member_array->emailAddress . '")';
                 $this->db->where($or_where);
                 $customer = $this->db->get('customer_master');
+				
                 if ($customer->num_rows() > 0) {
                     $user_details = $customer->row();
                     $set_update_array = array(

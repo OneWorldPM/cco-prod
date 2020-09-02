@@ -910,9 +910,11 @@ class M_sessions extends CI_Model {
                 'questions' => $questions,
                 'charting' => $charting
             );
-            $json_array = json_encode($create_array);
-
-            $url = "https://www.clinicaloptions.com/api/CrmLiveEvents/SaveEventReport";
+            $json_array = array("data" => json_encode($create_array), "session_reference" => (int)$result_sessions->sessions_id, "session_id" => (int)$result_sessions->sessions_id);
+			
+	    $data_to_post = "data=".json_encode($create_array)."&session_reference=".(int)$result_sessions->sessions_id."&session_id=".(int)$result_sessions->sessions_id; //if http_build_query causes any problem with JSON data, send this parameter directly in post.
+			
+            $url = "https://uat.clinicaloptions.com/api/CrmLiveEvents/SaveEventReport";
             $headers = array(
                 'Content-Type:application/json',
                 'Accept: application/json'
@@ -920,9 +922,9 @@ class M_sessions extends CI_Model {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            //curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $json_array);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($json_array));
             $result = curl_exec($ch);
             curl_close($ch);
             $result = json_decode($result);
@@ -1066,7 +1068,7 @@ class M_sessions extends CI_Model {
                 'questions' => $questions,
                 'charting' => $charting
             );
-            $json_array = json_encode($create_array);
+           $json_array = json_encode(array("data" => $create_array, "session_reference" => (int)$result_sessions->sessions_id, "session_id" => (int)$result_sessions->sessions_id));
             echo "<pre>";
             print_r($json_array);
             die;
