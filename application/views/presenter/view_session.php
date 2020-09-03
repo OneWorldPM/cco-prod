@@ -81,71 +81,71 @@
 
     @media only screen and (min-width: 300px) and (max-width: 568px)  {
         #embed_html_code_section{
-            height: 400px
+            height: 495px
         }
     }
 
     @media only screen and (min-width: 568px) and (max-width: 768px)  {
         #embed_html_code_section{
-            height: 400px
+            height: 496px
         }
     }
 
     @media only screen and (min-width: 768px) and (max-width: 992px)  {
         #embed_html_code_section{
-            height: 400px
+            height: 497px
         }
     }
 
     @media only screen and (min-width: 992px) and (max-width: 1200px)  {
         #embed_html_code_section{
-            height: 500px
+            height: 595px
         }
     }
 
     @media only screen and (min-width: 1200px) and (max-width: 1400px)  {
         #embed_html_code_section{
-            height: 500px
+            height: 596px
         }
     }
 
     @media only screen and (min-width: 1400px) and (max-width: 1600px)  {
         #embed_html_code_section{
-            height: 580px
+            height: 675px
         }
     }
     @media only screen and (min-width: 1600px) and (max-width: 1800px)  {
         #embed_html_code_section{
-            height: 620px
+            height: 715px
         }
     }
     @media only screen and (min-width: 1800px) and (max-width: 2000px)  {
         #embed_html_code_section{
-            height: 680px
+            height: 830px
         }
     }
 
     @media only screen and (min-width: 2000px) and (max-width: 2200px)  {
         #embed_html_code_section{
-            height: 720px
+            height: 815px
         }
     }
 
     @media only screen and (min-width: 2200px) and (max-width: 2400px)  {
         #embed_html_code_section{
-            height: 800px
+            height: 895px
         }
     }
 
     @media only screen and (min-width: 2400px) and (max-width: 2800px)  {
         #embed_html_code_section{
-            height: 900px
+            height: 995px
         }
     }
 
     @media only screen and (min-width: 2800px) {
         #embed_html_code_section{
-            height: 1000px
+            height: 1095px
         }
     }
 </style>
