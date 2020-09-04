@@ -188,6 +188,28 @@ class Sessions extends CI_Controller {
         );
         $this->db->insert('view_sessions_history', $session_his_arr);
         $insert_id = $this->db->insert_id();
+
+        $where_session_his_arr = array(
+            'sessions_id' => $post['sessions_id'],
+            'cust_id' => $this->session->userdata("cid")
+        );
+
+        $login_sessions_history = $this->db->get_where('login_sessions_history', $where_session_his_arr)->row();
+        if (!empty($login_sessions_history)) {
+            $session_his_arr = array(
+                'sessions_id' => $post['sessions_id'],
+                'cust_id' => $this->session->userdata("cid"),
+                'operating_system' => $this->agent->platform(),
+                'computer_type' => $this->agent->browser(),
+                'ip_address' => $this->input->ip_address(),
+                'resolution' => $post['resolution'],
+                'status' => 0
+            );
+            $this->db->update('login_sessions_history', $session_his_arr, array("login_sessions_history_id" => $login_sessions_history->login_sessions_history_id));
+        } else {
+            $this->db->insert('login_sessions_history', $session_his_arr);
+        }
+
         echo json_encode(array("status" => "success", "view_sessions_history_id" => $insert_id));
     }
 
@@ -197,6 +219,18 @@ class Sessions extends CI_Controller {
             'end_date_time' => date("Y-m-d h:i:s")
         );
         $this->db->update('view_sessions_history', $session_his_arr, array("view_sessions_history_id" => $post['view_sessions_history_id']));
+
+        $view_sessions_history = $this->db->get_where('view_sessions_history', array("view_sessions_history_id" => $post['view_sessions_history_id']))->row();
+        if (!empty($view_sessions_history)) {
+            $where_session_his_arr = array(
+                'sessions_id' => $view_sessions_history->sessions_id,
+                'cust_id' => $this->session->userdata("cid")
+            );
+            $login_sessions_history = $this->db->get_where('login_sessions_history', $where_session_his_arr)->row();
+            if (!empty($login_sessions_history)) {
+                $this->db->update('login_sessions_history', $session_his_arr, array("login_sessions_history_id" => $login_sessions_history->login_sessions_history_id));
+            }
+        }
         echo json_encode(array("status" => "success"));
     }
 

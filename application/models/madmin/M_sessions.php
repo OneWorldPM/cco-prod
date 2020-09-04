@@ -791,7 +791,7 @@ class M_sessions extends CI_Model {
         if ($sessions->num_rows() > 0) {
             $result_sessions = $sessions->row();
             $this->db->select('*');
-            $this->db->from('view_sessions_history v');
+            $this->db->from('login_sessions_history v');
             $this->db->join('customer_master c', 'c.cust_id=v.cust_id');
             $this->db->where("v.sessions_id", $sessions_id);
             $sessions_history = $this->db->get();
@@ -803,8 +803,8 @@ class M_sessions extends CI_Model {
                     if ($end_date_time != "") {
                         $total_time = $end_date_time - $start_date_time;
                     } else {
-                        $end_date_time = $start_date_time+250;
-                        $total_time = 250;
+                        $end_date_time = 0;
+                        $total_time = 0;
                     }
                     $sessions_history_login[] = array(
                         'client_data' => '',
@@ -815,7 +815,7 @@ class M_sessions extends CI_Model {
                         'identifier' => $val->identifier_id,
                         'email' => $val->email,
                         'name' => $val->first_name,
-                        'host' => false,
+                        'host' => $val->ip_address,
                         'access' => 50,
                         'access_str' => 'Attendee',
                         'ip_addr' => $val->ip_address,
@@ -836,48 +836,72 @@ class M_sessions extends CI_Model {
             $this->db->where("s.sessions_id", $sessions_id);
             $sessions_poll_question = $this->db->get();
             $polls = array();
-            if ($sessions_poll_question->num_rows() > 0) {
-                $sessions_poll_question = $sessions_poll_question->row();
-                $options = array();
-                $this->db->select('*');
-                $this->db->from('poll_question_option');
-                $this->db->where("sessions_poll_question_id", $sessions_poll_question->sessions_poll_question_id);
-                $poll_question_option = $this->db->get();
-                if ($poll_question_option->num_rows() > 0) {
-                    foreach ($poll_question_option->result() as $val) {
-                        $votes = array();
-                        $this->db->select('*');
-                        $this->db->from('tbl_poll_voting');
-                        $this->db->where("poll_question_option_id", $val->poll_question_option_id);
-                        $tbl_poll_voting = $this->db->get();
-                        if ($tbl_poll_voting->num_rows() > 0) {
-                            $tbl_poll_voting = $tbl_poll_voting->row();
-                            $votes = array((int) $tbl_poll_voting->cust_id);
-                        }
-                        $options[] = array(
-                            'option_id' => (int) $val->poll_question_option_id,
-                            'text' => $val->option,
-                            'total_votes' => $val->total_vot,
-                            'votes' => $votes
-                        );
 
-                        $total_votes = 0;
-                        $this->db->select('*');
-                        $this->db->from('tbl_poll_voting');
-                        $this->db->where("sessions_poll_question_id", $val->sessions_poll_question_id);
-                        $tbl_poll_voting_2 = $this->db->get();
-                        if ($tbl_poll_voting_2->num_rows() > 0) {
-                            $total_votes = $tbl_poll_voting_2->num_rows();
+            if ($sessions_poll_question->num_rows() > 0) {
+                $presurvey = 0;
+                $poll = 0;
+                $assessment = 0;
+                foreach ($sessions_poll_question->result() as $sessions_poll_question) {
+
+                    $options = array();
+                    $this->db->select('*');
+                    $this->db->from('poll_question_option');
+                    $this->db->where("sessions_poll_question_id", $sessions_poll_question->sessions_poll_question_id);
+                    $poll_question_option = $this->db->get();
+                    if ($poll_question_option->num_rows() > 0) {
+                        foreach ($poll_question_option->result() as $val) {
+                            $votes = array();
+                            $this->db->select('*');
+                            $this->db->from('tbl_poll_voting');
+                            $this->db->where("poll_question_option_id", $val->poll_question_option_id);
+                            $tbl_poll_voting = $this->db->get();
+                            if ($tbl_poll_voting->num_rows() > 0) {
+                                $tbl_poll_voting = $tbl_poll_voting->row();
+                                $votes = array((int) $tbl_poll_voting->cust_id);
+                            }
+                            $options[] = array(
+                                'option_id' => (int) $val->poll_question_option_id,
+                                'text' => $val->option,
+                                'total_votes' => $val->total_vot,
+                                'votes' => $votes
+                            );
+
+                            $total_votes = 0;
+                            $this->db->select('*');
+                            $this->db->from('tbl_poll_voting');
+                            $this->db->where("sessions_poll_question_id", $val->sessions_poll_question_id);
+                            $tbl_poll_voting_2 = $this->db->get();
+                            if ($tbl_poll_voting_2->num_rows() > 0) {
+                                $total_votes = $tbl_poll_voting_2->num_rows();
+                            }
                         }
                     }
+                    if ($sessions_poll_question->poll_type_id == 1) {
+                        $presurvey = $presurvey + 1;
+                        $polls[] = array(
+                            'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
+                            'text' => $sessions_poll_question->poll_type . " " . $presurvey . " : " . $sessions_poll_question->question,
+                            'options' => $options,
+                            'total_votes' => $total_votes
+                        );
+                    } else if ($sessions_poll_question->poll_type_id == 2) {
+                        $poll = $poll + 1;
+                        $polls[] = array(
+                            'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
+                            'text' => $sessions_poll_question->poll_type . " " . $poll . " : " . $sessions_poll_question->question,
+                            'options' => $options,
+                            'total_votes' => $total_votes
+                        );
+                    } else if ($sessions_poll_question->poll_type_id == 3) {
+                        $assessment = $assessment + 1;
+                        $polls[] = array(
+                            'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
+                            'text' => $sessions_poll_question->poll_type . " " . $assessment . " : " . $sessions_poll_question->question,
+                            'options' => $options,
+                            'total_votes' => $total_votes
+                        );
+                    }
                 }
-
-                $polls[] = array(
-                    'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
-                    'text' => $sessions_poll_question->poll_type . " : " . $sessions_poll_question->question,
-                    'options' => $options,
-                    'total_votes' => $total_votes
-                );
             }
 
 
@@ -958,7 +982,7 @@ class M_sessions extends CI_Model {
         if ($sessions->num_rows() > 0) {
             $result_sessions = $sessions->row();
             $this->db->select('*');
-            $this->db->from('view_sessions_history v');
+            $this->db->from('login_sessions_history v');
             $this->db->join('customer_master c', 'c.cust_id=v.cust_id');
             $this->db->where("v.sessions_id", $sessions_id);
             $sessions_history = $this->db->get();
@@ -971,7 +995,7 @@ class M_sessions extends CI_Model {
                         $total_time = $end_date_time - $start_date_time;
                     } else {
                         $end_date_time = 0;
-                        $total_time = 250;
+                        $total_time = 0;
                     }
                     $sessions_history_login[] = array(
                         'client_data' => '',
@@ -982,7 +1006,7 @@ class M_sessions extends CI_Model {
                         'identifier' => $val->identifier_id,
                         'email' => $val->email,
                         'name' => $val->first_name,
-                        'host' => false,
+                        'host' => $val->ip_address,
                         'access' => 50,
                         'access_str' => 'Attendee',
                         'ip_addr' => $val->ip_address,
@@ -1003,48 +1027,72 @@ class M_sessions extends CI_Model {
             $this->db->where("s.sessions_id", $sessions_id);
             $sessions_poll_question = $this->db->get();
             $polls = array();
-            if ($sessions_poll_question->num_rows() > 0) {
-                $sessions_poll_question = $sessions_poll_question->row();
-                $options = array();
-                $this->db->select('*');
-                $this->db->from('poll_question_option');
-                $this->db->where("sessions_poll_question_id", $sessions_poll_question->sessions_poll_question_id);
-                $poll_question_option = $this->db->get();
-                if ($poll_question_option->num_rows() > 0) {
-                    foreach ($poll_question_option->result() as $val) {
-                        $votes = array();
-                        $this->db->select('*');
-                        $this->db->from('tbl_poll_voting');
-                        $this->db->where("poll_question_option_id", $val->poll_question_option_id);
-                        $tbl_poll_voting = $this->db->get();
-                        if ($tbl_poll_voting->num_rows() > 0) {
-                            $tbl_poll_voting = $tbl_poll_voting->row();
-                            $votes = array((int) $tbl_poll_voting->cust_id);
-                        }
-                        $options[] = array(
-                            'option_id' => (int) $val->poll_question_option_id,
-                            'text' => $val->option,
-                            'total_votes' => $val->total_vot,
-                            'votes' => $votes
-                        );
 
-                        $total_votes = 0;
-                        $this->db->select('*');
-                        $this->db->from('tbl_poll_voting');
-                        $this->db->where("sessions_poll_question_id", $val->sessions_poll_question_id);
-                        $tbl_poll_voting_2 = $this->db->get();
-                        if ($tbl_poll_voting_2->num_rows() > 0) {
-                            $total_votes = $tbl_poll_voting_2->num_rows();
+            if ($sessions_poll_question->num_rows() > 0) {
+                $presurvey = 0;
+                $poll = 0;
+                $assessment = 0;
+                foreach ($sessions_poll_question->result() as $sessions_poll_question) {
+
+                    $options = array();
+                    $this->db->select('*');
+                    $this->db->from('poll_question_option');
+                    $this->db->where("sessions_poll_question_id", $sessions_poll_question->sessions_poll_question_id);
+                    $poll_question_option = $this->db->get();
+                    if ($poll_question_option->num_rows() > 0) {
+                        foreach ($poll_question_option->result() as $val) {
+                            $votes = array();
+                            $this->db->select('*');
+                            $this->db->from('tbl_poll_voting');
+                            $this->db->where("poll_question_option_id", $val->poll_question_option_id);
+                            $tbl_poll_voting = $this->db->get();
+                            if ($tbl_poll_voting->num_rows() > 0) {
+                                $tbl_poll_voting = $tbl_poll_voting->row();
+                                $votes = array((int) $tbl_poll_voting->cust_id);
+                            }
+                            $options[] = array(
+                                'option_id' => (int) $val->poll_question_option_id,
+                                'text' => $val->option,
+                                'total_votes' => $val->total_vot,
+                                'votes' => $votes
+                            );
+
+                            $total_votes = 0;
+                            $this->db->select('*');
+                            $this->db->from('tbl_poll_voting');
+                            $this->db->where("sessions_poll_question_id", $val->sessions_poll_question_id);
+                            $tbl_poll_voting_2 = $this->db->get();
+                            if ($tbl_poll_voting_2->num_rows() > 0) {
+                                $total_votes = $tbl_poll_voting_2->num_rows();
+                            }
                         }
                     }
+                    if ($sessions_poll_question->poll_type_id == 1) {
+                        $presurvey = $presurvey + 1;
+                        $polls[] = array(
+                            'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
+                            'text' => $sessions_poll_question->poll_type . " " . $presurvey . " : " . $sessions_poll_question->question,
+                            'options' => $options,
+                            'total_votes' => $total_votes
+                        );
+                    } else if ($sessions_poll_question->poll_type_id == 2) {
+                        $poll = $poll + 1;
+                        $polls[] = array(
+                            'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
+                            'text' => $sessions_poll_question->poll_type . " " . $poll . " : " . $sessions_poll_question->question,
+                            'options' => $options,
+                            'total_votes' => $total_votes
+                        );
+                    } else if ($sessions_poll_question->poll_type_id == 3) {
+                        $assessment = $assessment + 1;
+                        $polls[] = array(
+                            'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
+                            'text' => $sessions_poll_question->poll_type . " " . $assessment . " : " . $sessions_poll_question->question,
+                            'options' => $options,
+                            'total_votes' => $total_votes
+                        );
+                    }
                 }
-
-                $polls[] = array(
-                    'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
-                    'text' => $sessions_poll_question->poll_type . " : " . $sessions_poll_question->question,
-                    'options' => $options,
-                    'total_votes' => $total_votes
-                );
             }
 
 

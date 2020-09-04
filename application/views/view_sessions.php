@@ -232,7 +232,7 @@
                                                                         </div>-->
                                 </div>
                             </div>
-                            <p style="font-weight: 600;">CURRENT TIME : <span id="show_time"></span> EDT</p>
+                          <p style="font-weight: 600;">CURRENT TIME : <span id="show_time"></span> EDT   <a class="button color" style="margin: 0px; padding: 15px 7px; background-color: #c3c3c3; border-color: #c3c3c3; float: right; margin-bottom: 5px;" id="close_session"><span>Close the Session</span></a></p>
                         </div>
                     </section>
                     <!-- END: SECTION --> 
@@ -273,6 +273,19 @@
                 $("#view_sessions_history_id").val(data.view_sessions_history_id);
             }
         });
+
+    $(document).on("click", "#close_session", function () {
+            $.ajax({
+                url: "<?= base_url() ?>sessions/update_viewsessions_history_open",
+                type: "post",
+                data: {'view_sessions_history_id': $("#view_sessions_history_id").val()},
+                dataType: "json",
+                success: function (data) {
+                    window.location.replace("<?= site_url() ?>home");
+                }
+            });
+        });
+
 
         $("#questions_emojis_section").hide();
         $(document).on("click", "#questions_emjis_section_show", function () {
