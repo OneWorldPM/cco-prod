@@ -261,7 +261,7 @@
                                     <div class="tab-pane fade in active" id="attendee_questions">
                                         <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
                                         <input type="hidden" name="last_sessions_cust_question_id" id="last_sessions_cust_question_id" value="0">
-                                        <div id="question_list" style="overflow-y: auto; height: 80px;"></div>
+                                        <div id="question_list" style="overflow-y: auto; height: 200px;"></div>
 
                                     </div>
                                     <div class="tab-pane fade" id="favorites">
