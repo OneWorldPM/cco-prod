@@ -235,3 +235,4 @@ class Sessions extends CI_Controller {
     }
 
 }
+
