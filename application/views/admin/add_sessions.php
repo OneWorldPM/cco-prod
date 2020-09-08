@@ -39,6 +39,10 @@
                                         <label class="text-large">Unique Identifier :</label>
                                         <input type="text" name="unique_identifier" id="unique_identifier" readonly value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_id : $unique_identifier_id ?>" class="form-control" placeholder="Unique Identifier">
                                     </div>
+                                        <div class="form-group">
+                                        <label class="text-large">Zoom Link :</label>
+                                        <input type="text" name="zoom_link" id="zoom_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_link : "" ?>" class="form-control" placeholder="Zoom Link">
+                                    </div>
 <!--                                    <div class="form-group">
                                         <label class="text-large">Presenter:</label>
                                         <select class="form-control" id="presenter_id" name="presenter_id">

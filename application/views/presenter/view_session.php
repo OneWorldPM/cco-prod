@@ -153,8 +153,17 @@
     <div class="wrap-content container" id="container">
         <div class="container-fluid container-fullw" style="padding: 6px;">
             <div class="panel panel-primary" id="panel5">
-                <div class="panel-heading">
-                    <h4 class="panel-title text-white"><?= $sessions->session_title ?></h4>
+                <div class="panel-heading" style="padding-bottom: 8px;">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h4 class="panel-title text-white"><?= $sessions->session_title ?></h4>
+                        </div>
+                        <div class="col-md-2" style="text-align: center;">
+                            <a id="btn_timer_start" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">START</a>
+                            <a id="btn_timer_stop" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">STOP</a>
+                            <p id="id_day_time_clock" style="float: right; color: #d40f0f; font-weight: 700; font-size:24px; margin:0;"></p>  
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important; padding: 10px;">
                     <div class="row">
@@ -167,6 +176,7 @@
                                 }
                             }
                             ?>
+                            <input type="hidden" id="time_second" value="3600">
                             <input type="hidden" id="poll_vot_section_id_status" value="0">
                             <input type="hidden" id="poll_vot_section_last_status" value="0">
                             <div class="col-md-12" id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 5px;">
@@ -280,7 +290,7 @@
                                             <a href="<?= base_url() ?>presenter/sessions/view_question_answer/<?= $sessions->sessions_id ?>" class="btn btn-grey btn-sm">View Q&A</a>
                                             <a href="<?= base_url() ?>presenter/sessions/create_poll/<?= $sessions->sessions_id ?>" class="btn btn-grey btn-sm">Create Poll</a>
                                             <a class="btn btn-grey btn-sm" id="btn_view_poll" >View Poll</a>
-                                            <p></p>
+                                            <a target="_blank" href="<?= $sessions->zoom_link ?>" style="font-size: 18px; font-weight: 700; margin-left: 10px;">Zoom Link</a>
                                         </div>
                                         <div class="col-md-12 table-responsive" id="view_poll_table" style="display: none;">
                                             <table class="table table-bordered table-striped text-center" id="user">
@@ -990,4 +1000,40 @@
             sessionStorage.reloadAfterPageLoad = "0";
         }
     });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        document.getElementById('id_day_time_clock').innerHTML = 00 + " : " + 00;
+        $(document).on("click", "#btn_timer_start", function () {
+            $('#btn_timer_start').prop('disabled', true);
+            setInterval('timer()', 1000);
+        });
+        $(document).on("click", "#btn_timer_stop", function () {
+            document.getElementById('id_day_time_clock').innerHTML = 00 + " : " + 00;
+            location.reload();
+        });
+    });
+
+    // console.log($("#time_second").val())
+    var upgradeTime = $("#time_second").val();
+    var seconds = upgradeTime;
+    function timer() {
+        var days = Math.floor(seconds / 24 / 60 / 60);
+        var hoursLeft = Math.floor((seconds) - (days * 86400));
+        var hours = Math.floor(hoursLeft / 3600);
+        var minutesLeft = Math.floor((hoursLeft) - (hours * 3600));
+        var minutes = Math.floor(minutesLeft / 60);
+        var remainingSeconds = seconds % 60;
+        function pad(n) {
+            return (n < 10 ? "0" + n : n);
+        }
+        console.log(pad(minutes));
+        console.log(pad(remainingSeconds));
+        document.getElementById('id_day_time_clock').innerHTML = pad(minutes) + " : " + pad(remainingSeconds);
+        if (seconds <= 0) {
+
+        } else {
+            seconds--;
+        }
+    }
 </script>

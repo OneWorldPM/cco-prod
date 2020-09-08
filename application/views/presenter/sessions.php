@@ -25,6 +25,7 @@
                                             <th>Photo</th>
                                             <th>Title</th>
                                             <th>Presenter</th>
+                                            <th>Zoom Link</th>
                                             <th>Time Slot</th>
                                             <th>Action</th>
                                         </tr>
@@ -51,6 +52,7 @@
                                                         }
                                                         ?>
                                                     </td>
+                                                     <td><a target="_blank" href="<?= $val->zoom_link ?>"><?= $val->zoom_link ?></a></td>
                                                     <td><?= date("h:i A", strtotime($val->time_slot)) .' - '. date("h:i A", strtotime($val->end_time)) ?></td>
                                                     <td>
                                                         <a href="<?= base_url() ?>presenter/sessions/view_question_answer/<?= $val->sessions_id ?>" class="btn btn-primary btn-sm">View Q&A</a>

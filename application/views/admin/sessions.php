@@ -33,6 +33,7 @@
                                             <th>Photo</th>
                                             <th>Title</th>
                                             <th>Presenter</th>
+                                            <th>Zoom Link</th>
                                             <th>Title</th>
                                             <th>Time Slot</th>
                                             <th>Action</th>
@@ -64,6 +65,7 @@
                                                         }
                                                         ?>
                                                     </td>
+                                                    <td><a target="_blank" href="<?= $val->zoom_link ?>"><?= $val->zoom_link ?></a></td>
                                                     <td>
                                                         <?php
                                                         if (isset($val->presenter) && !empty($val->presenter)) {
