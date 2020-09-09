@@ -1042,6 +1042,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1)
                 // If the count down is finished,
                 if (distance < 0) {
                     clearInterval(x);
+                    $('#id_day_time_clock').text('Time Left: '+0 + "h " + 0 + "m " + 0 + "s ");
                     $('#id_day_time_clock').css('color', '#d30e0e')
                 }
             }, 1000);
