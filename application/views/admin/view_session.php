@@ -158,7 +158,16 @@
         <div class="container-fluid container-fullw" style="padding: 6px;">
             <div class="panel panel-primary" id="panel5">
                 <div class="panel-heading">
-                    <h4 class="panel-title text-white"><?= $sessions->session_title ?></h4>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4 class="panel-title text-white"><?= $sessions->session_title ?></h4>
+                        </div>
+                        <div class="col-md-4" style="text-align: center;">
+                            <!--                            <a id="btn_timer_start" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">START</a>-->
+                            <!--                            <a id="btn_timer_stop" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">STOP</a>-->
+                            <p id="id_day_time_clock" style="float: right; color: #1f860b; font-weight: 700; font-size:24px; margin:0;"></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important; padding: 10px;">
                     <div class="row">
@@ -349,6 +358,84 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+
+        var session_start_datetime = "<?=date('M d, yy', strtotime($sessions->sessions_date)).' '.$sessions->time_slot.' UTC-4'?>";
+        var session_end_datetime = "<?=date('M d, yy', strtotime($sessions->sessions_date)).' '.$sessions->end_time.' UTC-4'?>";
+
+        function timeleft() {
+            // Set the date we're counting down to
+            var countDownDate = new Date(session_end_datetime).getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                //console.log('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                $('#id_day_time_clock').text('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+
+                // If the count down is finished,
+                if (distance < 0) {
+                    clearInterval(x);
+                    $('#id_day_time_clock').css('color', '#d30e0e')
+                }
+            }, 1000);
+        }
+
+        function timeToStart() {
+            // Set the date we're counting down to
+            var countDownDate = new Date(session_start_datetime).getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                //console.log('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                $('#id_day_time_clock').text('Session starts in: '+days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+
+                // If the count down is finished,
+                if (distance < 0) {
+                    clearInterval(x);
+                    timeleft();
+                }
+            }, 1000);
+        }
+
+        var now = new Date().getTime();
+        var sessionStartDateTime = new Date(session_start_datetime).getTime();
+        if(now < sessionStartDateTime)
+        {
+            timeToStart();
+        }else{
+            timeleft();
+        }
+
+
         $(document).on("click", "#btn_view_poll", function () {
             $("#view_poll_table").show();
         });

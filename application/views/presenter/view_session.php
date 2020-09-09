@@ -149,19 +149,27 @@
         }
     }
 </style>
+
+<?php
+if (isset($_GET['testing']) && $_GET['testing'] == 1)
+{
+    echo date('yy-m-d h:m:i');
+    echo "<pre>"; print_r($sessions); exit("</pre>");
+}
+?>
 <div class="main-content">
     <div class="wrap-content container" id="container">
         <div class="container-fluid container-fullw" style="padding: 6px;">
             <div class="panel panel-primary" id="panel5">
                 <div class="panel-heading" style="padding-bottom: 8px;">
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-md-8">
                             <h4 class="panel-title text-white"><?= $sessions->session_title ?></h4>
                         </div>
-                        <div class="col-md-2" style="text-align: center;">
-                            <a id="btn_timer_start" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">START</a>
-                            <a id="btn_timer_stop" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">STOP</a>
-                            <p id="id_day_time_clock" style="float: right; color: #d40f0f; font-weight: 700; font-size:24px; margin:0;"></p>  
+                        <div class="col-md-4" style="text-align: center;">
+<!--                            <a id="btn_timer_start" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">START</a>-->
+<!--                            <a id="btn_timer_stop" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">STOP</a>-->
+                            <p id="id_day_time_clock" style="float: right; color: #1f860b; font-weight: 700; font-size:24px; margin:0;"></p>
                         </div>
                     </div>
                 </div>
@@ -1003,10 +1011,88 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
+        
+        var session_start_datetime = "<?=date('M d, yy', strtotime($sessions->sessions_date)).' '.$sessions->time_slot.' UTC-4'?>";
+        var session_end_datetime = "<?=date('M d, yy', strtotime($sessions->sessions_date)).' '.$sessions->end_time.' UTC-4'?>";
+
+        function timeleft() {
+            // Set the date we're counting down to
+            var countDownDate = new Date(session_end_datetime).getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                //console.log('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                $('#id_day_time_clock').text('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+
+                // If the count down is finished,
+                if (distance < 0) {
+                    clearInterval(x);
+                    $('#id_day_time_clock').css('color', '#d30e0e')
+                }
+            }, 1000);
+        }
+
+        function timeToStart() {
+            // Set the date we're counting down to
+            var countDownDate = new Date(session_start_datetime).getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                //console.log('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                $('#id_day_time_clock').text('Session starts in: '+days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+
+                // If the count down is finished,
+                if (distance < 0) {
+                    clearInterval(x);
+                    timeleft();
+                }
+            }, 1000);
+        }
+
+        var now = new Date().getTime();
+        var sessionStartDateTime = new Date(session_start_datetime).getTime();
+        if(now < sessionStartDateTime)
+        {
+            timeToStart();
+        }else{
+            timeleft();
+        }
+
         document.getElementById('id_day_time_clock').innerHTML = 00 + " : " + 00;
         $(document).on("click", "#btn_timer_start", function () {
             $('#btn_timer_start').prop('disabled', true);
-            setInterval('timer()', 1000);
+            //setInterval('timer()', 1000);
+            timeleft();
         });
         $(document).on("click", "#btn_timer_stop", function () {
             document.getElementById('id_day_time_clock').innerHTML = 00 + " : " + 00;
@@ -1027,8 +1113,8 @@
         function pad(n) {
             return (n < 10 ? "0" + n : n);
         }
-        console.log(pad(minutes));
-        console.log(pad(remainingSeconds));
+        //console.log(pad(minutes));
+        //console.log(pad(remainingSeconds));
         document.getElementById('id_day_time_clock').innerHTML = pad(minutes) + " : " + pad(remainingSeconds);
         if (seconds <= 0) {
 
