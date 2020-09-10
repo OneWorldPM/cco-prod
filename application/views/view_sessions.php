@@ -1,4 +1,4 @@
-<link href="<?= base_url() ?>assets/css/attendee-session-view.css" rel="stylesheet">
+<link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=<?=rand(1, 100)?>" rel="stylesheet">
 <style>
     .progress-bar {
         height: 100%;
@@ -896,4 +896,4 @@
         }
     }
 </script>
-<script src="<?= base_url() ?>assets/js/attendee-session-view.js?"></script>
+<script src="<?= base_url() ?>assets/js/attendee-session-view.js?v=<?=rand(1, 100)?>"></script>
