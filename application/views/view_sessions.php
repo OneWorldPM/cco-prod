@@ -132,6 +132,7 @@
                                     <input type="hidden" id="view_sessions_history_id" value="">
                                     <input type="hidden" id="sessions_id" value=" <?= isset($sessions) ? $sessions->sessions_id : "" ?>">
                                     <input type="hidden" id="poll_vot_section_id_status" value="0">
+                                    <input type="hidden" id="poll_vot_section_is_ended" value="0">
                                     <input type="hidden" id="poll_vot_section_last_status" value="0">
                                     <!--                                    <div class="col-md-3">
                                                                             <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
@@ -759,6 +760,7 @@
                 } else {
                     $('#modal').modal('hide');
                     $("#timer_sectiom").hide();
+                    $('#poll_vot_section_is_ended').val(1);
 
                     $.ajax({
                         url: "<?= base_url() ?>sessions/get_poll_vot_section_close_poll",
@@ -876,7 +878,8 @@
     var upgradeTime = 15;
     var seconds = upgradeTime;
     function timer(status) {
-        if (status == 0) {
+        var is_poll_ended = $('#poll_vot_section_is_ended').val();
+        if (status == 0 || is_poll_ended == 1) {
             seconds = 15;
         }
         var remainingSeconds = seconds % 60;
@@ -889,6 +892,7 @@
             $("#btn_vote").hide();
             $("#id_day_time").css("color", "red");
         } else {
+            $('#poll_vot_section_is_ended').val(0);
             $("#btn_vote").show();
             $("#id_day_time").css("color", "green");
             play_music();

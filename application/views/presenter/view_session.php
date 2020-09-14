@@ -186,6 +186,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1)
                             ?>
                             <input type="hidden" id="time_second" value="3600">
                             <input type="hidden" id="poll_vot_section_id_status" value="0">
+                            <input type="hidden" id="poll_vot_section_is_ended" value="0">
                             <input type="hidden" id="poll_vot_section_last_status" value="0">
                             <div class="col-md-12" id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 5px;">
                             </div>
@@ -852,6 +853,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1)
                     }
                 } else {
                     $("#timer_sectiom").hide();
+                    $('#poll_vot_section_is_ended').val(1);
                     $.ajax({
                         url: "<?= base_url() ?>presenter/sessions/get_poll_vot_section_close_poll",
                         type: "post",
@@ -984,7 +986,8 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1)
     var upgradeTime = 15;
     var seconds = upgradeTime;
     function timer(status) {
-        if (status == 0) {
+        var is_poll_ended = $('#poll_vot_section_is_ended').val();
+        if (status == 0 || is_poll_ended == 1) {
             seconds = 15;
         }
         var remainingSeconds = seconds % 60;
@@ -997,6 +1000,8 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1)
             $("#btn_vote").hide();
             $("#id_day_time").css("color", "red");
         } else {
+            $('#poll_vot_section_is_ended').val(0);
+            $("#id_day_time").css("color", "green");
             seconds--;
             play_music();
         }
@@ -1102,25 +1107,25 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1)
     });
 
     // console.log($("#time_second").val())
-    var upgradeTime = $("#time_second").val();
-    var seconds = upgradeTime;
-    function timer() {
-        var days = Math.floor(seconds / 24 / 60 / 60);
-        var hoursLeft = Math.floor((seconds) - (days * 86400));
-        var hours = Math.floor(hoursLeft / 3600);
-        var minutesLeft = Math.floor((hoursLeft) - (hours * 3600));
-        var minutes = Math.floor(minutesLeft / 60);
-        var remainingSeconds = seconds % 60;
-        function pad(n) {
-            return (n < 10 ? "0" + n : n);
-        }
-        //console.log(pad(minutes));
-        //console.log(pad(remainingSeconds));
-        document.getElementById('id_day_time_clock').innerHTML = pad(minutes) + " : " + pad(remainingSeconds);
-        if (seconds <= 0) {
-
-        } else {
-            seconds--;
-        }
-    }
+    // var upgradeTime = $("#time_second").val();
+    // var seconds = upgradeTime;
+    // function timer() {
+    //     var days = Math.floor(seconds / 24 / 60 / 60);
+    //     var hoursLeft = Math.floor((seconds) - (days * 86400));
+    //     var hours = Math.floor(hoursLeft / 3600);
+    //     var minutesLeft = Math.floor((hoursLeft) - (hours * 3600));
+    //     var minutes = Math.floor(minutesLeft / 60);
+    //     var remainingSeconds = seconds % 60;
+    //     function pad(n) {
+    //         return (n < 10 ? "0" + n : n);
+    //     }
+    //     //console.log(pad(minutes));
+    //     //console.log(pad(remainingSeconds));
+    //     document.getElementById('id_day_time_clock').innerHTML = pad(minutes) + " : " + pad(remainingSeconds);
+    //     if (seconds <= 0) {
+    //
+    //     } else {
+    //         seconds--;
+    //     }
+    // }
 </script>
