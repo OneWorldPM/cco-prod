@@ -945,10 +945,7 @@ class M_sessions extends CI_Model {
                 'questions' => $questions,
                 'charting' => $charting
             );
-			
-			echo "<pre>";
-			print_r(json_encode($create_array));
-			die;
+		
 			
             $json_array = array("data" => json_encode($create_array), "session_reference" => (int) $result_sessions->sessions_id, "session_id" => (int) $result_sessions->sessions_id, "source" => "gravity");
 
