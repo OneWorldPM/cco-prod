@@ -203,6 +203,7 @@ class Sessions extends CI_Controller {
                 'computer_type' => $this->agent->browser(),
                 'ip_address' => $this->input->ip_address(),
                 'resolution' => $post['resolution'],
+                'start_date_time' => date("Y-m-d h:i:s"),
                 'status' => 0
             );
             $this->db->update('login_sessions_history', $session_his_arr, array("login_sessions_history_id" => $login_sessions_history->login_sessions_history_id));
@@ -235,4 +236,3 @@ class Sessions extends CI_Controller {
     }
 
 }
-

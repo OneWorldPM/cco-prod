@@ -1,4 +1,4 @@
-<link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=<?=rand(1, 100)?>" rel="stylesheet">
+<link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=<?= rand(1, 100) ?>" rel="stylesheet">
 <style>
     .progress-bar {
         height: 100%;
@@ -233,7 +233,7 @@
                                                                         </div>-->
                                 </div>
                             </div>
-                          <p style="font-weight: 600;">CURRENT TIME : <span id="show_time"></span> EDT   <a class="button color" style="margin: 0px; padding: 15px 7px; background-color: #c3c3c3; border-color: #c3c3c3; float: right; margin-bottom: 5px;" id="close_session"><span>Close the Session</span></a></p>
+                            <p style="font-weight: 600;">CURRENT TIME : <span id="show_time"></span> EDT   <a class="button color" style="margin: 0px; padding: 15px 7px; background-color: #c3c3c3; border-color: #c3c3c3; float: right; margin-bottom: 5px;" id="close_session"><span>Close the Session</span></a></p>
                         </div>
                     </section>
                     <!-- END: SECTION --> 
@@ -243,8 +243,22 @@
     </div>
 </section>
 <script type="text/javascript">
+    window.onbeforeunload = function (e) {
+//      e.preventDefault();
+//      e.returnValue = '';
+        $.ajax({
+            url: "<?= base_url() ?>sessions/update_viewsessions_history_open",
+            type: "post",
+            data: {'view_sessions_history_id': $("#view_sessions_history_id").val()},
+            dataType: "json",
+            success: function (data) {
+                
+            }
+        });
+    };
+</script>
+<script type="text/javascript">
     $(document).ready(function () {
-
         var url = $(location).attr('href');
         var segments = url.split('/');
         var segments_id = segments[6];
@@ -259,7 +273,6 @@
                     success: function (data) {
                     }
                 });
-
             });
         }
 
@@ -275,7 +288,7 @@
             }
         });
 
-    $(document).on("click", "#close_session", function () {
+        $(document).on("click", "#close_session", function () {
             $.ajax({
                 url: "<?= base_url() ?>sessions/update_viewsessions_history_open",
                 type: "post",
@@ -438,6 +451,7 @@
 //        $(document).on("click", "#ask_questions", function () {
 //            $("#questions_section").show();
 //        });
+
         $("#resource_display_status").show();
         getMessage;
         setInterval(getMessage, 1000);
@@ -900,4 +914,5 @@
         }
     }
 </script>
-<script src="<?= base_url() ?>assets/js/attendee-session-view.js?v=<?=rand(1, 100)?>"></script>
+
+<script src="<?= base_url() ?>assets/js/attendee-session-view.js?v=<?= rand(1, 100) ?>"></script>
