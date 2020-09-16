@@ -803,7 +803,11 @@ class M_sessions extends CI_Model {
                     $start_date_time = strtotime($val->start_date_time);
                     $end_date_time = strtotime($val->end_date_time);
                     if ($end_date_time != "") {
-                        $total_time = $end_date_time - $start_date_time;
+                        if ($end_date_time >= $start_date_time) {
+                            $total_time = $end_date_time - $start_date_time;
+                        } else {
+                            $total_time = $start_date_time - $end_date_time;
+                        }
                     } else {
                         $end_date_time = 0;
                         $total_time = 0;
@@ -844,7 +848,6 @@ class M_sessions extends CI_Model {
                 $poll = 0;
                 $assessment = 0;
                 foreach ($sessions_poll_question->result() as $sessions_poll_question) {
-
                     $options = array();
                     $this->db->select('*');
                     $this->db->from('poll_question_option');
@@ -945,7 +948,10 @@ class M_sessions extends CI_Model {
                 'questions' => $questions,
                 'charting' => $charting
             );
-		
+
+            echo "<pre>";
+            print_r(json_encode($create_array));
+            die;
 			
             $json_array = array("data" => json_encode($create_array), "session_reference" => (int) $result_sessions->sessions_id, "session_id" => (int) $result_sessions->sessions_id, "source" => "gravity");
 
@@ -996,7 +1002,11 @@ class M_sessions extends CI_Model {
                     $start_date_time = strtotime($val->start_date_time);
                     $end_date_time = strtotime($val->end_date_time);
                     if ($end_date_time != "") {
-                        $total_time = $end_date_time - $start_date_time;
+                        if ($end_date_time >= $start_date_time) {
+                            $total_time = $end_date_time - $start_date_time;
+                        } else {
+                            $total_time = $start_date_time - $end_date_time;
+                        }
                     } else {
                         $end_date_time = 0;
                         $total_time = 0;
