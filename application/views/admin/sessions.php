@@ -78,7 +78,6 @@
                                                     <td><?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                     <td>
                                                         <a href="<?= base_url() ?>admin/sessions/create_poll/<?= $val->sessions_id ?>" class="btn btn-success btn-sm">Create Poll</a>
-                                                        <a href="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" class="btn btn-yellow btn-sm">Clear Json</a>
 														<a href="<?= base_url() ?>admin/sessions/view_poll/<?= $val->sessions_id ?>" class="btn btn-info btn-sm">View Poll</a>
                                                         <a href="<?= base_url() ?>admin/sessions/view_question_answer/<?= $val->sessions_id ?>" class="btn btn-primary btn-sm">View Q&A</a>
                                                         <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm">View Session</a>
@@ -89,6 +88,7 @@
                                                         <a href="<?= base_url() ?>admin/sessions/resource/<?= $val->sessions_id ?>" class="btn btn-success btn-sm">Resources</a>
                                                         <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm">Send to CCO</a>
                                                         <a href="<?= base_url() ?>admin/sessions/view_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm">View JSON</a>
+														 <a href="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm">Clear JSON</a>
                                                     </td>
                                                 </tr>
                                                 <?php
