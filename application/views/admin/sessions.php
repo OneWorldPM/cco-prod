@@ -110,7 +110,7 @@
 $msg = $this->input->get('msg');
 switch ($msg) {
     case "S":
-        $m = "Successfully...!!!";
+        $m = "Successfully Cleared";
         $t = "success";
         break;
     case "E":
