@@ -414,19 +414,14 @@ class Sessions extends CI_Controller {
         $this->db->delete("login_sessions_history", array("sessions_id" => $sessions_id));
         $this->db->delete("sessions_cust_question", array("sessions_id" => $sessions_id));
         $poll_question_result = $this->db->get_where("poll_question_option", array("sessions_id" => $sessions_id))->result();
-        
-        foreach ($poll_question_result as $value) {
-            $sessions_poll_question_id = $value->sessions_poll_question_id;
-            $sessions_poll_question_row = $this->db->get_where("sessions_poll_question", array("sessions_poll_question_id" => $sessions_poll_question_id))->row();
-            $this->db->update("sessions_poll_question", array("status" => 0, "timer_status" => 0), array("sessions_poll_question_id" => $sessions_poll_question_row->sessions_poll_question_id));
-            $this->db->update("poll_question_option", array("total_vot" => 0), array("sessions_poll_question_id" => $sessions_poll_question_id));
-            $this->db->delete("tbl_poll_voting", array("sessions_poll_question_id" => $sessions_poll_question_id));
+        if (!empty($poll_question_result)) {
+            foreach ($poll_question_result as $value) {
+                $sessions_poll_question_id = $value->sessions_poll_question_id;
+                $this->db->update("poll_question_option", array("total_vot" => 0), array("sessions_poll_question_id" => $sessions_poll_question_id));
+                $this->db->delete("tbl_poll_voting", array("sessions_poll_question_id" => $sessions_poll_question_id));
+            }
         }
-        
         $this->db->delete("sessions_poll_question", array("sessions_id" => $sessions_id));
-        
         header('location:' . base_url() . 'admin/sessions?msg=S');
     }
-
-
 }
