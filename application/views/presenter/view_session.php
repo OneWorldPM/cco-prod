@@ -141,11 +141,11 @@
         }
         #question_list{
             overflow-y: auto; 
-            height: 200px; 
+            height: 250px; 
         }
         #favorite_question_list{
             overflow-y: auto; 
-            height: 200px; 
+            height: 250px; 
         }
     }
 
@@ -155,11 +155,11 @@
         }
         #question_list{
             overflow-y: auto; 
-            height: 200px; 
+            height: 300px; 
         }
         #favorite_question_list{
             overflow-y: auto; 
-            height: 200px; 
+            height: 300px; 
         }
     }
     @media only screen and (min-width: 1600px) and (max-width: 1800px)  {
@@ -168,11 +168,11 @@
         }
         #question_list{
             overflow-y: auto; 
-            height: 250px; 
+            height: 300px; 
         }
         #favorite_question_list{
             overflow-y: auto; 
-            height: 250px; 
+            height: 300px; 
         }
     }
     @media only screen and (min-width: 1800px) and (max-width: 2000px)  {
@@ -181,11 +181,11 @@
         }
         #question_list{
             overflow-y: auto; 
-            height: 300px; 
+            height: 350px; 
         }
         #favorite_question_list{
             overflow-y: auto; 
-            height: 300px; 
+            height: 350px; 
         }
     }
 
@@ -1151,7 +1151,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
         }
 
         function timeToStart() {
-            // Set the date we're counting down to
+            // Set the date we're counting down to 
             var countDownDate = new Date(session_start_datetime).getTime();
 
             // Update the count down every 1 second
