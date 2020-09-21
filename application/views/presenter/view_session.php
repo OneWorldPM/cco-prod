@@ -83,11 +83,27 @@
         #embed_html_code_section{
             height: 495px
         }
+        #question_list{
+            overflow-y: auto; 
+            height: 200px; 
+        }
+        #favorite_question_list{
+            overflow-y: auto; 
+            height: 200px; 
+        }
     }
 
     @media only screen and (min-width: 568px) and (max-width: 768px)  {
         #embed_html_code_section{
             height: 496px
+        }
+        #question_list{
+            overflow-y: auto; 
+            height: 200px; 
+        }
+        #favorite_question_list{
+            overflow-y: auto; 
+            height: 200px; 
         }
     }
 
@@ -95,11 +111,27 @@
         #embed_html_code_section{
             height: 497px
         }
+        #question_list{
+            overflow-y: auto; 
+            height: 200px; 
+        }
+        #favorite_question_list{
+            overflow-y: auto; 
+            height: 200px; 
+        }
     }
 
     @media only screen and (min-width: 992px) and (max-width: 1200px)  {
         #embed_html_code_section{
             height: 595px
+        }
+        #question_list{
+            overflow-y: auto; 
+            height: 200px; 
+        }
+        #favorite_question_list{
+            overflow-y: auto; 
+            height: 200px; 
         }
     }
 
@@ -107,21 +139,53 @@
         #embed_html_code_section{
             height: 596px
         }
+        #question_list{
+            overflow-y: auto; 
+            height: 200px; 
+        }
+        #favorite_question_list{
+            overflow-y: auto; 
+            height: 200px; 
+        }
     }
 
     @media only screen and (min-width: 1400px) and (max-width: 1600px)  {
         #embed_html_code_section{
             height: 675px
         }
+        #question_list{
+            overflow-y: auto; 
+            height: 200px; 
+        }
+        #favorite_question_list{
+            overflow-y: auto; 
+            height: 200px; 
+        }
     }
     @media only screen and (min-width: 1600px) and (max-width: 1800px)  {
         #embed_html_code_section{
             height: 715px
         }
+        #question_list{
+            overflow-y: auto; 
+            height: 250px; 
+        }
+        #favorite_question_list{
+            overflow-y: auto; 
+            height: 250px; 
+        }
     }
     @media only screen and (min-width: 1800px) and (max-width: 2000px)  {
         #embed_html_code_section{
             height: 830px
+        }
+        #question_list{
+            overflow-y: auto; 
+            height: 300px; 
+        }
+        #favorite_question_list{
+            overflow-y: auto; 
+            height: 300px; 
         }
     }
 
@@ -129,11 +193,27 @@
         #embed_html_code_section{
             height: 815px
         }
+        #question_list{
+            overflow-y: auto; 
+            height: 400px; 
+        }
+        #favorite_question_list{
+            overflow-y: auto; 
+            height: 400px; 
+        }
     }
 
     @media only screen and (min-width: 2200px) and (max-width: 2400px)  {
         #embed_html_code_section{
             height: 895px
+        }
+        #question_list{
+            overflow-y: auto; 
+            height: 450px; 
+        }
+        #favorite_question_list{
+            overflow-y: auto; 
+            height: 450px;
         }
     }
 
@@ -141,20 +221,37 @@
         #embed_html_code_section{
             height: 995px
         }
+        #question_list{
+            overflow-y: auto; 
+            height: 450px; 
+        }
+        #favorite_question_list{
+            overflow-y: auto; 
+            height: 450px;
+        }
     }
 
     @media only screen and (min-width: 2800px) {
         #embed_html_code_section{
             height: 1095px
         }
+        #question_list{
+            overflow-y: auto; 
+            height: 450px; 
+        }
+        #favorite_question_list{
+            overflow-y: auto; 
+            height: 450px;
+        }
     }
 </style>
 
 <?php
-if (isset($_GET['testing']) && $_GET['testing'] == 1)
-{
+if (isset($_GET['testing']) && $_GET['testing'] == 1) {
     echo date('yy-m-d h:m:i');
-    echo "<pre>"; print_r($sessions); exit("</pre>");
+    echo "<pre>";
+    print_r($sessions);
+    exit("</pre>");
 }
 ?>
 <div class="main-content">
@@ -167,8 +264,8 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1)
                             <h4 class="panel-title text-white"><?= $sessions->session_title ?></h4>
                         </div>
                         <div class="col-md-4" style="text-align: center;">
-<!--                            <a id="btn_timer_start" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">START</a>-->
-<!--                            <a id="btn_timer_stop" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">STOP</a>-->
+                            <!--                            <a id="btn_timer_start" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">START</a>-->
+                            <!--                            <a id="btn_timer_stop" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">STOP</a>-->
                             <p id="id_day_time_clock" style="float: right; color: #1f860b; font-weight: 700; font-size:24px; margin:0;"></p>
                         </div>
                     </div>
@@ -280,13 +377,13 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1)
                                     <div class="tab-pane fade in active" id="attendee_questions">
                                         <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
                                         <input type="hidden" name="last_sessions_cust_question_id" id="last_sessions_cust_question_id" value="0">
-                                        <div id="question_list" style="overflow-y: auto; height: 200px;"></div>
+                                        <div id="question_list"></div>
 
                                     </div>
                                     <div class="tab-pane fade" id="favorites">
                                         <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
                                         <input type="hidden" name="favorite_last_sessions_cust_question_id" id="favorite_last_sessions_cust_question_id" value="0">
-                                        <div id="favorite_question_list" style="overflow-y: auto; height: 80px;"></div>
+                                        <div id="favorite_question_list"></div>
                                     </div>
                                 </div>
                             </div> 
@@ -1016,16 +1113,16 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1)
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
-        
-        var session_start_datetime = "<?=date('M d, yy', strtotime($sessions->sessions_date)).' '.$sessions->time_slot.' UTC-4'?>";
-        var session_end_datetime = "<?=date('M d, yy', strtotime($sessions->sessions_date)).' '.$sessions->end_time.' UTC-4'?>";
+
+        var session_start_datetime = "<?= date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-4' ?>";
+        var session_end_datetime = "<?= date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-4' ?>";
 
         function timeleft() {
             // Set the date we're counting down to
             var countDownDate = new Date(session_end_datetime).getTime();
 
             // Update the count down every 1 second
-            var x = setInterval(function() {
+            var x = setInterval(function () {
 
                 // Get today's date and time
                 var now = new Date().getTime();
@@ -1042,12 +1139,12 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1)
                 // Display the result in the element with id="demo"
                 //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
                 //console.log('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
-                $('#id_day_time_clock').text('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                $('#id_day_time_clock').text('Time Left: ' + hours + "h " + minutes + "m " + seconds + "s ");
 
                 // If the count down is finished,
                 if (distance < 0) {
                     clearInterval(x);
-                    $('#id_day_time_clock').text('Time Left: '+0 + "h " + 0 + "m " + 0 + "s ");
+                    $('#id_day_time_clock').text('Time Left: ' + 0 + "h " + 0 + "m " + 0 + "s ");
                     $('#id_day_time_clock').css('color', '#d30e0e')
                 }
             }, 1000);
@@ -1058,7 +1155,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1)
             var countDownDate = new Date(session_start_datetime).getTime();
 
             // Update the count down every 1 second
-            var x = setInterval(function() {
+            var x = setInterval(function () {
 
                 // Get today's date and time
                 var now = new Date().getTime();
@@ -1075,7 +1172,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1)
                 // Display the result in the element with id="demo"
                 //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
                 //console.log('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
-                $('#id_day_time_clock').text('Session starts in: '+days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+                $('#id_day_time_clock').text('Session starts in: ' + days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
 
                 // If the count down is finished,
                 if (distance < 0) {
@@ -1087,10 +1184,10 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1)
 
         var now = new Date().getTime();
         var sessionStartDateTime = new Date(session_start_datetime).getTime();
-        if(now < sessionStartDateTime)
+        if (now < sessionStartDateTime)
         {
             timeToStart();
-        }else{
+        } else {
             timeleft();
         }
 
