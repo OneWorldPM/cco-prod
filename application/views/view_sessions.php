@@ -103,7 +103,7 @@
                                                         <div class="col-sm-12">
                                                             <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; ">
                                                                 <div class="col-md-12" style="text-align: right;">
-                                                                    TIME LEFT : <span id="id_day_time" style=" font-size: 18px; font-weight: 700; color: green; padding: 0px 10px 0px 0px;"></span>
+                                                                    TIME LEFT : <span id="id_day_time" style=" font-size: 18px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
                                                                 </div>
                                                             </div>
                                                             <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 5px;">
@@ -909,7 +909,7 @@
         } else {
             $('#poll_vot_section_is_ended').val(0);
             $("#btn_vote").show();
-            $("#id_day_time").css("color", "green");
+            $("#id_day_time").css("color", "#ef5e25");
             play_music();
             seconds--;
         }
