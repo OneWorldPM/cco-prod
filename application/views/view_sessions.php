@@ -35,18 +35,20 @@
     }
 
     .option_section_css{
-        background-color: #f1f1f1;
+        background-color: #fff;
         padding-top: 4px;
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
+        font-size: 17px;
     }
     .option_section_css_selected{
-        background-color: #e1f6ff;
+        background-color: #fff;
         padding-top: 4px;
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
+        font-size: 17px;
     }
     .progress {
         height: 26px;
@@ -91,21 +93,21 @@
                                     <div id="iframeDiv" class="row" style="width: 102%;height: 97%;"><?= isset($sessions) ? $sessions->embed_html_code : "" ?></div>
                                     <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
                                         <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header" style="padding: 0px;">
-                                                    <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
+                                            <div class="modal-content" style="padding: 0px; border: 0px solid #999;">
+                                                <!--                                                <div class="modal-header" style="padding: 0px;">
+                                                                                                    <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
+                                                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                                                </div>-->
+                                                <div class="modal-body" style="padding: 0px;">
+                                                    <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
                                                         <div class="col-sm-12">
-                                                            <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
+                                                            <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; ">
+                                                                <div class="col-md-12" style="text-align: right;">
+                                                                    TIME LEFT : <span id="id_day_time" style=" font-size: 18px; font-weight: 700; color: green; padding: 0px 10px 0px 0px;"></span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row" id="timer_sectiom" style="padding-top: 20px; padding-bottom: 20px; display: none;">
-                                                        <div class="col-md-12" style="text-align: center;">
-                                                            <span id="id_day_time" style="border:1px solid #000; border-radius: 100px; font-size: 76px; font-weight: 700; color: green; padding: 10px 30px 10px 30px;"></span>
+                                                            <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 5px;">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -252,7 +254,7 @@
             data: {'view_sessions_history_id': $("#view_sessions_history_id").val()},
             dataType: "json",
             success: function (data) {
-                
+
             }
         });
     };
@@ -698,14 +700,13 @@
                         if (data.result.poll_status == 1) {
                             $('#modal').modal('show');
                             $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'>Live Poll</h2>\n\
+            \n\<h2 style='margin-bottom: 20px; color: #000; font-weight: 800;font-size: 22px; padding: 20px 5px 20px 10px; background-color: #ebeaea;'>" + data.result.question + "</h2>\n\
 <div class='col-md-12'>\n\
-\n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5></div>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
 <div class='col-md-12' id='option_section'></div>\n\
 \n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px;'></span>\n\
-<div style='padding-right: 20px;text-align: right;'><a class='button small color rounded icon-left' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; font-size: 16px;'><span id='btn_vote_label'>VOTE <i class='fa fa-check' id='fa_fa_check' style='font-size: 13px; display:none'></i></span></a></div>\n\
+<div style='padding-right: 20px;text-align: center;'><a class='button small color rounded' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; font-size: 16px;'><span id='btn_vote_label'>VOTE <i class='fa fa-check' id='fa_fa_check' style='font-size: 13px; display:none'></i></span></a></div>\n\
 </form>");
                             if (data.result.exist_status == 1) {
                                 $.each(data.result.option, function (key, val) {
