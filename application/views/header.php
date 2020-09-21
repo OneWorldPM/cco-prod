@@ -88,7 +88,7 @@
         <!-- WRAPPER -->
         <div class="wrapper">
             <!-- HEADER -->
-            <header id="header" class="header-transparent">
+            <header id="header" class="header-transparent header-sticky">
                 <div id="header-wrap">
                     <div class="container">
                         <!--LOGO-->
@@ -124,27 +124,17 @@
                         <div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
                             <div class="container">
                                 <nav id="mainMenu" class="main-menu mega-menu">
-                                    <!--<ul class="main-menu nav nav-pills navbar-left">
-                                    <li><a href="#">Why attend</a></li>
-                                    <li><a href="#">Agenda</a></li>
-                                    <li><a href="#">Sessions</a></li>
-                                    <li><a href="#">Speakers</a></li>
-                                    <li><a href="#">Sponsors</a></li>
-                                </ul>-->
-                                    <ul id="mainMenuItems" class="main-menu nav nav-pills navbar-left">
-                                        <li><a href="https://yourconference.live/support" style="color:#A9A9A9; font-size: 18px;" target="_blank"><i class="fa fa-question-circle" style="color:#A9A9A9; font-size: 18px;"></i>HELP DESK</a></li>
-                                    </ul>
                                     <?php
                                     if ($this->session->userdata('cid') != "") {
                                         $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                                         ?>
-                                        <ul class="main-menu nav navbar-right">
+                                        <ul class="main-menu nav navbar-nav navbar-right">
                                             <li class="dropdown">
                                                 <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                     <?php if ($profile_data->profile != "") { ?>
                                                         <img src="<?= base_url() ?>uploads/customer_profile/<?= $profile_data->profile ?>" class="img-circle" style="height: 50px; width: 50px; border: 6px solid #342e2e;">
                                                     <?php } else { ?>
-                                                        <img src="<?= base_url() ?>assets/images/Avatar.png" class="img-circle" style="height: 50px; width: 50px; border: 6px solid #342e2e;">
+                                                       <span class="glyphicon glyphicon-user"></span> Profile
                                                     <?php } ?>
                                                 </a>
                                                 <ul class="dropdown-menu">
@@ -173,6 +163,11 @@
                                             </li>
                                         </ul>
                                     <?php } ?>
+
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="https://yourconference.live/support" target="_blank"><span class="glyphicon glyphicon-info-sign"></span> Help Desk</a></li>
+                                    </ul>
+
                                 </nav>
                             </div>
                         </div>

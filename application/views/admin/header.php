@@ -42,6 +42,7 @@ $uri_segment1 = $this->uri->segment(3);
         <!-- end: CLIP-TWO CSS -->
         <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
         <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+        <link rel="stylesheet" type="text/css" href="<?= base_url() ?>front_assets/css/custom.css" media="screen" />
 
         <link href="<?= base_url() ?>assets/vendor/select2/select2.min.css" rel="stylesheet" media="screen">
         <link href="<?= base_url() ?>assets/vendor/DataTables/css/DT_bootstrap.css" rel="stylesheet" media="screen">
@@ -65,6 +66,7 @@ $uri_segment1 = $this->uri->segment(3);
 
         <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch.js"></script> -->
         <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch-onload.js"></script> -->
+        <script src="<?= base_url() ?>front_assets/js/custom.js"></script>
 
         <style type="text/css">
             .action-row{
