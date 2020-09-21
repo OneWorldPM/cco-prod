@@ -36,8 +36,8 @@
                                     <input type="text" name="specialty" id="specialty" value="<?= (isset($myprofile)) ? $myprofile->specialty : ''; ?>" placeholder="Specialty" class="form-control input-lg">
                                     <span id="errorspecialty" style="color:red"></span>
                                 </div>
-                                  <div class="col-md-2 form-group">
-                                    <input type="text" value="<?= (isset($myprofile)) ? $myprofile->degree : ''; ?>" placeholder="Degree" name="degree" id="degree" class="form-control input-lg">
+                                <div class="col-md-2 form-group">
+                                    <input type="text" value="<?= (isset($myprofile)) ? $myprofile->topic : ''; ?>" placeholder="Topic" name="topic" id="topic" class="form-control input-lg">
                                     <span id="errordegree" style="color:red"></span>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                     <input type="text" value="" placeholder="Address 2" name="address_2" id="address_2" class="form-control input-lg">
                                     <span id="erroraddress_2" style="color:red"></span>
                                 </div>
-                                 <div class="col-md-3 form-group">
+                                <div class="col-md-3 form-group">
                                     <input type="text" value="<?= (isset($myprofile)) ? $myprofile->zipcode : ''; ?>" placeholder="zipCode" name="zipcode" id="zipcode" class="form-control input-lg">
                                     <span id="errorzipcode" style="color:red"></span>
                                 </div>
@@ -338,76 +338,76 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12  m-t-20">
-                            <h5 style="padding-bottom: 4px; border-bottom: 2px solid #ebebeb">Upload vCard</h5>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group col-md-3">
-                                    <input type="file" id="upload_vcard" name="upload_vcard" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12  m-t-20">
-                            <h5 style="padding-bottom: 4px; border-bottom: 2px solid #ebebeb">Social Accounts</h5>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="col-md-4 form-group">
-                                    <div class="col-md-1">
-                                        <i class="fa fa-twitter" style="font-size: 25px; margin-top: 8px;"></i>
-                                    </div>
-                                    <div class="col-md-11">
-                                        <input type="text" value="<?= (isset($myprofile)) ? $myprofile->twitter_id : ''; ?>" placeholder="Twitter" id="twitter" name="twitter" class="form-control input-lg">
-                                        <span id="errortwitter" style="color:red"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-md-4 form-group">
-                                    <div class="col-md-1">
-                                        <i class="fa fa-facebook" style="font-size: 25px; margin-top: 8px;"></i>
-                                    </div>
-                                    <div class="col-md-11">
-                                        <input type="text" value="<?= (isset($myprofile)) ? $myprofile->facebook_id : ''; ?>" placeholder="Facebook" id="facebook" name="facebook" class="form-control input-lg">
-                                        <span id="errorfacebook" style="color:red"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-md-4 form-group">
-                                    <div class="col-md-1">
-                                        <i class="fa fa-instagram" style="font-size: 25px; margin-top: 8px;"></i>
-                                    </div>
-                                    <div class="col-md-11">
-                                        <input type="text" value="<?= (isset($myprofile)) ? $myprofile->instagram_id : ''; ?>" placeholder="Instagram" id="instagram" name="instagram" class="form-control input-lg">
-                                        <span id="errorinstagram" style="color:red"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12  m-t-20">
-                            <h5 style="padding-bottom: 4px; border-bottom: 2px solid #ebebeb">Membership Details</h5>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group col-md-12">
-                                    <label class="custom-control custom-checkbox m-0">
-                                        <input type="checkbox" name="terms" id="terms" class="custom-control-input">
-                                        <span class="form-text text-muted">I am currently a member of this organization</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 m-t-20">
-                                <div class="form-group col-md-12">
-                                    <small class="form-text text-muted"><?php
-                                        if (!empty($cms_details)) {
-                                            echo $cms_details->description;
-                                        }
-                                        ?></small>
-                                </div>
-                            </div>
-                        </div>
+                        <!--                        <div class="col-md-12  m-t-20">
+                                                    <h5 style="padding-bottom: 4px; border-bottom: 2px solid #ebebeb">Upload vCard</h5>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group col-md-3">
+                                                            <input type="file" id="upload_vcard" name="upload_vcard" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12  m-t-20">
+                                                    <h5 style="padding-bottom: 4px; border-bottom: 2px solid #ebebeb">Social Accounts</h5>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-4 form-group">
+                                                            <div class="col-md-1">
+                                                                <i class="fa fa-twitter" style="font-size: 25px; margin-top: 8px;"></i>
+                                                            </div>
+                                                            <div class="col-md-11">
+                                                                <input type="text" value="<?= (isset($myprofile)) ? $myprofile->twitter_id : ''; ?>" placeholder="Twitter" id="twitter" name="twitter" class="form-control input-lg">
+                                                                <span id="errortwitter" style="color:red"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-4 form-group">
+                                                            <div class="col-md-1">
+                                                                <i class="fa fa-facebook" style="font-size: 25px; margin-top: 8px;"></i>
+                                                            </div>
+                                                            <div class="col-md-11">
+                                                                <input type="text" value="<?= (isset($myprofile)) ? $myprofile->facebook_id : ''; ?>" placeholder="Facebook" id="facebook" name="facebook" class="form-control input-lg">
+                                                                <span id="errorfacebook" style="color:red"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-4 form-group">
+                                                            <div class="col-md-1">
+                                                                <i class="fa fa-instagram" style="font-size: 25px; margin-top: 8px;"></i>
+                                                            </div>
+                                                            <div class="col-md-11">
+                                                                <input type="text" value="<?= (isset($myprofile)) ? $myprofile->instagram_id : ''; ?>" placeholder="Instagram" id="instagram" name="instagram" class="form-control input-lg">
+                                                                <span id="errorinstagram" style="color:red"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12  m-t-20">
+                                                    <h5 style="padding-bottom: 4px; border-bottom: 2px solid #ebebeb">Membership Details</h5>
+                                                </div>
+                                                <div class="row">
+                                                   <div class="col-md-12">
+                                                        <div class="form-group col-md-12">
+                                                            <label class="custom-control custom-checkbox m-0">
+                                                                <input type="checkbox" name="terms" id="terms" class="custom-control-input">
+                                                                <span class="form-text text-muted">I am currently a member of this organization</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 m-t-20">
+                                                        <div class="form-group col-md-12">
+                                                            <small class="form-text text-muted"><?php
+                        if (!empty($cms_details)) {
+                            echo $cms_details->description;
+                        }
+                        ?></small>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
                         <input type="hidden" name="cust_id" id="cust_id"  value="<?= (isset($myprofile)) ? $myprofile->cust_id : ''; ?>">
                         <div class="row">
                             <div class="col-md-12">

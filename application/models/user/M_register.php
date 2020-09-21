@@ -84,7 +84,7 @@ class M_register extends CI_Model {
             'first_name' => trim($post['first_name']),
             'last_name' => trim($post['last_name']),
             'specialty' => trim($post['specialty']),
-            'degree' => trim($post['degree']),
+            'topic' => trim($post['topic']),
             'zipcode' => trim($post['zipcode']),
 			'phone' => trim($post['phone']),
             'address' => $post['address'] . " " . $post['address_2'],
