@@ -183,7 +183,7 @@ class Sessions extends CI_Controller {
             'computer_type' => $this->agent->browser(),
             'ip_address' => $this->input->ip_address(),
             'resolution' => $post['resolution'],
-            'start_date_time' => date("Y-m-d h:i:s"),
+            'start_date_time' => date("Y-m-d H:i:s"),
             'status' => 0
         );
         $this->db->insert('view_sessions_history', $session_his_arr);
@@ -203,7 +203,7 @@ class Sessions extends CI_Controller {
                 'computer_type' => $this->agent->browser(),
                 'ip_address' => $this->input->ip_address(),
                 'resolution' => $post['resolution'],
-                'start_date_time' => date("Y-m-d h:i:s"),
+                'start_date_time' => date("Y-m-d H:i:s"),
                 'status' => 0
             );
             $this->db->update('login_sessions_history', $session_his_arr, array("login_sessions_history_id" => $login_sessions_history->login_sessions_history_id));
@@ -217,7 +217,7 @@ class Sessions extends CI_Controller {
     public function update_viewsessions_history_open() {
         $post = $this->input->post();
         $session_his_arr = array(
-            'end_date_time' => date("Y-m-d h:i:s")
+            'end_date_time' => date("Y-m-d H:i:s")
         );
         $this->db->update('view_sessions_history', $session_his_arr, array("view_sessions_history_id" => $post['view_sessions_history_id']));
 
