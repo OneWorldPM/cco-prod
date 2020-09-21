@@ -86,14 +86,11 @@ class M_register extends CI_Model {
             'specialty' => trim($post['specialty']),
             'topic' => trim($post['topic']),
             'zipcode' => trim($post['zipcode']),
-			'phone' => trim($post['phone']),
+            'phone' => trim($post['cell_phone']),
             'address' => $post['address'] . " " . $post['address_2'],
             'city' => trim($post['city']),
             'state' => trim($post['state']),
             'country' => trim($post['country']),
-            'twitter_id' => trim($post['twitter']),
-            'facebook_id' => trim($post['facebook']),
-            'instagram_id' => trim($post['instagram'])
         );
         $this->db->update("customer_master", $set, array('cust_id' => $cust_id));
         if ($_FILES['profile']['size'] != 0) {
@@ -116,25 +113,25 @@ class M_register extends CI_Model {
             $this->db->set('profile', $imageDetailArray['file_name'])->where('cust_id', $cust_id)->update('customer_master');
         }
 
-        if ($_FILES['upload_vcard']['size'] != 0) {
-            $config = array(
-                'upload_path' => './uploads/upload_vcard/',
-                'allowed_types' => "*",
-                'overwrite' => TRUE
-            );
-            $this->load->library('upload', $config);
-            $_FILES["upload_vcard"]['name'] = $_FILES['upload_vcard']['name'];
-            $_FILES["upload_vcard"]['type'] = $_FILES['upload_vcard']['type'];
-            $_FILES["upload_vcard"]['tmp_name'] = $_FILES['upload_vcard']['tmp_name'];
-            $_FILES["upload_vcard"]['error'] = $_FILES['upload_vcard']['error'];
-            $_FILES["upload_vcard"]['size'] = $_FILES['upload_vcard']['size'];
-            $file_name = "vcard_" . $this->generateRandomString();
-            $config['file_name'] = $file_name;
-            $this->upload->initialize($config);
-            $this->upload->do_upload("upload_vcard");
-            $imageDetailArray = $this->upload->data();
-            $this->db->set('v_card', $imageDetailArray['file_name'])->where('cust_id', $cust_id)->update('customer_master');
-        }
+//        if ($_FILES['upload_vcard']['size'] != 0) {
+//            $config = array(
+//                'upload_path' => './uploads/upload_vcard/',
+//                'allowed_types' => "*",
+//                'overwrite' => TRUE
+//            );
+//            $this->load->library('upload', $config);
+//            $_FILES["upload_vcard"]['name'] = $_FILES['upload_vcard']['name'];
+//            $_FILES["upload_vcard"]['type'] = $_FILES['upload_vcard']['type'];
+//            $_FILES["upload_vcard"]['tmp_name'] = $_FILES['upload_vcard']['tmp_name'];
+//            $_FILES["upload_vcard"]['error'] = $_FILES['upload_vcard']['error'];
+//            $_FILES["upload_vcard"]['size'] = $_FILES['upload_vcard']['size'];
+//            $file_name = "vcard_" . $this->generateRandomString();
+//            $config['file_name'] = $file_name;
+//            $this->upload->initialize($config);
+//            $this->upload->do_upload("upload_vcard");
+//            $imageDetailArray = $this->upload->data();
+//            $this->db->set('v_card', $imageDetailArray['file_name'])->where('cust_id', $cust_id)->update('customer_master');
+//        }
         return $cust_id;
     }
 
