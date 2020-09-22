@@ -190,7 +190,7 @@
 
     var nameAcronym = user_name.match(/\b(\w)/g).join('');
     var color = md5(nameAcronym+user_id).slice(0, 6);
-    user_logo_url = (user_logo == '')?"https://placehold.it/50/"+color+"/fff&amp;text="+nameAcronym:base_url+'uploads/sponsors/'+user_logo;
+    var user_logo_url = (user_logo == '')?"https://placehold.it/50/"+color+"/fff&amp;text="+nameAcronym:base_url+'uploads/customer_profile/'+user_logo;
 </script>
 
 <script type="text/javascript">

@@ -19,6 +19,11 @@ class LoungeOtoChat extends CI_Controller
     public function newText()
     {
         $data = $this->LoungeOtoChat_Model->newText();
+        if ($data == false)
+        {
+            echo 'false';
+            return;
+        }
         echo json_encode($data);
         return;
     }

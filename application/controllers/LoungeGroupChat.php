@@ -2,7 +2,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class GroupChat extends CI_Controller
+class LoungeGroupChat extends CI_Controller
 {
     public function __construct()
     {
@@ -10,10 +10,10 @@ class GroupChat extends CI_Controller
 
         $login_type = $this->session->userdata('userType');
         if ($login_type == '') {
-            redirect('/tiadaannualconference');
+            redirect(base_url());
         }
 
-        $this->load->model('sponsor/GroupChat_Model', 'groupChatModel');
+        $this->load->model('user/LoungeGroupChat_Model', 'groupChatModel');
     }
 
     public function newText()
@@ -29,10 +29,10 @@ class GroupChat extends CI_Controller
         return;
     }
 
-    public function getAllChats($sponsorId)
+    public function getAllChats()
     {
 
-        $chats = $this->groupChatModel->getAllChats($sponsorId);
+        $chats = $this->groupChatModel->getAllChats();
 
         if ($chats != false)
         {

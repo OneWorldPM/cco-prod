@@ -9,21 +9,21 @@ $(function() {
     var LOUNGE_OTO_CHAT_ROOM = 'CCO_LOUNGE_OTO';
     var LOUNGE_GROUP_CHAT_ROOM = "CCO_LOUNGE_GROUP";
 
-    socket.emit('joinGroupChat', {"room":LOUNGE_GROUP_CHAT_ROOM, "name":user_name});
-    socket.on('newGroupText', function(data) {
-        if (data.userType == 'sponsor')
+    socket.emit('joinLoungeGroupChat', {"room":LOUNGE_GROUP_CHAT_ROOM, "name":user_name});
+    socket.on('newLoungeGroupText', function(data) {
+        if (data.user_id == user_id)
         {
             $('.group-chat').append(
                 '<li class="grp-chat right clearfix">\n' +
                 '   <span class="chat-img pull-right">\n' +
-                '     <img src="'+base_url+'uploads/sponsors/'+sponsor_logo+'" alt="Sponsor Logo" class="img-circle" />\n' +
+                '     <img src="'+user_logo_url+'" alt="User DP" class="img-circle" />\n' +
                 '   </span>\n' +
                 '   <div class="chat-body clearfix">\n' +
                 '     <div class="header">\n' +
-                '       <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>'+data.datetime+'</small>\n' +
-                '       <strong class="pull-right primary-font">'+company_name_orig+'</strong>\n' +
+                '       <small class="pull-left text-muted"><span class="glyphicon glyphicon-time"></span>'+data.datetime+'</small>\n' +
+                '       <strong class="pull-right primary-font">'+user_name+'</strong>\n' +
                 '     </div>\n' +
-                '     <p class="pull-right">\n' +
+                '     <br><p class="pull-right">\n' +
                 '      '+data.chat_text+'\n' +
                 '     </p>\n' +
                 '   </div>\n' +
@@ -31,23 +31,18 @@ $(function() {
             );
             $('#grp-chat-body').scrollTop($('#grp-chat-body')[0].scrollHeight);
         }else{
-            var nameAcronym = data.name.match(/\b(\w)/g).join('');
-            var color = md5(nameAcronym+data.user_id).slice(0, 6);
-
-            var userAvatarSrc = (data.profile != '' && data.profile != null)?'uploads/customer_profile/'+data.profile:'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
-            var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
 
             $('.group-chat').append(
                 '<li class="grp-chat left clearfix">\n' +
                 '   <span class="chat-img pull-left">\n' +
-                '     <img src="'+userAvatarSrc+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle">\n' +
+                '     <img src="'+data.profile+'" alt="User Avatar" class="img-circle">\n' +
                 '   </span>\n' +
                 '   <div class="chat-body clearfix">\n' +
                 '      <div class="header">\n' +
-                '         <strong class="primary-font">'+data.name+'</strong> <small class="pull-right text-muted">\n' +
-                '         <span class="glyphicon glyphicon-time"></span>'+data.datetime+'</small>\n' +
+                '         <strong class="primary-font pull-left">'+data.name+'</strong> <small class="pull-right text-muted">\n' +
+                '         <span class="glyphicon glyphicon-time pull-right"></span>'+data.datetime+'</small>\n' +
                 '      </div>\n' +
-                '      <p>\n' +
+                '      <br><p class="pull-left">\n' +
                 '       '+data.chat_text+'\n' +
                 '      </p>\n' +
                 '    </div>\n' +
@@ -57,69 +52,69 @@ $(function() {
         }
     });
 
-    socket.on('newJoin', function(data) {
+    socket.on('newLoungeGroupJoin', function(data) {
     });
 
-    // $.get( "sponsor-admin/GroupChat/getAllChats/"+user_id, function(chatJson) {
-    //     var chats = JSON.parse(chatJson);
-    //
-    //     if (chats == 0)
-    //         $('.group-chat').append('<p>No messages!</p>');
-    //
-    //     $.each( chats, function( number, chat ) {
-    //         if (chat.chat_from == 'sponsor')
-    //         {
-    //             $('.group-chat').append(
-    //                 '<li class="grp-chat right clearfix">\n' +
-    //                 '   <span class="chat-img pull-right">\n' +
-    //                 '     <img src="'+base_url+'uploads/sponsors/'+sponsor_logo+'" alt="Sponsor Logo" class="img-circle" />\n' +
-    //                 '   </span>\n' +
-    //                 '   <div class="chat-body clearfix">\n' +
-    //                 '     <div class="header">\n' +
-    //                 '       <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>'+chat.datetime+'</small>\n' +
-    //                 '       <strong class="pull-right primary-font">'+company_name_orig+'</strong>\n' +
-    //                 '     </div>\n' +
-    //                 '     <p class="pull-right">\n' +
-    //                 '      '+chat.chat_text+'\n' +
-    //                 '     </p>\n' +
-    //                 '   </div>\n' +
-    //                 '</li>'
-    //             );
-    //         }else{
-    //             var nameAcronym = chat.from_name.match(/\b(\w)/g).join('');
-    //             var color = md5(nameAcronym+chat.chat_from).slice(0, 6);
-    //
-    //             var userAvatarSrc = (chat.profile != '' && chat.profile != null)?'uploads/customer_profile/'+chat.profile:'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
-    //             var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
-    //
-    //             $('.group-chat').append(
-    //                 '<li class="grp-chat left clearfix">\n' +
-    //                 '   <span class="chat-img pull-left">\n' +
-    //                 '     <img src="'+userAvatarSrc+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle" />\n' +
-    //                 '   </span>\n' +
-    //                 '   <div class="chat-body clearfix">\n' +
-    //                 '      <div class="header">\n' +
-    //                 '         <strong class="primary-font">'+chat.from_name+'</strong> <small class="pull-right text-muted">\n' +
-    //                 '         <span class="glyphicon glyphicon-time"></span>'+chat.datetime+'</small>\n' +
-    //                 '      </div>\n' +
-    //                 '      <p>\n' +
-    //                 '       '+chat.chat_text+'\n' +
-    //                 '      </p>\n' +
-    //                 '    </div>\n' +
-    //                 '</li>'
-    //             );
-    //         }
-    //     });
-    //
-    //     $('#grp-chat-body').scrollTop($('#grp-chat-body')[0].scrollHeight);
-    // });
+    $.get( "LoungeGroupChat/getAllChats", function(chatJson) {
+        var chats = JSON.parse(chatJson);
+
+        if (chats == 0)
+            $('.group-chat').append('<p>No messages!</p>');
+
+        $.each( chats, function( number, chat ) {
+            if (chat.chat_from == user_id)
+            {
+                $('.group-chat').append(
+                    '<li class="grp-chat right clearfix">\n' +
+                    '   <span class="chat-img pull-right">\n' +
+                    '     <img src="'+user_logo_url+'" alt="Sponsor Logo" class="img-circle" />\n' +
+                    '   </span>\n' +
+                    '   <div class="chat-body clearfix">\n' +
+                    '     <div class="header">\n' +
+                    '       <small class="pull-left text-muted"><span class="glyphicon glyphicon-time"></span>'+chat.datetime+'</small>\n' +
+                    '       <strong class="pull-right primary-font">'+user_name+'</strong>\n' +
+                    '     </div>\n' +
+                    '     <br><p class="pull-right">\n' +
+                    '      '+chat.chat_text+'\n' +
+                    '     </p>\n' +
+                    '   </div>\n' +
+                    '</li>'
+                );
+            }else{
+                var nameAcronym = chat.from_name.match(/\b(\w)/g).join('');
+                var color = md5(nameAcronym+chat.chat_from).slice(0, 6);
+
+                var userAvatarSrc = (chat.profile != '' && chat.profile != null)?'uploads/customer_profile/'+chat.profile:'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
+                var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
+
+                $('.group-chat').append(
+                    '<li class="grp-chat left clearfix">\n' +
+                    '   <span class="chat-img pull-left">\n' +
+                    '     <img src="'+userAvatarSrc+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle" />\n' +
+                    '   </span>\n' +
+                    '   <div class="chat-body clearfix">\n' +
+                    '      <div class="header">\n' +
+                    '         <strong class="primary-font pull-left">'+chat.from_name+'</strong> <small class="pull-right text-muted">\n' +
+                    '         <span class="glyphicon glyphicon-time"></span>'+chat.datetime+'</small>\n' +
+                    '      </div>\n' +
+                    '      <br><p class="pull-left">\n' +
+                    '       '+chat.chat_text+'\n' +
+                    '      </p>\n' +
+                    '    </div>\n' +
+                    '</li>'
+                );
+            }
+        });
+
+        $('#grp-chat-body').scrollTop($('#grp-chat-body')[0].scrollHeight);
+    });
 
 
     $('#groupChatText').keypress(function(e){
         if(e.which == 13){//Enter key pressed
             $('.send-grp-chat-btn').click();//Trigger search button click event
         }else{
-            socket.emit('isTyping', {"room":GROUP_CHAT_ROOM, "someone":user_name});
+            socket.emit('isTyping', {"room":LOUNGE_GROUP_CHAT_ROOM, "someone":user_name});
         }
     });
 
@@ -137,10 +132,9 @@ $(function() {
         if (text == '')
             return;
 
-        $.post("sponsor-admin/GroupChat/newText",
+        $.post("LoungeGroupChat/newText",
             {
-                'chat_text': text,
-                'sponsor_id': sponsor_id
+                'chat_text': text
             },
             function(data, status){
                 if(status == 'success')
@@ -149,19 +143,15 @@ $(function() {
 
                     $('#groupChatText').val('');
 
-                    $.get( "sponsor-admin/UserDetails/getProfileById/"+user_id, function(profile) {
-
-                        socket.emit('newGroupText',
-                            {
-                                "room":GROUP_CHAT_ROOM,
-                                "name":user_name,
-                                "userType":user_type,
-                                "chat_text":text,
-                                "user_id":user_id,
-                                "datetime":dataFromDb.datetime,
-                                "profile":profile
-                            });
-                    });
+                    socket.emit('newLoungeGroupText',
+                        {
+                            "room":LOUNGE_GROUP_CHAT_ROOM,
+                            "name":user_name,
+                            "chat_text":text,
+                            "user_id":user_id,
+                            "datetime":dataFromDb.datetime,
+                            "profile":user_logo_url
+                        });
 
                 }else{
                     toastr["error"]("Network problem!");
@@ -219,7 +209,7 @@ $(function() {
         $.each( users, function( number, user ) {
 
             socket.emit('joinLoungeOtoChat', {"room":LOUNGE_OTO_CHAT_ROOM, "name":user_name, "userId":user_id, "userType":user_type});
-            socket.on('loungeOtoNewJoin', function(data) {console.log(data)});
+            //socket.on('loungeOtoNewJoin', function(data) {console.log(data)});
 
             var fullname = user.first_name+' '+user.last_name;
             if (fullname == ' ')
@@ -289,7 +279,7 @@ $(function() {
                     if(status == 'success')
                     {
                         if (data == 'false'){
-                            $('.oto-messages').append('No chats!');
+                            $('.oto-messages').append('No chats further!');
                             return false;
                         }
                         var dataFromDb = JSON.parse(data);
@@ -401,8 +391,9 @@ $(function() {
                             "chat_text":text,
                             "chat_to":chat_to,
                             "datetime":dataFromDb.datetime,
-                            "profile":''
+                            "profile": user_logo_url
                         });
+                    console.log(user_logo_url);
 
                 }else{
                     toastr["error"]("Network problem!");
@@ -438,16 +429,11 @@ $(function() {
                 );
                 $('.oto-chat-body').scrollTop($('.oto-chat-body')[0].scrollHeight);
             }else{
-                var nameAcronym = data.name.match(/\b(\w)/g).join('');
-                var color = md5(nameAcronym+data.from_id).slice(0, 6);
-
-                var userAvatarSrc = (data.profile != '' && data.profile != null)?'uploads/customer_profile/'+data.profile:'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
-                var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
 
                 $('.oto-messages').append(
                     '<li class="grp-chat text-left clearfix">\n' +
                     '   <span class="chat-img pull-left">\n' +
-                    '     <img src="'+userAvatarSrc+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle" />\n' +
+                    '     <img src="'+data.profile+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle" />\n' +
                     '   </span>\n' +
                     '   <div class="chat-body clearfix">\n' +
                     '      <div class="header">\n' +
