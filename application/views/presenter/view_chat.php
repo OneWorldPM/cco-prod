@@ -20,7 +20,7 @@
                             <h4 class="panel-title text-white text-uppercase"><?= $sessions_group_chat->group_chat_title ?></h4>
                         </div>
                         <div class="panel-body bg-white" style="border: 1px solid #b2b7bb">
-                            <div class="wrap-messages" style="height: 207px;">
+                            <div class="wrap-messages">
                                 <div id="inbox" class="inbox">                
                                     <!-- start: EMAIL LIST -->
                                     <div class="col email-list" style="width: 100% !important">

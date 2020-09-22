@@ -95,7 +95,6 @@
 <script src="<?= base_url() ?>assets/vendor/jquery-smart-wizard/jquery.smartWizard.js"></script>
 <script src="<?= base_url() ?>assets/js/form-wizard.js"></script>
 <script src="<?= base_url() ?>assets/js/pages-messages.js"></script>
-
 <script>
     jQuery(document).ready(function () {
         Main.init();

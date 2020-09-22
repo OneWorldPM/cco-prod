@@ -63,6 +63,7 @@ class Sessions extends CI_Controller {
     }
 
     public function get_poll_vot_section() {
+       
         $result_data = $this->objsessions->get_poll_vot_section();
         if (!empty($result_data)) {
             $result_array = array("status" => "success", "result" => $result_data);

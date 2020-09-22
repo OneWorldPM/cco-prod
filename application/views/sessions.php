@@ -60,7 +60,6 @@
             <div class="row">
                 <div class="col-md-12 m-t-50" style="text-align: -webkit-center;">
                     <?php
-
                     if (isset($all_sessions_week) && !empty($all_sessions_week)) {
                         foreach ($all_sessions_week as $val) {
                             ?>

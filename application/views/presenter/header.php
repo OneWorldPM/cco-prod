@@ -31,7 +31,6 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
         <link href="<?= base_url() ?>assets/vendor/animate.css/animate.min.css" rel="stylesheet" media="screen">
         <link href="<?= base_url() ?>assets/vendor/perfect-scrollbar/perfect-scrollbar.min.css" rel="stylesheet" media="screen">
         <link href="<?= base_url() ?>assets/vendor/switchery/switchery.min.css" rel="stylesheet" media="screen">
-
         <!-- end: MAIN CSS -->
         <!-- start: CLIP-TWO CSS -->
         <link rel="stylesheet" href="<?= base_url() ?>assets/css/styles.css">
@@ -40,7 +39,6 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
         <!-- end: CLIP-TWO CSS -->
         <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
         <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
-        <link rel="stylesheet" type="text/css" href="<?= base_url() ?>front_assets/css/custom.css" media="screen" />
 
         <link href="<?= base_url() ?>assets/vendor/select2/select2.min.css" rel="stylesheet" media="screen">
         <link href="<?= base_url() ?>assets/vendor/DataTables/css/DT_bootstrap.css" rel="stylesheet" media="screen">
@@ -64,7 +62,6 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
 
         <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch.js"></script> -->
         <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch-onload.js"></script> -->
-        <script src="<?= base_url() ?>front_assets/js/custom.js"></script>
 
         <style type="text/css">
             .action-row{
