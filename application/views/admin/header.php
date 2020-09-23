@@ -138,6 +138,18 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <li class="<?= ($uri_segment == 'eposters') ? 'active' : ''; ?>">
+                                <a href="<?= site_url() ?>admin/eposters" id="dash">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-tv"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title">ePosters</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="<?= ($uri_segment == 'sponsors') ? 'active' : ''; ?>">
                                 <a href="<?= site_url() ?>admin/sponsors " id="dash">
                                     <div class="item-content">

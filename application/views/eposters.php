@@ -58,71 +58,84 @@
     <div class="container container-fullscreen" style="min-height: 700px;">
         <div class="">
             <div class="row">
-                <div class="col-md-12 m-t-50" style="text-align: -webkit-center;">
-                    <?php
-                    if (isset($all_sessions_week) && !empty($all_sessions_week)) {
-                        foreach ($all_sessions_week as $val) {
-                            ?>
-                            <div class="col-md-4 col-sm-12" style="margin-bottom:30px;">
-                                <a class="icon-home" href="<?= base_url() ?>sessions/getsessions_data/<?= $val->sessions_date ?>"> 
+                <div class="col-md-12">
+                    <form action="<?= base_url() ?>eposters/filter_search" method="post" id="frm_search_data" name="frm_search_data">
+                        <div class="col-md-3" style="margin-top:10px;">
+                            <div class="input-groug">
+                                <select id="sessions_tracks" name="sessions_tracks" class="form-control">
+                                    <option value="">Filter By Tracks</option>
                                     <?php
-                                    $current_date = $this->uri->segment(3);
-                                    if ($current_date == "") {
-                                        $current_date = $all_sessions_week[0]->sessions_date;
+                                    if (isset($sessions_tracks) && !empty($sessions_tracks)) {
+                                        foreach ($sessions_tracks as $val) {
+                                            ?>
+                                            <option value="<?= $val->sessions_tracks_id ?>"><?= $val->sessions_tracks ?></option>
+                                            <?php
+                                        }
                                     }
-                                    if ($val->sessions_date == $current_date) {
-                                        ?>
-                                        <div class="col-lg box_home_active text-center">
-                                        <?php } else { ?>
-                                            <div class="col-lg box-home text-center">
-                                            <?php } ?>
-                                            <label style="margin-bottom: 20px; margin-top: 20px;   font-size: 30px; font-weight: 700;"><?= $val->dayname ?></label><br>
-                                            <label><?= date('M-d-Y', strtotime($val->sessions_date)); ?></label>
-                                        </div>
-                                </a>
+                                    ?>
+                                </select>
                             </div>
-                            <?php
-                        }
-                    }
-                    ?>
-                </div> 
+                        </div>
+                        <div class="col-md-3" style="margin-top:10px;">
+                            <div class="input-groug">
+                                <select id="presenter" name="presenter" class="form-control">
+                                    <option value="">Filter By Author</option>
+                                    <?php
+                                    if (isset($presenter) && !empty($presenter)) {
+                                        foreach ($presenter as $val) {
+                                            ?>
+                                            <option value="<?= $val->presenter_id ?>"><?= $val->presenter_name ?></option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="margin-top:10px;">
+
+                        </div>
+                        <div class="col-md-3" style="margin-top:10px;">
+                            <div class="input-groug">
+                                <input type="text" name="name_search" id="name_search" class="form-control" placeholder="Search"> 
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <!-- CONTENT -->
                     <section class="content">
                         <div class="container" style=" background: rgba(250, 250, 250, 0.8);"> 
-
                             <!-- Blog post-->
                             <div class="post-content post-single"> 
-
                                 <!-- Blog image post-->
                                 <?php
-                                if (isset($all_sessions) && !empty($all_sessions)) {
-                                    foreach ($all_sessions as $val) {
+                                if (isset($all_eposters) && !empty($all_eposters)) {
+                                    foreach ($all_eposters as $val) {
                                         ?>
                                         <div class="post-item">
                                             <div class="post-image col-md-3 m-t-20"> 
-                                                <a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a> 
+                                                <a href="<?= base_url() ?>eposters/view/<?= $val->eposters_id ?>"> <?php if ($val->eposters_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/eposters/<?= $val->eposters_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a> 
                                             </div>
                                             <div class="post-content-details col-md-9 m-t-30">
 
                                                 <div class="post-title">
-                                                    <h6 style="font-weight: 600"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
-                                                    <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" style="color: #f05d1f; font-weight: 900;"><?= $val->session_title ?></a></h3>
+                                                    <h6 style="font-weight: 600"><?= $val->assigned_id ?></h6>
+                                                    <h3><a href="<?= base_url() ?>eposters/view/<?= $val->eposters_id ?>" style="color: #f05d1f; font-weight: 900;"><?= $val->eposters_title ?></a></h3>
                                                 </div>
                                                 <?php
                                                 if (isset($val->presenter) && !empty($val->presenter)) {
                                                     foreach ($val->presenter as $value) {
                                                         ?>
-                                                        <div class="post-info"> <span class="post-autor"><a href="#" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" class="presenter_open_modul" style="color: #A9A9A9; font-weight: 600;"><?= $value->presenter_name ?>, </a></span> <span class="post-category"> <?= $value->designation ?></span> </div>
+                                                        <div class="post-info"> <span class="post-autor"><a href="#" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" class="presenter_open_modul" style="color: #A9A9A9; font-weight: 600;"><?= $value->presenter_name ?>, </a></span> </div>
                                                         <?php
                                                     }
                                                 }
                                                 ?>
                                                 <div class="post-description">
-                                                    <p style="margin-bottom: 10px;"><?= $val->sessions_description ?></p>
-                                                    <a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                    <a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>eposters/view/<?= $val->eposters_id ?>"><span>View</span></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -137,8 +150,8 @@
                     <!-- END: SECTION --> 
                 </div>
             </div> 
+
         </div>
-    </div>
 </section>
 <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
@@ -192,6 +205,27 @@
         }, function () {
             $('#social_link_div').addClass('hidden');
         });
+
+        $('#sessions_tracks').on('change', function () {
+            $("#frm_search_data").submit();
+        });
+
+        $('#presenter').on('change', function () {
+            $("#frm_search_data").submit();
+        });
+
+        $('#name_search').on('blur', function () {
+            $("#frm_search_data").submit();
+        });
+
+        $('#name_search').keypress(function (e) {
+            var key = e.which;
+            if (key == 13)  // the enter key code
+            {
+                $("#frm_search_data").submit();
+            }
+        });
+
         $(".presenter_open_modul").click(function () {
             var presenter_photo = $(this).attr("data-presenter_photo");
             var presenter_name = $(this).attr("data-presenter_name");
@@ -216,7 +250,7 @@
     $(document).ready(function () {
         var page_link = $(location).attr('href');
         var user_id = <?= $this->session->userdata("cid") ?>;
-        var page_name = "Sessions";
+        var page_name = "ePosters";
         $.ajax({
             url: "<?= base_url() ?>home/add_user_activity",
             type: "post",
