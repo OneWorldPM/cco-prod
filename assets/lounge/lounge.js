@@ -402,7 +402,6 @@ $(function() {
     });
 
     socket.on('newLoungeOtoText', function(data) {
-        console.log(data);
 
         var selectedUser = $('.selected-user-name-area').attr('userid');
 
@@ -433,7 +432,7 @@ $(function() {
                 $('.oto-messages').append(
                     '<li class="grp-chat text-left clearfix">\n' +
                     '   <span class="chat-img pull-left">\n' +
-                    '     <img src="'+data.profile+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle" />\n' +
+                    '     <img src="'+data.profile+'" alt="User Avatar" class="img-circle" />\n' +
                     '   </span>\n' +
                     '   <div class="chat-body clearfix">\n' +
                     '      <div class="header">\n' +
