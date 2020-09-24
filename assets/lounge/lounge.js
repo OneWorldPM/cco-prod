@@ -223,10 +223,20 @@ $(function() {
             var userAvatarSrc = (user.profile != '' && user.profile != null)?'uploads/customer_profile/'+user.profile:'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
             var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
 
+            var company_name_html = '';
+            if (user.company_name && (user.company_name != null || user.company_name != '')){
+                company_name_html = '<small style="position: absolute;margin-top: 27px;margin-left: -63px;">'+user.company_name+'</small>';
+                var company_name = user.company_name;
+            }else{
+                var company_name = '';
+            }
+
+
             $('.attendees-chat-list').append(
-                '<li class="attendees-chat-list-item list-group-item text-left" userName="'+fullname+'" userId="'+user.cust_id+'" status="offline" new-text="0">\n' +
+                '<li class="attendees-chat-list-item list-group-item text-left" userName="'+fullname+'" userId="'+user.cust_id+'" company_name="'+company_name+'" status="offline" new-text="0">\n' +
                 '<img src="'+userAvatarSrc+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle"> \n' +
                 '<span class="oto-chat-user-list-name" style="font-weight: bold;"> '+fullname+' <span class="badge new-text" style="background-color: #ff0a0a; display: none;">new</span> </span> \n' +
+                 company_name_html +
                 '<i class="active-icon fa fa-circle" style="color: #454543;" aria-hidden="true" userId="'+user.cust_id+'"></i> \n' +
                 '<!--<h5 class="attendee-profile-btn pull-right" userId="'+user.cust_id+'" onclick="userProfileModal('+user.cust_id+')">\n' +
                 '   <span class="label label-info">\n' +
@@ -246,11 +256,16 @@ $(function() {
             $(this).addClass('selected');
 
             var fullname = $(this).attr('userName');
+            var company_name = $(this).attr('company_name');
             var otherUserId = $(this).attr('userId');
             var nameAcronym = fullname.match(/\b(\w)/g).join('');
             var color = md5(nameAcronym+otherUserId).slice(0, 6);
             var activeStatus = $(this).attr('status');
             var statusColour = (activeStatus == 'active')?'#26ff49':(activeStatus == 'inactive')?'#ff9a41':'#454543';
+
+            var company_name_html = '';
+            if (company_name && (company_name != null || company_name != ''))
+                company_name_html = '<small style="position: absolute;margin-top: 27px;margin-left: -75px;">'+company_name+'</small>';
 
             var userAvatar = $(this).children('img').attr('src');
             var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
@@ -261,7 +276,8 @@ $(function() {
             $('.selected-user-name-area').html(
                 '<img src="'+userAvatar+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle"> '+
                 fullname +
-                ' <i class="active-icon fa fa-circle" style="color: '+statusColour+';" aria-hidden="true" userId="'+otherUserId+'"></i>'
+                ' <i class="active-icon fa fa-circle" style="color: '+statusColour+';" aria-hidden="true" userId="'+otherUserId+'"></i>' +
+                company_name_html
             );
 
             var LOUNGE_OTO_CHAT_ROOM = 'CCO_LOUNGE_OTO_';
