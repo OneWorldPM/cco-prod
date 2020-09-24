@@ -138,6 +138,18 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+							<li class="<?= ($uri_segment == 'eposters') ? 'active' : ''; ?>">
+                                <a href="<?= site_url() ?>admin/eposters" id="dash">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-tv"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title">ePosters</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="<?= ($uri_segment == 'sponsors') ? 'active' : ''; ?>">
                                 <a href="<?= site_url() ?>admin/sponsors " id="dash">
                                     <div class="item-content">
@@ -210,6 +222,18 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+							 <li class="<?= ($uri_segment == 'graphics') ? 'active' : ''; ?>" >
+                                <a href="<?= site_url() ?>admin/graphics" id="dash">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-photo"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title">Graphics</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="<?= ($uri_segment == 'music_setting') ? 'active' : ''; ?>" >
                                 <a href="<?= site_url() ?>admin/music_setting" id="dash">
                                     <div class="item-content">
@@ -222,6 +246,7 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+							
                         </ul>
                     </nav>
                 </div>
