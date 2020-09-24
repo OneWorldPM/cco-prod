@@ -35,13 +35,12 @@
     }
 
     .option_section_css{
-        display: flex;
         background-color: #fff;
         padding-top: 4px;
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
-        font-size: 18px;
+        font-size: 17px;
     }
     .option_section_css_selected{
         background-color: #fff;
@@ -49,8 +48,7 @@
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
-        font-size: 18px;
-        display: flex;
+        font-size: 17px;
     }
     .progress {
         height: 26px;
@@ -75,10 +73,6 @@
     section{
         padding: 25px 0px;
     }
-    
-    .option_lable { 
-        margin-left: 5px; 
-    }
 </style>
 <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/attend_background.png); top: 0; padding-top: 0px;">
 <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
@@ -99,7 +93,7 @@
                                     <div id="iframeDiv" class="row" style="width: 102%;height: 97%;"><?= isset($sessions) ? $sessions->embed_html_code : "" ?></div>
                                     <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
                                         <div class="modal-dialog">
-                                            <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
+                                            <div class="modal-content" style="padding: 0px; border: 0px solid #999;">
                                                 <!--                                                <div class="modal-header" style="padding: 0px;">
                                                                                                     <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
                                                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -107,9 +101,9 @@
                                                 <div class="modal-body" style="padding: 0px;">
                                                     <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
                                                         <div class="col-sm-12">
-                                                            <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
-                                                                <div class="" style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
-                                                                    TIME LEFT : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
+                                                            <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; ">
+                                                                <div class="col-md-12" style="text-align: right;">
+                                                                    TIME LEFT : <span id="id_day_time" style=" font-size: 18px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
                                                                 </div>
                                                             </div>
                                                             <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 5px;">
@@ -706,7 +700,7 @@
                         if (data.result.poll_status == 1) {
                             $('#modal').modal('show');
                             $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 style='margin-bottom: 20px; color: #000; font-weight: 800;font-size: 24px; padding: 15px 5px 25px 10px; background-color: #ebeaea;'>" + data.result.question + "</h2>\n\
+            \n\<h2 style='margin-bottom: 20px; color: #000; font-weight: 800;font-size: 22px; padding: 20px 5px 20px 10px; background-color: #ebeaea;'>" + data.result.question + "</h2>\n\
 <div class='col-md-12'>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
@@ -718,16 +712,16 @@
                                 $.each(data.result.option, function (key, val) {
                                     key++;
                                     if (data.result.select_option_id == val.poll_question_option_id) {
-                                        $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                        $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                     } else {
-                                        $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                        $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                     }
                                 });
                             } else {
 
                                 $.each(data.result.option, function (key, val) {
                                     key++;
-                                    $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                 });
 
 
