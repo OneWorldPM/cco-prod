@@ -46,4 +46,18 @@ class Eposters extends CI_Controller {
         $this->load->view('footer');
     }
 
+    public function next($eposters_id) {
+        $data["eposters"] = $this->objeposters->viewEpostersDataNext($eposters_id);
+        $this->load->view('header');
+        $this->load->view('view_eposters', $data);
+        $this->load->view('footer');
+    }
+
+    public function previous($eposters_id) {
+        $data["eposters"] = $this->objeposters->viewEpostersDataPrevious($eposters_id);
+        $this->load->view('header');
+        $this->load->view('view_eposters', $data);
+        $this->load->view('footer');
+    }
+
 }

@@ -81,8 +81,9 @@
                                 <select id="presenter" name="presenter" class="form-control">
                                     <option value="">Filter By Author</option>
                                     <?php
-                                    if (isset($all_eposters->presenter) && !empty($all_eposters->presenter)) {
-                                        foreach ($all_eposters->presenter as $val) {
+                                  
+                                    if (isset($presenter) && !empty($presenter)) {
+                                        foreach ($presenter as $val) {
                                             ?>
                                             <option value="<?= $val->presenter_id ?>"><?= $val->presenter_name ?></option>
                                             <?php
