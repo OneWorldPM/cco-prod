@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 m-t-30" style="text-align: -webkit-center;">
-                    <div class="col-md-3 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                         <a class="icon-home" href="<?= base_url() ?>sessions"> 
                             <div class="col-lg box-home p-5 text-center">
                                 <img src="<?= base_url() ?>front_assets/images/Session.png" alt="welcome" class="m-t-40" style="height: 150px; width: 160px;">
@@ -59,17 +59,7 @@
                             </div>
                         </a>
                     </div> 
-                     <div class="col-md-3 col-sm-12">
-                        <a class="icon-home" href="<?= base_url() ?>eposters"> 
-                            <div class="col-lg box-home p-5 text-center">
-                                <img src="<?= base_url() ?>front_assets/images/eposters.png" alt="welcome" class="m-t-40" style="height: 150px; width: 160px;">
-                                <br>
-                                <br>
-                                <span>ePOSTERS</span>
-                            </div>
-                        </a>
-                    </div> 
-                    <div class="col-md-3  col-sm-12">
+                    <div class="col-md-4  col-sm-12">
                         <a class="icon-home" href="<?= base_url() ?>sponsor"> 
                             <div class="col-lg box-home ml-5 mr-5 p-5 text-center">
                                 <img src="<?= base_url() ?>front_assets/images/sponsor.png" alt="welcome" class="m-t-40" style="height: 150px; width: 160px;">
@@ -79,7 +69,7 @@
                             </div>
                         </a>
                     </div> 
-                    <div class="col-md-3  col-sm-12">
+                    <div class="col-md-4  col-sm-12">
                         <a class="icon-home" href="#"> 
                             <div class="col-lg box-home p-5 text-center">
                                 <img src="<?= base_url() ?>front_assets/images/lounge.png" alt="welcome" class="m-t-20" style="height: 170px; width: 170px;">

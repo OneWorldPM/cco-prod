@@ -107,15 +107,6 @@ class Common {
         $result = $this->_CI->db->get();
         return ($result->num_rows() > 0) ? $result->result() : '';
     }
-    
-     function get_presenter_eposters($presenter_id) {
-        $where_in = explode(",", $presenter_id);
-        $this->_CI->db->select('p.*');
-        $this->_CI->db->from('presenter p');
-        $this->_CI->db->where_in('p.presenter_id', $where_in);
-        $result = $this->_CI->db->get();
-        return ($result->num_rows() > 0) ? $result->result() : '';
-    }
 
     function get_presenter_chat_data($presenter_id) {
         $where_in = explode(",", $presenter_id);
