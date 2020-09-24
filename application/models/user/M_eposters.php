@@ -66,7 +66,17 @@ class M_eposters extends CI_Model {
         $this->db->from('presenter');
         $presenter = $this->db->get();
         if ($presenter->num_rows() > 0) {
-            return $presenter->result();
+            $return_array = array();
+            foreach ($presenter->result() as $value) {
+                $this->db->select('*');
+                $this->db->from('eposters e');
+                $this->db->like("e.presenter_id", $value->presenter_id);
+                $eposters = $this->db->get();
+                if ($eposters->num_rows() > 0) {
+                    $return_array[] = $value;
+                }
+            }
+            return $return_array;
         } else {
             return '';
         }
@@ -83,6 +93,68 @@ class M_eposters extends CI_Model {
             return $result_sessions;
         } else {
             return '';
+        }
+    }
+
+    function viewEpostersDataNext($eposters_id) {
+        $this->db->select('*');
+        $this->db->from('eposters');
+        $this->db->where("eposters_id >", $eposters_id);
+        $this->db->order_by("eposters_id", "ASC");
+        $eposters = $this->db->get();
+        if ($eposters->num_rows() > 0) {
+            $result_sessions = $eposters->row();
+            if (!empty($result_sessions)) {
+                $result_sessions->presenter = $this->common->get_presenter_eposters($result_sessions->presenter_id);
+                return $result_sessions;
+            } else {
+                $this->db->select('*');
+                $this->db->from('eposters');
+                $this->db->where("eposters_id", $eposters_id);
+                $eposters = $this->db->get();
+                $result_sessions = $eposters->row();
+                $result_sessions->presenter = $this->common->get_presenter_eposters($result_sessions->presenter_id);
+                return $result_sessions;
+            }
+        } else {
+            $this->db->select('*');
+            $this->db->from('eposters');
+            $this->db->where("eposters_id", $eposters_id);
+            $eposters = $this->db->get();
+            $result_sessions = $eposters->row();
+            $result_sessions->presenter = $this->common->get_presenter_eposters($result_sessions->presenter_id);
+            return $result_sessions;
+        }
+    }
+
+    function viewEpostersDataPrevious($eposters_id) {
+        $this->db->select('*');
+        $this->db->from('eposters');
+        $this->db->where("eposters_id <", $eposters_id);
+        $this->db->order_by("eposters_id", "desc");
+        $eposters = $this->db->get();
+        if ($eposters->num_rows() > 0) {
+            $result_sessions = $eposters->row();
+            if (!empty($result_sessions)) {
+                $result_sessions->presenter = $this->common->get_presenter_eposters($result_sessions->presenter_id);
+                return $result_sessions;
+            } else {
+                $this->db->select('*');
+                $this->db->from('eposters');
+                $this->db->where("eposters_id", $eposters_id);
+                $eposters = $this->db->get();
+                $result_sessions = $eposters->row();
+                $result_sessions->presenter = $this->common->get_presenter_eposters($result_sessions->presenter_id);
+                return $result_sessions;
+            }
+        } else {
+            $this->db->select('*');
+            $this->db->from('eposters');
+            $this->db->where("eposters_id", $eposters_id);
+            $eposters = $this->db->get();
+            $result_sessions = $eposters->row();
+            $result_sessions->presenter = $this->common->get_presenter_eposters($result_sessions->presenter_id);
+            return $result_sessions;
         }
     }
 
