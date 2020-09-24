@@ -126,16 +126,16 @@
         position: absolute;
         width: 96%;
         padding: 15px 0px !important;
-        bottom: 0;
+        bottom: -14px;
     }
 
 
     #briefcase {
-        height: 197px;
+        height: 160px;
     }
 
     #briefcase_section {
-        height: 88% !important;
+        height: 74% !important;
     }
 
     .videoContent {
@@ -266,7 +266,7 @@ if (true) {
 ?>
 
 
-<div class="rightSticky">
+<div class="rightSticky" data-screen="customer">
     <ul>
         <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>TAKE NOTES</span></li>
         <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>QUESTIONS</span></li>
@@ -276,7 +276,7 @@ if (true) {
 </div>
 
 <div class="rightSticykPopup notesSticky" style="display: none">
-    <div class="header">TAKE NOTES
+    <div class="header"><span></span>
         <div class="rightTool">
             <i class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
@@ -291,23 +291,23 @@ if (true) {
         </div>
     </div>
     <div class="content">
+    <div class="content">
+        <div class="contentHeader">Take Notes</div>
         <div id="briefcase_section" style="background-color: #fff; border-radius: 5px; padding: 5px; position: absolute; top: 36px; width: 100%;">
-            <div>
-                <div style="text-align: center; display: flex; " id="briefcase_section">
-                    <div class="col-md-12 input-group">
-                        <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""></textarea>
-                    </div>
-                    <a class="button color btn" style="margin: 0px; padding: 24px 7px;" id="briefcase_send"><span>Save</span></a>
+            <div style="text-align: center; display: flex; " id="briefcase_section">
+                <div class="col-md-12 input-group">
+                    <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""></textarea>
                 </div>
-                <span id='error_briefcase' style='color:red;'></span>
-                <span id='success_briefcase' style='color:green;'></span>
+                <a class="button color btn" style="margin: 0px; padding: 24px 7px;" id="briefcase_send"><span>Save</span></a>
             </div>
+            <span id='error_briefcase' style='color:red;'></span>
+            <span id='success_briefcase' style='color:green;'></span>
         </div>
     </div>
 
 </div>
 <div class="rightSticykPopup questionsSticky" style="display: none">
-    <div class="header">QUESTIONS
+    <div class="header"><span></span>
         <div class="rightTool">
             <i class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
@@ -322,6 +322,9 @@ if (true) {
         </div>
     </div>
     <div class="content">
+    <div class="contentHeader">
+            Questions
+        </div>
         <div class="questionElement" >
 
         </div>
@@ -354,7 +357,7 @@ if (true) {
 
 </div>
 <div class="rightSticykPopup resourcesSticky" style="display: none">
-    <div class="header">RESOURCES
+    <div class="header"><span></span>
         <div class="rightTool">
             <i class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
@@ -369,6 +372,9 @@ if (true) {
         </div>
     </div>
     <div class="content">
+    <div class="contentHeader">
+            Resources
+        </div>
         <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
             <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 150px;" id="resource_display_status">
                 <?php
@@ -393,7 +399,7 @@ if (true) {
 
 </div>
 <div class="rightSticykPopup messagesSticky" style="display: none">
-    <div class="header">MESSAGES
+    <div class="header"><span></span>
         <div class="rightTool">
             <i class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
@@ -408,6 +414,9 @@ if (true) {
         </div>
     </div>
     <div class="content">
+        <div class="contentHeader">
+            Messages
+        </div>
         <div class="messages">
             <div class="messageHe">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
             <div class="messageMe">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>

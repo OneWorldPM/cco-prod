@@ -7,18 +7,10 @@ $(document).ready(function () {
 
         var $rightSticky = $(".rightSticky")
 
-        // $(document).on("keyup", "#questions", function () {
-        //     if (event.keyCode === 13) {
-        //         // Cancel the default action, if needed
-        //         event.preventDefault();
-        //         // Trigger the button element with a click
-        //         document.getElementById("ask_questions_send").click();
-        //
-        //     }
-        // })
         $(document).on("click", ".rightSticky ul li,.rightSticykPopup .open > .dropdown-menu li a,.rightSticykPopup .header .rightTool i", function () {
             $toolType = $(this).data("type");
             var $toolType2 = $(this).data("type2");
+            var screen = $rightSticky.data("screen");
 
             if($toolType2=="off"){
                 $(".rightSticykPopup").css("display","none");
@@ -26,6 +18,7 @@ $(document).ready(function () {
 
 
             }
+            $(".rightSticykPopup .header>span").text("Toolbox");
 
             $("." + $toolType).css("display", "")
             $rightSticky.css("display", "none");
@@ -34,7 +27,9 @@ $(document).ready(function () {
 
 
             var $screenWidth = $(document).width();
-            $screenWidth = $screenWidth - 400;
+            var rightStickyWidth=390;
+            if(screen=="customer")rightStickyWidth=320;
+            $screenWidth = $screenWidth - rightStickyWidth;
             $(".videContent,.main-content").animate({
                 marginRight: '40%',
                 width: `${$screenWidth}px`
@@ -46,7 +41,6 @@ $(document).ready(function () {
             $rightSticky.css("display", "");
 
 
-            // $(".videContent").css("width", "auto");
             $(".videContent,.main-content").animate({
                 marginRight: 0,
                 width: '100%'

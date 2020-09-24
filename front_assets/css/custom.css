@@ -111,10 +111,21 @@
     left: 29px;
 }
 
+.rightSticykPopup .contentHeader{
+    color: #ff8d00;
+    font-weight: bold;
+    padding: 5px 15px;
+    font-size: 14px;
+}
+
+#briefcase_section{
+    top: 68px !important;
+}
+
 .messagesSticky .content .messages {
     padding: 5px 3px;
     max-height: 240px;
-    height: 230px;
+    height: 200px;
     overflow: auto;
 }
 .messagesStickyPresenter .content .messages {
@@ -124,6 +135,9 @@
 .messagesStickyPresenter .content .messages{
     height: 200px;
 }
+.messagesSticky .content .messages>div:nth-of-type(1n+2){
+    margin-top: 15px;
+}
 
 .messagesSticky .content .messages .messageHe ,.messagesSticky .content .messages .messageMe {
     padding: 10px 15px;
@@ -131,7 +145,6 @@
     color: black;
     line-height: 15px;
     font-weight: 400;
-    margin-top: 15px;
 }
 
 .messagesSticky .content .messages .messageHe{

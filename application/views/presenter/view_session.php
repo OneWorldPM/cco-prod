@@ -177,7 +177,7 @@
     }
 
     .messagesStickyPresenter .content .messages {
-        height: 300px;
+        height: 210px;
     }
 </style>
 
@@ -300,7 +300,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
 
 <div class="rightSticykPopup questionsSticky" style="display: none">
-    <div class="header">QUESTIONS
+    <div class="header"><span></span>
         <div class="rightTool">
             <i class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
@@ -315,6 +315,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
         </div>
     </div>
     <div class="content">
+    <div class="contentHeader">Questions</div>
         <ul id="myTab1" class="nav nav-tabs" style="background-color: #b2b7bb;">
             <li class="active">
                 <a href="#attendee_questions" data-toggle="tab" style="padding: 9px 4px; text-transform: uppercase; font-size: 12px; color: #fff;">
@@ -346,7 +347,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 </div>
 
 <div class="rightSticykPopup resourcesSticky" style="display: none">
-    <div class="header">RESOURCES
+    <div class="header"><span></span>
         <div class="rightTool">
             <i class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
@@ -360,6 +361,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
         </div>
     </div>
     <div class="content">
+    <div class="contentHeader">Resources</div>
         <?php
         if (isset($music_setting)) {
             if ($music_setting->music_setting != "") {
@@ -402,7 +404,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
 
 <div class="rightSticykPopup messagesSticky messagesStickyPresenter" style="display: none">
-    <div class="header">MESSAGES
+    <div class="header"><span></span>
         <div class="rightTool">
             <i class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
@@ -416,6 +418,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
         </div>
     </div>
     <div class="content">
+    <div class="contentHeader">Messages</div>
         <div class="messages">
             <div class="col-md-12" id="group_chat_section">
                 <input type="hidden" id="sessions_group_chat_id" value="">
