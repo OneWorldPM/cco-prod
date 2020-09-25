@@ -64,6 +64,7 @@
                             <div class="input-groug">
                                 <select id="sessions_tracks" name="sessions_tracks" class="form-control">
                                     <option value="">Filter By Tracks</option>
+                                     <option value="all">All</option>
                                     <?php
                                     if (isset($sessions_tracks) && !empty($sessions_tracks)) {
                                         foreach ($sessions_tracks as $val) {
@@ -80,6 +81,7 @@
                             <div class="input-groug">
                                 <select id="presenter" name="presenter" class="form-control">
                                     <option value="">Filter By Author</option>
+                                     <option value="all">All</option>
                                     <?php
                                   
                                     if (isset($presenter) && !empty($presenter)) {

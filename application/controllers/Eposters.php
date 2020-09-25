@@ -60,4 +60,11 @@ class Eposters extends CI_Controller {
         $this->load->view('footer');
     }
 
+    public function view_full_screen($eposters_id) {
+        $data["eposters"] = $this->objeposters->viewEpostersData($eposters_id);
+        $this->load->view('header');
+        $this->load->view('view_full_screen', $data);
+        $this->load->view('footer');
+    }
+
 }

@@ -845,8 +845,8 @@ if (true) {
                 $("#error_vote").text("Please Select Voting Option").fadeIn('slow').fadeOut(5000);
             }
         });
-    })
-    ;
+    });
+    
 
     function get_question_answer_section() {
         var sessions_id = $("#sessions_id").val();

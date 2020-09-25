@@ -1,6 +1,60 @@
 <!-- SECTION -->
-<section class="parallax fullscreen" style="background-image: url(<?= base_url() ?>front_assets/images/bg_login.jpg); top: 0; padding-top: 0px;">
-    <div class="container container-fullscreen">
+<style>
+    @media (min-width: 768px) and (max-width: 1000px)  {
+        #home_first_section{
+            height: 550px;
+        }
+    }
+
+    @media (min-width: 1000px) and (max-width: 1400px)  {
+        #home_first_section{
+            height: 590px;
+        }
+    }
+
+    @media (min-width: 1400px) and (max-width: 1600px)  {
+        #home_first_section{
+            height: 700px;
+        }
+    }
+
+    @media (min-width: 1600px) and (max-width: 1800px)  {
+        #home_first_section{
+            height: 800px;
+        }
+    }
+
+    @media (min-width: 1800px) and (max-width: 2200px)  {
+        #home_first_section{
+            height: 900px;
+        }
+    }
+
+    @media (min-width: 2200px) and (max-width: 2800px)  {
+        #home_first_section{
+            height: 1100px;
+        }
+    }
+    @media (min-width: 2800px) and (max-width: 3200px)  {
+        #home_first_section{
+            height: 1450px;
+        }
+    }
+
+    @media (min-width: 3200px) and (max-width: 4200px)  {
+        #home_first_section{
+            height: 1950px;
+        }
+    }
+
+    @media (min-width: 4200px) and (max-width: 6000px)  {
+        #home_first_section{
+            height: 2550px;
+        }
+    }
+</style>
+<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bg_login.jpg); top: 0; padding-top: 0px;">
+    <div class="container container-fullscreen" id="home_first_section">
         <div class="text-middle">
             <div class="row">
                 <div class="col-md-6 col-xs-12 col-sm-12 center p-60 background-white" style="border-radius: 10px;">
@@ -35,7 +89,6 @@
                             <p class="text-left"><a href="<?= base_url() ?>register">Click here to start your registration</a> </p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

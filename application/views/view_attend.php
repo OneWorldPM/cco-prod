@@ -81,7 +81,7 @@
                                         </div>  
                                         <div class="col-md-8">
                                             <h2 style="margin-bottom: 0px;"><?= (isset($sessions) && !empty($sessions)) ? $sessions->session_title : "" ?></h2>
-                                            <small><i class="fa fa-calendar" aria-hidden="true"></i> <?= date("M-d-Y", strtotime($sessions->sessions_date)) . ' ' . date("h:i A", strtotime($sessions->time_slot)).' - '.date("h:i A", strtotime($sessions->end_time)) ?></small>
+                                            <small><i class="fa fa-calendar" aria-hidden="true"></i> <?= date("M-d-Y", strtotime($sessions->sessions_date)) . ' ' . date("h:i A", strtotime($sessions->time_slot)) . ' - ' . date("h:i A", strtotime($sessions->end_time)) ?></small>
                                             <p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_description : "" ?></p>
                                         </div>    
                                     </div>
@@ -98,14 +98,14 @@
                                         }
                                     }
                                     ?>
-                            <!--<p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->bio : "" ?></p>-->
-                            <!--<img alt="" src="<?= base_url() ?>uploads/presenter_photo/<?= (isset($sessions) && !empty($sessions)) ? $sessions->presenter_photo : "" ?>" class="img-circle" height="100" width="100">-->
+            <!--<p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->bio : "" ?></p>-->
+            <!--<img alt="" src="<?= base_url() ?>uploads/presenter_photo/<?= (isset($sessions) && !empty($sessions)) ? $sessions->presenter_photo : "" ?>" class="img-circle" height="100" width="100">-->
                                 </div>
                                 <div class="col-md-12 m-t-40">
                                     <div class="col-md-4 col-md-offset-4" style="text-align: center; text-align: center; padding: 10px; background-color: #fff; border: 1px solid;">
                                         <p><i class="fa fa-info-circle" aria-hidden="true" style="font-size: 20px;"></i></p>
                                         <p>You will automatically enter the session 15 minutes before it is due to begin.</p>
-                                        <p>Entry will be enabled in <span id="id_day_time" ></span> minutes </p>
+                                        <p>Entry will be enabled in <span id="id_day_time" ></span></p>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -172,7 +172,29 @@
         function pad(n) {
             return (n < 10 ? "0" + n : n);
         }
-        document.getElementById('id_day_time').innerHTML = pad(days) + ":" + pad(hours) + ":" + pad(minutes) + ":" + pad(remainingSeconds);
+        if (pad(days) > 1) {
+            var days_lable = "days";
+        } else {
+            var days_lable = "day";
+        }
+
+        if (pad(hours) > 1) {
+            var hours_lable = "hours";
+        } else {
+            var hours_lable = "hour";
+        }
+
+        if (pad(minutes) > 1) {
+            var minutes_lable = "minutes";
+        } else {
+            var minutes_lable = "minute";
+        }
+        if (pad(remainingSeconds) > 1) {
+            var remainingSeconds_lable = "seconds";
+        } else {
+            var remainingSeconds_lable = "second";
+        }
+        document.getElementById('id_day_time').innerHTML = pad(days) + " " + days_lable + ", " + pad(hours) + " " + hours_lable + ", " + pad(minutes) + " " + minutes_lable + ", " + pad(remainingSeconds) + " " + remainingSeconds_lable;
         if (seconds <= 0) {
             window.location.replace("<?= site_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>");
                     } else {

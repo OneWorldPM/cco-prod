@@ -26,10 +26,10 @@ class M_eposters extends CI_Model {
     function get_eposters_data_filter_search($post) {
         $this->db->select('*');
         $this->db->from('eposters e');
-        if ($post['sessions_tracks'] != "") {
+        if ($post['sessions_tracks'] != "" && $post['sessions_tracks'] != "all") {
             $this->db->like("e.sessions_tracks_id", $post['sessions_tracks']);
         }
-        if ($post['presenter'] != "") {
+        if ($post['presenter'] != "" && $post['presenter'] != "all") {
             $this->db->like("e.presenter_id", $post['presenter']);
         }
         if ($post['name_search'] != "") {
