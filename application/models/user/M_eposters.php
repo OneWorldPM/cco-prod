@@ -157,5 +157,22 @@ class M_eposters extends CI_Model {
             return $result_sessions;
         }
     }
+    
+     function addBriefcase() {
+        $post = $this->input->post();
+        $insert_array = array(
+            'cust_id' => $this->session->userdata("cid"),
+            'eposters_id' => $post['eposters_id'],
+            'note' => $post['briefcase'],
+            'reg_briefcase_date' => date("Y-m-d")
+        );
+        $result_data = $this->db->get_where("eposters_briefcase", array("cust_id" => $this->session->userdata("cid"), 'eposters_id' => $post['eposters_id']))->row();
+        if (empty($result_data)) {
+            $this->db->insert("eposters_briefcase", $insert_array);
+        } else {
+            $this->db->update("eposters_briefcase", $insert_array, array("eposters_briefcase_id" => $result_data->eposters_briefcase_id));
+        }
+        return TRUE;
+    }
 
 }

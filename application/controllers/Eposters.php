@@ -67,4 +67,14 @@ class Eposters extends CI_Controller {
         $this->load->view('footer');
     }
 
+    public function addBriefcase() {
+        $result_data = $this->objeposters->addBriefcase();
+        if (!empty($result_data)) {
+            $result_array = array("status" => "success");
+        } else {
+            $result_array = array("status" => "error");
+        }
+        echo json_encode($result_array);
+    }
+
 }

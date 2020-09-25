@@ -52,7 +52,7 @@
                     if ((isset($sessions) && !empty($sessions))) {
                         $time = $sessions->time_slot;
                         $datetime = $sessions->sessions_date . ' ' . $time;
-                        $datetime = date("Y-m-d h:i", strtotime($datetime));
+                        $datetime = date("Y-m-d H:i", strtotime($datetime));
                         $datetime = new DateTime($datetime);
                         $datetime1 = new DateTime();
                         $diff = $datetime->getTimestamp() - $datetime1->getTimestamp();
@@ -98,8 +98,8 @@
                                         }
                                     }
                                     ?>
-            <!--<p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->bio : "" ?></p>-->
-            <!--<img alt="" src="<?= base_url() ?>uploads/presenter_photo/<?= (isset($sessions) && !empty($sessions)) ? $sessions->presenter_photo : "" ?>" class="img-circle" height="100" width="100">-->
+<!--<p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->bio : "" ?></p>-->
+<!--<img alt="" src="<?= base_url() ?>uploads/presenter_photo/<?= (isset($sessions) && !empty($sessions)) ? $sessions->presenter_photo : "" ?>" class="img-circle" height="100" width="100">-->
                                 </div>
                                 <div class="col-md-12 m-t-40">
                                     <div class="col-md-4 col-md-offset-4" style="text-align: center; text-align: center; padding: 10px; background-color: #fff; border: 1px solid;">
@@ -145,7 +145,11 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        setInterval('timer()', 1000);
+        if ($("#time_second").val() <= 0) {
+            timer();
+        } else {
+            setInterval('timer()', 1000);
+        }
         $(".presenter_open_modul").click(function () {
             var presenter_photo = $(this).attr("data-presenter_photo");
             var presenter_name = $(this).attr("data-presenter_name");
@@ -196,7 +200,7 @@
         }
         document.getElementById('id_day_time').innerHTML = pad(days) + " " + days_lable + ", " + pad(hours) + " " + hours_lable + ", " + pad(minutes) + " " + minutes_lable + ", " + pad(remainingSeconds) + " " + remainingSeconds_lable;
         if (seconds <= 0) {
-            window.location.replace("<?= site_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>");
+            window.location = "<?= site_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>";
                     } else {
                         seconds--;
                     }
