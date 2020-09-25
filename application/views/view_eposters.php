@@ -70,8 +70,8 @@ if (true) {
                                 </div>
                                 <div class="col-md-10" style="text-align: center; padding-left: 0px; padding-right: 0px">
                                     <img src="<?= base_url() ?>uploads/eposters/<?= isset($eposters) ? $eposters->eposters_area_photo : "" ?>" width="100%"/>
-                                    <a href="<?= base_url() ?>eposters/view_full_screen/<?= isset($eposters) ? $eposters->eposters_id : "" ?>" class="button btn small" style="background-color: #c3c3c3; border-color: #c3c3c3; font-size: 20px; text-transform: unset;"><span>View Full Screen</span></a>
-                                    <a href="<?= base_url() ?>eposters" class="button btn small" style="background-color: #c3c3c3; border-color: #c3c3c3; font-size: 20px; text-transform: unset;"><span>Return to ePoster Listing</span></a>
+                                    <a href="<?= base_url() ?>eposters/view_full_screen/<?= isset($eposters) ? $eposters->eposters_id : "" ?>" class="button btn small" style="background-color: #c3c3c3; border-color: #c3c3c3; color: #fff; font-size: 20px; text-transform: unset;"><span>View Full Screen</span></a>
+                                    <a href="<?= base_url() ?>eposters" class="button btn small" style="background-color: #c3c3c3; border-color: #c3c3c3; font-size: 20px; text-transform: unset; color: #fff;"><span>Return to ePoster Listing</span></a>
                                 </div>
                                 <div class="col-md-1" style="text-align: center; padding-left: 0px; padding-right: 0px">
                                     <a href="<?= base_url() ?>eposters/next/<?= isset($eposters) ? $eposters->eposters_id : "" ?>"><i class="fa fa-angle-right" style="font-size: 8pc; margin-top: 180px;"></i></a>
@@ -125,7 +125,6 @@ if (true) {
                 <span id='success_briefcase' style='color:green;'></span>
             </div>
         </div>
-
     </div>
     <div class="rightSticykPopup questionsSticky" style="display: none">
         <div class="header"><span></span>
