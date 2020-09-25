@@ -67,7 +67,10 @@ class M_myprofile extends CI_Model {
 
     public function getAllUsers()
     {
-        $query = $this->db->get('customer_master');
+        $this->db->select('*');
+        $this->db->from('customer_master');
+        $this->db->order_by('first_name', 'ASC');
+        $query = $this->db->get();
 
         if($query->num_rows() != 0)
         {

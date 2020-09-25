@@ -11,6 +11,7 @@ $(function() {
 
     socket.emit('joinLoungeGroupChat', {"room":LOUNGE_GROUP_CHAT_ROOM, "name":user_name});
     socket.on('newLoungeGroupText', function(data) {
+
         if (data.user_id == user_id)
         {
             $('.group-chat').append(
@@ -421,58 +422,61 @@ $(function() {
 
         var selectedUser = $('.selected-user-name-area').attr('userid');
 
-        if (selectedUser == data.to_id || selectedUser == data.from_id)
+        if ((selectedUser == data.to_id && user_id == data.from_id) || (selectedUser == data.from_id && user_id == data.to_id))
         {
-            if (data.from_id == user_id)
-            {
+            if (selectedUser == data.to_id || selectedUser == data.from_id) {
+                if (data.from_id == user_id) {
 
-                $('.oto-messages').append(
-                    '<li class="grp-chat text-right clearfix">\n' +
-                    '   <span class="chat-img pull-right">\n' +
-                    '     <img src="'+user_logo_url+'" alt="User DP" class="img-circle" />\n' +
-                    '   </span>\n' +
-                    '   <div class="chat-body clearfix">\n' +
-                    '     <div class="header">\n' +
-                    '       <small class="pull-left text-muted"><span class="glyphicon glyphicon-time"></span>'+data.datetime+'</small>\n' +
-                    '       <strong class="pull-right primary-font">'+data.name+'</strong>\n' +
-                    '     </div>\n' +
-                    '     <br><p class="pull-right">\n' +
-                    '      '+data.chat_text+' \n' +
-                    '     </p>\n' +
-                    '   </div>\n' +
-                    '</li>'
-                );
-                $('.oto-chat-body').scrollTop($('.oto-chat-body')[0].scrollHeight);
-            }else{
+                    $('.oto-messages').append(
+                        '<li class="grp-chat text-right clearfix">\n' +
+                        '   <span class="chat-img pull-right">\n' +
+                        '     <img src="' + user_logo_url + '" alt="User DP" class="img-circle" />\n' +
+                        '   </span>\n' +
+                        '   <div class="chat-body clearfix">\n' +
+                        '     <div class="header">\n' +
+                        '       <small class="pull-left text-muted"><span class="glyphicon glyphicon-time"></span>' + data.datetime + '</small>\n' +
+                        '       <strong class="pull-right primary-font">' + data.name + '</strong>\n' +
+                        '     </div>\n' +
+                        '     <br><p class="pull-right">\n' +
+                        '      ' + data.chat_text + ' \n' +
+                        '     </p>\n' +
+                        '   </div>\n' +
+                        '</li>'
+                    );
+                    $('.oto-chat-body').scrollTop($('.oto-chat-body')[0].scrollHeight);
+                } else {
 
-                $('.oto-messages').append(
-                    '<li class="grp-chat text-left clearfix">\n' +
-                    '   <span class="chat-img pull-left">\n' +
-                    '     <img src="'+data.profile+'" alt="User Avatar" class="img-circle" />\n' +
-                    '   </span>\n' +
-                    '   <div class="chat-body clearfix">\n' +
-                    '      <div class="header">\n' +
-                    '         <strong class="primary-font">'+data.name+'</strong> <small class="pull-right text-muted">\n' +
-                    '         <span class="glyphicon glyphicon-time"></span>'+data.datetime+'</small>\n' +
-                    '      </div>\n' +
-                    '      <p>\n' +
-                    '       '+data.chat_text+' \n' +
-                    '      </p>\n' +
-                    '    </div>\n' +
-                    '</li>'
-                );
-                $('.oto-chat-body').scrollTop($('.oto-chat-body')[0].scrollHeight);
-            }
-        }else{
-            $('.attendees-chat-list > li[userid="'+data.user_id+'"] > .oto-chat-user-list-name > .new-text').show();
-            $('.attendees-chat-list > li[userid="'+data.user_id+'"]').attr('new-text', '1');
+                    $('.oto-messages').append(
+                        '<li class="grp-chat text-left clearfix">\n' +
+                        '   <span class="chat-img pull-left">\n' +
+                        '     <img src="' + data.profile + '" alt="User Avatar" class="img-circle" />\n' +
+                        '   </span>\n' +
+                        '   <div class="chat-body clearfix">\n' +
+                        '      <div class="header">\n' +
+                        '         <strong class="primary-font">' + data.name + '</strong> <small class="pull-right text-muted">\n' +
+                        '         <span class="glyphicon glyphicon-time"></span>' + data.datetime + '</small>\n' +
+                        '      </div>\n' +
+                        '      <p>\n' +
+                        '       ' + data.chat_text + ' \n' +
+                        '      </p>\n' +
+                        '    </div>\n' +
+                        '</li>'
+                    );
+                    $('.oto-chat-body').scrollTop($('.oto-chat-body')[0].scrollHeight);
+                }
+            } else {
+                $('.attendees-chat-list > li[userid="' + data.user_id + '"] > .oto-chat-user-list-name > .new-text').show();
+                $('.attendees-chat-list > li[userid="' + data.user_id + '"]').attr('new-text', '1');
 
-            $(".attendees-chat-list li").sort(dec_sort).appendTo('.attendees-chat-list');
-            function asc_sort(a, b){
-                return ($(b).attr('new-text')) < ($(a).attr('new-text')) ? 1 : -1;
-            }
-            function dec_sort(a, b){
-                return ($(b).attr('new-text')) > ($(a).attr('new-text')) ? 1 : -1;
+                $(".attendees-chat-list li").sort(dec_sort).appendTo('.attendees-chat-list');
+
+                function asc_sort(a, b) {
+                    return ($(b).attr('new-text')) < ($(a).attr('new-text')) ? 1 : -1;
+                }
+
+                function dec_sort(a, b) {
+                    return ($(b).attr('new-text')) > ($(a).attr('new-text')) ? 1 : -1;
+                }
             }
         }
     });
