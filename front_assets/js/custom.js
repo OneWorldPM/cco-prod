@@ -16,14 +16,11 @@ $(document).ready(function () {
                 $(".rightSticykPopup").css("display","none");
                 $toolType = $(this).parent().data("type");
 
-
             }
             $(".rightSticykPopup .header>span").text("Toolbox");
 
             $("." + $toolType).css("display", "")
             $rightSticky.css("display", "none");
-
-
 
 
             var $screenWidth = $(document).width();
