@@ -53,4 +53,38 @@ class LoungeOtoChat_Model extends CI_Model
             return false;
         }
     }
+
+    public function checkForUnreadChat($user_id)
+    {
+        $this->db->select('from_id');
+        $this->db->from('lounge_oto_chat');
+        $this->db->where('marked_read', 0);
+        $this->db->where('to_id', $user_id);
+        $this->db->group_by('from_id');
+        $query = $this->db->get();
+
+        if($query->num_rows() != 0)
+        {
+            foreach($query->result_array() as $row)
+            {
+                $newMsgsFrom[] = $row['from_id'];
+            }
+
+            return $newMsgsFrom;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public function readAllTextsOf($from_user, $to_user)
+    {
+        $this->db->set('marked_read', 1);
+        $this->db->where('from_id', $from_user);
+        $this->db->where('to_id', $to_user);
+        $this->db->update('lounge_oto_chat');
+
+        return;
+    }
 }

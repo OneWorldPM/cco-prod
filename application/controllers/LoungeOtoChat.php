@@ -34,4 +34,26 @@ class LoungeOtoChat extends CI_Controller
         echo json_encode($data);
         return;
     }
+
+    public function checkForUnreadChat($user_id)
+    {
+        $response = $this->LoungeOtoChat_Model->checkForUnreadChat($user_id);
+
+        if ($response == 0)
+        {
+            echo 0;
+        }else{
+            echo json_encode($response);
+        }
+
+        return;
+    }
+
+    public function readAllTextsOf($from_user)
+    {
+        $to_user = $this->session->userdata("cid");
+        $this->LoungeOtoChat_Model->readAllTextsOf($from_user, $to_user);
+
+        return;
+    }
 }
