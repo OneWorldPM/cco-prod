@@ -35,11 +35,11 @@
 
         // Active again
         function resetActive(){
-            socket.emit('userActiveChangeInApp', {"app":socket_active_user_list, "name":user_name, "userId":user_id, "status":true});
+            socket.emit('userActiveChangeInApp', {"app":socket_app_name, "room":socket_active_user_list, "name":user_name, "userId":user_id, "status":true});
         }
         // No activity let everyone know
         function inActive(){
-            socket.emit('userActiveChangeInApp', {"app":socket_active_user_list, "name":user_name, "userId":user_id, "status":false});
+            socket.emit('userActiveChangeInApp', {"app":socket_app_name, "room":socket_active_user_list, "name":user_name, "userId":user_id, "status":false});
         }
 
         $(window).on("blur focus", function(e) {

@@ -6,10 +6,7 @@ $(function() {
         console.log(data);
     });
 
-    var LOUNGE_OTO_CHAT_ROOM = 'CCO_LOUNGE_OTO';
-    var LOUNGE_GROUP_CHAT_ROOM = "CCO_LOUNGE_GROUP";
-
-    socket.emit('joinLoungeGroupChat', {"room":LOUNGE_GROUP_CHAT_ROOM, "name":user_name});
+    socket.emit('joinLoungeGroupChat', {"room":socket_lounge_room, "name":user_name});
     socket.on('newLoungeGroupText', function(data) {
 
         if (data.user_id == user_id)
@@ -115,7 +112,7 @@ $(function() {
         if(e.which == 13){//Enter key pressed
             $('.send-grp-chat-btn').click();//Trigger search button click event
         }else{
-            socket.emit('isTyping', {"room":LOUNGE_GROUP_CHAT_ROOM, "someone":user_name});
+            socket.emit('isTyping', {"room":socket_lounge_room, "someone":user_name});
         }
     });
 
@@ -146,7 +143,7 @@ $(function() {
 
                     socket.emit('newLoungeGroupText',
                         {
-                            "room":LOUNGE_GROUP_CHAT_ROOM,
+                            "room":socket_lounge_room,
                             "name":user_name,
                             "chat_text":text,
                             "user_id":user_id,
@@ -209,7 +206,7 @@ $(function() {
 
         $.each( users, function( number, user ) {
 
-            socket.emit('joinLoungeOtoChat', {"room":LOUNGE_OTO_CHAT_ROOM, "name":user_name, "userId":user_id, "userType":user_type});
+            socket.emit('joinLoungeOtoChat', {"room":socket_lounge_oto_chat_group, "name":user_name, "userId":user_id, "userType":user_type});
             //socket.on('loungeOtoNewJoin', function(data) {console.log(data)});
 
             var fullname = user.first_name+' '+user.last_name;
@@ -281,11 +278,8 @@ $(function() {
                 company_name_html
             );
 
-            var LOUNGE_OTO_CHAT_ROOM = 'CCO_LOUNGE_OTO_';
-            var LOUNGE_GROUP_CHAT_ROOM = "CCO_LOUNGE_GROUP";
-
             $('.selected-user-name-area').attr('userId', otherUserId);
-            $('.selected-user-name-area').attr('room', LOUNGE_OTO_CHAT_ROOM);
+            $('.selected-user-name-area').attr('room', socket_lounge_oto_chat_group);
 
             $('.oto-messages').html('');
 
@@ -398,11 +392,9 @@ $(function() {
 
                     $('#one-to-one-ChatText').val('');
 
-                    var LOUNGE_OTO_CHAT_ROOM = 'CCO_LOUNGE_OTO';
-
                     socket.emit('newLoungeOtoText',
                         {
-                            "room":LOUNGE_OTO_CHAT_ROOM,
+                            "room":socket_lounge_oto_chat_group,
                             "name":user_name,
                             "from_id": user_id,
                             "chat_text":text,
@@ -491,8 +483,9 @@ $(function() {
 
     /*********************** user active status **************************/
 
-    socket.emit('getActiveUserListPerApp', socket_active_user_list);
+    socket.emit('getActiveUserListPerApp', socket_app_name);
     socket.on('activeUserListPerApp', function(data) {
+        console.log(data);
         $.each(data, function( number, userId ) {
             $('.active-icon[userId="'+userId+'"]').css('color', '#26ff49');
             $('.attendees-chat-list-item[userId="'+userId+'"]').attr('status', 'active');
@@ -503,8 +496,7 @@ $(function() {
     });
 
     socket.on('userActiveChangeInApp', function(data) {
-        console.log(data);
-        if (data.app == socket_active_user_list)
+        if (data.app == socket_app_name)
         {
             if (data.status == true)
             {
