@@ -126,7 +126,7 @@
         position: absolute;
         width: 96%;
         padding: 15px 0px !important;
-        bottom: -14px;
+        bottom: -5px;
     }
 
 
@@ -156,9 +156,7 @@
         margin-top: 5px;
         margin-bottom: 0;
     }
-	 section{
-        padding: 25px 0px;
-    }
+
 	 .option_lable { 
         margin-left: 5px; 
     }
@@ -169,12 +167,12 @@
 
 if (true) {
     ?>
-    <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/attend_background.png);">
+    <section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/pres_bg.jpg') no-repeat;">
         <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
         <div class="container-fullscreen">
             <!-- CONTENT -->
             <section class="content">
-                <div style="background: rgba(250, 250, 250, 0.8);">
+                <div>
                     <div class="videContent">
                         <div style="background-color: #B2B7BB;">
                             <h3 style="margin-bottom: 2px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
@@ -291,7 +289,6 @@ if (true) {
         </div>
     </div>
     <div class="content">
-    <div class="content">
         <div class="contentHeader">Take Notes</div>
         <div id="briefcase_section" style="background-color: #fff; border-radius: 5px; padding: 5px; position: absolute; top: 36px; width: 100%;">
             <div style="text-align: center; display: flex; " id="briefcase_section">
@@ -322,7 +319,7 @@ if (true) {
         </div>
     </div>
     <div class="content">
-    <div class="contentHeader">
+        <div class="contentHeader">
             Questions
         </div>
         <div class="questionElement" >
@@ -372,7 +369,7 @@ if (true) {
         </div>
     </div>
     <div class="content">
-    <div class="contentHeader">
+        <div class="contentHeader">
             Resources
         </div>
         <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
@@ -702,7 +699,7 @@ if (true) {
             }
         });
 
-        $(document).on("click", "#ask_questions_send", function () {
+      $(document).on("click", "#ask_questions_send", function () {
             if ($("#questions").val() == "") {
                 $("#error_questions").text("Enter Questions").fadeIn('slow').fadeOut(5000);
             }

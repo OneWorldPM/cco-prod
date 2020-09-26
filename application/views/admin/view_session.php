@@ -10,6 +10,9 @@
     .contentIn{
         height:901px
     }
+    #app{
+        background: url('<?= base_url() ?>front_assets/images/pres_bg.jpg') no-repeat;
+    }
 </style>
 <style>
     .progress-bar_1 {

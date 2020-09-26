@@ -473,28 +473,28 @@ var loader_url = "https://yourconference.live/CCO/";
     //----------------------------------------------------/
     // STICKY HEADER
     //----------------------------------------------------/
-    INSPIRO.stickyHeaderStatus = function () {
-        if ($header.exists()) {
-            var headerOffset = $header.offset().top;
+    // INSPIRO.stickyHeaderStatus = function () {
+    //     if ($header.exists()) {
+    //         var headerOffset = $header.offset().top;
 
-            if ($window.scrollTop() > headerOffset) {
+    //         if ($window.scrollTop() > headerOffset) {
 
-                if ($body.hasClass('device-lg') || $body.hasClass('device-md')) {
+    //             if ($body.hasClass('device-lg') || $body.hasClass('device-md')) {
 
-                    if (!$header.hasClass("header-no-sticky")) {
-                        $header.addClass('header-sticky');
-                    }
-                    if ($header.hasClass('header-navigation-light')) {
-                        logo.find('img').attr('src', logoImg);
-                    }
-                } else {
-                    $header.removeClass('header-sticky');
-                }
-            } else {
-                $header.removeClass('header-sticky');
-            }
-        }
-    };
+    //                 if (!$header.hasClass("header-no-sticky")) {
+    //                     $header.addClass('header-sticky');
+    //                 }
+    //                 if ($header.hasClass('header-navigation-light')) {
+    //                     logo.find('img').attr('src', logoImg);
+    //                 }
+    //             } else {
+    //                 $header.removeClass('header-sticky');
+    //             }
+    //         } else {
+    //             $header.removeClass('header-sticky');
+    //         }
+    //     }
+    // };
 
     INSPIRO.stickyHeader = function () {
         $window.on('scroll', function () {
