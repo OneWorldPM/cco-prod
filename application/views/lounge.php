@@ -187,10 +187,17 @@
     var user_type = "attendee";
     var user_logo = "<?= $profile_data->profile ?>";
     user_name = (user_name == '')?'No Name':user_name;
-
     var nameAcronym = user_name.match(/\b(\w)/g).join('');
     var color = md5(nameAcronym+user_id).slice(0, 6);
     var user_logo_url = (user_logo == '')?"https://placehold.it/50/"+color+"/fff&amp;text="+nameAcronym:base_url+'uploads/customer_profile/'+user_logo;
+
+    <?php
+            foreach ($socket_config as $config_name => $config_value)
+            {
+                echo "\n var {$config_name} = '{$config_value}';";
+            }
+            echo"\n";
+    ?>
 </script>
 
 <script type="text/javascript">

@@ -487,19 +487,46 @@ $(function() {
         }
     });
 
-    socket.on('userActiveChange', function(data) {
-        if (data.status == true)
+
+
+    /*********************** user active status **************************/
+
+    socket.emit('getActiveUserListPerApp', socket_active_user_list);
+    socket.on('activeUserListPerApp', function(data) {
+        $.each(data, function( number, userId ) {
+            $('.active-icon[userId="'+userId+'"]').css('color', '#26ff49');
+            $('.attendees-chat-list-item[userId="'+userId+'"]').attr('status', 'active');
+        });
+
+        $(".attendees-chat-list li").sort(active_change_asc_sort).appendTo('.attendees-chat-list');
+        $(".attendees-chat-list li").sort(newtext_dec_sort).appendTo('.attendees-chat-list');
+    });
+
+    socket.on('userActiveChangeInApp', function(data) {
+        console.log(data);
+        if (data.app == socket_active_user_list)
         {
-            var color = '#26ff49';
-            var status = 'active';
-        }else{
-            var color = '#ffc500';
-            var status = 'inactive';
+            if (data.status == true)
+            {
+                var color = '#26ff49';
+                var status = 'active';
+            }else{
+                var color = '#ffc500';
+                var status = 'inactive';
+            }
+
+            $('.active-icon[userId="'+data.userId+'"]').css('color', color);
+            $('.attendees-chat-list-item[userId="'+data.userId+'"]').attr('status', status);
+
+            $(".attendees-chat-list li").sort(active_change_asc_sort).appendTo('.attendees-chat-list');
+            $(".attendees-chat-list li").sort(newtext_dec_sort).appendTo('.attendees-chat-list');
         }
 
-        $('.active-icon[userId="'+data.userId+'"]').css('color', color);
-        $('.attendees-chat-list-item[userId="'+data.userId+'"]').attr('status', status);
     });
+
+    /******************* end of user active status *****************************/
+
+
 
     $(".oto-attendee-search").keyup(function () {
         var filter = $(this).val();
@@ -512,17 +539,6 @@ $(function() {
         });
     });
 
-    setInterval(function() {
-        socket.emit('getActiveUserList');
-    }, 60 * 1000); // 60 seconds
-    socket.emit('getActiveUserList');
-    socket.on('activeUserList', function(data) {
-        $.each(data, function( socketId, userId ) {
-            $('.active-icon[userId="'+userId+'"]').css('color', '#26ff49');
-            $('.attendees-chat-list-item[userId="'+userId+'"]').attr('status', 'active');
-        });
-        $(".attendees-chat-list li").sort(active_change_asc_sort).appendTo('.attendees-chat-list');
-    });
 
     $(".attendee-profile-btn").on( "click", function() {
         var userId = $(this).attr('userId');
