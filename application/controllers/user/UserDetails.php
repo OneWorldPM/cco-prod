@@ -10,7 +10,7 @@ class UserDetails extends CI_Controller
 
         $login_type = $this->session->userdata('userType');
         if ($login_type == '') {
-            redirect('/tiadaannualconference');
+            redirect(base_url());
         }
 
         $this->load->model('user/M_myprofile', 'user');
