@@ -43,7 +43,7 @@
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
-		 display: flex;
+        display: flex;
     }
 
     .option_section_css_selected {
@@ -52,7 +52,7 @@
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
-		 display: flex;
+        display: flex;
     }
 
     .progress {
@@ -146,10 +146,13 @@
     .parallax {
         height: 909px;
     }
-    .questionElement{
-        max-height: 230px;overflow: auto;
+
+    .questionElement {
+        max-height: 230px;
+        overflow: auto;
     }
-    .questionElement p{
+
+    .questionElement p {
         background-color: #b2b7bb;
         color: black;
         text-align: center;
@@ -157,111 +160,123 @@
         margin-bottom: 0;
     }
 
-	 .option_lable { 
-        margin-left: 5px; 
+    .option_lable {
+        margin-left: 5px;
+    }
+
+    .borderFooter {
+        position: absolute;
+        display: block !important;
+        background-color: #F15A23;
+        width: 100%;
+        height: 24px;
+        z-index: 124124124;
+        top: 40px;
+    }
+
+    @media only screen and (max-width: 1548px) {
+        .borderFooter {
+            display: none !important;
+        }
     }
 
 </style>
 
-<?php
 
-if (true) {
-    ?>
-    <section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/pres_bg.jpg') no-repeat;">
-        <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
-        <div class="container-fullscreen">
-            <!-- CONTENT -->
-            <section class="content">
-                <div>
-                    <div class="videContent">
-                        <div style="background-color: #B2B7BB;">
-                            <h3 style="margin-bottom: 2px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
-                        </div>
-                        <div id="embededVideo">
-                            <div class="row"><i id="btnFS" class="fa fa-arrows-alt" aria-hidden="true"></i></div>
-                            <div id="iframeDiv" class="row embed-responsive embed-responsive-16by9"><?= isset($sessions) ? $sessions->embed_html_code : "" ?></div>
-                           <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
-                                                <!--                                                <div class="modal-header" style="padding: 0px;">
+<section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/pres_bg.jpg') no-repeat;">
+    <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
+    <div class="container-fullscreen">
+        <!-- CONTENT -->
+        <section class="content">
+            <div>
+                <div class="videContent">
+                    <div style="background-color: #B2B7BB;">
+                        <h3 style="margin-bottom: 2px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
+                    </div>
+                    <div id="embededVideo">
+                        <div class="row"><i id="btnFS" class="fa fa-arrows-alt" aria-hidden="true"></i></div>
+                        <div id="iframeDiv" class="row embed-responsive embed-responsive-16by9"><?= isset($sessions) ? $sessions->embed_html_code : "" ?></div>
+                        <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
+                                    <!--                                                <div class="modal-header" style="padding: 0px;">
                                                                                                     <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
                                                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                                                 </div>-->
-                                                <div class="modal-body" style="padding: 0px;">
-                                                    <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
-                                                        <div class="col-sm-12">
-                                                            <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
-                                                                <div class="" style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
-                                                                    TIME LEFT : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
-                                                                </div>
-                                                            </div>
-                                                            <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 5px;">
-                                                            </div>
-                                                        </div>
+                                    <div class="modal-body" style="padding: 0px;">
+                                        <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
+                                            <div class="col-sm-12">
+                                                <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
+                                                    <div class="" style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
+                                                        TIME LEFT : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
                                                     </div>
                                                 </div>
+                                                <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 5px;">
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                        </div>
-                        <p class="currentTime">CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a></p>
-                        <div class="col-md-12">
-                            <?php
-                            if (isset($music_setting)) {
-                                if ($music_setting->music_setting != "") {
-                                    ?>
-                                    <audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/music/<?= $music_setting->music_setting ?>"></audio>
-                                    <?php
-                                }
-                            }
-                            ?>
-                            <input type="hidden" id="view_sessions_history_id" value="">
-                            <input type="hidden" id="sessions_id" value=" <?= isset($sessions) ? $sessions->sessions_id : "" ?>">
-                            <input type="hidden" id="poll_vot_section_id_status" value="0">
-                            <input type="hidden" id="poll_vot_section_is_ended" value="0">
-                            <input type="hidden" id="poll_vot_section_last_status" value="0">
-                            <!--                                    <div class="col-md-3">
-                                                                    <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
-                                                                    </div>
-                                                                </div>-->
-
-                            <div class="row" style="display:none">
-
-                                <div class="col-md-3">
-                                    <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
-                                        <div>
-                                            <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Resources <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
-                                        </div>
-                                        <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 150px;" id="resource_display_status">
-                                            <?php
-                                            if (!empty($session_resource)) {
-                                                foreach ($session_resource as $val) {
-                                                    ?>
-                                                    <div class="row" style="margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid;">
-                                                        <div class="col-md-12"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
-                                                        <div class="col-md-12"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
-                                                        <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
-                                                    </div>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-                                            <span id='success_resource' style='color:green;'></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            <!-- END: SECTION -->
-        </div>
-    </section>
-    <?php
-}
+                    <p class="currentTime">
+                        CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>
+                        <span class="borderFooter">test</span>
+                    </p>
+                    <div class="col-md-12">
+                        <?php
+                        if (isset($music_setting)) {
+                            if ($music_setting->music_setting != "") {
+                                ?>
+                                <audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/music/<?= $music_setting->music_setting ?>"></audio>
+                                <?php
+                            }
+                        }
+                        ?>
+                        <input type="hidden" id="view_sessions_history_id" value="">
+                        <input type="hidden" id="sessions_id" value=" <?= isset($sessions) ? $sessions->sessions_id : "" ?>">
+                        <input type="hidden" id="poll_vot_section_id_status" value="0">
+                        <input type="hidden" id="poll_vot_section_is_ended" value="0">
+                        <input type="hidden" id="poll_vot_section_last_status" value="0">
+                        <!--                                    <div class="col-md-3">
+                                                                <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
+                                                                </div>
+                                                            </div>-->
 
-?>
+                        <div class="row" style="display:none">
+
+                            <div class="col-md-3">
+                                <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
+                                    <div>
+                                        <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Resources <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
+                                    </div>
+                                    <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 150px;" id="resource_display_status">
+                                        <?php
+                                        if (!empty($session_resource)) {
+                                            foreach ($session_resource as $val) {
+                                                ?>
+                                                <div class="row" style="margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid;">
+                                                    <div class="col-md-12"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
+                                                    <div class="col-md-12"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
+                                                    <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
+                                                </div>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                        <span id='success_resource' style='color:green;'></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END: SECTION -->
+    </div>
+</section>
 
 
 <div class="rightSticky" data-screen="customer">
@@ -322,7 +337,7 @@ if (true) {
         <div class="contentHeader">
             Questions
         </div>
-        <div class="questionElement" >
+        <div class="questionElement">
 
         </div>
         <div id="ask_questions_section" style="background-color: #fff; border-radius: 5px; position: absolute; bottom: 0; width: 100%;">
@@ -699,7 +714,7 @@ if (true) {
             }
         });
 
-      $(document).on("click", "#ask_questions_send", function () {
+        $(document).on("click", "#ask_questions_send", function () {
             if ($("#questions").val() == "") {
                 $("#error_questions").text("Enter Questions").fadeIn('slow').fadeOut(5000);
             }
@@ -843,7 +858,7 @@ if (true) {
             }
         });
     });
-    
+
 
     function get_question_answer_section() {
         var sessions_id = $("#sessions_id").val();
@@ -871,8 +886,7 @@ if (true) {
         });
     }
 
-    function get_poll_vot_section()
-    {
+    function get_poll_vot_section() {
         var poll_vot_section_id_status = $("#poll_vot_section_id_status").val();
         var poll_vot_section_last_status = $("#poll_vot_section_last_status").val();
         var sessions_id = $("#sessions_id").val();
@@ -895,11 +909,13 @@ if (true) {
                         if (poll_vot_section_id_status != data.result.sessions_poll_question_id) {
                             $("#timer_sectiom").show();
                             timer(0);
-                        } else {
+                        }
+                        else {
                             $("#timer_sectiom").show();
                             timer(1);
                         }
-                    } else {
+                    }
+                    else {
                         $("#timer_sectiom").hide();
                     }
                     if (poll_vot_section_id_status != data.result.sessions_poll_question_id || poll_vot_section_last_status != data.result.status) {
@@ -921,11 +937,13 @@ if (true) {
                                     key++;
                                     if (data.result.select_option_id == val.poll_question_option_id) {
                                         $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
-                                    } else {
+                                    }
+                                    else {
                                         $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                                     }
                                 });
-                            } else {
+                            }
+                            else {
 
                                 $.each(data.result.option, function (key, val) {
                                     key++;
@@ -939,7 +957,8 @@ if (true) {
                                 $('#btn_vote_label').html('VOTED <i class="fa fa-check" id="fa_fa_check" style="font-size: 13px;"></i>');
 
                             }
-                        } else {
+                        }
+                        else {
                             $('#modal').modal('show');
                             $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'>Live Poll Results</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5>\n\
                                                         \n\<div id='result_section' style='padding-bottom: 10px;'></div></div></div></div>");
@@ -956,31 +975,36 @@ if (true) {
                                 key++;
                                 if (total_vote == 0) {
                                     var result_calculate = 0;
-                                } else {
+                                }
+                                else {
                                     var result_calculate = (val.total_vot * 100) / total_vote;
                                 }
                                 if (data.result.max_value == val.total_vot) {
                                     $("#result_section").append("<label>" + val.option + "</label><div class='progress'><div class='progress_bar_new' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
-                                } else {
+                                }
+                                else {
                                     $("#result_section").append("<label>" + val.option + "</label><div class='progress'><div class='progress-bar' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
                                 }
 
                                 if (typeof (val.compere_option) != "undefined" && val.compere_option !== null) {
                                     if (total_vote_compere_option == 0) {
                                         var result_calculate_compere = 0;
-                                    } else {
+                                    }
+                                    else {
                                         var result_calculate_compere = (val.compere_option * 100) / total_vote_compere_option;
                                     }
                                     if (data.result.compere_max_value == val.compere_option) {
                                         $("#result_section").append("<div class='progress_1'><div class='progress_bar_new_1' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
-                                    } else {
+                                    }
+                                    else {
                                         $("#result_section").append("<div class='progress_1'><div class='progress-bar_1' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
                                     }
                                 }
                             });
                         }
                     }
-                } else {
+                }
+                else {
                     $('#modal').modal('hide');
                     $("#timer_sectiom").hide();
                     $('#poll_vot_section_is_ended').val(1);
@@ -1007,14 +1031,16 @@ if (true) {
                                     key++;
                                     if (data.result.select_option_id == val.poll_question_option_id) {
                                         $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
-                                    } else {
+                                    }
+                                    else {
                                         $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                     }
                                 });
 
                                 $(':radio:not(:checked)').attr('disabled', true);
                                 $('#fa_fa_check_close_poll').show();
-                            } else {
+                            }
+                            else {
                                 $("#poll_vot_section").html("");
                             }
                         }
