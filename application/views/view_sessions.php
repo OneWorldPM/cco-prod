@@ -43,6 +43,7 @@
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
+		 display: flex;
         display: flex;
     }
 
@@ -52,6 +53,7 @@
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
+		 display: flex;
         display: flex;
     }
 
