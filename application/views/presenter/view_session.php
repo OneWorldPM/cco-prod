@@ -195,6 +195,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 }
 ?>
 
+
 <div class="main-content">
     <div class="wrap-content container" id="container">
         <div class="container-fluid container-fullw" style="padding: 6px;">
@@ -293,7 +294,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                 </div>
             </div>
         </div>
-        <span class="pull-right text-red totalAttende totalAttende<?=getAppName($this->uri,$sessions->sessions_id) ?>">Total attende: <b>0</b></span>
+        <span class="pull-right text-red totalAttende totalAttende<?=getAppName($this->uri,$sessions->sessions_id) ?>">Total attendees: <b>0</b></span>
 
         <!-- end: DYNAMIC TABLE -->
     </div>
