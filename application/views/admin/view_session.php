@@ -239,7 +239,7 @@
 
                     </div>
                 </div>
-                <span style="margin-right: 25px;" class="pull-right text-red totalAttende totalAttende<?=getAppName($this->uri->segment(1),$sessions->sessions_id) ?>">Total attende: <b>0</b></span>
+                <span style="margin-right: 25px;" class="pull-right text-red totalAttende totalAttende<?=getAppName($this->uri,$sessions->sessions_id) ?>">Total attende: <b>0</b></span>
 
             </div>
 
@@ -473,7 +473,7 @@
 
 
 <script>
-    socket.emit("getSessionViewUsers","<?=getAppName($this->uri->segment(1),$sessions->sessions_id) ?>",function(resp){
+    socket.emit("getSessionViewUsers","<?=getAppName($this->uri,$sessions->sessions_id) ?>",function(resp){
         if(resp){
             var totalUsers=resp.users?resp.users.length:0;
             var sessionId=resp.sessionId;

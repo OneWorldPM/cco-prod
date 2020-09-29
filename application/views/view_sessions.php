@@ -450,7 +450,7 @@
     // let socket = io("https://socket.yourconference.live:443");
     let socket = io("<?=getSocketUrl()?>");
 
-    socket.emit("ConnectSessioViewUsers","<?=getAppName($this->uri->segment(1),$sessions->sessions_id) ?>")
+    socket.emit("ConnectSessioViewUsers","<?=getAppName($this->uri,$sessions->sessions_id) ?>")
 </script>
 
 <script type="text/javascript">
