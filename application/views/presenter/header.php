@@ -65,6 +65,22 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
         <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch.js"></script> -->
         <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch-onload.js"></script> -->
         <script src="<?= base_url() ?>front_assets/js/custom.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+        <script>
+        // let socket = io("https://socket.yourconference.live:443");
+        let socket = io("<?=getSocketUrl()?>");
+
+        
+        socket.on("newViewUsers",function(resp){
+            if(resp){
+            var totalUsers=resp.users?resp.users.length:0;
+            var sessionId=resp.sessionId;
+            $(".totalAttende"+sessionId+" b").html(totalUsers);
+         }
+        })
+                // var socketServer = "https://socket.yourconference.live:443";
+
+        </script>
 
         <style type="text/css">
             .action-row{

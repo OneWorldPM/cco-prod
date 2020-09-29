@@ -192,6 +192,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
     exit("</pre>");
 }
 ?>
+
 <div class="main-content">
     <div class="wrap-content container" id="container">
         <div class="container-fluid container-fullw" style="padding: 6px;">
@@ -199,7 +200,9 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                 <div class="panel-heading" style="padding-bottom: 8px;">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4 class="panel-title text-white"><?= $sessions->session_title ?></h4>
+                            <h4 class="panel-title text-white">
+                            <?= $sessions->session_title ?>
+                            </h4>
                         </div>
                         <div class="col-md-4" style="text-align: center;">
                             <!--                            <a id="btn_timer_start" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">START</a>-->
@@ -288,6 +291,8 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                 </div>
             </div>
         </div>
+        <span class="pull-right text-red totalAttende totalAttende<?=getAppName($this->uri->segment(1),$sessions->sessions_id) ?>">Total attende: <b>0</b></span>
+
         <!-- end: DYNAMIC TABLE -->
     </div>
 </div>
@@ -465,6 +470,15 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
 </div>
 
+<script>
+    socket.emit("getSessionViewUsers","<?=getAppName($this->uri->segment(1),$sessions->sessions_id) ?>",function(resp){
+        if(resp){
+            var totalUsers=resp.users?resp.users.length:0;
+            var sessionId=resp.sessionId;
+            $(".totalAttende"+sessionId+" b").html(totalUsers);
+         }
+    })
+</script>
 
 <script type="text/javascript">
     $(document).ready(function () {

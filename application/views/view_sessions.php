@@ -442,6 +442,17 @@
 
 </div>
 
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+<script>
+
+    // let socket = io("https://socket.yourconference.live:443");
+    let socket = io("<?=getSocketUrl()?>");
+
+    socket.emit("ConnectSessioViewUsers","<?=getAppName($this->uri->segment(1),$sessions->sessions_id) ?>")
+</script>
+
 <script type="text/javascript">
     window.onbeforeunload = function (e) {
 //      e.preventDefault();

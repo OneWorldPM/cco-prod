@@ -195,8 +195,10 @@
 
 
 </style>
+
 <div class="main-content">
     <div class="wrap-content container" id="container">
+        
         <div class="container-fluid container-fullw" style="padding: 6px;">
             <div class="panel panel-primary" id="panel5">
                 <div class="panel-heading">
@@ -237,6 +239,8 @@
 
                     </div>
                 </div>
+                <span style="margin-right: 25px;" class="pull-right text-red totalAttende totalAttende<?=getAppName($this->uri->segment(1),$sessions->sessions_id) ?>">Total attende: <b>0</b></span>
+
             </div>
 
         </div>
@@ -468,7 +472,15 @@
 </div>
 
 
-
+<script>
+    socket.emit("getSessionViewUsers","<?=getAppName($this->uri->segment(1),$sessions->sessions_id) ?>",function(resp){
+        if(resp){
+            var totalUsers=resp.users?resp.users.length:0;
+            var sessionId=resp.sessionId;
+            $(".totalAttende"+sessionId+" b").html(totalUsers);
+         }
+    })
+</script>
 
 <script type="text/javascript">
     $(document).ready(function () {
