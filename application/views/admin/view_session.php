@@ -239,7 +239,7 @@
 
                     </div>
                 </div>
-                <span style="margin-right: 25px;" class="pull-right text-red totalAttende totalAttende<?=getAppName($this->uri,$sessions->sessions_id) ?>">Total attende: <b>0</b></span>
+                <span style="margin-right: 25px;" class="pull-right text-red totalAttende totalAttende<?=getAppName($this->uri,$sessions->sessions_id) ?>">Total attendees: <b>0</b></span>
 
             </div>
 

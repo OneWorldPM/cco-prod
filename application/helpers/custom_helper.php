@@ -3,10 +3,13 @@ function getAppName($uri,$id){
     // $localName="test";
     $localName="";
 
+    
     if($localName){
         return $localName.$id;
     }else{
-        return $uri->segment(0).$id;
+        $fullUrl= current_url();
+        $fullUrl=explode("/",$fullUrl);
+        return $fullUrl[3].$id;
     }
 
 }
