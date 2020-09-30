@@ -123,7 +123,9 @@ class Lounge extends CI_Controller
         }
 
         $data = array(
-            'meeting_status' => $meeting_status
+            'meeting_status' => $meeting_status,
+            'meeting' => $meeting,
+            'socket_config' => $this->getSocketConfig()
         );
 
         if ($this->meetings->identityValidation($meeting_id, $user))
