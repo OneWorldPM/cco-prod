@@ -280,17 +280,18 @@
     </div>
 </section>
 
+
 <?php
 if (isset($sessions)) {
     if ($sessions->tool_box_status == "1") {
         ?>
         <div class="rightSticky" data-screen="customer">
-            <ul>
-                <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>TAKE NOTES</span></li>
-                <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>QUESTIONS</span></li>
-                <li data-type="resourcesSticky"><i class="fa fa-paperclip" aria-hidden="true"></i> <span>RESOURCES</span></li>
-                <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify">1</span> <span>MESSAGES</span></li>
-            </ul>
+          <ul>
+            <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>TAKE NOTES</span></li>
+            <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>QUESTIONS</span></li>
+            <li data-type="resourcesSticky"><i class="fa fa-paperclip" aria-hidden="true"></i> <span>RESOURCES</span></li>
+            <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify notify<?=getAppName($sessions->sessions_id) ?> displayNone">1</span> <span>MESSAGES</span></li>
+          </ul>
         </div>
         <?php
     }
@@ -413,7 +414,7 @@ if (isset($sessions)) {
     </div>
 
 </div>
-<div class="rightSticykPopup messagesSticky" style="display: none">
+<div class="rightSticykPopup messagesSticky messagesSticky<?=getAppName($sessions->sessions_id) ?>" style="display: none">
     <div class="header"><span></span>
         <div class="rightTool">
             <i class="fa fa-minus" aria-hidden="true"></i>
@@ -433,26 +434,14 @@ if (isset($sessions)) {
             Messages
         </div>
         <div class="messages">
-            <div class="messageHe">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-            <div class="messageMe">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+         
         </div>
 
-        <input type="text" class="form-control" placeholder="Enter message">
+        <input type="text" class="form-control" placeholder="Enter message" id='sendGroupChat'>
 
     </div>
 
 </div>
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
-<script>
-
-    // let socket = io("https://socket.yourconference.live:443");
-    let socket = io("<?= getSocketUrl() ?>");
-
-    socket.emit("ConnectSessioViewUsers", "<?= getAppName($this->uri, $sessions->sessions_id) ?>")
-</script>
 
 <script type="text/javascript">
     window.onbeforeunload = function (e) {
@@ -470,8 +459,95 @@ if (isset($sessions)) {
 
     };
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+    let socket = io("<?=getSocketUrl()?>");
+    socket.emit("ConnectSessioViewUsers","<?=getAppName($sessions->sessions_id) ?>")
+
+    $('#sendGroupChat').keypress(function (e) {
+        var $questions = $("#sendGroupChat");
+        var key = e.which;
+        if (key == 13) // the enter key code
+        {
+            if ($questions.val() == "") {
+                $questions.addClass("border borderRed");
+            } else {
+                $questions.removeClass("border borderRed");
+                var $questionsVal=$questions.val();
+                $questions.val("");
+                $.post("<?=base_url()?>"+"SessionGroupChat/newText",
+                {
+                    "sessionId":"<?=getAppName($sessions->sessions_id) ?>",
+                    "message":$questionsVal
+                },
+                function(resp){
+                    if(resp){
+                        resp=JSON.parse(resp);
+                        socket.emit("sessionViewGroupChat",{
+                            "sessionId":resp.session_id,
+                            "message":resp.message,
+                            "userId":resp.user_id,
+                            "userName":resp.user_name
+                         })
+                    
+                    }
+                })
+               
+            }
+        }
+    });
+    $.post("<?=base_url()?>" + "SessionGroupChat/getTexts", {
+            "sessionId": "<?=getAppName($sessions->sessions_id) ?>",
+        },
+        function (resp) {
+            if (resp) {
+                resp=JSON.parse(resp);
+
+                resp.forEach(function(par){
+                    addMessageGroupChat(par,"load")
+                })
+                
+            }
+        })
+
+
+    function addMessageGroupChat(data,type=""){
+        var messageType='';
+        var userName=data.userName?data.userName:data.user_name;
+        var userId=data.userId?data.userId:data.user_id;
+        var sessionId=data.sessionId?data.sessionId:data.session_id;
+        var message=data.message?data.message:data.message;
+
+        if(userId=="<?=$this->session->userdata('cid')?>"){
+            messageType= `<div class="messageMe"><p>${message}</p></div>`;
+        }
+        else{
+            messageType= `<div class="messageHe"><span>${userName}</span><p>${message}</p></div>`;
+        
+            if(type!="load"){
+                if ($('.messagesSticky'+sessionId).css('display') == 'none'){
+                if($(".notify"+sessionId).hasClass("displayNone"))$(".notify"+sessionId).removeClass("displayNone");
+                }
+            }
+
+        }  
+
+        $(".messagesSticky"+sessionId+" .messages").append(messageType)
+    }
+
+    socket.on("sessionViewGroupMessages",function(data){
+        addMessageGroupChat(data)
+
+        var sessionId=data.sessionId;
+        var $messagesContent=$('.messagesSticky'+sessionId+' .content .messages');
+        $($messagesContent).scrollTop($($messagesContent)[0].scrollHeight);
+    })
+
+
+
+
+
         $("iframe").addClass("embed-responsive-item");
 
         var url = $(location).attr('href');

@@ -12,6 +12,8 @@ $(document).ready(function () {
             var $toolType2 = $(this).data("type2");
             var screen = $rightSticky.data("screen");
 
+
+          
             if($toolType2=="off"){
                 $(".rightSticykPopup").css("display","none");
                 $toolType = $(this).parent().data("type");
@@ -31,6 +33,13 @@ $(document).ready(function () {
                 marginRight: '40%',
                 width: `${$screenWidth}px`
             })
+
+
+            if($toolType=="messagesSticky"){
+                $(this).find(".notify").addClass("displayNone");
+                var $messagesContent=$('.messagesSticky .content .messages');
+                $($messagesContent).scrollTop($($messagesContent)[0].scrollHeight);
+            }
         })
 
         $(document).on("click", ".rightSticykPopup .header .rightTool i", function () {

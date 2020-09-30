@@ -1,5 +1,5 @@
 <?php 
-function getAppName($uri,$id){
+function getAppName($id){
     // $localName="test";
     $localName="";
 
