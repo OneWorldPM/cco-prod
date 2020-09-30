@@ -13,12 +13,12 @@ if ($meeting_status['status'] == false)
 
 <?php
 }else{ ?>
-    <link href="<?= base_url() ?>assets/lounge/video-meet/video-meet.css?v=<?=rand(1, 100)?>" rel="stylesheet">
+<link href="<?= base_url() ?>assets/lounge/video-meet/video-meet.css?v=<?= rand(1, 100) ?>" rel="stylesheet">
 
     <main role="main" class="container" style="text-align: center;">
 
         <div class="starter-template">
-            <h1><?=$meeting->topic?></h1>
+            <h1><?= $meeting->topic ?></h1>
         </div>
 
         <div class="row m-t-20 camera-feeds">
@@ -45,12 +45,12 @@ if ($meeting_status['status'] == false)
 
     </main>
 
-   <script>
+    <script>
         var page_link = $(location).attr('href');
         var user_id = <?= $this->session->userdata("cid") ?>;
         var base_url = "<?= base_url() ?>";
         var user_name = "<?= $this->session->userdata('fullname') ?>";
-        user_name = (user_name == '')?'No Name':user_name;
+        user_name = (user_name == '') ? 'No Name' : user_name;
 
         var round_table_id = "<?=$meeting->id?>";
 
@@ -69,6 +69,6 @@ if ($meeting_status['status'] == false)
 
     <script src="<?= base_url() ?>assets/lounge/video-meet/video-meet.js?v=<?= rand(1, 100) ?>"></script>
 
-<?
+<?php
 }
 ?>

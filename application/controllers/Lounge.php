@@ -101,7 +101,7 @@ class Lounge extends CI_Controller
 
         $now = date("Y-m-d H:i:s");
 
-        if ($meeting->meeting_from > $now)
+        if ($meeting && $meeting->meeting_from > $now)
         {
             $datetime1 = strtotime($meeting->meeting_from);
             $datetime2 = strtotime($now);
@@ -110,7 +110,7 @@ class Lounge extends CI_Controller
             $diff = $this->convertToHoursMins($minutesDiff, '%02d hours %02d minutes');
 
             $meeting_status = array('status' => false, 'message' => "Meeting starts at {$meeting->meeting_from}(CT) ie; in {$diff}, please comeback!");
-        }elseif ($meeting->meeting_to < $now){
+        }elseif ($meeting && $meeting->meeting_to < $now){
             $datetime1 = strtotime($meeting->meeting_to);
             $datetime2 = strtotime($now);
             $interval  = abs($datetime2 - $datetime1);
