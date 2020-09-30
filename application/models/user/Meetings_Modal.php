@@ -74,4 +74,41 @@ class Meetings_Modal extends CI_Model {
         }
     }
 
+    public function identityValidation($meeting_id, $attendee_id)
+    {
+        $users = $query = $this->db->query("
+                                        SELECT lm.id 
+                                        FROM lounge_meetings lm
+                                        LEFT JOIN lounge_meeting_attendees lma ON lm.id = lma.meeting_id
+                                        WHERE (lm.host = '{$attendee_id}' OR lma.attendee_id = '{$attendee_id})') 
+                                              AND lm.id = '{$meeting_id}'
+                                        ");
+        if ($users->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getMeetingDetails($meeting_id)
+    {
+        $meetings = $query = $this->db->query("
+                                        SELECT DISTINCT lm.*, CONCAT(cm.first_name, ' ', cm.last_name) AS host_name
+                                        FROM lounge_meetings lm
+                                        LEFT JOIN lounge_meeting_attendees lma ON lm.id = lma.meeting_id
+                                        LEFT JOIN customer_master cm ON lm.host = cm.cust_id
+                                        WHERE lm.id = '{$meeting_id}'
+                                        ");
+        if ($meetings->num_rows() > 0) {
+
+            foreach ($meetings->result() as $meeting)
+            {
+                $meeting->attendees = $this->getAttendeesPerMeet($meeting->id);
+            }
+            return $meetings->result()[0];
+        } else {
+            return false;
+        }
+    }
+
 }

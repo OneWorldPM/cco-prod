@@ -29,7 +29,7 @@ class Lounge extends CI_Controller
             'socket_config' => $socket_config);
 
         $this->load->view('header');
-        $this->load->view('lounge', $data);
+        $this->load->view('lounge/lounge', $data);
         $this->load->view('footer');
     }
 
@@ -90,4 +90,59 @@ class Lounge extends CI_Controller
         echo json_encode($result);
         return;
     }
+
+    public function meet($meeting_id)
+    {
+        $user = $this->session->userdata('cid');
+
+        $this->load->view('header');
+
+        $meeting = $this->meetings->getMeetingDetails($meeting_id);
+
+        $now = date("Y-m-d H:i:s");
+
+        if ($meeting->meeting_from > $now)
+        {
+            $datetime1 = strtotime($meeting->meeting_from);
+            $datetime2 = strtotime($now);
+            $interval  = abs($datetime2 - $datetime1);
+            $minutesDiff   = round($interval / 60);
+            $diff = $this->convertToHoursMins($minutesDiff, '%02d hours %02d minutes');
+
+            $meeting_status = array('status' => false, 'message' => "Meeting starts at {$meeting->meeting_from}(CT) ie; in {$diff}, please comeback!");
+        }elseif ($meeting->meeting_to < $now){
+            $datetime1 = strtotime($meeting->meeting_to);
+            $datetime2 = strtotime($now);
+            $interval  = abs($datetime2 - $datetime1);
+            $minutesDiff   = round($interval / 60);
+            $diff = $this->convertToHoursMins($minutesDiff, '%02d hours %02d minutes');
+
+            $meeting_status = array('status' => false, 'message' => "Meeting already finished at {$meeting->meeting_to}(CT) ie; {$diff} ago!");
+        }else{
+            $meeting_status = array('status' => true);
+        }
+
+        $data = array(
+            'meeting_status' => $meeting_status
+        );
+
+        if ($this->meetings->identityValidation($meeting_id, $user))
+        {
+            $this->load->view('lounge/meet', $data);
+        }else{
+            $this->load->view('lounge/meet_no_access');
+        }
+
+        $this->load->view('footer');
+    }
+
+    private function convertToHoursMins($time, $format = '%02d:%02d') {
+        if ($time < 1) {
+            return;
+        }
+        $hours = floor($time / 60);
+        $minutes = ($time % 60);
+        return sprintf($format, $hours, $minutes);
+    }
+
 }
