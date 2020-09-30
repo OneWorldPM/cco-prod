@@ -294,7 +294,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                 </div>
             </div>
         </div>
-        <span class="pull-right text-red totalAttende totalAttende<?=getAppName($this->uri,$sessions->sessions_id) ?>">Total attendees: <b>0</b></span>
+        <span class="pull-right text-red totalAttende totalAttende<?=getAppName($sessions->sessions_id) ?>">Total attendees: <b>0</b></span>
 
         <!-- end: DYNAMIC TABLE -->
     </div>
@@ -474,7 +474,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 </div>
 
 <script>
-    socket.emit("getSessionViewUsers","<?=getAppName($this->uri,$sessions->sessions_id) ?>",function(resp){
+    socket.emit("getSessionViewUsers","<?=getAppName($sessions->sessions_id) ?>",function(resp){
         if(resp){
             var totalUsers=resp.users?resp.users.length:0;
             var sessionId=resp.sessionId;
