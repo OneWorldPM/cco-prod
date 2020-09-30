@@ -649,3 +649,40 @@
     background-color: #f25b20;
     border-color: #a8a8a8;
 }
+
+
+/************** Meeting ***************/
+.lounge-meetings-btn{
+    background-color: #06a88a;
+    padding: 7px 6px !important;
+}
+
+.lounge-new-meeting-btn{
+    padding: 7px 6px !important;
+}
+
+.lounge-video-call-btn{
+    background-color: #4b79e1;
+    border-color: #fff;
+}
+
+.lounge-video-call-btn:hover{
+    background-color: #4b79e1;
+    color: #03e41b;
+    border-color: #b8ffb8;
+}
+
+.attendees-suggestions-item{
+    cursor: pointer;
+}
+
+.selected-attendees-item{
+    margin-left: 20px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.remove-attendee{
+    cursor: pointer;
+}
+/********* End of Meeting ***************/

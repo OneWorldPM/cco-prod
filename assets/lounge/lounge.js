@@ -500,7 +500,6 @@ $(function() {
 
     socket.emit('getActiveUserListPerApp', socket_app_name);
     socket.on('activeUserListPerApp', function(data) {
-        console.log(data);
         $.each(data, function( number, userId ) {
             $('.active-icon[userId="'+userId+'"]').css('color', '#26ff49');
             $('.attendees-chat-list-item[userId="'+userId+'"]').attr('status', 'active');
@@ -511,6 +510,7 @@ $(function() {
     });
 
     socket.on('userActiveChangeInApp', function(data) {
+        socket.emit('getActiveUserListPerApp', socket_app_name);
         if (data.app == socket_app_name)
         {
             if (data.status == true)

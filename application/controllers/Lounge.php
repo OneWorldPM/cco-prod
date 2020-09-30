@@ -16,7 +16,8 @@ class Lounge extends CI_Controller
         if($this->session->userdata('token') != $get_user_token_details->token){
             redirect('login');
         }
-        $this->load->model('user/m_home', 'objhome');
+        $this->load->model('user/Attendees_Modal', 'attendees');
+        $this->load->model('user/Meetings_Modal', 'meetings');
     }
 
     public function index()
@@ -55,5 +56,38 @@ class Lounge extends CI_Controller
         }
 
         return $socket_config;
+    }
+
+    public function searchAttendees($searchTerm)
+    {
+        $result = $this->attendees->searchAttendees($searchTerm);
+
+        if ($result == false){
+            echo json_encode(array());
+            return;
+        }
+
+        echo json_encode($result);
+        return;
+    }
+
+    public function newMeeting()
+    {
+        if($this->meetings->newMeeting())
+        {
+            echo json_encode(array('status' => 'success'));
+        }else{
+            echo json_encode(array('status' => 'failed'));
+        }
+
+        return;
+    }
+
+    public function getMeetings($user)
+    {
+        $result = $this->meetings->getMeetings($user);
+
+        echo json_encode($result);
+        return;
     }
 }

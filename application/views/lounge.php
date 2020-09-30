@@ -1,6 +1,7 @@
 <!-- SECTION -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+<link href="<?= base_url() ?>assets/lounge/lounge.css?v=<?= rand(200, 300) ?>" rel="stylesheet">
 <style>
     .icon-home {
         color: #ae0201;
@@ -122,11 +123,16 @@
                 <div class="col-md-8">
                     <div class="grpchat-margin"></div>
                     <div class="panel panel-danger panel-cco">
+
                         <div class="panel-heading">
-                            <h3 class="panel-title">
+                            <span class="panel-title">
                                 Attendees
-                            </h3>
+                                <button type="button" class="lounge-meetings-btn btn btn-success btn-xs pull-right">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i> Meetings
+                                </button>
+                            </span>
                         </div>
+
                         <div class="one-to-one-chat-body panel-body">
                             <div class="col-md-4">
                                 <div class="input-group">
@@ -149,6 +155,7 @@
                                                 <i class="fa fa-user" aria-hidden="true"></i> Profile
                                             </span>
                                         </h3>-->
+<!--                                        <button type="button" class="btn btn-info btn-xs pull-right lounge-video-call-btn"><i class="fa fa-video-camera" aria-hidden="true"></i></button>-->
                                     </div>
                                     <div class="oto-chat-body panel-body">
                                         <ul class="oto-messages">
@@ -176,6 +183,101 @@
         </div>
     </div>
 </section>
+
+<div id="meetings-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fa fa-calendar" aria-hidden="true"></i> Your Meetings
+                    <button type="button" class="lounge-new-meeting-btn btn btn-success btn-xs pull-right">
+                        <i class="fa fa-calendar-plus-o" aria-hidden="true"></i> New Meeting
+                    </button>
+                </h5>
+            </div>
+            <div class="modal-body">
+                <table id="meetings_table" class="display cell-border compact stripe">
+                    <thead>
+                    <tr>
+                        <th>Topic</th>
+                        <th>Host</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody class="meetings-table-items">
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="new-meeting-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+                    Create New Meeting
+                </h5>
+            </div>
+            <div class="modal-body">
+
+                <div class="input-group m-b-10">
+                    <span class="input-group-addon" id="sizing-addon2">Meeting Topic</span>
+                    <input type="text" class="meeting-topic form-control" placeholder="Meeting name or topic" aria-describedby="sizing-addon2">
+                </div>
+
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker6'>
+                        <span class="input-group-addon" id="sizing-addon2">Meeting From</span>
+                        <input type='text' class="meeting-from form-control" placeholder="Use the icon on the right side to choose starting time" aria-describedby="sizing-addon2"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker7'>
+                        <span class="input-group-addon" id="sizing-addon2">Meeting To &nbsp; &nbsp; &nbsp;</span>
+                        <input type='text' class="meeting-to form-control" placeholder="Use the icon on the right side to choose ending time" aria-describedby="sizing-addon2"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="input-group m-b-10">
+                    <span class="input-group-addon" id="sizing-addon2">Attendees &nbsp; &nbsp; &nbsp;</span>
+                    <input type="text" class="attendees-search form-control" placeholder="Search by name" aria-describedby="sizing-addon2">
+                </div>
+                <ul class="attendees-suggestions list-group">
+                </ul>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Selected Attendees</h3>
+                    </div>
+                    <div class="selected-attendees-list panel-body" style="height: auto;">
+                    </div>
+                </div>
+
+                <small>Only invited attendees except you will be allowed to the meeting, hence no password is required!</small><br>
+                <small>All date and times are in Central Time Zone(CT)</small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="create-meeting btn btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://blueimp.github.io/JavaScript-MD5/js/md5.js"></script>
 <script>
@@ -211,10 +313,42 @@
             }
         });
 
+        $('#datetimepicker6').datetimepicker({
+            format: 'Y-M-D H:mm'
+        });
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false, //Important! See issue #1075
+            format: 'Y-M-D H:mm'
+        });
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+
 
     });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@9.17.0/dist/sweetalert2.all.min.js"></script>
-<link href="<?= base_url() ?>assets/lounge/lounge.css?v=<?= rand(1, 100) ?>" rel="stylesheet">
+
+<!--- Toastr -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
+
+<!--- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.3.5/dist/sweetalert2.all.min.js"></script>
+
+<!--- DataTable -->
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"/>
+<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+<!--- datetime picker -->
+<script src="<?= base_url() ?>assets/lounge/datetime-picker/bootstrap.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js" integrity="sha512-Izh34nqeeR7/nwthfeE0SI3c8uhFSnqxV0sI9TvTcXiFJkMd6fB644O64BRq2P/LA/+7eRvCw4GmLsXksyTHBg==" crossorigin="anonymous"></script>
+<link href="<?= base_url() ?>assets/lounge/datetime-picker/bootstrap-datetimepicker.css" rel="stylesheet">
+<script src="<?= base_url() ?>assets/lounge/datetime-picker/bootstrap-datetimepicker.js"></script>
+
 <script src="<?= base_url() ?>assets/lounge/lounge.js?v=<?= rand(1, 100) ?>"></script>
+<script src="<?= base_url() ?>assets/lounge/meetings.js?v=<?= rand(1, 100) ?>"></script>
