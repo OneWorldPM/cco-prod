@@ -194,7 +194,8 @@ class M_sessions extends CI_Model {
             'embed_html_code_presenter' => trim($post['embed_html_code_presenter']),
             'sessions_type_id' => $sessions_type_id,
             'sessions_tracks_id' => $sessions_tracks_id,
-            'sessions_type_status' => trim($post['sessions_type_status'])
+            'sessions_type_status' => trim($post['sessions_type_status']),
+            'tool_box_status' => (isset($post['tool_box_status'])) ? $post['tool_box_status'] : 1
         );
         $this->db->update("sessions", $set, array("sessions_id" => $post['sessions_id']));
         $sessions_id = $post['sessions_id'];
@@ -948,7 +949,7 @@ class M_sessions extends CI_Model {
                 'questions' => $questions,
                 'charting' => $charting
             );
-           
+
             $json_array = array("data" => json_encode($create_array), "session_reference" => (int) $result_sessions->sessions_id, "session_id" => (int) $result_sessions->sessions_id, "source" => "gravity");
 
             $data_to_post = "data=" . json_encode($create_array) . "&session_reference=" . (int) $result_sessions->sessions_id . "&session_id=" . (int) $result_sessions->sessions_id . "&source=gravity"; //if http_build_query causes any problem with JSON data, send this parameter directly in post.

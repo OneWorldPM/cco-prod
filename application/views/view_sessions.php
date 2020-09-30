@@ -43,7 +43,7 @@
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
-		 display: flex;
+        display: flex;
         display: flex;
     }
 
@@ -53,7 +53,7 @@
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
-		 display: flex;
+        display: flex;
         display: flex;
     }
 
@@ -280,15 +280,22 @@
     </div>
 </section>
 
-
-<div class="rightSticky" data-screen="customer">
-    <ul>
-        <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>TAKE NOTES</span></li>
-        <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>QUESTIONS</span></li>
-        <li data-type="resourcesSticky"><i class="fa fa-paperclip" aria-hidden="true"></i> <span>RESOURCES</span></li>
-        <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify">1</span> <span>MESSAGES</span></li>
-    </ul>
-</div>
+<?php
+if (isset($sessions)) {
+    if ($sessions->tool_box_status == "1") {
+        ?>
+        <div class="rightSticky" data-screen="customer">
+            <ul>
+                <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>TAKE NOTES</span></li>
+                <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>QUESTIONS</span></li>
+                <li data-type="resourcesSticky"><i class="fa fa-paperclip" aria-hidden="true"></i> <span>RESOURCES</span></li>
+                <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify">1</span> <span>MESSAGES</span></li>
+            </ul>
+        </div>
+        <?php
+    }
+}
+?>
 
 <div class="rightSticykPopup notesSticky" style="display: none">
     <div class="header"><span></span>
@@ -300,7 +307,6 @@
                     <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
                     <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
                     <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
-
                 </ul>
             </div>
         </div>
@@ -340,10 +346,8 @@
             Questions
         </div>
         <div class="questionElement">
-
         </div>
         <div id="ask_questions_section" style="background-color: #fff; border-radius: 5px; position: absolute; bottom: 0; width: 100%;">
-
             <div style="padding:5px;">
                 <div style="text-align: center; display: flex; " id="questions_section">
 
@@ -365,8 +369,6 @@
                 <span id='success_questions' style='color:green;'></span>
             </div>
         </div>
-
-
     </div>
 
 </div>
@@ -380,7 +382,6 @@
                     <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
                     <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
                     <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
-
                 </ul>
             </div>
         </div>
@@ -448,9 +449,9 @@
 <script>
 
     // let socket = io("https://socket.yourconference.live:443");
-    let socket = io("<?=getSocketUrl()?>");
+    let socket = io("<?= getSocketUrl() ?>");
 
-    socket.emit("ConnectSessioViewUsers","<?=getAppName($this->uri,$sessions->sessions_id) ?>")
+    socket.emit("ConnectSessioViewUsers", "<?= getAppName($this->uri, $sessions->sessions_id) ?>")
 </script>
 
 <script type="text/javascript">
@@ -521,8 +522,7 @@
             if (emjis_section_show_status == 0) {
                 $("#questions_emojis_section").show();
                 $("#questions_emjis_section_show").attr('data-questions_emjis_section_show_status', 1);
-            }
-            else {
+            } else {
                 $("#questions_emojis_section").hide();
                 $("#questions_emjis_section_show").attr('data-questions_emjis_section_show_status', 0);
             }
@@ -534,8 +534,7 @@
             if (emjis_section_show_status == 0) {
                 $("#emojis_section").show();
                 $("#emjis_section_show").attr('data-emjis_section_show_status', 1);
-            }
-            else {
+            } else {
                 $("#emojis_section").hide();
                 $("#emjis_section_show").attr('data-emjis_section_show_status', 0);
             }
@@ -546,8 +545,7 @@
             var questions = $("#questions").val();
             if (questions != "") {
                 $("#questions").val(questions + ' ' + value);
-            }
-            else {
+            } else {
                 $("#questions").val(value);
             }
         });
@@ -557,8 +555,7 @@
             var questions = $("#questions").val();
             if (questions != "") {
                 $("#questions").val(questions + ' ' + value);
-            }
-            else {
+            } else {
                 $("#questions").val(value);
             }
         });
@@ -568,8 +565,7 @@
             var questions = $("#questions").val();
             if (questions != "") {
                 $("#questions").val(questions + ' ' + value);
-            }
-            else {
+            } else {
                 $("#questions").val(value);
             }
         });
@@ -579,8 +575,7 @@
             var questions = $("#questions").val();
             if (questions != "") {
                 $("#questions").val(questions + ' ' + value);
-            }
-            else {
+            } else {
                 $("#questions").val(value);
             }
         });
@@ -590,8 +585,7 @@
             var questions = $("#questions").val();
             if (questions != "") {
                 $("#questions").val(questions + ' ' + value);
-            }
-            else {
+            } else {
                 $("#questions").val(value);
             }
         });
@@ -601,8 +595,7 @@
             var questions = $("#questions").val();
             if (questions != "") {
                 $("#questions").val(questions + ' ' + value);
-            }
-            else {
+            } else {
                 $("#questions").val(value);
             }
         });
@@ -612,8 +605,7 @@
             var send_message = $("#send_message").val();
             if (send_message != "") {
                 $("#send_message").val(send_message + ' ' + value);
-            }
-            else {
+            } else {
                 $("#send_message").val(value);
             }
         });
@@ -623,8 +615,7 @@
             var questions = $("#send_message").val();
             if (questions != "") {
                 $("#send_message").val(questions + ' ' + value);
-            }
-            else {
+            } else {
                 $("#send_message").val(value);
             }
         });
@@ -634,8 +625,7 @@
             var send_message = $("#send_message").val();
             if (send_message != "") {
                 $("#send_message").val(send_message + ' ' + value);
-            }
-            else {
+            } else {
                 $("#send_message").val(value);
             }
         });
@@ -645,8 +635,7 @@
             var send_message = $("#send_message").val();
             if (send_message != "") {
                 $("#send_message").val(send_message + ' ' + value);
-            }
-            else {
+            } else {
                 $("#send_message").val(value);
             }
         });
@@ -656,8 +645,7 @@
             var send_message = $("#send_message").val();
             if (send_message != "") {
                 $("#send_message").val(send_message + ' ' + value);
-            }
-            else {
+            } else {
                 $("#send_message").val(value);
             }
         });
@@ -667,8 +655,7 @@
             var questions = $("#send_message").val();
             if (questions != "") {
                 $("#send_message").val(questions + ' ' + value);
-            }
-            else {
+            } else {
                 $("#send_message").val(value);
             }
         });
@@ -694,8 +681,7 @@
                 $("#resource_show").removeClass('fa-caret-right');
                 $("#resource_show").addClass('fa-caret-down');
                 $("#resource_show").attr('data-resource_show_status', 1);
-            }
-            else {
+            } else {
                 $("#resource_display_status").hide();
                 $("#resource_show").addClass('fa-caret-right');
                 $("#resource_show").removeClass('fa-caret-down');
@@ -707,8 +693,7 @@
         $(document).on("click", "#send_message_btn", function () {
             if ($("#send_message").val() == "") {
                 $("#error_send_message").text("Enter Message").fadeIn('slow').fadeOut(5000);
-            }
-            else {
+            } else {
                 var send_message = $("#send_message").val();
                 var sessions_id = $("#sessions_id").val();
                 var sessions_group_chat_id = $("#sessions_group_chat_id").val();
@@ -730,8 +715,7 @@
         $(document).on("click", "#ask_questions_send", function () {
             if ($("#questions").val() == "") {
                 $("#error_questions").text("Enter Questions").fadeIn('slow').fadeOut(5000);
-            }
-            else {
+            } else {
                 var questions = $("#questions").val();
                 var sessions_id = $("#sessions_id").val();
                 $.ajax({
@@ -755,8 +739,7 @@
             {
                 if ($("#questions").val() == "") {
                     $("#error_questions").text("Enter Questions").fadeIn('slow').fadeOut(5000);
-                }
-                else {
+                } else {
                     var questions = $("#questions").val();
                     var sessions_id = $("#sessions_id").val();
                     $.ajax({
@@ -799,8 +782,7 @@
         $(document).on("click", "#briefcase_send", function () {
             if ($("#briefcase").val() == "") {
                 $("#error_briefcase").text("Enter Notes").fadeIn('slow').fadeOut(5000);
-            }
-            else {
+            } else {
                 var briefcase = $("#briefcase").val();
                 var sessions_id = $("#sessions_id").val();
                 $.ajax({
@@ -824,8 +806,7 @@
             {
                 if ($("#briefcase").val() == "") {
                     $("#error_briefcase").text("Enter Notes").fadeIn('slow').fadeOut(5000);
-                }
-                else {
+                } else {
                     var briefcase = $("#briefcase").val();
                     var sessions_id = $("#sessions_id").val();
                     $.ajax({
@@ -865,8 +846,7 @@
                         }
                     }
                 });
-            }
-            else {
+            } else {
                 $("#error_vote").text("Please Select Voting Option").fadeIn('slow').fadeOut(5000);
             }
         });
@@ -922,13 +902,11 @@
                         if (poll_vot_section_id_status != data.result.sessions_poll_question_id) {
                             $("#timer_sectiom").show();
                             timer(0);
-                        }
-                        else {
+                        } else {
                             $("#timer_sectiom").show();
                             timer(1);
                         }
-                    }
-                    else {
+                    } else {
                         $("#timer_sectiom").hide();
                     }
                     if (poll_vot_section_id_status != data.result.sessions_poll_question_id || poll_vot_section_last_status != data.result.status) {
@@ -950,13 +928,11 @@
                                     key++;
                                     if (data.result.select_option_id == val.poll_question_option_id) {
                                         $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
-                                    }
-                                    else {
+                                    } else {
                                         $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                                     }
                                 });
-                            }
-                            else {
+                            } else {
 
                                 $.each(data.result.option, function (key, val) {
                                     key++;
@@ -970,8 +946,7 @@
                                 $('#btn_vote_label').html('VOTED <i class="fa fa-check" id="fa_fa_check" style="font-size: 13px;"></i>');
 
                             }
-                        }
-                        else {
+                        } else {
                             $('#modal').modal('show');
                             $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'>Live Poll Results</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5>\n\
                                                         \n\<div id='result_section' style='padding-bottom: 10px;'></div></div></div></div>");
@@ -988,36 +963,31 @@
                                 key++;
                                 if (total_vote == 0) {
                                     var result_calculate = 0;
-                                }
-                                else {
+                                } else {
                                     var result_calculate = (val.total_vot * 100) / total_vote;
                                 }
                                 if (data.result.max_value == val.total_vot) {
                                     $("#result_section").append("<label>" + val.option + "</label><div class='progress'><div class='progress_bar_new' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
-                                }
-                                else {
+                                } else {
                                     $("#result_section").append("<label>" + val.option + "</label><div class='progress'><div class='progress-bar' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
                                 }
 
                                 if (typeof (val.compere_option) != "undefined" && val.compere_option !== null) {
                                     if (total_vote_compere_option == 0) {
                                         var result_calculate_compere = 0;
-                                    }
-                                    else {
+                                    } else {
                                         var result_calculate_compere = (val.compere_option * 100) / total_vote_compere_option;
                                     }
                                     if (data.result.compere_max_value == val.compere_option) {
                                         $("#result_section").append("<div class='progress_1'><div class='progress_bar_new_1' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
-                                    }
-                                    else {
+                                    } else {
                                         $("#result_section").append("<div class='progress_1'><div class='progress-bar_1' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
                                     }
                                 }
                             });
                         }
                     }
-                }
-                else {
+                } else {
                     $('#modal').modal('hide');
                     $("#timer_sectiom").hide();
                     $('#poll_vot_section_is_ended').val(1);
@@ -1044,16 +1014,14 @@
                                     key++;
                                     if (data.result.select_option_id == val.poll_question_option_id) {
                                         $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
-                                    }
-                                    else {
+                                    } else {
                                         $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                     }
                                 });
 
                                 $(':radio:not(:checked)').attr('disabled', true);
                                 $('#fa_fa_check_close_poll').show();
-                            }
-                            else {
+                            } else {
                                 $("#poll_vot_section").html("");
                             }
                         }
@@ -1075,8 +1043,7 @@
                 if (resultdata.status == 'success') {
                     $("#group_chat_section").show();
                     $("#sessions_group_chat_id").val(resultdata.result.sessions_group_chat_id);
-                }
-                else {
+                } else {
                     $("#group_chat_section").hide();
                 }
             }
@@ -1157,8 +1124,7 @@
             stop_music();
             $("#btn_vote").hide();
             $("#id_day_time").css("color", "red");
-        }
-        else {
+        } else {
             $('#poll_vot_section_is_ended').val(0);
             $("#btn_vote").show();
             $("#id_day_time").css("color", "#ef5e25");
