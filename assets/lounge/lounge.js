@@ -53,7 +53,7 @@ $(function() {
     socket.on('newLoungeGroupJoin', function(data) {
     });
 
-    $.get( "LoungeGroupChat/getAllChats", function(chatJson) {
+    $.get( base_url+"LoungeGroupChat/getAllChats", function(chatJson) {
         var chats = JSON.parse(chatJson);
 
         if (chats == 0)
@@ -130,7 +130,7 @@ $(function() {
         if (text == '')
             return;
 
-        $.post("LoungeGroupChat/newText",
+        $.post(base_url+"LoungeGroupChat/newText",
             {
                 'chat_text': text
             },
@@ -201,9 +201,9 @@ $(function() {
         toastr["warning"]("Under development!")
     });
 
-    $.get( "LoungeOtoChat/checkForUnreadChat/"+user_id, function(unreadMsgsFrom) {
+    $.get( base_url+"LoungeOtoChat/checkForUnreadChat/"+user_id, function(unreadMsgsFrom) {
         unreadMsgsFrom = JSON.parse(unreadMsgsFrom);
-        $.get( "user/UserDetails/getAllUsers", function(allUsers) {
+        $.get( base_url+"user/UserDetails/getAllUsers", function(allUsers) {
             var users = JSON.parse(allUsers);
 
             $.each( users, function( number, user ) {
@@ -295,7 +295,7 @@ $(function() {
 
                 $('.oto-messages').html('');
 
-                $.post("LoungeOtoChat/getChatsUserToUser/"+otherUserId,
+                $.post(base_url+"LoungeOtoChat/getChatsUserToUser/"+otherUserId,
                     {
                     },
                     function(data, status){
@@ -364,7 +364,7 @@ $(function() {
                                 }
                             });
 
-                            $.get( "LoungeOtoChat/readAllTextsOf/"+otherUserId, function() {});
+                            $.get( base_url+"LoungeOtoChat/readAllTextsOf/"+otherUserId, function() {});
 
                         }else{
                             toastr["error"]("Network problem!");
@@ -394,7 +394,7 @@ $(function() {
         if (text == '')
             return;
 
-        $.post("LoungeOtoChat/newText",
+        $.post(base_url+"LoungeOtoChat/newText",
             {
                 'chat_text': text,
                 'chat_from': user_id,
