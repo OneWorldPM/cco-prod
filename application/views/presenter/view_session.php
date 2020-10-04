@@ -237,6 +237,14 @@
         }
     }
 
+    
+    @media only screen and (min-width: 991px) and (max-width: 1539px) {
+        .nav-tabs > li{
+            width: 100%;
+        }
+    }
+
+
     @media only screen and (min-width: 2800px) {
         #embed_html_code_section {
             height: 1095px
@@ -248,6 +256,7 @@
         }
     }
 
+
     #favorite_question_list {
         height: 310px;
     }
@@ -258,6 +267,10 @@
 
     .nav-tabs > li.active > a {
         background-color: #5f5f5f !important;
+    }
+
+    .inbox .email-list,.inbox .wrap-list{
+        height: 280px;
     }
 
 
@@ -289,7 +302,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                 </div>
                 <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important; padding: 10px;">
                     <div class="row" id="orderContainer">
-                        <div class="col-md-2" style="padding-right: 0; padding-left: 8px;" id="leftOrder">
+                        <div class="col-lg-2 col-md-3" style="padding-right: 0; padding-left: 8px;" id="leftOrder">
                             <?php
                             if (isset($music_setting)) {
                                 if ($music_setting->music_setting != "") {
@@ -329,11 +342,11 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                             </div>
 
                         </div>
-                        <div class="col-md-8" id="embed_html_code_section" style="text-align: center; padding-right: 0; padding-left: 0;">
+                        <div class="col-lg-8 col-md-6" id="embed_html_code_section" style="text-align: center; padding-right: 0; padding-left: 0;margin-bottom: 14px">
                             <?= isset($sessions) ? $sessions->embed_html_code_presenter : "" ?>
                         </div>
-                        <div class="col-md-2" style="padding-left: 0;padding-right: 6px" id="rightOrder">
-                            <fieldset style="margin: 0px 0px 0px 0px; padding: 0px;">
+                        <div class="col-lg-2 col-md-3" style="padding-left: 0;padding-right: 6px;" id="rightOrder">
+                            <fieldset style="margin: 0px 0px 0px 0px; padding: 0px;min-height:180px">
                                 <div>
                                     <h2 style='margin-bottom: 5px; color: #ffffff; font-weight: 700; font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'>Host Chat</h2>
                                 </div>
@@ -344,7 +357,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                                             <!-- start: EMAIL LIST -->
                                             <div class="col email-list" style="width: 100% !important">
                                                 <div class="wrap-list" style="width: 100% !important">
-                                                    <ul class="messages-list perfect-scrollbar allmessage" style="top: 0px;">
+                                                    <ul class="messages-list perfect-scrollbar allmessage" style="top: 0px;max-height: 280px;">
 
                                                     </ul>
                                                 </div>
@@ -352,8 +365,8 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                                             <!-- end: EMAIL LIST -->
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <hr style="border-top:1px solid #b2b7bb">
+                                    <div class="row" style="margin-top:-75px">
+                                        <hr style="border-top:1px solid #b2b7bb;">
                                         <div class="col-md-11 col-xs-9" style="padding-right: 0px; padding-left: 0px">
                                             <div class="input-group">
                                                 <span class="input-group-addon" style="padding: 5px 6px; background-color:gray; border-color: gray;"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png" id="emjis_section_show" title="Check to Show Emoji" data-emjis_section_show_status="0" style="width: 20px; height: 20px;" alt=""/></span>
@@ -427,14 +440,17 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 <script type="text/javascript">
     $(document).ready(function () {
         var $iframe = $("#embed_html_code_section iframe");
+
+        $iframe.css("height", "100%")
+
+
         if ($iframe.attr("width") == "1280") {
             $iframe.css("width", "100%")
             if (window.innerWidth <= 991) {
-                console.log("küçüldü")
                 $("#rightOrder").css("margin-top", "185px");
             }
         }
-
+    
         $(document).on("click", "#btn_view_poll", function () {
             $("#view_poll_table").show();
         });
@@ -864,7 +880,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                         $("#poll_vot_section_last_status").val(data.result.status);
                         if (data.result.poll_status == 1) {
                             $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 style='margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Live Poll</h2>\n\
+            \n\<h2 style='border:1px solid #9a9a9a;margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Live Poll</h2>\n\
 <div class='col-md-12'>\n\
 \n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5></div>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
