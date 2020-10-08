@@ -19,3 +19,22 @@ function getSocketUrl(){
 
     return $localName?$localName:"https://socket.yourconference.live:443";
 }
+
+
+function sessionRightBarControl($right_bar, $control, $text="success")
+{
+    $par = "";
+    if ($right_bar) {
+        $right_bar = explode(",", $right_bar);
+
+        foreach ($right_bar as $value) {
+            if ($value == $control) {
+                $par = $text;
+                break;
+            }
+        }
+
+    }
+
+    return $par;
+}
