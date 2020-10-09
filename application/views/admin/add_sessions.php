@@ -235,16 +235,19 @@
                                             }
                                             ?>
                                         </div>
-                                             <?= (isset($sessions_edit) && !empty($sessions_edit)) ? '
+                                            <?php
+                                            $right_bar=isset($sessions_edit->right_bar)?$sessions_edit->right_bar:"";
+                                            ?>
+
                                             <label class="col-md-12 text-large" style="padding:0">Select Session Properties</label>
                                             <hr>
                                             <div class="form-group">
-                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($sessions_edit->right_bar, "resources", "checked")?> value="resources">Resources</label>
-                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($sessions_edit->right_bar, "chat", "checked")?> value="chat">Chat</label>
-                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($sessions_edit->right_bar, "notes", "checked")?> value="notes">Notes</label>
-                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($sessions_edit->right_bar, "questions", "checked")?> value="questions">Questions</label>
-                                            </div>'
-                                            : "" ?>
+                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($right_bar, "resources", "checked")?> value="resources">Resources</label>
+                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($right_bar, "chat", "checked")?> value="chat">Chat</label>
+                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($right_bar, "notes", "checked")?> value="notes">Notes</label>
+                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($right_bar, "questions", "checked")?> value="questions">Questions</label>
+                                            </div>
+
                                         <div class="row" style="margin-top: 20px;">
                                             <div class="col-md-12">
                                                 <div class="form-group">

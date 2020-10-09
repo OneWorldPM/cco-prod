@@ -57,6 +57,12 @@ class M_sessions extends CI_Model {
 
     function createSessions() {
         $post = $this->input->post();
+
+        $session_right_bar = "";
+        if (isset($post["session_right_bar"])) {
+            $session_right_bar = implode(",", $post["session_right_bar"]);
+        }
+
         if (!empty($post['sessions_type'])) {
             $sessions_type_id = implode(",", $post['sessions_type']);
         } else {
@@ -81,7 +87,9 @@ class M_sessions extends CI_Model {
             'sessions_type_id' => $sessions_type_id,
             'sessions_tracks_id' => $sessions_tracks_id,
             'sessions_type_status' => trim($post['sessions_type_status']),
-            "reg_date" => date("Y-m-d h:i")
+            "reg_date" => date("Y-m-d h:i"),
+            'right_bar' => $session_right_bar
+
         );
         $this->db->insert("sessions", $set);
         $sessions_id = $this->db->insert_id();
