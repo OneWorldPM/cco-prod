@@ -119,7 +119,7 @@ class Login extends CI_Controller {
                         'customer_session' => $response_array->session,
                         'iat' => $response_array->iat,
                         'exp' => $response_array->exp,
-                        'aud' => $response_array->aud,
+                        'aud' => json_encode($response_array->aud),
                         'jti' => $response_array->jti
                     );
                     $this->db->update("customer_master", $set_update_array, array("cust_id" => $user_details->cust_id));
@@ -162,7 +162,7 @@ class Login extends CI_Controller {
                         'customer_session' => $response_array->session,
                         'iat' => $response_array->iat,
                         'exp' => $response_array->exp,
-                        'aud' => $response_array->aud,
+                        'aud' => json_encode($response_array->aud),
                         'jti' => $response_array->jti,
                         'address' => "",
                         'city' => "",
