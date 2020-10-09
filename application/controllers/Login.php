@@ -35,9 +35,9 @@ class Login extends CI_Controller {
                 $session = array(
                     'cid' => $data['cust_id'],
                     'cname' => $data['first_name'],
-                    'fullname' => $data['first_name'].' '.$data['last_name'],
+                    'fullname' => $data['first_name'] . ' ' . $data['last_name'],
                     'email' => $data['email'],
-                     'token' => $token,
+                    'token' => $token,
                     'userType' => 'user'
                 );
                 $this->session->set_userdata($session);
@@ -52,11 +52,11 @@ class Login extends CI_Controller {
     function register_login($cust_id) {
         $data = $this->objlogin->register_login($cust_id);
         if ($data) {
-             $token = $this->objlogin->update_user_token($data['cust_id']);
+            $token = $this->objlogin->update_user_token($data['cust_id']);
             $session = array(
                 'cid' => $data['cust_id'],
                 'cname' => $data['first_name'],
-                'fullname' => $data['first_name'].' '.$data['last_name'],
+                'fullname' => $data['first_name'] . ' ' . $data['last_name'],
                 'email' => $data['email'],
                 'token' => $token,
                 'userType' => 'user'
@@ -81,13 +81,13 @@ class Login extends CI_Controller {
     function cco_authentication() {
         $token = $this->input->get('token');
         $response_array = json_decode(base64_decode(str_replace('_', '/', str_replace('-', '+', explode('.', $token)[1]))));
-		
+
         if (isset($response_array) && !empty($response_array)) {
             $identifier = $response_array->identity->identifier;
             $member_id = substr($identifier, 4);
             $curl = curl_init();
             curl_setopt_array($curl, array(
-                CURLOPT_URL => "https://uat.clinicaloptions.com/api/external?memberid=".$member_id."&SecurityToken=OUqrB8i6Bc002GZGtZHod49QVBdPjEo4qu1vxnHWmnhe5MSf7kW1v62yXhINaal7JK3tuC3Z0gBuGEpwh8l5SQ%3D%3D",
+                CURLOPT_URL => "https://uat.clinicaloptions.com/api/external?memberid=" . $member_id . "&SecurityToken=OUqrB8i6Bc002GZGtZHod49QVBdPjEo4qu1vxnHWmnhe5MSf7kW1v62yXhINaal7JK3tuC3Z0gBuGEpwh8l5SQ%3D%3D",
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_SSL_VERIFYPEER => FALSE,
                 CURLOPT_ENCODING => "",
@@ -104,7 +104,7 @@ class Login extends CI_Controller {
                 $or_where = '(email = "' . $member_array->emailAddress . '")';
                 $this->db->where($or_where);
                 $customer = $this->db->get('customer_master');
-				
+
                 if ($customer->num_rows() > 0) {
                     $user_details = $customer->row();
                     $set_update_array = array(
@@ -119,6 +119,7 @@ class Login extends CI_Controller {
                         'customer_session' => $response_array->session,
                         'iat' => $response_array->iat,
                         'exp' => $response_array->exp,
+                        'aud' => $response_array->aud,
                         'jti' => $response_array->jti
                     );
                     $this->db->update("customer_master", $set_update_array, array("cust_id" => $user_details->cust_id));
@@ -128,7 +129,7 @@ class Login extends CI_Controller {
                         'cname' => $user_details->first_name,
                         'fullname' => $user_details->first_name . " " . $user_details->last_name,
                         'email' => $user_details->email,
-                         'token' => $token,
+                        'token' => $token,
                         'userType' => 'user'
                     );
                     $this->session->set_userdata($session);
@@ -161,6 +162,7 @@ class Login extends CI_Controller {
                         'customer_session' => $response_array->session,
                         'iat' => $response_array->iat,
                         'exp' => $response_array->exp,
+                        'aud' => $response_array->aud,
                         'jti' => $response_array->jti,
                         'address' => "",
                         'city' => "",
@@ -171,7 +173,7 @@ class Login extends CI_Controller {
                     $cust_id = $this->db->insert_id();
                     $user_details = $this->db->get_where("customer_master", array("cust_id" => $cust_id))->row();
                     if (!empty($user_details)) {
-                         $token = $this->objlogin->update_user_token($user_details->cust_id);
+                        $token = $this->objlogin->update_user_token($user_details->cust_id);
                         $session = array(
                             'cid' => $user_details->cust_id,
                             'cname' => $user_details->first_name,
