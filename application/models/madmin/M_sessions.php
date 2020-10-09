@@ -842,9 +842,10 @@ class M_sessions extends CI_Model {
                         'private_notes' => "",
                         'state_changes' => array("0" => array("0" => 1592865240, "1" => 0), "0" => array("0" => 1592865240, "1" => 0)),
                         'session' => $sessions_id,
-                        'identity' => array("identity_id" => $val->cust_id, 'name' => $val->first_name, 'email' => $val->email, 'firstname' => $val->first_name, 'lastname' => $val->last_name, 'degree' => $val->degree, 'specialtyName' => $val->specialty, 'city' => $val->city, 'zip' => $val->zipcode, 'state' => $val->state, 'country' => $val->country, 'identifier' => $val->identifier_id, 'profile' => array('org_name' => '', 'org_title' => '', 'org_website' => '', 'bio' => '', 'twitter' => '', 'linkedin' => '', 'country' => '', 'picture_url' => '', 'last_updated' => 0)),
+                        'identity' => array('identifier' => $val->identifier_id,'name' => $val->first_name, 'email' => $val->email, 'firstname' => $val->first_name, 'lastname' => $val->last_name, 'degree' => $val->degree, 'specialtyName' => $val->specialty, 'city' => $val->city, 'zip' => $val->zipcode, 'state' => $val->state, 'country' => $val->country, "identity_id" => $val->cust_id, 'profile' => array('org_name' => '', 'org_title' => '', 'org_website' => '', 'bio' => '', 'twitter' => '', 'linkedin' => '', 'country' => '', 'picture_url' => '', 'last_updated' => 0)),
                         'iat' => $val->iat,
                         'exp' => $val->exp,
+                        'aud' => array('string' => array('2')),
                         'jti' => $val->jti
                     );
                 }
@@ -1041,9 +1042,10 @@ class M_sessions extends CI_Model {
                         'private_notes' => "",
                         'state_changes' => array("0" => array("0" => 1592865240, "1" => 0), "0" => array("0" => 1592865240, "1" => 0)),
                         'session' => $sessions_id,
-                        'identity' => array("identity_id" => $val->cust_id, 'name' => $val->first_name, 'email' => $val->email, 'firstname' => $val->first_name, 'lastname' => $val->last_name, 'degree' => $val->degree, 'specialtyName' => $val->specialty, 'city' => $val->city, 'zip' => $val->zipcode, 'state' => $val->state, 'country' => $val->country, 'identifier' => $val->identifier_id, 'profile' => array('org_name' => '', 'org_title' => '', 'org_website' => '', 'bio' => '', 'twitter' => '', 'linkedin' => '', 'country' => '', 'picture_url' => '', 'last_updated' => 0)),
+                        'identity' => array('identifier' => $val->identifier_id,'name' => $val->first_name, 'email' => $val->email, 'firstname' => $val->first_name, 'lastname' => $val->last_name, 'degree' => $val->degree, 'specialtyName' => $val->specialty, 'city' => $val->city, 'zip' => $val->zipcode, 'state' => $val->state, 'country' => $val->country, "identity_id" => $val->cust_id, 'profile' => array('org_name' => '', 'org_title' => '', 'org_website' => '', 'bio' => '', 'twitter' => '', 'linkedin' => '', 'country' => '', 'picture_url' => '', 'last_updated' => 0)),
                         'iat' => $val->iat,
                         'exp' => $val->exp,
+                        'aud' => array('string' => array('2')),
                         'jti' => $val->jti
                     );
                 }
@@ -1162,7 +1164,7 @@ class M_sessions extends CI_Model {
                 'questions' => $questions,
                 'charting' => $charting
             );
-
+          
             $json_array = array("data" => json_encode($create_array), "session_reference" => (int) $result_sessions->sessions_id, "session_id" => (int) $result_sessions->sessions_id, "source" => "gravity");
 
             $data_to_post = "data=" . json_encode($create_array) . "&session_reference=" . (int) $result_sessions->sessions_id . "&session_id=" . (int) $result_sessions->sessions_id . "&source=gravity"; //if http_build_query causes any problem with JSON data, send this parameter directly in post.
