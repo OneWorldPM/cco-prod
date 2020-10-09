@@ -235,6 +235,7 @@
                                             }
                                             ?>
                                         </div>
+                                             <?= (isset($sessions_edit) && !empty($sessions_edit)) ? '
                                             <label class="col-md-12 text-large" style="padding:0">Select Session Properties</label>
                                             <hr>
                                             <div class="form-group">
@@ -242,8 +243,8 @@
                                                 <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($sessions_edit->right_bar, "chat", "checked")?> value="chat">Chat</label>
                                                 <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($sessions_edit->right_bar, "notes", "checked")?> value="notes">Notes</label>
                                                 <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($sessions_edit->right_bar, "questions", "checked")?> value="questions">Questions</label>
-                                            </div>
-
+                                            </div>'
+                                            : "" ?>
                                         <div class="row" style="margin-top: 20px;">
                                             <div class="col-md-12">
                                                 <div class="form-group">
