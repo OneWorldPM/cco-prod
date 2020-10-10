@@ -248,6 +248,20 @@
                                                 <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($right_bar, "questions", "checked")?> value="questions">Questions</label>
                                             </div>
 
+                                            <div class="form-group">
+                                                <label>Sessions Logo</label>
+                                                <input type="file" class="form-control" name="sessions_logo" id="sessions_logo">
+                                                <?php
+                                                if (isset($sessions_edit)) {
+                                                    if ($sessions_edit->sessions_logo != "") {
+                                                        ?>
+                                                        <img src="<?= base_url() ?>uploads/sessions_logo/<?= $sessions_edit->sessions_logo ?>" style="object-fit: contain;height: 100px; width: 100px;">
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </div>
+
                                         <div class="row" style="margin-top: 20px;">
                                             <div class="col-md-12">
                                                 <div class="form-group">

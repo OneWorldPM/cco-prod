@@ -53,11 +53,14 @@ class Sessions extends CI_Controller {
     }
 
     public function view($sessions_id) {
-        $data["sessions"] = $this->objsessions->viewSessionsData($sessions_id);
+        $sesions=$this->objsessions->viewSessionsData($sessions_id);
+        $header_data["sesions_logo"]=$sesions->sessions_logo;
+
+        $data["sessions"] = $sesions;
         $data["session_resource"] = $this->objsessions->get_session_resource($sessions_id);
         $data['music_setting'] = $this->objsessions->get_music_setting();
 
-        $this->load->view('header');
+        $this->load->view('header',$header_data);
         $this->load->view('view_sessions', $data);
         $this->load->view('footer');
     }
