@@ -58,6 +58,7 @@ class M_sessions extends CI_Model {
     function createSessions() {
         $post = $this->input->post();
 
+
         $session_right_bar = "";
         if (isset($post["session_right_bar"])) {
             $session_right_bar = implode(",", $post["session_right_bar"]);
@@ -94,6 +95,19 @@ class M_sessions extends CI_Model {
         $this->db->insert("sessions", $set);
         $sessions_id = $this->db->insert_id();
         if ($sessions_id > 0) {
+
+
+
+            if ($_FILES['sessions_logo']['name'] != "") {
+
+                $this->load->library('upload');
+                $this->upload->initialize($this->set_upload_logo_options());
+                $this->upload->do_upload('sessions_logo');
+                $file_upload_name = $this->upload->data();
+                $this->db->update('sessions', array('sessions_logo' => $file_upload_name['file_name']), array('sessions_id' => $sessions_id));
+            }
+
+
             if ($_FILES['sessions_photo']['name'] != "") {
                 $_FILES['sessions_photo']['name'] = $_FILES['sessions_photo']['name'];
                 $_FILES['sessions_photo']['type'] = $_FILES['sessions_photo']['type'];
@@ -167,6 +181,16 @@ class M_sessions extends CI_Model {
         $config['file_name'] = "sessions_" . $randname;
         return $config;
     }
+    function set_upload_logo_options() {
+        $this->load->helper('string');
+        $randname = random_string('numeric', '8');
+        $config = array();
+        $config['upload_path'] = './uploads/sessions_logo/';
+        $config['allowed_types'] = 'jpg|png';
+        $config['overwrite'] = FALSE;
+        $config['file_name'] = "logo_" . $randname;
+        return $config;
+    }
 
     function generateRandomString($length = 8) {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -217,6 +241,23 @@ class M_sessions extends CI_Model {
         $this->db->update("sessions", $set, array("sessions_id" => $post['sessions_id']));
         $sessions_id = $post['sessions_id'];
         if ($sessions_id > 0) {
+
+
+            if ($_FILES['sessions_logo']['name'] != "") {
+                $this->db->select('sessions_logo');
+                $this->db->from('sessions');
+                $this->db->where("sessions_id", $post['sessions_id']);
+                $session = $this->db->get()->row();
+                unlink("./uploads/sessions_logo/".$session->sessions_logo);
+
+
+                $this->load->library('upload');
+                $this->upload->initialize($this->set_upload_logo_options());
+                $this->upload->do_upload('sessions_logo');
+                $file_upload_name = $this->upload->data();
+                $this->db->update('sessions', array('sessions_logo' => $file_upload_name['file_name']), array('sessions_id' => $sessions_id));
+            }
+
             if ($_FILES['sessions_photo']['name'] != "") {
                 $_FILES['sessions_photo']['name'] = $_FILES['sessions_photo']['name'];
                 $_FILES['sessions_photo']['type'] = $_FILES['sessions_photo']['type'];

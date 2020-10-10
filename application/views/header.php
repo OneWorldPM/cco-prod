@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +80,17 @@
             border-color: #f05d1f;
         }
 
-
+        .logo2{
+            border-left: 1px solid black;
+            float: left;
+            padding-left: 15px;
+            margin-top: 5px;
+        }
+        .logo2 img{
+            object-fit: contain;
+            width: 99px;
+            height: 50px;
+        }
 
     </style>
 
@@ -108,6 +119,16 @@
                         </a>
                     </div>
                 <?php } ?>
+
+                <?php
+                if(isset($sesions_logo)){
+                    ?>
+                    <div class="logo2">
+                        <img src="<?=base_url()."uploads/sessions_logo/".$sesions_logo?>">
+                    </div>
+                    <?php
+                }
+                ?>
                 <!--END: LOGO-->
                 <!--MOBILE MENU -->
                 <div class="nav-main-menu-responsive">
