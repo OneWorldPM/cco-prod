@@ -171,8 +171,6 @@ class Login extends CI_Controller {
                         'aud' => json_encode($response_array->aud),
                         'jti' => $response_array->jti,
                         'address' => "",
-                        'city' => "",
-                        'state' => "",
                         'register_date' => date("Y-m-d h:i")
                     );
                     $this->db->insert("customer_master", $set);
