@@ -1,6 +1,9 @@
 <link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=<?= rand(1, 100) ?>" rel="stylesheet">
 <style>
 
+    .wrapper{
+        background-color: black;
+    }
     .progress-bar {
         height: 100%;
         padding: 3px;
@@ -182,6 +185,16 @@
         }
     }
 
+
+
+    .borderFrame{
+        margin-top: 100px;
+        width: 100%;
+        background-color: #F15A23;
+        height: 29px;
+    }
+
+
 </style>
 
 
@@ -279,6 +292,7 @@
         <!-- END: SECTION -->
     </div>
 </section>
+<div class="borderFrame"></div>
 
 
 <?php
