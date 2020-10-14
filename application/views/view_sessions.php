@@ -222,10 +222,10 @@
                             </div>
                         </div>
                     </div>
-                    <p class="currentTime">
+<!--                    <p class="currentTime">
                         CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>
                         <span class="borderFooter">test</span>
-                    </p>
+                    </p>-->
                     <div class="col-md-12">
                         <?php
                         if (isset($music_setting)) {
