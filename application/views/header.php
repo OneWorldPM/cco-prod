@@ -124,7 +124,7 @@
                 if(isset($sesions_logo)){
                     ?>
                     <div class="logo2">
-                        <img src="<?=base_url()."uploads/sessions_logo/".$sesions_logo?>">
+                        <img src="<?=base_url()."uploads/sessions_logo/".$sesions_logo?>" onerror="$(this).parent().remove()">
                     </div>
                     <?php
                 }
