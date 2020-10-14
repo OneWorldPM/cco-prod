@@ -1,10 +1,6 @@
 <link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=<?= rand(1, 100) ?>" rel="stylesheet">
 <style>
 
-    .wrapper{
-        background-color: black;
-    }
-
     .progress-bar {
         height: 100%;
         padding: 3px;
@@ -170,13 +166,22 @@
         margin-left: 5px;
     }
 
-
-    .borderFrame{
-        margin-top: 100px;
-        width: 100%;
+    .borderFooter {
+        position: absolute;
+        display: block !important;
         background-color: #F15A23;
-        height: 29px;
+        width: 100%;
+        height: 24px;
+        z-index: 124124124;
+        top: 40px;
     }
+
+    @media only screen and (max-width: 1548px) {
+        .borderFooter {
+            display: none !important;
+        }
+    }
+
 </style>
 
 
@@ -219,6 +224,7 @@
                     </div>
                     <p class="currentTime">
                         CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>
+                        <span class="borderFooter">test</span>
                     </p>
                     <div class="col-md-12">
                         <?php
@@ -273,8 +279,6 @@
         <!-- END: SECTION -->
     </div>
 </section>
-<div class="borderFrame"></div>
-
 
 
 <?php
