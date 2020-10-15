@@ -265,6 +265,14 @@
                                         <div class="row" style="margin-top: 20px;">
                                             <div class="col-md-12">
                                                 <div class="form-group">
+                                                    <label for="sel1">Select Sponsor Type</label>
+
+                                                    <select class="form-control" name="sponsor_type">
+                                                        <option value="SPONSORED BY" <?=isset($sessions_edit)?($sessions_edit->sponsor_type=="SPONSORED BY"?"selected":""):""?>>SPONSORED BY</option>
+                                                        <option value="EDUCATED BY" <?=isset($sessions_edit)?($sessions_edit->sponsor_type=="EDUCATED BY"?"selected":""):""?>>EDUCATED BY</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
                                                     <button type="button" class="btn btn-primary btn-o next-step btn-wide" id="btn_add_new_presenter">   
                                                         <i class="fa fa-plus"></i>  Add New Presenter
                                                     </button>
