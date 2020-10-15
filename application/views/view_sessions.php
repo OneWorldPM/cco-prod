@@ -177,6 +177,7 @@
         background-color: #F15A23;
         height: 29px;
     }
+
 </style>
 
 
@@ -204,11 +205,11 @@
                                         <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
                                             <div class="col-sm-12">
                                                 <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
-                                                    <div class="" style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
+                                                    <div class=""  style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
                                                         TIME LEFT : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
                                                     </div>
                                                 </div>
-                                                <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 5px;">
+                                                <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 15px;">
                                                 </div>
                                             </div>
                                         </div>
@@ -217,9 +218,14 @@
                             </div>
                         </div>
                     </div>
-                    <p class="currentTime">
+<!--                    <p class="currentTime">
                         CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>
+
                     </p>
+
+                        <span class="borderFooter">test</span>
+                    </p>-->
+
                     <div class="col-md-12">
                         <?php
                         if (isset($music_setting)) {
@@ -247,15 +253,21 @@
                                     <div>
                                         <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Resources <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
                                     </div>
-                                    <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 150px;" id="resource_display_status">
+                                    <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 240px;" id="resource_display_status">
                                         <?php
                                         if (!empty($session_resource)) {
                                             foreach ($session_resource as $val) {
                                                 ?>
-                                                <div class="row" style="margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid;">
-                                                    <div class="col-md-12"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
-                                                    <div class="col-md-12"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
-                                                    <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
+                                                <div class="row" style="margin-bottom: 10px; padding-bottom: 5px">
+                                                    <div class="col-md-8"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
+                                                    <?php
+                                                    if($val->upload_published_name){
+                                                        ?>
+                                                        <div class="col-md-8"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;margin-right: 15px" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
                                                 </div>
                                                 <?php
                                             }
@@ -393,15 +405,21 @@ if (isset($sessions)) {
             Resources
         </div>
         <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
-            <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 150px;" id="resource_display_status">
+            <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 240px;" id="resource_display_status">
                 <?php
                 if (!empty($session_resource)) {
                     foreach ($session_resource as $val) {
                         ?>
-                        <div class="row" style="margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid;">
-                            <div class="col-md-12"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
-                            <div class="col-md-12"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
-                            <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
+                        <div class="row" style="margin-bottom: 10px; padding-bottom: 5px">
+                            <div class="col-md-8"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
+                            <?php
+                            if($val->upload_published_name){
+                                ?>
+                                <div class="col-md-8"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
+                                <?php
+                            }
+                            ?>
+                            <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;margin-right: 15px" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
                         </div>
                         <?php
                     }
@@ -1053,13 +1071,16 @@ if (isset($sessions)) {
                     if (data.result.poll_status == 1 && data.result.timer_status == 1) {
                         if (poll_vot_section_id_status != data.result.sessions_poll_question_id) {
                             $("#timer_sectiom").show();
+                            $("#popup_title_lbl").css({"border-top-right-radius": "0px", "border-top-left-radius": "0px"});
                             timer(0);
                         } else {
                             $("#timer_sectiom").show();
+                            $("#popup_title_lbl").css({"border-top-right-radius": "0px", "border-top-left-radius": "0px"});
                             timer(1);
                         }
                     } else {
                         $("#timer_sectiom").hide();
+                        $("#popup_title_lbl").css({"border-top-right-radius": "15px", "border-top-left-radius": "15px"});
                     }
                     if (poll_vot_section_id_status != data.result.sessions_poll_question_id || poll_vot_section_last_status != data.result.status) {
                         $("#poll_vot_section_id_status").val(data.result.sessions_poll_question_id);
@@ -1067,7 +1088,7 @@ if (isset($sessions)) {
                         if (data.result.poll_status == 1) {
                             $('#modal').modal('show');
                             $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 style='margin-bottom: 20px; color: #000; font-weight: 800;font-size: 24px; padding: 15px 5px 25px 10px; background-color: #ebeaea;'>" + data.result.question + "</h2>\n\
+            \n\<h2 id='popup_title_lbl' style='margin-bottom: 20px; color: #000; font-weight: 800;font-size: 24px; padding: 15px 5px 25px 10px; background-color: #ebeaea;'>" + data.result.question + "</h2>\n\
 <div class='col-md-12'>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
@@ -1100,7 +1121,7 @@ if (isset($sessions)) {
                             }
                         } else {
                             $('#modal').modal('show');
-                            $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'>Live Poll Results</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5>\n\
+                            $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Live Poll Results</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5>\n\
                                                         \n\<div id='result_section' style='padding-bottom: 10px;'></div></div></div></div>");
                             var total_vote = 0;
                             var total_vote_compere_option = 0;
@@ -1142,6 +1163,7 @@ if (isset($sessions)) {
                 } else {
                     $('#modal').modal('hide');
                     $("#timer_sectiom").hide();
+                    $("#popup_title_lbl").css({"border-top-right-radius": "15px", "border-top-left-radius": "15px"});
                     $('#poll_vot_section_is_ended').val(1);
 
                     $.ajax({
@@ -1152,7 +1174,7 @@ if (isset($sessions)) {
                         success: function (data) {
                             if (data.status == "success") {
                                 $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'>Live Poll</h2>\n\
+            \n\<h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Live Poll</h2>\n\
 <div class='col-md-12'>\n\
 \n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5></div>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
