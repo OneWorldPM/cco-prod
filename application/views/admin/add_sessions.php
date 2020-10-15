@@ -39,9 +39,13 @@
                                         <label class="text-large">Unique Identifier :</label>
                                         <input type="text" name="unique_identifier" id="unique_identifier" readonly value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_id : $unique_identifier_id ?>" class="form-control" placeholder="Unique Identifier">
                                     </div>
+                                      <div class="form-group">
+                                        <label class="text-large">Zoom Meeting Link :</label>
+                                        <input type="text" name="zoom_link" id="zoom_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_link : "" ?>" class="form-control" placeholder="Zoom Meeting Link">
+                                    </div>
                                     <div class="form-group">
-                                        <label class="text-large">Zoom Link :</label>
-                                        <input type="text" name="zoom_link" id="zoom_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_link : "" ?>" class="form-control" placeholder="Zoom Link">
+                                        <label class="text-large">Password :</label>
+                                        <input type="text" name="zoom_password" id="zoom_password" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_password : "" ?>" class="form-control" placeholder="Password">
                                     </div>
                                     <!--                                    <div class="form-group">
                                                                             <label class="text-large">Presenter:</label>
