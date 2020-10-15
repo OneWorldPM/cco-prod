@@ -90,7 +90,9 @@ class M_sessions extends CI_Model {
             'sessions_tracks_id' => $sessions_tracks_id,
             'sessions_type_status' => trim($post['sessions_type_status']),
             "reg_date" => date("Y-m-d h:i"),
-            'right_bar' => $session_right_bar
+            'right_bar' => $session_right_bar,
+            'sponsor_type' => $post['sponsor_type'],
+
 
         );
         $this->db->insert("sessions", $set);
@@ -238,7 +240,9 @@ class M_sessions extends CI_Model {
             'sessions_tracks_id' => $sessions_tracks_id,
             'sessions_type_status' => trim($post['sessions_type_status']),
             'tool_box_status' => (isset($post['tool_box_status'])) ? $post['tool_box_status'] : 1,
-            'right_bar' => $session_right_bar
+            'sponsor_type' => $post['sponsor_type'],
+            'right_bar' => $session_right_bar,
+
         );
         $this->db->update("sessions", $set, array("sessions_id" => $post['sessions_id']));
         $sessions_id = $post['sessions_id'];

@@ -4,6 +4,7 @@
     .wrapper{
         background-color: black;
     }
+
     .progress-bar {
         height: 100%;
         padding: 3px;
@@ -169,23 +170,6 @@
         margin-left: 5px;
     }
 
-    .borderFooter {
-        position: absolute;
-        display: block !important;
-        background-color: #F15A23;
-        width: 100%;
-        height: 24px;
-        z-index: 124124124;
-        top: 40px;
-    }
-
-    @media only screen and (max-width: 1548px) {
-        .borderFooter {
-            display: none !important;
-        }
-    }
-
-
 
     .borderFrame{
         margin-top: 100px;
@@ -193,7 +177,6 @@
         background-color: #F15A23;
         height: 29px;
     }
-
 
 </style>
 
@@ -237,8 +220,12 @@
                     </div>
 <!--                    <p class="currentTime">
                         CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>
+
+                    </p>
+
                         <span class="borderFooter">test</span>
                     </p>-->
+
                     <div class="col-md-12">
                         <?php
                         if (isset($music_setting)) {
@@ -299,6 +286,7 @@
     </div>
 </section>
 <div class="borderFrame"></div>
+
 
 
 <?php
