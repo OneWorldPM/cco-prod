@@ -94,7 +94,7 @@
         }
         .logo2 span {
             position: absolute;
-            top: -4px;
+            top: -6px;
             font-family: sans-serif;
             font-size: 11px;
         }
