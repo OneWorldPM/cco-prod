@@ -1170,7 +1170,7 @@ if (isset($sessions)) {
                         success: function (data) {
                             if (data.status == "success") {
                                 $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'>Live Poll</h2>\n\
+            \n\<h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Live Poll</h2>\n\
 <div class='col-md-12'>\n\
 \n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5></div>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
