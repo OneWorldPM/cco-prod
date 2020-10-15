@@ -1071,9 +1071,11 @@ if (isset($sessions)) {
                     if (data.result.poll_status == 1 && data.result.timer_status == 1) {
                         if (poll_vot_section_id_status != data.result.sessions_poll_question_id) {
                             $("#timer_sectiom").show();
+                            $("#popup_title_lbl").css({"border-top-right-radius": "0px", "border-top-left-radius": "0px"});
                             timer(0);
                         } else {
                             $("#timer_sectiom").show();
+                            $("#popup_title_lbl").css({"border-top-right-radius": "0px", "border-top-left-radius": "0px"});
                             timer(1);
                         }
                     } else {
@@ -1161,6 +1163,7 @@ if (isset($sessions)) {
                 } else {
                     $('#modal').modal('hide');
                     $("#timer_sectiom").hide();
+                    $("#popup_title_lbl").css({"border-top-right-radius": "15px", "border-top-left-radius": "15px"});
                     $('#poll_vot_section_is_ended').val(1);
 
                     $.ajax({
