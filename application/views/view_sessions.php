@@ -273,8 +273,8 @@
                                                 ?>
                                                 <div class="row" style="margin-bottom: 10px; padding-bottom: 5px">
                                                     <div class="col-md-8"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
-                                                    <div class="col-md-8"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
-                                                    <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
+                                                    <div class="col-md-8" style="<?= $val->upload_published_name?"display:none;":"" ?>"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
+                                                    <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;margin-right: 15px" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
                                                 </div>
                                                 <?php
                                             }
@@ -418,8 +418,8 @@ if (isset($sessions)) {
                         ?>
                         <div class="row" style="margin-bottom: 10px; padding-bottom: 5px">
                             <div class="col-md-8"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
-                            <div class="col-md-8"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
-                            <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
+                            <div class="col-md-8" style="<?= $val->upload_published_name?"display:none;":"" ?>"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
+                            <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;margin-right: 15px" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
                         </div>
                         <?php
                     }
