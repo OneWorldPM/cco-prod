@@ -1,3 +1,20 @@
+<div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
+    <input type="hidden" id="push_notification_id" value="">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border: 1px solid #ae0201;">
+            <div class="modal-body">
+                <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
+                    <div class="col-sm-12">
+                        <div style="color:#ae0201; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #ae0201; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 <!-- END: WRAPPER -->
 <!-- GO TOP BUTTON -->
@@ -20,29 +37,29 @@
         }
     }
 
-    $.get( "<?=base_url()?>socket_config.php", function( data ) {
+    $.get("<?= base_url() ?>socket_config.php", function (data) {
         var config = JSON.parse(data);
         extract(config);
     });
 
-    $(function() {
+    $(function () {
 
         var socketServer = "https://socket.yourconference.live:443";
         let socket = io(socketServer);
         socket.on('serverStatus', function (data) {
-            socket.emit('addMeToActiveListPerApp', {'user_id':user_id, 'app': socket_app_name, 'room': socket_active_user_list});
+            socket.emit('addMeToActiveListPerApp', {'user_id': user_id, 'app': socket_app_name, 'room': socket_active_user_list});
         });
 
         // Active again
-        function resetActive(){
-            socket.emit('userActiveChangeInApp', {"app":socket_app_name, "room":socket_active_user_list, "name":user_name, "userId":user_id, "status":true});
+        function resetActive() {
+            socket.emit('userActiveChangeInApp', {"app": socket_app_name, "room": socket_active_user_list, "name": user_name, "userId": user_id, "status": true});
         }
         // No activity let everyone know
-        function inActive(){
-            socket.emit('userActiveChangeInApp', {"app":socket_app_name, "room":socket_active_user_list, "name":user_name, "userId":user_id, "status":false});
+        function inActive() {
+            socket.emit('userActiveChangeInApp', {"app": socket_app_name, "room": socket_active_user_list, "name": user_name, "userId": user_id, "status": false});
         }
 
-        $(window).on("blur focus", function(e) {
+        $(window).on("blur focus", function (e) {
             var prevType = $(this).data("prevType");
 
             if (prevType != e.type) {   //  reduce double fire issues
@@ -60,6 +77,35 @@
         });
     });
 </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        push_notification_admin();
+        setInterval(push_notification_admin, 2000);
+        function push_notification_admin()
+        {
+            var push_notification_id = $("#push_notification_id").val();
 
+            $.ajax({
+                url: "<?= base_url() ?>push_notification/get_push_notification_admin",
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    if (data.status == "success") {
+                        if (push_notification_id == "0") {
+                            $("#push_notification_id").val(data.result.push_notification_id);
+                        }
+                        if (push_notification_id != data.result.push_notification_id) {
+                            $("#push_notification_id").val(data.result.push_notification_id);
+                            $('#push_notification').modal('show');
+                            $("#push_notification_message").text(data.result.message);
+                        }
+                    } else {
+                        $('#push_notification').modal('hide');
+                    }
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>
