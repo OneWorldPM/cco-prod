@@ -1,16 +1,16 @@
 <div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
     <input type="hidden" id="push_notification_id" value="">
     <div class="modal-dialog">
-        <div class="modal-content" style="border: 1px solid #ae0201;">
+        <div class="modal-content" style="border: 1px solid #f05d1f;">
             <div class="modal-body">
                 <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
                     <div class="col-sm-12">
-                        <div style="color:#ae0201; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
+                        <div style="color:#f05d1f; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #ae0201; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button type="button" class="close push_notification_close" style="padding: 8px; color: #fff; background-color: #f05d1f; opacity: 1; font-size: 18px; font-weight: 400;" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
     </div>
