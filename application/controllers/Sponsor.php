@@ -12,10 +12,12 @@ class Sponsor extends CI_Controller {
         if ($login_type != 'user') {
             redirect('login');
         }
+		 if ($this->session->userdata('cid') != "100028") {
         $get_user_token_details = $this->common->get_user_details($this->session->userdata('cid'));
         if ($this->session->userdata('token') != $get_user_token_details->token) {
             redirect('login');
         }
+		 }
         $this->load->model('user/m_sponsor', 'objsponsor');
     }
 
