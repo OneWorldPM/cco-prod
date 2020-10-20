@@ -412,7 +412,7 @@ class Sessions extends CI_Controller {
 	
 	function reset_sessions($sessions_id) {
         $this->db->delete("login_sessions_history", array("sessions_id" => $sessions_id));
-        $this->db->delete("sessions_cust_question", array("sessions_id" => $sessions_id));
+    //  $this->db->delete("sessions_cust_question", array("sessions_id" => $sessions_id));
         $poll_question_result = $this->db->get_where("poll_question_option", array("sessions_id" => $sessions_id))->result();
         if (!empty($poll_question_result)) {
             foreach ($poll_question_result as $value) {
@@ -421,7 +421,7 @@ class Sessions extends CI_Controller {
                 $this->db->delete("tbl_poll_voting", array("sessions_poll_question_id" => $sessions_poll_question_id));
             }
         }
-        $this->db->delete("sessions_poll_question", array("sessions_id" => $sessions_id));
+     //   $this->db->delete("sessions_poll_question", array("sessions_id" => $sessions_id));
         header('location:' . base_url() . 'admin/sessions?msg=S');
     }
 }
