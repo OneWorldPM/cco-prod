@@ -29,7 +29,7 @@ class Login extends CI_Controller {
                 'email' => $username,
                 'password' => base64_encode($password)
             );
-            $data = $this->objlogin->user_login($arr);
+            $data = $this->objlogin->user_login($username,base64_encode($password));
             if ($data) {
                 $token = $this->objlogin->update_user_token($data['cust_id']);
                 $session = array(

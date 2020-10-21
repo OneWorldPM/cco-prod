@@ -68,7 +68,7 @@
                             <form id="login-form" name="frm_login" method="post" action="<?= base_url() ?>login/authentication">
                                 <div class="form-group">
                                     <label class="sr-only">Email Address</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email/Username">
                                     <span id="erroremail" style="color:red"></span>
                                 </div>
                                 <div class="form-group m-b-5">
