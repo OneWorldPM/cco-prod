@@ -969,6 +969,7 @@ if (isset($sessions)) {
                             $("#briefcase").val("");
                             $("#success_briefcase").text("Add Notes Successfully").fadeIn('slow').fadeOut(5000);
                         }
+                        $(location).attr('href', '<?= base_url() ?>sessions/downloadNote/'+briefcase);
                     }
                 });
             }
@@ -993,12 +994,13 @@ if (isset($sessions)) {
                                 $("#briefcase").val("");
                                 $("#success_briefcase").text("Add Notes Successfully").fadeIn('slow').fadeOut(5000);
                             }
+                            $(location).attr('href', '<?= base_url() ?>sessions/downloadNote/'+briefcase);
                         }
                     });
                 }
             }
         });
-
+		
         get_poll_vot_section();
         setInterval(get_poll_vot_section, 1000);
         $(document).on("click", "#btn_vote", function () {
