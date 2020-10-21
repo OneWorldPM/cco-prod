@@ -172,17 +172,17 @@
                                     <?php if (isset($sessions_edit)) { ?>
                                         <div class="" id="presenter_list">
                                         <?php } else { ?>
-                                            <div class="col-md-12 p-15" id="presenter_list">
+                                            <div class="row" id="presenter_list">
                                             <?php } ?>
                                             <?php
                                             if (isset($sessions_edit)) {
                                                 if (isset($sessions_edit->sessions_presenter) && !empty($sessions_edit->sessions_presenter)) {
                                                     foreach ($sessions_edit->sessions_presenter as $value) {
                                                         ?>
-                                                        <div class='' id='add_new_presenter_section' style='margin-bottom: 20px; padding: 10px; border: 1px solid #b2b7bb;'>
+                                                        <div class='col-md-12' id='add_new_presenter_section' style='margin-bottom: 20px; padding: 10px; border: 1px solid #b2b7bb;'>
                                                             <input type="hidden" name="status[]" value="update">
                                                             <input type="hidden" name="sessions_add_presenter_id[]" value="<?= $value->sessions_add_presenter_id ?>">
-                                                            <div class='row'>
+                                                            <div class='col-md-12'>
                                                                 <div class='col-md-6'>
                                                                     <div class='form-group'>
                                                                         <label class='text-large'>Order No.:</label>
@@ -322,7 +322,7 @@
     {
     $('.datepicker').datepicker({dateFormat: 'mm/dd/yyyy' });
     $("#btn_add_new_presenter").on("click", function () {
-    $("#presenter_list").append("<div class='col-md-12 p-15' id='add_new_presenter_section' style='margin-bottom: 20px; padding: 10px; border: 1px solid #b2b7bb;'>\n\
+            $("#presenter_list").append("<div class='p-15' id='add_new_presenter_section' style='margin-bottom: 20px; padding: 10px; border: 1px solid #b2b7bb;'>\n\
                                         <div class='row'><input type='hidden' name='status[]' value='insert'><div class='col-md-6'><div class='form-group'>\n\
                                             <label class='text-large'>Order No.:</label>\n\
                                             <input type='text' name='order_no[]' id='presenter_order_no' placeholder='Order No.' value='' class='form-control'>\n\
@@ -331,44 +331,40 @@
                                             <label class='text-large'>Presenter:</label>\n\
                                             <select class='form-control select_presenter_id' id='select_presenter_id' name='select_presenter_id[]'>\n\
                                                 <option selected='' value=''>Select Presenter</option>\n\
-                                                \n\<?php
-                                            if (isset($presenter) && !empty($presenter)) {
+                                                \n\<?php if (isset($presenter) && !empty($presenter)) {
                                                 foreach ($presenter as $val) {
                                                     ?>
-                                                <option value='<?= $val->presenter_id ?>'><?= $val->presenter_name ?></option>\n\
-        <?php
-    }
-}
-?> < /select>\n\
-                                    </div></div></div>\n\
-                                    <div class='row'><div class='col-md-6'><div class='form-group'>\n\
-            < label class = 'text-large' > Title:</label>\n\
-                                        <input type='text' name='presenter_title[]' placeholder='Title' id='presenter_title' value='' class='form-control'>\n\
-            < /div></div > \n\
-            < div class = 'col-md-6' > <div class='form-group'>\n\
-                                    <label class='text-large'>Presenter Start Time:</label>\n\
-                                        <input type='text' name='presenter_time_slot[]' placeholder='Presenter Start Time' id='presenter_time_slot' placeholder='Ex: 7:00 - 7:10' value='' class='form-control'>\n\
-                                        </div></div> < /div>\n\
-                                    <div class='row'><div class='col-md-6'>\n\
-                                    <div class='form-group'>\n\
-                                        <label class='text-large'>Upload published name:</label>\n\
-                                        <input type='text' name='upload_published_name[]' id='upload_published_name'  placeholder='Enter Upload Published Name' class='form-control'>\n\
-                                        </div>\n\
-                                    <div class='form-group'>\n\
-                                    <label>Resource Uploads</label>\n\
-                                        <input type='file' class='form-control' name='presenter_resource[]' id='presenter_resource'>\n\
+                                                    <option value='<?= $val->presenter_id ?>'><?= $val->presenter_name ?></option>\n\
+                                                    <?php } }?></select>\n\
+                                        </div></div></div>\n\
+                                        <div class='row'><div class='col-md-6'><div class='form-group'>\n\
+                                            <label class='text-large'>Title:</label>\n\
+                                            <input type='text' name='presenter_title[]' placeholder='Title' id='presenter_title' value='' class='form-control'>\n\
+                                        </div></div>\n\
+                                         <div class='col-md-6'><div class='form-group'>\n\
+                                            <label class='text-large'>Presenter Start Time:</label>\n\
+                                            <input type='text' name='presenter_time_slot[]' placeholder='Presenter Start Time' id='presenter_time_slot' placeholder='Ex: 7:00 - 7:10' value='' class='form-control'>\n\
+                                        </div></div></div>\n\
+                                        <div class='row'><div class='col-md-6'>\n\
+                                         <div class='form-group'>\n\
+                                                                <label class='text-large'>Upload published name:</label>\n\
+                                                                <input type='text' name='upload_published_name[]' id='upload_published_name'  placeholder='Enter Upload Published Name' class='form-control'>\n\
+                                                            </div>\n\
+                                         <div class='form-group'>\n\
+                                            <label>Resource Uploads</label>\n\
+                                            <input type='file' class='form-control' name='presenter_resource[]' id='presenter_resource'>\n\
                                         </div></div>\n\
                                         <div class='col-md-6'>\n\
-                                        <div class='form-group'>\n\
-                                    <label class='text-large'>Link published name:</label>\n\
-                                    <input type='text' name='link_published_name[]' id='link_published_name'  placeholder='Enter Upload Published Name' class='form-control'>\n\
-                                        </div>\n\
-                                        <div class='form-group'>\n\
-                                        <label class='text-large'>Resource Links:</label>\n\
-                                    <input type='text' name='presenter_resource_link[]' placeholder='Resource Link' id='presenter_resource_link' value='' class='form-control'>\n\
-                                                                            </div></div></div>\n\
-                                                                            </div>");
-                                                                                });
+                                         <div class='form-group'>\n\
+                                                                <label class='text-large'>Link published name:</label>\n\
+                                                                <input type='text' name='link_published_name[]' id='link_published_name'  placeholder='Enter Upload Published Name' class='form-control'>\n\
+                                                            </div>\n\
+<div class='form-group'>\n\
+                                            <label class='text-large'>Resource Links:</label>\n\
+                                            <input type='text' name='presenter_resource_link[]' placeholder='Resource Link' id='presenter_resource_link' value='' class='form-control'>\n\
+                                        </div></div></div>\n\
+                                    </div>");
+        });
                                                                                 
                                     $("#btn_sessions").on("click", function ()
                                     {
