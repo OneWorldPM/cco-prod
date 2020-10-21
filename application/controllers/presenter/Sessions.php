@@ -17,6 +17,7 @@ class Sessions extends CI_Controller {
 
     public function index() {
         $data['sessions'] = $this->msessions->getSessionsAll();
+		 $data['moderator_sessions'] = $this->msessions->getModeratorSessionsAll();
         $this->load->view('presenter/header');
         $this->load->view('presenter/sessions', $data);
         $this->load->view('presenter/footer');

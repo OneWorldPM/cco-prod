@@ -47,6 +47,23 @@
                                         <label class="text-large">Password :</label>
                                         <input type="text" name="zoom_password" id="zoom_password" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_password : "" ?>" class="form-control" placeholder="Password">
                                     </div>
+									<div class="form-group">
+                                        <label class="text-large">Moderator:</label>
+                                        <select class="form-control" id="moderator_id" name="moderator_id[]" multiple>
+                                            <?php if(!isset($sessions_edit)){ ?>
+                                            <option selected="" value="">Select Moderator</option> 
+                                            <?php } ?>
+                                            <?php
+                                            if (isset($presenter) && !empty($presenter)) {
+                                                foreach ($presenter as $val) {
+                                                    ?>
+                                                    <option value="<?= $val->presenter_id ?>" <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? in_array($val->presenter_id, explode(",", $sessions_edit->moderator_id)) ? "selected" : "" : "" ?>><?= $val->presenter_name ?></option> 
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
                                     <!--                                    <div class="form-group">
                                                                             <label class="text-large">Presenter:</label>
                                                                             <select class="form-control" id="presenter_id" name="presenter_id">
