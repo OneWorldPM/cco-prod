@@ -52,7 +52,7 @@ $this->load->helper('string');
                                         }
                                         if(!$now_user_bool){
                                             ?>
-                                            <option value="<?= $_SESSION["pid"] ?>"><?= $_SESSION["pname"] ?></option>
+                                            <!--<option value="<?= $_SESSION["pid"] ?>"><?= $_SESSION["pname"] ?></option>-->
                                         <?php
                                         }
                                         ?>
@@ -80,7 +80,7 @@ $this->load->helper('string');
                                            }
                                         if(!$now_user_bool_two){
                                             ?>
-                                            <option value="<?= $_SESSION["pid"] ?>"><?= $_SESSION["pname"] ?></option>
+                                            <!--<option value="<?= $_SESSION["pid"] ?>"><?= $_SESSION["pname"] ?></option>-->
                                             <?php
                                         }
                                         ?>
