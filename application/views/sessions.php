@@ -60,7 +60,6 @@
             <div class="row">
                 <div class="col-md-12 m-t-50" style="text-align: -webkit-center;">
                     <?php
-
                     if (isset($all_sessions_week) && !empty($all_sessions_week)) {
                         foreach ($all_sessions_week as $val) {
                             ?>
@@ -74,9 +73,9 @@
                                     if ($val->sessions_date == $current_date) {
                                         ?>
                                         <div class="col-lg box_home_active text-center">
-                                            <?php } else { ?>
+                                        <?php } else { ?>
                                             <div class="col-lg box-home text-center">
-        <?php } ?>
+                                            <?php } ?>
                                             <label style="margin-bottom: 20px; margin-top: 20px;   font-size: 30px; font-weight: 700;"><?= $val->dayname ?></label><br>
                                             <label><?= date('M-d-Y', strtotime($val->sessions_date)); ?></label>
                                         </div>
@@ -109,14 +108,15 @@
                                             <div class="post-content-details col-md-9 m-t-30">
 
                                                 <div class="post-title">
-                                                    <h6 style="font-weight: 600"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) .' - '. date("h:i A", strtotime($val->end_time)) ?></h6>
+                                                    <h6 style="font-weight: 600"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
                                                     <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" style="color: #f05d1f; font-weight: 900;"><?= $val->session_title ?></a></h3>
                                                 </div>
                                                 <?php
                                                 if (isset($val->presenter) && !empty($val->presenter)) {
                                                     foreach ($val->presenter as $value) {
                                                         ?>
-                                                        <div class="post-info"> <span class="post-autor"><a href="#" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" class="presenter_open_modul" style="color: #A9A9A9; font-weight: 600;"><?= $value->presenter_name ?>, </a></span> <span class="post-category"> <?= $value->designation ?></span> </div>
+                                                        <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" style="color: #000;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u><?= ($value->degree != "") ? "," : "" ?> </a></span> <span class="post-category"> <?= $value->degree ?></span> </div>
+                                                        <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
                                                         <?php
                                                     }
                                                 }
@@ -202,13 +202,41 @@
             var twitter_link = $(this).attr("data-twitter_link");
             var facebook_link = $(this).attr("data-facebook_link");
             var linkedin_link = $(this).attr("data-linkedin_link");
-            $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/" + presenter_photo);
-            $('#presenter_title').text(presenter_name + ", " + designation);
+            var bio = $(this).attr('data-bio');
+            if (presenter_photo != "" && presenter_photo != null) {
+                $.ajax({
+                    url: '<?= base_url() ?>uploads/presenter_photo/' + presenter_photo,
+                    type: 'HEAD',
+                    error: function ()
+                    {
+                        $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/presenter_avtar.png");
+                    },
+                    success: function ()
+                    {
+                        $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/" + presenter_photo);
+                    }
+                });
+            } else {
+                $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/presenter_avtar.png");
+            }
+            if (designation != "" && designation != null) {
+                $('#presenter_title').text(presenter_name + ", " + designation);
+            } else {
+                $('#presenter_title').text(presenter_name);
+            }
+
             $('#email').text(email);
-            $('#company').text(company_name);
+            if (company_name != "" && company_name != null) {
+                $('#company').text(company_name);
+                $('#company_lbl').text("Company");
+            } else {
+                $('#company').text("");
+                $('#company_lbl').text("");
+            }
             $("#twitter_link").attr("href", twitter_link);
             $("#facebook_link").attr("href", facebook_link);
             $("#linkedin_link").attr("href", linkedin_link);
+            $("#bio_text").text(bio);
             $('#modal').modal('show');
         });
     });
@@ -228,4 +256,3 @@
         });
     });
 </script>
-
