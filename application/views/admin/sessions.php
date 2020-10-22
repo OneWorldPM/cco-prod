@@ -11,6 +11,57 @@
         <!-- end: PAGE TITLE -->
         <!-- start: DYNAMIC TABLE -->
         <div class="container-fluid container-fullw">
+		    <div class="row">
+                <div class="panel panel-primary" id="panel5">
+                    <div class="panel-heading">
+                        <h4 class="panel-title text-white">Filter Data</h4>
+                        <div class="panel-tools">
+                            <a data-original-title="Collapse" data-toggle="tooltip" data-placement="top" class="btn btn-transparent btn-sm panel-collapse" href="#"><i class="ti-minus collapse-off"></i><i class="ti-plus collapse-on"></i></a>
+                        </div>
+                    </div>
+                    <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
+                        <form action="<?= base_url() ?>admin/sessions/filter" name="filter_frm" id="filter_frm" method="POST">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Date Range:</label>
+                                         <div class="input-group input-daterange datepicker">
+                                            <input type="text" placeholder="Start Date" name="start_date" value="<?= ($this->session->userdata('start_date') != "") ? date("m/d/Y",strtotime($this->session->userdata('start_date'))) : ""  ?>" id="from_date" class="form-control">
+                                            <span class="input-group-addon bg-primary">to</span>
+                                            <input type="text" placeholder="End Date" name="end_date" value="<?= ($this->session->userdata('end_date') != "") ? date("m/d/Y",strtotime($this->session->userdata('end_date'))) : ""  ?>" id="to_date" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Session Type:</label>
+                                        <select name="session_type" id="session_type" class="form-control">
+                                            <option value="">Select</option>
+                                            <?php
+                                            if (!empty($session_types)) {
+                                                foreach ($session_types as $type) {
+                                                    if ($type->sessions_type != '') {
+                                                        ?>
+                                                        <option value="<?= $type->sessions_type_id ?>"><?= $type->sessions_type ?></option>
+                                                        <?php
+                                                    }
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="submit" name="filter_btn" class="btn btn-primary" style="margin-top: 22px;" id="filter_btn" value="Submit">
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="<?= base_url() ?>admin/sessions/filter_clear" class="btn btn-danger" style="margin-top: 22px;">Clear</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="panel panel-primary" id="panel5">
                     <div class="panel-heading">
