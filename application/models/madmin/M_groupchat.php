@@ -28,6 +28,20 @@ class M_groupchat extends CI_Model {
         }
     }
 
+    function getModeratorData($sessions_id) {
+        $this->db->select('*');
+        $this->db->from('sessions s');
+        $this->db->where("sessions_id", $sessions_id);
+        $sessions = $this->db->get();
+        if ($sessions->num_rows() > 0) {
+            $result_sessions = $sessions->row();
+            $result_sessions->moderator = $this->common->get_presenter_chat_data($result_sessions->moderator_id, $result_sessions->sessions_id);
+            return $result_sessions;
+        } else {
+            return '';
+        }
+    }
+
     function editUsersData($sessions_group_chat_id) {
         $this->db->select('*');
         $this->db->from('sessions_group_chat');
@@ -72,12 +86,14 @@ class M_groupchat extends CI_Model {
         }
 
         $presenter_id = implode(",", $post['presenters']);
+        $moderator_id = implode(",", $post['moderator']);
 
         $array = array(
             'sessions_id' => $post['sessions_id'],
             'created_by_id' => $this->session->userdata('aid'),
             'users_id' => $users_id,
             'presenter_id' => $presenter_id,
+            'moderator_id' => $moderator_id,
             'group_chat_number' => $post['group_chat_number'],
             'group_chat_title' => $post['chat_title'],
             'status' => 0,
@@ -138,9 +154,11 @@ class M_groupchat extends CI_Model {
 
     function updateNewGroupChat($post) {
         $presenter_id = implode(",", $post['presenters']);
+        $moderator_id = implode(",", $post['moderator']);
         $array = array(
             'group_chat_title' => $post['chat_title'],
             'presenter_id' => $presenter_id,
+            'moderator_id' => $moderator_id
         );
         $this->db->update('sessions_group_chat', $array, array("sessions_group_chat_id" => $post['sessions_group_chat_id']));
         return TRUE;

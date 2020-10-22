@@ -7,7 +7,7 @@ class Groupchat extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-         $this->common->set_timezone();
+        $this->common->set_timezone();
         $login_type = $this->session->userdata('aname');
         if ($login_type != 'admin') {
             redirect('admin/alogin');
@@ -27,7 +27,8 @@ class Groupchat extends CI_Controller {
         $data['sessions_id'] = $sessions_id;
         $data['users'] = $this->objgroupchat->getUsersData();
         $data['presenter'] = $this->objgroupchat->getPresenterData($sessions_id);
-      
+        $data['moderator'] = $this->objgroupchat->getModeratorData($sessions_id);
+       
         $this->load->view('admin/header');
         $this->load->view('admin/create_group_chat', $data);
         $this->load->view('admin/footer');
@@ -103,6 +104,7 @@ class Groupchat extends CI_Controller {
         $data['users'] = $this->objgroupchat->getUsersData();
         $data['edit_user'] = $this->objgroupchat->editUsersData($sessions_group_chat_id);
         $data['presenter'] = $this->objgroupchat->getPresenterData($sessions_id);
+        $data['moderator'] = $this->objgroupchat->getModeratorData($sessions_id);
         $this->load->view('admin/header');
         $this->load->view('admin/create_group_chat', $data);
         $this->load->view('admin/footer');
@@ -117,7 +119,7 @@ class Groupchat extends CI_Controller {
             header('location:' . base_url() . 'admin/groupchat/sessions_groupchat/' . $post['sessions_id'] . '?msg=E');
         }
     }
-    
+
     public function get_group_chat_section_status() {
         $result_data = $this->objgroupchat->get_group_chat_section_status();
         if (!empty($result_data)) {

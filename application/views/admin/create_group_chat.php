@@ -50,6 +50,36 @@ $this->load->helper('string');
                                     </select>
                                     <span id="errorpresenter" style="color:red;"></span>
                                 </div>
+                                <div class="form-group">
+                                    <label class="control-label">Select Multiple Moderator : </label>
+                                    <select name="moderator[]" id="moderator" class="form-control" multiple>
+                                        <?php
+                                        if (isset($edit_user)) {
+                                            if (isset($moderator->moderator) && !empty($moderator->moderator)) {
+                                                foreach ($moderator->moderator as $val) {
+                                                    $explode_array = explode(",", $edit_user->moderator_id);
+                                                    if (in_array($val->presenter_id, $explode_array)) {
+                                                        ?>
+                                                        <option selected value="<?= $val->presenter_id ?>"><?= $val->presenter_name ?></option>
+                                                    <?php } else { ?> 
+                                                        <option value="<?= $val->presenter_id ?>"><?= $val->presenter_name ?></option>
+                                                        <?php
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            if (isset($moderator->moderator) && !empty($moderator->moderator)) {
+                                                foreach ($moderator->moderator as $val) {
+                                                    ?>
+                                                    <option value="<?= $val->presenter_id ?>"><?= $val->presenter_name ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                    <span id="errormoderator" style="color:red;"></span>
+                                </div>
                                 <!--                                <div class="form-group">
                                                                     <label class="control-label">Select Multiple Users : </label>
                                                                     <select name="users[]" id="users" class="form-control" multiple>
@@ -60,9 +90,9 @@ $this->load->helper('string');
                                             $explode_array = explode(",", $edit_user->users_id);
                                             if (in_array($val->cust_id, $explode_array)) {
                                                 ?>
-                                                                                                                        <option selected value="<?= $val->cust_id ?>"><?= $val->first_name . ' ' . $val->last_name ?></option>
+                                                                                                                                        <option selected value="<?= $val->cust_id ?>"><?= $val->first_name . ' ' . $val->last_name ?></option>
                                             <?php } else { ?> 
-                                                                                                                        <option value="<?= $val->cust_id ?>"><?= $val->first_name . ' ' . $val->last_name ?></option>
+                                                                                                                                        <option value="<?= $val->cust_id ?>"><?= $val->first_name . ' ' . $val->last_name ?></option>
                                                 <?php
                                             }
                                         }
@@ -71,7 +101,7 @@ $this->load->helper('string');
                                     if (isset($users) && !empty($users)) {
                                         foreach ($users as $val) {
                                             ?>
-                                                                                                            <option value="<?= $val->cust_id ?>"><?= $val->first_name . ' ' . $val->last_name ?></option>
+                                                                                                                        <option value="<?= $val->cust_id ?>"><?= $val->first_name . ' ' . $val->last_name ?></option>
                                             <?php
                                         }
                                     }
@@ -103,6 +133,9 @@ $this->load->helper('string');
                 return false;
             } else if ($("#presenters").val() == null) {
                 $("#errorpresenter").text("Please Select Presenter").fadeIn('slow').fadeOut(5000);
+                return false;
+             } else if ($("#moderator").val() == null) {
+                $("#errormoderator").text("Please Select Moderator").fadeIn('slow').fadeOut(5000);
                 return false;
             } else {
                 return true; //submit form

@@ -27,6 +27,7 @@ class Groupchat extends CI_Controller {
         $data['sessions_id'] = $sessions_id;
         $data['users'] = $this->objgroupchat->getUsersData();
         $data['presenter'] = $this->objgroupchat->getPresenterData($sessions_id);
+        $data['moderators'] = $this->objgroupchat->getModeratorData($sessions_id);
 
         $this->load->view('presenter/header');
         $this->load->view('presenter/create_group_chat', $data);
@@ -100,6 +101,16 @@ class Groupchat extends CI_Controller {
 
     public function get_group_chat_section_status() {
         $result_data = $this->objgroupchat->get_group_chat_section_status();
+        if (!empty($result_data)) {
+            $result_array = array("status" => "success", "result" => $result_data);
+        } else {
+            $result_array = array("status" => "error");
+        }
+        echo json_encode($result_array);
+    }
+	
+	public function get_group_chat_section_status_moderator() {
+        $result_data = $this->objgroupchat->get_group_chat_section_status_moderator();
         if (!empty($result_data)) {
             $result_array = array("status" => "success", "result" => $result_data);
         } else {

@@ -27,6 +27,20 @@ class M_groupchat extends CI_Model {
             return '';
         }
     }
+    function getModeratorData($sessions_id) {
+        $this->db->select('*');
+        $this->db->from('sessions s');
+        $this->db->where("sessions_id", $sessions_id);
+        $sessions = $this->db->get();
+        if ($sessions->num_rows() > 0) {
+            $result_sessions = $sessions->row();
+            $result_sessions->moderator = $this->common->get_presenter_chat_data($result_sessions->moderator_id, $result_sessions->sessions_id);
+            return $result_sessions;
+        } else {
+            return '';
+        }
+    }
+
 
     function getGroupChatData($sessions_id) {
         $this->db->select('*');
@@ -50,6 +64,12 @@ class M_groupchat extends CI_Model {
     function addNewGroupChat($post) {
         $user_db = $this->db->get("customer_master")->result();
         $implode_array = array();
+
+        $moderators="";
+        if($post["moderators"]){
+            $moderators=implode(",",$post["moderators"]);
+        }
+
         foreach ($user_db as $val) {
             $implode_array[] = $val->cust_id;
         }
@@ -64,6 +84,7 @@ class M_groupchat extends CI_Model {
             'created_by_id' => $this->session->userdata('pid'),
             'users_id' => $users_id,
             'presenter_id' => $presenter_id,
+            'moderator_id' => $moderators,
             'group_chat_number' => $post['group_chat_number'],
             'group_chat_title' => $post['chat_title'],
             'status' => 0,
@@ -126,7 +147,27 @@ class M_groupchat extends CI_Model {
         $post = $this->input->post();
         $this->db->select('*');
         $this->db->from('sessions_group_chat');
+        $this->db->group_start();
         $this->db->like('presenter_id', $this->session->userdata("pid"));
+        $this->db->or_like('moderator_id', $this->session->userdata("pid"));
+        $this->db->group_end();
+        $this->db->where(array("sessions_id" => $post['sessions_id'], "status" => 1));
+
+
+
+        $sessions = $this->db->get();
+        if ($sessions->num_rows() > 0) {
+            return $sessions->row();
+        } else {
+            return "";
+        }
+    }
+	
+	function get_group_chat_section_status_moderator() {
+        $post = $this->input->post();
+        $this->db->select('*');
+        $this->db->from('sessions_group_chat');
+        $this->db->like('moderator_id', $this->session->userdata("pid"));
         $this->db->where(array("sessions_id" => $post['sessions_id'], "status" => 1));
         $sessions = $this->db->get();
         if ($sessions->num_rows() > 0) {
