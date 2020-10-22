@@ -36,7 +36,9 @@
                                             <th>Zoom Link</th>
                                             <th>Title</th>
                                             <th>Time Slot</th>
-                                            <th>Action</th>
+                                            <th style="border-right: 0px solid #ddd;">Action</th>
+                                            <th style="border-left: 0px solid #ddd; border-right: 0px solid #ddd;"></th>
+                                            <th style="border-left: 0px solid #ddd;"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -77,19 +79,24 @@
                                                     </td>
                                                     <td><?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                     <td>
+													  <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm">View Session</a>
+                                                        <a href="<?= base_url() ?>admin/sessions/edit_sessions/<?= $val->sessions_id ?>" class="btn btn-green btn-sm">Edit</a>
+														  
+                                                        </td>
+                                                        <td>
                                                         <a href="<?= base_url() ?>admin/sessions/create_poll/<?= $val->sessions_id ?>" class="btn btn-success btn-sm">Create Poll</a>
 														<a href="<?= base_url() ?>admin/sessions/view_poll/<?= $val->sessions_id ?>" class="btn btn-info btn-sm">View Poll</a>
                                                         <a href="<?= base_url() ?>admin/sessions/view_question_answer/<?= $val->sessions_id ?>" class="btn btn-primary btn-sm">View Q&A</a>
-                                                        <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm">View Session</a>
-                                                        <a href="<?= base_url() ?>admin/sessions/edit_sessions/<?= $val->sessions_id ?>" class="btn btn-green btn-sm">Edit</a>
-                                                        <a href="<?= base_url() ?>admin/sessions/delete_sessions/<?= $val->sessions_id ?>" class="btn btn-danger btn-sm">Delete</a>
                                                         <a href="<?= base_url() ?>admin/sessions/report/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">Report</a>
                                                         <a href="<?= base_url() ?>admin/groupchat/sessions_groupchat/<?= $val->sessions_id ?>" class="btn btn-blue btn-sm">Create Chat</a>
                                                         <a href="<?= base_url() ?>admin/sessions/resource/<?= $val->sessions_id ?>" class="btn btn-success btn-sm">Resources</a>
-                                                        <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm">Send to CCO</a>
+                                                        </td>
+                                                        <td>
+														  <a href="<?= base_url() ?>admin/sessions/delete_sessions/<?= $val->sessions_id ?>" class="btn btn-danger btn-sm" style="font-size: 10px !important;">Delete Session</a>
+                                                            <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm">Send to PCE</a>
                                                         <a href="<?= base_url() ?>admin/sessions/view_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm">View JSON</a>
 														 <a href="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm">Clear JSON</a>
-                                                    </td>
+                                                        </td>
                                                 </tr>
                                                 <?php
                                             }
