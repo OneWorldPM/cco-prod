@@ -86,13 +86,13 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="text-large">Session Start Time:</label>
+                                                <label class="text-large">Session Start Time: <b>(ET)</b></label>
                                                 <input type="time" name="time_slot" id="time_slot" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('H:i', strtotime($sessions_edit->time_slot)) : "" ?>" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="text-large">Session End Time:</label>
+                                                <label class="text-large">Session End Time: <b>(ET)</b></label>
                                                 <input type="time" name="end_time" id="end_time" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('H:i', strtotime($sessions_edit->end_time)) : "" ?>" class="form-control">
                                             </div>
                                         </div>
