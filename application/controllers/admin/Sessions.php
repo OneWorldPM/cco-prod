@@ -373,6 +373,20 @@ class Sessions extends CI_Controller {
 
     public function remove_presenter_by_session() {
         $post = $this->input->post();
+        $sessions_add_presenter = $this->db->get_where("sessions_add_presenter", array("sessions_add_presenter_id" => $post['sessions_add_presenter_id']))->row();
+         $sessions_row = $this->db->get_where("sessions", array("sessions_id" => $post['sessions_id']))->row();
+         $presenter_id_multiple = explode(",",$sessions_row->presenter_id);
+         $presenter_id_multiple_new = array();
+         foreach ($presenter_id_multiple as $val){
+             if($val == $sessions_add_presenter->select_presenter_id){
+                 
+             }else{
+                $presenter_id_multiple_new[]= $val;
+             }
+         }
+         $update_array = implode(",",$presenter_id_multiple_new);
+       
+        $this->db->update("sessions", array("presenter_id" => $update_array), array("sessions_id" => $post['sessions_id']));
         $this->db->delete('sessions_add_presenter', array('sessions_add_presenter_id' => $post['sessions_add_presenter_id']));
         $result_array = array("status" => "success");
         echo json_encode($result_array);

@@ -21,7 +21,7 @@
                             <div class="col-md-12">
                                 <form name="add_sessions_frm" id="add_sessions_frm" action="<?= isset($sessions_edit) ? base_url() . "admin/sessions/updateSessions" : base_url() . "admin/sessions/createSessions" ?>" method="POST" enctype="multipart/form-data">
                                     <?php if (isset($sessions_edit)) { ?>
-                                        <input type="hidden" name="sessions_id" value="<?= $sessions_edit->sessions_id ?>">
+                                        <input type="hidden" name="sessions_id" id="session_title" value="<?= $sessions_edit->sessions_id ?>">
                                     <?php } ?>
                                     <div class="form-group">
                                         <label class="text-large">Sessions Title:</label>
@@ -402,7 +402,7 @@
     $.ajax({
     url: "<?= base_url() ?>admin/sessions/remove_presenter_by_session",
             type: "post",
-            data: {'sessions_add_presenter_id': sessions_add_presenter_id},
+             data: {'sessions_add_presenter_id': sessions_add_presenter_id,'sessions_id':$("#sessions_id").val()},
                                                 dataType: "json",
                                                 success: function (data) {
                     if (data.status == "success") {
