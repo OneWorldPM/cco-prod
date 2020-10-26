@@ -46,7 +46,7 @@
                                         <?php
                                         if (isset($flash_report_list) && !empty($flash_report_list)) {
                                             foreach ($flash_report_list as $val) {
-                                                $start_date_time = strtotime("m/d/Y h:i", $val->start_date_time);
+                                                $start_date_time = date("m/d/Y h:i",strtotime($val->start_date_time));
                                                 $end_date_time = strtotime($val->end_date_time);
                                                 if ($end_date_time != "") {
                                                     if ($end_date_time >= $start_date_time) {
