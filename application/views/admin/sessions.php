@@ -146,7 +146,7 @@
 														  <a href="<?= base_url() ?>admin/sessions/delete_sessions/<?= $val->sessions_id ?>" class="btn btn-danger btn-sm" style="font-size: 10px !important; margin-bottom: 5px;">Delete Session</a>
                                                             <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">Send to CCO</a>
                                                         <a href="<?= base_url() ?>admin/sessions/view_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">View JSON</a>
-														 <a href="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm">Clear JSON</a>
+														 <a href="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" style="margin-bottom: 5px;"  class="btn btn-purple btn-sm">Clear JSON</a>
 														 <a href="<?= base_url() ?>admin/sessions/flash_report/<?= $val->sessions_id ?>" style="margin-bottom: 5px;" class="btn btn-info btn-sm">Flash Report</a>
                                                         <a href="<?= base_url() ?>admin/sessions/polling_report/<?= $val->sessions_id ?>" class="btn btn-azure btn-sm">Polling Report</a>
                                                         </td>
