@@ -1292,5 +1292,127 @@ class M_sessions extends CI_Model {
             return FALSE;
         }
     }
+	
+	 function get_flash_report($sessions_id) {
+        $this->db->select('*');
+        $this->db->from('login_sessions_history l');
+        $this->db->join('sessions s', 'l.sessions_id=s.sessions_id');
+        $this->db->join('customer_master c', 'c.cust_id=l.cust_id');
+        $this->db->where("l.sessions_id", $sessions_id);
+        $sessions_history = $this->db->get();
+        if ($sessions_history->num_rows() > 0) {
+            $return_array = array();
+            foreach ($sessions_history->result() as $value) {
+
+                $this->db->select('*');
+                $this->db->from('sessions_group_chat_msg');
+                $this->db->where(array("sessions_id" => $sessions_id, 'user_id' => $value->cust_id));
+                $sessions_group_chat_msg = $this->db->get();
+                $messages = 0;
+                if ($sessions_group_chat_msg->num_rows() > 0) {
+                    $messages = $sessions_group_chat_msg->num_rows();
+                }
+
+                $polls = 0;
+                $this->db->select('*');
+                $this->db->from('tbl_poll_voting');
+                $this->db->where(array("sessions_id" => $sessions_id, "cust_id" => $value->cust_id));
+                $tbl_poll_voting = $this->db->get();
+                if ($tbl_poll_voting->num_rows() > 0) {
+                    $polls = $tbl_poll_voting->num_rows();
+                }
+
+                $this->db->select('*');
+                $this->db->from('sessions_cust_question');
+                $this->db->where(array("sessions_id" => $sessions_id, "cust_id" => $value->cust_id));
+                $sessions_cust_question = $this->db->get();
+                $questions = 0;
+                if ($sessions_cust_question->num_rows() > 0) {
+                    $questions = $sessions_cust_question->num_rows();
+                }
+
+                $value->total_chat = $messages;
+                $value->total_questions = $questions;
+                $value->total_polls = $polls;
+                $return_array[] = $value;
+            }
+            return $sessions_history->result();
+        } else {
+            return "";
+        }
+    }
+
+    function get_poll($sessions_id) {
+        $this->db->select('*');
+        $this->db->from('sessions_poll_question s');
+        $this->db->join('poll_type p', 's.poll_type_id=p.poll_type_id');
+        $this->db->where("s.sessions_id", $sessions_id);
+        $sessions_poll_question = $this->db->get();
+        $polls = array();
+        if ($sessions_poll_question->num_rows() > 0) {
+            $presurvey = 0;
+            $poll = 0;
+            $assessment = 0;
+            foreach ($sessions_poll_question->result() as $sessions_poll_question) {
+                if ($sessions_poll_question->poll_type_id == 1) {
+                    $presurvey = $presurvey + 1;
+                    $polls[] = array(
+                        'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
+                        'text' => $sessions_poll_question->poll_type . " " . $presurvey . " : " . $sessions_poll_question->question,
+                    );
+                } else if ($sessions_poll_question->poll_type_id == 2) {
+                    $poll = $poll + 1;
+                    $polls[] = array(
+                        'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
+                        'text' => $sessions_poll_question->poll_type . " " . $poll . " : " . $sessions_poll_question->question,
+                    );
+                } else if ($sessions_poll_question->poll_type_id == 3) {
+                    $assessment = $assessment + 1;
+                    $polls[] = array(
+                        'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
+                        'text' => $sessions_poll_question->poll_type . " " . $assessment . " : " . $sessions_poll_question->question,
+                    );
+                }
+            }
+        }
+        return $polls;
+    }
+
+    function get_polling_report($sessions_id, $poll_list) {
+        $this->db->select('*');
+        $this->db->from('login_sessions_history l');
+        $this->db->join('customer_master c', 'c.cust_id=l.cust_id');
+        $this->db->where("l.sessions_id", $sessions_id);
+        $sessions_history = $this->db->get();
+        if ($sessions_history->num_rows() > 0) {
+            $return_array = array();
+            foreach ($sessions_history->result() as $value) {
+                if (!empty($poll_list)) {
+                    foreach ($poll_list as $val) {
+                        $value->polling_answer[] = $this->get_polling_answer($val['poll_id'], $value->cust_id);
+                    }
+                }
+                $return_array[] = $value;
+            }
+            return $return_array;
+        } else {
+            return "";
+        }
+    }
+
+    function get_polling_answer($poll_id, $cust_id) {
+        $this->db->select('*');
+        $this->db->from('tbl_poll_voting');
+        $this->db->where(array("sessions_poll_question_id" => $poll_id, "cust_id" => $cust_id));
+        $tbl_poll_voting = $this->db->get();
+        if ($tbl_poll_voting->num_rows() > 0) {
+            $tbl_poll_voting = $tbl_poll_voting->row();
+            $option = $this->db->get_where("poll_question_option", array("poll_question_option_id" => $tbl_poll_voting->poll_question_option_id))->row()->option;
+            return $option;
+        } else {
+            return "";
+        }
+    }
+
 
 }

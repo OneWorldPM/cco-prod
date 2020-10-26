@@ -454,4 +454,22 @@ class Sessions extends CI_Controller {
      //   $this->db->delete("sessions_poll_question", array("sessions_id" => $sessions_id));
         header('location:' . base_url() . 'admin/sessions?msg=S');
     }
+	
+	public function flash_report($sessions_id) {
+        $data['flash_report_list'] = $this->msessions->get_flash_report($sessions_id);
+
+        $this->load->view('admin/header');
+        $this->load->view('admin/flash_report', $data);
+        $this->load->view('admin/footer');
+    }
+
+    public function polling_report($sessions_id) {
+        $data['poll_list'] = $this->msessions->get_poll($sessions_id);
+        $data['flash_report_list'] = $this->msessions->get_polling_report($sessions_id,$data['poll_list']);
+       
+        $this->load->view('admin/header');
+        $this->load->view('admin/polling_report', $data);
+        $this->load->view('admin/footer');
+    }
+
 }
