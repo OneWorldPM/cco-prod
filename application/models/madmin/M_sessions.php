@@ -390,11 +390,13 @@ class M_sessions extends CI_Model {
         }
     }
 
-    function delete_sessions($sessions_id) {
+    function delete_sessions() {
+        $post = $this->input->post();
+        $sessions_id = $post["sesionId"];
         $this->db->delete("sessions", array("sessions_id" => $sessions_id));
         $this->db->delete("sessions_poll_question", array("sessions_id" => $sessions_id));
         $this->db->delete("poll_question_option", array("sessions_id" => $sessions_id));
-        return TRUE;
+        return "success";
     }
 
     function add_poll_data() {

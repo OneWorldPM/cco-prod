@@ -67,13 +67,15 @@ class Sessions extends CI_Controller {
         $this->load->view('admin/footer');
     }
 
-    function delete_sessions($sessions_id) {
-        if ($sessions_id != "") {
-            $this->msessions->delete_sessions($sessions_id);
-            header('location:' . base_url() . 'admin/sessions?msg=D');
-        } else {
-            header('location:' . base_url() . 'admin/sessions?msg=E');
-        }
+     function delete_sessions() {
+//        if ($sessions_id != "") {
+//            $this->msessions->delete_sessions($sessions_id);
+//            header('location:' . base_url() . 'admin/sessions?msg=D');
+//        } else {
+//            header('location:' . base_url() . 'admin/sessions?msg=E');
+//        }
+        $data = $this->msessions->delete_sessions();
+        echo $data;
     }
 
     public function updateSessions() {

@@ -143,7 +143,7 @@
                                                         <a href="<?= base_url() ?>admin/sessions/resource/<?= $val->sessions_id ?>" class="btn btn-success btn-sm">Resources</a>
                                                         </td>
                                                         <td>
-														  <a href="<?= base_url() ?>admin/sessions/delete_sessions/<?= $val->sessions_id ?>" class="btn btn-danger btn-sm" style="font-size: 10px !important; margin-bottom: 5px;">Delete Session</a>
+														 <a data-session-id="<?= $val->sessions_id ?>" class="btn btn-danger btn-sm delete_session"  style="font-size: 10px !important; margin-bottom: 5px;">Delete Session</a>
                                                             <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">Send to CCO</a>
                                                         <a href="<?= base_url() ?>admin/sessions/view_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">View JSON</a>
 														 <a href="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" style="margin-bottom: 5px;"  class="btn btn-purple btn-sm">Clear JSON</a>
@@ -188,6 +188,23 @@ switch ($msg) {
             "ordering": false,
         });
   $('.datepicker').datepicker();
+   
+        //====== session delete =======//
+        $(".delete_session").on("click", function () {
+            var sesionId = $(this).data("session-id");
+            alertify.confirm("Are you sure you want to delete this session?", function (e) {
+                if (e)
+                {
+                    $.post("<?= base_url() ?>admin/sessions/delete_sessions",{"sesionId":sesionId},function (response){
+                        if(response=="success"){
+                            alertify.success('Session Deleted!');
+                            location.reload();
+                        }
+                    });
+                }
+            });
+        });
+        
 <?php if ($msg): ?>
             alertify.<?= $t ?>("<?= $m ?>");
 <?php endif; ?>
