@@ -931,6 +931,17 @@ class M_sessions extends CI_Model {
             $sessions_history_login = array();
             if ($sessions_history->num_rows() > 0) {
                 foreach ($sessions_history->result() as $val) {
+                    $sessions_start_date_time = strtotime($result_sessions->sessions_date.' '.$result_sessions->time_slot);
+                    $sessions_end_date_time = strtotime($result_sessions->sessions_date.' '.$result_sessions->end_time);
+                    if ($sessions_end_date_time != "") {
+                        if ($sessions_end_date_time >= $sessions_start_date_time) {
+                            $sessions_total_time = $sessions_end_date_time - $sessions_start_date_time;
+                        } else {
+                            $sessions_total_time = 0;
+                        }
+                    } else {
+                        $sessions_total_time = 0;
+                    }
                     $start_date_time = strtotime($val->start_date_time);
                     $end_date_time = strtotime($val->end_date_time);
                     if ($end_date_time != "") {
@@ -942,6 +953,9 @@ class M_sessions extends CI_Model {
                     } else {
                         $end_date_time = 0;
                         $total_time = 0;
+                    }
+                    if ($sessions_total_time < $total_time) {
+                       $total_time = $sessions_total_time;
                     }
                     $sessions_history_login[] = array(
                         'client_data' => '',
@@ -1132,6 +1146,17 @@ class M_sessions extends CI_Model {
             $sessions_history_login = array();
             if ($sessions_history->num_rows() > 0) {
                 foreach ($sessions_history->result() as $val) {
+                    $sessions_start_date_time = strtotime($result_sessions->sessions_date.' '.$result_sessions->time_slot);
+                    $sessions_end_date_time = strtotime($result_sessions->sessions_date.' '.$result_sessions->end_time);
+                    if ($sessions_end_date_time != "") {
+                        if ($sessions_end_date_time >= $sessions_start_date_time) {
+                            $sessions_total_time = $sessions_end_date_time - $sessions_start_date_time;
+                        } else {
+                            $sessions_total_time = 0;
+                        }
+                    } else {
+                        $sessions_total_time = 0;
+                    }
                     $start_date_time = strtotime($val->start_date_time);
                     $end_date_time = strtotime($val->end_date_time);
                     if ($end_date_time != "") {
@@ -1143,6 +1168,9 @@ class M_sessions extends CI_Model {
                     } else {
                         $end_date_time = 0;
                         $total_time = 0;
+                    }
+                    if ($sessions_total_time < $total_time) {
+                       $total_time = $sessions_total_time;
                     }
                     $sessions_history_login[] = array(
                         'client_data' => '',
