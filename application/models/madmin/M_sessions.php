@@ -9,6 +9,11 @@ class M_sessions extends CI_Model {
     function getSessionsAll() {
         $this->db->select('*');
         $this->db->from('sessions s');
+		 ($this->session->userdata('start_date') != "") ? $where['DATE(s.sessions_date) >='] = date('Y-m-d', strtotime($this->session->userdata('start_date'))) : '';
+        ($this->session->userdata('end_date') != "") ? $where['DATE(s.sessions_date) <='] = date('Y-m-d', strtotime($this->session->userdata('end_date'))) : '';
+        if (!empty($where)) {
+            $this->db->where($where);
+        }
         $this->db->order_by("s.sessions_date", "asc");
         $this->db->order_by("s.time_slot", "asc");
         $sessions = $this->db->get();
