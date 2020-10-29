@@ -69,6 +69,7 @@ class M_sessions extends CI_Model {
             'sessions_id' => trim($post['sessions_id']),
             'poll_type_id' => $post['poll_type_id'],
             'question' => trim($post['question']),
+			'slide_number' => trim($post['slide_number']),
             'poll_comparisons_id' => 0,
             "create_poll_date" => date("Y-m-d h:i")
         );
@@ -99,6 +100,7 @@ class M_sessions extends CI_Model {
             'sessions_id' => trim($post['sessions_id']),
             'poll_type_id' => $post['poll_comparisons_with_us'],
             'question' => trim($post['question']),
+			'slide_number' => trim($post['slide_number']),
             'poll_comparisons_id' => $insert_id,
             "create_poll_date" => date("Y-m-d h:i")
         );
@@ -162,6 +164,7 @@ class M_sessions extends CI_Model {
         $post = $this->input->post();
         $set = array(
             'question' => trim($post['question']),
+			'slide_number' => trim($post['slide_number']),
             'poll_type_id' => $post['poll_type_id']
         );
         $this->db->update("sessions_poll_question", $set, array("sessions_poll_question_id" => $post['sessions_poll_question_id']));

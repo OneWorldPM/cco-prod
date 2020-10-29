@@ -58,6 +58,10 @@
                                             <label class="text-large">Question:</label>
                                             <input type="text" name="question" id="question" value="<?= isset($sessions_data) ? $sessions_data->question : "" ?>" placeholder="Question"  class="form-control">
                                         </div>
+										<div class="form-group">
+                                            <label class="text-large">Slide Number:</label>
+                                            <input type="text" name="slide_number" id="slide_number" value="<?= isset($sessions_data) ? $sessions_data->slide_number : "" ?>" placeholder="Slide Number" class="form-control">
+                                        </div>
                                         <div class="form-group">
                                             <label class="text-large">Select Poll Type:</label>
                                             <select class="form-control" id="poll_type_id" name="poll_type_id">
