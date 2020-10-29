@@ -21,6 +21,7 @@
                                     <thead class="th_center">
                                         <tr>
                                             <th>Question</th>
+											 <th>Slide Number</th>
                                             <th>Poll Type</th>
                                             <th>Options</th>
                                             <th>Action</th>
@@ -33,6 +34,7 @@
                                                 ?>
                                                 <tr>
                                                     <td><?= $val->question ?></td>
+													 <td><?= $val->slide_number ?></td>
                                                     <td><?= $val->poll_type ?></td>
                                                     <td>
                                                         <?php

@@ -13,7 +13,7 @@
                                     <div class="form-body">
                                         <div class="form-group">
                                             <a href="<?= base_url() ?>uploads/sample.csv" download>Download Sample CSV</a>
-                                        </div>
+                                        </div>  
                                         <?php if (isset($sessions)) { ?>    
                                             <input type="hidden" name="sessions_id" value="<?= $sessions->sessions_id ?>">
                                         <?php } ?> 
@@ -57,6 +57,10 @@
                                         <div class="form-group">
                                             <label class="text-large">Question:</label>
                                             <input type="text" name="question" id="question" value="<?= isset($sessions_data) ? $sessions_data->question : "" ?>" placeholder="Question" class="form-control">
+                                        </div>
+										<div class="form-group">
+                                            <label class="text-large">Slide Number:</label>
+                                            <input type="text" name="slide_number" id="slide_number" value="<?= isset($sessions_data) ? $sessions_data->slide_number : "" ?>" placeholder="Slide Number" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label class="text-large">Select Poll Type:</label>
