@@ -68,7 +68,7 @@
                                                         <?php } else if ($val->status == 4) { ?>    
                                                             <a href="<?= base_url() ?>presenter/sessions/show_result/<?= $val->sessions_poll_question_id ?>" class="btn btn-primary btn-sm">Show Results</a>
                                                         <?php } else { ?>
-                                                            <label class="label label-danger">Close Result</label>
+                                                            <a href="<?= base_url() ?>presenter/sessions/show_result/<?= $val->sessions_poll_question_id ?>" class="btn btn-primary btn-sm">Show Results</a>
                                                             <a href="<?= base_url() ?>presenter/sessions/view_result/<?= $val->sessions_poll_question_id ?>" class="btn btn-beige btn-sm">View</a>
                                                         <?php } ?>    
                                                     </td>
