@@ -295,6 +295,7 @@
                                             <?php } else if ($val->status == 4) { ?>
                                                 <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>" class="btn btn-primary btn-sm show_results">Show Results</a>
                                             <?php } else { ?>
+											 <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>" class="btn btn-primary btn-sm show_results">Show Results</a>
                                                 <label class="label label-danger">Close Result</label>
                                             <?php } ?>
                                         </td>

@@ -301,6 +301,7 @@ class Sessions extends CI_Controller {
         $sessions_poll_question_id = $this->input->post('sessions_poll_question_id');
         $sessions_poll_question_row = $this->db->get_where("sessions_poll_question", array("sessions_poll_question_id" => $sessions_poll_question_id))->row();
         if (!empty($sessions_poll_question_row)) {
+			$this->db->update("sessions_poll_question", array("status" => 3), array("status"=>2,"sessions_id" => $sessions_poll_question_row->sessions_id));
             $this->db->update("sessions_poll_question", array("status" => 2), array("sessions_poll_question_id" => $sessions_poll_question_id));
             $result_array = array("status" => "success");
         } else {
