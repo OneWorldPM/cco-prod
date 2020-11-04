@@ -1185,8 +1185,7 @@ class M_sessions extends CI_Model {
                     if ($sessions_total_time < $total_time) {
                        $total_time = $sessions_total_time;
                     }
-					  echo $total_time;
-                    die;
+				
                     $sessions_history_login[] = array(
                         'client_data' => '',
                         'alertness' => 0,
