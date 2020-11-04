@@ -945,6 +945,7 @@ class M_sessions extends CI_Model {
                     } else {
                         $sessions_total_time = 0;
                     }
+                    $start_date_time = strtotime($val->start_date_time);
                     if ($start_date_time < $sessions_start_date_time) {
                         $start_date_time = strtotime($val->start_date_time);
                     } else {
@@ -1164,6 +1165,7 @@ class M_sessions extends CI_Model {
                     } else {
                         $sessions_total_time = 0;
                     }
+                     $start_date_time = strtotime($val->start_date_time);
                     if ($start_date_time < $sessions_start_date_time) {
                         $start_date_time = strtotime($val->start_date_time);
                     } else {
