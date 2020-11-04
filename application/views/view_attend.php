@@ -76,7 +76,7 @@
                                             <?php if ($sessions->sessions_photo != "") { ?>
                                                 <img alt="" src="<?= base_url() ?>uploads/sessions/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_photo : "" ?>" style="width: 100%;">
                                             <?php } else { ?>
-                                                <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg">
+                                                <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg" style="width: 100%;">
                                             <?php } ?>   
                                         </div>  
                                         <div class="col-md-8">
