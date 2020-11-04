@@ -72,14 +72,14 @@
                                 </div>    
                                 <div class="col-md-7 m-t-20" style="border-right: 1px solid;">
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <?php if ($sessions->sessions_photo != "") { ?>
-                                                <img alt="" src="<?= base_url() ?>uploads/sessions/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_photo : "" ?>" height="100" width="100">
+                                                <img alt="" src="<?= base_url() ?>uploads/sessions/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_photo : "" ?>">
                                             <?php } else { ?>
-                                                <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg" height="100" width="100">
+                                                <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg">
                                             <?php } ?>   
                                         </div>  
-                                        <div class="col-md-8">
+                                        <div class="col-md-9">
                                             <h2 style="margin-bottom: 0px;"><?= (isset($sessions) && !empty($sessions)) ? $sessions->session_title : "" ?></h2>
                                             <small><i class="fa fa-calendar" aria-hidden="true"></i> <?= date("M-d-Y", strtotime($sessions->sessions_date)) . ' ' . date("h:i A", strtotime($sessions->time_slot)) . ' - ' . date("h:i A", strtotime($sessions->end_time)) ?></small>
                                             <p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_description : "" ?></p>
