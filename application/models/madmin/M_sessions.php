@@ -945,8 +945,11 @@ class M_sessions extends CI_Model {
                     } else {
                         $sessions_total_time = 0;
                     }
-                   // $start_date_time = strtotime($val->start_date_time);
-					$start_date_time = $sessions_start_date_time;
+                    if ($start_date_time < $sessions_start_date_time) {
+                        $start_date_time = strtotime($val->start_date_time);
+                    } else {
+                        $start_date_time = $sessions_start_date_time;
+                    }
                     $end_date_time = strtotime($val->end_date_time);
                     if ($end_date_time != "") {
                         if ($end_date_time >= $start_date_time) {
@@ -1161,8 +1164,11 @@ class M_sessions extends CI_Model {
                     } else {
                         $sessions_total_time = 0;
                     }
-                   // $start_date_time = strtotime($val->start_date_time);
-					$start_date_time = $sessions_start_date_time;
+                    if ($start_date_time < $sessions_start_date_time) {
+                        $start_date_time = strtotime($val->start_date_time);
+                    } else {
+                        $start_date_time = $sessions_start_date_time;
+                    }
                     $end_date_time = strtotime($val->end_date_time);
                     if ($end_date_time != "") {
                         if ($end_date_time >= $start_date_time) {
