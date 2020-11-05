@@ -404,7 +404,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                                     </a>
                                 </li>
                             </ul>
-                            <div class="tab-content" style="max-height: 426px; overflow-y: auto;">
+                            <div class="tab-content" style="max-height: 620px; overflow-y: auto;">
                                 <div class="tab-pane fade in active" id="attendee_questions">
                                     <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
                                     <input type="hidden" name="last_sessions_cust_question_id" id="last_sessions_cust_question_id" value="0">
