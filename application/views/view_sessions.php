@@ -181,7 +181,7 @@ bottom: 0;
         height: 86.7vh;
     }
     #embededVideo {
-        height: 96vh;
+        height: 83vh;
     }
     body{
         background-color: black;
