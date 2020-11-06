@@ -16,6 +16,7 @@
                     <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                         <div class="row">
                             <div class="col-md-12 table-responsive">
+							  <input type="hidden" id="flash_report_session_number" value="<?= (isset($flash_report_list) && !empty($flash_report_list)) ? sizeof($flash_report_list) : "" ?>"> 
                                 <table class="table table-bordered table-striped text-center" id="example">
                                     <thead class="th_center">
                                         <tr>
@@ -103,15 +104,19 @@
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
 <script>
     $(document).ready(function () {
+        var flash_report_session_number = $("#flash_report_session_number").val();
         $('#example').DataTable({
             dom: 'Bfrtip',
-            buttons: [
-                'csv'
+            buttons: [{
+                    extend: 'csv',
+                    title: 'Flash report session('+flash_report_session_number+')'
+                }
             ]
         });
         $('.buttons-csv').text('Export CSV');
     });
 </script>
+
 
 
 
