@@ -31,11 +31,6 @@
                                             <th>total_polls</th>
                                             <th>total_questions</th>
                                             <th>alertness</th>
-                                            <th>profile_country</th>
-                                            <th>profile_org_name</th>
-                                            <th>profile_org_title</th>
-                                            <th>geoip_country</th>
-                                            <th>geoip_city</th>
                                             <th>MemberCentral.Degree</th>
                                             <th>MemberCentral.MedicalSpecialty</th>
                                             <th>MemberCentral.City</th>
@@ -61,23 +56,17 @@
                                                 }
                                                 ?>
                                                 <tr>
-
                                                     <td><?= $val->cust_id ?></td>
                                                     <td><?= $val->first_name . ' ' . $val->last_name ?></td>
                                                     <td><?= $val->email ?></td>
                                                     <td><?= $val->identifier_id ?></td>
-                                                    <td><?= date("m/d/Y h:i",strtotime($val->start_date_time)) ?></td>
+                                                    <td><?= date("m/d/Y h:i", strtotime($val->start_date_time)) ?></td>
                                                     <td><?= $total_time ?></td>
                                                     <td>Attendee</td>
                                                     <td>0</td>
                                                     <td>0</td>
                                                     <td><?= $val->total_questions ?></td>
                                                     <td>0</td>
-                                                    <td><?= $val->country ?></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td><?= $val->country ?></td>
-                                                    <td><?= $val->city ?></td>
                                                     <td><?= $val->degree ?></td>
                                                     <td><?= $val->specialty ?></td>
                                                     <td><?= $val->city ?></td>
