@@ -95,7 +95,6 @@
     }
 
     #embededVideo {
-        height: 959px;
         margin-top: -2px;
         position: relative;
     }
@@ -149,9 +148,7 @@
         overflow: hidden;
     }
 
-    .parallax {
-        height: 909px;
-    }
+
 
     .questionElement {
         max-height: 230px;
@@ -176,6 +173,24 @@
         width: 100%;
         background-color: #F15A23;
         height: 29px;
+        position: absolute;
+bottom: 0;
+    }
+
+    .parallax {
+        height: 86.7vh;
+    }
+    #embededVideo {
+        height: 92vh;
+    }
+    body{
+        background-color: black;
+    }
+
+    @media only screen and (max-width: 700px) {
+        .borderFrame {
+            position: unset;
+        }
     }
 
 </style>
