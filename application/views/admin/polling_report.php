@@ -74,13 +74,16 @@
     $(document).ready(function () {
         $('#example').DataTable({
             dom: 'Bfrtip',
-            buttons: [
-                'csv'
+            buttons: [{
+                    extend: 'csv',
+                    title: 'Poll report session'
+                }
             ]
         });
         $('.buttons-csv').text('Export CSV');
     });
 </script>
+
 
 
 
