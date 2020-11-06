@@ -1168,6 +1168,8 @@ if (isset($sessions)) {
                         }
                     }
                 } else {
+					   $("#poll_vot_section_id_status").val("");
+                            $("#poll_vot_section_last_status").val("");
                  stop_music();
                     $('#modal').modal('hide');
                     $("#timer_sectiom").hide();
