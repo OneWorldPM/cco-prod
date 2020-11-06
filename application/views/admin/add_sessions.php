@@ -169,6 +169,18 @@
                                         }
                                         ?>
                                     </div>
+									<?php
+                                            $right_bar=isset($sessions_edit->right_bar)?$sessions_edit->right_bar:"";
+                                            ?>
+
+                                            <label class="col-md-12 text-large" style="padding:0">Select Session Properties</label>
+                                            <hr>
+                                            <div class="form-group">
+                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "resources", "checked"):"checked"?> value="resources">Resources</label>
+                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "chat", "checked"):""?> value="chat">Chat</label>
+                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "notes", "checked"):"checked"?> value="notes">Notes</label>
+                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "questions", "checked"):"checked"?> value="questions">Questions</label>
+                                            </div>
                                     <?php if (isset($sessions_edit)) { ?>
                                         <div class="" id="presenter_list">
                                         <?php } else { ?>
@@ -256,18 +268,7 @@
                                             }
                                             ?>
                                         </div>
-                                            <?php
-                                            $right_bar=isset($sessions_edit->right_bar)?$sessions_edit->right_bar:"";
-                                            ?>
-
-                                            <label class="col-md-12 text-large" style="padding:0">Select Session Properties</label>
-                                            <hr>
-                                            <div class="form-group">
-                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "resources", "checked"):"checked"?> value="resources">Resources</label>
-                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "chat", "checked"):""?> value="chat">Chat</label>
-                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "notes", "checked"):"checked"?> value="notes">Notes</label>
-                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "questions", "checked"):"checked"?> value="questions">Questions</label>
-                                            </div>
+                                            
 
                                             <div class="form-group">
                                                 <label>Sessions Logo</label>
