@@ -192,6 +192,7 @@ class Sessions extends CI_Controller {
         echo json_encode(array("current_time" => date("H:i:s")));
     }
 
+   
     public function add_viewsessions_history_open() {
         $post = $this->input->post();
         $this->load->library('user_agent');
@@ -200,7 +201,7 @@ class Sessions extends CI_Controller {
             'sessions_id' => $post['sessions_id'],
             'cust_id' => $this->session->userdata("cid"),
             'operating_system' => $this->agent->platform(),
-            'computer_type' => $this->agent->browser(),
+            'computer_type' => $post['browser'],
             'ip_address' => $this->input->ip_address(),
             'resolution' => $post['resolution'],
             'start_date_time' => date("Y-m-d H:i:s"),
@@ -215,20 +216,39 @@ class Sessions extends CI_Controller {
         );
 
         $login_sessions_history = $this->db->get_where('login_sessions_history', $where_session_his_arr)->row();
+
+        $sessions_details = $this->db->get_where('sessions', array("sessions_id" => $post['sessions_id']))->row();
+
         if (!empty($login_sessions_history)) {
-            $session_his_arr = array(
+//            $session_his_arr = array(
+//                'sessions_id' => $post['sessions_id'],
+//                'cust_id' => $this->session->userdata("cid"),
+//                'operating_system' => $this->agent->platform(),
+//                'computer_type' => $this->agent->browser(),
+//                'ip_address' => $this->input->ip_address(),
+//                'resolution' => $post['resolution'],
+//                'start_date_time' => date("Y-m-d H:i:s"),
+//                'status' => 0
+//            );
+//            $this->db->update('login_sessions_history', $session_his_arr, array("login_sessions_history_id" => $login_sessions_history->login_sessions_history_id));
+        } else {
+            if (date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->time_slot)) > date("Y-m-d H:i:s")) {
+                $start_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->time_slot));
+            } else {
+                $start_date_time = date("Y-m-d H:i:s");
+            }
+
+            $session_his_array = array(
                 'sessions_id' => $post['sessions_id'],
                 'cust_id' => $this->session->userdata("cid"),
                 'operating_system' => $this->agent->platform(),
                 'computer_type' => $this->agent->browser(),
                 'ip_address' => $this->input->ip_address(),
                 'resolution' => $post['resolution'],
-                'start_date_time' => date("Y-m-d H:i:s"),
+                'start_date_time' => $start_date_time,
                 'status' => 0
             );
-            $this->db->update('login_sessions_history', $session_his_arr, array("login_sessions_history_id" => $login_sessions_history->login_sessions_history_id));
-        } else {
-            $this->db->insert('login_sessions_history', $session_his_arr);
+            $this->db->insert('login_sessions_history', $session_his_array);
         }
 
         echo json_encode(array("status" => "success", "view_sessions_history_id" => $insert_id));
@@ -249,10 +269,18 @@ class Sessions extends CI_Controller {
             );
             $login_sessions_history = $this->db->get_where('login_sessions_history', $where_session_his_arr)->row();
             if (!empty($login_sessions_history)) {
-                $this->db->update('login_sessions_history', $session_his_arr, array("login_sessions_history_id" => $login_sessions_history->login_sessions_history_id));
+                $sessions_details = $this->db->get_where('sessions', array("sessions_id" => $view_sessions_history->sessions_id))->row();
+                if(date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time)) < date("Y-m-d H:i:s")) {
+                    $end_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time));
+                } else {
+                    $end_date_time = date("Y-m-d H:i:s");
+                }
+                $session_his_array = array(
+                    'end_date_time' => $end_date_time
+                );
+                $this->db->update('login_sessions_history', $session_his_array, array("login_sessions_history_id" => $login_sessions_history->login_sessions_history_id));
             }
         }
         echo json_encode(array("status" => "success"));
     }
-
 }
