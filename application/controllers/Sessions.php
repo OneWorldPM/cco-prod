@@ -193,7 +193,7 @@ class Sessions extends CI_Controller {
     }
 
    
-    public function add_viewsessions_history_open() {
+     public function add_viewsessions_history_open() {
         $post = $this->input->post();
         $this->load->library('user_agent');
         $user_agent = $this->input->ip_address();
@@ -232,16 +232,19 @@ class Sessions extends CI_Controller {
 //            );
 //            $this->db->update('login_sessions_history', $session_his_arr, array("login_sessions_history_id" => $login_sessions_history->login_sessions_history_id));
         } else {
-              if (date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->time_slot)) < date("Y-m-d H:i:s") && date("Y-m-d H:i:s") < date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time))) {
+            if (date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->time_slot)) < date("Y-m-d H:i:s") && date("Y-m-d H:i:s") < date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time))) {
                 if (date("Y-m-d H:i:s") < date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time))) {
                     $start_date_time = date("Y-m-d H:i:s");
                 } else {
                     $start_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time));
                 }
             } else {
-                $start_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->time_slot));
+                if (date("Y-m-d H:i:s") < date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time))) {
+                    $start_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->time_slot));
+                } else {
+                    $start_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time));
+                }
             }
-
 
             $session_his_array = array(
                 'sessions_id' => $post['sessions_id'],
@@ -280,6 +283,8 @@ class Sessions extends CI_Controller {
                 } else {
                     if (date("Y-m-d H:i:s", strtotime($login_sessions_history->start_date_time)) > date("Y-m-d H:i:s")) {
                         $end_date_time = date("Y-m-d H:i:s", strtotime($login_sessions_history->start_date_time));
+                    } else if (date("Y-m-d H:i:s") < date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time))) {
+                        $end_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time));
                     } else {
                         $end_date_time = date("Y-m-d H:i:s");
                     }
