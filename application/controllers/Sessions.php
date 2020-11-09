@@ -242,7 +242,7 @@ class Sessions extends CI_Controller {
                 'sessions_id' => $post['sessions_id'],
                 'cust_id' => $this->session->userdata("cid"),
                 'operating_system' => $this->agent->platform(),
-                'computer_type' => $this->agent->browser(),
+                'computer_type' => $post['browser'],
                 'ip_address' => $this->input->ip_address(),
                 'resolution' => $post['resolution'],
                 'start_date_time' => $start_date_time,
