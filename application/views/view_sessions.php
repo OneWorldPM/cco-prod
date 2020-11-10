@@ -1046,15 +1046,10 @@ if (isset($sessions)) {
             }
         });
 		
-		   $(document).on("click", "#downloadbriefcase", function () {
+		$(document).on("click", "#downloadbriefcase", function () {
             var sessions_id = $("#sessions_id").val();
-            //$(location).attr('href', '<?= base_url() ?>sessions/downloadbriefcase/' + sessions_id);
-            $.ajax({
-                url: "<?= base_url() ?>sessions/downloadbriefcase",
-                type: "post",
-                data: {'sessions_id': sessions_id},
-                dataType: "json",
-                success: function (data) {
+            $.post("<?= base_url() ?>sessions/downloadbriefcase", {"sessions_id": sessions_id}, function (response) {
+                if (response == "success") {
 
                 }
             });
