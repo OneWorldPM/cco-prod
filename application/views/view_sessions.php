@@ -1040,7 +1040,8 @@ if (isset($sessions)) {
 		
 		$(document).on("click", "#downloadbriefcase", function () {
             var sessions_id = $("#sessions_id").val();
-            $(location).attr('href', '<?= base_url() ?>sessions/downloadbriefcase/' + sessions_id);
+            console.log(sessions_id);
+            $(location).attr('href', '<?= base_url() ?>sessions/downloadbriefcase/'+sessions_id);
         });
 
         $('#briefcase').keypress(function (e) {
