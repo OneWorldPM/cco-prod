@@ -220,10 +220,20 @@
         .rightSticky ul li:nth-of-type(1n+2){
             margin-top: 0;
         }
-        .rightSticykPopup .content > #briefcase_section textarea{
-            height: 70vh !important;
+        .rightSticky ul li:hover{
+            margin-left: 0;
+        }
+        .rightSticykPopup{
+            width: 100%;
+            right: 0;
+            height: 50vh;
+            bottom: -78px;
+        }
+        #briefcase{
+            margin-top: 25px;
         }
     }
+
 
 </style>
 
