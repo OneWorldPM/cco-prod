@@ -609,24 +609,15 @@ if (isset($sessions)) {
 </script>
 
 <script type="text/javascript">
-    $(window).on('popstate', function (event) {
+    window.onbeforeunload = function (e) {
         var sessions_id = $("#sessions_id").val();
-        alertify.confirm("Do you want to download your notes now?", function (e) {
-            if (e)
-            {
-                $(location).attr('href', '<?= base_url() ?>sessions/downloadbriefcase/' + sessions_id);
-            }
-        });
-    });
-//    window.onbeforeunload = function (e) {
-//        var sessions_id = $("#sessions_id").val();
 //        alertify.confirm("Do you want to download your notes now?", function (e) {
 //            if (e)
 //            {
-//                $(location).attr('href', '<?= base_url() ?>sessions/downloadbriefcase/' + sessions_id);
+                $(location).attr('href', '<?= base_url() ?>sessions/downloadbriefcase/' + sessions_id);
 //            }
-//        });
-//    };
+        });
+    };
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
