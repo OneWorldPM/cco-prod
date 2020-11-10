@@ -611,8 +611,8 @@ if (isset($sessions)) {
             initial_resolution: '240p',
             buffering:          500,
             autoplay:           false,
-            height:             '720',
-            width:              '1280',
+            height:             '720', //set this as 'parent' for 100% height
+            width:              '1280', //set this as 'parent' for 100% width
             muted:              true,
             autoplay:           true
         });
