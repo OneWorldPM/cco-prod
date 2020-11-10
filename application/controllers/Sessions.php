@@ -285,19 +285,33 @@ class Sessions extends CI_Controller {
             $login_sessions_history = $this->db->get_where('login_sessions_history', $where_session_his_arr)->row();
             if (!empty($login_sessions_history)) {
                 $sessions_details = $this->db->get_where('sessions', array("sessions_id" => $view_sessions_history->sessions_id))->row();
-                if (date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time)) < date("Y-m-d H:i:s")) {
-                    $end_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time));
-                } else {
-                    if (date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->time_slot)) < date("Y-m-d H:i:s")) {
-                        $end_date_time = date("Y-m-d H:i:s", strtotime($login_sessions_history->start_date_time));
-                    } else if (date("Y-m-d H:i:s") > date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time))) {
-                        $end_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time));
-                    } else {
+                
+                if (date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->time_slot)) < date("Y-m-d H:i:s") && date("Y-m-d H:i:s") < date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time))) {
+                    if (date("Y-m-d H:i:s") < date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time))) {
                         $end_date_time = date("Y-m-d H:i:s");
+                    } else {
+                        $end_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time));
+                    }
+                } else {
+                    if (date("Y-m-d H:i:s") < date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time))) {
+                        $end_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->time_slot));
+                    } else {
+                        $end_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time));
                     }
                 }
-				  echo $end_date_time;
-                die;
+
+//                if (date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time)) < date("Y-m-d H:i:s")) {
+//                    $end_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time));
+//                } else {
+//                    if (date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->time_slot)) < date("Y-m-d H:i:s")) {
+//                        $end_date_time = date("Y-m-d H:i:s", strtotime($login_sessions_history->start_date_time));
+//                    } else if (date("Y-m-d H:i:s") > date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time))) {
+//                        $end_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time));
+//                    } else {
+//                        $end_date_time = date("Y-m-d H:i:s");
+//                    }
+//                }
+
                 $session_his_array = array(
                     'end_date_time' => $end_date_time
                 );
