@@ -115,8 +115,8 @@ class Sessions extends CI_Controller {
         echo json_encode($result_array);
     }
 	
-	   public function downloadbriefcase($sessions_id) {
-        $briefcase = $this->objsessions->downloadbriefcase($sessions_id);
+	  public function downloadbriefcase($sessions_id) {
+        $briefcase = $this->db->get_where("sessions_cust_briefcase", array("cust_id" => $this->session->userdata("cid"), 'sessions_id' => $sessions_id))->row()->note;
         echo "<pre>";
         print_r($briefcase);
         die;
