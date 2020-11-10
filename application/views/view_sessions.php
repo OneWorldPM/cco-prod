@@ -613,15 +613,7 @@ if (isset($sessions)) {
         alertify.confirm("Do you want to download your notes now?", function (e) {
             if (e)
             {
-                $.ajax({
-                    url: "<?= base_url() ?>sessions/downloadbriefcase",
-                    type: "post",
-                    data: {'sessions_id': sessions_id},
-                    dataType: "json",
-                    success: function (data) {
-
-                    }
-                });
+                $(location).attr('href', '<?= base_url() ?>sessions/downloadbriefcase/' + sessions_id);
             }
         });
     };
@@ -1048,13 +1040,8 @@ if (isset($sessions)) {
 		
 		$(document).on("click", "#downloadbriefcase", function () {
             var sessions_id = $("#sessions_id").val();
-            $.post("<?= base_url() ?>sessions/downloadbriefcase", {"sessions_id": sessions_id}, function (response) {
-                if (response == "success") {
-
-                }
-            });
+            $(location).attr('href', '<?= base_url() ?>sessions/downloadbriefcase/' + sessions_id);
         });
-
 
         $('#briefcase').keypress(function (e) {
             var key = e.which;
