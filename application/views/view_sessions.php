@@ -384,7 +384,7 @@ if (isset($sessions)) {
 			</div>
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>
-			  <a class="col-md-12" id="downloadbriefcase" style="float: right; font-size: 18px;"><span>Download</span></a>
+			  <a class="col-md-12" id="downloadbriefcase" style="text-align: end; font-size: 18px;"><span>Download</span></a>
         </div>
     </div>
 
