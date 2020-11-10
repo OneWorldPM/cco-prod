@@ -115,7 +115,8 @@ class Sessions extends CI_Controller {
         echo json_encode($result_array);
     }
 	
-	  public function downloadbriefcase($sessions_id) {
+	   public function downloadbriefcase() {
+        $sessions_id = $this->input->post('sessions_id');
         $briefcase = $this->objsessions->downloadbriefcase($sessions_id);
         $handle = fopen("note.txt", "w");
         fwrite($handle, $briefcase);

@@ -294,6 +294,7 @@ class M_sessions extends CI_Model {
     }
 	
  function downloadbriefcase($sessions_id) {
+	 
         $result_data = $this->db->get_where("sessions_cust_briefcase", array("cust_id" => $this->session->userdata("cid"), 'sessions_id' => $sessions_id))->row()->note;
         return $result_data;
     }
