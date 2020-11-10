@@ -296,6 +296,8 @@ class Sessions extends CI_Controller {
                         $end_date_time = date("Y-m-d H:i:s");
                     }
                 }
+				  echo $end_date_time;
+                die;
                 $session_his_array = array(
                     'end_date_time' => $end_date_time
                 );
