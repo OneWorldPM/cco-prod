@@ -174,7 +174,7 @@
         background-color: #F15A23;
         height: 29px;
         position: absolute;
-bottom: 0;
+        bottom: 0;
     }
 
     .parallax {
@@ -193,6 +193,38 @@ bottom: 0;
         }
     }
 
+    @media only screen and (max-width: 601px) {
+        .rightSticky{
+            bottom: 0;
+            position: fixed;
+            width: 100%;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        .videoTitle{
+            font-size: 12px;
+        }
+        .rightSticky{
+            background-color: #EF5D21;
+        }
+    .rightSticky ul li{
+            width: 32%;
+            display: inline-block;
+            text-align: center;
+            padding: 5px 0px;
+        }
+        .rightSticky ul li span{
+            display: none;
+        }
+        .rightSticky ul li:nth-of-type(1n+2){
+            margin-top: 0;
+        }
+        .rightSticykPopup .content > #briefcase_section textarea{
+            height: 70vh !important;
+        }
+    }
+
 </style>
 
 
@@ -204,11 +236,13 @@ bottom: 0;
             <div>
                 <div class="videContent">
                     <div style="background-color: #B2B7BB;">
-                        <h3 style="margin-bottom: 2px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
+                        <h3 class="videoTitle" style="margin-bottom: 2px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
                     </div>
                     <div id="embededVideo">
                         <div class="row"><i id="btnFS" class="fa fa-arrows-alt" aria-hidden="true"></i></div>
-                        <div id="iframeDiv" class="row embed-responsive embed-responsive-16by9"><?= isset($sessions) ? $sessions->embed_html_code : "" ?></div>
+                        <div id="iframeDiv" class="row embed-responsive embed-responsive-16by9">
+                            <?= isset($sessions) ? $sessions->embed_html_code : "" ?>
+                        </div>
                         <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
                             <div class="modal-dialog">
                                 <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
