@@ -609,9 +609,15 @@ if (isset($sessions)) {
 </script>
 
 <script type="text/javascript">
-    $(window).on('popstate', function(event) {
- alert("pop");
-});
+    $(window).on('popstate', function (event) {
+        var sessions_id = $("#sessions_id").val();
+        alertify.confirm("Do you want to download your notes now?", function (e) {
+            if (e)
+            {
+                $(location).attr('href', '<?= base_url() ?>sessions/downloadbriefcase/' + sessions_id);
+            }
+        });
+    });
 //    window.onbeforeunload = function (e) {
 //        var sessions_id = $("#sessions_id").val();
 //        alertify.confirm("Do you want to download your notes now?", function (e) {
