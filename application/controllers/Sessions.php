@@ -115,6 +115,21 @@ class Sessions extends CI_Controller {
         echo json_encode($result_array);
     }
 	
+	  public function downloadbriefcase($sessions_id) {
+        $briefcase = $this->objsessions->downloadbriefcase($sessions_id);
+        $handle = fopen("note.txt", "w");
+        fwrite($handle, $briefcase);
+        fclose($handle);
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename=' . basename('note.txt'));
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize('note.txt'));
+        readfile('note.txt');
+    }
+
+	
 	public function downloadNote($briefcase) {
 		 $briefcase = str_replace('%20',' ', $briefcase);
         $handle = fopen("note.txt", "w");

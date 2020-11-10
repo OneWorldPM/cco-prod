@@ -380,7 +380,8 @@ if (isset($sessions)) {
                     <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""></textarea>
                 </div>
                 <a class="button color btn" style="margin: 0px; padding: 24px 7px;" id="briefcase_send"><span>Save</span></a>
-            </div>
+            <a id="downloadbriefcase"><span>Download</span></a>
+			</div>
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>
         </div>
@@ -572,6 +573,18 @@ if (isset($sessions)) {
 
     };
 </script>
+<script type="text/javascript">
+    window.onbeforeunload = function (e) {
+        var sessions_id = $("#sessions_id").val();
+        alertify.confirm("Do you want to download your notes now?", function (e) {
+            if (e)
+            {
+                 $(location).attr('href', '<?= base_url() ?>sessions/downloadbriefcase/' + sessions_id);
+            }
+        });
+    };
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -985,10 +998,15 @@ if (isset($sessions)) {
                             $("#briefcase").val("");
                             $("#success_briefcase").text("Add Notes Successfully").fadeIn('slow').fadeOut(5000);
                         }
-                        $(location).attr('href', '<?= base_url() ?>sessions/downloadNote/'+briefcase);
+                       // $(location).attr('href', '<?= base_url() ?>sessions/downloadNote/'+briefcase);
                     }
                 });
             }
+        });
+		
+		  $(document).on("click", "#downloadbriefcase", function () {
+            var sessions_id = $("#sessions_id").val();
+            $(location).attr('href', '<?= base_url() ?>sessions/downloadbriefcase/' + sessions_id);
         });
 
         $('#briefcase').keypress(function (e) {
