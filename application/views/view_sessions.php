@@ -380,10 +380,11 @@ if (isset($sessions)) {
                     <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""></textarea>
                 </div>
                 <a class="button color btn" style="margin: 0px; padding: 24px 7px;" id="briefcase_send"><span>Save</span></a>
-            <a class="col-md-12" id="downloadbriefcase"><span>Download</span></a>
+           
 			</div>
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>
+			 <a class="col-md-12" id="downloadbriefcase"><span>Download</span></a>
         </div>
     </div>
 
