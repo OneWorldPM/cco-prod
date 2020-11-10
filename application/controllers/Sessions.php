@@ -55,18 +55,25 @@ class Sessions extends CI_Controller {
     }
 
     public function view($sessions_id) {
-        $sesions=$this->objsessions->viewSessionsData($sessions_id);
-        $header_data["sesions_logo"]=$sesions->sessions_logo;
-        $header_data["sponsor_type"]=$sesions->sponsor_type;
+        $sesions = $this->objsessions->viewSessionsData($sessions_id);
+        
+        if (date("Y-m-d H:i:s") > date("Y-m-d H:i:s", strtotime($sesions->sessions_date . ' ' . $sesions->end_time))) {
+            header("location:" . base_url() . "sessions/session_end");
+            die();
+        }
+        
+        $header_data["sesions_logo"] = $sesions->sessions_logo;
+        $header_data["sponsor_type"] = $sesions->sponsor_type;
 
         $data["sessions"] = $sesions;
         $data["session_resource"] = $this->objsessions->get_session_resource($sessions_id);
         $data['music_setting'] = $this->objsessions->get_music_setting();
 
-        $this->load->view('header',$header_data);
+        $this->load->view('header', $header_data);
         $this->load->view('view_sessions', $data);
         $this->load->view('footer');
     }
+
 
     public function get_poll_vot_section() {
         $result_data = $this->objsessions->get_poll_vot_section();
@@ -297,4 +304,11 @@ class Sessions extends CI_Controller {
         }
         echo json_encode(array("status" => "success"));
     }
+	
+	  public function session_end(){
+        $this->load->view('header');
+        $this->load->view('end_session');
+        $this->load->view('footer');
+    }
+
 }
