@@ -288,7 +288,7 @@ class Sessions extends CI_Controller {
                 if (date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time)) < date("Y-m-d H:i:s")) {
                     $end_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time));
                 } else {
-                   if (date("Y-m-d H:i:s", strtotime($login_sessions_history->start_date_time)) > date("Y-m-d H:i:s")) {
+                    if (date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->time_slot)) < date("Y-m-d H:i:s")) {
                         $end_date_time = date("Y-m-d H:i:s", strtotime($login_sessions_history->start_date_time));
                     } else if (date("Y-m-d H:i:s") > date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time))) {
                         $end_date_time = date("Y-m-d H:i:s", strtotime($sessions_details->sessions_date . ' ' . $sessions_details->end_time));
