@@ -374,13 +374,12 @@ if (isset($sessions)) {
     </div>
     <div class="content">
         <div class="contentHeader">Take Notes</div>
-        <div class="col-md-12" id="briefcase_section" style="background-color: #fff; border-radius: 5px; padding: 5px; position: absolute; top: 36px; width: 100%;">
+        <div id="briefcase_section" style="background-color: #fff; border-radius: 5px; padding: 5px; position: absolute; top: 36px; width: 100%;">
             <div style="text-align: center; display: flex; " id="briefcase_section">
                 <div class="col-md-12 input-group">
                     <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""></textarea>
                 </div>
                 <a class="button color btn" style="margin: 0px; padding: 24px 7px;" id="briefcase_send"><span>Save</span></a>
-               
             </div>
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>
