@@ -115,12 +115,10 @@ class Sessions extends CI_Controller {
         echo json_encode($result_array);
     }
 	
-	  public function downloadbriefcase($sessions_id) {
-		    echo $sessions_id; die;
+	   public function downloadbriefcase($sessions_id) {
+        
         $briefcase = $this->db->get_where("sessions_cust_briefcase", array("cust_id" => $this->session->userdata("cid"), 'sessions_id' => $sessions_id))->row()->note;
-        echo "<pre>";
-        print_r($briefcase);
-        die;
+       
         $handle = fopen("note.txt", "w");
         fwrite($handle, $briefcase);
         fclose($handle);
