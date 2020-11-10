@@ -74,6 +74,27 @@ class Sessions extends CI_Controller {
         $this->load->view('footer');
     }
 
+    //This is a copy of view() method by Athul for testing new video streaming
+    public function cachefly($sessions_id) {
+        $sesions = $this->objsessions->viewSessionsData($sessions_id);
+
+        if (date("Y-m-d H:i:s") > date("Y-m-d H:i:s", strtotime($sesions->sessions_date . ' ' . $sesions->end_time))) {
+            header("location:" . base_url() . "sessions/session_end");
+            die();
+        }
+
+        $header_data["sesions_logo"] = $sesions->sessions_logo;
+        $header_data["sponsor_type"] = $sesions->sponsor_type;
+
+        $data["sessions"] = $sesions;
+        $data["session_resource"] = $this->objsessions->get_session_resource($sessions_id);
+        $data['music_setting'] = $this->objsessions->get_music_setting();
+
+        $this->load->view('header', $header_data);
+        $this->load->view('view_sessions_cachefly', $data);
+        $this->load->view('footer');
+    }
+
 
     public function get_poll_vot_section() {
         $result_data = $this->objsessions->get_poll_vot_section();
