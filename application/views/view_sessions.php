@@ -372,7 +372,7 @@ if (isset($sessions)) {
             </div>
         </div>
     </div>
-    <div class="content">
+   <div class="content">
         <div class="contentHeader">Take Notes</div>
         <div id="briefcase_section" style="background-color: #fff; border-radius: 5px; padding: 5px; position: absolute; top: 36px; width: 100%;">
             <div style="text-align: center; display: flex; " id="briefcase_section">
@@ -384,9 +384,7 @@ if (isset($sessions)) {
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>
         </div>
-        <div class="col-md-12">
-          <a id="downloadbriefcase" style="text-align: end; font-size: 18px;"><span>Download</span></a>  
-        </div>
+         <a class="col-md-12" id="downloadbriefcase" style="text-align: end; font-size: 18px;"><span>Download</span></a>  
     </div>
 </div>
 <div class="rightSticykPopup resourcesSticky" style="display: none">
