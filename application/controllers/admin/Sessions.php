@@ -13,6 +13,18 @@ class Sessions extends CI_Controller {
             redirect('admin/alogin');
         }
         $this->load->model('madmin/m_sessions', 'msessions');
+
+
+    }
+
+    public function addBriefcase() {
+        $result_data = $this->msessions->addBriefcase();
+        if (!empty($result_data)) {
+            $result_array = array("status" => "success");
+        } else {
+            $result_array = array("status" => "error");
+        }
+        echo json_encode($result_array);
     }
 
     public function index() {

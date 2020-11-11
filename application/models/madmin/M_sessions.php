@@ -6,6 +6,23 @@ class M_sessions extends CI_Model {
         parent::__construct();
     }
 
+    function addBriefcase() {
+        $post = $this->input->post();
+        $insert_array = array(
+            'cust_id' => $this->session->userdata("aid"),
+            'sessions_id' => $post['sessions_id'],
+            'note' => $post['briefcase'],
+            'reg_briefcase_date' => date("Y-m-d")
+        );
+        $result_data = $this->db->get_where("sessions_cust_briefcase", array("cust_id" => $this->session->userdata("aid"), 'sessions_id' => $post['sessions_id']))->row();
+        if (empty($result_data)) {
+            $this->db->insert("sessions_cust_briefcase", $insert_array);
+        } else {
+            $this->db->update("sessions_cust_briefcase", $insert_array, array("sessions_cust_briefcase_id" => $result_data->sessions_cust_briefcase_id));
+        }
+        return TRUE;
+    }
+
     function getSessionsAll() {
         $this->db->select('*');
         $this->db->from('sessions s');
