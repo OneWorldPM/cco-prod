@@ -79,16 +79,17 @@ class Sessions extends CI_Controller {
         $data['isMobile'] = $this->MobileDetect->isMobile();
 
         $this->load->view('header', $header_data);
-        if ($this->MobileDetect->isMobile()){
-            $this->load->view('view_sessions', $data);
-        }else{
-            $this->load->view('view_sessions_desktop', $data);
-        }
+        $this->load->view('view_sessions', $data);
+//        if ($this->MobileDetect->isMobile()){
+//            $this->load->view('view_sessions', $data);
+//        }else{
+//            $this->load->view('view_sessions_desktop', $data);
+//        }
         $this->load->view('footer');
     }
 
     //This is a copy of view() method by Athul for testing new video streaming
-    public function cachefly($sessions_id) {
+    public function millicast($sessions_id) {
         $sesions = $this->objsessions->viewSessionsData($sessions_id);
 
         if (date("Y-m-d H:i:s") > date("Y-m-d H:i:s", strtotime($sesions->sessions_date . ' ' . $sesions->end_time))) {
@@ -99,12 +100,13 @@ class Sessions extends CI_Controller {
         $header_data["sesions_logo"] = $sesions->sessions_logo;
         $header_data["sponsor_type"] = $sesions->sponsor_type;
 
+
         $data["sessions"] = $sesions;
         $data["session_resource"] = $this->objsessions->get_session_resource($sessions_id);
         $data['music_setting'] = $this->objsessions->get_music_setting();
 
         $this->load->view('header', $header_data);
-        $this->load->view('view_sessions_cachefly', $data);
+        $this->load->view('view_sessions_millicast', $data);
         $this->load->view('footer');
     }
 
@@ -132,7 +134,7 @@ class Sessions extends CI_Controller {
         if ($this->MobileDetect->isMobile()){
             $this->load->view('view_sessions', $data);
         }else{
-            $this->load->view('view_sessions_mobile', $data);
+            $this->load->view('view_sessions_desktop', $data);
         }
         $this->load->view('footer');
     }
