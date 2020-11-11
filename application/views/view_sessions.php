@@ -421,7 +421,7 @@ if (isset($sessions)) {
         <div id="briefcase_section" style="background-color: #fff; border-radius: 5px; padding: 5px; position: absolute; top: 36px; width: 100%;">
             <div style="text-align: center; display: flex; " id="briefcase_section">
                 <div class="col-md-12 input-group">
-                    <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value="<?= isset($sessions_notes_download) ? sessions_notes_download : "" ?>"></textarea>
+                    <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value="<?= isset($sessions_notes_download) ? $sessions_notes_download : "" ?>"></textarea>
                 </div>
                 <a class="button color btn" style="margin: 0px; padding: 24px 7px;" id="briefcase_send"><span>Save</span></a>
                 <a class="button color btn" id="downloadbriefcase" style="position: absolute; text-align: center; width: 45%; margin-left: 155px; top: 187px; padding: 15px 0px !important; padding: 24px 7px;"><span>Download</span></a>
