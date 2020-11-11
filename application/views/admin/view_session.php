@@ -242,9 +242,7 @@
         padding-bottom: 0;
     }
 
-    .messagesSticky .content .messages {
-        height: 250px;
-    }
+
 
     #briefcase_section {
         height: 73% !important;
@@ -574,6 +572,8 @@
         <div class="messages">
 
         </div>
+        <input type="text" class="form-control" placeholder="Enter message"  style="border-radius: 50px !important;" id='sendGroupChat'>
+
     </div>
 
 </div>
@@ -595,7 +595,7 @@
         var sessionId = data.sessionId ? data.sessionId : data.session_id;
         var message = data.message ? data.message : data.message;
 
-        if (userId == "<?=$this->session->userdata('cid')?>") {
+        if (userId == "<?=$this->session->userdata('aid')?$this->session->userdata('aid'):$this->session->userdata('cid')?>") {
             messageType = `<div class="messageMe"><p>${message}</p></div>`;
         } else {
             messageType = `<div class="messageHe"><span>${userName}</span><p>${message}</p></div>`;
@@ -610,6 +610,38 @@
 
         $(".messagesSticky" + sessionId + " .messages").append(messageType)
     }
+    $('#sendGroupChat').keypress(function (e) {
+        var $questions = $("#sendGroupChat");
+        var key = e.which;
+        if (key == 13) // the enter key code
+        {
+            if ($questions.val() == "") {
+                $questions.addClass("border borderRed");
+            } else {
+                $questions.removeClass("border borderRed");
+                var $questionsVal=$questions.val();
+                $questions.val("");
+                $.post("<?=base_url()?>"+"SessionGroupChat/newText",
+                    {
+                        "sessionId":"<?=getAppName($sessions->sessions_id) ?>",
+                        "message":$questionsVal
+                    },
+                    function(resp){
+                        if(resp){
+                            resp=JSON.parse(resp);
+                            socket.emit("sessionViewGroupChat",{
+                                "sessionId":resp.session_id,
+                                "message":resp.message,
+                                "userId":resp.user_id,
+                                "userName":resp.user_name
+                            })
+
+                        }
+                    })
+
+            }
+        }
+    });
 
     $.post("<?=base_url()?>" + "SessionGroupChat/getTexts", {
             "sessionId": "<?=getAppName($sessions->sessions_id) ?>",

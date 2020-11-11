@@ -11,10 +11,11 @@ class SessionGroupChat_Model extends CI_Model
     public function newText()
     {
 
-        $userId=$this->session->userdata('cid');
-        $userName=$this->session->userdata('fullname');
+        $userId=$this->session->userdata('aid')?$this->session->userdata('aid'):$this->session->userdata('cid');
+        $userName=$this->session->userdata('aname')?$this->session->userdata('aname'):$this->session->userdata('fullname');
         $message = htmlspecialchars($this->input->post()['message']);
         $sessionId=$this->input->post()['sessionId'];
+
 
         $data = array(
             'user_id' => $userId,
