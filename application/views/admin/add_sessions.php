@@ -181,7 +181,26 @@
                                         }
                                         ?>
                                     </div>
-								
+				     <div class="row">
+                                            <label class="col-md-12 text-large">Attendee View Links</label>
+                                            <label class="col-md-12 text-large">Claim Credit Link</label>
+                                            <div class="form-group col-md-6" style="color: #000;">
+                                                <input type="radio" class="col-md-1"  name="attendee_view_links_status"  id="attendee_view_links" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->attendee_view_links_status == "1") ? 'checked' : '' : 'checked' ?> value="1">ON<br>
+                                            </div>
+                                            <div class="form-group col-md-6" style="color: #000;">
+                                                <input type="radio" class="col-md-1"  name="attendee_view_links_status"  id="attendee_view_links_2" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->attendee_view_links_status == "0") ? 'checked' : '' : '' ?>  value="0">OFF<br>
+                                            </div>
+                                            <div class="col-md-12" id="url_section">
+                                                <div class="form-group">
+                                                   <label class="text-large">Url Link :</label>
+                                                   <input type="text" name="url_link" id="url_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->url_link : "" ?>" class="form-control" placeholder="URL Link">
+                                               </div>
+                                                <div class="form-group">
+                                                    <label class="text-large">Link Text :</label>
+                                                    <input type="text" name="link_text" id="link_text" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->link_text : "" ?>" class="form-control" placeholder="Link Text">
+                                                </div>
+                                            </div>
+                                        </div>				
                                     <?php if (isset($sessions_edit)) { ?>
                                         <div class="" id="presenter_list">
                                         <?php } else { ?>
