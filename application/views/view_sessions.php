@@ -230,7 +230,7 @@
             bottom: -78px;
         }
         #briefcase{
-            margin-top: 25px;
+            margin-top: 35px;
         }
     }
 
