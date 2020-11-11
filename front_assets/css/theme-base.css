@@ -332,11 +332,11 @@ nav .main-menu .dropdown-submenu > span.dropdown-menu-title-only {
     border-radius: 0;
     font-size: 12px;
     font-style: normal;
-    font-weight: 800;
+    font-weight: 600;
     height: 88px;
     line-height: 70px;
     margin-left: 0;
-    margin-right: 0;
+    margin-right: 330px;
     outline: medium none;
     padding: 10px;
     text-transform: uppercase;

@@ -17,7 +17,7 @@
     <link href="<?= base_url() ?>front_assets/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
     <!-- Template base -->
-    <link href="<?= base_url() ?>front_assets/css/theme-base.css?v=3" rel="stylesheet">
+    <link href="<?= base_url() ?>front_assets/css/theme-base.css?v=4" rel="stylesheet">
 
     <!-- Template elements -->
     <link href="<?= base_url() ?>front_assets/css/theme-elements.css" rel="stylesheet">
@@ -108,6 +108,7 @@
     <!-- HEADER -->
     <header id="header" class="header-transparent header-sticky">
         <div id="header-wrap">
+            <div style="height: 4px;background-color: #f15a23;"></div>
             <div class="container">
                 <!--LOGO-->
                 <?php
@@ -154,7 +155,7 @@
                 <!--NAVIGATION-->
                 <div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
                     <div class="container">
-                        <nav id="mainMenu" class="main-menu mega-menu">
+                        <nav id="mainMenu" class="main-menu mega-menu" style="margin-top: 10px;">
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="https://yourconference.live/support" target="_blank">Help Desk</a></li>
                             </ul>
