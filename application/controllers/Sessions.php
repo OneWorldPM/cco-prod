@@ -64,6 +64,9 @@ class Sessions extends CI_Controller {
         
         $header_data["sesions_logo"] = $sesions->sessions_logo;
         $header_data["sponsor_type"] = $sesions->sponsor_type;
+        $header_data["attendee_view_links_status"] = $sesions->attendee_view_links_status;
+        $header_data["url_link"] = $sesions->url_link;
+        $header_data["link_text"] = $sesions->link_text;
 
         $data["sessions"] = $sesions;
         $data["session_resource"] = $this->objsessions->get_session_resource($sessions_id);

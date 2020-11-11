@@ -160,6 +160,15 @@
                                 $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                                 ?>
                                 <ul class="main-menu nav navbar-nav navbar-right">
+								   <?php
+                                            if (isset($attendee_view_links_status) && isset($attendee_view_links_status)) {
+                                                if ($attendee_view_links_status == "1") {
+                                                    ?>
+                                                    <li><a target="_blank" href="<?= $url_link ?>"><?= $link_text ?></a></li>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
                                     <li class="dropdown">
                                         <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                             <?php if ($profile_data->profile != "") { ?>
