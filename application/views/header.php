@@ -116,13 +116,13 @@
                     ?>
                     <div id="logo">
                         <a href="<?= base_url() ?>home" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png">
-                            <img src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" alt="Polo Logo">
+                            <img src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" alt="CCO Logo">
                         </a>
                     </div>
                 <?php } else { ?>
                     <div id="logo">
                         <a href="<?= base_url() ?>" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png">
-                            <img src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" alt="Polo Logo">
+                            <img src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" alt="CCO Logo">
                         </a>
                     </div>
                 <?php } ?>
