@@ -129,7 +129,7 @@
 
     #briefcase_send {
         position: absolute;
-        width: 96%;
+        width: 50%;
         padding: 15px 0px !important;
         bottom: -5px;
     }
@@ -424,7 +424,7 @@ if (isset($sessions)) {
                     <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""></textarea>
                 </div>
                 <a class="button color btn" style="margin: 0px; padding: 24px 7px;" id="briefcase_send"><span>Save</span></a>
-                <a class="button color btn" href="<?= base_url() ?>sessions/downloadbriefcase/<?= isset($sessions) ? $sessions->sessions_id : "" ?>" style="margin: 0px; padding: 24px 7px;"><span>Download</span></a>
+                <a class="button color btn" href="<?= base_url() ?>sessions/downloadbriefcase/<?= isset($sessions) ? $sessions->sessions_id : "" ?>" style="position: absolute; text-align: center; width: 45%; margin-left: 155px; top: 187px; padding: 15px 0px !important; padding: 24px 7px;"><span>Download</span></a>
             </div>
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>
