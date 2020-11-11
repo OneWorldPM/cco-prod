@@ -246,7 +246,7 @@
             <div>
                 <div class="videContent">
                     <div style="background-color: #B2B7BB;">
-                        <h3 class="videoTitle" style="margin-bottom: 2px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
+                        <h3 class="videoTitle" style="margin-bottom: 2px; margin-left: 10px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
                     </div>
                     <div id="embededVideo">
                         <div class="row"><i id="btnFS" class="fa fa-arrows-alt" aria-hidden="true"></i></div>
