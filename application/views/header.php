@@ -17,7 +17,7 @@
     <link href="<?= base_url() ?>front_assets/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
     <!-- Template base -->
-    <link href="<?= base_url() ?>front_assets/css/theme-base.css?v=2" rel="stylesheet">
+    <link href="<?= base_url() ?>front_assets/css/theme-base.css?v=3" rel="stylesheet">
 
     <!-- Template elements -->
     <link href="<?= base_url() ?>front_assets/css/theme-elements.css" rel="stylesheet">
@@ -115,7 +115,7 @@
                     $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                     ?>
                     <div id="logo">
-                        <a href="<?= base_url() ?>home" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png" style="margin-top: 5px;">
+                        <a href="<?= base_url() ?>home" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png" style="margin-top: 12px;">
                             <img src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" alt="CCO Logo">
                         </a>
                     </div>
