@@ -119,9 +119,11 @@
                                         <p>Entry will be enabled in <span id="id_day_time" ></span></p>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>
-                                </div>
+                                <?php if (1 == 2){ ?>
+                                    <div class="col-md-12">
+                                        <a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </section><br><br>
