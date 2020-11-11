@@ -210,7 +210,7 @@
                             <?php } ?>
 
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="https://yourconference.live/support" target="_blank"><span class="glyphicon glyphicon-info-sign"></span> Help Desk</a></li>
+                                <li><a href="https://yourconference.live/support" target="_blank">Help Desk</a></li>
                             </ul>
 
                         </nav>
