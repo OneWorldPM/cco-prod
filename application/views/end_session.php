@@ -21,9 +21,8 @@
     }
 
 </style>
-<div class="container">
+<div class="container" style="background-image: url(<?= base_url() ?>front_assets/images/attend_background.png); top: 0; padding-top: 0px;">
     <div class="jumbotron">
-        <h2>Thank you, this session is now closed</h2>
-        <p><a class="btn btn-primary btn-lg" href="<?=base_url()."sessions"?>" role="button">Go Sessions</a></p>
+        <h2>This session is now closed.</h2>
     </div>
 </div>
