@@ -301,7 +301,7 @@ $uri_segment1 = $this->uri->segment(3);
                             <i class="ti-align-justify"></i>
                         </a>
                         <a class="navbar-brand" href="<?= base_url() ?>admin/dashboard">
-                            <img src="<?= base_url() ?>assets/images/logo.png" class="kent_logo" alt="admin"/>
+                            <img src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" class="kent_logo" alt="CCO Logo"/>
                         </a>
                         <a href="#" class="sidebar-toggler pull-right visible-md visible-lg" data-toggle-class="app-sidebar-closed" data-toggle-target="#app">
                             <i class="ti-align-justify"></i>
