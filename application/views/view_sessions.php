@@ -427,9 +427,7 @@ if (isset($sessions)) {
             </div>
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>
-             <div class="row">
-                <a class="col-md-12" href="<?= base_url() ?>sessions/downloadbriefcase/<?= isset($sessions) ? $sessions->sessions_id : "" ?>" style="text-align: end; font-size: 16px;"><span>Download</span></a>
-            </div> 
+             <span><a class="col-md-12" href="<?= base_url() ?>sessions/downloadbriefcase/<?= isset($sessions) ? $sessions->sessions_id : "" ?>" style="text-align: end; font-size: 16px;"><span>Download</span></a></span>
         </div>
     </div>
 
