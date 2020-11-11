@@ -71,13 +71,18 @@ class Sessions extends CI_Controller {
         $data["sessions"] = $sesions;
         $data["session_resource"] = $this->objsessions->get_session_resource($sessions_id);
         $data['music_setting'] = $this->objsessions->get_music_setting();
+
+        $header_data["attendee_view_links_status"] = $sesions->attendee_view_links_status;
+        $header_data["url_link"] = $sesions->url_link;
+        $header_data["link_text"] = $sesions->link_text;
+
         $data['isMobile'] = $this->MobileDetect->isMobile();
 
         $this->load->view('header', $header_data);
         if ($this->MobileDetect->isMobile()){
             $this->load->view('view_sessions', $data);
         }else{
-            $this->load->view('view_sessions_mobile', $data);
+            $this->load->view('view_sessions_desktop', $data);
         }
         $this->load->view('footer');
     }
