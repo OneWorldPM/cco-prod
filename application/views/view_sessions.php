@@ -638,16 +638,17 @@ if (isset($sessions)) {
  //           return false;
  //   };
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+<?= getSocketScript()?>
+
 <script type="text/javascript">
+
     $(document).ready(function () {
-    let socket = io("<?=getSocketUrl()?>");
     socket.emit("ConnectSessioViewUsers","<?=getAppName($sessions->sessions_id) ?>")
 
     $('#sendGroupChat').keypress(function (e) {
         var $questions = $("#sendGroupChat");
         var key = e.which;
-        if (key == 13) // the enter key code
+        if (key == 13) // the enter key cod
         {
             if ($questions.val() == "") {
                 $questions.addClass("border borderRed");

@@ -67,11 +67,11 @@ $uri_segment1 = $this->uri->segment(3);
         <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch.js"></script> -->
         <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch-onload.js"></script> -->
         <script src="<?= base_url() ?>front_assets/js/custom.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+        <?= getSocketScript()?>
         <script>
         
         // let socket = io("https://socket.yourconference.live:443");
-        let socket = io("<?=getSocketUrl()?>");
+        //let socket = io("<?//=getSocketUrl()?>//");
         
         socket.on("newViewUsers",function(resp){
             if(resp){
