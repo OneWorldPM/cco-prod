@@ -298,6 +298,18 @@ class M_sessions extends CI_Model {
         $result_data = $this->db->get_where("sessions_cust_briefcase", array("cust_id" => $this->session->userdata("cid"), 'sessions_id' => $sessions_id))->row()->note;
         return $result_data;
     }
+	
+	  function get_sessions_notes_download($sessions_id) {
+        $this->db->select('*');
+        $this->db->from('sessions_cust_briefcase');
+        $this->db->where(array("cust_id" => $this->session->userdata("cid"), 'sessions_id' => $sessions_id));
+        $sessions_cust = $this->db->get();
+        if ($sessions_cust->num_rows() > 0) {
+            return $sessions_cust->row()->note;
+        } else {
+            return '';
+        }
+    }
 
     function addresource() {
         $post = $this->input->post();

@@ -226,7 +226,7 @@
         .rightSticykPopup{
             width: 100%;
             right: 0;
-            height: 60vh;
+            height: 50vh;
             bottom: -78px;
         }
         #briefcase{
@@ -421,10 +421,10 @@ if (isset($sessions)) {
         <div id="briefcase_section" style="background-color: #fff; border-radius: 5px; padding: 5px; position: absolute; top: 36px; width: 100%;">
             <div style="text-align: center; display: flex; " id="briefcase_section">
                 <div class="col-md-12 input-group">
-                    <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""></textarea>
+                    <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value="<?= isset($sessions) ? $sessions->sessions_notes_download : "" ?>"></textarea>
                 </div>
                 <a class="button color btn" style="margin: 0px; padding: 24px 7px;" id="briefcase_send"><span>Save</span></a>
-                <a class="button color btn" href="<?= base_url() ?>sessions/downloadbriefcase/<?= isset($sessions) ? $sessions->sessions_id : "" ?>" style="position: absolute; text-align: center; width: 45%; margin-left: 155px; top: 187px; padding: 15px 0px !important; padding: 24px 7px;"><span>Download</span></a>
+                <a class="button color btn" id="downloadbriefcase" style="position: absolute; text-align: center; width: 45%; margin-left: 155px; top: 187px; padding: 15px 0px !important; padding: 24px 7px;"><span>Download</span></a>
             </div>
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>
@@ -1057,9 +1057,9 @@ if (isset($sessions)) {
             }
         });
 		
-		$(document).on("click", "#downloadbriefcase", function () {
-            var sessions_id = $("#sessions_id").val();
-            $(location).attr('href', '<?= base_url() ?>sessions/downloadbriefcase/' + sessions_id);
+        $(document).on("click", "#downloadbriefcase", function () {
+            var briefcase = $("#briefcase").val();
+            $(location).attr('href', '<?= base_url() ?>sessions/downloadNote/' + briefcase);
         });
 
         $('#briefcase').keypress(function (e) {
