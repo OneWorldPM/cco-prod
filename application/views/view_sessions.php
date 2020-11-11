@@ -226,11 +226,11 @@
         .rightSticykPopup{
             width: 100%;
             right: 0;
-            height: 50vh;
+            height: 60vh;
             bottom: -78px;
         }
         #briefcase{
-            margin-top: 35px;
+            margin-top: 25px;
         }
     }
 
@@ -425,11 +425,10 @@ if (isset($sessions)) {
                 </div>
                 <a class="button color btn" style="margin: 0px; padding: 24px 7px;" id="briefcase_send"><span>Save</span></a>
             </div>
-			<span><a class="col-md-12" href="<?= base_url() ?>sessions/downloadbriefcase/<?= isset($sessions) ? $sessions->sessions_id : "" ?>" style="text-align: end; font-size: 16px;"><span>Download</span></a></span>
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>
-             
-        </div>
+			<span><a class="col-md-12" href="<?= base_url() ?>sessions/downloadbriefcase/<?= isset($sessions) ? $sessions->sessions_id : "" ?>" style="text-align: end; font-size: 16px;"><span>Download</span></a></span>
+         </div>
     </div>
 
 </div>
