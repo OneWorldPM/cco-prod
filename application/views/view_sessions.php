@@ -1048,7 +1048,7 @@ if (isset($sessions)) {
                     dataType: "json",
                     success: function (data) {
                         if (data.status == "success") {
-                            $("#briefcase").val("");
+                          //  $("#briefcase").val("");
                             $("#success_briefcase").text("Add Notes Successfully").fadeIn('slow').fadeOut(5000);
                         }
                        // $(location).attr('href', '<?= base_url() ?>sessions/downloadNote/'+briefcase);
@@ -1059,7 +1059,6 @@ if (isset($sessions)) {
 		
         $(document).on("click", "#downloadbriefcase", function () {
             var briefcase = $("#briefcase").val();
-            console.log(briefcase);
             $(location).attr('href', '<?= base_url() ?>sessions/downloadNote/' + briefcase);
         });
 
