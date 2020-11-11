@@ -21,8 +21,10 @@
     }
 
 </style>
-<div class="container" style="background-image: url(<?= base_url() ?>front_assets/images/attend_background.png); top: 0; padding-top: 0px;">
+<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/attend_background.png); top: 0; padding-top: 0px;">
+<div class="container">
     <div class="jumbotron">
         <h2>This session is now closed.</h2>
     </div>
 </div>
+</section>
