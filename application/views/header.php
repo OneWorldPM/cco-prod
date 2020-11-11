@@ -156,9 +156,14 @@
                 <div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
                     <div class="container">
                         <nav id="mainMenu" class="main-menu mega-menu" style="margin-top: 10px;">
-                            <ul class="nav navbar-nav navbar-right">
+
+
+
+                            <ul class="main-menu nav navbar-nav navbar-right">
                                 <li><a href="https://yourconference.live/support" target="_blank">Help Desk</a></li>
                             </ul>
+
+
                             <?php
                             if ($this->session->userdata('cid') != "") {
                                 $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
