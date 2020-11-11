@@ -245,9 +245,13 @@
         <section class="content">
             <div>
                 <div class="videContent">
-                    <div style="background-color: #B2B7BB;">
-                        <h3 class="videoTitle" style="margin-bottom: 2px; margin-left: 10px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
-                    </div>
+
+                    <?php if (isset($sessions) && $sessions->sessions_id != 22) { ?>
+                        <div style="background-color: #B2B7BB;">
+                            <h3 class="videoTitle" style="margin-bottom: 2px; margin-left: 10px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
+                        </div>
+                    <?php } ?>
+
                     <div id="embededVideo">
                         <div class="row"><i id="btnFS" class="fa fa-arrows-alt" aria-hidden="true"></i></div>
                         <div id="iframeDiv" class="row embed-responsive embed-responsive-16by9">
