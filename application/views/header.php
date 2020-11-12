@@ -291,7 +291,7 @@
                                             }
                                             ?>
 
-                                            <?php if (1 == 2) { ?>
+                                            <?php if (1 == 1) { ?>
                                                 <li class="dropdown">
                                                     <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                         <?php if ($profile_data->profile != "") { ?>
@@ -365,6 +365,11 @@
                                             </ul>
                                         </li>
                                     </ul>
+
+
+
+
+
                                 </nav>
                             </div>
                         </div>
