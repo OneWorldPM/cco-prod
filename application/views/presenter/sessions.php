@@ -26,6 +26,7 @@
                                             <th>Title</th>
                                             <th>Presenter</th>
                                             <th>Zoom Link</th>
+                                             <th>Password</th>
                                             <th>Time Slot</th>
                                             <th>Action</th>
                                         </tr>
@@ -53,13 +54,15 @@
                                                         ?>
                                                     </td>
                                                      <td><a target="_blank" href="<?= $val->zoom_link ?>"><?= $val->zoom_link ?></a></td>
+                                                     <td><?= $val->zoom_password ?></td>
                                                     <td><?= date("h:i A", strtotime($val->time_slot)) .' - '. date("h:i A", strtotime($val->end_time)) ?></td>
                                                     <td>
-                                                        <a href="<?= base_url() ?>presenter/sessions/view_question_answer/<?= $val->sessions_id ?>" class="btn btn-primary btn-sm">View Q&A</a>
-                                                        <a href="<?= base_url() ?>presenter/sessions/create_poll/<?= $val->sessions_id ?>" class="btn btn-success btn-sm">Create Poll</a>
-                                                        <a href="<?= base_url() ?>presenter/sessions/view_poll/<?= $val->sessions_id ?>" class="btn btn-info btn-sm">View Poll</a>
-                                                        <a href="<?= base_url() ?>presenter/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-green btn-sm">View Session</a>
-                                                        <a href="<?= base_url() ?>presenter/groupchat/sessions_groupchat/<?= $val->sessions_id ?>" class="btn btn-blue btn-sm">Create Chat</a>
+                                                           <a href="<?= base_url() ?>presenter/groupchat/sessions_groupchat/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">Create Chat</a>
+                                                        <a href="<?= base_url() ?>presenter/sessions/view_question_answer/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">View Q&A</a>
+                                                        <a href="<?= base_url() ?>presenter/sessions/create_poll/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">Create Poll</a>
+                                                        <a href="<?= base_url() ?>presenter/sessions/view_poll/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">View Poll</a>
+                                                        <a href="<?= base_url() ?>presenter/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">View Session</a>
+                                                     
                                                     </td>
                                                 </tr>
                                                 <?php
