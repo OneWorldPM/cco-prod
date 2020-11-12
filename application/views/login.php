@@ -59,8 +59,8 @@
             <div class="row">
                 <div class="col-md-6 col-xs-12 col-sm-12 center p-60 background-white" style="border-radius: 10px;">
                     <div class="row">
-                        <div class="col-md-6 col-xs-12 col-sm-12" style="border-right: 1px solid #696f6f;"> 
-                            <h4>Welcome Back!</h4>
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <h4>Welcome!</h4>
                             <p>Sign in Below</p>
                             <?php
                             echo ($this->session->flashdata('msg')) ? $this->session->flashdata('msg') : '';
@@ -84,10 +84,10 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-6 col-xs-12 col-sm-12">
-                            <h4>Register Now!</h4>
-                            <p class="text-left"><a href="<?= base_url() ?>register">Click here to start your registration</a> </p>
-                        </div>
+<!--                        <div class="col-md-6 col-xs-12 col-sm-12">-->
+<!--                            <h4>Register Now!</h4>-->
+<!--                            <p class="text-left"><a href="--><?//= base_url() ?><!--register">Click here to start your registration</a> </p>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
