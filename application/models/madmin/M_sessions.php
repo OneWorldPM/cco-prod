@@ -1135,7 +1135,7 @@ class M_sessions extends CI_Model {
 
             $data_to_post = "data=" . json_encode($create_array) . "&session_reference=" . (int) $result_sessions->sessions_id . "&session_id=" . (int) $result_sessions->sessions_id . "&source=gravity"; //if http_build_query causes any problem with JSON data, send this parameter directly in post.
 
-            $url = "https://uat.clinicaloptions.com/api/CrmLiveEvents/SaveEventReport";
+            $url = "https://www.clinicaloptions.com/api/CrmLiveEvents/SaveEventReport";
             $headers = array(
                 'Content-Type:application/json',
                 'Accept: application/json'
