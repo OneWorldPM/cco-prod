@@ -18,7 +18,7 @@ $(document).ready(function () {
             var screen = $rightSticky.data("screen");
 
 
-          
+
             if($toolType2=="off"){
                 $(".rightSticykPopup").css("display","none");
                 $toolType = $(this).parent().data("type");
@@ -46,6 +46,7 @@ $(document).ready(function () {
                 var $screenWidth = $(document).width();
                 var rightStickyWidth=390;
                 if(screen=="customer")rightStickyWidth=320;
+                else if(screen=="admin")rightStickyWidth=400;
                 $screenWidth = $screenWidth - rightStickyWidth;
 
                 $(".videContent,.main-content").animate({

@@ -17,7 +17,7 @@
     <link href="<?= base_url() ?>front_assets/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
     <!-- Template base -->
-    <link href="<?= base_url() ?>front_assets/css/theme-base.css" rel="stylesheet">
+    <link href="<?= base_url() ?>front_assets/css/theme-base.css?v=5" rel="stylesheet">
 
     <!-- Template elements -->
     <link href="<?= base_url() ?>front_assets/css/theme-elements.css" rel="stylesheet">
@@ -108,6 +108,7 @@
     <!-- HEADER -->
     <header id="header" class="header-transparent header-sticky">
         <div id="header-wrap">
+            <div style="height: 4px;background-color: #f15a23;"></div>
             <div class="container">
                 <!--LOGO-->
                 <?php
@@ -115,14 +116,14 @@
                     $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                     ?>
                     <div id="logo">
-                        <a href="<?= base_url() ?>home" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png">
-                            <img src="<?= base_url() ?>front_assets/images/logo_new.png" alt="Polo Logo">
+                        <a href="#" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png" style="margin-top: 12px;">
+                            <img src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" alt="CCO Logo">
                         </a>
                     </div>
                 <?php } else { ?>
                     <div id="logo">
-                        <a href="<?= base_url() ?>" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png">
-                            <img src="<?= base_url() ?>front_assets/images/logo_new.png" alt="Polo Logo">
+                        <a href="#" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png">
+                            <img src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" alt="CCO Logo">
                         </a>
                     </div>
                 <?php } ?>
@@ -154,21 +155,30 @@
                 <!--NAVIGATION-->
                 <div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
                     <div class="container">
-                        <nav id="mainMenu" class="main-menu mega-menu">
+                        <nav id="mainMenu" class="main-menu mega-menu" style="margin-top: 10px;">
+
+
+
+                            <ul class="main-menu nav navbar-nav navbar-right">
+                                <li><a href="https://yourconference.live/support" target="_blank">Help Desk</a></li>
+                            </ul>
+
+
                             <?php
                             if ($this->session->userdata('cid') != "") {
                                 $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                                 ?>
                                 <ul class="main-menu nav navbar-nav navbar-right">
 								   <?php
-                                            if (isset($attendee_view_links_status) && isset($attendee_view_links_status)) {
-                                                if ($attendee_view_links_status == "1") {
-                                                    ?>
-                                                    <li><a target="_blank" href="<?= $url_link ?>"><?= $link_text ?></a></li>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
+                                   if (isset($attendee_view_links_status) && isset($attendee_view_links_status)) {
+                                       if ($attendee_view_links_status == "1") {
+                                           ?>
+                                           <li><a target="_blank" href="<?= $url_link ?>"><?= $link_text ?></a></li>
+                                           <?php
+                                       }
+                                   }
+                                   ?>
+                                    <?php if (1 == 2){ ?>
                                     <li class="dropdown">
                                         <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                             <?php if ($profile_data->profile != "") { ?>
@@ -204,12 +214,9 @@
                                             </li>
                                         </ul>
                                     </li>
+                                    <?php } ?>
                                 </ul>
                             <?php } ?>
-
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="https://yourconference.live/support" target="_blank"><span class="glyphicon glyphicon-info-sign"></span> Help Desk</a></li>
-                            </ul>
 
                         </nav>
                     </div>

@@ -3,14 +3,16 @@
         background: #ffffff;
         border-radius: 0px;
         border-radius: 5px;
-        margin: 0px 0 0px 0; 
+        margin: 0px 0 0px 0;
         padding: 10px;
         position: relative;
     }
-    .contentIn{
-        height:901px
+
+    .contentIn {
+        height: 901px
     }
-    #app{
+
+    #app {
         background: url('<?= base_url() ?>front_assets/images/pres_bg.jpg') no-repeat;
     }
 </style>
@@ -19,7 +21,7 @@
         height: 100%;
         padding: 3px;
         background: rgb(108, 108, 108);
-        box-shadow: none; 
+        box-shadow: none;
         color: #fff;
         padding-top: 0px;
     }
@@ -38,8 +40,9 @@
         height: 100%;
         padding: 3px;
         background: rgb(200, 201, 202);
-        box-shadow: none; 
+        box-shadow: none;
     }
+
     .progress_bar_new {
         height: 100%;
         padding: 3px;
@@ -50,28 +53,30 @@
         padding-top: 0px;
     }
 
-    .option_section_css{
+    .option_section_css {
         background-color: #f1f1f1;
         padding-top: 4px;
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
     }
-    .option_section_css_selected{
+
+    .option_section_css_selected {
         background-color: #e1f6ff;
         padding-top: 4px;
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
     }
+
     .progress {
         height: 26px;
         margin-bottom: 10px;
         overflow: hidden;
         background-color: #e6edf3;
         border-radius: 5px;
-        -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
-        box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
     }
 
     .progress_1 {
@@ -80,11 +85,12 @@
         overflow: hidden;
         background-color: #55c4534f;
         border-radius: 5px;
-        -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
-        box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
     }
-    .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
-        background-color:#A9A9A9;
+
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+        background-color: #A9A9A9;
     }
 
     .embed-responsive-item {
@@ -105,14 +111,15 @@
 
 
     #embed_html_code_section {
-      height:910px;
+        height: 910px;
 
     }
 
 
-    .open>.dropdown-menu {
+    .open > .dropdown-menu {
         left: -125px !important;
     }
+
     .rightSticky {
         bottom: 390px;
     }
@@ -123,77 +130,77 @@
 
 
     /*@media only screen and (min-width: 300px) and (max-width: 568px)  {*/
-        /*#embed_html_code_section{*/
-            /*height: 400px*/
-        /*}*/
+    /*#embed_html_code_section{*/
+    /*height: 400px*/
+    /*}*/
     /*}*/
 
     /*@media only screen and (min-width: 568px) and (max-width: 768px)  {*/
-        /*#embed_html_code_section{*/
-            /*height: 400px*/
-        /*}*/
+    /*#embed_html_code_section{*/
+    /*height: 400px*/
+    /*}*/
     /*}*/
 
     /*@media only screen and (min-width: 768px) and (max-width: 992px)  {*/
-        /*#embed_html_code_section{*/
-            /*height: 400px*/
-        /*}*/
+    /*#embed_html_code_section{*/
+    /*height: 400px*/
+    /*}*/
     /*}*/
 
     /*@media only screen and (min-width: 992px) and (max-width: 1200px)  {*/
-        /*#embed_html_code_section{*/
-            /*height: 500px*/
-        /*}*/
+    /*#embed_html_code_section{*/
+    /*height: 500px*/
+    /*}*/
     /*}*/
 
     /*@media only screen and (min-width: 1200px) and (max-width: 1400px)  {*/
-        /*#embed_html_code_section{*/
-            /*height: 500px*/
-        /*}*/
+    /*#embed_html_code_section{*/
+    /*height: 500px*/
+    /*}*/
     /*}*/
 
     /*@media only screen and (min-width: 1400px) and (max-width: 1600px)  {*/
-        /*#embed_html_code_section{*/
-            /*height: 580px*/
-        /*}*/
+    /*#embed_html_code_section{*/
+    /*height: 580px*/
+    /*}*/
     /*}*/
     /*@media only screen and (min-width: 1600px) and (max-width: 1800px)  {*/
-        /*#embed_html_code_section{*/
-            /*height: 620px*/
-        /*}*/
+    /*#embed_html_code_section{*/
+    /*height: 620px*/
+    /*}*/
     /*}*/
     /*@media only screen and (min-width: 1800px) and (max-width: 2000px)  {*/
-        /*#embed_html_code_section{*/
-            /*height: 680px*/
-        /*}*/
+    /*#embed_html_code_section{*/
+    /*height: 680px*/
+    /*}*/
     /*}*/
 
     /*@media only screen and (min-width: 2000px) and (max-width: 2200px)  {*/
-        /*#embed_html_code_section{*/
-            /*height: 720px*/
-        /*}*/
+    /*#embed_html_code_section{*/
+    /*height: 720px*/
+    /*}*/
     /*}*/
 
     /*@media only screen and (min-width: 2200px) and (max-width: 2400px)  {*/
-        /*#embed_html_code_section{*/
-            /*height: 800px*/
-        /*}*/
+    /*#embed_html_code_section{*/
+    /*height: 800px*/
+    /*}*/
     /*}*/
 
     /*@media only screen and (min-width: 2400px) and (max-width: 2800px)  {*/
-        /*#embed_html_code_section{*/
-            /*height: 900px*/
-        /*}*/
+    /*#embed_html_code_section{*/
+    /*height: 900px*/
+    /*}*/
     /*}*/
 
     /*@media only screen and (min-width: 2800px) {*/
-        /*#embed_html_code_section{*/
-            /*height: 1000px*/
-        /*}*/
+    /*#embed_html_code_section{*/
+    /*height: 1000px*/
+    /*}*/
     /*}*/
 
     @media only screen and (min-width: 991px) and (max-width: 1539px) {
-        .nav-tabs > li{
+        .nav-tabs > li {
             width: 100%;
         }
     }
@@ -224,14 +231,69 @@
         }
 
     }
-    .messages-item-time{
+
+    .messages-item-time {
         display: block !important;
         position: unset !important;
         padding-left: 48px;
     }
-    .main-content > .container{
+
+    .main-content > .container {
         padding-bottom: 0;
     }
+
+
+
+    #briefcase_section {
+        height: 73% !important;
+    }
+
+
+
+    #briefcase {
+        height: 160px;
+    }
+
+    .button.color, .btn.btn-primary {
+        background-color: #f05d1f;
+        border-color: #f05d1f;
+        color: #fff;
+    }
+    @media only screen and (max-width: 600px) {
+
+
+        .rightSticykPopup {
+            width: 100%;
+            right: 0px;
+            position: fixed;
+            margin: auto;
+            top: 0px;
+            bottom: 0px !important;
+            height: 100%;
+            z-index: 12412421412;
+        }
+
+        .rightSticykPopup .content > #briefcase_section textarea {
+            width: 100%;
+            height: 80vh;
+
+        }
+        .rightSticykPopup .content > #briefcase_section .button{
+            position: unset !important;
+        }
+    }
+    .rightSticykPopup .content > #briefcase_section .button{
+        bottom: 0;
+        width: 130px;
+        height: 50px;
+        line-height: 37px;
+        display: inline-block;
+        margin-top: 25px;
+    }
+    .rightSticykPopup .content > #briefcase_section .button:nth-of-type(2){
+       margin-left: 5px;
+    }
+
 </style>
 
 <div class="main-content">
@@ -246,19 +308,23 @@
                         <div class="col-md-4" style="text-align: center;">
                             <!--                            <a id="btn_timer_start" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">START</a>-->
                             <!--                            <a id="btn_timer_stop" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">STOP</a>-->
-                            <p id="id_day_time_clock" style="float: right; color: #1f860b; font-weight: 700; font-size:24px; margin:0;"></p>
+                            <p id="id_day_time_clock"
+                               style="float: right; color: #1f860b; font-weight: 700; font-size:24px; margin:0;"></p>
                         </div>
                     </div>
                 </div>
-                <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important; padding: 10px;padding-bottom: 0">
+                <div class="panel-body bg-white"
+                     style="border: 1px solid #b2b7bb!important; padding: 10px;padding-bottom: 0">
                     <div class="row" id="orderContainer">
-                        <div class="col-lg-10 col-md-9" id="embed_html_code_section" style="text-align: center; padding-right: 0; padding-left: 0;margin-bottom: 14px">
+                        <div class="col-lg-10 col-md-9" id="embed_html_code_section"
+                             style="text-align: center; padding-right: 0; padding-left: 0;margin-bottom: 14px">
                             <?= isset($sessions) ? $sessions->embed_html_code_presenter : "" ?>
                         </div>
                         <div class="col-lg-2 col-md-3" style="padding-left: 0;padding-right: 6px;" id="rightOrder">
                             <fieldset style="margin: 0px 0px 0px 0px; padding: 0px;min-height:180px">
                                 <div>
-                                    <h2 style='margin-bottom: 5px; color: #ffffff; font-weight: 700; font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'>Host Chat</h2>
+                                    <h2 style='margin-bottom: 5px; color: #ffffff; font-weight: 700; font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'>
+                                        Host Chat</h2>
                                 </div>
                                 <div class="col-md-12" id="group_chat_section">
                                     <input type="hidden" id="sessions_group_chat_id" value="">
@@ -267,7 +333,8 @@
                                             <!-- start: EMAIL LIST -->
                                             <div class="col email-list" style="width: 100% !important">
                                                 <div class="wrap-list" style="width: 100% !important">
-                                                    <ul class="messages-list perfect-scrollbar allmessage" style="top: 0px;max-height: 280px;">
+                                                    <ul class="messages-list perfect-scrollbar allmessage"
+                                                        style="top: 0px;max-height: 280px;">
 
                                                     </ul>
                                                 </div>
@@ -279,48 +346,75 @@
                                         <hr style="border-top:1px solid #b2b7bb;">
                                         <div class="col-md-11 col-xs-11" style="padding-right: 0px; padding-left: 0px">
                                             <div class="input-group">
-                                                <span class="input-group-addon" style="padding: 5px 6px; background-color:gray; border-color: gray;"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png" id="emjis_section_show" title="Check to Show Emoji" data-emjis_section_show_status="0" style="width: 20px; height: 20px;" alt=""/></span>
-                                                <input type="text" placeholder="Message..." id="message" name="message" class="form-control">
+                                                <span class="input-group-addon"
+                                                      style="padding: 5px 6px; background-color:gray; border-color: gray;"><img
+                                                            src="<?= base_url() ?>front_assets/images/emoji/happy.png"
+                                                            id="emjis_section_show" title="Check to Show Emoji"
+                                                            data-emjis_section_show_status="0"
+                                                            style="width: 20px; height: 20px;" alt=""/></span>
+                                                <input type="text" placeholder="Message..." id="message" name="message"
+                                                       class="form-control">
                                                 <!--<textarea  rows="2" class="form-control" style="color: #000;" placeholder="Message..."></textarea>-->
                                             </div>
                                         </div>
                                         <div class="col-md-1 col-xs-1" style="padding-left: 0px;">
-                                            <button class="btn btn-primary" id="send" style="height: 35px; padding-right: 5px; background-color:gray; border-color: gray; padding-left: 5px; "><i class="fa fa-send"></i></button>
+                                            <button class="btn btn-primary" id="send"
+                                                    style="height: 35px; padding-right: 5px; background-color:gray; border-color: gray; padding-left: 5px; ">
+                                                <i class="fa fa-send"></i></button>
                                         </div>
                                     </div>
-                                    <div style="text-align: left; padding-left: 0px; margin-left: -20px; display: flex;" id="emojis_section">
-                                        <img src="<?= base_url() ?>front_assets/images/emoji/happy.png" title="Happy" id="happy" data-title_name="&#128578;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                        <img src="<?= base_url() ?>front_assets/images/emoji/sad.png" title="Sad" id="sad" data-title_name="&#128543" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                        <img src="<?= base_url() ?>front_assets/images/emoji/laughing.png" title="Laughing" id="laughing" data-title_name="😁" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                        <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_up.png" title="Thumbs Up" id="thumbs_up" data-title_name="&#128077;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                        <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_down.png" title="Thumbs Down" id="thumbs_down" data-title_name="&#128078" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                        <img src="<?= base_url() ?>front_assets/images/emoji/clapping.png" title="Clapping" id="clapping" data-title_name="&#128079;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                                    <div style="text-align: left; padding-left: 0px; margin-left: -20px; display: flex;"
+                                         id="emojis_section">
+                                        <img src="<?= base_url() ?>front_assets/images/emoji/happy.png" title="Happy"
+                                             id="happy" data-title_name="&#128578;"
+                                             style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                                        <img src="<?= base_url() ?>front_assets/images/emoji/sad.png" title="Sad"
+                                             id="sad" data-title_name="&#128543"
+                                             style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                                        <img src="<?= base_url() ?>front_assets/images/emoji/laughing.png"
+                                             title="Laughing" id="laughing" data-title_name="😁"
+                                             style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                                        <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_up.png"
+                                             title="Thumbs Up" id="thumbs_up" data-title_name="&#128077;"
+                                             style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                                        <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_down.png"
+                                             title="Thumbs Down" id="thumbs_down" data-title_name="&#128078"
+                                             style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                                        <img src="<?= base_url() ?>front_assets/images/emoji/clapping.png"
+                                             title="Clapping" id="clapping" data-title_name="&#128079;"
+                                             style="width: 40px; height: 40px; padding: 5px;" alt=""/>
                                     </div>
                                 </div>
                             </fieldset>
 
                             <ul id="myTab1" class="nav nav-tabs" style="background-color: #b2b7bb;margin-top: 10px">
                                 <li class="active">
-                                    <a href="#attendee_questions" data-toggle="tab" style="padding: 9px 4px; text-transform: uppercase; font-size: 12px; color: #fff;">
+                                    <a href="#attendee_questions" data-toggle="tab"
+                                       style="padding: 9px 4px; text-transform: uppercase; font-size: 12px; color: #fff;">
                                         Attendee Questions
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#favorites" data-toggle="tab" style="padding: 9px 4px; text-transform: uppercase; font-size: 12px; color: #fff;">
+                                    <a href="#favorites" data-toggle="tab"
+                                       style="padding: 9px 4px; text-transform: uppercase; font-size: 12px; color: #fff;">
                                         Favorites <i class="fa fa-star-o"></i>
                                     </a>
                                 </li>
                             </ul>
                             <div class="tab-content" style="max-height: 420px; overflow-y: auto;">
                                 <div class="tab-pane fade in active" id="attendee_questions">
-                                    <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
-                                    <input type="hidden" name="last_sessions_cust_question_id" id="last_sessions_cust_question_id" value="0">
+                                    <input type="hidden" name="sessions_id" id="sessions_id"
+                                           value="<?= $sessions->sessions_id ?>">
+                                    <input type="hidden" name="last_sessions_cust_question_id"
+                                           id="last_sessions_cust_question_id" value="0">
                                     <div id="question_list"></div>
 
                                 </div>
                                 <div class="tab-pane fade" id="favorites">
-                                    <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
-                                    <input type="hidden" name="favorite_last_sessions_cust_question_id" id="favorite_last_sessions_cust_question_id" value="0">
+                                    <input type="hidden" name="sessions_id" id="sessions_id"
+                                           value="<?= $sessions->sessions_id ?>">
+                                    <input type="hidden" name="favorite_last_sessions_cust_question_id"
+                                           id="favorite_last_sessions_cust_question_id" value="0">
                                     <div id="favorite_question_list"></div>
                                 </div>
                             </div>
@@ -329,7 +423,8 @@
                     </div>
                 </div>
             </div>
-            <span style="margin-right: 25px;" class="pull-right text-red totalAttende totalAttende<?=getAppName($sessions->sessions_id) ?>">Total attendees: <b>0</b></span>
+            <span style="margin-right: 25px;"
+                  class="pull-right text-red totalAttende totalAttende<?= getAppName($sessions->sessions_id) ?>">Total attendees: <b>0</b></span>
 
         </div>
         <!-- end: DYNAMIC TABLE -->
@@ -339,9 +434,11 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="<?= base_url() ?>admin/sessions/view_question_answer/<?= $sessions->sessions_id ?>" class="btn btn-grey btn-sm">View Q&A</a>
-                        <a href="<?= base_url() ?>admin/sessions/create_poll/<?= $sessions->sessions_id ?>" class="btn btn-grey btn-sm">Create Poll</a>
-                        <a class="btn btn-grey btn-sm" id="btn_view_poll" >View Poll</a>
+                        <a href="<?= base_url() ?>admin/sessions/view_question_answer/<?= $sessions->sessions_id ?>"
+                           class="btn btn-grey btn-sm">View Q&A</a>
+                        <a href="<?= base_url() ?>admin/sessions/create_poll/<?= $sessions->sessions_id ?>"
+                           class="btn btn-grey btn-sm">Create Poll</a>
+                        <a class="btn btn-grey btn-sm" id="btn_view_poll">View Poll</a>
                         <p></p>
                     </div>
                     <div class="col-md-12 table-responsive" id="view_poll_table" style="display: none;">
@@ -373,17 +470,24 @@
                                         </td>
                                         <td>
                                             <?php if ($val->status == 0) { ?>
-                                                <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>" class="btn btn-success btn-sm open_poll">Open Poll</a>
+                                                <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>"
+                                                   class="btn btn-success btn-sm open_poll">Open Poll</a>
                                             <?php } else if ($val->status == 1) { ?>
-                                                <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>" class="btn btn-warning btn-sm close_poll">Close Poll</a>
-                                                <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>" class="btn btn-primary btn-sm show_results">Show Results</a>
-                                                <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>"  class="btn btn-blue btn-sm start_timer">Start Timer</a>
+                                                <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>"
+                                                   class="btn btn-warning btn-sm close_poll">Close Poll</a>
+                                                <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>"
+                                                   class="btn btn-primary btn-sm show_results">Show Results</a>
+                                                <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>"
+                                                   class="btn btn-blue btn-sm start_timer">Start Timer</a>
                                             <?php } else if ($val->status == 2) { ?>
-                                                <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>" class="btn btn-warning btn-sm close_results">Close Results</a>
+                                                <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>"
+                                                   class="btn btn-warning btn-sm close_results">Close Results</a>
                                             <?php } else if ($val->status == 4) { ?>
-                                                <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>" class="btn btn-primary btn-sm show_results">Show Results</a>
+                                                <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>"
+                                                   class="btn btn-primary btn-sm show_results">Show Results</a>
                                             <?php } else { ?>
-											 <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>" class="btn btn-primary btn-sm show_results">Show Results</a>
+                                                <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>"
+                                                   class="btn btn-primary btn-sm show_results">Show Results</a>
                                                 <label class="label label-danger">Close Result</label>
                                             <?php } ?>
                                         </td>
@@ -405,15 +509,183 @@
 </div>
 
 
+<div class="rightSticky" data-screen="admin">
+    <ul>
+        <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>TAKE NOTES</span>
+        </li>
+        <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span
+                    class="notify notify<?= getAppName($sessions->sessions_id) ?> displayNone"></span>
+            <span>MESSAGES</span></li>
+
+    </ul>
+</div>
+
+
+<div class="rightSticykPopup notesSticky" style="display: none">
+    <div class="header"><span></span>
+        <div class="rightTool">
+            <i class="fa fa-minus" aria-hidden="true"></i>
+            <div class="dropdown">
+                <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>
+                <ul class="dropdown-menu">
+                    <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="contentHeader">Take Notes</div>
+        <div id="briefcase_section"
+             style="background-color: #fff; border-radius: 5px; padding: 5px; position: absolute; top: 36px; width: 100%;text-align: center">
+            <div id="briefcase_section">
+                <div class="col-md-12 input-group" style="width: 100%;">
+                    <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note"
+                              value=""></textarea>
+                </div>
+                <a class="button color btn" id="briefcase_send"><span>Save</span></a>
+                <a class="button color btn" href="<?= base_url() ?>sessions/downloadbriefcase/<?= isset($sessions) ? $sessions->sessions_id : "" ?>"><span>Download</span></a>
+            </div>
+            <span id='error_briefcase' style='color:red;'></span>
+            <span id='success_briefcase' style='color:green;'></span>
+        </div>
+    </div>
+
+</div>
+<div class="rightSticykPopup messagesSticky messagesSticky<?= getAppName($sessions->sessions_id) ?>"
+     style="display: none">
+    <div class="header"><span></span>
+        <div class="rightTool">
+            <i class="fa fa-minus" aria-hidden="true"></i>
+            <div class="dropdown">
+                <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>
+                <ul class="dropdown-menu">
+                    <li data-type="notesSticky"><a data-type2="off">Notes</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="contentHeader">
+            Messages
+        </div>
+        <div class="messages">
+
+        </div>
+        <input type="text" class="form-control" placeholder="Enter message"  style="border-radius: 50px !important;" id='sendGroupChat'>
+
+    </div>
+
+</div>
+
 
 <script>
-    socket.emit("getSessionViewUsers","<?=getAppName($sessions->sessions_id) ?>",function(resp){
-        if(resp){
-            var totalUsers=resp.users?resp.users.length:0;
-            var sessionId=resp.sessionId;
-            $(".totalAttende"+sessionId+" b").html(totalUsers);
-         }
+    socket.emit("getSessionViewUsers", "<?=getAppName($sessions->sessions_id) ?>", function (resp) {
+        if (resp) {
+            var totalUsers = resp.users ? resp.users.length : 0;
+            var sessionId = resp.sessionId;
+            $(".totalAttende" + sessionId + " b").html(totalUsers);
+        }
     })
+
+    function addMessageGroupChat(data, type = "") {
+        var messageType = '';
+        var userName = data.userName ? data.userName : data.user_name;
+        var userId = data.userId ? data.userId : data.user_id;
+        var sessionId = data.sessionId ? data.sessionId : data.session_id;
+        var message = data.message ? data.message : data.message;
+
+        if (userId == "<?=$this->session->userdata('aid')?$this->session->userdata('aid'):$this->session->userdata('cid')?>") {
+            messageType = `<div class="messageMe"><p>${message}</p></div>`;
+        } else {
+            messageType = `<div class="messageHe"><span>${userName}</span><p>${message}</p></div>`;
+
+            if (type != "load") {
+                if ($('.messagesSticky' + sessionId).css('display') == 'none') {
+                    if ($(".notify" + sessionId).hasClass("displayNone")) $(".notify" + sessionId).removeClass("displayNone");
+                }
+            }
+
+        }
+
+        $(".messagesSticky" + sessionId + " .messages").append(messageType)
+    }
+    $('#sendGroupChat').keypress(function (e) {
+        var $questions = $("#sendGroupChat");
+        var key = e.which;
+        if (key == 13) // the enter key code
+        {
+            if ($questions.val() == "") {
+                $questions.addClass("border borderRed");
+            } else {
+                $questions.removeClass("border borderRed");
+                var $questionsVal=$questions.val();
+                $questions.val("");
+                $.post("<?=base_url()?>"+"SessionGroupChat/newText",
+                    {
+                        "sessionId":"<?=getAppName($sessions->sessions_id) ?>",
+                        "message":$questionsVal
+                    },
+                    function(resp){
+                        if(resp){
+                            resp=JSON.parse(resp);
+                            socket.emit("sessionViewGroupChat",{
+                                "sessionId":resp.session_id,
+                                "message":resp.message,
+                                "userId":resp.user_id,
+                                "userName":resp.user_name
+                            })
+
+                        }
+                    })
+
+            }
+        }
+    });
+
+    $.post("<?=base_url()?>" + "SessionGroupChat/getTexts", {
+            "sessionId": "<?=getAppName($sessions->sessions_id) ?>",
+        },
+        function (resp) {
+            if (resp) {
+                resp = JSON.parse(resp);
+
+                resp.forEach(function (par) {
+                    addMessageGroupChat(par, "load")
+                })
+
+            }
+        })
+
+    socket.on("sessionViewGroupMessages", function (data) {
+        addMessageGroupChat(data)
+
+        var sessionId = data.sessionId;
+        var $messagesContent = $('.messagesSticky' + sessionId + ' .content .messages');
+        $($messagesContent).scrollTop($($messagesContent)[0].scrollHeight);
+    })
+
+    $(document).on("click", "#briefcase_send", function () {
+        if ($("#briefcase").val() == "") {
+            $("#error_briefcase").text("Enter Notes").fadeIn('slow').fadeOut(5000);
+        } else {
+            var briefcase = $("#briefcase").val();
+            var sessions_id = $("#sessions_id").val();
+            $.ajax({
+                url: "<?= base_url() ?>admin/sessions/addBriefcase",
+                type: "post",
+                data: {'sessions_id': sessions_id, 'briefcase': briefcase},
+                dataType: "json",
+                success: function (data) {
+                    if (data.status == "success") {
+                        $("#briefcase").val("");
+                        $("#success_briefcase").text("Add Notes Successfully").fadeIn('slow').fadeOut(5000);
+                    }
+                    // $(location).attr('href', '<?= base_url() ?>sessions/downloadNote/'+briefcase);
+                }
+            });
+        }
+    });
 </script>
 
 <script type="text/javascript">
@@ -422,15 +694,15 @@
         $("iframe").addClass("embed-responsive-item");
 
 
-        var session_start_datetime = "<?=date('M d, yy', strtotime($sessions->sessions_date)).' '.$sessions->time_slot.' UTC-4'?>";
-        var session_end_datetime = "<?=date('M d, yy', strtotime($sessions->sessions_date)).' '.$sessions->end_time.' UTC-4'?>";
+        var session_start_datetime = "<?=date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-4'?>";
+        var session_end_datetime = "<?=date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-4'?>";
 
         function timeleft() {
             // Set the date we're counting down to
             var countDownDate = new Date(session_end_datetime).getTime();
 
             // Update the count down every 1 second
-            var x = setInterval(function() {
+            var x = setInterval(function () {
 
                 // Get today's date and time
                 var now = new Date().getTime();
@@ -447,12 +719,12 @@
                 // Display the result in the element with id="demo"
                 //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
                 //console.log('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
-                $('#id_day_time_clock').text('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                $('#id_day_time_clock').text('Time Left: ' + hours + "h " + minutes + "m " + seconds + "s ");
 
                 // If the count down is finished,
                 if (distance < 0) {
                     clearInterval(x);
-                    $('#id_day_time_clock').text('Time Left: '+0 + "h " + 0 + "m " + 0 + "s ");
+                    $('#id_day_time_clock').text('Time Left: ' + 0 + "h " + 0 + "m " + 0 + "s ");
                     $('#id_day_time_clock').css('color', '#d30e0e')
                 }
             }, 1000);
@@ -463,7 +735,7 @@
             var countDownDate = new Date(session_start_datetime).getTime();
 
             // Update the count down every 1 second
-            var x = setInterval(function() {
+            var x = setInterval(function () {
 
                 // Get today's date and time
                 var now = new Date().getTime();
@@ -480,7 +752,7 @@
                 // Display the result in the element with id="demo"
                 //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
                 //console.log('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
-                $('#id_day_time_clock').text('Session starts in: '+days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+                $('#id_day_time_clock').text('Session starts in: ' + days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
 
                 // If the count down is finished,
                 if (distance < 0) {
@@ -492,10 +764,9 @@
 
         var now = new Date().getTime();
         var sessionStartDateTime = new Date(session_start_datetime).getTime();
-        if(now < sessionStartDateTime)
-        {
+        if (now < sessionStartDateTime) {
             timeToStart();
-        }else{
+        } else {
             timeleft();
         }
 
@@ -751,8 +1022,7 @@
 
     });
 
-    function get_question_list()
-    {
+    function get_question_list() {
         var sessions_id = $("#sessions_id").val();
         var last_sessions_cust_question_id = $("#last_sessions_cust_question_id").val();
         var list_last_id = 0;
@@ -808,7 +1078,6 @@
     });
 
 
-
     $(document).on('click', '.favorite_hide_question', function () {
         var qid = $(this).attr('data-q-id');
         var data_listkey_id = $(this).attr('data-listkey-id');
@@ -825,8 +1094,7 @@
         });
     });
 
-    function get_favorite_question_list()
-    {
+    function get_favorite_question_list() {
         var sessions_id = $("#sessions_id").val();
         var favorite_last_sessions_cust_question_id = $("#favorite_last_sessions_cust_question_id").val();
         var list_last_id = 0;
@@ -853,8 +1121,7 @@
     }
 
 
-    function get_poll_vot_section()
-    {
+    function get_poll_vot_section() {
         var poll_vot_section_id_status = $("#poll_vot_section_id_status").val();
         var poll_vot_section_last_status = $("#poll_vot_section_last_status").val();
         var sessions_id = $("#sessions_id").val();
@@ -1014,7 +1281,10 @@
             $.ajax({
                 url: "<?= site_url() ?>admin/groupchat/message",
                 type: "post",
-                data: {'sessions_group_chat_id': $('#sessions_group_chat_id').val(), 'sessions_id': $('#sessions_id').val()},
+                data: {
+                    'sessions_group_chat_id': $('#sessions_group_chat_id').val(),
+                    'sessions_id': $('#sessions_id').val()
+                },
                 success: function (data, textStatus, jqXHR) {
                     $('.allmessage').html(data);
                 }
@@ -1044,7 +1314,11 @@
                 $.ajax({
                     url: "<?= site_url() ?>admin/groupchat/send",
                     type: "post",
-                    data: {'message': $('#message').val(), 'sessions_group_chat_id': $('#sessions_group_chat_id').val(), 'sessions_id': $('#sessions_id').val()},
+                    data: {
+                        'message': $('#message').val(),
+                        'sessions_group_chat_id': $('#sessions_group_chat_id').val(),
+                        'sessions_id': $('#sessions_id').val()
+                    },
                     success: function (data, textStatus, jqXHR) {
                         $('#message').val('');
                         $('.allmessage').html(data);
@@ -1064,7 +1338,11 @@
                     $.ajax({
                         url: "<?= site_url() ?>admin/groupchat/send",
                         type: "post",
-                        data: {'message': $('#message').val(), 'sessions_group_chat_id': $('#sessions_group_chat_id').val(), 'sessions_id': $('#sessions_id').val()},
+                        data: {
+                            'message': $('#message').val(),
+                            'sessions_group_chat_id': $('#sessions_group_chat_id').val(),
+                            'sessions_id': $('#sessions_id').val()
+                        },
                         success: function (data, textStatus, jqXHR) {
                             $('#message').val('');
                             $('.allmessage').html(data);
@@ -1084,7 +1362,7 @@
             sessionStorage.reloadAfterPageLoad = "0";
         }
     });
-    
+
     function play_music() {
         var audio = document.getElementById("audio");
         audio.play();
@@ -1097,14 +1375,17 @@
 
     var upgradeTime = 15;
     var seconds = upgradeTime;
+
     function timer(status) {
-        if(status == 0) {
+        if (status == 0) {
             seconds = 15;
         }
         var remainingSeconds = seconds % 60;
+
         function pad(n) {
             return (n < 10 ? "0" + n : n);
         }
+
         document.getElementById('id_day_time').innerHTML = pad(remainingSeconds);
         if (seconds <= 0) {
             $("#btn_vote").hide();

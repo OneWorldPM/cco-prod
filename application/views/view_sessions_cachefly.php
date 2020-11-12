@@ -234,6 +234,10 @@
         }
     }
 
+    .sldp_play_pause_btn{
+        display: none;
+    }
+
 
 </style>
 

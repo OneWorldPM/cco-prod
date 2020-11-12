@@ -332,11 +332,11 @@ nav .main-menu .dropdown-submenu > span.dropdown-menu-title-only {
     border-radius: 0;
     font-size: 12px;
     font-style: normal;
-    font-weight: 800;
+    font-weight: 600;
     height: 88px;
     line-height: 70px;
     margin-left: 0;
-    margin-right: 0;
+    margin-right: 55px;
     outline: medium none;
     padding: 10px;
     text-transform: uppercase;
@@ -1547,7 +1547,8 @@ body.wide #header.header-fullwidth nav .main-menu .mega-menu-item .dropdown-menu
 #header.header-sticky:not(.header-static) #shopping-cart a,
 #header.header-sticky:not(.header-static) #top-search a,
 #header.header-sticky:not(.header-static) .side-panel-button {
-    height: 60px;
+    height: 80px;
+    padding-bottom: 25px;
 }
 #header.header-sticky:not(.header-static) #side-panel nav#mainMenu ul.main-menu,
 #header.header-sticky:not(.header-static) #side-panel #mainMenu > ul > li > a {

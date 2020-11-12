@@ -98,8 +98,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-large">Session Embed Code <b>(Attendees)</b>:</label>
-                                        <textarea class="form-control" style="color: #000;" name="embed_html_code" id="embed_html_code"><?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->embed_html_code : "" ?></textarea>
+                                        <label class="text-large">Millicast Stream Name:</label>
+                                        <input type="text" class="form-control" style="color: #000;" name="embed_html_code" id="embed_html_code" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->embed_html_code : "" ?>">
                                     </div>
                                     <div class="form-group">
                                         <label class="text-large">Embed HTML Code <b>(Presenter)</b>:</label>

@@ -1,8 +1,20 @@
 <link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=<?= rand(1, 100) ?>" rel="stylesheet">
 <style>
 
+    html{
+        height: 100%;
+        width: 100%;
+    }
+
+    body{
+        height: 100%;
+        width: 100%;
+    }
+
     .wrapper{
         background-color: black;
+        height: 100%;
+        width: 100%;
     }
 
     .progress-bar {
@@ -129,7 +141,7 @@
 
     #briefcase_send {
         position: absolute;
-        width: 50%;
+        width: 96%;
         padding: 15px 0px !important;
         bottom: -5px;
     }
@@ -178,7 +190,7 @@
     }
 
     .parallax {
-        height: 86.7vh;
+        height: 100%;
     }
     #embededVideo {
         height: 92vh;
@@ -234,109 +246,49 @@
         }
     }
 
+    .sldp_play_pause_btn{
+        display: none;
+    }
+
+    .sldp_player_wrp{
+        height: 100% !important;
+        width: 100% !important;
+    }
+
 
 </style>
 
 
-<section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/pres_bg.jpg') no-repeat;">
-    <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
-    <div class="container-fullscreen">
-        <!-- CONTENT -->
-        <section class="content">
-            <div>
-                <div class="videContent">
-
-                    <?php if (isset($sessions) && $sessions->sessions_id != 22) { ?>
-                        <div style="background-color: #B2B7BB;">
-                            <h3 class="videoTitle" style="margin-bottom: 2px; margin-left: 10px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
-                        </div>
-                    <?php } ?>
-
-                    <div id="embededVideo">
-                        <div class="row"><i id="btnFS" class="fa fa-arrows-alt" aria-hidden="true"></i></div>
-                        <div id="iframeDiv" class="row embed-responsive embed-responsive-16by9">
-                            <?= isset($sessions) ? '<iframe src="https://viewer.millicast.com/v2?streamId=pYVHx2/'.str_replace(' ', '', $sessions->embed_html_code).'&autoPlay=true&muted=true&disableFull=true" width="100%" height="100%"></iframe>' : "" ?>
-                        </div>
-                        <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
-                            <div class="modal-dialog">
-                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
-                                    <!--                                                <div class="modal-header" style="padding: 0px;">
+<div style="height: 90%; width: 100%;">
+    <div class="videContent" style="height: 100%; width: 100%;">
+        <div style="background-color: #B2B7BB;">
+            <h3 class="videoTitle" style="margin-bottom: 2px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
+        </div>
+        <div id="embededVideo" style="height: 99%; width: 100%; margin-left: 15px;">
+            <div class="row"><i id="btnFS" class="fa fa-arrows-alt" aria-hidden="true"></i></div>
+            <div id="iframeDiv" class="row embed-responsive embed-responsive-16by9" style="height: 100%; width: 100%;">
+                <?php
+                if ($isMobile){
+                    isset($sessions) ? $sessions->embed_html_code : "";
+                }
+                ?>
+            </div>
+            <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
+                        <!--                                                <div class="modal-header" style="padding: 0px;">
                                                                                                     <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
                                                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                                                 </div>-->
-                                    <div class="modal-body" style="padding: 0px;">
-                                        <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
-                                            <div class="col-sm-12">
-                                                <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
-                                                    <div class=""  style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
-                                                        TIME LEFT : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
-                                                    </div>
-                                                </div>
-                                                <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 15px;">
-                                                </div>
-                                            </div>
+                        <div class="modal-body" style="padding: 0px;">
+                            <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
+                                <div class="col-sm-12">
+                                    <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
+                                        <div class=""  style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
+                                            TIME LEFT : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-<!--                    <p class="currentTime">
-                        CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>
-
-                    </p>
-
-                        <span class="borderFooter">test</span>
-                    </p>-->
-
-                    <div class="col-md-12">
-                        <?php
-                        if (isset($music_setting)) {
-                            if ($music_setting->music_setting != "") {
-                                ?>
-                                <audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/music/<?= $music_setting->music_setting ?>"></audio>
-                                <?php
-                            }
-                        }
-                        ?>
-                        <input type="hidden" id="view_sessions_history_id" value="">
-                        <input type="hidden" id="sessions_id" value=" <?= isset($sessions) ? $sessions->sessions_id : "" ?>">
-                        <input type="hidden" id="poll_vot_section_id_status" value="0">
-                        <input type="hidden" id="poll_vot_section_is_ended" value="0">
-                        <input type="hidden" id="poll_vot_section_last_status" value="0">
-                        <!--                                    <div class="col-md-3">
-                                                                <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
-                                                                </div>
-                                                            </div>-->
-
-                        <div class="row" style="display:none">
-
-                            <div class="col-md-3">
-                                <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
-                                    <div>
-                                        <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Resources <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
-                                    </div>
-                                    <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 240px;" id="resource_display_status">
-                                        <?php
-                                        if (!empty($session_resource)) {
-                                            foreach ($session_resource as $val) {
-                                                ?>
-                                                <div class="row" style="margin-bottom: 10px; padding-bottom: 5px">
-                                                    <div class="col-md-8"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
-                                                    <?php
-                                                    if($val->upload_published_name){
-                                                        ?>
-                                                        <div class="col-md-8"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                    <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;margin-right: 15px" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
-                                                </div>
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-                                        <span id='success_resource' style='color:green;'></span>
+                                    <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 15px;">
                                     </div>
                                 </div>
                             </div>
@@ -344,11 +296,70 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- END: SECTION -->
+        </div>
+        <!--                    <p class="currentTime">
+                                CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>
+
+                            </p>
+
+                                <span class="borderFooter">test</span>
+                            </p>-->
+
+        <div class="col-md-12">
+            <?php
+            if (isset($music_setting)) {
+                if ($music_setting->music_setting != "") {
+                    ?>
+                    <audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/music/<?= $music_setting->music_setting ?>"></audio>
+                    <?php
+                }
+            }
+            ?>
+            <input type="hidden" id="view_sessions_history_id" value="">
+            <input type="hidden" id="sessions_id" value=" <?= isset($sessions) ? $sessions->sessions_id : "" ?>">
+            <input type="hidden" id="poll_vot_section_id_status" value="0">
+            <input type="hidden" id="poll_vot_section_is_ended" value="0">
+            <input type="hidden" id="poll_vot_section_last_status" value="0">
+            <!--                                    <div class="col-md-3">
+                                                    <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
+                                                    </div>
+                                                </div>-->
+
+            <div class="row" style="display:none">
+
+                <div class="col-md-3">
+                    <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
+                        <div>
+                            <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Resources <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
+                        </div>
+                        <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 240px;" id="resource_display_status">
+                            <?php
+                            if (!empty($session_resource)) {
+                                foreach ($session_resource as $val) {
+                                    ?>
+                                    <div class="row" style="margin-bottom: 10px; padding-bottom: 5px">
+                                        <div class="col-md-8"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
+                                        <?php
+                                        if($val->upload_published_name){
+                                            ?>
+                                            <div class="col-md-8"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
+                                            <?php
+                                        }
+                                        ?>
+                                        <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;margin-right: 15px" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                            ?>
+                            <span id='success_resource' style='color:green;'></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
-<div class="borderFrame"></div>
+</div>
 
 
 
@@ -425,13 +436,13 @@ if (isset($sessions)) {
         <div id="briefcase_section" style="background-color: #fff; border-radius: 5px; padding: 5px; position: absolute; top: 36px; width: 100%;">
             <div style="text-align: center; display: flex; " id="briefcase_section">
                 <div class="col-md-12 input-group">
-                    <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""><?= isset($sessions_notes_download) ? $sessions_notes_download : "" ?></textarea>
+                    <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""></textarea>
                 </div>
                 <a class="button color btn" style="margin: 0px; padding: 24px 7px;" id="briefcase_send"><span>Save</span></a>
-                <a class="button color btn" id="downloadbriefcase" style="position: absolute; text-align: center; width: 45%; margin-left: 155px; top: 187px; padding: 15px 0px !important; padding: 24px 7px;"><span>Download</span></a>
             </div>
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>
+            <a class="col-md-12" href="<?= base_url() ?>sessions/downloadbriefcase/<?= isset($sessions) ? $sessions->sessions_id : "" ?>" style="text-align: end; font-size: 16px;"><span>Download</span></a>  
         </div>
     </div>
 
@@ -605,6 +616,39 @@ if (isset($sessions)) {
 
 </div>
 
+<script src="https://softvelum.com/player/releases/sldp-v2.16.0.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    <?php
+    if (!$isMobile){ ?>
+    document.addEventListener("DOMContentLoaded", initPlayer);
+    <?php } ?>
+
+    function initPlayer(){
+        sldpPlayer = SLDP.init({
+            container:          'iframeDiv',
+            stream_url:         "wss://oneworldlow.cachefly.net/oneworld/live1",
+            initial_resolution: '240p',
+            buffering:          500,
+            autoplay:           false,
+            height:             'parent', //set this as 'parent' for 100% height
+            width:              'parent', //set this as 'parent' for 100% width
+            muted:              true,
+            autoplay:           true
+        });
+
+    };
+
+    function onPlay() {
+        console.log("onPlay");
+    }
+
+    function removePlayer(){
+        sldpPlayer.destroy(function () {
+            console.log('SLDP Player is destroyed.');
+        });
+    }
+</script>
+
 <script type="text/javascript">
     window.onbeforeunload = function (e) {
 //      e.preventDefault();
@@ -642,17 +686,16 @@ if (isset($sessions)) {
  //           return false;
  //   };
 </script>
-<?= getSocketScript()?>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
 <script type="text/javascript">
-
     $(document).ready(function () {
+    let socket = io("<?=getSocketUrl()?>");
     socket.emit("ConnectSessioViewUsers","<?=getAppName($sessions->sessions_id) ?>")
 
     $('#sendGroupChat').keypress(function (e) {
         var $questions = $("#sendGroupChat");
         var key = e.which;
-        if (key == 13) // the enter key cod
+        if (key == 13) // the enter key code
         {
             if ($questions.val() == "") {
                 $questions.addClass("border borderRed");
@@ -1053,7 +1096,7 @@ if (isset($sessions)) {
                     dataType: "json",
                     success: function (data) {
                         if (data.status == "success") {
-                          //  $("#briefcase").val("");
+                            $("#briefcase").val("");
                             $("#success_briefcase").text("Add Notes Successfully").fadeIn('slow').fadeOut(5000);
                         }
                        // $(location).attr('href', '<?= base_url() ?>sessions/downloadNote/'+briefcase);
@@ -1062,9 +1105,9 @@ if (isset($sessions)) {
             }
         });
 		
-        $(document).on("click", "#downloadbriefcase", function () {
-            var briefcase = $("#briefcase").val();
-            $(location).attr('href', '<?= base_url() ?>sessions/downloadNote/' + briefcase);
+		$(document).on("click", "#downloadbriefcase", function () {
+            var sessions_id = $("#sessions_id").val();
+            $(location).attr('href', '<?= base_url() ?>sessions/downloadbriefcase/' + sessions_id);
         });
 
         $('#briefcase').keypress(function (e) {

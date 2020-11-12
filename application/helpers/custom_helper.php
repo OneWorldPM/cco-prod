@@ -1,6 +1,6 @@
 <?php 
 function getAppName($id){
-    // $localName="test";
+//     $localName="test";
     $localName="";
 
     
@@ -14,10 +14,30 @@ function getAppName($id){
 
 }
 function getSocketUrl(){
-    // $localName="https://127.0.0.1:3080";
+//     $localName="https://127.0.0.1:3080/";
     $localName="";
 
     return $localName?$localName:"https://socket.yourconference.live:443";
+}
+function getSocketScript(){
+//    $localName="local";
+    $localName="";
+
+    if($localName=="local"){
+        ?>
+        <script src="https://localhost:3080/socket.io/socket.io.js" type="text/javascript"></script>
+        <script>
+            let socket = io("<?=getSocketUrl()?>",{transports: ['websocket', 'polling', 'flashsocket']});
+        </script>
+        <?php
+    }else{
+        ?>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+        <script>
+            let socket = io("<?=getSocketUrl()?>");
+        </script>
+        <?php
+    }
 }
 
 
