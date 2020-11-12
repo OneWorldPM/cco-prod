@@ -7,9 +7,14 @@ document.getElementById('embededVideo').addEventListener('fullscreenchange', (ev
     // is in fullscreen mode if there is one. If there isn't one,
     // the value of the property is null.
     if (document.fullscreenElement) {
+        $("#btnFS").attr("class","glyphicon glyphicon-resize-small");
+        $("#btnFS").attr("data-original-title","Exit Full Screen");
         console.log(`Element: ${document.fullscreenElement.id} entered full-screen mode.`);
     } else {
         console.log('Leaving full-screen mode.');
+        $("#btnFS").attr("class","glyphicon glyphicon-resize-full");
+        $("#btnFS").attr("data-original-title","Full Screen");
+
         exitFullscreen();
         var iframe = document.getElementById('embededVideo').getElementsByTagName("iframe")[0];
         iframe.setAttribute("width", "1280");
