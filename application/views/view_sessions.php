@@ -127,12 +127,6 @@
         cursor: pointer;
     }
 
-    #briefcase_send {
-        position: absolute;
-        width: 50%;
-        padding: 15px 0px !important;
-        bottom: -5px;
-    }
 
 
     #briefcase {
@@ -141,6 +135,7 @@
 
     #briefcase_section {
         height: 74% !important;
+    text-align: center;
     }
 
     .videoContent {
@@ -227,13 +222,49 @@
             width: 100%;
             right: 0;
             height: 50vh;
-            bottom: -78px;
+            bottom: -137px;
         }
         #briefcase{
             margin-top: 25px;
         }
+        .rightSticykPopup .content > #briefcase_section .button{
+            position: unset !important;
+        }
+        .notesSticky{
+            height: max-content;
+            bottom: -189px;
+            padding-bottom: 55px;
+        }
+
+    }
+    .rightSticykPopup .content > #briefcase_section .button{
+        bottom: 0;
+        width: 130px;
+        height: 50px;
+        display: inline-block;
+        margin-top: 25px;
+        padding: 0 !important;
+        line-height: 50px;
+    }
+    .rightSticykPopup .content > #briefcase_section .button:nth-of-type(2){
+        margin-left: 5px;
     }
 
+    .videoElement{
+        position: absolute;
+        right: -50px;
+        bottom: 50px;
+        width: 100px;
+    }
+    .videoElement #btnFS{
+        position: unset;
+        color: white;
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        cursor: pointer;
+    }
+   
 
 </style>
 
@@ -253,9 +284,11 @@
                     <?php } ?>
 
                     <div id="embededVideo">
-                        <div class="row"><i id="btnFS" class="fa fa-arrows-alt" aria-hidden="true"></i></div>
                         <div id="iframeDiv" class="row embed-responsive embed-responsive-16by9">
                             <?= isset($sessions) ? '<iframe src="https://viewer.millicast.com/v2?streamId=pYVHx2/'.str_replace(' ', '', $sessions->embed_html_code).'&autoPlay=true&muted=true&disableFull=true" width="100%" height="100%"></iframe>' : "" ?>
+                        <div class="videoElement">
+                            <span id="btnFS" class="glyphicon glyphicon-resize-full" data-toggle="tooltip" title="Full Screnn"></span>
+                        </div>
                         </div>
                         <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
                             <div class="modal-dialog">
@@ -422,13 +455,13 @@ if (isset($sessions)) {
     </div>
    <div class="content">
         <div class="contentHeader">Take Notes</div>
-        <div id="briefcase_section" style="background-color: #fff; border-radius: 5px; padding: 5px; position: absolute; top: 36px; width: 100%;">
-            <div style="text-align: center; display: flex; " id="briefcase_section">
+        <div id="briefcase_section">
+            <div id="briefcase_section">
                 <div class="col-md-12 input-group">
                     <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""><?= isset($sessions_notes_download) ? $sessions_notes_download : "" ?></textarea>
                 </div>
-                <a class="button color btn" style="margin: 0px; padding: 24px 7px;" id="briefcase_send"><span>Save</span></a>
-                <a class="button color btn" id="downloadbriefcase" style="position: absolute; text-align: center; width: 45%; margin-left: 155px; top: 187px; padding: 15px 0px !important; padding: 24px 7px;"><span>Download</span></a>
+                <a class="button color btn"  id="briefcase_send"><span>Save</span></a>
+                <a class="button color btn" id="downloadbriefcase"><span>Download</span></a>
             </div>
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>
@@ -647,7 +680,9 @@ if (isset($sessions)) {
 <script type="text/javascript">
 
     $(document).ready(function () {
-    socket.emit("ConnectSessioViewUsers","<?=getAppName($sessions->sessions_id) ?>")
+        $('[data-toggle="tooltip"]').tooltip();
+
+        socket.emit("ConnectSessioViewUsers","<?=getAppName($sessions->sessions_id) ?>")
 
     $('#sendGroupChat').keypress(function (e) {
         var $questions = $("#sendGroupChat");
