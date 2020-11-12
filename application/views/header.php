@@ -101,7 +101,7 @@
 
             #mainMenu2 {
                 margin-right: 100px;
-                margin-top: 20px !important;
+                margin-top: 15px;
             }
 
             #mainMenu2 .nav {
@@ -113,11 +113,11 @@
                 height: max-content !important;
                 font-weight: 600;
                 font-size: 13px;
-                color: #679b41;
+                color: #f05d1f;
             }
 
             #mainMenu2 ul li {
-                margin-right: 40px;
+                margin-right: 0px;
             }
 
             #mainMenu2 ul li a:hover {
@@ -218,7 +218,6 @@
                     width: 115px;
                 }
             }
-
         </style>
 
     </head>
@@ -298,7 +297,7 @@
                                                         <?php if ($profile_data->profile != "") { ?>
                                                             <span class="glyphicon glyphicon-user"></span> Profile
 
-                                                                                                                                   <!-- <img src="<?/*= base_url() */?>uploads/customer_profile/<?/*= $profile_data->profile */?>"style="height: 50px; width: 50px;;">-->
+                                                                                                                                               <!-- <img src="<?/*= base_url() */?>uploads/customer_profile/<?/*= $profile_data->profile */?>"style="height: 50px; width: 50px;;">-->
 
                                                         <?php } else { ?>
                                                             <span class="glyphicon glyphicon-user"></span> Profile
@@ -333,7 +332,7 @@
 
                                     <?php } ?>
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
+                                        <li class="toolboxCustomDrop" data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
                                         <li>
                                             <a target="_blank">TOOLBOX</a>
                                             <ul class="toolboxCustomDrop">
