@@ -113,7 +113,7 @@
                 height: max-content !important;
                 font-weight: 600;
                 font-size: 13px;
-                color: #f05d1f;
+                color: #000;
             }
 
             #mainMenu2 ul li {
@@ -278,7 +278,7 @@
                                         $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                                         ?>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <?php if (1 == 1) { ?>
+                                            <?php if (1 == 2) { ?>
                                                 <li class="dropdown" style="margin-top: -9px;">
                                                     <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                         <?php if ($profile_data->profile != "") { ?>
