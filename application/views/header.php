@@ -262,16 +262,7 @@
                         </a>
                     </div>
                 <?php } ?>
-                <?php
-                if (isset($sesions_logo)) {
-                    ?>
-                    <div class="logo2">
-                        <span><?=$sponsor_type?></span>
-                        <img src="<?= base_url() . "uploads/sessions_logo/" . $sesions_logo ?>" onerror="$(this).parent().remove()">
-                    </div>
-                    <?php
-                }
-                ?>
+               
                 <!--END: LOGO-->
                 <!--MOBILE MENU -->
                 <div class="nav-main-menu-responsive">
