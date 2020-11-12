@@ -101,7 +101,7 @@
 
             #mainMenu2 {
                 margin-right: 100px;
-                margin-top: 20px !important;
+                margin-top: 15px;
             }
 
             #mainMenu2 .nav {
