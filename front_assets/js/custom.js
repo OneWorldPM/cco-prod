@@ -7,7 +7,7 @@ $(document).ready(function () {
 
         var $rightSticky = $(".rightSticky")
         var $embedVideo=$("#embededVideo");
-        $(document).on("click", ".rightSticky ul li,.rightSticykPopup .open > .dropdown-menu li a,.rightSticykPopup .header .rightTool i", function () {
+        $(document).on("click", ".rightSticky ul li,.rightSticykPopup .open > .dropdown-menu li a,.rightSticykPopup .header .rightTool i,.toolboxCustomDrop li a,.sticky_resources_open", function () {
             if(window.innerWidth<=601){
                 $(".rightSticykPopup").css("display","none");
 
