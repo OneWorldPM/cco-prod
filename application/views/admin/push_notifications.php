@@ -149,7 +149,7 @@ switch ($msg) {
                         console.log(cr_data);
                         if (cr_data.status == "success")
                         {
-                            var delayInMilliseconds = 8000; //1 second
+                            var delayInMilliseconds = 30000; //1 second
                             setTimeout(function () {
                                 $.ajax({
                                     url: "<?= base_url() ?>admin/push_notifications/close_notification/" + send_notification_id,
