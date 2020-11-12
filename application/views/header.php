@@ -235,7 +235,7 @@
                             $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                             ?>
                             <div id="logo">
-                                <a href="#" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png" style="margin-top: 12px;">
+                                <a href="#" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png" style="margin-top: 12px; cursor: auto">
                                     <img src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" alt="CCO Logo">
                                 </a>
                             </div>
