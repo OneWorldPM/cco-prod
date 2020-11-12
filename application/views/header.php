@@ -274,47 +274,13 @@
                         <div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
                             <div class="container">
                                 <nav id="mainMenu2" class="main-menu mega-menu" style="margin-top: 10px;">
-                                    <ul class="nav navbar-nav navbar-right">
-                                        <li data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
-                                        <li>
-                                            <a target="_blank">TOOLBOX</a>
-                                            <ul class="toolboxCustomDrop">
-                                                <?php
-                                                if (isset($right_bar) && isset($tool_box_status)) {
-                                                    if ($tool_box_status == "1") {
-                                                        if (sessionRightBarControl($right_bar, "questions")) {
-                                                            ?>
-                                                            <li data-type="questionsSticky"><a data-type2="off"><i class="fa fa-question" aria-hidden="true"></i> ASK QUESTIONS</a></li>
-                                                            <?php
-                                                        }
-                                                        if (sessionRightBarControl($right_bar, "notes")) {
-                                                            ?>
-                                                            <li data-type="notesSticky"><a data-type2="off"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> TAKE NOTES</a></li>
-                                                            <?php
-                                                        }
-                                                        if (sessionRightBarControl($right_bar, "chat")) {
-                                                            ?>
-                                                            <li data-type="messagesSticky"><a data-type2="off"><i class="fa fa-comments" aria-hidden="true"></i> CHAT</a></li>
-                                                            <?php
-                                                        }
-                                                        if (sessionRightBarControl($right_bar, "resources")) {
-                                                            ?>
-                                                            <li data-type="resourcesSticky"><a data-type2="off"><i class="fa fa-comments" aria-hidden="true"></i> RESOURCES</a></li>
-                                                            <?php
-                                                        }
-                                                    }
-                                                }
-                                                ?>
-                                            </ul>
-                                        </li>
-                                    </ul>
-
-
-
                                     <?php
                                     if ($this->session->userdata('cid') != "") {
                                         $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                                         ?>
+                                        <ul class="main-menu nav navbar-nav navbar-right">
+                                            <li><a href="https://yourconference.live/support" target="_blank">HELP DESK</a></li>
+                                        </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
                                             <?php
                                             if (isset($attendee_view_links_status) && isset($attendee_view_links_status)) {
@@ -332,7 +298,7 @@
                                                         <?php if ($profile_data->profile != "") { ?>
                                                             <span class="glyphicon glyphicon-user"></span> Profile
 
-                                                                                                                       <!-- <img src="<?/*= base_url() */?>uploads/customer_profile/<?/*= $profile_data->profile */?>"style="height: 50px; width: 50px;;">-->
+                                                                                                                                   <!-- <img src="<?/*= base_url() */?>uploads/customer_profile/<?/*= $profile_data->profile */?>"style="height: 50px; width: 50px;;">-->
 
                                                         <?php } else { ?>
                                                             <span class="glyphicon glyphicon-user"></span> Profile
@@ -364,10 +330,46 @@
                                                 </li>
                                             <?php } ?>
                                         </ul>
-                                        <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank">Help Desk</a></li>
-                                        </ul>
+
                                     <?php } ?>
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
+                                        <li>
+                                            <a target="_blank">TOOLBOX</a>
+                                            <ul class="toolboxCustomDrop">
+                                                <?php
+                                                if (isset($right_bar) && isset($tool_box_status)) {
+                                                    if ($tool_box_status == "1") {
+                                                        if (sessionRightBarControl($right_bar, "questions")) {
+                                                            ?>
+                                                            <li data-type="questionsSticky"><a data-type2="off"><i class="fa fa-question" aria-hidden="true"></i> ASK QUESTIONS</a></li>
+                                                            <?php
+                                                        }
+                                                        if (sessionRightBarControl($right_bar, "notes")) {
+                                                            ?>
+                                                            <li data-type="notesSticky"><a data-type2="off"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> TAKE NOTES</a></li>
+                                                            <?php
+                                                        }
+                                                        if (sessionRightBarControl($right_bar, "chat")) {
+                                                            ?>
+                                                            <li data-type="messagesSticky"><a data-type2="off"><i class="fa fa-comments" aria-hidden="true"></i> CHAT</a></li>
+                                                            <?php
+                                                        }
+                                                        if (sessionRightBarControl($right_bar, "resources")) {
+                                                            ?>
+                                                            <li data-type="resourcesSticky"><a data-type2="off"><i class="fa fa-comments" aria-hidden="true"></i> RESOURCES</a></li>
+                                                                <?php
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+
+
+
 
                                 </nav>
                             </div>
