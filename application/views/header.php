@@ -277,27 +277,14 @@
                                     if ($this->session->userdata('cid') != "") {
                                         $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                                         ?>
-                                        <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank">HELP DESK</a></li>
-                                        </ul>
-                                        <ul class="main-menu nav navbar-nav navbar-right">
-                                            <?php
-                                            if (isset($attendee_view_links_status) && isset($attendee_view_links_status)) {
-                                                if ($attendee_view_links_status == "1") {
-                                                    ?>
-                                                    <li><a target="_blank" href="<?= $url_link ?>"><?= $link_text ?></a></li>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-
+                                    <ul class="main-menu nav navbar-nav navbar-right">
                                             <?php if (1 == 1) { ?>
                                                 <li class="dropdown">
                                                     <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                         <?php if ($profile_data->profile != "") { ?>
                                                             <span class="glyphicon glyphicon-user"></span> Profile
 
-                                                                                                                                               <!-- <img src="<?/*= base_url() */?>uploads/customer_profile/<?/*= $profile_data->profile */?>"style="height: 50px; width: 50px;;">-->
+                                                                                                                                                           <!-- <img src="<?/*= base_url() */?>uploads/customer_profile/<?/*= $profile_data->profile */?>"style="height: 50px; width: 50px;;">-->
 
                                                         <?php } else { ?>
                                                             <span class="glyphicon glyphicon-user"></span> Profile
@@ -329,9 +316,21 @@
                                                 </li>
                                             <?php } ?>
                                         </ul>
-
-                                    <?php } ?>
-                                    <ul class="nav navbar-nav navbar-right">
+                                        <ul class="main-menu nav navbar-nav navbar-right">
+                                            <li><a href="https://yourconference.live/support" target="_blank">HELP DESK</a></li>
+                                        </ul>
+                                        <ul class="main-menu nav navbar-nav navbar-right">
+                                            <?php
+                                            if (isset($attendee_view_links_status) && isset($attendee_view_links_status)) {
+                                                if ($attendee_view_links_status == "1") {
+                                                    ?>
+                                                    <li><a target="_blank" href="<?= $url_link ?>"><?= $link_text ?></a></li>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </ul>
+                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="sticky_resources_open" data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
                                         <li>
                                             <a target="_blank">TOOLBOX</a>
@@ -365,6 +364,8 @@
                                             </ul>
                                         </li>
                                     </ul>
+                                    <?php } ?>
+
                                 </nav>
                             </div>
                         </div>
