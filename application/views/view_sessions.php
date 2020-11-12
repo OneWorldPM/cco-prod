@@ -290,7 +290,7 @@
                         <div id="iframeDiv" class="row embed-responsive embed-responsive-16by9">
                             <?= isset($sessions) ? '<iframe src="https://viewer.millicast.com/v2?streamId=pYVHx2/'.str_replace(' ', '', $sessions->embed_html_code).'&autoPlay=true&muted=true&disableFull=true" width="100%" height="100%"></iframe>' : "" ?>
                         <div class="videoElement">
-                            <span id="btnFS" class="glyphicon glyphicon-resize-full" data-toggle="tooltip" title="Full Screnn"></span>
+                            <span id="btnFS" class="glyphicon glyphicon-resize-full" data-toggle="tooltip" title="Full Screen"></span>
                         </div>
                         </div>
                         <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
