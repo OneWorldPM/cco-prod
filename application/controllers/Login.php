@@ -87,7 +87,7 @@ class Login extends CI_Controller {
             $member_id = substr($identifier, 4);
             $curl = curl_init();
             curl_setopt_array($curl, array(
-                CURLOPT_URL => "https://uat.clinicaloptions.com/api/external?memberid=" . $member_id . "&SecurityToken=OUqrB8i6Bc002GZGtZHod49QVBdPjEo4qu1vxnHWmnhe5MSf7kW1v62yXhINaal7JK3tuC3Z0gBuGEpwh8l5SQ%3D%3D",
+                CURLOPT_URL => "https://www.clinicaloptions.com/api/external?memberid=" . $member_id . "&SecurityToken=OUqrB8i6Bc002GZGtZHod49QVBdPjEo4qu1vxnHWmnhe5MSf7kW1v62yXhINaal7JK3tuC3Z0gBuGEpwh8l5SQ%3D%3D",
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_SSL_VERIFYPEER => FALSE,
                 CURLOPT_ENCODING => "",
@@ -195,6 +195,8 @@ class Login extends CI_Controller {
                         }
                     }
                 }
+            }else{
+                echo "User details not recieved from CCO";
             }
         }
     }
