@@ -1,16 +1,16 @@
 <div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
     <input type="hidden" id="push_notification_id" value="">
     <div class="modal-dialog">
-        <div class="modal-content" style="border: 1px solid #f05d1f;">
+        <div class="modal-content" style="border: 1px solid #679B41;">
             <div class="modal-body">
                 <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
                     <div class="col-sm-12">
-                        <div style="color:#f05d1f; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
+                        <div style="color:#679B41; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="close push_notification_close" style="padding: 8px; color: #fff; background-color: #f05d1f; opacity: 1; font-size: 18px; font-weight: 400;" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #679B41; opacity: 1; font-size: 18px; font-weight: 400;" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
     </div>
@@ -37,29 +37,29 @@
         }
     }
 
-    $.get("<?= base_url() ?>socket_config.php", function (data) {
+    $.get( "<?=base_url()?>socket_config.php", function( data ) {
         var config = JSON.parse(data);
         extract(config);
     });
 
-    $(function () {
+    $(function() {
 
         var socketServer = "https://socket.yourconference.live:443";
         let socket = io(socketServer);
         socket.on('serverStatus', function (data) {
-            socket.emit('addMeToActiveListPerApp', {'user_id': user_id, 'app': socket_app_name, 'room': socket_active_user_list});
+            socket.emit('addMeToActiveListPerApp', {'user_id':user_id, 'app': socket_app_name, 'room': socket_active_user_list});
         });
 
         // Active again
-        function resetActive() {
-            socket.emit('userActiveChangeInApp', {"app": socket_app_name, "room": socket_active_user_list, "name": user_name, "userId": user_id, "status": true});
+        function resetActive(){
+            socket.emit('userActiveChangeInApp', {"app":socket_app_name, "room":socket_active_user_list, "name":user_name, "userId":user_id, "status":true});
         }
         // No activity let everyone know
-        function inActive() {
-            socket.emit('userActiveChangeInApp', {"app": socket_app_name, "room": socket_active_user_list, "name": user_name, "userId": user_id, "status": false});
+        function inActive(){
+            socket.emit('userActiveChangeInApp', {"app":socket_app_name, "room":socket_active_user_list, "name":user_name, "userId":user_id, "status":false});
         }
 
-        $(window).on("blur focus", function (e) {
+        $(window).on("blur focus", function(e) {
             var prevType = $(this).data("prevType");
 
             if (prevType != e.type) {   //  reduce double fire issues
@@ -107,5 +107,6 @@
         }
     });
 </script>
+
 </body>
 </html>
