@@ -57,7 +57,7 @@
                                                      <td><?= $val->zoom_password ?></td>
                                                     <td><?= date("h:i A", strtotime($val->time_slot)) .' - '. date("h:i A", strtotime($val->end_time)) ?></td>
                                                     <td>
-                                                        <a href="<?= base_url() ?>presenter/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">View Session</a>
+                                                        <a href="<?= base_url() ?>presenter/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-light-azure btn-sm">View Session</a>
                                                            <a href="<?= base_url() ?>presenter/groupchat/sessions_groupchat/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">Create Chat</a>
                                                         <a href="<?= base_url() ?>presenter/sessions/view_question_answer/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">View Q&A</a>
                                                         <a href="<?= base_url() ?>presenter/sessions/create_poll/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">Create Poll</a>
@@ -125,7 +125,7 @@
                                                     </td>
                                                     <td style="white-space: pre; text-align: right;"><?= date("m-d-Y", strtotime($val->sessions_date)) ?>  <?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                     <td>
-                                                          <a href="<?= base_url() ?>presenter/sessions/view_session/<?= $val->sessions_id ?>?status=2" class="btn btn-grey btn-sm" style="margin: 3px;">View Session</a>
+                                                          <a href="<?= base_url() ?>presenter/sessions/view_session/<?= $val->sessions_id ?>?status=2" class="btn btn-light-azure btn-sm" style="margin: 3px;">View Session</a>
                                                         <a href="<?= base_url() ?>presenter/groupchat/sessions_groupchat/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm" style="margin: 3px;">Create Chat</a>
                                                         <a href="<?= base_url() ?>presenter/sessions/view_question_answer/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm" style="margin: 3px;">View Q&A</a>
                                                         <a href="<?= base_url() ?>presenter/sessions/create_poll/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm" style="margin: 3px;">Create Poll</a>
