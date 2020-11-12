@@ -332,7 +332,7 @@
 
                                     <?php } ?>
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li class="toolboxCustomDrop" data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
+                                        <li class="sticky_resources_open" data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
                                         <li>
                                             <a target="_blank">TOOLBOX</a>
                                             <ul class="toolboxCustomDrop">
@@ -365,11 +365,6 @@
                                             </ul>
                                         </li>
                                     </ul>
-
-
-
-
-
                                 </nav>
                             </div>
                         </div>
