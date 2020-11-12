@@ -1137,8 +1137,8 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 <script type="text/javascript">
     $(document).ready(function () {
 
-        var session_start_datetime = "<?= date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-4' ?>";
-        var session_end_datetime = "<?= date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-4' ?>";
+        var session_start_datetime = "<?= date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-5' ?>";
+        var session_end_datetime = "<?= date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-5' ?>";
 
         function timeleft() {
             // Set the date we're counting down to
