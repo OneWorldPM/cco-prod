@@ -253,7 +253,7 @@
     .videoElement{
         position: absolute;
         right: -50px;
-        bottom: 170px;
+        bottom: 185px;
         width: 100px;
     }
     .videoElement #btnFS{
