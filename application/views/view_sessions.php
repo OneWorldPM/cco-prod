@@ -4,6 +4,7 @@
     .wrapper{
         background-color: black;
     }
+
     .progress-bar {
         height: 100%;
         padding: 3px;
@@ -94,7 +95,6 @@
     }
 
     #embededVideo {
-        height: 959px;
         margin-top: -2px;
         position: relative;
     }
@@ -129,7 +129,7 @@
 
     #briefcase_send {
         position: absolute;
-        width: 96%;
+        width: 50%;
         padding: 15px 0px !important;
         bottom: -5px;
     }
@@ -150,7 +150,6 @@
 
 
 
-
     .questionElement {
         max-height: 230px;
         overflow: auto;
@@ -168,67 +167,74 @@
         margin-left: 5px;
     }
 
-    .borderFooter {
-        position: absolute;
-        display: block !important;
-        background-color: #F15A23;
+
+    .borderFrame{
+        margin-top: 100px;
         width: 100%;
-        height: 24px;
-        z-index: 124124124;
-        top: 40px;
+        background-color: #F15A23;
+        height: 29px;
+        position: absolute;
+        bottom: 0;
     }
 
-    @media only screen and (max-width: 1548px) {
-        .borderFooter {
-            display: none !important;
+    .parallax {
+        height: 86.7vh;
+    }
+    #embededVideo {
+        height: 92vh;
+    }
+    body{
+        background-color: black;
+    }
+
+    @media only screen and (max-width: 700px) {
+        .borderFrame {
+            position: unset;
+        }
+    }
+
+    @media only screen and (max-width: 601px) {
+        .rightSticky{
+            bottom: 0;
+            position: fixed;
+            width: 100%;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        .videoTitle{
+            font-size: 12px;
+        }
+        .rightSticky{
+            background-color: #EF5D21;
+        }
+    .rightSticky ul li{
+            width: 32%;
+            display: inline-block;
+            text-align: center;
+            padding: 5px 0px;
+        }
+        .rightSticky ul li span{
+            display: none;
+        }
+        .rightSticky ul li:nth-of-type(1n+2){
+            margin-top: 0;
+        }
+        .rightSticky ul li:hover{
+            margin-left: 0;
+        }
+        .rightSticykPopup{
+            width: 100%;
+            right: 0;
+            height: 50vh;
+            bottom: -78px;
+        }
+        #briefcase{
+            margin-top: 25px;
         }
     }
 
 
-    .borderFrame{
-        margin-top: 0px;
-        width: 100%;
-        background-color: #679b41;
-        height: 29px;
-    }
-
-    .messagesSticky input{
-        width: 210px;
-        float: left;
-        border-radius: 0;
-        margin-left: 5px;
-    }
-    .messagesSticky button{
-        margin-left: 3px;
-        margin-top: 0px;
-        height: 40px;
-        line-height: 16px;
-        width: 60px;
-        padding: 0;
-    }
-
-    .embedTools{
-        position: absolute;
-        width: 190px;
-        height: 40px;
-        line-height: 50px;
-        text-align: center;
-        color: white;
-        bottom: 0;
-        right: -40px;
-        margin-bottom: 163px;
-    }
-    .embedTools span{
-        font-size: 22px;
-    }
-    .embedTools span:hover{
-        cursor: pointer;
-        color: #ffff00c9;
-    }
-
-    .parallax {
-        height: 919px;
-    }
 </style>
 
 
@@ -239,17 +245,13 @@
         <section class="content">
             <div>
                 <div class="videContent">
-
-                    <?php if (isset($sessions) && $sessions->sessions_id != 22) { ?>
-                        <div style="background-color: #B2B7BB;">
-                            <h3 class="videoTitle" style="margin-bottom: 2px; margin-left: 10px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
-                        </div>
-                    <?php } ?>
-
+                    <div style="background-color: #B2B7BB;">
+                        <h3 class="videoTitle" style="margin-bottom: 2px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
+                    </div>
                     <div id="embededVideo">
                         <div class="row"><i id="btnFS" class="fa fa-arrows-alt" aria-hidden="true"></i></div>
                         <div id="iframeDiv" class="row embed-responsive embed-responsive-16by9">
-                            <?= isset($sessions) ? '<iframe src="https://viewer.millicast.com/v2?streamId=pYVHx2/'.str_replace(' ', '', $sessions->embed_html_code).'&autoPlay=true&muted=true&disableFull=true" width="100%" height="100%"></iframe>' : "" ?>
+                            <?= isset($sessions) ? $sessions->embed_html_code : "" ?>
                         </div>
                         <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
                             <div class="modal-dialog">
@@ -612,7 +614,6 @@ if (isset($sessions)) {
 
             }
         });
-
     };
 </script>
 
@@ -636,17 +637,16 @@ if (isset($sessions)) {
  //           return false;
  //   };
 </script>
-<?= getSocketScript()?>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
 <script type="text/javascript">
-
     $(document).ready(function () {
+    let socket = io("<?=getSocketUrl()?>");
     socket.emit("ConnectSessioViewUsers","<?=getAppName($sessions->sessions_id) ?>")
 
     $('#sendGroupChat').keypress(function (e) {
         var $questions = $("#sendGroupChat");
         var key = e.which;
-        if (key == 13) // the enter key cod
+        if (key == 13) // the enter key code
         {
             if ($questions.val() == "") {
                 $questions.addClass("border borderRed");
