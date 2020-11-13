@@ -1226,6 +1226,12 @@ class M_sessions extends CI_Model {
                     if ($sessions_cust_briefcase->num_rows() > 0) {
                         $private_notes = $sessions_cust_briefcase->row()->note;
                     }
+					 echo $private_notes;
+                    echo "<br>";
+                    echo $val->cust_id;
+                     echo "<br>";
+                    echo $sessions_id;
+                    die;
                     $sessions_history_login[] = array(
                         'client_data' => '',
                         'alertness' => 0,
