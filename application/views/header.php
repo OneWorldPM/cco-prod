@@ -355,7 +355,7 @@
                                                             }
                                                             if (sessionRightBarControl($right_bar, "resources")) {
                                                                 ?>
-                                                                <li data-type="resourcesSticky"><a data-type2="off"><i class="fa fa-comments" aria-hidden="true"></i> RESOURCES</a></li>
+                                                                <li data-type="resourcesSticky"><a data-type2="off"><i class="fa fa-paperclip" aria-hidden="true"></i> RESOURCES</a></li>
                                                                 <?php
                                                             }
                                                         }
