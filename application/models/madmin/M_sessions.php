@@ -957,8 +957,8 @@ class M_sessions extends CI_Model {
             $sessions_history_login = array();
             if ($sessions_history->num_rows() > 0) {
                 foreach ($sessions_history->result() as $val) {
-                    $sessions_start_date_time = strtotime($result_sessions->sessions_date.' '.$result_sessions->time_slot);
-                    $sessions_end_date_time = strtotime($result_sessions->sessions_date.' '.$result_sessions->end_time);
+                    $sessions_start_date_time = strtotime($result_sessions->sessions_date . ' ' . $result_sessions->time_slot);
+                    $sessions_end_date_time = strtotime($result_sessions->sessions_date . ' ' . $result_sessions->end_time);
                     if ($sessions_end_date_time != "") {
                         if ($sessions_end_date_time >= $sessions_start_date_time) {
                             $sessions_total_time = $sessions_end_date_time - $sessions_start_date_time;
@@ -968,7 +968,7 @@ class M_sessions extends CI_Model {
                     } else {
                         $sessions_total_time = 0;
                     }
-                     $start_date_time = strtotime($val->start_date_time);
+                    $start_date_time = strtotime($val->start_date_time);
                     if ($start_date_time < $sessions_start_date_time) {
                         $start_date_time = $sessions_start_date_time;
                     } else {
@@ -986,8 +986,18 @@ class M_sessions extends CI_Model {
                         $total_time = 0;
                     }
                     if ($sessions_total_time < $total_time) {
-                       $total_time = $sessions_total_time;
+                        $total_time = $sessions_total_time;
                     }
+                    
+                    $private_notes = "";
+                    $this->db->select('note');
+                    $this->db->from('sessions_cust_briefcase');
+                    $this->db->where(array("cust_id" => $val->cust_id, "sessions_id", $sessions_id));
+                    $sessions_cust_briefcase = $this->db->get();
+                    if ($sessions_cust_briefcase->num_rows() > 0) {
+                        $private_notes = $sessions_cust_briefcase->row()->note;
+                    }
+                    
                     $sessions_history_login[] = array(
                         'client_data' => '',
                         'alertness' => 0,
@@ -1005,7 +1015,7 @@ class M_sessions extends CI_Model {
                         'last_seen' => $end_date_time,
                         'total_time' => $total_time,
                         'user_agent' => $val->operating_system . ' - ' . $val->computer_type,
-                        'private_notes' => "",
+                        'private_notes' => $private_notes,
                         'state_changes' => array("0" => array("0" => 1592865240, "1" => 0), "0" => array("0" => 1592865240, "1" => 0)),
                         'session' => $sessions_id,
                         'identity' => array('identifier' => $val->identifier_id, 'name' => $val->first_name, 'email' => $val->email, 'firstname' => $val->first_name, 'lastname' => $val->last_name, 'degree' => $val->degree, 'specialtyName' => $val->specialty, 'city' => $val->city, 'zip' => $val->zipcode, 'state' => $val->state, 'country' => $val->country, "identity_id" => $val->cust_id, 'profile' => array('org_name' => '', 'org_title' => '', 'org_website' => '', 'bio' => '', 'twitter' => '', 'linkedin' => '', 'country' => '', 'picture_url' => '', 'last_updated' => 0)),
@@ -1177,8 +1187,8 @@ class M_sessions extends CI_Model {
             $sessions_history_login = array();
             if ($sessions_history->num_rows() > 0) {
                 foreach ($sessions_history->result() as $val) {
-                    $sessions_start_date_time = strtotime($result_sessions->sessions_date.' '.$result_sessions->time_slot);
-                    $sessions_end_date_time = strtotime($result_sessions->sessions_date.' '.$result_sessions->end_time);
+                    $sessions_start_date_time = strtotime($result_sessions->sessions_date . ' ' . $result_sessions->time_slot);
+                    $sessions_end_date_time = strtotime($result_sessions->sessions_date . ' ' . $result_sessions->end_time);
                     if ($sessions_end_date_time != "") {
                         if ($sessions_end_date_time >= $sessions_start_date_time) {
                             $sessions_total_time = $sessions_end_date_time - $sessions_start_date_time;
@@ -1188,7 +1198,7 @@ class M_sessions extends CI_Model {
                     } else {
                         $sessions_total_time = 0;
                     }
-                       $start_date_time = strtotime($val->start_date_time);
+                    $start_date_time = strtotime($val->start_date_time);
                     if ($start_date_time < $sessions_start_date_time) {
                         $start_date_time = $sessions_start_date_time;
                     } else {
@@ -1206,9 +1216,16 @@ class M_sessions extends CI_Model {
                         $total_time = 0;
                     }
                     if ($sessions_total_time < $total_time) {
-                       $total_time = $sessions_total_time;
+                        $total_time = $sessions_total_time;
                     }
-				
+                    $private_notes = "";
+                    $this->db->select('note');
+                    $this->db->from('sessions_cust_briefcase');
+                    $this->db->where(array("cust_id" => $val->cust_id, "sessions_id", $sessions_id));
+                    $sessions_cust_briefcase = $this->db->get();
+                    if ($sessions_cust_briefcase->num_rows() > 0) {
+                        $private_notes = $sessions_cust_briefcase->row()->note;
+                    }
                     $sessions_history_login[] = array(
                         'client_data' => '',
                         'alertness' => 0,
@@ -1226,7 +1243,7 @@ class M_sessions extends CI_Model {
                         'last_seen' => $end_date_time,
                         'total_time' => $total_time,
                         'user_agent' => $val->operating_system . ' - ' . $val->computer_type,
-                        'private_notes' => "",
+                        'private_notes' => $private_notes,
                         'state_changes' => array("0" => array("0" => 1592865240, "1" => 0), "0" => array("0" => 1592865240, "1" => 0)),
                         'session' => $sessions_id,
                         'identity' => array('identifier' => $val->identifier_id, 'name' => $val->first_name, 'email' => $val->email, 'firstname' => $val->first_name, 'lastname' => $val->last_name, 'degree' => $val->degree, 'specialtyName' => $val->specialty, 'city' => $val->city, 'zip' => $val->zipcode, 'state' => $val->state, 'country' => $val->country, "identity_id" => $val->cust_id, 'profile' => array('org_name' => '', 'org_title' => '', 'org_website' => '', 'bio' => '', 'twitter' => '', 'linkedin' => '', 'country' => '', 'picture_url' => '', 'last_updated' => 0)),
