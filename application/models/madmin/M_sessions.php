@@ -1221,7 +1221,7 @@ class M_sessions extends CI_Model {
                     $private_notes = "";
                     $this->db->select('note');
                     $this->db->from('sessions_cust_briefcase');
-                    $this->db->where(array("cust_id" => $val->cust_id, "sessions_id", $sessions_id));
+                    $this->db->where(array("cust_id" => $val->cust_id));
                     $sessions_cust_briefcase = $this->db->get();
                     if ($sessions_cust_briefcase->num_rows() > 0) {
                         $private_notes = $sessions_cust_briefcase->row()->note;
