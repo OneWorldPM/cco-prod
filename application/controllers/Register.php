@@ -7,8 +7,9 @@ class Register extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-         $this->common->set_timezone();
+        $this->common->set_timezone();
         $this->load->model('user/m_register', 'objregister');
+		$this->load->model('user/m_login', 'objlogin');
     }
 
     public function index() {
@@ -24,7 +25,20 @@ class Register extends CI_Controller {
         } else if ($result == "error") {
             header('location:' . base_url() . 'register?msg=E'); //Some Error
         } else {
-            header('location:' . base_url() . 'register/user_profile/' . $result); //Register Success
+			$cust_id = $result;
+            $user_details = $this->db->get_where("customer_master", array("cust_id" => $cust_id))->row();
+            $token = $this->objlogin->update_user_token($cust_id);
+            $session = array(
+                'cid' => $user_details->cust_id,
+                'cname' => $user_details->first_name,
+                'fullname' => $user_details->first_name . ' ' . $user_details->last_name,
+                'email' => $user_details->email,
+                'token' => $token,
+                'userType' => 'user'
+            );
+            $this->session->set_userdata($session);
+            redirect('sessions');
+           // header('location:' . base_url() . 'register/user_profile/' . $result); //Register Success
         }
     }
 
