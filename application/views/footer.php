@@ -37,17 +37,17 @@
         }
     }
 
-    $.get( "<?=base_url()?>socket_config.php", function( data ) {
-        var config = JSON.parse(data);
-        extract(config);
-    });
-
     $(function() {
 
-        var socketServer = "https://socket.yourconference.live:443";
-        let socket = io(socketServer);
-        socket.on('serverStatus', function (data) {
-            socket.emit('addMeToActiveListPerApp', {'user_id':user_id, 'app': socket_app_name, 'room': socket_active_user_list});
+        $.get( "<?=base_url()?>socket_config.php", function( data ) {
+            var config = JSON.parse(data);
+            extract(config);
+
+            var socketServer = "https://socket.yourconference.live:443";
+            let socket = io(socketServer);
+            socket.on('serverStatus', function (data) {
+                socket.emit('addMeToActiveListPerApp', {'user_id':user_id, 'app': socket_app_name, 'room': socket_active_user_list});
+            });
         });
 
         // Active again
