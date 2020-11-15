@@ -118,6 +118,7 @@ class Sessions extends CI_Controller {
 
     public function view_poll($sessions_id) {
         $data['poll_data'] = $this->msessions->get_poll_details($sessions_id);
+        $data['session_id'] = $sessions_id;
 
         $this->load->view('admin/header');
         $this->load->view('admin/view_poll', $data);
@@ -157,7 +158,7 @@ class Sessions extends CI_Controller {
             $sessions_poll_question_row_data_2 = $this->db->get_where("sessions_poll_question", array("sessions_id" => $sessions_poll_question_row->sessions_id, "status" => 2))->row();
             if (empty($sessions_poll_question_row_data) && empty($sessions_poll_question_row_data_2)) {
                 $this->db->update("sessions_poll_question", array("status" => 1), array("sessions_poll_question_id" => $sessions_poll_question_id));
-                header('location:' . base_url() . 'admin/sessions/view_poll/' . $sessions_poll_question_row->sessions_id . '?msg=U');
+                header('location:' . base_url() . 'admin/sessions/view_poll/' . $sessions_poll_question_row->sessions_id . '?msg=U&pollAction=opened');
             } else {
                 header('location:' . base_url() . 'admin/sessions/view_poll/' . $sessions_poll_question_row->sessions_id . '?msg=A');
             }
@@ -169,20 +170,20 @@ class Sessions extends CI_Controller {
         if (!empty($sessions_poll_question_row)) {
 			 $this->db->update("sessions_poll_question", array("status" => 3), array("status"=>2,"sessions_id" => $sessions_poll_question_row->sessions_id));
             $this->db->update("sessions_poll_question", array("status" => 2), array("sessions_poll_question_id" => $sessions_poll_question_id));
-            header('location:' . base_url() . 'admin/sessions/view_poll/' . $sessions_poll_question_row->sessions_id . '?msg=U');
+            header('location:' . base_url() . 'admin/sessions/view_poll/' . $sessions_poll_question_row->sessions_id . '?msg=U&pollAction=show_results');
         }
     }
 
     public function close_poll($sessions_poll_question_id) {
         $sessions_poll_question_row = $this->db->get_where("sessions_poll_question", array("sessions_poll_question_id" => $sessions_poll_question_id))->row();
         $this->db->update("sessions_poll_question", array("status" => 4), array("sessions_poll_question_id" => $sessions_poll_question_id));
-        header('location:' . base_url() . 'admin/sessions/view_poll/' . $sessions_poll_question_row->sessions_id . '?msg=U');
+        header('location:' . base_url() . 'admin/sessions/view_poll/' . $sessions_poll_question_row->sessions_id . '?msg=U&pollAction=closed');
     }
 
     public function close_result($sessions_poll_question_id) {
         $sessions_poll_question_row = $this->db->get_where("sessions_poll_question", array("sessions_poll_question_id" => $sessions_poll_question_id))->row();
         $this->db->update("sessions_poll_question", array("status" => 3), array("sessions_poll_question_id" => $sessions_poll_question_id));
-        header('location:' . base_url() . 'admin/sessions/view_poll/' . $sessions_poll_question_row->sessions_id . '?msg=U');
+        header('location:' . base_url() . 'admin/sessions/view_poll/' . $sessions_poll_question_row->sessions_id . '?msg=U&pollAction=close_results');
     }
 
     public function view_question_answer($sessions_id) {
@@ -411,7 +412,7 @@ class Sessions extends CI_Controller {
     public function start_timer($sessions_poll_question_id) {
         $sessions_poll_question_row = $this->db->get_where("sessions_poll_question", array("sessions_poll_question_id" => $sessions_poll_question_id))->row();
         $this->db->update("sessions_poll_question", array("timer_status" => 1), array("sessions_poll_question_id" => $sessions_poll_question_id));
-        header('location:' . base_url() . 'admin/sessions/view_poll/' . $sessions_poll_question_row->sessions_id . '?msg=U');
+        header('location:' . base_url() . 'admin/sessions/view_poll/' . $sessions_poll_question_row->sessions_id . '?msg=U&pollAction=start_timer');
     }
 
     public function start_timer_ajax() {

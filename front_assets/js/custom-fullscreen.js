@@ -153,11 +153,3 @@ function exitFullscreen() {
         document.webkitExitFullscreen();
     }
 }
-
-// $("#embededVideo").children("iframe").on("load", function () {
-//     console.log($("#embededVideo").children("iframe").contents());
-// });
-
-$('#modal').on('shown.bs.modal', function () {
-    $(".modal-backdrop.in").hide();
-})

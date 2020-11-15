@@ -1486,4 +1486,4 @@ if (isset($sessions)) {
     }
 </script>
 
-<script src="<?= base_url() ?>assets/js/attendee-session-view.js?v=<?= rand(1, 100) ?>"></script>
+<script src="<?= base_url() ?>front_assets/js/custom-fullscreen.js"></script>

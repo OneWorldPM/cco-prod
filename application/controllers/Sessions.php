@@ -81,12 +81,39 @@ class Sessions extends CI_Controller {
         $data['isMobile'] = $this->MobileDetect->isMobile();
 
         $this->load->view('header', $header_data);
-        $this->load->view('view_sessions', $data);
+        $this->load->view('view_sessions_optimized', $data);
 //        if ($this->MobileDetect->isMobile()){
 //            $this->load->view('view_sessions', $data);
 //        }else{
 //            $this->load->view('view_sessions_desktop', $data);
 //        }
+        $this->load->view('footer');
+    }
+
+    public function new_view($sessions_id) {
+
+        $sesions = $this->objsessions->viewSessionsData($sessions_id);
+
+        if (date("Y-m-d H:i:s") > date("Y-m-d H:i:s", strtotime($sesions->sessions_date . ' ' . $sesions->end_time))) {
+            header("location:" . base_url() . "sessions/session_end");
+            die();
+        }
+
+        $header_data["sesions_logo"] = $sesions->sessions_logo;
+        $header_data["sponsor_type"] = $sesions->sponsor_type;
+        $header_data["right_bar"] = $sesions->right_bar;
+        $header_data["tool_box_status"] = $sesions->tool_box_status;
+
+        $data["sessions"] = $sesions;
+        $data["session_resource"] = $this->objsessions->get_session_resource($sessions_id);
+        $data['music_setting'] = $this->objsessions->get_music_setting();
+
+        $header_data["attendee_view_links_status"] = $sesions->attendee_view_links_status;
+        $header_data["url_link"] = $sesions->url_link;
+        $header_data["link_text"] = $sesions->link_text;
+
+        $this->load->view('header', $header_data);
+        $this->load->view('view_sessions_new', $data);
         $this->load->view('footer');
     }
 

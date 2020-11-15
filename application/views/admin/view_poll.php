@@ -126,6 +126,74 @@ switch ($msg) {
 </script>
 
 
+<!-- ************* codes by Athul- DO NOT MODIFY WITHOUT CONSENT *************-->
+<script>
+
+    var app_name = "<?=getAppName($session_id) ?>";
+
+
+    if (getParameters().pollAction && getParameters().pollAction == 'opened')
+    {
+        if (!socket){
+            alertify.error('Unable to load socket config, poll might not have been opened!');
+        }else{
+            socket.emit('poll_opened', app_name);
+        }
+    }
+
+    if (getParameters().pollAction && getParameters().pollAction == 'closed')
+    {
+        if (!socket){
+            alertify.error('Unable to load socket config, poll might not have been closed!');
+        }else{
+            socket.emit('poll_closed', app_name);
+        }
+    }
+
+    if (getParameters().pollAction && getParameters().pollAction == 'show_results')
+    {
+        if (!socket){
+            alertify.error('Unable to load socket config, results might not have been shown!');
+        }else{
+            socket.emit('show_poll_results', app_name);
+        }
+    }
+
+    if (getParameters().pollAction && getParameters().pollAction == 'close_results')
+    {
+        if (!socket){
+            alertify.error('Unable to load socket config, results might not have been closed!');
+        }else{
+            socket.emit('close_poll_results', app_name);
+        }
+    }
+
+    if (getParameters().pollAction && getParameters().pollAction == 'start_timer')
+    {
+        if (!socket){
+            alertify.error('Unable to load socket config, timer might not have been started!');
+        }else{
+            socket.emit('start_poll_timer', app_name);
+        }
+    }
+
+
+    function getParameters() {
+        var searchString = window.location.search.substring(1),
+            params = searchString.split("&"),
+            hash = {};
+
+        if (searchString == "") return {};
+        for (var i = 0; i < params.length; i++) {
+            var val = params[i].split("=");
+            hash[unescape(val[0])] = unescape(val[1]);
+        }
+
+        return hash;
+    }
+</script>
+
+
 
 
 
