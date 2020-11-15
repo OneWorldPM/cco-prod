@@ -79,8 +79,13 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
+        var app_name_main = "<?=getAppName("") ?>";
         push_notification_admin();
-        setInterval(push_notification_admin, 2000);
+        //setInterval(push_notification_admin, 2000);
+        socket.on('push_notification_change', (socket_app_name) => {
+            if (socket_app_name == app_name_main)
+                push_notification_admin();
+        });
         function push_notification_admin()
         {
             var push_notification_id = $("#push_notification_id").val();

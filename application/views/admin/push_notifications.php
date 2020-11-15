@@ -133,6 +133,7 @@ switch ($msg) {
             }
         });
 
+        var app_name_main = "<?=getAppName("") ?>";
 
         $(document).on("click", ".send_notification", function () {
             var send_notification_id = $(this).attr('data-id');
@@ -149,8 +150,15 @@ switch ($msg) {
                         console.log(cr_data);
                         if (cr_data.status == "success")
                         {
+                            if (socket){
+                                socket.emit('send_push_notification', app_name_main);
+                            }else{
+                                alertify.error('Socket config not found, notification might not have been sent!');
+                            }
+
                             var delayInMilliseconds = 30000; //1 second
                             setTimeout(function () {
+                                socket.emit('close_push_notification', app_name_main);
                                 $.ajax({
                                     url: "<?= base_url() ?>admin/push_notifications/close_notification/" + send_notification_id,
                                     type: "post",
