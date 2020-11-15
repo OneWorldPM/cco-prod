@@ -417,7 +417,7 @@ window.onbeforeunload = function (e) {
             dataType: "json",
             success: function (questions) {
                 questions.forEach(function (row) {
-                    console.log(row.question);$(".questionElement").append(`<p>${row.question}</p>`)
+                    $(".questionElement").append(`<p>${row.question}</p>`)
                 });
             }
         });
