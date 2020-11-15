@@ -199,6 +199,18 @@ class Sessions extends CI_Controller {
         echo json_encode($result_array);
     }
 
+    public function getMyQuestions($session_id)
+    {
+        $questions = $this->objsessions->getMyQuestions($session_id);
+        if ($questions) {
+            echo json_encode($questions);
+        } else {
+            echo json_encode( array());
+        }
+
+        return;
+    }
+
     public function addBriefcase() {
         $result_data = $this->objsessions->addBriefcase();
         if (!empty($result_data)) {

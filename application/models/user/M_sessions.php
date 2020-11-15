@@ -276,6 +276,18 @@ class M_sessions extends CI_Model {
         }
     }
 
+    function getMyQuestions($session_id) {
+        $this->db->select('*');
+        $this->db->from('sessions_cust_question');
+        $this->db->where(array("cust_id" => $this->session->userdata("cid"), 'sessions_id' => $session_id));
+        $questions = $this->db->get();
+        if ($questions->num_rows() > 0) {
+            return $questions->result_array();
+        } else {
+            return false;
+        }
+    }
+
     function addBriefcase() {
         $post = $this->input->post();
         $insert_array = array(

@@ -411,6 +411,17 @@ window.onbeforeunload = function (e) {
             }
         });
 
+        $.ajax({
+            url: base_url+"sessions/getMyQuestions/"+session_id,
+            type: "post",
+            dataType: "json",
+            success: function (questions) {
+                questions.forEach(function (row) {
+                    console.log(row.question);$(".questionElement").append(`<p>${row.question}</p>`)
+                });
+            }
+        });
+
         $(document).on("click", ".resource_save", function () {
             console.log("click");
             var session_resource_id = $(this).attr("data-session_resource_id");

@@ -368,6 +368,7 @@ if (isset($sessions)) {
     var site_url = "<?= site_url() ?>";
     var user_id = "<?=$this->session->userdata('cid')?>";
     var app_name = "<?=getAppName($sessions->sessions_id) ?>";
+    var session_id = "<?=$sessions->sessions_id?>";
 </script>
 <?= getSocketScript()?>
 <script src="<?= base_url() ?>front_assets/js/custom-fullscreen.js"></script>
