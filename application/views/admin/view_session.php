@@ -580,6 +580,7 @@
 
 
 <script>
+    var app_name = "<?=getAppName($sessions->sessions_id) ?>";
     socket.emit("getSessionViewUsers", "<?=getAppName($sessions->sessions_id) ?>", function (resp) {
         if (resp) {
             var totalUsers = resp.users ? resp.users.length : 0;
@@ -777,13 +778,13 @@
         $(".visible-md").click();
 
         get_question_list();
-        setInterval(get_question_list, 4000);
+        //setInterval(get_question_list, 4000);
 
         get_favorite_question_list();
-        setInterval(get_favorite_question_list, 5000);
+        //setInterval(get_favorite_question_list, 5000);
 
         get_poll_vot_section();
-        setInterval(get_poll_vot_section, 1000);
+        //setInterval(get_poll_vot_section, 1000);
 
         $(document).on("click", "#thumbs_down", function () {
             var value = $(this).attr("data-title_name");
@@ -1267,29 +1268,49 @@
     }
 </script>
 <script type="text/javascript">
+
+    function getMessage() {
+        $.ajax({
+            url: "<?= site_url() ?>admin/groupchat/message",
+            type: "post",
+            data: {
+                'sessions_group_chat_id': $('#sessions_group_chat_id').val(),
+                'sessions_id': $('#sessions_id').val()
+            },
+            success: function (data, textStatus, jqXHR) {
+                $('.allmessage').html(data);
+            }
+        });
+    }
+
+    function get_group_chat_section_status() {
+        var sessions_id = $("#sessions_id").val();
+        $.ajax({
+            url: "<?= base_url() ?>admin/groupchat/get_group_chat_section_status",
+            type: "POST",
+            data: {'sessions_id': sessions_id},
+            dataType: "json",
+            success: function (resultdata, textStatus, jqXHR) {
+                if (resultdata.status == 'success') {
+                    $("#group_chat_section").show();
+                    $("#sessions_group_chat_id").val(resultdata.result.sessions_group_chat_id);
+                    getMessage();
+                } else {
+                    $("#group_chat_section").hide();
+                }
+            }
+        });
+    }
+
     $(document).ready(function () {
         getMessage();
-        setInterval(getMessage, 1000);
+        //setInterval(getMessage, 1000);
         setTimeout(function () {
             $(".wrap-messages").css('max-height', '340px');
         }, 300);
 
         get_group_chat_section_status();
-        setInterval(get_group_chat_section_status, 10000);
-
-        function getMessage() {
-            $.ajax({
-                url: "<?= site_url() ?>admin/groupchat/message",
-                type: "post",
-                data: {
-                    'sessions_group_chat_id': $('#sessions_group_chat_id').val(),
-                    'sessions_id': $('#sessions_id').val()
-                },
-                success: function (data, textStatus, jqXHR) {
-                    $('.allmessage').html(data);
-                }
-            });
-        }
+        //setInterval(get_group_chat_section_status, 10000);
 
         function get_group_chat_section_status() {
             var sessions_id = $("#sessions_id").val();
@@ -1302,6 +1323,7 @@
                     if (resultdata.status == 'success') {
                         $("#group_chat_section").show();
                         $("#sessions_group_chat_id").val(resultdata.result.sessions_group_chat_id);
+                        getMessage();
                     } else {
                         $("#group_chat_section").hide();
                     }
@@ -1320,6 +1342,7 @@
                         'sessions_id': $('#sessions_id').val()
                     },
                     success: function (data, textStatus, jqXHR) {
+                        socket.emit('session_new_message', app_name);
                         $('#message').val('');
                         $('.allmessage').html(data);
                         alertify.success('Message Send');
@@ -1344,6 +1367,7 @@
                             'sessions_id': $('#sessions_id').val()
                         },
                         success: function (data, textStatus, jqXHR) {
+                            socket.emit('session_new_message', app_name);
                             $('#message').val('');
                             $('.allmessage').html(data);
                             alertify.success('Message Send');
@@ -1397,4 +1421,58 @@
         }
     }
 
+
+    /*************** Socket IO codes by Athul *****************/
+    /************ DO NOT MODIFY WITHOUT CONSENT ***************/
+    // Written separate listeners for flexibility in the future
+    socket.on('poll_open_notification', (poll_app_name) => {
+        if (poll_app_name == app_name)
+            get_poll_vot_section();
+    });
+
+    socket.on('poll_close_notification', (poll_app_name) => {
+        if (poll_app_name == app_name)
+            get_poll_vot_section();
+    });
+
+    socket.on('show_poll_results_notification', (poll_app_name) => {
+        if (poll_app_name == app_name)
+            get_poll_vot_section();
+    });
+
+    socket.on('close_poll_results_notification', (poll_app_name) => {
+        if (poll_app_name == app_name)
+            get_poll_vot_section();
+    });
+
+    socket.on('start_poll_timer_notification', (poll_app_name) => {
+        if (poll_app_name == app_name)
+            get_poll_vot_section();
+    });
+
+    socket.on('new_question_notification', (poll_app_name) => {
+        if (poll_app_name == app_name)
+            get_question_list();
+    });
+
+    socket.on('like_question_notification', (poll_app_name) => {
+        if (poll_app_name == app_name)
+            get_favorite_question_list();
+    });
+
+    socket.on('session_new_message_notification', (poll_app_name) => {
+        if (poll_app_name == app_name)
+            getMessage();
+    });
+
+    socket.on('session_chat_opened_notification', (poll_app_name) => {
+        if (poll_app_name == app_name)
+            get_group_chat_section_status();
+    });
+
+    socket.on('session_chat_closed_notification', (poll_app_name) => {
+        if (poll_app_name == app_name)
+            get_group_chat_section_status();
+    });
+    /********* End of socket IO codes by Athul **********/
 </script>

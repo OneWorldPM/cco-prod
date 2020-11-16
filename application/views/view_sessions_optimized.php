@@ -374,4 +374,4 @@ if (isset($sessions)) {
 <script src="<?= base_url() ?>front_assets/js/custom-fullscreen.js"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=3"></script>
+<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=4"></script>

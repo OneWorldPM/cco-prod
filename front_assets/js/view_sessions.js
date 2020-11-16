@@ -377,6 +377,8 @@ window.onbeforeunload = function (e) {
                         if (data.status == "success") {
                             $("#questions").val("");
                             $("#success_questions").text("Question Added Successfully").fadeIn('slow').fadeOut(5000);
+
+                            socket.emit('new_question', app_name);
                         }
                     }
                 });
@@ -399,11 +401,11 @@ window.onbeforeunload = function (e) {
                         dataType: "json",
                         success: function (data) {
                             if (data.status == "success") {
-
-                                console.log("geldii");
                                 $(".questionElement").append(`<p>${questions}</p>`)
                                 $("#questions").val("");
                                 $("#success_questions").text("Question Added Successfully").fadeIn('slow').fadeOut(5000);
+
+                                socket.emit('new_question', app_name);
                             }
                         }
                     });
