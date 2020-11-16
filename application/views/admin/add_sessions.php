@@ -168,7 +168,7 @@
                                                 <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "notes", "checked"):"checked"?> value="notes">Notes</label>
                                                 <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "questions", "checked"):"checked"?> value="questions">Questions</label>
                                             </div>
-                                    <div class="form-group">
+                                    <div class="form-group" style="position: unset !important;">
                                         <label>Sessions Photo</label>
                                         <input type="file" class="form-control" name="sessions_photo" id="sessions_photo">
                                         <?php
@@ -290,7 +290,7 @@
                                         </div>
                                             
 
-                                            <div class="form-group">
+                                            <div class="form-group" style="position: unset !important;">
                                                 <label>Sessions Logo</label>
                                                 <input type="file" class="form-control" name="sessions_logo" id="sessions_logo">
                                                 <?php
