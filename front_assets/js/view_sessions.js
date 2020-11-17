@@ -1,6 +1,64 @@
+
+/******* Saving time spent on session - by Athul ************/
+var timeSpentOnSessionFromDb;
+var timeSpentUntilNow;
+function getTimeSpentOnSession(){
+    $.ajax({
+        url: base_url+"sessions/getTimeSpentOnSession/"+session_id+'/'+user_id,
+        type: "post",
+        dataType: "json",
+        success: function (data) {
+            timeSpentOnSessionFromDb = parseInt(data);
+            startCounting();
+            return parseInt(data);
+        }
+    });
+}
+
+function getTimeSpentOnSiteFromLocalStorage(){
+    timeSpentOnSite = parseInt(localStorage.getItem('timeSpentOnSite'));
+    timeSpentOnSite = isNaN(timeSpentOnSite) ? 0 : timeSpentOnSite;
+    return timeSpentOnSite;
+}
+
+function saveTimeSpentOnSession(){
+    $.ajax({
+        url: base_url+"sessions/saveTimeSpentOnSession/"+session_id+'/'+user_id,
+        type: "post",
+        data: {'time': timeSpentUntilNow},
+        dataType: "json",
+        success: function (data) {
+            localStorage.setItem('timeSpentOnSession', "0");
+        }
+    });
+}
+
+function startCounting(){
+    timeSpentUntilNow = timeSpentOnSessionFromDb;
+    onSessiontimer = setInterval(function(){
+        var datetime_now_newyork = calcTime('-5');
+        if(datetime_now_newyork >= session_start_datetime && datetime_now_newyork <= session_end_datetime)
+            timeSpentUntilNow = timeSpentUntilNow+1;
+    },1000);
+
+    Swal.fire(
+        'Message!',
+        'We are saving your activities on this page, before you leave browser might warn you about unsaved data but you can click on Leave button!',
+        'warning'
+    );
+
+}
+
+function initiateTimerRecorder() {
+    getTimeSpentOnSession();
+}
+
+initiateTimerRecorder();
+/******* End of saving time spent on session - by Athul ************/
+
 window.onbeforeunload = function (e) {
-//      e.preventDefault();
-//      e.returnValue = '';
+    saveTimeSpentOnSession();
+
     $.ajax({
         url: base_url+"sessions/update_viewsessions_history_open",
         type: "post",
@@ -11,7 +69,10 @@ window.onbeforeunload = function (e) {
         }
     });
 
+    return "We are saving your data before you leave, you can click ok to leave!";
 };
+
+
 
 //    window.onbeforeunload = function (e) {
 //        var sessions_id = $("#sessions_id").val();
@@ -921,3 +982,20 @@ socket.on('start_poll_timer_notification', (poll_app_name) => {
         get_poll_vot_section();
 });
 /********* End of socket IO codes by Athul **********/
+
+
+function calcTime(offset) {
+    // create Date object for current location
+    var d = new Date();
+
+    // convert to msec
+    // subtract local time zone offset
+    // get UTC time in msec
+    var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+
+    // create new Date object for different city
+    // using supplied offset
+    var nd = new Date(utc + (3600000*offset));
+
+    return nd;
+}

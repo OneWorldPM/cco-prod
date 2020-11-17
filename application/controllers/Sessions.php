@@ -450,4 +450,67 @@ class Sessions extends CI_Controller {
         $this->load->view('footer');
     }
 
+    public function getTimeSpentOnSession($session_id, $user_id)
+    {
+        $this->db->select('*');
+        $this->db->from('total_time_on_session');
+        $this->db->where(array('session_id'=>$session_id, 'user_id'=>$user_id));
+
+        $response = $this->db->get();
+        if ($response->num_rows() > 0)
+        {
+            echo $response->result_array()[0]['total_time'];
+        }else{
+            echo 0;
+        }
+
+        return;
+    }
+
+    public function saveTimeSpentOnSession($session_id, $user_id)
+    {
+
+//        $session_start_end = $this->getSessionStartEndTime($session_id);
+//
+//        $now = date("Y-m-d H:i:s");
+//        $start_time = date('Y-m-d H:i:s', $session_start_end['start']);
+//        $end_time = date('Y-m-d H:i:s', $session_start_end['end']);
+//
+//        if($now < $start_time || $now > $end_time)
+//        {
+//            return;
+//        }
+
+        $this->db->where(array('session_id'=>$session_id, 'user_id'=>$user_id));
+        $response = $this->db->get('total_time_on_session');
+
+        if ( $response->num_rows() > 0 )
+        {
+            $this->db->where(array('session_id'=>$session_id, 'user_id'=>$user_id));
+            $this->db->update('total_time_on_session', array('total_time'=>$this->input->post()['time']));
+        } else {
+            $this->db->set(array('session_id'=>$session_id, 'user_id'=>$user_id));
+            $this->db->insert('total_time_on_session', array('total_time'=>$this->input->post()['time']));
+        }
+
+        return;
+    }
+
+    private function getSessionStartEndTime($session_id)
+    {
+        $this->db->where(array('sessions_id'=>$session_id));
+        $response = $this->db->get('sessions');
+
+        if ( $response->num_rows() > 0 )
+        {
+            $result = $response->result_array()[0];
+            $start_datetime = $result['sessions_date'].' '.$result['time_slot'];
+            $end_datetime = $result['sessions_date'].' '.$result['end_time'];
+
+            return array('start'=>$start_datetime, 'end'=>$end_datetime);
+        } else {
+            return false;
+        }
+    }
+
 }
