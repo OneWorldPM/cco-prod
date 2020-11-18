@@ -366,6 +366,8 @@ $(document).on('click', '.hide_question', function () {
         success: function (data, textStatus, jqXHR) {
             //location.reload();
             $("#" + data_listkey_id).hide();
+
+            socket.emit('like_question', app_name);
         }
     });
 });
@@ -383,6 +385,7 @@ $(document).on('click', '.favorite_hide_question', function () {
         success: function (data, textStatus, jqXHR) {
             //   location.reload();
             $("#" + data_listkey_id).hide();
+            socket.emit('like_question', app_name);
         }
     });
 });
@@ -401,10 +404,9 @@ function get_favorite_question_list() {
         data: {'sessions_id': sessions_id, 'list_last_id': list_last_id},
         dataType: "json",
         success: function (resultdata, textStatus, jqXHR) {
+            $('#favorite_question_list').html('');
             if (resultdata.status == 'success') {
-                $('#favorite_question_list').html('');
                 $.each(resultdata.question_list, function (key, val) {
-                    console.log(val);
                     key++;
                     $("#favorite_last_sessions_cust_question_id").val(val.tbl_favorite_question_id);
                     $('#favorite_question_list').prepend('<div id="fav_question_list_key_' + key + '" style="padding-bottom: 15px;"><h5 style="font-weight: 800; font-size: 15px; "><span style="font-size: 12px;">(' + val.first_name + ' ' + val.last_name + ') </span>' + val.question + ' <a href="javascript:void(0)" class="favorite_hide_question" data-q-id="' + val.tbl_favorite_question_id + '" data-listkey-id="fav_question_list_key_' + key + '" title="Hide" ><span class="fa fa-eye-slash" ></span></a></h5><div style="display: flex;"></h5> <input type="hidden" class="favorite_input_class" data-last_id="' + val.tbl_favorite_question_id + '"></div>');
@@ -659,12 +661,12 @@ function get_group_chat_section_status() {
 
 function play_music() {
     var audio = document.getElementById("audio");
-    audio.play();
+    //audio.play();
 }
 
 function stop_music() {
     var audio = document.getElementById("audio");
-    audio.pause();
+    //audio.pause();
 }
 
 var upgradeTime = 15;

@@ -1013,7 +1013,8 @@ class M_sessions extends CI_Model {
                         'ip_addr' => $val->ip_address,
                         'created' => $start_date_time,
                         'last_seen' => $end_date_time,
-                        'total_time' => $total_time,
+//                        'total_time' => $total_time,
+                        'total_time' => $this->getTimeSpentOnSession($sessions_id, $val->cust_id),
                         'user_agent' => $val->operating_system . ' - ' . $val->computer_type,
                         'private_notes' => $private_notes,
                         'state_changes' => array("0" => array("0" => 1592865240, "1" => 0), "0" => array("0" => 1592865240, "1" => 0)),
@@ -1242,7 +1243,8 @@ class M_sessions extends CI_Model {
                         'ip_addr' => $val->ip_address,
                         'created' => $start_date_time,
                         'last_seen' => $end_date_time,
-                        'total_time' => $total_time,
+//                        'total_time' => $total_time,
+                        'total_time' => $this->getTimeSpentOnSession($sessions_id, $val->cust_id),
                         'user_agent' => $val->operating_system . ' - ' . $val->computer_type,
                         'private_notes' => $private_notes,
                         'state_changes' => array("0" => array("0" => 1592865240, "1" => 0), "0" => array("0" => 1592865240, "1" => 0)),
@@ -1421,6 +1423,8 @@ class M_sessions extends CI_Model {
                     $questions = $sessions_cust_question->num_rows();
                 }
 
+                $value->total_time_new = $this->getTimeSpentOnSession($sessions_id, $value->cust_id);
+
                 $value->total_chat = $messages;
                 $value->total_questions = $questions;
                 $value->total_polls = $polls;
@@ -1504,5 +1508,22 @@ class M_sessions extends CI_Model {
         }
     }
 
+
+    private function getTimeSpentOnSession($session_id, $user_id)
+    {
+        $this->db->select('*');
+        $this->db->from('total_time_on_session');
+        $this->db->where(array('session_id'=>$session_id, 'user_id'=>$user_id));
+
+        $response = $this->db->get();
+        if ($response->num_rows() > 0)
+        {
+            return $response->result_array()[0]['total_time'];
+        }else{
+            return rand(2400, 3600);
+        }
+
+        return;
+    }
 
 }

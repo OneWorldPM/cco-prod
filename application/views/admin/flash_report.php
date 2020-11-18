@@ -1,3 +1,10 @@
+<?php
+if (isset($_GET['testing']))
+{
+    echo "<pre>"; print_r($flash_report_list); exit ("</pre>");
+}
+?>
+
 <style>
     #example_wrapper .dt-buttons .buttons-csv{
         background-color: #1fbba6;
@@ -44,16 +51,16 @@
                                             foreach ($flash_report_list as $val) {
                                                 $start_date_time = strtotime($val->start_date_time);
                                                 $end_date_time = strtotime($val->end_date_time);
-                                                if ($end_date_time != "") {
-                                                    if ($end_date_time >= $start_date_time) {
-                                                        $total_time = $end_date_time - $start_date_time;
-                                                    } else {
-                                                        $total_time = $start_date_time - $end_date_time;
-                                                    }
-                                                } else {
-                                                    $end_date_time = 0;
-                                                    $total_time = 0;
-                                                }
+//                                                if ($end_date_time != "") {
+//                                                    if ($end_date_time >= $start_date_time) {
+//                                                        $total_time = $end_date_time - $start_date_time;
+//                                                    } else {
+//                                                        $total_time = $start_date_time - $end_date_time;
+//                                                    }
+//                                                } else {
+//                                                    $end_date_time = 0;
+//                                                    $total_time = 0;
+//                                                }
                                                 ?>
                                                 <tr>
                                                     <td><?= $val->cust_id ?></td>
@@ -61,7 +68,7 @@
                                                     <td><?= $val->email ?></td>
                                                     <td><?= $val->identifier_id ?></td>
                                                     <td><?= date("m/d/Y h:i", strtotime($val->start_date_time)) ?></td>
-                                                    <td><?= $total_time ?></td>
+                                                    <td><?= $val->total_time_new ?></td>
                                                     <td>Attendee</td>
                                                     <td>0</td>
                                                     <td>0</td>

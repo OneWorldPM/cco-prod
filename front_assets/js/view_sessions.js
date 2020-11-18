@@ -42,8 +42,8 @@ function startCounting(){
     },1000);
 
     Swal.fire(
-        'Message!',
-        'We are saving your activities on this page, before you leave browser might warn you about unsaved data but you can click on Leave button!',
+        'INFO',
+        'Be sure to unmute the player located on the bottom right side of the page.',
         'warning'
     );
 
@@ -835,12 +835,12 @@ function ajaxcall() {
 
 function play_music() {
     var audio = document.getElementById("audio");
-    audio.play();
+    // audio.play();
 }
 
 function stop_music() {
     var audio = document.getElementById("audio");
-    audio.pause();
+    // audio.pause();
 }
 
 var upgradeTime = 15;

@@ -12,7 +12,7 @@
             <div>
                 <div class="videContent">
 
-                    <?php if (isset($sessions) && $sessions->sessions_id != 22) { ?>
+                    <?php if (1==2) { ?>
                         <div style="background-color: #B2B7BB;">
                             <h3 class="videoTitle" style="margin-bottom: 2px; margin-left: 10px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
                         </div>
