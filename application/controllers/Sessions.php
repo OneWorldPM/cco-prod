@@ -493,6 +493,7 @@ class Sessions extends CI_Controller {
             $this->db->insert('total_time_on_session', array('total_time'=>$this->input->post()['time']));
         }
 
+        echo 1;
         return;
     }
 

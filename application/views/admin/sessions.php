@@ -132,7 +132,7 @@
                                                     <td>
 													  <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin-bottom: 5px;">View Session</a>
                                                         <a href="<?= base_url() ?>admin/sessions/edit_sessions/<?= $val->sessions_id ?>" class="btn btn-green btn-sm">Edit</a>
-														  
+                                                        <button class="reload-attendee btn btn-danger" app-name="<?=getAppName($val->sessions_id) ?>">Reload Attendee Page</button>
                                                         </td>
                                                         <td>
                                                         <a href="<?= base_url() ?>admin/sessions/create_poll/<?= $val->sessions_id ?>" class="btn btn-success btn-sm" style="margin-bottom: 5px;">Create Poll</a>
@@ -168,6 +168,8 @@
 </div>
 <?php
 $msg = $this->input->get('msg');
+$m;
+$t;
 switch ($msg) {
     case "S":
         $m = "Successfully Cleared";
@@ -205,8 +207,13 @@ switch ($msg) {
             });
         });
         
-<?php if ($msg): ?>
+<?php if (isset($msg) && isset($t) && isset($m)): ?>
             alertify.<?= $t ?>("<?= $m ?>");
 <?php endif; ?>
+
+    $('.reload-attendee').on('click', function () {
+        socket.emit('reload-attendee', $(this).attr('app-name'));
+    });
+
     });
 </script>

@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET['testing']))
 {
-    echo "<pre>"; print_r($flash_report_list); exit ("</pre>");
+    echo "<pre>"; print_r($flash_report_list[0]); exit ("</pre>");
 }
 ?>
 
@@ -51,16 +51,23 @@ if (isset($_GET['testing']))
                                             foreach ($flash_report_list as $val) {
                                                 $start_date_time = strtotime($val->start_date_time);
                                                 $end_date_time = strtotime($val->end_date_time);
-//                                                if ($end_date_time != "") {
-//                                                    if ($end_date_time >= $start_date_time) {
-//                                                        $total_time = $end_date_time - $start_date_time;
-//                                                    } else {
-//                                                        $total_time = $start_date_time - $end_date_time;
-//                                                    }
-//                                                } else {
-//                                                    $end_date_time = 0;
-//                                                    $total_time = 0;
-//                                                }
+                                                if ($end_date_time != "") {
+                                                    if ($end_date_time >= $start_date_time) {
+                                                        $total_time = $end_date_time - $start_date_time;
+                                                    } else {
+                                                        $total_time = $start_date_time - $end_date_time;
+                                                    }
+                                                } else {
+                                                    $end_date_time = 0;
+                                                    $total_time = 0;
+                                                }
+
+                                                $sessions_start_date_time = strtotime($val->sessions_date . ' ' . $val->time_slot);
+                                                $sessions_end_date_time = strtotime($val->sessions_date . ' ' . $val->end_time);
+                                                $sessions_total_time = $sessions_end_date_time - $sessions_start_date_time;
+
+                                                $last_seen = ($end_date_time == 0)?(strtotime($val->sessions_date . ' ' . $val->time_slot))+$sessions_total_time:$end_date_time;
+                                                $session_started = strtotime($val->sessions_date . ' ' . $val->time_slot);
                                                 ?>
                                                 <tr>
                                                     <td><?= $val->cust_id ?></td>

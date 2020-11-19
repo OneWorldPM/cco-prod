@@ -997,7 +997,9 @@ class M_sessions extends CI_Model {
                     if ($sessions_cust_briefcase->num_rows() > 0) {
                         $private_notes = $sessions_cust_briefcase->row()->note;
                     }
-                    
+
+                    $last_seen = ($end_date_time == 0)?(strtotime($result_sessions->sessions_date . ' ' . $result_sessions->time_slot))+$sessions_total_time:$end_date_time;
+                    $session_started = strtotime($result_sessions->sessions_date . ' ' . $result_sessions->time_slot);
                     $sessions_history_login[] = array(
                         'client_data' => '',
                         'alertness' => 0,
@@ -1012,8 +1014,10 @@ class M_sessions extends CI_Model {
                         'access_str' => 'Attendee',
                         'ip_addr' => $val->ip_address,
                         'created' => $start_date_time,
-                        'last_seen' => $end_date_time,
+                        'last_seen' => $last_seen,
 //                        'total_time' => $total_time,
+//                        'total_time' => ($end_date_time == 0)?($sessions_total_time-strtotime($result_sessions->sessions_date . ' ' . $result_sessions->time_slot)):$this->getTimeSpentOnSession($sessions_id, $val->cust_id),
+//                        'total_time' => $last_seen-$session_started,
                         'total_time' => $this->getTimeSpentOnSession($sessions_id, $val->cust_id),
                         'user_agent' => $val->operating_system . ' - ' . $val->computer_type,
                         'private_notes' => $private_notes,
@@ -1227,7 +1231,9 @@ class M_sessions extends CI_Model {
                     if ($sessions_cust_briefcase->num_rows() > 0) {
                         $private_notes = $sessions_cust_briefcase->row()->note;
                     }
-                  
+
+                    $last_seen = ($end_date_time == 0)?(strtotime($result_sessions->sessions_date . ' ' . $result_sessions->time_slot))+$sessions_total_time:$end_date_time;
+                    $session_started = strtotime($result_sessions->sessions_date . ' ' . $result_sessions->time_slot);
                     $sessions_history_login[] = array(
                         'client_data' => '',
                         'alertness' => 0,
@@ -1242,8 +1248,10 @@ class M_sessions extends CI_Model {
                         'access_str' => 'Attendee',
                         'ip_addr' => $val->ip_address,
                         'created' => $start_date_time,
-                        'last_seen' => $end_date_time,
+                        'last_seen' => $last_seen,
 //                        'total_time' => $total_time,
+//                        'total_time' => ($end_date_time == 0)?($sessions_total_time-strtotime($result_sessions->sessions_date . ' ' . $result_sessions->time_slot)):$this->getTimeSpentOnSession($sessions_id, $val->cust_id),
+//                        'total_time' => $last_seen-$session_started,
                         'total_time' => $this->getTimeSpentOnSession($sessions_id, $val->cust_id),
                         'user_agent' => $val->operating_system . ' - ' . $val->computer_type,
                         'private_notes' => $private_notes,
@@ -1520,7 +1528,7 @@ class M_sessions extends CI_Model {
         {
             return $response->result_array()[0]['total_time'];
         }else{
-            return rand(2400, 3600);
+            return 0;
         }
 
         return;

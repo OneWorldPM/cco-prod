@@ -1,3 +1,11 @@
+socket.on('reload-attendee-signal', function (app_name_to_relaod) {
+    if (app_name_to_relaod == app_name)
+    {
+        update_viewsessions_history_open();
+        saveTimeSpentOnSessionAfterSessionFinished();
+    }
+});
+
 
 /******* Saving time spent on session - by Athul ************/
 var timeSpentOnSessionFromDb;
@@ -10,6 +18,7 @@ function getTimeSpentOnSession(){
         success: function (data) {
             timeSpentOnSessionFromDb = parseInt(data);
             startCounting();
+            saveTimeSpentOnSession();
             return parseInt(data);
         }
     });
@@ -28,7 +37,19 @@ function saveTimeSpentOnSession(){
         data: {'time': timeSpentUntilNow},
         dataType: "json",
         success: function (data) {
-            localStorage.setItem('timeSpentOnSession', "0");
+            update_viewsessions_history_open();
+        }
+    });
+}
+
+function saveTimeSpentOnSessionAfterSessionFinished(){
+    $.ajax({
+        url: base_url+"sessions/saveTimeSpentOnSession/"+session_id+'/'+user_id,
+        type: "post",
+        data: {'time': timeSpentUntilNow},
+        dataType: "json",
+        success: function (data) {
+            location.reload();
         }
     });
 }
@@ -39,6 +60,9 @@ function startCounting(){
         var datetime_now_newyork = calcTime('-5');
         if(datetime_now_newyork >= session_start_datetime && datetime_now_newyork <= session_end_datetime)
             timeSpentUntilNow = timeSpentUntilNow+1;
+        if (datetime_now_newyork > session_end_datetime){
+            saveTimeSpentOnSession();
+        }
     },1000);
 
     Swal.fire(
@@ -49,6 +73,8 @@ function startCounting(){
 
 }
 
+setInterval(saveTimeSpentOnSession, 300000); //Saving total time every 5 minutes as a backup
+
 function initiateTimerRecorder() {
     getTimeSpentOnSession();
 }
@@ -56,9 +82,9 @@ function initiateTimerRecorder() {
 initiateTimerRecorder();
 /******* End of saving time spent on session - by Athul ************/
 
-window.onbeforeunload = function (e) {
-    saveTimeSpentOnSession();
 
+function update_viewsessions_history_open()
+{
     $.ajax({
         url: base_url+"sessions/update_viewsessions_history_open",
         type: "post",
@@ -68,10 +94,7 @@ window.onbeforeunload = function (e) {
 
         }
     });
-
-    return "We are saving your data before you leave, you can click ok to leave!";
-};
-
+}
 
 
 //    window.onbeforeunload = function (e) {
