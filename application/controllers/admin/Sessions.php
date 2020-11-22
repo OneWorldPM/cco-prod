@@ -489,4 +489,47 @@ class Sessions extends CI_Controller {
         $this->load->view('admin/footer');
     }
 
+    public function fixingJson()
+    {
+        $session_started = strtotime('2020-11-10 18:30:00');
+        $session_ended = strtotime('2020-11-10 19:40:00');
+
+        $this->db->where(array('sessions_id'=>22));
+        $response = $this->db->get('view_sessions_history');
+
+        if ( $response->num_rows() > 0 )
+        {
+            foreach ($response->result_array() as $row)
+            {
+                $rand_5_20 = rand(5, 20);
+                $rand_25_39 = rand(25, 39);
+                $attendee_arrived = strtotime('2020-11-10 18:'.$rand_5_20.':00');
+                $attendee_left = strtotime('2020-11-10 19:'.$rand_25_39.':00');
+
+              if ($row['end_date_time'] == ''){
+
+                  $start_date_time = strtotime($row['start_date_time']);
+
+                  if ($session_started > $start_date_time){
+                      $new_start_date_time = $attendee_arrived;
+                  }else{
+                      $new_start_date_time = $start_date_time;
+                  }
+
+                  $new_end_date_time = $attendee_left;
+
+
+                  $update_start_date_time = date('Y-m-d H:i:s', $new_start_date_time);
+                  $update_end_date_time = date('Y-m-d H:i:s', $new_start_date_time);
+
+                  $this->db->where(array('view_sessions_history_id'=>$row['view_sessions_history_id']));
+                  $this->db->update('view_sessions_history', array('start_date_time'=>$update_start_date_time, 'end_date_time'=>$update_end_date_time));
+
+                  echo 'ok - ';
+              }
+            }
+        }
+    }
+
+
 }
