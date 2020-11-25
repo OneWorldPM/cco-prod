@@ -11413,3 +11413,10 @@ td.small-width {
 .presenterNavbar  .navbar-header{
   border-right: none;
 }
+.presenterModal .modal-content{
+  background: white;
+  box-shadow: 0 0 20px -6px black;
+}
+.presenterModal div{
+  border-color: #eaeaea !important;
+}

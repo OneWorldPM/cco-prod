@@ -238,7 +238,7 @@ class Sessions extends CI_Controller {
         $data["sessions"] = $this->msessions->view_session($sessions_id);
         $data["session_resource"] = $this->msessions->get_session_resource($sessions_id);
          $data['music_setting'] = $this->msessions->get_music_setting();
-        $this->load->view('presenter/session_header');
+        $this->load->view('presenter/session_header',$data);
         $this->load->view('presenter/view_session', $data);
         $this->load->view('presenter/footer');
     }
