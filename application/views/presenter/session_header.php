@@ -16,7 +16,7 @@ $this->load->view('presenter/header_include');
             <li class="active"><a data-toggle="modal" data-target="#zoomModal">ZOOM</a></li>
 
             <li><a href="<?= base_url() ?>presenter/sessions/view_poll/<?= $sessions->sessions_id ?>" target="_blank">POLLS</a></li>
-            <li><a href="#">Page 3</a></li>
+            <li><a data-toggle="modal" data-target="#reourcesModal">RESOURCES</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= $this->session->userdata('pname') ?> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -31,7 +31,7 @@ $this->load->view('presenter/header_include');
     </div>
 </nav>
 
-<!-- Modal -->
+<!-- Modal zoom -->
 <div class="modal fade presenterModal" id="zoomModal" role="dialog">
     <div class="modal-dialog">
 
@@ -55,6 +55,38 @@ $this->load->view('presenter/header_include');
                 ?>
 
 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--modal resources-->
+<div class="modal fade presenterModal" id="reourcesModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RESOURCES</h4>
+            </div>
+            <div class="modal-body">
+                <?php
+                if (!empty($session_resource)) {
+                    foreach ($session_resource as $val) {
+                        ?>
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-md-12"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
+                            <div class="col-md-12"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
