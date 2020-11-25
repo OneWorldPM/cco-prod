@@ -11396,3 +11396,20 @@ td.small-width {
 [date-picker] .disabled.active, [date-picker] .disabled.now {
   color: #ffffff !important;
 }
+
+
+/*presenter navbar*/
+.presenterNavbar .navbar .collapse{
+  border-bottom: 1px solid #c8c7cc;
+  background-color: #fafafa;
+}
+.presenterNavbar  .navbar-nav>li>a{
+  padding: 18px;
+  color: black;
+  font-size: 12px;
+  font-family: sans-serif;
+  font-weight: 600;
+}
+.presenterNavbar  .navbar-header{
+  border-right: none;
+}
