@@ -29,6 +29,37 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                     </div>
                 </div>
                 <div class="content">
+                    <input type="hidden" id="sessions_group_chat_id" value="">
+                    <div class="wrap-messages">
+                        <div id="inbox" class="inbox">
+                            <div class="col email-list">
+                                <div class="wrap-list">
+                                    <ul class="messages-list perfect-scrollbar allmessage">
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png" id="emjis_section_show" title="Check to Show Emoji" data-emjis_section_show_status="0"/></span>
+                            <input type="text" placeholder="Message..." id="message" name="message" class="form-control">
+                            <span class="btn btn-primary input-group-addon" id="send" ><i class="fa fa-send"></i></span>
+
+                        </div>
+
+                    </div>
+                    <div id="emojis_section">
+                        <img src="<?= base_url() ?>front_assets/images/emoji/happy.png" title="Happy" id="happy" data-title_name="&#128578;"/>
+                        <img src="<?= base_url() ?>front_assets/images/emoji/sad.png" title="Sad" id="sad" data-title_name="&#128543"/>
+                        <img src="<?= base_url() ?>front_assets/images/emoji/laughing.png" title="Laughing" id="laughing" data-title_name="😁"/>
+                        <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_up.png" title="Thumbs Up" id="thumbs_up" data-title_name="&#128077;"/>
+                        <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_down.png" title="Thumbs Down" id="thumbs_down" data-title_name="&#128078"/>
+                        <img src="<?= base_url() ?>front_assets/images/emoji/clapping.png" title="Clapping" id="clapping" data-title_name="&#128079;"/>
+                    </div>
+                    <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
                 </div>
             </div>
             <div class="rightSticykPopup questionFavorites presenterRightSticykPopup" style="display: none">
@@ -44,6 +75,31 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                     </div>
                 </div>
                 <div class="content">
+                    <ul id="myTab1" class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#attendee_questions" data-toggle="tab">
+                                Attendee Questions
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#favorites" data-toggle="tab">
+                                Favorites <i class="fa fa-star-o"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="attendee_questions">
+                            <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
+                            <input type="hidden" name="last_sessions_cust_question_id" id="last_sessions_cust_question_id" value="0">
+                            <div id="question_list"></div>
+
+                        </div>
+                        <div class="tab-pane fade" id="favorites">
+                            <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
+                            <input type="hidden" name="favorite_last_sessions_cust_question_id" id="favorite_last_sessions_cust_question_id" value="0">
+                            <div id="favorite_question_list"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

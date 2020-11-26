@@ -111,34 +111,33 @@
     left: 29px;
 }
 
-.rightSticykPopup .contentHeader{
+.rightSticykPopup .contentHeader {
     color: #ff8d00;
     font-weight: bold;
     padding: 5px 15px;
     font-size: 14px;
 }
 
-.presenterRightSticykPopup{
+.presenterRightSticykPopup {
     position: unset;
     box-shadow: 0 0px 2px black;
     margin-bottom: 15px;
     width: 450px;
     max-width: 100%;
+    height: 390px;
 }
 
-.presenterRightSticykPopup .dropdown-menu{
+.presenterRightSticykPopup .dropdown-menu {
     margin-left: -135px;
 }
 
-.presenterRightSticky{
+.presenterRightSticky {
     bottom: unset;
     top: 200px;
 }
 
 
-
-
-#briefcase_section{
+#briefcase_section {
     top: 68px !important;
 }
 
@@ -148,18 +147,21 @@
     height: 200px;
     overflow: auto;
 }
+
 .messagesStickyPresenter .content .messages {
     padding: 5px 3px;
 
 }
-.messagesStickyPresenter .content .messages{
+
+.messagesStickyPresenter .content .messages {
     height: 200px;
 }
-.messagesSticky .content .messages>div:nth-of-type(1n+2){
+
+.messagesSticky .content .messages > div:nth-of-type(1n+2) {
     margin-top: 5px;
 }
 
-.messagesSticky .content .messages .messageHe ,.messagesSticky .content .messages .messageMe {
+.messagesSticky .content .messages .messageHe, .messagesSticky .content .messages .messageMe {
     padding: 10px 12px;
     font-size: 12px;
     color: black;
@@ -168,24 +170,29 @@
     border-radius: 10px;
 
 }
-.messagesSticky .content .messages .messageHe span{
+
+.messagesSticky .content .messages .messageHe span {
     font-weight: 600;
 }
-.messagesSticky .content .messages .messageHe p{
+
+.messagesSticky .content .messages .messageHe p {
     margin-top: 5px;
 }
-.messagesSticky .content .messages .messageHe p ,.messagesSticky .content .messages .messageMe p{
+
+.messagesSticky .content .messages .messageHe p, .messagesSticky .content .messages .messageMe p {
     margin-bottom: 0;
     color: #2f2f2f;
 }
 
-.messagesSticky .content .messages .messageHe{
+.messagesSticky .content .messages .messageHe {
     background-color: #ECEAEB;
     border-radius: 10px;
 }
+
 .messagesSticky .content .messages .messageMe {
     background-color: #D0D0D0;
 }
+
 .messagesSticky input {
     width: 270px;
     height: 40px;
@@ -206,15 +213,14 @@
     }
 
     /*.rightSticykPopup {*/
-        /*width: 100%;*/
-        /*right: 0px;*/
-        /*position: fixed;*/
-        /*margin: auto;*/
-        /*top: 0px;*/
-        /*bottom: 0px !important;*/
-        /*height: 100%;*/
+    /*width: 100%;*/
+    /*right: 0px;*/
+    /*position: fixed;*/
+    /*margin: auto;*/
+    /*top: 0px;*/
+    /*bottom: 0px !important;*/
+    /*height: 100%;*/
     /*}*/
-
     #briefcase_section .input-group {
         width: 100%;
     }
@@ -228,9 +234,7 @@
     /*.rightSticykPopup .content > #briefcase_section textarea {*/
     /*    width: 100%;*/
     /*    height: 80vh;*/
-
     /*}*/
-
     .rightSticykPopup .content > #briefcase_section .button {
         position: absolute;
         bottom: -37px;
@@ -250,26 +254,71 @@
         text-align: center !important;
         display: block !important;
     }
-    .messagesStickyPresenter .content .messages{
+
+    .messagesStickyPresenter .content .messages {
         max-height: 100vh;
         height: 89vh !important;
     }
 }
 
-.totalAttende{
+.totalAttende {
     font-size: 15px;
 }
 
-.border{
+.border {
     border: 1px solid;
 }
-.borderRed{
+
+.borderRed {
     border-color: red !important;
 }
 
-.displayNone{
+.displayNone {
     display: none !important;
 }
-#popup_title_lbl{
- border-radius: 15px 15px 0 0 !important;
+
+#popup_title_lbl {
+    border-radius: 15px 15px 0 0 !important;
+}
+
+.hostChat #inbox {
+    margin: 0;
+}
+
+.hostChat #inbox .email-list {
+    width: 100% !important;
+}
+
+.hostChat #inbox .email-list .wrap-list {
+    width: 100% !important;
+}
+
+.hostChat #inbox .email-list .messages-list {
+    overflow-y: auto !important;
+    position: unset;
+    max-height: 310px;
+    border-bottom: 1px solid #d2d2d259;
+}
+
+.hostChat .wrap-messages {
+    max-height: 340px;
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+.hostChat .input-group-addon img {
+    width: 25px;
+    object-fit: contain;
+    height: 20px;
+}
+
+.hostChat .row {
+    margin: 0;
+    float: left;
+    margin-top: 35px;
+    padding: 0 5px;
+}
+.hostChat #emojis_section img {
+    width: 40px; height: 40px; padding: 5px;
 }
