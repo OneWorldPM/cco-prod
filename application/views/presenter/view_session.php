@@ -10,8 +10,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 }
 ?>
 
-<h1>geldii</h1>
-<div class="container-fluid presenterContainer" style="margin-top: 100px">
+<div class="container-fluid presenterContainer">
     <div class="row">
         <div class="col-md-12 leftSide" style="background-color: black;height: 500px"></div>
         <div class="col-md-3 rightSide">
@@ -19,7 +18,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
             <div class="rightSticykPopup hostChat presenterRightSticykPopup" style="display: none">
                 <div class="header"><span>HOST CHAT</span>
                     <div class="rightTool">
-                        <i class="fa fa-minus" aria-hidden="true"></i>
+                        <i class="fa fa-minus" aria-hidden="true" data-right-id="1"></i>
                         <div class="dropdown">
                             <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>
                             <ul class="dropdown-menu">
@@ -65,7 +64,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
             <div class="rightSticykPopup questionFavorites presenterRightSticykPopup" style="display: none">
                 <div class="header"><span>QUESTIONS | FAVORITES</span>
                     <div class="rightTool">
-                        <i class="fa fa-minus" aria-hidden="true"></i>
+                        <i class="fa fa-minus" aria-hidden="true" data-right-id="2"></i>
                         <div class="dropdown">
                             <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>
                             <ul class="dropdown-menu">
@@ -106,22 +105,18 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
     </div>
 </div>
 
-
-
-
-
-
-
-
-
+<div class="stickyTimer">
+    <div class="timer"></div>
+    <div class="viewUser">
+        <span>live</span><i class="fa fa-eye" aria-hidden="true"></i><span class="userCount">15</span>
+    </div>
+</div>
 <div class="rightSticky presenterRightSticky" data-screen="presenter">
     <ul>
-        <li data-type="hostChat"><i class="fa fa-comments-o" aria-hidden="true"></i><span>HOST CHAT</span></li>
-        <li data-type="questionFavorites"><i class="fa fa-question" aria-hidden="true"></i> <span>QUESTIONS</span></li>
+        <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i><span>HOST CHAT</span></li>
+        <li data-type="questionFavorites" class="2"><i class="fa fa-question" aria-hidden="true"></i> <span>QUESTIONS</span></li>
     </ul>
 </div>
-
-
 
 
 <script>
