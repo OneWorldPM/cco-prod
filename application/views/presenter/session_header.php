@@ -65,10 +65,13 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
     <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch.js"></script> -->
     <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch-onload.js"></script> -->
     <script src="<?= base_url() ?>front_assets/js/custom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>-->
+
+    <?=getSocketScript()?>
+
     <script>
         // let socket = io("https://socket.yourconference.live:443");
-        let socket = io("<?=getSocketUrl()?>");
+        //let socket = io("<?//=getSocketUrl()?>//");
 
 
         socket.on("newViewUsers",function(resp){
@@ -76,6 +79,8 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
                 var totalUsers=resp.users?resp.users.length:0;
                 var sessionId=resp.sessionId;
                 $(".totalAttende"+sessionId+" b").html(totalUsers);
+                $(".userCount" + sessionId).html(totalUsers);
+
             }
         })
         // var socketServer = "https://socket.yourconference.live:443";
@@ -95,86 +100,101 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
 </head>
 
 <body>
-<div id="app">
-    <!-- sidebar -->
-    <div class="sidebar app-aside" id="sidebar">
-        <div class="sidebar-container">
-            <nav>
-                <ul class="main-navigation-menu">
-                    <li class="<?= ($uri_segment == 'dashboard') ? 'active' : ''; ?>" id="dashboard-active">
-                        <a href="<?= base_url() ?>presenter/dashboard" id="dash">
-                            <div class="item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-desktop"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <span class="title"> Dashboard </span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="<?= ($uri_segment == 'sessions') ? 'active' : ''; ?>">
-                        <a href="<?= site_url() ?>presenter/sessions" id="dash">
-                            <div class="item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-tv"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <span class="title">Sessions</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
 
-                </ul>
-            </nav>
-        </div>
+<nav class="navbar presenterNavbar">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            <img src="https://yourconference.live/CCO/front_assets/images/CCO_CORP_Logo_310wide.png" width="175">
+        </a>
     </div>
-    <!-- / sidebar -->
-    <div class="app-content">
-        <!-- start: TOP NAVBAR -->
-        <header class="navbar navbar-default navbar-static-top">
-            <div class="navbar-header">
+    <div class="collapse navbar-collapse" id="myNavbar">
 
-                <a href="#" class="sidebar-mobile-toggler pull-left hidden-md hidden-lg" class="btn btn-navbar sidebar-toggle" data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar">
-                    <i class="ti-align-justify"></i>
-                </a>
-                <a class="navbar-brand" href="<?= base_url() ?>presenter/dashboard">
-                    <img class="kent_logo" src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" width="100%" alt="CCO Logo" />
-                </a>
-                <a href="#" class="sidebar-toggler pull-right visible-md visible-lg" data-toggle-class="app-sidebar-closed" data-toggle-target="#app">
-                    <i class="ti-align-justify"></i>
-                </a>
-                <a class="pull-right menu-toggler visible-xs-block" id="menu-toggler" data-toggle="collapse" href=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <i class="ti-view-grid"></i>
-                </a>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a data-toggle="modal" data-target="#zoomModal">ZOOM</a></li>
 
-            </div>
-
-            <!-- end: NAVBAR HEADER -->
-            <!-- start: NAVBAR COLLAPSE -->
-            <div class="navbar-collapse collapse text-center">
-                <ul class="nav navbar-right">
-                    <li class="dropdown current-user">
-                        <a href class="dropdown-toggle" data-toggle="dropdown">
-                            <?php
-                            if($presenter_details->presenter_photo != ""){
-                                ?>
-                                <img src="<?= site_url() ?>uploads/presenter_photo/<?= $presenter_details->presenter_photo ?>" height="40" alt="Fanscoin"> <span class="username"><?= $this->session->userdata('pname') ?> <i class="ti-angle-down"></i></i></span>
-                            <?php }else{ ?>
-                                <img src="<?= site_url() ?>assets/images/Avatar.png" height="40" alt="Fanscoin"> <span class="username"><?= $this->session->userdata('pname') ?> <i class="ti-angle-down"></i></i></span>
-                            <?php } ?>
+            <li><a href="<?= base_url() ?>presenter/sessions/view_poll/<?= $sessions->sessions_id ?>" target="_blank">POLLS</a></li>
+            <li><a data-toggle="modal" data-target="#reourcesModal">RESOURCES</a></li>
+            <li><a href="https://yourconference.live/support" target="_blank">HELP DESK</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= $this->session->userdata('pname') ?> <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="<?= base_url() ?>presenter/login/logout">
+                            Log Out
                         </a>
-                        <ul class="dropdown-menu dropdown-dark">
-                            <li>
-                                <a href="<?= base_url() ?>presenter/login/logout">
-                                    Log Out
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
-                <label class="wallet-balance"  style="font-size: 22px; margin-top: 20px; font-weight: 700; margin-right: 20px; color: red;">Presenter </label>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Modal zoom -->
+<div class="modal fade presenterModal" id="zoomModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">ZOOM</h4>
             </div>
-        </header>
+            <div class="modal-body">
+                <?php
+                $zoom_link=isset($sessions->zoom_link)?$sessions->zoom_link:"";
+                $zoom_pass=isset($sessions->zoom_password)?$sessions->zoom_password:"";
+
+                if($zoom_link){
+                    ?>
+                    <p>Zoom Meeting Link : <a href="<?=$zoom_link?>" target="_blank"><?=$zoom_link?></a></p>
+                    <p>Password : <?=$zoom_pass?></p>
+                <?php
+                }
+                ?>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--modal resources-->
+<div class="modal fade presenterModal" id="reourcesModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RESOURCES</h4>
+            </div>
+            <div class="modal-body">
+                <?php
+                if (!empty($session_resource)) {
+                    foreach ($session_resource as $val) {
+                        ?>
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-md-12"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
+                            <div class="col-md-12"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
