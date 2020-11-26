@@ -108,7 +108,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 <div class="stickyTimer">
     <div class="timer"></div>
     <div class="viewUser">
-        <span>live</span><i class="fa fa-eye" aria-hidden="true"></i><span class="userCount">15</span>
+        <span>live</span><i class="fa fa-eye" aria-hidden="true"></i><span class="userCount userCount<?=getAppName($sessions->sessions_id)?>">15</span>
     </div>
 </div>
 <div class="rightSticky presenterRightSticky" data-screen="presenter">

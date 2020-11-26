@@ -1,9 +1,10 @@
 
+
 socket.emit("getSessionViewUsers", app_name, function (resp) {
     if (resp) {
         var totalUsers = resp.users ? resp.users.length : 0;
         var sessionId = resp.sessionId;
-        $(".totalAttende" + sessionId + " b").html(totalUsers);
+        $(".userCount" + sessionId).html(totalUsers);
     }
 })
 
