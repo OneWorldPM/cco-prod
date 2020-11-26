@@ -322,3 +322,17 @@
 .hostChat #emojis_section img {
     width: 40px; height: 40px; padding: 5px;
 }
+.questionFavorites #myTab1 li {
+ width: 50% !important;
+    background-color: #b2b7bb;
+}.questionFavorites #myTab1 li.active {
+background-color: #5f5f5f !important;
+}
+.questionFavorites #myTab1 li a{
+    color: white;
+    padding: 11px;
+}
+.questionFavorites .tab-content{
+    max-height: 313px;
+    overflow: auto;
+}
