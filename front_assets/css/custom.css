@@ -118,6 +118,27 @@
     font-size: 14px;
 }
 
+.presenterRightSticykPopup{
+    position: unset;
+    box-shadow: 0 0px 2px black;
+    margin-bottom: 15px;
+    width: 450px;
+    max-width: 100%;
+}
+
+.presenterRightSticky{
+    bottom: unset;
+    top: 200px;
+}
+
+
+
+.presenterContainer{
+
+}
+
+
+
 #briefcase_section{
     top: 68px !important;
 }
