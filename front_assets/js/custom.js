@@ -34,6 +34,7 @@ $(document).ready(function () {
 
 
                 if($toolType){
+                    $(this).find(".notify").addClass("displayNone");
                    $(this).css("display","none");
                 }
 

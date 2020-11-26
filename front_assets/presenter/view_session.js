@@ -876,6 +876,13 @@ socket.on('start_poll_timer_notification', (poll_app_name) => {
 socket.on('new_question_notification', (poll_app_name) => {
     if (poll_app_name == app_name)
         get_question_list();
+    var $questionNotify=$(".questionNotify")
+
+    if($questionNotify.parent().css("display")!="none"){
+        $questionNotify.removeClass("displayNone");
+    }
+
+
 });
 
 socket.on('like_question_notification', (poll_app_name) => {
@@ -886,6 +893,13 @@ socket.on('like_question_notification', (poll_app_name) => {
 socket.on('session_new_message_notification', (poll_app_name) => {
     if (poll_app_name == app_name)
         getMessage();
+    var $hostChatNotify=$(".hostChatNotify")
+
+    if($hostChatNotify.parent().css("display")!="none"){
+        $hostChatNotify.removeClass("displayNone");
+    }
+
+
 });
 
 socket.on('session_chat_opened_notification', (poll_app_name) => {

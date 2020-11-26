@@ -117,8 +117,8 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 </div>
 <div class="rightSticky presenterRightSticky" data-screen="presenter">
     <ul>
-        <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i><span>HOST CHAT</span></li>
-        <li data-type="questionFavorites" class="2"><i class="fa fa-question" aria-hidden="true"></i> <span>QUESTIONS</span></li>
+        <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="notify hostChatNotify displayNone"></span> <span>HOST CHAT</span></li>
+        <li data-type="questionFavorites" class="2"><i class="fa fa-question" aria-hidden="true"></i> <span class="notify questionNotify displayNone"></span> <span>QUESTIONS</span></li>
     </ul>
 </div>
 
