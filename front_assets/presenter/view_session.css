@@ -388,3 +388,6 @@ html{
     margin-left: 5px;
     margin-right: 5px;
 }
+.navbar-toggle .icon-bar{
+    background-color: #3c3c3c;
+}
