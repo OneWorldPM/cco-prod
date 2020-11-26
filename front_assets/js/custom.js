@@ -23,6 +23,12 @@ $(document).ready(function () {
 
             if(screen=="presenter"){
 
+                if($toolType2=="off"){
+                   var $toolType2 = $(this).parent().data("type");
+                    $("." + $toolType2).css("display", "")
+
+                }
+
                 leftRightSideColChange("remove");
                 $("." + $toolType).css("display", "")
                 $(".presenterRightSticky").css("display","none")
@@ -107,5 +113,11 @@ $(document).ready(function () {
     }
 
     rightStickyBar()
+
+
+    $(document).on("click",".option_section_css input",function () {
+        $("#btn_vote").css("background-color","#f05d1f")
+    })
+
 
 })

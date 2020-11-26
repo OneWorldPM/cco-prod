@@ -126,16 +126,15 @@
     max-width: 100%;
 }
 
+.presenterRightSticykPopup .dropdown-menu{
+    margin-left: -135px;
+}
+
 .presenterRightSticky{
     bottom: unset;
     top: 200px;
 }
 
-
-
-.presenterContainer{
-
-}
 
 
 
@@ -270,4 +269,7 @@
 
 .displayNone{
     display: none !important;
+}
+#popup_title_lbl{
+ border-radius: 15px 15px 0 0 !important;
 }

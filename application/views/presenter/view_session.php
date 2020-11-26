@@ -38,7 +38,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                         <div class="dropdown">
                             <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>
                             <ul class="dropdown-menu">
-                                <li data-type="resourcesSticky"><a data-type2="off">Host Chat</a></li>
+                                <li data-type="hostChat"><a data-type2="off">Host Chat</a></li>
                             </ul>
                         </div>
                     </div>
