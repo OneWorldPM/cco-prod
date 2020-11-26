@@ -12,8 +12,12 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
 <div class="container-fluid presenterContainer">
     <div class="row">
-        <div class="col-md-12 leftSide" style="background-color: black;height: 500px"></div>
-        <div class="col-md-3 rightSide">
+        <div class="col-lg-12 col-md-12 leftSide">
+<!--            <iframe class="col-md-12 embed-responsive-item" src="https://meet.yourconference.live/conference/share-presentation.html?confId=CCO_AMP_Final_Deck_V3&amp;totalSlides=95&amp;fileExtension=JPG" style="height: inherit;" scrolling="no"></iframe>-->
+            <?= isset($sessions) ? $sessions->embed_html_code_presenter : "" ?>
+
+        </div>
+        <div class="col-lg-3 col-md-4 rightSide">
 
             <div class="rightSticykPopup hostChat presenterRightSticykPopup" style="display: none">
                 <div class="header"><span>HOST CHAT</span>

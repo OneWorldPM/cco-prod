@@ -6,9 +6,9 @@ $(document).ready(function () {
         var $leftSide= $presenterContainer.find(".leftSide");
 
         if(type=="remove"){
-            $leftSide.removeClass("col-md-12").addClass("col-md-9");
+            $leftSide.removeClass("col-md-12").removeClass("col-lg-12").addClass("col-lg-9").addClass("col-md-8");
         }else{
-            $leftSide.removeClass("col-md-9").addClass("col-md-12");
+            $leftSide.removeClass("col-lg-9").removeClass("col-md-8").addClass("col-lg-12").addClass("col-md-12");;
         }
     }
     function rightStickyBar() {
