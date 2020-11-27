@@ -98,6 +98,30 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
     </div>
 </div>
 
+<div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
+    <div class="modal-dialog">
+        <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
+            <div class="modal-body" style="padding: 0px;">
+                <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
+                    <div class="col-sm-12">
+                        <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
+                            <div class=""  style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
+                                TIME LEFT : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
+                            </div>
+                        </div>
+                        <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 15px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <div class="stickyTimer">
     <div class="viewUser">
         <span>live</span><i class="fa fa-eye" aria-hidden="true"></i><span class="userCount userCount<?=getAppName($sessions->sessions_id)?>">0</span>
