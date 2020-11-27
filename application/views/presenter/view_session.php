@@ -66,7 +66,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                 </div>
             </div>
             <div class="rightSticykPopup questionFavorites presenterRightSticykPopup" style="display: none">
-                <div class="header"><span>QUESTIONS | FAVORITES</span>
+                <div class="header"><span><a href="#attendee_questions" data-toggle="tab">QUESTIONS</a> | <a href="#favorites" data-toggle="tab">FAVORITES</a></span>
                     <div class="rightTool">
                         <i class="fa fa-minus" aria-hidden="true" data-right-id="2"></i>
                         <div class="dropdown">
@@ -78,18 +78,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                     </div>
                 </div>
                 <div class="content">
-                    <ul id="myTab1" class="nav nav-tabs">
-                        <li class="active">
-                            <a href="#attendee_questions" data-toggle="tab">
-                                Attendee Questions
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#favorites" data-toggle="tab">
-                                Favorites <i class="fa fa-star-o"></i>
-                            </a>
-                        </li>
-                    </ul>
+
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="attendee_questions">
                             <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
@@ -110,10 +99,11 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 </div>
 
 <div class="stickyTimer">
-    <div class="timer"></div>
     <div class="viewUser">
         <span>live</span><i class="fa fa-eye" aria-hidden="true"></i><span class="userCount userCount<?=getAppName($sessions->sessions_id)?>">0</span>
     </div>
+    <div class="timer"></div>
+
 </div>
 <div class="rightSticky presenterRightSticky" data-screen="presenter">
     <ul>
