@@ -40,9 +40,13 @@
                             <td><?=$admin['username']?></td>
                             <td><?=$admin['email']?></td>
                             <td><?=$admin['role']?></td>
-                            <td>
-                                <button class="delete-admin-btn btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                                <button class="edit-admin-btn btn btn-info"><i class="fa fa-edit"></i> Edit</button>
+                            <td style="padding-top: 8px;padding-bottom: 8px;">
+                                <?php if ($admin['role'] != 'super_admin') { ?>
+                                    <button class="delete-admin-btn btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                    <button class="edit-admin-btn btn btn-info"><i class="fa fa-edit"></i> Edit</button>
+                                <?php }else{ ?>
+                                    <span class="label label-warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Cannot Modify Super Admin Users</span>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php } ?>
