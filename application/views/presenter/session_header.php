@@ -115,10 +115,17 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
     <div class="collapse navbar-collapse" id="myNavbar">
 
         <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a data-toggle="modal" data-target="#zoomModal">ZOOM</a></li>
+            <li><a href="<?= base_url() ?>presenter/sessions">MY SESSIONS</a></li>
 
+            <li class="active"><a data-toggle="modal" data-target="#zoomModal">ZOOM</a></li>
             <li><a href="<?= base_url() ?>presenter/sessions/view_poll/<?= $sessions->sessions_id ?>" target="_blank">POLLS</a></li>
-            <li><a data-toggle="modal" data-target="#reourcesModal">RESOURCES</a></li>
+            <?php
+            if(sessionRightBarControl($sessions->right_bar, "resources")){
+                ?>
+                <li><a data-toggle="modal" data-target="#reourcesModal">RESOURCES</a></li>
+                <?php
+            }
+            ?>
             <li><a href="https://yourconference.live/support" target="_blank">HELP DESK</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= $this->session->userdata('pname') ?> <span class="caret"></span></a>

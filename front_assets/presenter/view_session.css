@@ -362,7 +362,7 @@ html{
     padding: 11px;
 }
 .questionFavorites .tab-content{
-    max-height: 313px;
+    max-height: 352px;
     overflow: auto;
 }
 .stickyTimer{
@@ -404,4 +404,10 @@ html{
 }
 .navbar-toggle .icon-bar{
     background-color: #3c3c3c;
+}
+.presenterRightSticykPopup .header span a{
+color: white;
+}
+.presenterRightSticykPopup .header span a:hover{
+    color: #f2ffd1;
 }

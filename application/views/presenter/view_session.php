@@ -13,8 +13,8 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 <div class="container-fluid presenterContainer">
     <div class="row">
         <div class="col-lg-12 col-md-12 leftSide">
-            <iframe class="col-md-12 embed-responsive-item" src="https://meet.yourconference.live/conference/share-presentation.html?confId=CCO_AMP_Final_Deck_V3&amp;totalSlides=95&amp;fileExtension=JPG" style="height: inherit;" scrolling="no"></iframe>
-<!--            --><?//= isset($sessions) ? $sessions->embed_html_code_presenter : "" ?>
+<!--            <iframe class="col-md-12 embed-responsive-item" src="https://meet.yourconference.live/conference/share-presentation.html?confId=CCO_AMP_Final_Deck_V3&amp;totalSlides=95&amp;fileExtension=JPG" style="height: inherit;" scrolling="no"></iframe>-->
+            <?= isset($sessions) ? $sessions->embed_html_code_presenter : "" ?>
 
         </div>
         <div class="col-lg-3 col-md-4 rightSide">
@@ -66,7 +66,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                 </div>
             </div>
             <div class="rightSticykPopup questionFavorites presenterRightSticykPopup" style="display: none">
-                <div class="header"><span>QUESTIONS | FAVORITES</span>
+                <div class="header"><span><a href="#attendee_questions" data-toggle="tab">QUESTIONS</a> | <a href="#favorites" data-toggle="tab">FAVORITES</a></span>
                     <div class="rightTool">
                         <i class="fa fa-minus" aria-hidden="true" data-right-id="2"></i>
                         <div class="dropdown">
@@ -78,18 +78,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                     </div>
                 </div>
                 <div class="content">
-                    <ul id="myTab1" class="nav nav-tabs">
-                        <li class="active">
-                            <a href="#attendee_questions" data-toggle="tab">
-                                Attendee Questions
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#favorites" data-toggle="tab">
-                                Favorites <i class="fa fa-star-o"></i>
-                            </a>
-                        </li>
-                    </ul>
+
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="attendee_questions">
                             <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
