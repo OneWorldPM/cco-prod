@@ -302,10 +302,10 @@ html{
     border-radius: 15px 15px 0 0 !important;
 }
 .presenterContainer{
-    margin-top: 140px
+    margin-top: 100px
 }
 .presenterContainer .leftSide{
-    height:937px;
+    height:813px;
 }
 
 
@@ -369,7 +369,7 @@ html{
     width: 500px;
     height: 40px;
     position: absolute;
-    top: 97px;
+    top: 67px;
     right: 0;
     padding-right: 25px;
 }
