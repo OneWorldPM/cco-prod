@@ -375,12 +375,14 @@ html{
 }
 .stickyTimer .timer{
     font-size: 21px;
-    color: #3c3c3c;;
+    /*color: #3c3c3c;*/
+    color: white;
     display: inline-block;
     float: right;
 }
 .stickyTimer .viewUser{
-    background-color: #000000c7;
+    /*background-color: #000000c7;*/
+    background-color: #151515;
     width: max-content;
     color: white;
     display: inline-block;
@@ -413,4 +415,7 @@ color: white;
 }
 .messages-list .messages-item .messages-item-subject{
     font-size: 14px !important;
+}
+body{
+    background-color: black;
 }
