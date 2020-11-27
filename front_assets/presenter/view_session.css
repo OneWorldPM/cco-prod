@@ -419,3 +419,20 @@ color: white;
 body{
     background-color: black;
 }
+
+#poll_vot_section{
+    background-color: transparent !important;
+}
+.modal-content{
+    background-color: white !important;
+}
+.modal-body{
+    padding: 0 !important;
+    padding-top: 15px !important;
+
+}.modal-body .row{
+    padding: 0 !important;
+}
+ #timer_sectiom{
+     margin-top: -15px !important;
+ }

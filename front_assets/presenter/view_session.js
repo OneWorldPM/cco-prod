@@ -482,6 +482,7 @@ function get_poll_vot_section() {
                 if (poll_vot_section_id_status != data.result.sessions_poll_question_id || poll_vot_section_last_status != data.result.status) {
                     $("#poll_vot_section_id_status").val(data.result.sessions_poll_question_id);
                     $("#poll_vot_section_last_status").val(data.result.status);
+                    $('#modal').modal('show');
                     if (data.result.poll_status == 1) {
                         $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
             \n\<h2 style='border:1px solid #b79700;margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Live Poll</h2>\n\
