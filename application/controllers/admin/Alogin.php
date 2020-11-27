@@ -31,7 +31,8 @@ class Alogin extends CI_Controller {
                 $session = array(
                     'aid' => $data['admin_id'],
                     'aname' => 'admin',
-                    'uname' => $data['username']
+                    'uname' => $data['username'],
+                    'role'  => $data['role']
                 );
 
                 $this->session->set_userdata($session);
