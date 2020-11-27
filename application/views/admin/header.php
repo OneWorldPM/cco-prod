@@ -6,6 +6,9 @@
 <?php
 $uri_segment = $this->uri->segment(2);
 $uri_segment1 = $this->uri->segment(3);
+
+$user_role = $this->session->userdata('role');
+$user_name = ucfirst($this->session->userdata('uname'));
 ?>
 <html lang="en">
     <!--<![endif]-->
@@ -114,19 +117,38 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
-                            <li class="<?= ($uri_segment == 'user') ? 'active' : ''; ?>" >
-                                <a href="<?= site_url() ?>admin/user" id="dash">
-                                    <div class="item-content">
-                                        <div class="item-media">
-                                            <i class="fa fa-users"></i>
-                                        </div>
-                                        <div class="item-inner">
-                                            <span class="title">User</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
 
+                            <?php if ($user_role == 'super_admin') { ?>
+                                <li class="<?= ($uri_segment == 'user') ? 'active' : ''; ?>" >
+                                    <a href="<?= site_url() ?>admin/admins" id="dash">
+                                        <div class="item-content">
+                                            <div class="item-media">
+                                                <i class="fa fa-user-circle"></i>
+                                            </div>
+                                            <div class="item-inner">
+                                                <span class="title">Admin Users</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            <?php } ?>
+
+                            <?php if ($user_role == 'super_admin') { ?>
+                                <li class="<?= ($uri_segment == 'user') ? 'active' : ''; ?>" >
+                                    <a href="<?= site_url() ?>admin/user" id="dash">
+                                        <div class="item-content">
+                                            <div class="item-media">
+                                                <i class="fa fa-users"></i>
+                                            </div>
+                                            <div class="item-inner">
+                                                <span class="title">Users</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            <?php } ?>
+
+                            <?php if ($user_role == 'super_admin') { ?>
                             <li class="<?= ($uri_segment == 'presenters') ? 'active' : ''; ?>" >
                                 <a href="<?= site_url() ?>admin/presenters" id="dash">
                                     <div class="item-content">
@@ -139,6 +161,8 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <?php } ?>
+
                             <li class="<?= ($uri_segment == 'sessions') ? 'active' : ''; ?>">
                                 <a href="<?= site_url() ?>admin/sessions" id="dash">
                                     <div class="item-content">
@@ -151,6 +175,8 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+
+                            <?php if ($user_role == 'super_admin') { ?>
 							<li class="<?= ($uri_segment == 'eposters') ? 'active' : ''; ?>">
                                 <a href="<?= site_url() ?>admin/eposters" id="dash">
                                     <div class="item-content">
@@ -163,6 +189,9 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <?php } ?>
+
+                            <?php if ($user_role == 'super_admin') { ?>
                             <li class="<?= ($uri_segment == 'sponsors') ? 'active' : ''; ?>">
                                 <a href="<?= site_url() ?>admin/sponsors " id="dash">
                                     <div class="item-content">
@@ -175,6 +204,9 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <?php } ?>
+
+                            <?php if ($user_role == 'super_admin') { ?>
                             <li class="<?= ($uri_segment == 'plan_pricing') ? 'active' : ''; ?>">
                                 <a href="<?= site_url() ?>admin/plan_pricing" id="dash">
                                     <div class="item-content">
@@ -187,6 +219,9 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <?php } ?>
+
+                            <?php if ($user_role == 'super_admin') { ?>
                             <li class="<?= ($uri_segment == 'promo_code') ? 'active' : ''; ?>" >
                                 <a href="<?= site_url() ?>admin/promo_code" id="dash">
                                     <div class="item-content">
@@ -199,6 +234,9 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <?php } ?>
+
+                            <?php if ($user_role == 'super_admin') { ?>
                             <li class="<?= ($uri_segment == 'cms_setting') ? 'active' : ''; ?>" >
                                 <a href="<?= site_url() ?>admin/cms_setting" id="dash">
                                     <div class="item-content">
@@ -211,6 +249,9 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <?php } ?>
+
+                            <?php if ($user_role == 'super_admin') { ?>
                             <li class="<?= ($uri_segment == 'tracking') ? 'active' : ''; ?>">
                                 <a href="<?= site_url() ?>admin/tracking" id="dash">
                                     <div class="item-content">
@@ -223,6 +264,9 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <?php } ?>
+
+                            <?php if ($user_role == 'super_admin') { ?>
                             <li class="<?= ($uri_segment == 'sessions_configurations') ? 'active' : ''; ?>" >
                                 <a href="<?= site_url() ?>admin/sessions_configurations" id="dash">
                                     <div class="item-content">
@@ -235,6 +279,9 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <?php } ?>
+
+                            <?php if ($user_role == 'super_admin') { ?>
 							 <li class="<?= ($uri_segment == 'graphics') ? 'active' : ''; ?>" >
                                 <a href="<?= site_url() ?>admin/graphics" id="dash">
                                     <div class="item-content">
@@ -247,6 +294,9 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <?php } ?>
+
+                            <?php if ($user_role == 'super_admin') { ?>
 							 <li class="<?= ($uri_segment == 'push_notifications') ? 'active' : ''; ?>" >
                                 <a href="<?= site_url() ?>admin/push_notifications" id="dash">
                                     <div class="item-content">
@@ -259,6 +309,9 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <?php } ?>
+
+                            <?php if ($user_role == 'super_admin') { ?>
 							 <li class="<?= ($uri_segment == 'dummy_user') ? 'active' : ''; ?>">
                                 <a href="<?= site_url() ?>admin/dummy_user" id="dash">
                                     <div class="item-content">
@@ -271,6 +324,9 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <?php } ?>
+
+                            <?php if ($user_role == 'super_admin') { ?>
                             <li class="<?= ($uri_segment == 'music_setting') ? 'active' : ''; ?>" >
                                 <a href="<?= site_url() ?>admin/music_setting" id="dash">
                                     <div class="item-content">
@@ -283,6 +339,7 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <?php } ?>
 							
                         </ul>
                     </nav>
@@ -317,7 +374,7 @@ $uri_segment1 = $this->uri->segment(3);
                         <ul class="nav navbar-right">
                             <li class="dropdown current-user">
                                 <a href class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="<?= base_url() ?>assets/images/Avatar.png" alt="admin"> <span class="username">ADMIN <i class="ti-angle-down"></i></i></span>
+                                    <img src="<?= base_url() ?>assets/images/Avatar.png" alt="admin"> <span class="username"><?=$user_name?> <i class="ti-angle-down"></i></i></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-dark">
                                     <li>
