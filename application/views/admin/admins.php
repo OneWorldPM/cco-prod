@@ -134,14 +134,19 @@
             var role = $('select[name=role] option').filter(':selected').val();
             var role_text = $('select[name=role] option').filter(':selected').text();
 
-            if (username == '')
+            if (username == '' || /\s/g.test(username))
             {
-                toastr.warning('Username cannot be empty!');
+                toastr.warning('Username cannot be empty or contain a whitespace!');
                 return false;
             }
-            if (password == '')
+            if (password == '' || /\s/g.test(password))
             {
-                toastr.warning('Password cannot be empty!');
+                toastr.warning('Password cannot be empty or contain a whitespace!');
+                return false;
+            }
+            if (/\s/g.test(email))
+            {
+                toastr.warning('Email cannot contain a whitespace!');
                 return false;
             }
             if (role == '')
