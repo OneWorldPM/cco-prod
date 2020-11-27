@@ -53,4 +53,34 @@ class Admins extends CI_Controller {
         return;
     }
 
+    public function editAdmin()
+    {
+        $response = false;
+
+        $admin_details = array(
+            'username' => $this->input->post()['username'],
+            'email' => $this->input->post()['email'],
+            'password' => $this->input->post()['password'],
+            'role' => $this->input->post()['role']
+        );
+
+        $this->db->where('admin_id', $this->input->post()['admin_id']);
+
+        if ($this->db->update('admin', $admin_details))
+            $response = true;
+
+        echo $response;
+        return;
+    }
+
+    public function removeAdmin($adminId)
+    {
+        $response = false;
+        if ($this->db->delete('admin', array('admin_id' => $adminId)))
+            $response = true;
+
+        echo $response;
+        return;
+    }
+
 }

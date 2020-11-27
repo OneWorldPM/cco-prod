@@ -42,8 +42,8 @@
                             <td><?=$admin['role']?></td>
                             <td style="padding-top: 8px;padding-bottom: 8px;">
                                 <?php if ($admin['role'] != 'super_admin') { ?>
-                                    <button class="delete-admin-btn btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                                    <button class="edit-admin-btn btn btn-info"><i class="fa fa-edit"></i> Edit</button>
+                                    <button class="delete-admin-btn btn btn-danger" admin-id="<?=$admin['admin_id']?>" username="<?=$admin['username']?>"><i class="fa fa-trash"></i> Remove</button>
+                                    <button class="edit-admin-btn btn btn-info" admin-id="<?=$admin['admin_id']?>" username="<?=$admin['username']?>" email="<?=$admin['email']?>" role="<?=$admin['role']?>"><i class="fa fa-edit"></i> Edit</button>
                                 <?php }else{ ?>
                                     <span class="label label-warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Cannot Modify Super Admin Users</span>
                                 <?php } ?>
@@ -87,8 +87,9 @@
                     <label for="role" style="font-size: 18px;">Role: <i aria-hidden="true" class="fa fa-asterisk fa-sm" style="color: #ce0000;font-size: 10px;"></i> </label>
                     <select name="role" id="role">
                         <option value="publisher">Publisher</option>
-                        <option value="super-admin">Super Admin</option>
+                        <option value="super_admin">Super Admin</option>
                     </select>
+                    <input type="hidden" name="admin-id" value="">
 
                 </form>
             </div>
@@ -134,6 +135,8 @@
             var role = $('select[name=role] option').filter(':selected').val();
             var role_text = $('select[name=role] option').filter(':selected').text();
 
+            var admin_id = $("input[name='admin-id']").val();
+
             if (username == '' || /\s/g.test(username))
             {
                 toastr.warning('Username cannot be empty or contain a whitespace!');
@@ -155,48 +158,146 @@
                 return false;
             }
 
-            $.post( "admins/addAdmin",
-                {
-                    username: username,
-                    email: email,
-                    password: password,
-                    role: role
-                })
-                .done(function( data ) {
-                    if (data)
+            if (admin_id == '')
+            {
+                $.post( "admins/addAdmin",
                     {
-                        $('#addAdminModal').modal('hide');
-                        $("input[name='username']").val('');
-                        $("input[name='email']").val('');
-                        $("input[name='password']").val('');
+                        username: username,
+                        email: email,
+                        password: password,
+                        role: role
+                    })
+                    .done(function( data ) {
+                        if (data)
+                        {
+                            $('#addAdminModal').modal('hide');
+                            $("input[name='username']").val('');
+                            $("input[name='email']").val('');
+                            $("input[name='password']").val('');
 
-                        Swal.fire(
-                            'Done!',
-                            'Admin with '+role_text+' role is added!',
-                            'success'
-                        ).then(() => {
-                            location.reload();
-                        });
+                            Swal.fire(
+                                'Done!',
+                                'Admin with '+role_text+' role is added!',
+                                'success'
+                            ).then(() => {
+                                location.reload();
+                            });
 
-                    }else{
+                        }else{
+                            Swal.fire(
+                                'Problem!',
+                                'Unable to add admin, probably because username or email already exists!',
+                                'error'
+                            );
+                        }
+                    })
+                    .error(function (error) {
                         Swal.fire(
                             'Problem!',
                             'Unable to add admin, probably because username or email already exists!',
                             'error'
                         );
-                    }
-                })
-                .error(function (error) {
-                    Swal.fire(
-                        'Problem!',
-                        'Unable to add admin, probably because username or email already exists!',
-                        'error'
-                    );
-                });
+                    });
+            }else{
+                $.post( "admins/editAdmin",
+                    {
+                        admin_id: admin_id,
+                        username: username,
+                        email: email,
+                        password: password,
+                        role: role
+                    })
+                    .done(function( data ) {
+                        if (data)
+                        {
+                            $('#addAdminModal').modal('hide');
+                            $("input[name='username']").val('');
+                            $("input[name='admin-id']").val('');
+                            $("input[name='email']").val('');
+                            $("input[name='password']").val('');
+
+                            $('.add-admin-btn').text(' Add');
+
+                            Swal.fire(
+                                'Done!',
+                                role_text+' is updated!',
+                                'success'
+                            ).then(() => {
+                                location.reload();
+                            });
+
+                        }else{
+                            Swal.fire(
+                                'Problem!',
+                                'Unable update '+username+'!',
+                                'error'
+                            );
+                        }
+                    })
+                    .error(function (error) {
+                        Swal.fire(
+                            'Problem!',
+                            'Unable update '+username+'!',
+                            'error'
+                        );
+                    });
+            }
         });
 
-        $('.delete-admin-btn, .edit-admin-btn').on('click', function () {
-            toastr.warning('Under development!');
+
+        $('.delete-admin-btn').on('click', function () {
+            var adminId = $(this).attr('admin-id');
+            var username = $(this).attr('username');
+
+            Swal.fire({
+                title: 'Are you sure?',
+                html: "You are about to remove <b>"+username+"</b> and this action is irreversible!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, remove '+username+'!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.get( "admins/removeAdmin/"+adminId, function( data ) {
+                        if (data)
+                        {
+                            Swal.fire(
+                                'Removed!',
+                                username+' has been removed.',
+                                'success'
+                            ).then(()=>{
+                                location.reload();
+                            });
+                        }else{
+                            Swal.fire(
+                                'Problem!',
+                                'Unable to remove '+username,
+                                'error'
+                            );
+                        }
+                    });
+                }
+            })
+        });
+
+
+        $('.edit-admin-btn').on('click', function () {
+            var adminId = $(this).attr('admin-id');
+            var username = $(this).attr('username');
+            var email = $(this).attr('email');
+            var role = $(this).attr('role');
+
+            $("input[name='username']").val(username);
+            $("input[name='email']").val(email);
+            $("input[name='admin-id']").val(adminId);
+            $('select[name=role]').val(role);
+
+            $('.add-admin-btn').text(' Save');
+
+            $('#addAdminModal').modal('show');
+
+
         });
 
     });
