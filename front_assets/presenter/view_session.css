@@ -411,3 +411,6 @@ color: white;
 .presenterRightSticykPopup .header span a:hover{
     color: #f2ffd1;
 }
+.messages-list .messages-item .messages-item-subject{
+    font-size: 14px !important;
+}
