@@ -1,3 +1,6 @@
+<?php
+$user_role = $this->session->userdata('role');
+?>
 <div class="main-content">
     <div class="wrap-content container" id="container">
         <!-- start: PAGE TITLE -->
@@ -37,19 +40,19 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="text-large">Unique Identifier :</label>
-                                        <input type="text" name="unique_identifier" id="unique_identifier" readonly value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_id : $unique_identifier_id ?>" class="form-control" placeholder="Unique Identifier">
+                                        <input type="text" name="unique_identifier" id="unique_identifier" readonly value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_id : $unique_identifier_id ?>" class="form-control" placeholder="Unique Identifier" <?=($user_role != 'super_admin')?'readonly':''?>>
                                     </div>
                                       <div class="form-group">
                                         <label class="text-large">Zoom Meeting Link :</label>
-                                        <input type="text" name="zoom_link" id="zoom_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_link : "" ?>" class="form-control" placeholder="Zoom Meeting Link">
+                                        <input type="text" name="zoom_link" id="zoom_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_link : "" ?>" class="form-control" placeholder="Zoom Meeting Link" <?=($user_role != 'super_admin')?'readonly':''?>>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-large">Password :</label>
-                                        <input type="text" name="zoom_password" id="zoom_password" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_password : "" ?>" class="form-control" placeholder="Password">
+                                        <input type="text" name="zoom_password" id="zoom_password" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_password : "" ?>" class="form-control" placeholder="Password" <?=($user_role != 'super_admin')?'readonly':''?>>
                                     </div>
 									<div class="form-group">
                                         <label class="text-large">Moderator:</label>
-                                        <select class="form-control" id="moderator_id" name="moderator_id[]" multiple>
+                                        <select class="form-control" id="moderator_id" name="moderator_id[]" multiple <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>
                                             <?php if(!isset($sessions_edit)){ ?>
                                             <option selected="" value="">Select Moderator</option> 
                                             <?php } ?>
@@ -81,29 +84,29 @@
                                                                         </div>-->
                                     <div class="form-group">
                                         <label class="text-large">Session Date:</label>
-                                        <input class="form-control datepicker" name="sessions_date" id="sessions_date" type="text" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('m/d/Y', strtotime($sessions_edit->sessions_date)) : "" ?>">
+                                        <input class="form-control <?=($user_role != 'super_admin')?'':'datepicker'?>" name="sessions_date" id="sessions_date" type="text" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('m/d/Y', strtotime($sessions_edit->sessions_date)) : "" ?>" <?=($user_role != 'super_admin')?'readonly':''?>>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="text-large">Session Start Time: <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? '<b>(ET)</b>' : '' ?></label>
-                                                <input type="time" name="time_slot" id="time_slot" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('H:i', strtotime($sessions_edit->time_slot)) : "" ?>" class="form-control">
+                                                <input type="time" name="time_slot" id="time_slot" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('H:i', strtotime($sessions_edit->time_slot)) : "" ?>" class="form-control" <?=($user_role != 'super_admin')?'readonly':''?>>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="text-large">Session End Time: <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? '<b>(ET)</b>' : '' ?></label>
-                                                <input type="time" name="end_time" id="end_time" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('H:i', strtotime($sessions_edit->end_time)) : "" ?>" class="form-control">
+                                                <input type="time" name="end_time" id="end_time" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('H:i', strtotime($sessions_edit->end_time)) : "" ?>" class="form-control" <?=($user_role != 'super_admin')?'readonly':''?>>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-large">Millicast Stream Name:</label>
-                                        <input type="text" class="form-control" style="color: #000;" name="embed_html_code" id="embed_html_code" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->embed_html_code : "" ?>">
+                                        <input type="text" class="form-control" style="color: #000;" name="embed_html_code" id="embed_html_code" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->embed_html_code : "" ?>" <?=($user_role != 'super_admin')?'readonly':''?>>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-large">Embed HTML Code <b>(Presenter)</b>:</label>
-                                        <textarea class="form-control" style="color: #000;" placeholder="Embed HTML Code" name="embed_html_code_presenter" id="embed_html_code_presenter"><?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->embed_html_code_presenter : "" ?></textarea>
+                                        <textarea class="form-control" style="color: #000;" placeholder="Embed HTML Code" name="embed_html_code_presenter" id="embed_html_code_presenter" <?=($user_role != 'super_admin')?'readonly':''?>><?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->embed_html_code_presenter : "" ?></textarea>
                                     </div>
 
                                     <div class="row" >
@@ -114,7 +117,7 @@
                                                 if ($val->sessions_type != "") {
                                                     ?>
                                                     <div class="form-group col-md-6" style="color: #000;">
-                                                        <input type="checkbox" class="col-md-1"  name="sessions_type[]" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? in_array($val->sessions_type_id, explode(",", $sessions_edit->sessions_type_id)) ? 'checked' : '' : '' ?> id="sessions_type" value="<?= $val->sessions_type_id ?>"> <?= $val->sessions_type ?><br>
+                                                        <input type="checkbox" class="col-md-1"  name="sessions_type[]" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? in_array($val->sessions_type_id, explode(",", $sessions_edit->sessions_type_id)) ? 'checked' : '' : '' ?> id="sessions_type" value="<?= $val->sessions_type_id ?>" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>> <?= $val->sessions_type ?><br>
                                                     </div>
                                                     <?php
                                                 }
@@ -130,7 +133,7 @@
                                                 if ($val->sessions_tracks != "") {
                                                     ?>
                                                     <div class="form-group col-md-6" style="color: #000;">
-                                                        <input type="checkbox" class="col-md-1"  name="sessions_tracks[]" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? in_array($val->sessions_tracks_id, explode(",", $sessions_edit->sessions_tracks_id)) ? 'checked' : '' : '' ?> id="sessions_tracks" value="<?= $val->sessions_tracks_id ?>"> <?= $val->sessions_tracks ?><br>
+                                                        <input type="checkbox" class="col-md-1"  name="sessions_tracks[]" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? in_array($val->sessions_tracks_id, explode(",", $sessions_edit->sessions_tracks_id)) ? 'checked' : '' : '' ?> id="sessions_tracks" value="<?= $val->sessions_tracks_id ?>" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>> <?= $val->sessions_tracks ?><br>
                                                     </div>
                                                     <?php
                                                 }
@@ -140,7 +143,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="text-large">Select Sessions Status</label>
-                                        <select class="form-control" id="sessions_type_status" name="sessions_type_status">
+                                        <select class="form-control" id="sessions_type_status" name="sessions_type_status" <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>
                                             <option <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? ($sessions_edit->sessions_type_status == "Regular") ? "selected" : "" : "selected" ?> value="Regular">Regular Session</option>
                                             <option <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? ($sessions_edit->sessions_type_status == "Private") ? "selected" : "" : "" ?> value="Private">Private Session</option> 
                                         </select>
@@ -149,10 +152,10 @@
                                         <div class="row">
                                             <label class="col-md-12 text-large">Tool Box</label>
                                             <div class="form-group col-md-6" style="color: #000;">
-                                                <input type="radio" class="col-md-1"  name="tool_box_status"  id="tool_box" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->tool_box_status == "1") ? 'checked' : '' : 'checked' ?> value="1">ON<br>
+                                                <input type="radio" class="col-md-1"  name="tool_box_status"  id="tool_box" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->tool_box_status == "1") ? 'checked' : '' : 'checked' ?> value="1" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>ON<br>
                                             </div>
                                             <div class="form-group col-md-6" style="color: #000;">
-                                                <input type="radio" class="col-md-1"  name="tool_box_status"  id="tool_box_2" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->tool_box_status == "0") ? 'checked' : '' : '' ?>  value="0">OFF<br>
+                                                <input type="radio" class="col-md-1"  name="tool_box_status"  id="tool_box_2" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->tool_box_status == "0") ? 'checked' : '' : '' ?>  value="0" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>OFF<br>
                                             </div>
                                         </div>
                                     <?php } ?>
@@ -163,14 +166,14 @@
                                             <label class="col-md-12 text-large" style="padding:0">Select Session Properties</label>
                                             <hr>
                                             <div class="form-group">
-                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "resources", "checked"):"checked"?> value="resources">Resources</label>
-                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "chat", "checked"):""?> value="chat">Chat</label>
-                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "notes", "checked"):"checked"?> value="notes">Notes</label>
-                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "questions", "checked"):"checked"?> value="questions">Questions</label>
+                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "resources", "checked"):"checked"?> value="resources" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>Resources</label>
+                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "chat", "checked"):""?> value="chat" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>Chat</label>
+                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "notes", "checked"):"checked"?> value="notes" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>Notes</label>
+                                                <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "questions", "checked"):"checked"?> value="questions" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>Questions</label>
                                             </div>
                                     <div class="form-group" style="position: unset !important;">
                                         <label>Sessions Photo</label>
-                                        <input type="file" class="form-control" name="sessions_photo" id="sessions_photo">
+                                        <input type="file" class="form-control" name="sessions_photo" id="sessions_photo" <?=($user_role != 'super_admin')?'disabled':''?>>
                                         <?php
                                         if (isset($sessions_edit)) {
                                             if ($sessions_edit->sessions_photo != "") {
@@ -185,19 +188,19 @@
                                             <label class="col-md-12 text-large">Attendee View Links</label>
                                             <label class="col-md-12 text-large">Claim Credit Link</label>
                                             <div class="form-group col-md-6" style="color: #000;">
-                                                <input type="radio" class="col-md-1"  name="attendee_view_links_status"  id="attendee_view_links" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->attendee_view_links_status == "1") ? 'checked' : '' : 'checked' ?> value="1">ON<br>
+                                                <input type="radio" class="col-md-1"  name="attendee_view_links_status"  id="attendee_view_links" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->attendee_view_links_status == "1") ? 'checked' : '' : 'checked' ?> value="1" <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>ON<br>
                                             </div>
                                             <div class="form-group col-md-6" style="color: #000;">
-                                                <input type="radio" class="col-md-1"  name="attendee_view_links_status"  id="attendee_view_links_2" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->attendee_view_links_status == "0") ? 'checked' : '' : '' ?>  value="0">OFF<br>
+                                                <input type="radio" class="col-md-1"  name="attendee_view_links_status"  id="attendee_view_links_2" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->attendee_view_links_status == "0") ? 'checked' : '' : '' ?>  value="0" <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>OFF<br>
                                             </div>
                                             <div class="col-md-12" id="url_section">
                                                 <div class="form-group">
                                                    <label class="text-large">Url Link :</label>
-                                                   <input type="text" name="url_link" id="url_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->url_link : "" ?>" class="form-control" placeholder="URL Link">
+                                                   <input type="text" name="url_link" id="url_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->url_link : "" ?>" class="form-control" placeholder="URL Link" <?=($user_role != 'super_admin')?'readonly':''?>>
                                                </div>
                                                 <div class="form-group">
                                                     <label class="text-large">Link Text :</label>
-                                                    <input type="text" name="link_text" id="link_text" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->link_text : "" ?>" class="form-control" placeholder="Link Text">
+                                                    <input type="text" name="link_text" id="link_text" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->link_text : "" ?>" class="form-control" placeholder="Link Text" <?=($user_role != 'super_admin')?'readonly':''?>>
                                                 </div>
                                             </div>
                                         </div>				
@@ -218,13 +221,13 @@
                                                                 <div class='col-md-6'>
                                                                     <div class='form-group'>
                                                                         <label class='text-large'>Order No.:</label>
-                                                                        <input type='text' name='order_no[]' id='presenter_order_no' placeholder='Order No.' value='<?= $value->order_index_no ?>' class='form-control'>
+                                                                        <input type='text' name='order_no[]' id='presenter_order_no' placeholder='Order No.' value='<?= $value->order_index_no ?>' class='form-control' <?=($user_role != 'super_admin')?'readonly':''?>>
                                                                     </div>
                                                                 </div>
                                                                 <div class='col-md-6'>
                                                                     <div class='form-group'>
                                                                         <label class='text-large'>Presenter:</label>
-                                                                        <select class='form-control select_presenter_id' id='select_presenter_id' name='select_presenter_id[]'>
+                                                                        <select class='form-control select_presenter_id' id='select_presenter_id' name='select_presenter_id[]' <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>
                                                                             <option selected='' value=''>Select Presenter</option>
                                                                             <?php
                                                                             if (isset($presenter) && !empty($presenter)) {
@@ -242,40 +245,40 @@
                                                                 <div class='col-md-6'>
                                                                     <div class='form-group'>
                                                                         <label class='text-large' > Title: </label>
-                                                                        <input type ='text' name='presenter_title[]' placeholder= 'Title' id='presenter_title' value='<?= $value->presenter_title ?>' class='form-control'>
+                                                                        <input type ='text' name='presenter_title[]' placeholder= 'Title' id='presenter_title' value='<?= $value->presenter_title ?>' class='form-control' <?=($user_role != 'super_admin')?'readonly':''?>>
                                                                     </div>
                                                                 </div>
                                                                 <div class='col-md-6'> 
                                                                     <div class = 'form-group'>
                                                                         <label class='text-large'> Presenter Start Time: </label>
-                                                                        <input type='text' name='presenter_time_slot[]' placeholder='Presenter Start Time' id='presenter_time_slot' placeholder='Ex: 7:00 - 7:10' value='<?= $value->presenter_time_slot ?>' class='form-control'>
+                                                                        <input type='text' name='presenter_time_slot[]' placeholder='Presenter Start Time' id='presenter_time_slot' placeholder='Ex: 7:00 - 7:10' value='<?= $value->presenter_time_slot ?>' class='form-control' <?=($user_role != 'super_admin')?'readonly':''?>>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class='col-md-6'>
                                                                     <div class='form-group'>
                                                                         <label class='text-large'>Upload published name:</label>
-                                                                        <input type='text' name='upload_published_name[]' id='upload_published_name' value='<?= $value->upload_published_name ?>'  placeholder='Enter Upload Published Name' class='form-control'>
+                                                                        <input type='text' name='upload_published_name[]' id='upload_published_name' value='<?= $value->upload_published_name ?>'  placeholder='Enter Upload Published Name' class='form-control' <?=($user_role != 'super_admin')?'readonly':''?>>
                                                                     </div>
                                                                     <div class ='form-group'>
                                                                         <label> Resources Uploads</label>
-                                                                        <input type ='file' class='form-control' name='presenter_resource[]' id='presenter_resource'>
+                                                                        <input type ='file' class='form-control' name='presenter_resource[]' id='presenter_resource' <?=($user_role != 'super_admin')?'disabled':''?>>
                                                                         <img src="<?= base_url() ?>uploads/presenter_resource/<?= $value->presenter_resource ?>" style="height: 100px; width: 100px;">
                                                                     </div>
                                                                 </div> 
                                                                 <div class='col-md-6'>
                                                                     <div class='form-group'>
                                                                         <label class='text-large'>Link published name:</label>
-                                                                        <input type='text' name='link_published_name[]' id='link_published_name' value='<?= $value->link_published_name ?>'  placeholder='Enter Upload Published Name' class='form-control'>
+                                                                        <input type='text' name='link_published_name[]' id='link_published_name' value='<?= $value->link_published_name ?>'  placeholder='Enter Upload Published Name' class='form-control' <?=($user_role != 'super_admin')?'readonly':''?>>
                                                                     </div>
                                                                     <div class='form-group'>
                                                                         <label class='text-large' >Resources Links: </label>
-                                                                        <input type='text' name='presenter_resource_link[]' placeholder='Resource Link' id='presenter_resource_link' value = '<?= $value->presenter_resource_link ?>' class='form-control'>
+                                                                        <input type='text' name='presenter_resource_link[]' placeholder='Resource Link' id='presenter_resource_link' value = '<?= $value->presenter_resource_link ?>' class='form-control' <?=($user_role != 'super_admin')?'readonly':''?>>
                                                                     </div>
                                                                 </div> 
                                                                 <div class='col-md-12'>
                                                                     <div class="form-group">
-                                                                        <button type="button" class="btn btn-danger btn-o next-step btn-wide btn_remove_presenter" data-sessions_add_presenter_id="<?= $value->sessions_add_presenter_id ?>" id="btn_remove_presenter">   
+                                                                        <button type="button" class="btn btn-danger btn-o next-step btn-wide btn_remove_presenter" data-sessions_add_presenter_id="<?= $value->sessions_add_presenter_id ?>" id="btn_remove_presenter" <?=($user_role != 'super_admin')?'disabled':''?>>
                                                                             <i class="fa fa-minus"></i>  Remove Presenter
                                                                         </button>
                                                                     </div>
@@ -292,7 +295,7 @@
 
                                             <div class="form-group" style="position: unset !important;">
                                                 <label>Sessions Logo</label>
-                                                <input type="file" class="form-control" name="sessions_logo" id="sessions_logo">
+                                                <input type="file" class="form-control" name="sessions_logo" id="sessions_logo" <?=($user_role != 'super_admin')?'disabled':''?>>
                                                 <?php
                                                 if (isset($sessions_edit)) {
                                                     if ($sessions_edit->sessions_logo != "") {
@@ -309,13 +312,13 @@
                                                 <div class="form-group">
                                                     <label for="sel1">Select Sponsor Type</label>
 
-                                                    <select class="form-control" name="sponsor_type">
+                                                    <select class="form-control" name="sponsor_type" <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>
                                                         <option value="SPONSORED BY" <?=isset($sessions_edit)?($sessions_edit->sponsor_type=="SPONSORED BY"?"selected":""):""?>>SPONSORED BY</option>
                                                         <option value="EDUCATED BY" <?=isset($sessions_edit)?($sessions_edit->sponsor_type=="EDUCATED BY"?"selected":""):""?>>EDUCATED BY</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="button" class="btn btn-primary btn-o next-step btn-wide" id="btn_add_new_presenter">   
+                                                    <button type="button" class="btn btn-primary btn-o next-step btn-wide" id="btn_add_new_presenter" <?=($user_role != 'super_admin')?'disabled':''?>>
                                                         <i class="fa fa-plus"></i>  Add New Presenter
                                                     </button>
                                                 </div>
@@ -341,6 +344,12 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
+
+        $('input[readonly]').on('click', function () {
+            alertify.error("You are not authorized to edit this field!");
+        });
+
+
     $('.datepicker').datepicker({dateFormat: 'mm/dd/yyyy' });
     $("#btn_add_new_presenter").on("click", function () {
             $("#presenter_list").append("<div class='p-15' id='add_new_presenter_section' style='margin-bottom: 20px; padding: 10px; border: 1px solid #b2b7bb;'>\n\

@@ -1,3 +1,7 @@
+<?php
+$user_role = $this->session->userdata('role');
+?>
+
 <div class="main-content">
     <div class="wrap-content container" id="container">
         <!-- start: PAGE TITLE -->
@@ -68,11 +72,13 @@
                         <h4 class="panel-title text-white">Sessions</h4>
                     </div>
                     <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
+                        <?php if ($user_role == 'super_admin') { ?>
                         <h5 class="over-title margin-bottom-15">
                             <a href="<?= base_url() ?>admin/sessions/add_sessions" class="btn btn-green add-row">
                                 Add Sessions  &nbsp;<i class="fa fa-plus"></i>
                             </a>
                         </h5>
+                        <?php } ?>
                         <div class="row">
                             <div class="col-md-12 table-responsive">
                                 <table class="table table-bordered table-striped text-center " id="sessions_table">
@@ -132,23 +138,29 @@
                                                     <td>
 													  <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin-bottom: 5px;">View Session</a>
                                                         <a href="<?= base_url() ?>admin/sessions/edit_sessions/<?= $val->sessions_id ?>" class="btn btn-green btn-sm">Edit</a>
+                                                        <?php if ($user_role == 'super_admin') { ?>
                                                         <button class="reload-attendee btn btn-danger" app-name="<?=getAppName($val->sessions_id) ?>">Reload Attendee Page</button>
+                                                        <?php } ?>
                                                         </td>
                                                         <td>
                                                         <a href="<?= base_url() ?>admin/sessions/create_poll/<?= $val->sessions_id ?>" class="btn btn-success btn-sm" style="margin-bottom: 5px;">Create Poll</a>
 														<a href="<?= base_url() ?>admin/sessions/view_poll/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin-bottom: 5px;">View Poll</a>
+                                                        <?php if ($user_role == 'super_admin') { ?>
                                                         <a href="<?= base_url() ?>admin/sessions/view_question_answer/<?= $val->sessions_id ?>" class="btn btn-primary btn-sm" style="margin-bottom: 5px;">View Q&A</a>
                                                         <a href="<?= base_url() ?>admin/sessions/report/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm" style="margin-bottom: 5px;">Report</a>
                                                         <a href="<?= base_url() ?>admin/groupchat/sessions_groupchat/<?= $val->sessions_id ?>" class="btn btn-blue btn-sm" style="margin-bottom: 5px;">Create Chat</a>
                                                         <a href="<?= base_url() ?>admin/sessions/resource/<?= $val->sessions_id ?>" class="btn btn-success btn-sm">Resources</a>
+                                                        <?php } ?>
                                                         </td>
                                                         <td>
+                                                         <?php if ($user_role == 'super_admin') { ?>
 														 <a data-session-id="<?= $val->sessions_id ?>" class="btn btn-danger btn-sm delete_session"  style="font-size: 10px !important; margin-bottom: 5px;">Delete Session</a>
-                                                            <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">Send to CCO</a>
-                                                        <a href="<?= base_url() ?>admin/sessions/view_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">View JSON</a>
+                                                         <?php } ?>
+                                                         <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">Send to CCO</a>
+                                                         <a href="<?= base_url() ?>admin/sessions/view_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">View JSON</a>
 														 <a href="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" style="margin-bottom: 5px;"  class="btn btn-purple btn-sm">Clear JSON</a>
 														 <a href="<?= base_url() ?>admin/sessions/flash_report/<?= $val->sessions_id ?>" style="margin-bottom: 5px;" class="btn btn-info btn-sm">Flash Report</a>
-                                                        <a href="<?= base_url() ?>admin/sessions/polling_report/<?= $val->sessions_id ?>" class="btn btn-azure btn-sm">Polling Report</a>
+                                                         <a href="<?= base_url() ?>admin/sessions/polling_report/<?= $val->sessions_id ?>" class="btn btn-azure btn-sm">Polling Report</a>
                                                         </td>
                                                 </tr>
                                                 <?php
