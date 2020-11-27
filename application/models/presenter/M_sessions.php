@@ -238,6 +238,20 @@ class M_sessions extends CI_Model {
             return '';
         }
     }
+    function get_favorite_question_list_one($favorite_question_id) {
+        $this->db->select('*');
+        $this->db->from('tbl_favorite_question fq');
+        $this->db->join('sessions_cust_question s', 's.sessions_cust_question_id = fq.sessions_cust_question_id');
+        $this->db->join('customer_master c', 's.cust_id=c.cust_id');
+        $this->db->where(array("fq.tbl_favorite_question_id" => $favorite_question_id, 'fq.hide_status' => 0));
+        $this->db->group_by('fq.tbl_favorite_question_id');
+        $result = $this->db->get();
+        if ($result->num_rows() > 0) {
+            return $result->row_array();
+        } else {
+            return '';
+        }
+    }
 
     function addQuestionAnswer() {
         $post = $this->input->post();
@@ -266,10 +280,11 @@ class M_sessions extends CI_Model {
 
     function likeQuestion() {
         $post = $this->input->post();
+        $sessions_cust_question_id=$post['sessions_cust_question_id'];
         $insert_array = array(
             'cust_id' => $this->session->userdata("pid"),
             'sessions_id' => $post['sessions_id'],
-            'sessions_cust_question_id' => $post['sessions_cust_question_id']
+            'sessions_cust_question_id' => $sessions_cust_question_id
         );
         $favorite_question_row = $this->db->get_where('tbl_favorite_question', $insert_array)->row();
         if (!empty($favorite_question_row)) {
@@ -277,7 +292,17 @@ class M_sessions extends CI_Model {
         } else {
             $this->db->insert("tbl_favorite_question", $insert_array);
         }
-        return TRUE;
+//        var_dump($post['sessions_cust_question_id']);
+
+
+        $favorite_question_id=$this->db->insert_id();
+        $favorite_question="";
+        if($favorite_question_id){
+            $favorite_question=$this->get_favorite_question_list_one($favorite_question_id);
+        }else{
+            $favorite_question=$favorite_question_row;
+        }
+        return array(true,$favorite_question);
     }
 
     function get_poll_type() {

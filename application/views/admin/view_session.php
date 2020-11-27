@@ -687,6 +687,8 @@
             });
         }
     });
+
+
 </script>
 
 <script type="text/javascript">
@@ -1095,6 +1097,9 @@
         });
     });
 
+    function questionFavoriteElement(key,val){
+        return '<div id="fav_question_list_key_' + val.tbl_favorite_question_id + '" style="padding-bottom: 15px;"><h5 style="font-weight: 800; font-size: 15px; "><span style="font-size: 12px;">(' + val.first_name + ' ' + val.last_name + ') </span>' + val.question + ' <a href="javascript:void(0)" class="favorite_hide_question" data-q-id="' + val.tbl_favorite_question_admin_id + '" data-listkey-id="fav_question_list_key_' + key + '" title="Hide" ><span class="fa fa-eye-slash" ></span></a></h5><div style="display: flex;"></h5> <input type="hidden" class="favorite_input_class" data-last_id="' + val.tbl_favorite_question_admin_id + '"></div>';
+    }
     function get_favorite_question_list() {
         var sessions_id = $("#sessions_id").val();
         var favorite_last_sessions_cust_question_id = $("#favorite_last_sessions_cust_question_id").val();
@@ -1114,13 +1119,30 @@
                         console.log(val);
                         key++;
                         $("#favorite_last_sessions_cust_question_id").val(val.tbl_favorite_question_admin_id);
-                        $('#favorite_question_list').prepend('<div id="fav_question_list_key_' + key + '" style="padding-bottom: 15px;"><h5 style="font-weight: 800; font-size: 15px; "><span style="font-size: 12px;">(Admin) </span>' + val.question + ' <a href="javascript:void(0)" class="favorite_hide_question" data-q-id="' + val.tbl_favorite_question_admin_id + '" data-listkey-id="fav_question_list_key_' + key + '" title="Hide" ><span class="fa fa-eye-slash" ></span></a></h5><div style="display: flex;"></h5> <input type="hidden" class="favorite_input_class" data-last_id="' + val.tbl_favorite_question_admin_id + '"></div>');
+                        $('#favorite_question_list').prepend(questionFavoriteElement(key,val));
                     });
                 }
             }
         });
     }
+    socket.on("presenter_like_questions",function (data){
+        if(data){
+            var question_app_name=data["app_name"];
+            var question_type=data["type"];
+            var question=data["question"];
 
+            if(question_app_name==app_name){
+                if(question_type=="like"){
+                    $('#favorite_question_list').prepend(questionFavoriteElement(question.tbl_favorite_question_id,question));
+
+                }else{
+                    var tbl_favorite_question_id=question["tbl_favorite_question_id"];
+                    $("#fav_question_list_key_"+tbl_favorite_question_id).remove();
+                }
+            }
+        }
+
+    })
 
     function get_poll_vot_section() {
         var poll_vot_section_id_status = $("#poll_vot_section_id_status").val();

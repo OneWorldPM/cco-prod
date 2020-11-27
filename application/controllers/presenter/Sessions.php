@@ -215,8 +215,9 @@ class Sessions extends CI_Controller {
 
     public function likeQuestion() {
         $result_data = $this->msessions->likeQuestion();
-        if ($result_data) {
-            $result_array = array("status" => "success");
+
+        if ($result_data[0]) {
+            $result_array = array("status" => "success","data"=>$result_data[1]);
         } else {
             $result_array = array("status" => "error");
         }

@@ -274,6 +274,7 @@ class Sessions extends CI_Controller {
 
     public function get_favorite_question_list() {
         $result_data = $this->msessions->get_favorite_question_list();
+
         if (!empty($result_data)) {
             $result_array = array("status" => "success", "question_list" => $result_data);
         } else {
