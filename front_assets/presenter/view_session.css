@@ -92,7 +92,7 @@ html{
 
 @media only screen and (max-width: 991px) {
     .presenterContainer .leftSide{
-        height: 677px !important;
+        height: 950px !important;
         text-align: center;
     }
     .presenterContainer .leftSide iframe{
@@ -127,7 +127,18 @@ html{
     }
 
 }
-
+@media only screen and (max-width: 825px) {
+    .presenterContainer .leftSide{
+        height: 677px !important;
+    }
+    .stickyTimer{
+        width: 210px !important;
+        max-width: 100%;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+}
 @media only screen and (min-width: 300px) and (max-width: 568px) {
     #embed_html_code_section {
         height: 495px
@@ -355,26 +366,29 @@ html{
     overflow: auto;
 }
 .stickyTimer{
-    width: 120px;
+    width: 500px;
     height: 40px;
     position: absolute;
-    top: 77px;
+    top: 97px;
     right: 0;
-    padding-right: 5px;
-    text-align: center;
+    padding-right: 25px;
 }
 .stickyTimer .timer{
     font-size: 21px;
     color: #3c3c3c;;
+    display: inline-block;
+    float: right;
 }
 .stickyTimer .viewUser{
     background-color: #000000c7;
     width: max-content;
     color: white;
     display: inline-block;
-    padding: 2px 10px;
-    border-radius: 15px;
+    padding: 1px 8px;
+    border-radius: 25px;
     font-size: 16px;
+    float: left;
+    margin-top: 4px;
 
 }
 .stickyTimer .viewUser span:nth-of-type(1){
