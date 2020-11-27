@@ -142,10 +142,33 @@ socket.emit("getSessionViewUsers", app_name, function (resp) {
                 data: {'sessions_id': sessions_id, 'sessions_cust_question_id': sessions_cust_question_id},
                 dataType: "json",
                 success: function (data) {
-                    socket.emit('like_question', app_name);
+                    socket.emit('presenter_like_questions',{
+                        "app_name":app_name,
+                        "type":"like",
+                        "question":data["data"],
+                    });
                 }
             });
         });
+        socket.on("presenter_like_questions",function (data){
+            if(data){
+                var question_app_name=data["app_name"];
+                var question_type=data["type"];
+                var question=data["question"];
+
+                if(question_app_name==app_name){
+                    if(question_type=="like"){
+                        $('#favorite_question_list').prepend(questionFavoriteElement(question.tbl_favorite_question_id,question));
+
+                    }else{
+                        var tbl_favorite_question_id=question["tbl_favorite_question_id"];
+                        $("#fav_question_list_key_"+tbl_favorite_question_id).remove();
+                    }
+                }
+            }
+
+        })
+
 
         $(document).on("click", ".cust_class_star_remove", function () {
             var sessions_cust_question_id = $(this).attr("data-sessions_cust_question_id");
@@ -158,8 +181,11 @@ socket.emit("getSessionViewUsers", app_name, function (resp) {
                 data: {'sessions_id': sessions_id, 'sessions_cust_question_id': sessions_cust_question_id},
                 dataType: "json",
                 success: function (data) {
-                    socket.emit('like_question', app_name);
-                    console.log('unlike question');
+                    socket.emit('presenter_like_questions',{
+                        "app_name":app_name,
+                        "type":"unlike",
+                        "question":data["data"],
+                    });
                 }
             });
         });
@@ -387,10 +413,14 @@ $(document).on('click', '.favorite_hide_question', function () {
             //   location.reload();
             $("#" + data_listkey_id).hide();
             socket.emit('like_question', app_name);
+
         }
     });
 });
 
+function questionFavoriteElement(key,val){
+    return'<div id="fav_question_list_key_' + val.tbl_favorite_question_id + '" style="padding-bottom: 15px;"><h5 style="font-weight: 800; font-size: 15px; "><span style="font-size: 12px;">(' + val.first_name + ' ' + val.last_name + ') </span>' + val.question + ' <a href="javascript:void(0)" class="favorite_hide_question" data-q-id="' + val.tbl_favorite_question_id + '" data-listkey-id="fav_question_list_key_' + key + '" title="Hide" ><span class="fa fa-eye-slash" ></span></a></h5><div style="display: flex;"></h5> <input type="hidden" class="favorite_input_class" data-last_id="' + val.tbl_favorite_question_id + '"></div>';
+}
 function get_favorite_question_list() {
     var sessions_id = $("#sessions_id").val();
     var favorite_last_sessions_cust_question_id = $("#favorite_last_sessions_cust_question_id").val();
@@ -410,7 +440,7 @@ function get_favorite_question_list() {
                 $.each(resultdata.question_list, function (key, val) {
                     key++;
                     $("#favorite_last_sessions_cust_question_id").val(val.tbl_favorite_question_id);
-                    $('#favorite_question_list').prepend('<div id="fav_question_list_key_' + key + '" style="padding-bottom: 15px;"><h5 style="font-weight: 800; font-size: 15px; "><span style="font-size: 12px;">(' + val.first_name + ' ' + val.last_name + ') </span>' + val.question + ' <a href="javascript:void(0)" class="favorite_hide_question" data-q-id="' + val.tbl_favorite_question_id + '" data-listkey-id="fav_question_list_key_' + key + '" title="Hide" ><span class="fa fa-eye-slash" ></span></a></h5><div style="display: flex;"></h5> <input type="hidden" class="favorite_input_class" data-last_id="' + val.tbl_favorite_question_id + '"></div>');
+                    $('#favorite_question_list').prepend(questionFavoriteElement(key,val));
                 });
             }
         }
