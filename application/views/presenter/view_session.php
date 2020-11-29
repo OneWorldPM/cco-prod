@@ -126,7 +126,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
     <div class="viewUser">
         <span>live</span><i class="fa fa-eye" aria-hidden="true"></i><span class="userCount userCount<?=getAppName($sessions->sessions_id)?>">0</span>
     </div>
-    <div class="timer"></div>
+    <div id="id_day_time_clock" class="timer"></div>
 
 </div>
 <div class="rightSticky presenterRightSticky" data-screen="presenter">

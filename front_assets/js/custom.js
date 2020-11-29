@@ -133,7 +133,7 @@ $(document).ready(function () {
         var d = new Date();
         var hour = d.getHours();
         var minutes = d.getMinutes();
-        $(".stickyTimer .timer").html(hour+":"+minutes)
+        //$(".stickyTimer .timer").html(hour+":"+minutes)
     }
     presenterDateJustHour()
 

@@ -785,15 +785,24 @@ $(function () {
                 var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+                var timer_string = seconds + "s ";
+                if (minutes != 0)
+                    timer_string = minutes + "m " + timer_string;
+                if (hours != 0)
+                    timer_string = hours + "h " + timer_string;
+                if (days != 0)
+                    timer_string = days + "d " + timer_string;
+                timer_string = "time left: "+timer_string;
+
                 // Display the result in the element with id="demo"
                 //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
                 //console.log('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
-                $('#id_day_time_clock').text('Time Left: ' + hours + "h " + minutes + "m " + seconds + "s ");
+                $('#id_day_time_clock').text(timer_string);
 
                 // If the count down is finished,
                 if (distance < 0) {
                     clearInterval(x);
-                    $('#id_day_time_clock').text('Time Left: ' + 0 + "h " + 0 + "m " + 0 + "s ");
+                    $('#id_day_time_clock').text('Time Left: 0s');
                     $('#id_day_time_clock').css('color', '#d30e0e')
                 }
             }, 1000);
@@ -818,10 +827,19 @@ $(function () {
                 var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                // Display the result in the element with id="demo"
+                var timer_string = seconds + "s ";
+                if (minutes != 0)
+                    timer_string = minutes + "m " + timer_string;
+                if (hours != 0)
+                    timer_string = hours + "h " + timer_string;
+                if (days != 0)
+                    timer_string = days + "d " + timer_string;
+                timer_string = "starts in: "+timer_string;
+
+                    // Display the result in the element with id="demo"
                 //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
                 //console.log('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
-                $('#id_day_time_clock').text('Session starts in: ' + days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+                $('#id_day_time_clock').text(timer_string);
 
                 // If the count down is finished,
                 if (distance < 0) {
