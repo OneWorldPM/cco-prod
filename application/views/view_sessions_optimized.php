@@ -53,6 +53,13 @@
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            //Disabling modal hide on clicking outside
+                            $('#modal').modal({
+                                backdrop: 'static',
+                                keyboard: false
+                            });
+                        </script>
                     </div>
 <!--                    <p class="currentTime">
                         CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>

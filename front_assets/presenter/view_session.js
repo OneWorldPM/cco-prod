@@ -356,6 +356,7 @@ function get_question_list() {
         dataType: "json",
         success: function (resultdata, textStatus, jqXHR) {
             if (resultdata.status == 'success') {
+                $('#question_list').html('');
                 $.each(resultdata.question_list, function (key, val) {
 
                     key++;
@@ -375,7 +376,7 @@ function get_question_list() {
                         var add_star_class = 'fa fa-star cust_class_star_remove';
                     }
                     $("#last_sessions_cust_question_id").val(val.sessions_cust_question_id);
-                    $('#question_list').prepend('<div id="question_list_key_' + key + '" style="padding-bottom: 15px;"><h5 style="font-weight: 800; font-size: 15px; "><span style="font-size: 12px;">(' + val.first_name + ' ' + val.last_name + ') </span>' + val.question + ' <span class="' + add_star_class + ' " data-sessions_cust_question_id=' + val.sessions_cust_question_id + '></span> <a href="javascript:void(0)" class="hide_question" data-q-id="' + val.sessions_cust_question_id + '" data-listkey-id="question_list_key_' + key + '" title="Hide" ><span class="fa fa-eye-slash" ></span></a></h5><div style="display: flex;"><input type="hidden" ' + readonly_value + ' id="answer_' + key + '" data-key_id="' + key + '" class="form-control input_class" placeholder="Enter Answer"  data-cust_id="' + val.cust_id + '" data-last_id="' + val.sessions_cust_question_id + '" value="' + answer_value + '"><a  class="btn btn-success btn_publish" id="btn_publish" data-answer_btn="answer_' + key + '" ' + disabled_value + ' style="border-radius: 0px; display:none">Send</a></div></div>');
+                    $('#question_list').prepend('<div id="question_list_key_' + key + '" style="padding-bottom: 15px;"><h5 style="font-weight: 400; font-size: 15px; "><span style="font-size: 12px;">(' + val.first_name + ' ' + val.last_name + ') </span>' + val.question + ' <span class="' + add_star_class + ' " data-sessions_cust_question_id=' + val.sessions_cust_question_id + '></span> <a href="javascript:void(0)" class="hide_question" data-q-id="' + val.sessions_cust_question_id + '" data-listkey-id="question_list_key_' + key + '" title="Hide" ><span class="fa fa-eye-slash" ></span></a></h5><div style="display: flex;"><input type="hidden" ' + readonly_value + ' id="answer_' + key + '" data-key_id="' + key + '" class="form-control input_class" placeholder="Enter Answer"  data-cust_id="' + val.cust_id + '" data-last_id="' + val.sessions_cust_question_id + '" value="' + answer_value + '"><a  class="btn btn-success btn_publish" id="btn_publish" data-answer_btn="answer_' + key + '" ' + disabled_value + ' style="border-radius: 0px; display:none">Send</a></div></div>');
                 });
             }
         }
@@ -658,6 +659,8 @@ function get_group_chat_section_status() {
 
         $('#send').click(function () {
             if ($('#message').val() != "") {
+                $("#emojis_section").hide();
+                $("#emjis_section_show").attr('data-emjis_section_show_status', 0);
                 $.ajax({
                     url: site_url+"presenter/groupchat/send",
                     type: "post",
@@ -681,6 +684,8 @@ function get_group_chat_section_status() {
             if (key == 13)  // the enter key code
             {
                 if ($('#message').val() != "") {
+                    $("#emojis_section").hide();
+                    $("#emjis_section_show").attr('data-emjis_section_show_status', 0);
                     $.ajax({
                         url: site_url+"presenter/groupchat/send",
                         type: "post",
@@ -949,8 +954,11 @@ socket.on('new_question_notification', (poll_app_name) => {
 });
 
 socket.on('like_question_notification', (poll_app_name) => {
-    if (poll_app_name == app_name)
+    if (poll_app_name == app_name){
         get_favorite_question_list();
+        get_question_list();
+    }
+
 });
 
 socket.on('session_new_message_notification', (poll_app_name) => {
