@@ -1,5 +1,5 @@
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
-<link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=1" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=2" rel="stylesheet">
 
 <?php
 if (isset($_GET['testing']) && $_GET['testing'] == 1) {
@@ -37,14 +37,23 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                         <div id="inbox" class="inbox">
                             <div class="col email-list">
                                 <div class="wrap-list">
-                                    <ul class="messages-list perfect-scrollbar allmessage">
+                                    <ul class="messages-list perfect-scrollbar allmessage" id="allmessage">
 
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="width: 100%;">
+
+                        <div id="emojis_section" style="width:inherit;position: absolute;z-index: 99;margin-top: -42px;">
+                            <img src="<?= base_url() ?>front_assets/images/emoji/happy.png" title="Happy" id="happy" data-title_name="&#128578;"/>
+                            <img src="<?= base_url() ?>front_assets/images/emoji/sad.png" title="Sad" id="sad" data-title_name="&#128543"/>
+                            <img src="<?= base_url() ?>front_assets/images/emoji/laughing.png" title="Laughing" id="laughing" data-title_name="😁"/>
+                            <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_up.png" title="Thumbs Up" id="thumbs_up" data-title_name="&#128077;"/>
+                            <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_down.png" title="Thumbs Down" id="thumbs_down" data-title_name="&#128078"/>
+                            <img src="<?= base_url() ?>front_assets/images/emoji/clapping.png" title="Clapping" id="clapping" data-title_name="&#128079;"/>
+                        </div>
 
                         <div class="input-group">
                             <span class="input-group-addon"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png" id="emjis_section_show" title="Check to Show Emoji" data-emjis_section_show_status="0"/></span>
@@ -53,14 +62,6 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
                         </div>
 
-                    </div>
-                    <div id="emojis_section">
-                        <img src="<?= base_url() ?>front_assets/images/emoji/happy.png" title="Happy" id="happy" data-title_name="&#128578;"/>
-                        <img src="<?= base_url() ?>front_assets/images/emoji/sad.png" title="Sad" id="sad" data-title_name="&#128543"/>
-                        <img src="<?= base_url() ?>front_assets/images/emoji/laughing.png" title="Laughing" id="laughing" data-title_name="😁"/>
-                        <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_up.png" title="Thumbs Up" id="thumbs_up" data-title_name="&#128077;"/>
-                        <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_down.png" title="Thumbs Down" id="thumbs_down" data-title_name="&#128078"/>
-                        <img src="<?= base_url() ?>front_assets/images/emoji/clapping.png" title="Clapping" id="clapping" data-title_name="&#128079;"/>
                     </div>
                     <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
                 </div>
@@ -114,6 +115,9 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                     </div>
                 </div>
             </div>
+            <div class="modal-footer" style="text-align: center;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">HIDE</button>
+            </div>
         </div>
     </div>
 </div>
@@ -131,8 +135,8 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 </div>
 <div class="rightSticky presenterRightSticky" data-screen="presenter">
     <ul>
-        <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="notify hostChatNotify displayNone"></span> <span>HOST CHAT</span></li>
-        <li data-type="questionFavorites" class="2"><i class="fa fa-question" aria-hidden="true"></i> <span class="notify questionNotify displayNone"></span> <span>QUESTIONS</span></li>
+        <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="notify hostChatNotify displayNone">new</span> <span>HOST CHAT</span></li>
+        <li data-type="questionFavorites" class="2"><i class="fa fa-question" aria-hidden="true"></i> <span class="notify questionNotify displayNone">new</span> <span>QUESTIONS</span></li>
     </ul>
 </div>
 

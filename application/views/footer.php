@@ -24,7 +24,7 @@
 <script src="<?= base_url() ?>front_assets/js/theme-functions.js"></script>
 
 <!-- Custom js file -->
-<script src="<?= base_url() ?>front_assets/js/custom.js"></script>
+<script src="<?= base_url() ?>front_assets/js/custom.js?v=3"></script>
 <script src="<?= base_url() ?>assets/alertify/alertify.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
 

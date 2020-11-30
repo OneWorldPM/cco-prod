@@ -115,7 +115,7 @@ class M_groupchat extends CI_Model {
         $this->db->from('sessions_group_chat_msg as sgc');
         $this->db->join('sessions_group_chat as s', 'sgc.sessions_group_chat_id = s.sessions_group_chat_id', 'left');
         $this->db->where($where);
-        $this->db->order_by("sgc.sessions_group_chat_msg_id", "desc");
+        $this->db->order_by("sgc.sessions_group_chat_msg_id", "asc");
         $result = $this->db->get();
         return ($result->num_rows() > 0) ? $result->result() : '';
     }

@@ -16,7 +16,11 @@ $(document).ready(function () {
 
         var $rightSticky = $(".rightSticky")
         var $embedVideo=$("#embededVideo");
+
         $(document).on("click", ".rightSticky ul li,.rightSticykPopup .open > .dropdown-menu li a,.rightSticykPopup .header .rightTool i,.toolboxCustomDrop li a,.sticky_resources_open", function () {
+
+            $(this).removeClass('blink-element');
+
             var screen = $rightSticky.data("screen");
             $toolType = $(this).data("type");
             var $toolType2 = $(this).data("type2");
@@ -36,6 +40,7 @@ $(document).ready(function () {
                 if($toolType){
                     $(this).find(".notify").addClass("displayNone");
                    $(this).css("display","none");
+
                 }
 
             }else{

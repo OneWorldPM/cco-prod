@@ -34,11 +34,21 @@
     text-align: center;
     border-radius: 100%;
     font-size: 10px;
-    width: 14px;
-    height: 14px;
+    width: 30px;
+    height: 18px;
     line-height: 18px;
     top: -4px;
     left: -20px;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.blink-element{
+    animation: blinker 1s linear infinite;
 }
 
 

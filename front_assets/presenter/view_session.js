@@ -483,6 +483,11 @@ function get_poll_vot_section() {
                     $("#poll_vot_section_id_status").val(data.result.sessions_poll_question_id);
                     $("#poll_vot_section_last_status").val(data.result.status);
                     $('#modal').modal('show');
+                    //Disabling modal hide on clicking outside
+                    $('#modal').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                    });
                     if (data.result.poll_status == 1) {
                         $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
             \n\<h2 style='border:1px solid #b79700;margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Live Poll</h2>\n\
@@ -572,32 +577,34 @@ function get_poll_vot_section() {
                     dataType: "json",
                     success: function (data) {
                         if (data.status == "success") {
-                            $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 style='margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Live Poll</h2>\n\
-<div class='col-md-12'>\n\
-\n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5></div>\n\
-\n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
-\n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
-<div class='col-md-12' id='option_section'></div>\n\
-\n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px;'></span>\n\
-<div style='text-align: center;'><p style='color:red; font-weight: 700;'>Poll Now Closed</p></div>\n\
-</form>");
-
-                            $.each(data.result.option, function (key, val) {
-                                key++;
-                                if (data.result.select_option_id == val.poll_question_option_id) {
-                                    $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
-                                }
-                                else {
-                                    $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
-                                }
-                            });
-
-                            $(':radio:not(:checked)').attr('disabled', true);
-                            $('#fa_fa_check').show();
+                            $('#modal').modal('hide');
+//                             $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
+//             \n\<h2 style='margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Live Poll</h2>\n\
+// <div class='col-md-12'>\n\
+// \n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5></div>\n\
+// \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
+// \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
+// <div class='col-md-12' id='option_section'></div>\n\
+// \n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px;'></span>\n\
+// <div style='text-align: center;'><p style='color:red; font-weight: 700;'>Poll Now Closed</p></div>\n\
+// </form>");
+//
+//                             $.each(data.result.option, function (key, val) {
+//                                 key++;
+//                                 if (data.result.select_option_id == val.poll_question_option_id) {
+//                                     $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
+//                                 }
+//                                 else {
+//                                     $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
+//                                 }
+//                             });
+//
+//                             $(':radio:not(:checked)').attr('disabled', true);
+//                             $('#fa_fa_check').show();
                         }
                         else {
-                            $("#poll_vot_section").html("");
+                            $('#modal').modal('hide');
+                            // $("#poll_vot_section").html("");
                         }
                     }
                 });
@@ -613,6 +620,8 @@ function getMessage() {
         data: {'sessions_group_chat_id': $('#sessions_group_chat_id').val(), 'sessions_id': $('#sessions_id').val()},
         success: function (data, textStatus, jqXHR) {
             $('.allmessage').html(data);
+            var height = document.getElementById('allmessage').scrollHeight; - $('#allmessage').height();
+            $('#allmessage').scrollTop(height);
         }
     });
 }
@@ -657,7 +666,8 @@ function get_group_chat_section_status() {
                         socket.emit('session_new_message', app_name);
                         $('#message').val('');
                         $('.allmessage').html(data);
-                        alertify.success('Message Send');
+                        var height = document.getElementById('allmessage').scrollHeight; - $('#allmessage').height();
+                        $('#allmessage').scrollTop(height);
                     }
                 });
             }
@@ -679,7 +689,8 @@ function get_group_chat_section_status() {
                             socket.emit('session_new_message', app_name);
                             $('#message').val('');
                             $('.allmessage').html(data);
-                            alertify.success('Message Send');
+                            var height = document.getElementById('allmessage').scrollHeight; - $('#allmessage').height();
+                            $('#allmessage').scrollTop(height);
                         }
                     });
                 }
@@ -924,13 +935,16 @@ socket.on('start_poll_timer_notification', (poll_app_name) => {
 
 socket.on('new_question_notification', (poll_app_name) => {
     if (poll_app_name == app_name)
+    {
         get_question_list();
-    var $questionNotify=$(".questionNotify")
+        var $questionNotify=$(".questionNotify");
 
-    if($questionNotify.parent().css("display")!="none"){
-        $questionNotify.removeClass("displayNone");
+        $('.presenterRightSticky').find('li[data-type="questionFavorites"]').addClass('blink-element');
+
+        if($questionNotify.parent().css("display")!="none"){
+            $questionNotify.removeClass("displayNone");
+        }
     }
-
 
 });
 
@@ -941,13 +955,15 @@ socket.on('like_question_notification', (poll_app_name) => {
 
 socket.on('session_new_message_notification', (poll_app_name) => {
     if (poll_app_name == app_name)
+    {
         getMessage();
-    var $hostChatNotify=$(".hostChatNotify")
+        var $hostChatNotify=$(".hostChatNotify");
 
-    if($hostChatNotify.parent().css("display")!="none"){
-        $hostChatNotify.removeClass("displayNone");
+        $('.presenterRightSticky').find('li[data-type="hostChat"]').addClass('blink-element');
+        if($hostChatNotify.parent().css("display")!="none"){
+            $hostChatNotify.removeClass("displayNone");
+        }
     }
-
 
 });
 
