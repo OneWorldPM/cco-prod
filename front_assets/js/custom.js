@@ -19,13 +19,6 @@ $(document).ready(function () {
 
         $(document).on("click", ".rightSticky ul li,.rightSticykPopup .open > .dropdown-menu li a,.rightSticykPopup .header .rightTool i,.toolboxCustomDrop li a,.sticky_resources_open", function () {
 
-            var presenter_allmessages_el = document.getElementById('allmessage');
-            if (presenter_allmessages_el != null)
-            {
-                var height = presenter_allmessages_el.scrollHeight; - $('#allmessage').height();
-                $('#allmessage').scrollTop(height);
-            }
-
             $(this).removeClass('blink-element');
 
             var screen = $rightSticky.data("screen");
@@ -92,7 +85,14 @@ $(document).ready(function () {
                     })
                 }
             }
-        })
+
+            var presenter_allmessages_el = document.getElementById('allmessage');
+            if (presenter_allmessages_el != null)
+            {
+                var height = presenter_allmessages_el.scrollHeight; - $('#allmessage').height();
+                $('#allmessage').scrollTop(height);
+            }
+        });
 
         $(document).on("click", ".rightSticykPopup .header .rightTool i", function () {
             var screen = $rightSticky.data("screen");
