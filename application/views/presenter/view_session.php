@@ -20,13 +20,13 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
         <div class="col-lg-3 col-md-4 rightSide">
 
             <div class="rightSticykPopup hostChat presenterRightSticykPopup" style="display: none">
-                <div class="header"><span>HOST CHAT</span>
+                <div class="header"><span>Charla de Invitado</span>
                     <div class="rightTool">
                         <i class="fa fa-minus" aria-hidden="true" data-right-id="1"></i>
                         <div class="dropdown">
                             <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>
                             <ul class="dropdown-menu">
-                                <li data-type="questionFavorites"><a data-type2="off">Questions</a></li>
+                                <li data-type="questionFavorites"><a data-type2="off">Preguntas</a></li>
                             </ul>
                         </div>
                     </div>
@@ -67,13 +67,13 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                 </div>
             </div>
             <div class="rightSticykPopup questionFavorites presenterRightSticykPopup" style="display: none">
-                <div class="header"><span><a href="#attendee_questions" data-toggle="tab">QUESTIONS</a> | <a href="#favorites" data-toggle="tab">FAVORITES</a></span>
+                <div class="header"><span><a href="#attendee_questions" data-toggle="tab">Preguntas</a> | <a href="#favorites" data-toggle="tab">FAVORITES</a></span>
                     <div class="rightTool">
                         <i class="fa fa-minus" aria-hidden="true" data-right-id="2"></i>
                         <div class="dropdown">
                             <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>
                             <ul class="dropdown-menu">
-                                <li data-type="hostChat"><a data-type2="off">Host Chat</a></li>
+                                <li data-type="hostChat"><a data-type2="off">Charla de Invitado</a></li>
                             </ul>
                         </div>
                     </div>
@@ -135,8 +135,8 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 </div>
 <div class="rightSticky presenterRightSticky" data-screen="presenter">
     <ul>
-        <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="notify hostChatNotify displayNone">new</span> <span>HOST CHAT</span></li>
-        <li data-type="questionFavorites" class="2"><i class="fa fa-question" aria-hidden="true"></i> <span class="notify questionNotify displayNone">new</span> <span>QUESTIONS</span></li>
+        <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="notify hostChatNotify displayNone">new</span> <span>Charla de Invitado</span></li>
+        <li data-type="questionFavorites" class="2"><i class="fa fa-question" aria-hidden="true"></i> <span class="notify questionNotify displayNone">new</span> <span>Preguntas</span></li>
     </ul>
 </div>
 
