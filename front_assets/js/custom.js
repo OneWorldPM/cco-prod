@@ -54,7 +54,7 @@ $(document).ready(function () {
                     $toolType = $(this).parent().data("type");
 
                 }
-                $(".rightSticykPopup .header>span").text("Toolbox");
+                $(".rightSticykPopup .header>span").text("Herramienta");
 
                 $("." + $toolType).css("display", "")
 

@@ -94,7 +94,7 @@
                             <div class="col-md-3">
                                 <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
                                     <div>
-                                        <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Resources <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
+                                        <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Recursos <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
                                     </div>
                                     <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 240px;" id="resource_display_status">
                                         <?php
@@ -134,22 +134,22 @@ if (isset($sessions)) {
                 <?php
                 if(sessionRightBarControl($sessions->right_bar, "notes")){
                     ?>
-                    <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>TAKE NOTES</span></li>
+                    <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>Entrar Nota</span></li>
                     <?php
                 }
                 if(sessionRightBarControl($sessions->right_bar, "resources")){
                     ?>
-                    <li data-type="resourcesSticky"><i class="fa fa-paperclip" aria-hidden="true"></i> <span>RESOURCES</span></li>
+                    <li data-type="resourcesSticky"><i class="fa fa-paperclip" aria-hidden="true"></i> <span>Recursos</span></li>
                     <?php
                 }
                 if(sessionRightBarControl($sessions->right_bar, "chat")){
                     ?>
-                    <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify notify<?=getAppName($sessions->sessions_id) ?> displayNone"></span> <span>MESSAGES</span></li>
+                    <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify notify<?=getAppName($sessions->sessions_id) ?> displayNone"></span> <span>Mensajes</span></li>
                     <?php
                 }
                 if(sessionRightBarControl($sessions->right_bar, "questions")){
                     ?>
-                    <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>QUESTIONS</span></li>
+                    <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>Preguntas</span></li>
                     <?php
                 }
 
@@ -173,17 +173,17 @@ if (isset($sessions)) {
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
                         ?>
-                        <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
+                        <li data-type="resourcesSticky"><a data-type2="off">Recursos</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
                         ?>
-                        <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
+                        <li data-type="messagesSticky"><a data-type2="off">Mensajes</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "questions")){
                         ?>
-                        <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
+                        <li data-type="questionsSticky"><a data-type2="off">Preguntas</a></li>
                         <?php
                     }
 
@@ -194,14 +194,14 @@ if (isset($sessions)) {
         </div>
     </div>
    <div class="content">
-        <div class="contentHeader">Take Notes</div>
+        <div class="contentHeader">Entrar Nota</div>
         <div id="briefcase_section">
             <div id="briefcase_section">
                 <div class="col-md-12 input-group">
                     <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""><?= isset($sessions_notes_download) ? $sessions_notes_download : "" ?></textarea>
                 </div>
-                <a class="button color btn"  id="briefcase_send"><span>Save</span></a>
-                <a class="button color btn" id="downloadbriefcase"><span>Download</span></a>
+                <a class="button color btn"  id="briefcase_send"><span>Guardar</span></a>
+                <a class="button color btn" id="downloadbriefcase"><span>Descargar</span></a>
             </div>
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>
@@ -219,17 +219,17 @@ if (isset($sessions)) {
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
                         ?>
-                        <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
+                        <li data-type="messagesSticky"><a data-type2="off">Mensajes</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "questions")){
                         ?>
-                        <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
+                        <li data-type="questionsSticky"><a data-type2="off">Preguntas</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
                         ?>
-                        <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
+                        <li data-type="notesSticky"><a data-type2="off">Entrar Nota</a></li>
                         <?php
                     }
                     ?>
@@ -239,7 +239,7 @@ if (isset($sessions)) {
     </div>
     <div class="content">
         <div class="contentHeader">
-            Resources
+            Recursos
         </div>
         <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
             <div style="padding: 0px 15px 15px 15px; overflow-y: auto; height: 240px;" id="resource_display_status">
@@ -281,17 +281,17 @@ if (isset($sessions)) {
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
                         ?>
-                        <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
+                        <li data-type="resourcesSticky"><a data-type2="off">Recursos</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "questions")){
                         ?>
-                        <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
+                        <li data-type="questionsSticky"><a data-type2="off">Preguntas</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
                         ?>
-                        <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
+                        <li data-type="notesSticky"><a data-type2="off">Entrar Nota</a></li>
                         <?php
                     }
                     ?>
@@ -302,7 +302,7 @@ if (isset($sessions)) {
     </div>
     <div class="content">
         <div class="contentHeader">
-            Messages
+            Mensajes
         </div>
         <div class="messages">
 
@@ -323,18 +323,18 @@ if (isset($sessions)) {
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
                         ?>
-                        <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
+                        <li data-type="resourcesSticky"><a data-type2="off">Recursos</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
                         ?>
-                        <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
+                        <li data-type="messagesSticky"><a data-type2="off">Mensajes</a></li>
                         <?php
                     }
 
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
                         ?>
-                        <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
+                        <li data-type="notesSticky"><a data-type2="off">Entrar Nota</a></li>
                         <?php
                     }
                     ?>
@@ -345,7 +345,7 @@ if (isset($sessions)) {
     </div>
     <div class="content">
         <div class="contentHeader">
-            Questions
+            Preguntas
         </div>
         <div class="questionElement">
         </div>

@@ -271,7 +271,7 @@
 
                         <!--NAVIGATION-->
                         <div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
-                            <div class="container">
+                            <div class="container" style="text-transform: uppercase;">
                                 <nav id="mainMenu2" class="main-menu mega-menu" style="margin-top: 10px;">
                                     <?php
                                     if ($this->session->userdata('cid') != "") {
@@ -317,7 +317,7 @@
                                             <?php } ?>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank">HELP DESK</a></li>
+                                            <li><a href="https://yourconference.live/support" target="_blank">Assistance</a></li>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
                                             <?php
@@ -331,16 +331,16 @@
                                             ?>
                                         </ul>
                                         <ul class="nav navbar-nav navbar-right">
-                                            <li class="sticky_resources_open" data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
+                                            <li class="sticky_resources_open" data-type="resourcesSticky"><a data-type2="off">Recursos</a></li>
                                             <li>
-                                                <a target="_blank">TOOLBOX</a>
+                                                <a target="_blank">Herramienta</a>
                                                 <ul class="toolboxCustomDrop">
                                                     <?php
                                                     if (isset($right_bar) && isset($tool_box_status)) {
                                                         if ($tool_box_status == "1") {
                                                             if (sessionRightBarControl($right_bar, "questions")) {
                                                                 ?>
-                                                                <li data-type="questionsSticky"><a data-type2="off"><i class="fa fa-question" aria-hidden="true"></i> ASK QUESTIONS</a></li>
+                                                                <li data-type="questionsSticky"><a data-type2="off"><i class="fa fa-question" aria-hidden="true"></i> Preguntas</a></li>
                                                                 <?php
                                                             }
                                                             if (sessionRightBarControl($right_bar, "notes")) {
@@ -355,7 +355,7 @@
                                                             }
                                                             if (sessionRightBarControl($right_bar, "resources")) {
                                                                 ?>
-                                                                <li data-type="resourcesSticky"><a data-type2="off"><i class="fa fa-paperclip" aria-hidden="true"></i> RESOURCES</a></li>
+                                                                <li data-type="resourcesSticky"><a data-type2="off"><i class="fa fa-paperclip" aria-hidden="true"></i> Recursos</a></li>
                                                                 <?php
                                                             }
                                                         }
@@ -366,7 +366,7 @@
                                         </ul>
                                     <?php } else { ?>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank">HELP DESK</a></li>
+                                            <li><a href="https://yourconference.live/support" target="_blank">Assistance</a></li>
                                         </ul>
                                     <?php } ?>
                                 </nav>
