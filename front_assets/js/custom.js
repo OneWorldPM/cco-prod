@@ -19,8 +19,12 @@ $(document).ready(function () {
 
         $(document).on("click", ".rightSticky ul li,.rightSticykPopup .open > .dropdown-menu li a,.rightSticykPopup .header .rightTool i,.toolboxCustomDrop li a,.sticky_resources_open", function () {
 
-            var height = document.getElementById('allmessage').scrollHeight; - $('#allmessage').height();
-            $('#allmessage').scrollTop(height);
+            var presenter_allmessages_el = document.getElementById('allmessage');
+            if (presenter_allmessages_el != null)
+            {
+                var height = presenter_allmessages_el.scrollHeight; - $('#allmessage').height();
+                $('#allmessage').scrollTop(height);
+            }
 
             $(this).removeClass('blink-element');
 
