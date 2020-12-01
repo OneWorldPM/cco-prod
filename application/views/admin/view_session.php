@@ -1076,6 +1076,7 @@
             success: function (data, textStatus, jqXHR) {
                 //location.reload();
                 $("#" + data_listkey_id).hide();
+                socket.emit('like_question', app_name);
             }
         });
     });
@@ -1093,6 +1094,7 @@
             success: function (data, textStatus, jqXHR) {
                 //   location.reload();
                 $("#" + data_listkey_id).hide();
+                socket.emit('like_question', app_name);
             }
         });
     });
