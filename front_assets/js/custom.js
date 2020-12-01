@@ -19,6 +19,9 @@ $(document).ready(function () {
 
         $(document).on("click", ".rightSticky ul li,.rightSticykPopup .open > .dropdown-menu li a,.rightSticykPopup .header .rightTool i,.toolboxCustomDrop li a,.sticky_resources_open", function () {
 
+            var height = document.getElementById('allmessage').scrollHeight; - $('#allmessage').height();
+            $('#allmessage').scrollTop(height);
+
             $(this).removeClass('blink-element');
 
             var screen = $rightSticky.data("screen");
