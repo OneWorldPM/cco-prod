@@ -127,12 +127,15 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
 
 <div class="stickyTimer">
-    <div class="viewUser">
-        <span>live</span><i class="fa fa-eye" aria-hidden="true"></i><span class="userCount userCount<?=getAppName($sessions->sessions_id)?>">0</span>
-    </div>
-    <div id="id_day_time_clock" class="timer"></div>
+    <?php if (1==2){ ?>
+        <div class="viewUser">
+            <span>live</span><i class="fa fa-eye" aria-hidden="true"></i><span class="userCount userCount<?=getAppName($sessions->sessions_id)?>">0</span>
+        </div>
+    <?php } ?>
 
+    <div id="id_day_time_clock" class="timer"></div>
 </div>
+
 <div class="rightSticky presenterRightSticky" data-screen="presenter">
     <ul>
         <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="notify hostChatNotify displayNone">new</span> <span>Charla de Invitado</span></li>
