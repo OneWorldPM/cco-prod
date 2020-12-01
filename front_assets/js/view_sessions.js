@@ -842,6 +842,10 @@ function getMessage() {
 
 $(document).ready(function () {
     //setInterval(ajaxcall, 1000);
+
+    $('.poll-modal-close').on('click', function () {
+        stop_music();
+    });
 });
 
 function ajaxcall() {

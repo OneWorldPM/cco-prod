@@ -29,7 +29,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
                                     <div class="modal-header" style="height: 0">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
