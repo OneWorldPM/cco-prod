@@ -872,12 +872,12 @@ function ajaxcall() {
 
 function play_music() {
     var audio = document.getElementById("audio");
-    // audio.play();
+    audio.play();
 }
 
 function stop_music() {
     var audio = document.getElementById("audio");
-    // audio.pause();
+    audio.pause();
 }
 
 var upgradeTime = 15;
