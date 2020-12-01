@@ -24,7 +24,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                     <div class="rightTool">
                         <i class="fa fa-minus" aria-hidden="true" data-right-id="1"></i>
                         <div class="dropdown">
-                            <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>
+<!--                            <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>-->
                             <ul class="dropdown-menu">
                                 <li data-type="questionFavorites"><a data-type2="off">Preguntas</a></li>
                             </ul>
@@ -71,7 +71,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                     <div class="rightTool">
                         <i class="fa fa-minus" aria-hidden="true" data-right-id="2"></i>
                         <div class="dropdown">
-                            <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>
+<!--                            <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>-->
                             <ul class="dropdown-menu">
                                 <li data-type="hostChat"><a data-type2="off">Charla de Invitado</a></li>
                             </ul>

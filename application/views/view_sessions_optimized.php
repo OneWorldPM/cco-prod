@@ -168,7 +168,7 @@ if (isset($sessions)) {
         <div class="rightTool">
             <i class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
-                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>
+<!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
                 <ul class="dropdown-menu">
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
@@ -214,7 +214,7 @@ if (isset($sessions)) {
         <div class="rightTool">
             <i class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
-                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>
+<!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
                 <ul class="dropdown-menu">
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
@@ -276,7 +276,7 @@ if (isset($sessions)) {
         <div class="rightTool">
             <i class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
-                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>
+<!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
                 <ul class="dropdown-menu">
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
@@ -318,7 +318,7 @@ if (isset($sessions)) {
         <div class="rightTool">
             <i class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
-                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>
+<!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
                 <ul class="dropdown-menu">
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
