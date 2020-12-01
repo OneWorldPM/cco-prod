@@ -203,6 +203,9 @@ body{
 
 
 @media only screen and (max-width: 601px) {
+    .videoElement #btnFS{
+        display: none;
+    }
     .rightSticky{
         bottom: 0;
         position: fixed;
@@ -235,8 +238,8 @@ body{
     .rightSticykPopup{
         width: 100%;
         right: 0;
-        height: 50vh;
-        bottom: -137px;
+        height: 50vh !important;
+        bottom: 155px !important;
     }
     #briefcase{
         margin-top: 25px;
@@ -246,8 +249,8 @@ body{
     }
     .notesSticky{
         height: max-content;
-        bottom: -189px;
-        padding-bottom: 55px;
+        bottom: 63px;
+
     }
 
 }
@@ -282,3 +285,48 @@ body{
 iframe{
     height: 100vh !important;
 }
+
+@media only screen and (max-width: 1290px) {
+    .logo img{
+        width: 155px;
+        height: 38px !important;
+        object-fit: contain;
+        padding: 0 !important;
+    }
+    #mainMenu2{
+        margin-right: 120px;
+    }
+
+    html,body{
+        overflow-x: hidden !important;
+    }
+    body{
+        position: relative;
+    }
+    .videoElement{
+        bottom: 155px;
+    }
+}
+@media only screen and (max-width: 991px) {
+    #mainMenu2 .nav{
+        width: 100% !important;
+        height: max-content !important;
+    }
+    #header{
+        padding-bottom: 0 !important;
+    }
+    #header #header-wrap{
+        padding: 0;
+    }
+    #header .toolboxCustomDrop{
+        position: unset !important;
+        width: 99%;
+    }
+
+    #mainMenu2 ul li a{
+        line-height: inherit !important;
+    }
+
+
+}
+
