@@ -491,7 +491,7 @@ function get_poll_vot_section() {
                     });
                     if (data.result.poll_status == 1) {
                         $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 style='border:1px solid #b79700;margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Live Poll</h2>\n\
+            \n\<h2 style='border:1px solid #b79700;margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Encusta en Vivo</h2>\n\
 <div class='col-md-12'>\n\
 \n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5></div>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
@@ -523,7 +523,7 @@ function get_poll_vot_section() {
                         }
                     }
                     else {
-                        $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='border: 1px solid #b79700;margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Live Poll Results</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5>\n\
+                        $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='border: 1px solid #b79700;margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Resultados de Encuesta en Vivo</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5>\n\
                                                         \n\<div id='result_section' style='padding-bottom: 10px;'></div></div></div></div>\n\
 ");
                         var total_vote = 0;
@@ -808,7 +808,7 @@ $(function () {
                     timer_string = hours + "h " + timer_string;
                 if (days != 0)
                     timer_string = days + "d " + timer_string;
-                timer_string = "time left: "+timer_string;
+                timer_string = "Tiempo Restante : "+timer_string;
 
                 // Display the result in the element with id="demo"
                 //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
@@ -818,7 +818,7 @@ $(function () {
                 // If the count down is finished,
                 if (distance < 0) {
                     clearInterval(x);
-                    $('#id_day_time_clock').text('Time Left: 0s');
+                    $('#id_day_time_clock').text('Tiempo Restante: 0s');
                     $('#id_day_time_clock').css('color', '#d30e0e')
                 }
             }, 1000);
