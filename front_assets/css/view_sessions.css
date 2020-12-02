@@ -340,3 +340,14 @@ body{
     position: relative;
 }
 
+@media only screen and (max-height: 450px) {
+    .rightSticky{
+        position: fixed;
+        bottom: 5px;
+    }
+    .rightSticykPopup{
+
+        top: 82px;
+    }
+}
+
