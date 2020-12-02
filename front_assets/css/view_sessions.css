@@ -190,6 +190,9 @@ body{
     #embededVideo #modal{
         margin-top: 0 !important;
     }
+    .rightSticky{
+        bottom: 370px;
+    }
 }
 
 /*for ios*/
@@ -269,8 +272,8 @@ body{
 
 .videoElement{
     position: absolute;
-    right: -50px;
-    bottom: 185px;
+    right: -10px;
+    bottom: 165px;
     width: 100px;
 }
 .videoElement #btnFS{
@@ -299,6 +302,7 @@ iframe{
 
     html,body{
         overflow-x: hidden !important;
+        overflow-y: auto !important;
     }
     body{
         position: relative;
@@ -328,5 +332,11 @@ iframe{
     }
 
 
+}
+html,body{
+    overflow: hidden;
+}
+body{
+    position: relative;
 }
 
