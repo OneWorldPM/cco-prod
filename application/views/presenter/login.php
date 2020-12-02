@@ -95,7 +95,7 @@
                             </div>
                             <div class="form-actions" style="padding-left: 20px;">
                                 <button type="submit" class="btn btn-primary" id="btn_login">
-                                    Login
+                                    Entrar Sesión
                                 </button>
                                 <span><a>Olvido la contraseña</a></span>
                             </div>
