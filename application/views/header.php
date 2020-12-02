@@ -317,7 +317,7 @@
                                             <?php } ?>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank">Assistance</a></li>
+                                            <li><a href="https://yourconference.live/support/submit_ticket" target="_blank">Assistance</a></li>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
                                             <?php
@@ -366,7 +366,7 @@
                                         </ul>
                                     <?php } else { ?>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank">Assistance</a></li>
+                                            <li><a href="https://yourconference.live/support/submit_ticket" target="_blank">Assistance</a></li>
                                         </ul>
                                     <?php } ?>
                                 </nav>
