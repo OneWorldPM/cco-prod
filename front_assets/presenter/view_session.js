@@ -850,7 +850,7 @@ $(function () {
                     timer_string = hours + "h " + timer_string;
                 if (days != 0)
                     timer_string = days + "d " + timer_string;
-                timer_string = "starts in: "+timer_string;
+                timer_string = "comienza en: "+timer_string;
 
                     // Display the result in the element with id="demo"
                 //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");

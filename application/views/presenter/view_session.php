@@ -57,7 +57,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
                         <div class="input-group">
                             <span class="input-group-addon"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png" id="emjis_section_show" title="Check to Show Emoji" data-emjis_section_show_status="0"/></span>
-                            <input type="text" placeholder="Message..." id="message" name="message" class="form-control">
+                            <input type="text" placeholder="Entrar Mensaje..." id="message" name="message" class="form-control">
                             <span class="btn btn-primary input-group-addon" id="send" ><i class="fa fa-send"></i></span>
 
                         </div>
