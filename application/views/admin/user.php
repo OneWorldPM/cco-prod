@@ -56,7 +56,7 @@
                                                         <?php } ?>
                                                     <td><?= $val->first_name . ' ' . $val->last_name ?></td>
                                                     <td><?= $val->email ?></td>
-                                                    <td><?= base64_decode($val->password) ?></td>
+                                                    <td><?= ($val->jti == '')?base64_decode($val->password):'***' ?></td>
                                                     <td><?= $val->address ?></td>
                                                     <td><?= $val->country ?></td>
                                                     <td> 
