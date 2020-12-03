@@ -349,7 +349,7 @@ if (isset($sessions)) {
         </div>
         <div class="questionElement">
         </div>
-        <div id="ask_questions_section" style="background-color: #fff; border-radius: 5px; position: absolute; bottom: 0; width: 100%;">
+        <div id="ask_questions_section" style="border-radius: 5px; position: absolute; bottom: 0; width: 100%;">
             <div style="padding:5px;">
                 <div style="text-align: center; display: flex; " id="questions_section">
 
