@@ -116,6 +116,12 @@ section {
     opacity: 1;
 }
 
+.rightSticykPopup{
+    background-color: black;
+}
+#resource_display_status{
+    background-color: black !important;
+}
 .rightSticykPopup .open > .dropdown-menu {
     left: -125px;
 }
@@ -143,7 +149,7 @@ section {
 
 
 .questionElement {
-    max-height: 230px;
+    max-height: 195px;
     overflow: auto;
 }
 
@@ -203,6 +209,7 @@ body{
      }
     }
 }
+
 
 
 @media only screen and (max-width: 601px) {
@@ -340,7 +347,7 @@ body{
     position: relative;
 }
 
-@media only screen and (max-height: 450px) {
+@media only screen and (max-height: 450px) and (orientation: landscape) {
     .rightSticky{
         position: fixed;
         bottom: 5px;
