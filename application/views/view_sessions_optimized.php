@@ -1,7 +1,7 @@
 <link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=200" rel="stylesheet">
 
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
-<link href="<?= base_url() ?>front_assets/css/view_sessions.css?v=7" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/css/view_sessions.css?v=9" rel="stylesheet">
 
 
 <section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/pres_bg.jpg') no-repeat;">
@@ -101,8 +101,8 @@
                                         if (!empty($session_resource)) {
                                             foreach ($session_resource as $val) {
                                                 ?>
-                                                <div class="row" style="margin-bottom: 10px; padding-bottom: 5px">
-                                                    <div class="col-md-12"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
+                                                <div class="row" style="margin-bottom: 10px; padding-bottom: 5px;">
+                                                    <div class="col-md-12"><a class="resources-link-text" href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
 
                                                 </div>
                                                 <?php
@@ -249,13 +249,13 @@ if (isset($sessions)) {
                         ?>
                         <div class="row" style="margin-bottom: 10px; padding-bottom: 5px">
                             <?php if ($val->resource_link != "") { ?>
-                                <div class="col-md-12"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
+                                <div class="col-md-12"><a class="resources-link-text" href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
                             <?php } ?>
                             <?php
                             if ($val->upload_published_name) {
                                 if ($val->resource_file != "") {
                                     ?>
-                                    <div class="col-md-12"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
+                                    <div class="col-md-12"><a class="resources-link-text" href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
                                     <?php
                                 }
                             }

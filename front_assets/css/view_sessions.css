@@ -364,3 +364,10 @@ body{
     }
 }
 
+.resources-link-text{
+    color: white !important;
+}
+
+.resources-link-text:hover{
+    color: #EF5D21 !important;
+}
