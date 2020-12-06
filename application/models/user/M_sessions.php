@@ -137,7 +137,7 @@ class M_sessions extends CI_Model {
                     return $poll_question_array;
                 }
             } else if ($poll_question_array->status == 2) {
-                if ($poll_question_array->poll_comparisons_id == 0) {
+                if ($poll_question_array->poll_comparisons_id == 0 || $poll_question_array->poll_type_id == 1) {
                     $poll_question_array->poll_status = 2;
                     $poll_question_array->option = $this->db->get_where("poll_question_option", array("sessions_poll_question_id" => $poll_question_array->sessions_poll_question_id))->result();
                     $poll_question_array->max_value = $this->get_maxvalue_option($poll_question_array->sessions_poll_question_id);
