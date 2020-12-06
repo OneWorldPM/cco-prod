@@ -29,6 +29,7 @@
                                 <table class="table table-bordered table-striped text-center" id="user">
                                     <thead class="th_center">
                                         <tr>
+                                            <th>Customer ID</th>
                                             <th>Date</th>
                                             <th>Register ID</th>
                                             <th>Profile</th>
@@ -46,6 +47,7 @@
                                             foreach ($user as $val) {
                                                 ?>
                                                 <tr>
+                                                    <td><?= $val->cust_id ?></td>
                                                     <td><?= date("Y-m-d", strtotime($val->register_date)) ?></td>
                                                     <td><?= $val->register_id ?></td>
                                                     <td>
