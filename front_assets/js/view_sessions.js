@@ -671,12 +671,6 @@ function get_poll_vot_section() {
                     $("#poll_vot_section_id_status").val(data.result.sessions_poll_question_id);
                     $("#poll_vot_section_last_status").val(data.result.status);
                     if (data.result.poll_status == 1) {
-
-                        //Disabling modal hide on clicking outside
-                        $('#modal').modal({
-                            backdrop: 'static',
-                            keyboard: false
-                        });
                         $('#modal').modal('show');
 
 
@@ -713,11 +707,6 @@ function get_poll_vot_section() {
 
                         }
                     } else {
-                        //Disabling modal hide on clicking outside
-                        $('#modal').modal({
-                            backdrop: 'static',
-                            keyboard: false
-                        });
                         $('#modal').modal('show');
 
                         $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Resultados de Encuesto en Vivo</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5>\n\

@@ -25,7 +25,7 @@
                             <span id="btnFS" class="glyphicon glyphicon-resize-full" data-toggle="tooltip" title="Pantalla Completa"></span>
                         </div>
                         </div>
-                        <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
+                        <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
                             <div class="modal-dialog">
                                 <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
                                     <div class="modal-header" style="height: 0">
@@ -53,13 +53,6 @@
                                 </div>
                             </div>
                         </div>
-                        <script>
-                            //Disabling modal hide on clicking outside
-                            $('#modal').modal({
-                                backdrop: 'static',
-                                keyboard: false
-                            });
-                        </script>
                     </div>
 <!--                    <p class="currentTime">
                         CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>
