@@ -460,7 +460,11 @@ class Sessions extends CI_Controller {
 	
 	function reset_sessions($sessions_id) {
         $this->db->delete("login_sessions_history", array("sessions_id" => $sessions_id));
-    //  $this->db->delete("sessions_cust_question", array("sessions_id" => $sessions_id));
+        $this->db->delete("sessions_cust_question", array("sessions_id" => $sessions_id));
+        $this->db->delete("tbl_favorite_question_admin", array("sessions_id" => $sessions_id));
+        $this->db->delete("tbl_favorite_question", array("sessions_id" => $sessions_id));
+        $this->db->delete("total_time_on_session", array("session_id" => $sessions_id));
+
         $poll_question_result = $this->db->get_where("poll_question_option", array("sessions_id" => $sessions_id))->result();
         if (!empty($poll_question_result)) {
             foreach ($poll_question_result as $value) {
