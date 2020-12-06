@@ -121,12 +121,12 @@ section {
     background-color: black;
 }
 #resource_display_status{
-    background-color: black !important;
+    background-color: white !important;
 }
 #briefcase ,#resource_display_status{
     border: 1px solid #2d2d2da8;
-    background-color: #090a0e;
-    color: white;
+    background-color: black;
+    color: black;
 }
 .rightSticykPopup .open > .dropdown-menu {
     left: -125px;
@@ -365,7 +365,7 @@ body{
 }
 
 .resources-link-text{
-    color: white !important;
+    color: black !important;
 }
 
 .resources-link-text:hover{
