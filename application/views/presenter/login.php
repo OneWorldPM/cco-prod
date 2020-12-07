@@ -97,7 +97,7 @@
                                 <button type="submit" class="btn btn-primary" id="btn_login">
                                     Entrar Sesión
                                 </button>
-                                <span><a>Olvido la contraseña</a></span>
+                                <span><a href="forgotpassword">Olvido la contraseña</a></span>
                             </div>
                         </fieldset>
                     </form>
