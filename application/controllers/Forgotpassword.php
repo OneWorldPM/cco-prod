@@ -52,7 +52,10 @@ class Forgotpassword extends CI_Controller {
 
     public function changePassword() {
         $data['customer_id'] = $this->input->get('id');
+
+        $this->load->view('header');
         $this->load->view('changeforgotpassword', $data);
+        $this->load->view('footer');
     }
 
     public function passwordChange() {
