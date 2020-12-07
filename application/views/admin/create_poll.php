@@ -46,7 +46,7 @@
                         <div class="panel-body bg-white" style="border: 1px solid #b2b7bb;">
                             <form name="frm_add_Poll" id="frm_add_Poll" method="POST" >
                                 <?php if (isset($sessions_data)) { ?>
-                                    <input type="hidden" name="sessions_id" value="<?= $sessions_data->sessions_id ?>">
+                                    <input type="hidden" id="sessions_id" name="sessions_id" value="<?= $sessions_data->sessions_id ?>">
                                     <input type="hidden" name="sessions_poll_question_id" value="<?= $sessions_data->sessions_poll_question_id ?>">
                                 <?php } ?>
                                 <?php if (isset($sessions)) { ?>    
@@ -57,6 +57,10 @@
                                         <div class="form-group">
                                             <label class="text-large">Question:</label>
                                             <input type="text" name="question" id="question" value="<?= isset($sessions_data) ? $sessions_data->question : "" ?>" placeholder="Question" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-large">Poll Name:</label>
+                                            <input type="text" name="poll_name" id="poll_name" value="<?= isset($sessions_data) ? $sessions_data->poll_name : "" ?>" placeholder="eg; Presurvey 1" class="form-control">
                                         </div>
 										<div class="form-group">
                                             <label class="text-large">Slide Number:</label>
@@ -255,7 +259,8 @@ switch ($msg) {
                 alertify.error('Please Enter Option 4');
                 return false;
             } else {
-                $('#frm_add_Poll').attr('action', '<?= base_url() ?>admin/sessions/update_poll_data');
+                var sessions_id = $('#sessions_id').val();
+                $('#frm_add_Poll').attr('action', '<?= base_url() ?>admin/sessions/update_poll_data/'+sessions_id);
                 $('#frm_add_Poll').submit();
                 return true;
             }

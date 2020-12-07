@@ -110,9 +110,9 @@ class Sessions extends CI_Controller {
     public function add_poll_data() {
         $result = $this->msessions->add_poll_data();
         if ($result) {
-            header('location:' . base_url() . 'admin/sessions');
+            header('location:' . base_url() . 'admin/sessions/view_poll/'.$this->input->post()['sessions_id']);
         } else {
-            header('location:' . base_url() . 'admin/sessions');
+            header('location:' . base_url() . 'admin/sessions/view_poll/'.$this->input->post()['sessions_id']);
         }
     }
 
@@ -125,12 +125,12 @@ class Sessions extends CI_Controller {
         $this->load->view('admin/footer');
     }
 
-    public function deletePollQuestion($sessions_poll_question_id) {
+    public function deletePollQuestion($sessions_poll_question_id, $session_id) {
         if ($sessions_poll_question_id != "") {
             $this->msessions->deletePollQuestion($sessions_poll_question_id);
-            header('location:' . base_url() . 'admin/sessions');
+            header('location:' . base_url() . 'admin/sessions/view_poll/'.$session_id);
         } else {
-            header('location:' . base_url() . 'admin/sessions');
+            header('location:' . base_url() . 'admin/sessions/view_poll/'.$session_id);
         }
     }
 
@@ -142,12 +142,12 @@ class Sessions extends CI_Controller {
         $this->load->view('admin/footer');
     }
 
-    public function update_poll_data() {
+    public function update_poll_data($sessions_id) {
         $result = $this->msessions->update_poll_data();
         if ($result) {
-            header('location:' . base_url() . 'admin/sessions');
+            header('location:' . base_url() . 'admin/sessions/view_poll/'.$sessions_id);
         } else {
-            header('location:' . base_url() . 'admin/sessions');
+            header('location:' . base_url() . 'admin/sessions/view_poll/'.$sessions_id);
         }
     }
 

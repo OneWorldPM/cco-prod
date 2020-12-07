@@ -21,9 +21,10 @@
                                     <thead class="th_center">
                                         <tr>
                                             <th>Question</th>
-											 <th>Slide Number</th>
+                                            <th>Poll Name</th>
                                             <th>Poll Type</th>
-                                            <th>Options</th>
+                                            <th>Slide Number</th>
+                                            <th>Modify</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -34,35 +35,27 @@
                                                 ?>
                                                 <tr>
                                                     <td><?= $val->question ?></td>
-													<td><?= $val->slide_number ?></td>
+                                                    <td><?= $val->poll_name ?></td>
                                                     <td><?= $val->poll_type ?></td>
-                                                    <td>
-                                                        <?php
-                                                        if (isset($val->option) && !empty($val->option)) {
-                                                            foreach ($val->option as $value) {
-                                                                ?>
-                                                                <?= $value->option ?>,
-                                                                <?php
-                                                            }
-                                                        }
-                                                        ?>
-                                                    </td>
+                                                    <td><?= $val->slide_number ?></td>
                                                     <td>
                                                         <a class="btn btn-primary btn-sm" href="<?= base_url() . 'admin/sessions/editPollQuestion/' . $val->sessions_poll_question_id ?>">
                                                             <i class="fa fa-pencil"></i> Edit
                                                         </a>
-                                                        <a class="btn btn-danger btn-sm" href="<?= base_url() . 'admin/sessions/deletePollQuestion/' . $val->sessions_poll_question_id ?>">
+                                                        <button class="delete-poll btn btn-danger btn-sm" session-id="<?=$session_id?>" href="<?= base_url() . 'admin/sessions/deletePollQuestion/' . $val->sessions_poll_question_id ?>">
                                                             <i class="fa fa-trash-o"></i> Delete
-                                                        </a>
-                                                         <a class="btn btn-danger btn-sm" href="<?= base_url() . 'admin/sessions/poll_redo/' . $val->sessions_poll_question_id ?>">
+                                                        </button>
+                                                        <a class="btn btn-warning btn-sm" href="<?= base_url() . 'admin/sessions/poll_redo/' . $val->sessions_poll_question_id ?>">
                                                             <i class="fa fa-check"></i> Redo
                                                         </a>
+                                                    </td>
+                                                    <td>
                                                         <?php if ($val->status == 0) { ?>
                                                             <a href="<?= base_url() ?>admin/sessions/open_poll/<?= $val->sessions_poll_question_id ?>" class="btn btn-success btn-sm">Open Poll</a>
                                                         <?php } else if ($val->status == 1) { ?>
+                                                            <a href="<?= base_url() ?>admin/sessions/start_timer/<?= $val->sessions_poll_question_id ?>" class="btn btn-blue btn-sm">Start Timer</a>
                                                             <a href="<?= base_url() ?>admin/sessions/close_poll/<?= $val->sessions_poll_question_id ?>" class="btn btn-danger btn-sm">Close Poll</a>
                                                             <a href="<?= base_url() ?>admin/sessions/show_result/<?= $val->sessions_poll_question_id ?>" class="btn btn-primary btn-sm">Show Results</a>
-                                                            <a href="<?= base_url() ?>admin/sessions/start_timer/<?= $val->sessions_poll_question_id ?>" class="btn btn-blue btn-sm">Start Timer</a>
                                                         <?php } else if ($val->status == 2) { ?>
                                                             <a href="<?= base_url() ?>admin/sessions/close_result/<?= $val->sessions_poll_question_id ?>" class="btn btn-warning btn-sm">Close Results</a>
                                                         <?php } else if ($val->status == 4) { ?>    
@@ -112,6 +105,7 @@ switch ($msg) {
         break;
 }
 ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script type="text/javascript">
     $(document).ready(function () {
 <?php if ($msg): ?>
@@ -120,9 +114,32 @@ switch ($msg) {
 
         $("#user").dataTable({
             "ordering": false,
+            "pageLength": 25,
+            "columnDefs": [
+                { "width": "40%", "targets": 0 }
+            ]
         });
 
     });
+
+    $('.delete-poll').on('click', function () {
+        var session_id = $(this).attr('session-id');
+        var url = $(this).attr('href')+'/'+session_id;
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = url;
+            }
+        })
+    });
+
 </script>
 
 
