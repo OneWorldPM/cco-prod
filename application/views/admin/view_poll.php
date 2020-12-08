@@ -61,7 +61,7 @@
                                                         <?php } else if ($val->status == 4) { ?>    
                                                             <a href="<?= base_url() ?>admin/sessions/show_result/<?= $val->sessions_poll_question_id ?>" class="btn btn-primary btn-sm">Show Results</a>
                                                         <?php } else { ?>
-                                                            <a href="<?= base_url() ?>admin/sessions/show_result/<?= $val->sessions_poll_question_id ?>" class="btn btn-primary btn-sm">Show Results Again</a>
+                                                            <a href="<?= base_url() ?>admin/sessions/show_result/<?= $val->sessions_poll_question_id ?>" class="btn btn-info btn-sm">Show Results Again</a>
                                                             <a href="<?= base_url() ?>admin/sessions/view_result/<?= $val->sessions_poll_question_id ?>" class="btn btn-beige btn-sm">View</a>
                                                         <?php } ?>    
                                                     </td>
