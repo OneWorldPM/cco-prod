@@ -382,4 +382,4 @@ if (isset($sessions)) {
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@9.17.0/dist/sweetalert2.all.min.js"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=15"></script>
+<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=16"></script>

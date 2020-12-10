@@ -155,4 +155,4 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 </script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=3"></script>
+<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=4"></script>
