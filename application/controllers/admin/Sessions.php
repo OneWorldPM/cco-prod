@@ -488,11 +488,185 @@ class Sessions extends CI_Controller {
     public function polling_report($sessions_id) {
         $data['poll_list'] = $this->msessions->get_poll($sessions_id);
         $data['flash_report_list'] = $this->msessions->get_polling_report($sessions_id,$data['poll_list']);
+        $data['session_id'] = $sessions_id;
        
         $this->load->view('admin/header');
         $this->load->view('admin/polling_report', $data);
         $this->load->view('admin/footer');
     }
+
+    public function poll_chart($session_id)
+    {
+        $sesstion_title = $this->getSessionName($session_id);
+        $poll_data = $this->getPollData($session_id);
+
+        $this->load->library('Pdf');
+        $pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+
+        $pdf->SetTitle($sesstion_title);
+        $pdf->SetHeaderMargin(30);
+        $pdf->SetTopMargin(20);
+        $pdf->setFooterMargin(20);
+        $pdf->SetAutoPageBreak(true);
+        $pdf->SetAuthor('Your Conference Live');
+
+        $pdf->AddPage('L', 'A4');
+
+        $chart_title = $sesstion_title;
+        $pdf->SetFont('helvetica', '', 45);
+        $pdf->SetXY(10, 40);
+        $pdf->Write(0, $chart_title, '', 0, 'C', true, 0, false, false, 0);
+
+        $pdf->SetFont('helvetica', '', 30);
+        $pdf->SetXY(10, 120);
+        $pdf->Write(0, 'Polling Overview', '', 0, 'C', true, 0, false, false, 0);
+
+        $pdf->SetFont('helvetica', 'B', 12);
+        $pdf->SetXY(10, 135);
+        $pdf->Write(0, 'Produced by Your Conference Live Platform', '', 0, 'C', true, 0, false, false, 0);
+
+        $pdf->SetFont('helvetica', '', 15);
+        $pdf->SetXY(10, 142);
+        $pdf->Write(0, date("F j, Y, g:i A").' ET', '', 0, 'C', true, 0, false, false, 0);
+
+        foreach ($poll_data as $poll)
+        {
+            $pdf->AddPage('L', 'A4');
+
+            $pdf->SetFont('helvetica', '', 6);
+            $pdf->SetXY(4, 5);
+            $pdf->Write(0, date("F j, Y, g:i A").' ET', '', 0, '', true, 0, false, false, 0);
+
+            $pdf->SetFont('helvetica', '', 8);
+            $pdf->SetXY(5, 5);
+            $pdf->Write(0, $sesstion_title, '', 0, 'C', true, 0, false, false, 0);
+
+
+            $pdf->SetFont('helvetica', 'B', 20);
+            $pdf->SetXY(10, 30);
+            $pdf->Write(0, $poll->poll_name.': '.$poll->question, '', 0, 'C', true, 0, false, false, 0);
+
+
+            $xc = 80;
+            $yc = 90;
+            $r = 30;
+
+            $color_sets = array();
+            $color_sets[] = array(85, 149, 255);
+            $color_sets[] = array(220, 57, 18);
+            $color_sets[] = array(153, 0, 153);
+            $color_sets[] = array(16, 150, 24);
+            $color_sets[] = array(0, 202, 202);
+            $color_sets[] = array(255, 153, 0);
+
+            $pie_current_degree = 0;
+            $color_set = 0;
+            $desc_y = 75;
+            foreach ($poll->options as $option)
+            {
+                if ($poll->total_votes != 0)
+                {
+                    $percent = number_format(($option->total_vot*100)/$poll->total_votes, 2);
+                    $pie_degree = number_format((($percent/100)*360)+$pie_current_degree, 2);
+
+                    $color_r = $color_sets[$color_set][0];
+                    $color_g = $color_sets[$color_set][1];
+                    $color_b = $color_sets[$color_set][2];
+
+                    $pdf->SetFillColor($color_r, $color_g, $color_b);
+                    $pdf->PieSector($xc, $yc, $r, $pie_current_degree, $pie_degree, 'FD', false, 0, 2);
+
+                    if ($percent != 0)
+                    {
+                        $pdf->Circle(140, $desc_y, 2, 0, 360, 'DF', null, array($color_r, $color_g, $color_b));
+                        $desc_y = $desc_y+10;
+
+                        $pdf->SetFont('helvetica', 'I', 10);
+                        $pdf->SetXY(142, $desc_y-12);
+                        $pdf->Write(0, $option->option, '', 0, '', true, 0, false, false, 0);
+
+                    }
+
+                    $pie_current_degree = $pie_degree;
+                    $color_set++;
+                }
+            }
+
+
+            $pdf->SetXY(30, 130);
+            $pdf->SetFont('helvetica', 'B', 12);
+            $result_table =
+                '<table cellspacing="0" cellpadding="5">
+                    <tr>
+                        <td style="width: 500px;">Option</td>
+                        <td style="width: 100px;">Votes</td>
+                        <td style="width: 100px;">Percentage</td>
+                    </tr>
+                 </table>';
+            $pdf->writeHTML($result_table, true, false, false, false, 'center');
+
+            $pdf->SetXY(30, 136);
+            $pdf->SetFont('helvetica', '', 12);
+            $result_table =
+                    '<table cellpadding="5">';
+
+            foreach ($poll->options as $option)
+            {
+                if ($poll->total_votes != 0)
+                {
+                    $result_table .= '<tr>
+                                    <td style="width: 500px; height: 10px;">'.htmlspecialchars($option->option).'</td>
+                                    <td style="width: 100px;">'.$option->total_vot.'</td>
+                                    <td style="width: 100px;">'.number_format(($option->total_vot*100)/$poll->total_votes, 1).'%</td>
+                                  </tr>';
+                }
+
+            }
+
+            $result_table .= '</table>';
+            $pdf->writeHTML($result_table, true, false, false, false, 'center');
+
+            $pdf->SetXY(30, 180);
+            $pdf->SetFont('helvetica', 'B', 12);
+            $result_table =
+                '<table cellspacing="0" cellpadding="5">
+                    <tr>
+                        <td style="width: 465px;"></td>
+                        <td style="width: 200px;">Total '.$poll->total_votes.'</td>
+                        <td style="width: 100px;"></td>
+                    </tr>
+                 </table>';
+            $pdf->writeHTML($result_table, true, false, false, false, 'center');
+        }
+
+        $pdf->Output(__DIR__.'/Poll Overview - '.$sesstion_title.'.pdf', 'FD');
+
+        return;
+    }
+
+    private function getSessionName($session_id)
+    {
+        $session_title = $this->db->query("SELECT `session_title` FROM `sessions` WHERE `sessions_id` = '{$session_id}'");
+        return $session_title->result()[0]->session_title;
+    }
+
+    private function getPollData($session_id)
+    {
+        $poll_questions = $this->db->query("SELECT * FROM `sessions_poll_question` WHERE `sessions_id` = '{$session_id}'")->result();
+
+        foreach ($poll_questions as $question)
+        {
+            $question->options = $this->db->query("SELECT * FROM `poll_question_option` WHERE `sessions_poll_question_id` = '{$question->sessions_poll_question_id}'")->result();
+
+            foreach ($question->options as $options)
+            {
+                $question->total_votes = (isset($question->total_votes))?$question->total_votes+$options->total_vot:$options->total_vot;
+            }
+        }
+
+        return $poll_questions;
+    }
+
 
     public function fixingJson()
     {

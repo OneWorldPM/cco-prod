@@ -70,18 +70,33 @@
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#example').DataTable({
             dom: 'Bfrtip',
-            buttons: [{
+            buttons: [
+                {
                     extend: 'csv',
-                    title: 'Poll report session'
+                    text: '<i class="fa fa-table" aria-hidden="true"></i> Export CSV',
+                    attr: {class: 'btn btn-info'}
+                },
+                {
+                    text: '<i class="fa fa-pie-chart" aria-hidden="true"></i> Export Chart',
+                    attr: {class: 'export-charts btn btn-warning'}
                 }
-            ]
+            ],
+            "initComplete": function( settings, json ) {
+                $('.export-charts').on('click', function () {
+                    exportCharts(<?=$session_id?>);
+                });
+            }
         });
-        $('.buttons-csv').text('Export CSV');
     });
+
+    function exportCharts(session_id) {
+        location.href = "<?=base_url()?>admin/sessions/poll_chart/"+session_id;
+    }
 </script>
 
 
