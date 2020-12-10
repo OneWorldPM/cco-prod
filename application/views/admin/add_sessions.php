@@ -7,7 +7,7 @@ $user_role = $this->session->userdata('role');
         <section id="page-title">
             <div class="row">
                 <div class="col-sm-8">
-                    <h1 class="mainTitle">Add Sessions</h1>
+                    <h1 class="mainTitle">Add/Edit Session</h1>
                 </div>
             </div>
         </section>
@@ -15,10 +15,10 @@ $user_role = $this->session->userdata('role');
         <!-- start: DYNAMIC TABLE -->
         <div class="container-fluid container-fullw">
             <div class="row">
-                <div class="col-md-6 col-md-offset-3">
+                <div class="col-md-6">
                     <div class="panel panel-primary" id="panel5">
                         <div class="panel-heading">
-                            <h4 class="panel-title text-white">Add New Sessions</h4>
+                            <h4 class="panel-title text-white text-bold">Session Details</h4>
                         </div>
                         <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                             <div class="col-md-12">
@@ -27,31 +27,37 @@ $user_role = $this->session->userdata('role');
                                         <input type="hidden" name="sessions_id" id="session_title" value="<?= $sessions_edit->sessions_id ?>">
                                     <?php } ?>
                                     <div class="form-group">
-                                        <label class="text-large">Sessions Title:</label>
+                                        <label class="text-large text-bold">Sessions Title</label>
                                         <input type="text" name="session_title" id="session_title" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->session_title : "" ?>" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-large">Sessions Description:</label>
+                                        <label class="text-large text-bold">Sessions Description</label>
                                         <textarea class="form-control" style="color: #000;" name="sessions_description" id="sessions_description"><?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_description : "" ?></textarea>
                                     </div>
+
+                                    <hr style="border: 2px solid;">
                                     <div class="form-group">
-                                        <label class="text-large">CCO Event ID (cssid) :</label>
+                                        <label class="text-large text-bold">CCO Event ID (cssid)</label>
                                         <input type="text" name="cco_envent_id" id="cco_envent_id" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->cco_envent_id : "" ?>" class="form-control" placeholder="CCO ID">
                                     </div>
                                     <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
-                                        <label class="text-large">Unique Identifier :</label>
+                                        <label class="text-large text-bold">Unique Identifier</label>
                                         <input type="text" name="unique_identifier" id="unique_identifier" readonly value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_id : $unique_identifier_id ?>" class="form-control" placeholder="Unique Identifier" <?=($user_role != 'super_admin')?'readonly':''?>>
                                     </div>
+
+                                    <hr style="border: 2px solid;">
                                       <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
-                                        <label class="text-large">Zoom Meeting Link :</label>
+                                        <label class="text-large text-bold">Zoom Meeting Link</label>
                                         <input type="text" name="zoom_link" id="zoom_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_link : "" ?>" class="form-control" placeholder="Zoom Meeting Link" <?=($user_role != 'super_admin')?'readonly':''?>>
                                     </div>
                                     <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
-                                        <label class="text-large">Password :</label>
+                                        <label class="text-large text-bold">Password</label>
                                         <input type="text" name="zoom_password" id="zoom_password" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_password : "" ?>" class="form-control" placeholder="Password" <?=($user_role != 'super_admin')?'readonly':''?>>
                                     </div>
+
+                                    <hr style="border: 2px solid;">
 									<div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
-                                        <label class="text-large">Moderator:</label>
+                                        <label class="text-large text-bold">Moderator</label>
                                         <select class="form-control" id="moderator_id" name="moderator_id[]" multiple <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>
                                             <?php if(!isset($sessions_edit)){ ?>
                                             <option selected="" value="">Select Moderator</option> 
@@ -83,34 +89,36 @@ $user_role = $this->session->userdata('role');
                                                                             </select>
                                                                         </div>-->
                                     <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
-                                        <label class="text-large">Session Date:</label>
+                                        <label class="text-large text-bold">Session Date</label>
                                         <input class="form-control <?=($user_role != 'super_admin')?'':'datepicker'?>" name="sessions_date" id="sessions_date" type="text" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('m/d/Y', strtotime($sessions_edit->sessions_date)) : "" ?>" <?=($user_role != 'super_admin')?'readonly':''?>>
                                     </div>
                                     <div class="row" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="text-large">Session Start Time: <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? '<b>(ET)</b>' : '' ?></label>
+                                                <label class="text-large text-bold">Session Start Time<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? '<b>(ET)</b>' : '' ?></label>
                                                 <input type="time" name="time_slot" id="time_slot" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('H:i', strtotime($sessions_edit->time_slot)) : "" ?>" class="form-control" <?=($user_role != 'super_admin')?'readonly':''?>>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="text-large">Session End Time: <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? '<b>(ET)</b>' : '' ?></label>
+                                                <label class="text-large text-bold">Session End Time <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? '<b>(ET)</b>' : '' ?></label>
                                                 <input type="time" name="end_time" id="end_time" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('H:i', strtotime($sessions_edit->end_time)) : "" ?>" class="form-control" <?=($user_role != 'super_admin')?'readonly':''?>>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
-                                        <label class="text-large">Millicast Stream Name:</label>
+                                        <label class="text-large text-bold">Millicast Stream Name</label>
                                         <input type="text" class="form-control" style="color: #000;" name="embed_html_code" id="embed_html_code" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->embed_html_code : "" ?>" <?=($user_role != 'super_admin')?'readonly':''?>>
                                     </div>
                                     <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
-                                        <label class="text-large">Embed HTML Code <b>(Presenter)</b>:</label>
+                                        <label class="text-large text-bold">Embed HTML Code <b>(Presenter)</b></label>
                                         <textarea class="form-control" style="color: #000;" placeholder="Embed HTML Code" name="embed_html_code_presenter" id="embed_html_code_presenter" <?=($user_role != 'super_admin')?'readonly':''?>><?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->embed_html_code_presenter : "" ?></textarea>
                                     </div>
 
+                                    <hr style="border: 2px solid;"/>
+
                                     <div class="row" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
-                                        <label class="col-md-12 text-large">Select Session Type</label>
+                                        <label class="col-md-12 text-large text-bold">Select Session Type</label>
                                         <?php
                                         if (isset($sessions_type) && !empty($sessions_type)) {
                                             foreach ($sessions_type as $val) {
@@ -126,7 +134,7 @@ $user_role = $this->session->userdata('role');
                                         ?>
                                     </div>
                                     <div class="row" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
-                                        <label class="col-md-12 text-large">Select Sessions Tracks</label>
+                                        <label class="col-md-12 text-large text-bold">Select Sessions Tracks</label>
                                         <?php
                                         if (isset($session_tracks) && !empty($session_tracks)) {
                                             foreach ($session_tracks as $val) {
@@ -142,15 +150,16 @@ $user_role = $this->session->userdata('role');
                                         ?>
                                     </div>
                                     <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
-                                        <label class="text-large">Select Sessions Status</label>
+                                        <label class="text-large text-bold">Select Sessions Status</label>
                                         <select class="form-control" id="sessions_type_status" name="sessions_type_status" <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>
                                             <option <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? ($sessions_edit->sessions_type_status == "Regular") ? "selected" : "" : "selected" ?> value="Regular">Regular Session</option>
                                             <option <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? ($sessions_edit->sessions_type_status == "Private") ? "selected" : "" : "" ?> value="Private">Private Session</option> 
                                         </select>
                                     </div>
                                     <?php if (isset($sessions_edit)) { ?>
+                                        <hr style="border: 2px solid;"/>
                                         <div class="row">
-                                            <label class="col-md-12 text-large">Tool Box</label>
+                                            <label class="col-md-12 text-large text-bold">Tool Box</label>
                                             <div class="form-group col-md-6" style="color: #000;">
                                                 <input type="radio" class="col-md-1"  name="tool_box_status"  id="tool_box" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->tool_box_status == "1") ? 'checked' : '' : 'checked' ?> value="1">ON<br>
                                             </div>
@@ -163,9 +172,8 @@ $user_role = $this->session->userdata('role');
                                             $right_bar=isset($sessions_edit->right_bar)?$sessions_edit->right_bar:"";
                                             ?>
                                     <div class="row" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
-                                        <label class="col-md-12 text-large" style="padding:0">Select Session Properties</label>
-                                        <hr>
-                                        <div class="form-group">
+                                        <label class="col-md-12 text-large text-bold">Tool Box Items</label>
+                                        <div class="form-group col-md-12">
                                             <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "resources", "checked"):"checked"?> value="resources" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>Resources</label>
                                             <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "chat", "checked"):""?> value="chat" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>Chat</label>
                                             <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "notes", "checked"):"checked"?> value="notes" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>Notes</label>
@@ -173,8 +181,9 @@ $user_role = $this->session->userdata('role');
                                         </div>
                                     </div>
 
+                                    <hr style="border: 2px solid;">
                                     <div class="form-group" style="position: unset !important;  <?=($user_role != 'super_admin')?'display:none':''?>">
-                                        <label>Sessions Photo</label>
+                                        <label class="col-md-12 text-large text-bold">Sessions Photo</label>
                                         <input type="file" class="form-control" name="sessions_photo" id="sessions_photo" <?=($user_role != 'super_admin')?'disabled':''?>>
                                         <?php
                                         if (isset($sessions_edit)) {
@@ -186,9 +195,9 @@ $user_role = $this->session->userdata('role');
                                         }
                                         ?>
                                     </div>
+                                    <hr style="border: 2px solid;">
 				                    <div class="row">
-                                            <label class="col-md-12 text-large">Attendee View Links</label>
-                                            <label class="col-md-12 text-large">Claim Credit Link</label>
+                                            <label class="col-md-12 text-large text-bold">Claim Credit Link</label>
                                             <div class="form-group col-md-6" style="color: #000;">
                                                 <input type="radio" class="col-md-1"  name="attendee_view_links_status"  id="attendee_view_links" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->attendee_view_links_status == "1") ? 'checked' : '' : 'checked' ?> value="1">ON<br>
                                             </div>
@@ -197,106 +206,19 @@ $user_role = $this->session->userdata('role');
                                             </div>
                                             <div class="col-md-12" id="url_section">
                                                 <div class="form-group">
-                                                   <label class="text-large">Claim URL :</label>
+                                                   <label class="text-large text-bold">Claim URL</label>
                                                    <input type="text" name="url_link" id="url_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->url_link : "" ?>" class="form-control" placeholder="URL Link">
                                                </div>
                                                 <div class="form-group">
-                                                    <label class="text-large">Link Text :</label>
+                                                    <label class="text-large text-bold">Link Text</label>
                                                     <input type="text" name="link_text" id="link_text" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->link_text : "" ?>" class="form-control" placeholder="Link Text">
                                                 </div>
                                             </div>
-                                        </div>				
-                                    <?php if (isset($sessions_edit)) { ?>
-                                        <div class="" id="presenter_list">
-                                        <?php } else { ?>
-                                            <div class="row" id="presenter_list">
-                                            <?php } ?>
-                                            <?php
-                                            if (isset($sessions_edit)) {
-                                                if (isset($sessions_edit->sessions_presenter) && !empty($sessions_edit->sessions_presenter)) {
-                                                    foreach ($sessions_edit->sessions_presenter as $value) {
-                                                        ?>
-                                                        <div class='col-md-12' id='add_new_presenter_section' style='margin-bottom: 20px; padding: 10px; border: 1px solid #b2b7bb;'>
-                                                            <input type="hidden" name="status[]" value="update">
-                                                            <input type="hidden" name="sessions_add_presenter_id[]" value="<?= $value->sessions_add_presenter_id ?>">
-                                                            <div class='col-md-12'>
-                                                                <div class='col-md-6'>
-                                                                    <div class='form-group'>
-                                                                        <label class='text-large'>Order No.:</label>
-                                                                        <input type='text' name='order_no[]' id='presenter_order_no' placeholder='Order No.' value='<?= $value->order_index_no ?>' class='form-control'>
-                                                                    </div>
-                                                                </div>
-                                                                <div class='col-md-6'>
-                                                                    <div class='form-group'>
-                                                                        <label class='text-large'>Presenter:</label>
-                                                                        <select class='form-control select_presenter_id' id='select_presenter_id' name='select_presenter_id[]'>
-                                                                            <option selected='' value=''>Select Presenter</option>
-                                                                            <?php
-                                                                            if (isset($presenter) && !empty($presenter)) {
-                                                                                foreach ($presenter as $val) {
-                                                                                    ?>
-                                                                                    <option value = '<?= $val->presenter_id ?>' <?= ($val->presenter_id == $value->select_presenter_id) ? "selected" : "" ?> ><?= $val->presenter_name ?> </option>
-                                                                                    <?php
-                                                                                }
-                                                                            }
-                                                                            ?> 
-                                                                        </select>
-                                                                    </div>
-                                                                </div> 
+                                    </div>
 
-                                                                <div class='col-md-6'>
-                                                                    <div class='form-group'>
-                                                                        <label class='text-large' > Title: </label>
-                                                                        <input type ='text' name='presenter_title[]' placeholder= 'Title' id='presenter_title' value='<?= $value->presenter_title ?>' class='form-control'>
-                                                                    </div>
-                                                                </div>
-                                                                <div class='col-md-6'> 
-                                                                    <div class = 'form-group'>
-                                                                        <label class='text-large'> Presenter Start Time: </label>
-                                                                        <input type='text' name='presenter_time_slot[]' placeholder='Presenter Start Time' id='presenter_time_slot' placeholder='Ex: 7:00 - 7:10' value='<?= $value->presenter_time_slot ?>' class='form-control'>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class='col-md-6'>
-                                                                    <div class='form-group'>
-                                                                        <label class='text-large'>Upload published name:</label>
-                                                                        <input type='text' name='upload_published_name[]' id='upload_published_name' value='<?= $value->upload_published_name ?>'  placeholder='Enter Upload Published Name' class='form-control'>
-                                                                    </div>
-                                                                    <div class ='form-group'>
-                                                                        <label> Resources Uploads</label>
-                                                                        <input type ='file' class='form-control' name='presenter_resource[]' id='presenter_resource'>
-                                                                        <img src="<?= base_url() ?>uploads/presenter_resource/<?= $value->presenter_resource ?>" style="height: 100px; width: 100px;">
-                                                                    </div>
-                                                                </div> 
-                                                                <div class='col-md-6'>
-                                                                    <div class='form-group'>
-                                                                        <label class='text-large'>Link published name:</label>
-                                                                        <input type='text' name='link_published_name[]' id='link_published_name' value='<?= $value->link_published_name ?>'  placeholder='Enter Upload Published Name' class='form-control'>
-                                                                    </div>
-                                                                    <div class='form-group'>
-                                                                        <label class='text-large' >Resources Links: </label>
-                                                                        <input type='text' name='presenter_resource_link[]' placeholder='Resource Link' id='presenter_resource_link' value = '<?= $value->presenter_resource_link ?>' class='form-control'>
-                                                                    </div>
-                                                                </div> 
-                                                                <div class='col-md-12'>
-                                                                    <div class="form-group">
-                                                                        <button type="button" class="btn btn-danger btn-o next-step btn-wide btn_remove_presenter" data-sessions_add_presenter_id="<?= $value->sessions_add_presenter_id ?>" id="btn_remove_presenter">
-                                                                            <i class="fa fa-minus"></i>  Remove Presenter
-                                                                        </button>
-                                                                    </div>
-                                                                </div> 
-                                                            </div>
-                                                        </div>
-                                                        <?php
-                                                    }
-                                                }
-                                            }
-                                            ?>
-                                        </div>
-                                            
-
+                                            <hr style="border: 2px solid;">
                                             <div class="form-group" style="position: unset !important; <?=($user_role != 'super_admin')?'display:none':''?>" >
-                                                <label>Sessions Logo</label>
+                                                <label class="col-md-12 text-large text-bold">Sponsor/Additional Logo</label>
                                                 <input type="file" class="form-control" name="sessions_logo" id="sessions_logo" <?=($user_role != 'super_admin')?'disabled':''?>>
                                                 <?php
                                                 if (isset($sessions_edit)) {
@@ -312,21 +234,13 @@ $user_role = $this->session->userdata('role');
                                         <div class="row" style="margin-top: 20px; <?=($user_role != 'super_admin')?'display:none':''?>">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="sel1">Select Sponsor Type</label>
+                                                    <label class="col-md-12 text-large text-bold" for="sel1">Select Sponsor Type</label>
 
                                                     <select class="form-control" name="sponsor_type" <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>
                                                         <option value="SPONSORED BY" <?=isset($sessions_edit)?($sessions_edit->sponsor_type=="SPONSORED BY"?"selected":""):""?>>SPONSORED BY</option>
                                                         <option value="EDUCATED BY" <?=isset($sessions_edit)?($sessions_edit->sponsor_type=="EDUCATED BY"?"selected":""):""?>>EDUCATED BY</option>
                                                     </select>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group">
-                                                <button type="button" class="btn btn-primary btn-o next-step btn-wide" id="btn_add_new_presenter">
-                                                    <i class="fa fa-plus"></i>  Add New Presenter
-                                                </button>
                                             </div>
                                         </div>
 
@@ -340,6 +254,112 @@ $user_role = $this->session->userdata('role');
                         </div>
                     </div>
                 </div>
+
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-bold">Presenters</h3>
+                        </div>
+                        <div class="panel-body">
+                            <?php if (isset($sessions_edit)) { ?>
+                            <div class="" id="presenter_list">
+                                <?php } else { ?>
+                                <div class="row" id="presenter_list">
+                                    <?php } ?>
+                                    <?php
+                                    if (isset($sessions_edit)) {
+                                        if (isset($sessions_edit->sessions_presenter) && !empty($sessions_edit->sessions_presenter)) {
+                                            foreach ($sessions_edit->sessions_presenter as $value) {
+                                                ?>
+                                                <div class='col-md-12' id='add_new_presenter_section' style='margin-bottom: 20px; padding: 10px; border: 1px solid #b2b7bb;'>
+                                                    <input type="hidden" name="status[]" value="update">
+                                                    <input type="hidden" name="sessions_add_presenter_id[]" value="<?= $value->sessions_add_presenter_id ?>">
+                                                    <div class='col-md-12'>
+                                                        <div class='col-md-6'>
+                                                            <div class='form-group'>
+                                                                <label class='text-large'>Order No.:</label>
+                                                                <input type='text' name='order_no[]' id='presenter_order_no' placeholder='Order No.' value='<?= $value->order_index_no ?>' class='form-control'>
+                                                            </div>
+                                                        </div>
+                                                        <div class='col-md-6'>
+                                                            <div class='form-group'>
+                                                                <label class='text-large'>Presenter:</label>
+                                                                <select class='form-control select_presenter_id' id='select_presenter_id' name='select_presenter_id[]'>
+                                                                    <option selected='' value=''>Select Presenter</option>
+                                                                    <?php
+                                                                    if (isset($presenter) && !empty($presenter)) {
+                                                                        foreach ($presenter as $val) {
+                                                                            ?>
+                                                                            <option value = '<?= $val->presenter_id ?>' <?= ($val->presenter_id == $value->select_presenter_id) ? "selected" : "" ?> ><?= $val->presenter_name ?> </option>
+                                                                            <?php
+                                                                        }
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class='col-md-6'>
+                                                            <div class='form-group'>
+                                                                <label class='text-large' > Title: </label>
+                                                                <input type ='text' name='presenter_title[]' placeholder= 'Title' id='presenter_title' value='<?= $value->presenter_title ?>' class='form-control'>
+                                                            </div>
+                                                        </div>
+                                                        <div class='col-md-6'>
+                                                            <div class = 'form-group'>
+                                                                <label class='text-large'> Presenter Start Time: </label>
+                                                                <input type='text' name='presenter_time_slot[]' placeholder='Presenter Start Time' id='presenter_time_slot' placeholder='Ex: 7:00 - 7:10' value='<?= $value->presenter_time_slot ?>' class='form-control'>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class='col-md-6'>
+                                                            <div class='form-group'>
+                                                                <label class='text-large'>Upload published name:</label>
+                                                                <input type='text' name='upload_published_name[]' id='upload_published_name' value='<?= $value->upload_published_name ?>'  placeholder='Enter Upload Published Name' class='form-control'>
+                                                            </div>
+                                                            <div class ='form-group'>
+                                                                <label> Resources Uploads</label>
+                                                                <input type ='file' class='form-control' name='presenter_resource[]' id='presenter_resource'>
+                                                                <img src="<?= base_url() ?>uploads/presenter_resource/<?= $value->presenter_resource ?>" style="height: 100px; width: 100px;">
+                                                            </div>
+                                                        </div>
+                                                        <div class='col-md-6'>
+                                                            <div class='form-group'>
+                                                                <label class='text-large'>Link published name:</label>
+                                                                <input type='text' name='link_published_name[]' id='link_published_name' value='<?= $value->link_published_name ?>'  placeholder='Enter Upload Published Name' class='form-control'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label class='text-large' >Resources Links: </label>
+                                                                <input type='text' name='presenter_resource_link[]' placeholder='Resource Link' id='presenter_resource_link' value = '<?= $value->presenter_resource_link ?>' class='form-control'>
+                                                            </div>
+                                                        </div>
+                                                        <div class='col-md-12'>
+                                                            <div class="form-group">
+                                                                <button type="button" class="btn btn-danger btn-o next-step btn-wide btn_remove_presenter" data-sessions_add_presenter_id="<?= $value->sessions_add_presenter_id ?>" id="btn_remove_presenter">
+                                                                    <i class="fa fa-minus"></i>  Remove Presenter
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary btn-o next-step btn-wide" id="btn_add_new_presenter">
+                                            <i class="fa fa-plus"></i>  Add New Presenter
+                                        </button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
