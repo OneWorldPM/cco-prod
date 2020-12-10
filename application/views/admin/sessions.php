@@ -119,7 +119,7 @@ $user_role = $this->session->userdata('role');
                                                         <?php
                                                         if (isset($val->presenter) && !empty($val->presenter)) {
                                                             foreach ($val->presenter as $value) {
-                                                                echo $value->presenter_name . " <br>";
+                                                                echo $value->presenter_name . " <br><br>";
                                                             }
                                                         }
                                                         ?>
