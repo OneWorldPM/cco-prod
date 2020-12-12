@@ -533,15 +533,20 @@ class Sessions extends CI_Controller {
         {
             $pdf->AddPage('L', 'A4');
 
+            $pdf->SetTextColor(79, 79, 79);
             $pdf->SetFont('helvetica', '', 6);
-            $pdf->SetXY(4, 5);
+            $pdf->SetXY(4, 4);
+            $pdf->Write(0, 'Report generated on', '', 0, '', true, 0, false, false, 0);
+
+            $pdf->SetFont('helvetica', '', 7);
+            $pdf->SetXY(4, 7);
             $pdf->Write(0, date("F j, Y, g:i A").' ET', '', 0, '', true, 0, false, false, 0);
 
             $pdf->SetFont('helvetica', '', 8);
             $pdf->SetXY(5, 5);
             $pdf->Write(0, $sesstion_title, '', 0, 'C', true, 0, false, false, 0);
 
-
+            $pdf->SetTextColor(0,0,0);
             $pdf->SetFont('helvetica', 'B', 20);
             $pdf->SetXY(10, 30);
             $pdf->Write(0, $poll->poll_name.': '.$poll->question, '', 0, 'C', true, 0, false, false, 0);
@@ -582,6 +587,7 @@ class Sessions extends CI_Controller {
                         $desc_y = $desc_y+10;
 
                         $pdf->SetFont('helvetica', 'I', 10);
+                        $pdf->SetTextColor(0,0,0);
                         $pdf->SetXY(142, $desc_y-12);
                         $pdf->Write(0, $option->option, '', 0, '', true, 0, false, false, 0);
 
@@ -639,7 +645,7 @@ class Sessions extends CI_Controller {
             $pdf->writeHTML($result_table, true, false, false, false, 'center');
         }
 
-        $pdf->Output(__DIR__.'/Poll Overview - '.$sesstion_title.'.pdf', 'FD');
+        $pdf->Output(__DIR__.'/Poll Overview - '.$sesstion_title.'.pdf', 'I');
 
         return;
     }
