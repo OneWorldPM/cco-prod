@@ -645,7 +645,7 @@ class Sessions extends CI_Controller {
             $pdf->writeHTML($result_table, true, false, false, false, 'center');
         }
 
-        $pdf->Output(__DIR__.'/Poll Overview - '.$sesstion_title.'.pdf', 'I');
+        $pdf->Output(__DIR__.'/Poll Overview - '.$sesstion_title.'.pdf', 'FD');
 
         return;
     }
