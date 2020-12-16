@@ -89,10 +89,10 @@ $user_role = $this->session->userdata('role');
                                             <th>CCO Event ID</th>
                                             <th>Photo</th>
                                             <th>Title</th>
-                                            <th>Presenter</th>
-                                            <th>Zoom Link</th>
-                                            <th>Title</th>
+                                            <th>Presenters</th>
+                                            <th>Moderators</th>
                                             <th>Time Slot</th>
+                                            <th>Other Info</th>
                                             <th style="border-right: 0px solid #ddd;">Action</th>
                                             <th style="border-left: 0px solid #ddd; border-right: 0px solid #ddd;"></th>
                                             <th style="border-left: 0px solid #ddd;"></th>
@@ -124,25 +124,28 @@ $user_role = $this->session->userdata('role');
                                                         }
                                                         ?>
                                                     </td>
-                                                    <td><a target="_blank" href="<?= $val->zoom_link ?>"><?= $val->zoom_link ?></a></td>
                                                     <td>
                                                         <?php
-                                                        if (isset($val->presenter) && !empty($val->presenter)) {
-                                                            foreach ($val->presenter as $value) {
-                                                                echo $value->title . " <br>";
+                                                        if (isset($val->moderators) && !empty($val->moderators)) {
+                                                            foreach ($val->moderators as $name) {
+                                                                echo $name . " <br><br>";
                                                             }
                                                         }
                                                         ?>
                                                     </td>
                                                     <td><?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                     <td>
-													  <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin-bottom: 5px;">View Session</a>
+                                                        Toolbox: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->tool_box_status == 1)?'#0ab50a':'#ff2525'?>;"></i><br>
+                                                        Claim Link: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->attendee_view_links_status == 1)?'#0ab50a':'#ff2525'?>;"></i>
+                                                    </td>
+                                                    <td>
+													  <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin-bottom: 5px;">View</a>
                                                         <a href="<?= base_url() ?>admin/sessions/edit_sessions/<?= $val->sessions_id ?>" class="btn btn-green btn-sm">Edit</a>
                                                         <?php if ($user_role == 'super_admin') { ?>
-                                                        <button class="reload-attendee btn btn-danger" app-name="<?=getAppName($val->sessions_id) ?>">Reload Attendee Page</button>
+                                                        <button class="reload-attendee btn btn-danger" app-name="<?=getAppName($val->sessions_id) ?>">Reload Attendee</button>
                                                         <?php } ?>
-                                                        </td>
-                                                        <td>
+                                                    </td>
+                                                    <td>
                                                         <a href="<?= base_url() ?>admin/sessions/create_poll/<?= $val->sessions_id ?>" class="btn btn-success btn-sm" style="margin-bottom: 5px;">Create Poll</a>
 														<a href="<?= base_url() ?>admin/sessions/view_poll/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin-bottom: 5px;">View Poll</a>
                                                         <?php if ($user_role == 'super_admin') { ?>
@@ -151,17 +154,17 @@ $user_role = $this->session->userdata('role');
                                                         <a href="<?= base_url() ?>admin/groupchat/sessions_groupchat/<?= $val->sessions_id ?>" class="btn btn-blue btn-sm" style="margin-bottom: 5px;">Create Chat</a>
                                                         <a href="<?= base_url() ?>admin/sessions/resource/<?= $val->sessions_id ?>" class="btn btn-success btn-sm">Resources</a>
                                                         <?php } ?>
-                                                        </td>
-                                                        <td>
+                                                    </td>
+                                                    <td>
                                                          <?php if ($user_role == 'super_admin') { ?>
 														 <a data-session-id="<?= $val->sessions_id ?>" class="btn btn-danger btn-sm delete_session"  style="font-size: 10px !important; margin-bottom: 5px;">Delete Session</a>
                                                          <?php } ?>
-                                                         <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">Send to CCO</a>
+                                                         <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">Send JSON</a>
                                                          <a href="<?= base_url() ?>admin/sessions/view_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">View JSON</a>
-														 <a href="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" style="margin-bottom: 5px;"  class="btn btn-purple btn-sm">Clear JSON</a>
+														 <a href="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" style="margin-bottom: 5px;"  class="btn btn-danger btn-sm">Clear JSON</a>
 														 <a href="<?= base_url() ?>admin/sessions/flash_report/<?= $val->sessions_id ?>" style="margin-bottom: 5px;" class="btn btn-info btn-sm">Flash Report</a>
                                                          <a href="<?= base_url() ?>admin/sessions/polling_report/<?= $val->sessions_id ?>" class="btn btn-azure btn-sm">Polling Report</a>
-                                                        </td>
+                                                    </td>
                                                 </tr>
                                                 <?php
                                             }
@@ -200,6 +203,11 @@ switch ($msg) {
     $(document).ready(function () {
         $("#sessions_table").dataTable({
             "ordering": false,
+            "columnDefs": [
+                { "width": "10%", "targets": 7 },
+                { "width": "8%", "targets": 8 },
+                { "width": "10%", "targets": 9 }
+            ]
         });
   $('.datepicker').datepicker();
    

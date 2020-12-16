@@ -131,7 +131,6 @@ $user_name = ucfirst($this->session->userdata('uname'));
                                 </li>
                             <?php } ?>
 
-                            <?php if ($user_role == 'super_admin') { ?>
                                 <li class="<?= ($uri_segment == 'user') ? 'active' : ''; ?>" >
                                     <a href="<?= site_url() ?>admin/user" id="dash">
                                         <div class="item-content">
@@ -144,9 +143,7 @@ $user_name = ucfirst($this->session->userdata('uname'));
                                         </div>
                                     </a>
                                 </li>
-                            <?php } ?>
 
-                            <?php if ($user_role == 'super_admin') { ?>
                             <li class="<?= ($uri_segment == 'presenters') ? 'active' : ''; ?>" >
                                 <a href="<?= site_url() ?>admin/presenters" id="dash">
                                     <div class="item-content">
@@ -159,7 +156,6 @@ $user_name = ucfirst($this->session->userdata('uname'));
                                     </div>
                                 </a>
                             </li>
-                            <?php } ?>
 
                             <li class="<?= ($uri_segment == 'sessions') ? 'active' : ''; ?>">
                                 <a href="<?= site_url() ?>admin/sessions" id="dash">
@@ -249,7 +245,6 @@ $user_name = ucfirst($this->session->userdata('uname'));
                             </li>
                             <?php } ?>
 
-                            <?php if ($user_role == 'super_admin') { ?>
                             <li class="<?= ($uri_segment == 'tracking') ? 'active' : ''; ?>">
                                 <a href="<?= site_url() ?>admin/tracking" id="dash">
                                     <div class="item-content">
@@ -262,7 +257,6 @@ $user_name = ucfirst($this->session->userdata('uname'));
                                     </div>
                                 </a>
                             </li>
-                            <?php } ?>
 
                             <?php if ($user_role == 'super_admin') { ?>
                             <li class="<?= ($uri_segment == 'sessions_configurations') ? 'active' : ''; ?>" >
@@ -294,7 +288,6 @@ $user_name = ucfirst($this->session->userdata('uname'));
                             </li>
                             <?php } ?>
 
-                            <?php if ($user_role == 'super_admin') { ?>
 							 <li class="<?= ($uri_segment == 'push_notifications') ? 'active' : ''; ?>" >
                                 <a href="<?= site_url() ?>admin/push_notifications" id="dash">
                                     <div class="item-content">
@@ -307,9 +300,7 @@ $user_name = ucfirst($this->session->userdata('uname'));
                                     </div>
                                 </a>
                             </li>
-                            <?php } ?>
 
-                            <?php if ($user_role == 'super_admin') { ?>
 							 <li class="<?= ($uri_segment == 'dummy_user') ? 'active' : ''; ?>">
                                 <a href="<?= site_url() ?>admin/dummy_user" id="dash">
                                     <div class="item-content">
@@ -322,7 +313,6 @@ $user_name = ucfirst($this->session->userdata('uname'));
                                     </div>
                                 </a>
                             </li>
-                            <?php } ?>
 
                             <?php if ($user_role == 'super_admin') { ?>
                             <li class="<?= ($uri_segment == 'music_setting') ? 'active' : ''; ?>" >

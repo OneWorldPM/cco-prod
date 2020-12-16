@@ -35,8 +35,6 @@
                                             <th>Profile</th>
                                             <th>Full Name</th>
                                             <th>Email</th>
-                                            <th>Password</th>
-                                            <th>Address</th>
                                             <th>Country</th>
                                             <th>Action</th>
                                         </tr>
@@ -58,8 +56,6 @@
                                                         <?php } ?>
                                                     <td><?= $val->first_name . ' ' . $val->last_name ?></td>
                                                     <td><?= $val->email ?></td>
-                                                    <td><?= ($val->jti == '')?base64_decode($val->password):'***' ?></td>
-                                                    <td><?= $val->address ?></td>
                                                     <td><?= $val->country ?></td>
                                                     <td> 
                                                         <a class="btn btn-danger btn-sm delete_presenter" href="<?= base_url() . 'admin/user/deleteuser/' . $val->cust_id ?>">
@@ -73,9 +69,9 @@
                                                                 vCard
                                                             </a>
                                                         <?php } else { ?>
-                                                            <a class="btn btn-info btn-sm" href="<?= base_url() . 'admin/exportvcard/' . $val->cust_id ?>">
-                                                                vCard
-                                                            </a>
+<!--                                                            <a class="btn btn-info btn-sm" href="--><?//= base_url() . 'admin/exportvcard/' . $val cust_id ?><!--">-->
+<!--                                                                vCard-->
+<!--                                                            </a>-->
                                                         <?php } ?>
                                                     </td>
                                                 </tr>

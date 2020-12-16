@@ -7,7 +7,7 @@ $user_role = $this->session->userdata('role');
         <section id="page-title">
             <div class="row">
                 <div class="col-sm-8">
-                    <h1 class="mainTitle">Add/Edit Session</h1>
+                    <h1 class="mainTitle">Session Details</h1>
                 </div>
             </div>
         </section>
@@ -43,9 +43,9 @@ $user_role = $this->session->userdata('role');
                                     <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
                                         <label class="text-large text-bold">Unique Identifier</label>
                                         <input type="text" name="unique_identifier" id="unique_identifier" readonly value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_id : $unique_identifier_id ?>" class="form-control" placeholder="Unique Identifier" <?=($user_role != 'super_admin')?'readonly':''?>>
+                                        <hr style="border: 2px solid;">
                                     </div>
 
-                                    <hr style="border: 2px solid;">
                                       <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
                                         <label class="text-large text-bold">Zoom Meeting Link</label>
                                         <input type="text" name="zoom_link" id="zoom_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_link : "" ?>" class="form-control" placeholder="Zoom Meeting Link" <?=($user_role != 'super_admin')?'readonly':''?>>
@@ -53,9 +53,9 @@ $user_role = $this->session->userdata('role');
                                     <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
                                         <label class="text-large text-bold">Password</label>
                                         <input type="text" name="zoom_password" id="zoom_password" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_password : "" ?>" class="form-control" placeholder="Password" <?=($user_role != 'super_admin')?'readonly':''?>>
+                                        <hr style="border: 2px solid;">
                                     </div>
 
-                                    <hr style="border: 2px solid;">
 									<div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
                                         <label class="text-large text-bold">Moderator</label>
                                         <select class="form-control" id="moderator_id" name="moderator_id[]" multiple <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>
@@ -113,9 +113,8 @@ $user_role = $this->session->userdata('role');
                                     <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
                                         <label class="text-large text-bold">Embed HTML Code <b>(Presenter)</b></label>
                                         <textarea class="form-control" style="color: #000;" placeholder="Embed HTML Code" name="embed_html_code_presenter" id="embed_html_code_presenter" <?=($user_role != 'super_admin')?'readonly':''?>><?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->embed_html_code_presenter : "" ?></textarea>
+                                        <hr style="border: 2px solid;"/>
                                     </div>
-
-                                    <hr style="border: 2px solid;"/>
 
                                     <div class="row" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
                                         <label class="col-md-12 text-large text-bold">Select Session Type</label>
@@ -133,6 +132,7 @@ $user_role = $this->session->userdata('role');
                                         }
                                         ?>
                                     </div>
+
                                     <div class="row" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
                                         <label class="col-md-12 text-large text-bold">Select Sessions Tracks</label>
                                         <?php
@@ -155,9 +155,9 @@ $user_role = $this->session->userdata('role');
                                             <option <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? ($sessions_edit->sessions_type_status == "Regular") ? "selected" : "" : "selected" ?> value="Regular">Regular Session</option>
                                             <option <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? ($sessions_edit->sessions_type_status == "Private") ? "selected" : "" : "" ?> value="Private">Private Session</option> 
                                         </select>
+                                        <hr style="border: 2px solid;"/>
                                     </div>
                                     <?php if (isset($sessions_edit)) { ?>
-                                        <hr style="border: 2px solid;"/>
                                         <div class="row">
                                             <label class="col-md-12 text-large text-bold">Tool Box</label>
                                             <div class="form-group col-md-6" style="color: #000;">
@@ -171,7 +171,7 @@ $user_role = $this->session->userdata('role');
 										<?php
                                             $right_bar=isset($sessions_edit->right_bar)?$sessions_edit->right_bar:"";
                                             ?>
-                                    <div class="row" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
+                                    <div class="row">
                                         <label class="col-md-12 text-large text-bold">Tool Box Items</label>
                                         <div class="form-group col-md-12">
                                             <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "resources", "checked"):"checked"?> value="resources" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>Resources</label>
@@ -194,8 +194,8 @@ $user_role = $this->session->userdata('role');
                                             }
                                         }
                                         ?>
+                                        <hr style="border: 2px solid;">
                                     </div>
-                                    <hr style="border: 2px solid;">
 				                    <div class="row">
                                             <label class="col-md-12 text-large text-bold">Claim Credit Link</label>
                                             <div class="form-group col-md-6" style="color: #000;">
@@ -216,7 +216,6 @@ $user_role = $this->session->userdata('role');
                                             </div>
                                     </div>
 
-                                            <hr style="border: 2px solid;">
                                             <div class="form-group" style="position: unset !important; <?=($user_role != 'super_admin')?'display:none':''?>" >
                                                 <label class="col-md-12 text-large text-bold">Sponsor/Additional Logo</label>
                                                 <input type="file" class="form-control" name="sessions_logo" id="sessions_logo" <?=($user_role != 'super_admin')?'disabled':''?>>
@@ -229,6 +228,7 @@ $user_role = $this->session->userdata('role');
                                                     }
                                                 }
                                                 ?>
+                                                <hr style="border: 2px solid;">
                                             </div>
 
                                         <div class="row" style="margin-top: 20px; <?=($user_role != 'super_admin')?'display:none':''?>">
@@ -257,11 +257,11 @@ $user_role = $this->session->userdata('role');
 
 
                 <div class="col-md-6">
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title text-bold">Presenters</h3>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                             <?php if (isset($sessions_edit)) { ?>
                             <div class="" id="presenter_list">
                                 <?php } else { ?>
@@ -313,6 +313,7 @@ $user_role = $this->session->userdata('role');
                                                             </div>
                                                         </div>
 
+                                                        <?php if (1==2) { ?>
                                                         <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label class='text-large'>Upload published name:</label>
@@ -334,6 +335,7 @@ $user_role = $this->session->userdata('role');
                                                                 <input type='text' name='presenter_resource_link[]' placeholder='Resource Link' id='presenter_resource_link' value = '<?= $value->presenter_resource_link ?>' class='form-control'>
                                                             </div>
                                                         </div>
+                                                        <?php } ?>
                                                         <div class='col-md-12'>
                                                             <div class="form-group">
                                                                 <button type="button" class="btn btn-danger btn-o next-step btn-wide btn_remove_presenter" data-sessions_add_presenter_id="<?= $value->sessions_add_presenter_id ?>" id="btn_remove_presenter">

@@ -24,7 +24,7 @@ class M_sessions extends CI_Model {
     }
 
     function getSessionsAll() {
-        $this->db->select('*');
+        $this->db->select('s.*');
         $this->db->from('sessions s');
 		 ($this->session->userdata('start_date') != "") ? $where['DATE(s.sessions_date) >='] = date('Y-m-d', strtotime($this->session->userdata('start_date'))) : '';
         ($this->session->userdata('end_date') != "") ? $where['DATE(s.sessions_date) <='] = date('Y-m-d', strtotime($this->session->userdata('end_date'))) : '';
@@ -38,6 +38,7 @@ class M_sessions extends CI_Model {
             $return_array = array();
             foreach ($sessions->result() as $val) {
                 $val->presenter = $this->common->get_presenter($val->presenter_id, $val->sessions_id);
+                $val->moderators = $this->getModerators($val->sessions_id);
                 $return_array[] = $val;
             }
             return $return_array;
@@ -1598,6 +1599,47 @@ class M_sessions extends CI_Model {
         if ($response->num_rows() > 0)
         {
             return $response->result_array()[0]['total_time'];
+        }else{
+            return 0;
+        }
+
+        return;
+    }
+
+    private function getModerators($session_id)
+    {
+        $moderators = array();
+        $moderators_id = array();
+
+        $this->db->select('moderator_id');
+        $this->db->from('sessions');
+        $this->db->where(array('sessions_id'=>$session_id));
+
+        $response = $this->db->get();
+        if ($response->num_rows() > 0)
+        {
+            foreach ($response->result_array() as $row)
+            {
+                $moderators_id = explode(',', $row['moderator_id']);
+            }
+
+            foreach ($moderators_id as $moderator_id)
+            {
+                $this->db->select('first_name, last_name');
+                $this->db->from('presenter');
+                $this->db->where(array('presenter_id'=>$moderator_id));
+
+                $response = $this->db->get();
+                if ($response->num_rows() > 0)
+                {
+                    foreach ($response->result_array() as $row)
+                    {
+                        $moderators[] = $row['first_name'].' '.$row['last_name'];
+                    }
+                }
+            }
+
+            return $moderators;
         }else{
             return 0;
         }
