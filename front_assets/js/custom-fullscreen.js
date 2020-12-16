@@ -8,13 +8,13 @@ document.getElementById('embededVideo').addEventListener('fullscreenchange', (ev
     // the value of the property is null.
     if (document.fullscreenElement) {
         $("#btnFS").attr("class","glyphicon glyphicon-resize-small");
-        $("#btnFS").attr("data-original-title","Salir de Pantalla Completa");
+        $("#btnFS").attr("data-original-title","Exit Full Screen");
         $("iframe").removeClass("embed-responsive-item");
         console.log(`Element: ${document.fullscreenElement.id} entered full-screen mode.`);
     } else {
         console.log('Leaving full-screen mode.');
         $("#btnFS").attr("class","glyphicon glyphicon-resize-full");
-        $("#btnFS").attr("data-original-title","Pantalla Completa");
+        $("#btnFS").attr("data-original-title","Full Screen");
         $("iframe").addClass("embed-responsive-item");
 
         exitFullscreen();

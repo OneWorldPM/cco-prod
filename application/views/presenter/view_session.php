@@ -67,7 +67,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                 </div>
             </div>
             <div class="rightSticykPopup questionFavorites presenterRightSticykPopup" style="display: none">
-                <div class="header"><span><a href="#attendee_questions" data-toggle="tab">Preguntas</a> | <a href="#favorites" data-toggle="tab">Favoritos</a></span>
+                <div class="header"><span><a href="#attendee_questions" data-toggle="tab">Preguntas</a> | <a href="#favorites" data-toggle="tab">FAVORITES</a></span>
                     <div class="rightTool">
                         <i class="fa fa-minus" aria-hidden="true" data-right-id="2"></i>
                         <div class="dropdown">
@@ -116,7 +116,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                 </div>
             </div>
             <div class="modal-footer" style="text-align: center;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Esconder</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">HIDE</button>
             </div>
         </div>
     </div>
@@ -138,8 +138,8 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
 <div class="rightSticky presenterRightSticky" data-screen="presenter">
     <ul>
-        <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="notify hostChatNotify displayNone">Nuevo</span> <span>Charla de Invitado</span></li>
-        <li data-type="questionFavorites" class="2"><i class="fa fa-question" aria-hidden="true"></i> <span class="notify questionNotify displayNone">Nuevo</span> <span>Preguntas</span></li>
+        <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="notify hostChatNotify displayNone">new</span> <span>Charla de Invitado</span></li>
+        <li data-type="questionFavorites" class="2"><i class="fa fa-question" aria-hidden="true"></i> <span class="notify questionNotify displayNone">new</span> <span>Preguntas</span></li>
     </ul>
 </div>
 

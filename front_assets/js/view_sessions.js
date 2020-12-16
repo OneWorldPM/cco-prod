@@ -426,7 +426,7 @@ function update_viewsessions_history_open()
 
         $(document).on("click", "#send_message_btn", function () {
             if ($("#send_message").val() == "") {
-                $("#error_send_message").text("Entrar Mensaje").fadeIn('slow').fadeOut(5000);
+                $("#error_send_message").text("Enter Message").fadeIn('slow').fadeOut(5000);
             } else {
                 var send_message = $("#send_message").val();
                 var sessions_id = $("#sessions_id").val();
@@ -448,7 +448,7 @@ function update_viewsessions_history_open()
 
         $(document).on("click", "#ask_questions_send", function () {
             if ($("#questions").val() == "") {
-                $("#error_questions").text("Entrar Pregunta").fadeIn('slow').fadeOut(5000);
+                $("#error_questions").text("Enter Questions").fadeIn('slow').fadeOut(5000);
             } else {
                 var questions = $("#questions").val();
                 var sessions_id = $("#sessions_id").val();
@@ -460,7 +460,7 @@ function update_viewsessions_history_open()
                     success: function (data) {
                         if (data.status == "success") {
                             $("#questions").val("");
-                            $("#success_questions").text("Pregunta agregada exitosa").fadeIn('slow').fadeOut(5000);
+                            $("#success_questions").text("Question Added Successfully").fadeIn('slow').fadeOut(5000);
 
                             socket.emit('new_question', app_name);
                         }
@@ -474,7 +474,7 @@ function update_viewsessions_history_open()
             if (key == 13)  // the enter key code
             {
                 if ($("#questions").val() == "") {
-                    $("#error_questions").text("Entrar Pregunta").fadeIn('slow').fadeOut(5000);
+                    $("#error_questions").text("Enter Questions").fadeIn('slow').fadeOut(5000);
                 } else {
                     var questions = $("#questions").val();
                     var sessions_id = $("#sessions_id").val();
@@ -487,7 +487,7 @@ function update_viewsessions_history_open()
                             if (data.status == "success") {
                                 $(".questionElement").append(`<p>${questions}</p>`)
                                 $("#questions").val("");
-                                $("#success_questions").text("Pregunta agregada exitosa").fadeIn('slow').fadeOut(5000);
+                                $("#success_questions").text("Question Added Successfully").fadeIn('slow').fadeOut(5000);
 
                                 socket.emit('new_question', app_name);
                             }
@@ -594,7 +594,7 @@ function update_viewsessions_history_open()
                     dataType: "json",
                     success: function (data) {
                         if (data.status == "success") {
-                            $('#btn_vote_label').html('Haber Votado <i class="fa fa-check" id="fa_fa_check" style="font-size: 13px;"></i>');
+                            $('#btn_vote_label').html('VOTED <i class="fa fa-check" id="fa_fa_check" style="font-size: 13px;"></i>');
                             $('#fa_fa_check').show();
 
                         }
@@ -671,6 +671,12 @@ function get_poll_vot_section() {
                     $("#poll_vot_section_id_status").val(data.result.sessions_poll_question_id);
                     $("#poll_vot_section_last_status").val(data.result.status);
                     if (data.result.poll_status == 1) {
+
+                        //Disabling modal hide on clicking outside
+                        $('#modal').modal({
+                            backdrop: 'static',
+                            keyboard: false
+                        });
                         $('#modal').modal('show');
 
 
@@ -681,7 +687,7 @@ function get_poll_vot_section() {
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
 <div class='col-md-12' id='option_section'></div>\n\
 \n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px;'></span>\n\
-<div style='padding-right: 20px;text-align: center;'><a class='button small color rounded' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; font-size: 16px;'><span id='btn_vote_label'>Votar <i class='fa fa-check' id='fa_fa_check' style='font-size: 13px; display:none'></i></span></a></div>\n\
+<div style='padding-right: 20px;text-align: center;'><a class='button small color rounded' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; font-size: 16px;'><span id='btn_vote_label'>VOTE <i class='fa fa-check' id='fa_fa_check' style='font-size: 13px; display:none'></i></span></a></div>\n\
 </form>");
                         if (data.result.exist_status == 1) {
                             $.each(data.result.option, function (key, val) {
@@ -703,13 +709,18 @@ function get_poll_vot_section() {
                         }
                         if (data.result.exist_status == 1) {
                             $(':radio:not(:checked)').attr('disabled', true);
-                            $('#btn_vote_label').html('Haber Votado <i class="fa fa-check" id="fa_fa_check" style="font-size: 13px;"></i>');
+                            $('#btn_vote_label').html('VOTED <i class="fa fa-check" id="fa_fa_check" style="font-size: 13px;"></i>');
 
                         }
                     } else {
+                        //Disabling modal hide on clicking outside
+                        $('#modal').modal({
+                            backdrop: 'static',
+                            keyboard: false
+                        });
                         $('#modal').modal('show');
 
-                        $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Resultados de Encuesta en Vivo</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5>\n\
+                        $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Live Poll Results</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5>\n\
                                                         \n\<div id='result_section' style='padding-bottom: 10px;'></div></div></div></div>");
                         var total_vote = 0;
                         var total_vote_compere_option = 0;
@@ -765,14 +776,14 @@ function get_poll_vot_section() {
                     success: function (data) {
                         if (data.status == "success") {
                             $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Encuesta en Vivo</h2>\n\
+            \n\<h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Live Poll</h2>\n\
 <div class='col-md-12'>\n\
 \n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5></div>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
 <div class='col-md-12' id='option_section'></div>\n\
 \n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px;'></span>\n\
-<div style='text-align: center;'><p style='color:red; font-weight: 700;'>Poll Now Closed</p></div><div style='padding-right: 20px;text-align: right;'><a class='button small color rounded icon-left' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; font-size: 16px;'><span>Votar <i class='fa fa-check' id='fa_fa_check_close_poll' style='display:none'></i></span></a></div>\n\
+<div style='text-align: center;'><p style='color:red; font-weight: 700;'>Poll Now Closed</p></div><div style='padding-right: 20px;text-align: right;'><a class='button small color rounded icon-left' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; font-size: 16px;'><span>VOTE <i class='fa fa-check' id='fa_fa_check_close_poll' style='display:none'></i></span></a></div>\n\
 </form>");
 
                             $.each(data.result.option, function (key, val) {
