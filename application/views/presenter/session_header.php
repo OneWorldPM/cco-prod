@@ -149,7 +149,7 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Zoom</h4>
+                <h4 class="modal-title">ZOOM</h4>
             </div>
             <div class="modal-body">
                 <?php
@@ -167,7 +167,7 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
         </div>
 
@@ -182,7 +182,7 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Recursos</h4>
+                <h4 class="modal-title">RESOURCES</h4>
             </div>
             <div class="modal-body">
                 <?php
@@ -199,7 +199,7 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
                 ?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
         </div>
 
