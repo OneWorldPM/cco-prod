@@ -108,7 +108,7 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
                                     <i class="fa fa-desktop"></i>
                                 </div>
                                 <div class="item-inner">
-                                    <span class="title">Tablero de Control</span>
+                                    <span class="title"> Dashboard </span>
                                 </div>
                             </div>
                         </a>
@@ -120,7 +120,7 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
                                     <i class="fa fa-tv"></i>
                                 </div>
                                 <div class="item-inner">
-                                    <span class="title">Sesiones</span>
+                                    <span class="title">Sessions</span>
                                 </div>
                             </div>
                         </a>
@@ -169,12 +169,12 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
                         <ul class="dropdown-menu dropdown-dark">
                             <li>
                                 <a href="<?= base_url() ?>presenter/login/logout">
-                                    Cerrar Sesión
+                                    Log Out
                                 </a>
                             </li>
                         </ul>
                     </li>
                 </ul>
-                <label class="wallet-balance"  style="font-size: 22px; margin-top: 20px; font-weight: 700; margin-right: 20px; color: red;">Presentador </label>
+                <label class="wallet-balance"  style="font-size: 22px; margin-top: 20px; font-weight: 700; margin-right: 20px; color: red;">Presenter </label>
             </div>
         </header>

@@ -67,7 +67,7 @@ function startCounting(){
 
     Swal.fire(
         'INFO',
-        'Asegúrese de reactivar el repoductor de el volume ubicado en la parte inferior derecha de la pagina.',
+        'Be sure to unmute the player located on the bottom right side of the page.',
         'warning'
     );
 

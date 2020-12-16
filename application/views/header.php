@@ -317,7 +317,7 @@
                                             <?php } ?>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support/submit_ticket" target="_blank">Assistance</a></li>
+                                            <li><a href="https://yourconference.live/support" target="_blank">HELP DESK</a></li>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
                                             <?php
@@ -331,16 +331,16 @@
                                             ?>
                                         </ul>
                                         <ul class="nav navbar-nav navbar-right">
-                                            <li class="sticky_resources_open" data-type="resourcesSticky"><a data-type2="off">Recursos</a></li>
+                                            <li class="sticky_resources_open" data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
                                             <li>
-                                                <a target="_blank">Herramienta</a>
+                                                <a target="_blank">TOOLBOX</a>
                                                 <ul class="toolboxCustomDrop">
                                                     <?php
                                                     if (isset($right_bar) && isset($tool_box_status)) {
                                                         if ($tool_box_status == "1") {
                                                             if (sessionRightBarControl($right_bar, "questions")) {
                                                                 ?>
-                                                                <li data-type="questionsSticky"><a data-type2="off"><i class="fa fa-question" aria-hidden="true"></i> Preguntas</a></li>
+                                                                <li data-type="questionsSticky"><a data-type2="off"><i class="fa fa-question" aria-hidden="true"></i> ASK QUESTIONS</a></li>
                                                                 <?php
                                                             }
                                                             if (sessionRightBarControl($right_bar, "notes")) {
@@ -355,7 +355,7 @@
                                                             }
                                                             if (sessionRightBarControl($right_bar, "resources")) {
                                                                 ?>
-                                                                <li data-type="resourcesSticky"><a data-type2="off"><i class="fa fa-paperclip" aria-hidden="true"></i> Recursos</a></li>
+                                                                <li data-type="resourcesSticky"><a data-type2="off"><i class="fa fa-paperclip" aria-hidden="true"></i> RESOURCES</a></li>
                                                                 <?php
                                                             }
                                                         }
@@ -366,7 +366,7 @@
                                         </ul>
                                     <?php } else { ?>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support/submit_ticket" target="_blank">Assistance</a></li>
+                                            <li><a href="https://yourconference.live/support" target="_blank">HELP DESK</a></li>
                                         </ul>
                                     <?php } ?>
                                 </nav>
