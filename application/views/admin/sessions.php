@@ -102,6 +102,7 @@ $user_role = $this->session->userdata('role');
                                         <?php
                                         if (isset($sessions) && !empty($sessions)) {
                                             foreach ($sessions as $val) {
+                                                $toolboxItems = explode(',', $val->right_bar);
                                                 ?>
                                                 <tr>
                                                     <td><?= date("Y-m-d", strtotime($val->sessions_date)) ?></td>
@@ -135,8 +136,13 @@ $user_role = $this->session->userdata('role');
                                                     </td>
                                                     <td><?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                     <td>
-                                                        Toolbox: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->tool_box_status == 1)?'#0ab50a':'#ff2525'?>;"></i><br>
                                                         Claim Link: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->attendee_view_links_status == 1)?'#0ab50a':'#ff2525'?>;"></i>
+                                                        Toolbox: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->tool_box_status == 1)?'#0ab50a':'#ff2525'?>;"></i><br>
+                                                        <hr/>
+                                                        <small>Resources: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("resources", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
+                                                        <small>Chat: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("chat", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
+                                                        <small>Notes: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("notes", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
+                                                        <small>Questions: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("questions", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
                                                     </td>
                                                     <td>
 													  <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin-bottom: 5px;">View</a>
