@@ -15,6 +15,7 @@ $user_role = $this->session->userdata('role');
         <!-- start: DYNAMIC TABLE -->
         <div class="container-fluid container-fullw">
             <div class="row">
+                <form name="add_sessions_frm" id="add_sessions_frm" action="<?= isset($sessions_edit) ? base_url() . "admin/sessions/updateSessions" : base_url() . "admin/sessions/createSessions" ?>" method="POST" enctype="multipart/form-data">
                 <div class="col-md-6">
                     <div class="panel panel-primary" id="panel5">
                         <div class="panel-heading">
@@ -22,9 +23,8 @@ $user_role = $this->session->userdata('role');
                         </div>
                         <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                             <div class="col-md-12">
-                                <form name="add_sessions_frm" id="add_sessions_frm" action="<?= isset($sessions_edit) ? base_url() . "admin/sessions/updateSessions" : base_url() . "admin/sessions/createSessions" ?>" method="POST" enctype="multipart/form-data">
                                     <?php if (isset($sessions_edit)) { ?>
-                                        <input type="hidden" name="sessions_id" id="session_title" value="<?= $sessions_edit->sessions_id ?>">
+                                        <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions_edit->sessions_id ?>">
                                     <?php } ?>
                                     <div class="form-group">
                                         <label class="text-large text-bold">Sessions Title</label>
@@ -46,13 +46,13 @@ $user_role = $this->session->userdata('role');
                                         <hr style="border: 2px solid;">
                                     </div>
 
-                                      <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
+                                      <div class="form-group">
                                         <label class="text-large text-bold">Zoom Meeting Link</label>
-                                        <input type="text" name="zoom_link" id="zoom_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_link : "" ?>" class="form-control" placeholder="Zoom Meeting Link" <?=($user_role != 'super_admin')?'readonly':''?>>
+                                        <input type="text" name="zoom_link" id="zoom_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_link : "" ?>" class="form-control" placeholder="Zoom Meeting Link">
                                     </div>
-                                    <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
+                                    <div class="form-group">
                                         <label class="text-large text-bold">Password</label>
-                                        <input type="text" name="zoom_password" id="zoom_password" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_password : "" ?>" class="form-control" placeholder="Password" <?=($user_role != 'super_admin')?'readonly':''?>>
+                                        <input type="text" name="zoom_password" id="zoom_password" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_password : "" ?>" class="form-control" placeholder="Password">
                                         <hr style="border: 2px solid;">
                                     </div>
 
@@ -88,21 +88,21 @@ $user_role = $this->session->userdata('role');
                                     ?>
                                                                             </select>
                                                                         </div>-->
-                                    <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
+                                    <div class="form-group">
                                         <label class="text-large text-bold">Session Date</label>
-                                        <input class="form-control <?=($user_role != 'super_admin')?'':'datepicker'?>" name="sessions_date" id="sessions_date" type="text" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('m/d/Y', strtotime($sessions_edit->sessions_date)) : "" ?>" <?=($user_role != 'super_admin')?'readonly':''?>>
+                                        <input class="form-control <?=($user_role != 'super_admin')?'':'datepicker'?>" name="sessions_date" id="sessions_date" type="text" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('m/d/Y', strtotime($sessions_edit->sessions_date)) : "" ?>">
                                     </div>
-                                    <div class="row" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
+                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="text-large text-bold">Session Start Time<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? '<b>(ET)</b>' : '' ?></label>
-                                                <input type="time" name="time_slot" id="time_slot" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('H:i', strtotime($sessions_edit->time_slot)) : "" ?>" class="form-control" <?=($user_role != 'super_admin')?'readonly':''?>>
+                                                <input type="time" name="time_slot" id="time_slot" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('H:i', strtotime($sessions_edit->time_slot)) : "" ?>" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="text-large text-bold">Session End Time <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? '<b>(ET)</b>' : '' ?></label>
-                                                <input type="time" name="end_time" id="end_time" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('H:i', strtotime($sessions_edit->end_time)) : "" ?>" class="form-control" <?=($user_role != 'super_admin')?'readonly':''?>>
+                                                <input type="time" name="end_time" id="end_time" value="<?= (isset($sessions_edit) && !empty($sessions_edit)) ? date('H:i', strtotime($sessions_edit->end_time)) : "" ?>" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -206,7 +206,7 @@ $user_role = $this->session->userdata('role');
                                             </div>
                                             <div class="col-md-12" id="url_section">
                                                 <div class="form-group">
-                                                   <label class="text-large text-bold">Claim URL</label>
+                                                   <label class="text-large text-bold">Claim URL (URL must be prefixed with http:// or https://)</label>
                                                    <input type="text" name="url_link" id="url_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->url_link : "" ?>" class="form-control" placeholder="URL Link">
                                                </div>
                                                 <div class="form-group">
@@ -249,7 +249,7 @@ $user_role = $this->session->userdata('role');
                                                 <button type="submit" id="btn_sessions" name="btn_sessions" class="btn btn-green add-row">Submit</button>
                                             </h5>
                                         </div>
-                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -313,8 +313,8 @@ $user_role = $this->session->userdata('role');
                                                             </div>
                                                         </div>
 
-                                                        <?php if (1==2) { ?>
-                                                        <div class='col-md-6'>
+                                                        <?php if (1==1) { ?>
+                                                        <div class='col-md-6' style="display: none">
                                                             <div class='form-group'>
                                                                 <label class='text-large'>Upload published name:</label>
                                                                 <input type='text' name='upload_published_name[]' id='upload_published_name' value='<?= $value->upload_published_name ?>'  placeholder='Enter Upload Published Name' class='form-control'>
@@ -325,7 +325,7 @@ $user_role = $this->session->userdata('role');
                                                                 <img src="<?= base_url() ?>uploads/presenter_resource/<?= $value->presenter_resource ?>" style="height: 100px; width: 100px;">
                                                             </div>
                                                         </div>
-                                                        <div class='col-md-6'>
+                                                        <div class='col-md-6' style="display: none">
                                                             <div class='form-group'>
                                                                 <label class='text-large'>Link published name:</label>
                                                                 <input type='text' name='link_published_name[]' id='link_published_name' value='<?= $value->link_published_name ?>'  placeholder='Enter Upload Published Name' class='form-control'>
@@ -360,9 +360,12 @@ $user_role = $this->session->userdata('role');
                                 </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
+
+                </form>
         </div>
     </div>
 </div>

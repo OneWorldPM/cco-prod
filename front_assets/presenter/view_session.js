@@ -806,7 +806,7 @@ $(function () {
                     timer_string = minutes + "m " + timer_string;
                 if (hours != 0)
                     timer_string = hours + "h " + timer_string;
-                if (days != 0)
+                if (days != 0 && days)
                     timer_string = days + "d " + timer_string;
                 timer_string = "time left: "+timer_string;
 
@@ -828,11 +828,15 @@ $(function () {
             // Set the date we're counting down to
             var countDownDate = new Date(session_start_datetime).getTime();
 
+            console.log("session_start_datetime: "+session_start_datetime);
+
             // Update the count down every 1 second
             var x = setInterval(function () {
 
                 // Get today's date and time
                 var now = new Date().getTime();
+
+                console.log("now: "+now);
 
                 // Find the distance between now and the count down date
                 var distance = countDownDate - now;
@@ -848,7 +852,7 @@ $(function () {
                     timer_string = minutes + "m " + timer_string;
                 if (hours != 0)
                     timer_string = hours + "h " + timer_string;
-                if (days != 0)
+                if (days != 0 && days)
                     timer_string = days + "d " + timer_string;
                 timer_string = "starts in: "+timer_string;
 

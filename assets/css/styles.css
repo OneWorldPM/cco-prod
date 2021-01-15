@@ -4961,7 +4961,7 @@ textarea.autosize.area-animated:focus {
 }
 
 .form-group {
-  position: relative;
+  /*position: relative;*/
 }
 
 .form-group .text {
