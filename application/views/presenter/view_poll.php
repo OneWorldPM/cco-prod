@@ -1,3 +1,4 @@
+<?php //echo "<pre>"; print_r($poll_data); exit("</pre>"); ?>
 <style>
     #example_wrapper .dt-buttons .buttons-csv{
         background-color: #1fbba6;
@@ -24,6 +25,7 @@
 											 <th>Slide Number</th>
                                             <th>Poll Type</th>
                                             <th>Options</th>
+                                            <th>People Voted</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -47,6 +49,7 @@
                                                         }
                                                         ?>
                                                     </td>
+                                                    <td><?= $val->total_votes ?></td>
                                                     <td> 
                                                         <a class="btn btn-primary btn-sm" href="<?= base_url() . 'presenter/sessions/editPollQuestion/' . $val->sessions_poll_question_id ?>">
                                                             <i class="fa fa-pencil"></i> Edit

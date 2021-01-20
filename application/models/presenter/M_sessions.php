@@ -132,11 +132,26 @@ class M_sessions extends CI_Model {
             $poll_question_array = array();
             foreach ($poll_question->result() as $val) {
                 $val->option = $this->db->get_where("poll_question_option", array("sessions_poll_question_id" => $val->sessions_poll_question_id))->result();
+                $val->total_votes = $this->getTotalVotes($val->sessions_poll_question_id);
                 $poll_question_array[] = $val;
             }
             return $poll_question_array;
         } else {
             return '';
+        }
+    }
+
+    function getTotalVotes($sessions_poll_question_id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_poll_voting');
+        $this->db->where("sessions_poll_question_id", $sessions_poll_question_id);
+        $polls = $this->db->get();
+
+        if ($polls->num_rows() > 0) {
+            return $polls->num_rows;
+        } else {
+            return 'No votes';
         }
     }
 
