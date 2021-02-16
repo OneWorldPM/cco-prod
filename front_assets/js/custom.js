@@ -19,7 +19,7 @@ $(document).ready(function () {
 
         $(document).on("click", ".rightSticky ul li,.rightSticykPopup .open > .dropdown-menu li a,.rightSticykPopup .header .rightTool i,.toolboxCustomDrop li a,.sticky_resources_open", function () {
 
-            $(this).removeClass('blink-element');
+            //$(this).removeClass('blink-element');
 
             var screen = $rightSticky.data("screen");
             $toolType = $(this).data("type");
@@ -41,6 +41,11 @@ $(document).ready(function () {
                     $(this).find(".notify").addClass("displayNone");
                    $(this).css("display","none");
 
+                }
+
+                if ($toolType == 'questionFavorites')
+                {
+                    $("#questionsContainer").scrollTop($("#questionsContainer")[0].scrollHeight);
                 }
 
             }else{

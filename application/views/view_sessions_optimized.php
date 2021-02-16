@@ -145,8 +145,11 @@ if (isset($sessions)) {
                     <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>QUESTIONS</span></li>
                     <?php
                 }
-
-                ?>
+                    ?>
+                <li id="adminChatStickeyIcon" data-type="adminChatSticky" class="admin-chat-stickey-icon" style="display: <?=(sessionRightBarControl($sessions->right_bar, "adminChat"))?'block':'none'?>;">
+                    <span class="new-admin-chat-badge badge" style="position: absolute;margin-left: -29px;margin-top: -10px;border-radius: 9px;font-size: 10px;background-color: red;padding-right: 7px;padding-left: 4px;padding-bottom: 4px; display: none;">New</span>
+                    <i class="fas fa-user-tie"></i> <span class="adminChat<?=getAppName($sessions->sessions_id) ?> displayNone"></span> <span>CHAT WITH ADMIN</span>
+                </li>
 
             </ul>
         </div>
@@ -177,6 +180,11 @@ if (isset($sessions)) {
                     if(sessionRightBarControl($sessions->right_bar, "questions")){
                         ?>
                         <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
+                        <?php
+                    }
+                    if(sessionRightBarControl($sessions->right_bar, "adminChat")){
+                        ?>
+                        <li data-type="adminChatSticky"><a data-type2="off">Chat with Admin</a></li>
                         <?php
                     }
 
@@ -223,6 +231,11 @@ if (isset($sessions)) {
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
                         ?>
                         <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
+                        <?php
+                    }
+                    if(sessionRightBarControl($sessions->right_bar, "adminChat")){
+                        ?>
+                        <li data-type="adminChatSticky"><a data-type2="off">Chat with Admin</a></li>
                         <?php
                     }
                     ?>
@@ -287,6 +300,11 @@ if (isset($sessions)) {
                         <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
                         <?php
                     }
+                    if(sessionRightBarControl($sessions->right_bar, "adminChat")){
+                        ?>
+                        <li data-type="adminChatSticky"><a data-type2="off">Chat with Admin</a></li>
+                        <?php
+                    }
                     ?>
 
                 </ul>
@@ -306,6 +324,54 @@ if (isset($sessions)) {
     </div>
 
 </div>
+
+<div class="rightSticykPopup adminChatSticky adminChatSticky<?=getAppName($sessions->sessions_id) ?>" style="display: none">
+    <div class="header"><span></span>
+        <div class="rightTool">
+            <i class="minimize-admin-chat fa fa-minus" aria-hidden="true"></i>
+            <div class="dropdown">
+                <!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
+                <ul class="dropdown-menu">
+                    <?php
+                    if(sessionRightBarControl($sessions->right_bar, "resources")){
+                        ?>
+                        <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
+                        <?php
+                    }
+                    if(sessionRightBarControl($sessions->right_bar, "questions")){
+                        ?>
+                        <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
+                        <?php
+                    }
+                    if(sessionRightBarControl($sessions->right_bar, "notes")){
+                        ?>
+                        <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
+                        <?php
+                    }
+                    if(sessionRightBarControl($sessions->right_bar, "adminChat")){
+                        ?>
+                        <li data-type="adminChatSticky"><a data-type2="off">Chat with Admin</a></li>
+                        <?php
+                    }
+                    ?>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="contentHeader">
+            Chat with Admin
+        </div>
+        <div class="admin-messages">
+        </div>
+
+        <input type="text" class="form-control" placeholder="Enter message" id='sendAdminChat'>
+
+    </div>
+
+</div>
+
 <div class="rightSticykPopup questionsSticky" style="display: none">
     <div class="header"><span></span>
         <div class="rightTool">
@@ -372,14 +438,21 @@ if (isset($sessions)) {
     var base_url = "<?=base_url()?>";
     var site_url = "<?= site_url() ?>";
     var user_id = "<?=$this->session->userdata('cid')?>";
+    var user_fullname = "<?=$this->session->userdata('fullname')?>";
     var app_name = "<?=getAppName($sessions->sessions_id) ?>";
     var session_id = "<?=$sessions->sessions_id?>";
     var session_start_datetime =  new Date("<?= date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot ?>");
     var session_end_datetime =  new Date("<?= date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time ?>");
+
+    var socket_session_name = "<?=getAppName('_admin-to-attendee-chat')?>";
 </script>
 <?= getSocketScript()?>
 <script src="<?= base_url() ?>front_assets/js/custom-fullscreen.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@9.17.0/dist/sweetalert2.all.min.js"></script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
 <script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=16"></script>
+<script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=<?=rand(1, 100)?>"></script>

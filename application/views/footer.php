@@ -1,4 +1,4 @@
-<div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
+<div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;top: unset">
     <input type="hidden" id="push_notification_id" value="">
     <div class="modal-dialog">
         <div class="modal-content" style="border: 1px solid #679B41;">
@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #363535; opacity: 1; font-size: 18px; font-weight: 400;" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #EF5D21; opacity: 1; font-size: 18px; font-weight: 400;" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
     </div>
@@ -24,9 +24,12 @@
 <script src="<?= base_url() ?>front_assets/js/theme-functions.js"></script>
 
 <!-- Custom js file -->
-<script src="<?= base_url() ?>front_assets/js/custom.js?v=3"></script>
+<script src="<?= base_url() ?>front_assets/js/custom.js?v=4"></script>
 <script src="<?= base_url() ?>assets/alertify/alertify.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+
+
+<script src="https://kit.fontawesome.com/fd91b3535c.js" crossorigin="anonymous"></script>
 
 <script>
     var user_id = <?= $this->session->userdata("cid") ?>;
@@ -99,10 +102,20 @@
                         if (push_notification_id == "0") {
                             $("#push_notification_id").val(data.result.push_notification_id);
                         }
-                        if (push_notification_id != data.result.push_notification_id) {
+                        if (push_notification_id != data.result.push_notification_id && data.result.session_id == null) {
                             $("#push_notification_id").val(data.result.push_notification_id);
                             $('#push_notification').modal('show');
                             $("#push_notification_message").text(data.result.message);
+                        }
+
+                        if (push_notification_id != data.result.push_notification_id && data.result.session_id != null)
+                        {
+                            if (typeof session_id !== 'undefined' && session_id == data.result.session_id)
+                            {
+                                $("#push_notification_id").val(data.result.push_notification_id);
+                                $('#push_notification').modal('show');
+                                $("#push_notification_message").text(data.result.message);
+                            }
                         }
                     } else {
                         $('#push_notification').modal('hide');

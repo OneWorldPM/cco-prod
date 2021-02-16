@@ -1,3 +1,12 @@
+<?php
+if (isset($_GET['testing']))
+{
+    echo "<pre>";
+    print_r($sessions);
+    exit("</pre>");
+}
+?>
+
 <div class="main-content" >
     <div class="wrap-content container" id="container">
         <form name="frm_credit" id="frm_credit" method="POST" action="">
@@ -11,6 +20,20 @@
                             <div class="panel-body bg-white" style="border: 1px solid #b2b7bb;">
                                 <div class="row">
                                     <div class="col-md-10 col-md-offset-1">
+                                        <div class="form-group">
+                                            <label for="visibility">Visibility :</label>
+                                            <select class="form-control" id="visibility" name="visibility">
+                                                <option value="null">Whole Site</option>
+                                                <?php
+                                                foreach ($sessions as $session)
+                                                { ?>
+                                                    <option value="<?=$session['sessions_id']?>">Session <?=$session['sessions_id']?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                            <small style="color: grey;">Note: Sending a session specific push notification will go to both the attend and view pages.</small>
+                                        </div>
                                         <div class="form-group">
                                             <label class="text-large">Message :</label>
                                             <textarea name="message" id="message" rows="3" class="form-control" placeholder="Enter Message..." style="color: #5b5b60"></textarea>
@@ -40,6 +63,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Date</th>
+                                                <th>Visibility</th>
                                                 <th>Message</th>
                                                 <th>Action</th>                          
                                             </tr>
@@ -51,6 +75,7 @@
                                                     ?>
                                                     <tr>
                                                         <td><?= date("Y-m-d", strtotime($val->notification_date)) ?></td>
+                                                        <td><?= ($val->session_id == null)?'Whole Site':'Session '.$val->session_id ?></td>
                                                         <td><?= $val->message ?></td>
 <!--                                                        <td>
                                                             <?php if ($val->status == 1) { ?>

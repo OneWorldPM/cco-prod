@@ -547,13 +547,13 @@ class Sessions extends CI_Controller {
             $pdf->Write(0, $sesstion_title, '', 0, 'C', true, 0, false, false, 0);
 
             $pdf->SetTextColor(0,0,0);
-            $pdf->SetFont('helvetica', 'B', 20);
+            $pdf->SetFont('helvetica', 'B', 15);
             $pdf->SetXY(10, 30);
             $pdf->Write(0, $poll->poll_name.': '.$poll->question, '', 0, 'C', true, 0, false, false, 0);
 
 
             $xc = 80;
-            $yc = 90;
+            $yc = 80;
             $r = 30;
 
             $color_sets = array();
@@ -563,10 +563,13 @@ class Sessions extends CI_Controller {
             $color_sets[] = array(16, 150, 24);
             $color_sets[] = array(0, 202, 202);
             $color_sets[] = array(255, 153, 0);
+            $color_sets[] = array(49, 255, 187);
+            $color_sets[] = array(255, 12, 206);
+            $color_sets[] = array(136, 49, 6);
 
             $pie_current_degree = 0;
             $color_set = 0;
-            $desc_y = 75;
+            $desc_y = 50;
             foreach ($poll->options as $option)
             {
                 if ($poll->total_votes != 0)
@@ -584,11 +587,11 @@ class Sessions extends CI_Controller {
                     if ($percent != 0)
                     {
                         $pdf->Circle(140, $desc_y, 2, 0, 360, 'DF', null, array($color_r, $color_g, $color_b));
-                        $desc_y = $desc_y+10;
+                        $desc_y = $desc_y+7;
 
-                        $pdf->SetFont('helvetica', 'I', 10);
+                        $pdf->SetFont('helvetica', 'I', 7);
                         $pdf->SetTextColor(0,0,0);
-                        $pdf->SetXY(142, $desc_y-12);
+                        $pdf->SetXY(142, $desc_y-9);
                         $pdf->Write(0, $option->option, '', 0, '', true, 0, false, false, 0);
 
                     }
@@ -599,29 +602,29 @@ class Sessions extends CI_Controller {
             }
 
 
-            $pdf->SetXY(30, 130);
+            $pdf->SetXY(30, 115);
             $pdf->SetFont('helvetica', 'B', 12);
             $result_table =
                 '<table cellspacing="0" cellpadding="5">
                     <tr>
-                        <td style="width: 500px;">Option</td>
+                        <td style="width: 500px;">Options</td>
                         <td style="width: 100px;">Votes</td>
                         <td style="width: 100px;">Percentage</td>
                     </tr>
                  </table>';
             $pdf->writeHTML($result_table, true, false, false, false, 'center');
 
-            $pdf->SetXY(30, 136);
+            $pdf->SetXY(30, 125);
             $pdf->SetFont('helvetica', '', 12);
             $result_table =
-                    '<table cellpadding="5">';
+                    '<table cellpadding="2">';
 
             foreach ($poll->options as $option)
             {
                 if ($poll->total_votes != 0)
                 {
                     $result_table .= '<tr>
-                                    <td style="width: 500px; height: 10px;">'.htmlspecialchars($option->option).'</td>
+                                    <td style="width: 500px; height: 5px;">'.htmlspecialchars($option->option).'</td>
                                     <td style="width: 100px;">'.$option->total_vot.'</td>
                                     <td style="width: 100px;">'.number_format(($option->total_vot*100)/$poll->total_votes, 1).'%</td>
                                   </tr>';
@@ -716,5 +719,140 @@ class Sessions extends CI_Controller {
         }
     }
 
+
+    public function saveAdminToAttendeeChat()
+    {
+        $post = $this->input->post();
+
+        $data = array(
+            'session_id' => $post['session_id'],
+            'from_id' => $post['from_id'],
+            'to_id' => $post['to_id'],
+            'chat_text' => $post['chat_text'],
+            'date_time' => date("Y-m-d H:i:s")
+        );
+
+        $this->db->insert('admin_to_attendee_chat', $data);
+
+        if ($this->db->affected_rows() > 0)
+            echo 1;
+        else
+            echo 0;
+
+        return;
+    }
+
+    public function getAllUsersList()
+    {
+        $post = $this->input->post();
+
+        $data = array(
+            'session_id' => $post['session_id']
+        );
+
+        $this->db->select('from_id, to_id');
+        $this->db->from('admin_to_attendee_chat');
+        $this->db->where($data);
+
+        $query = $this->db->get();
+
+        if ( $query->num_rows() > 0 )
+        {
+            $users =array();
+            foreach ($query->result_array() as $row)
+            {
+                $this->load->model('madmin/m_user', 'userModel');
+
+                if($row['from_id'] != "admin")
+                    $users[] = $row['from_id'];
+                if($row['to_id'] != "admin")
+                    $users[] = $row['to_id'];
+            }
+
+            $users = array_unique($users);
+
+            $users_details = array();
+            foreach ($users as $user)
+            {
+                $user_details = $this->userModel->getUserDetail($user);
+                $user_details->unread_msgs = $this->getUnreadMsgs($post['session_id'], $user);
+
+                $users_details[] = $user_details;
+            }
+
+            echo json_encode(($users_details));
+        }else{
+            echo json_encode(array());
+        }
+
+        return;
+    }
+
+
+    public function getAllAdminToAttendeeChat()
+    {
+        $post = $this->input->post();
+
+        $data = array(
+            'session_id' => $post['session_id']
+        );
+        $or_where = "((from_id = '{$post['from_id']}' AND to_id = '{$post['to_id']}') OR (from_id = '{$post['to_id']}' AND to_id = '{$post['from_id']}'))";
+
+        $this->db->select('*');
+        $this->db->from('admin_to_attendee_chat');
+        $this->db->where($data);
+        $this->db->where($or_where);
+        $this->db->order_by("date_time", "asc");
+
+        $query = $this->db->get();
+
+        if ( $query->num_rows() > 0 )
+        {
+            echo json_encode($query->result_array());
+        }else{
+            echo json_encode(array());
+        }
+
+        return;
+    }
+
+    public function getUnreadMsgs($session_id, $user_id)
+    {
+
+        $data = array(
+            'session_id' => $session_id,
+            'from_id' => $user_id,
+            'marked_read' => 0
+        );
+
+        $this->db->select('*');
+        $this->db->from('admin_to_attendee_chat');
+        $this->db->where($data);
+
+        $query = $this->db->get();
+
+        if ( $query->num_rows() > 0 )
+            return true;
+
+        return false;
+    }
+
+    public function markAllAsRead($session_id, $user_id)
+    {
+        $data = array(
+            'session_id' => $session_id,
+            'from_id' => $user_id
+        );
+
+        $this->db->where($data);
+        $this->db->update('admin_to_attendee_chat', array('marked_read'=>1));
+
+        if ($this->db->affected_rows() > 0)
+            echo 1;
+        else
+            echo 0;
+
+        return;
+    }
 
 }

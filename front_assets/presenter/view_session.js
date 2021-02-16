@@ -378,6 +378,8 @@ function get_question_list() {
                     $("#last_sessions_cust_question_id").val(val.sessions_cust_question_id);
                     $('#question_list').prepend('<div id="question_list_key_' + key + '" style="padding-bottom: 15px;"><h5 style="font-weight: 400; font-size: 15px; "><span style="font-size: 12px;">(' + val.first_name + ' ' + val.last_name + ') </span>' + val.question + ' <span class="' + add_star_class + ' " data-sessions_cust_question_id=' + val.sessions_cust_question_id + '></span> <a href="javascript:void(0)" class="hide_question" data-q-id="' + val.sessions_cust_question_id + '" data-listkey-id="question_list_key_' + key + '" title="Hide" ><span class="fa fa-eye-slash" ></span></a></h5><div style="display: flex;"><input type="hidden" ' + readonly_value + ' id="answer_' + key + '" data-key_id="' + key + '" class="form-control input_class" placeholder="Enter Answer"  data-cust_id="' + val.cust_id + '" data-last_id="' + val.sessions_cust_question_id + '" value="' + answer_value + '"><a  class="btn btn-success btn_publish" id="btn_publish" data-answer_btn="answer_' + key + '" ' + disabled_value + ' style="border-radius: 0px; display:none">Send</a></div></div>');
                 });
+
+                $("#questionsContainer").scrollTop($("#questionsContainer")[0].scrollHeight);
             }
         }
     });
@@ -836,7 +838,7 @@ $(function () {
                 // Get today's date and time
                 var now = new Date().getTime();
 
-                console.log("now: "+now);
+                // console.log("now: "+now);
 
                 // Find the distance between now and the count down date
                 var distance = countDownDate - now;
@@ -948,7 +950,7 @@ socket.on('new_question_notification', (poll_app_name) => {
         get_question_list();
         var $questionNotify=$(".questionNotify");
 
-        $('.presenterRightSticky').find('li[data-type="questionFavorites"]').addClass('blink-element');
+        //$('.presenterRightSticky').find('li[data-type="questionFavorites"]').addClass('blink-element');
 
         if($questionNotify.parent().css("display")!="none"){
             $questionNotify.removeClass("displayNone");
@@ -971,7 +973,7 @@ socket.on('session_new_message_notification', (poll_app_name) => {
         getMessage();
         var $hostChatNotify=$(".hostChatNotify");
 
-        $('.presenterRightSticky').find('li[data-type="hostChat"]').addClass('blink-element');
+        //$('.presenterRightSticky').find('li[data-type="hostChat"]').addClass('blink-element');
         if($hostChatNotify.parent().css("display")!="none"){
             $hostChatNotify.removeClass("displayNone");
         }

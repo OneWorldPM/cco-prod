@@ -11,18 +11,21 @@
         <div class="container-fluid container-fullw">
             <div class="row">
                 <div class="panel panel-primary" id="panel5">
-                    <div class="panel-heading">
+                    <div class="panel-heading" style="margin-bottom: 15px;">
                         <h4 class="panel-title text-white">Poll</h4>
                     </div>
                     <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                         <div class="row">
                             <div class="col-md-12 table-responsive">
+                                <a href="<?=base_url('admin/sessions/create_poll/')?><?=$session_id?>"><button class="btn btn-sm btn-success" style="margin-bottom: 5px;"><i class="fa fa-plus" aria-hidden="true"></i> Create Poll</button></a>
                                 <table class="table table-bordered table-striped text-center" id="user">
                                     <thead class="th_center">
                                         <tr>
+                                            <th>Question ID</th>
                                             <th>Question</th>
                                             <th>Poll Name</th>
                                             <th>Poll Type</th>
+                                            <th>Comparison With</th>
                                             <th>Slide Number</th>
                                             <th>Modify</th>
                                             <th>Action</th>
@@ -34,9 +37,11 @@
                                             foreach ($poll_data as $val) {
                                                 ?>
                                                 <tr>
+                                                    <td><?= $val->sessions_poll_question_id ?></td>
                                                     <td><?= $val->question ?></td>
                                                     <td><?= $val->poll_name ?></td>
                                                     <td><?= $val->poll_type ?></td>
+                                                    <td><?= ($val->poll_comparisons_id == 0)?'None':$val->poll_comparisons_id ?></td>
                                                     <td><?= $val->slide_number ?></td>
                                                     <td>
                                                         <a class="btn btn-primary btn-sm" href="<?= base_url() . 'admin/sessions/editPollQuestion/' . $val->sessions_poll_question_id ?>">
@@ -116,7 +121,7 @@ switch ($msg) {
             "ordering": false,
             "pageLength": 25,
             "columnDefs": [
-                { "width": "40%", "targets": 0 }
+                { "width": "40%", "targets": 1 }
             ]
         });
 

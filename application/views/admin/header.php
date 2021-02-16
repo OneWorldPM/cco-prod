@@ -67,7 +67,7 @@ $user_name = ucfirst($this->session->userdata('uname'));
 
         <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch.js"></script> -->
         <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch-onload.js"></script> -->
-        <script src="<?= base_url() ?>front_assets/js/custom.js"></script>
+        <script src="<?= base_url() ?>front_assets/js/custom.js?v=4"></script>
         <?= getSocketScript()?>
         <script>
         
@@ -165,6 +165,19 @@ $user_name = ucfirst($this->session->userdata('uname'));
                                         </div>
                                         <div class="item-inner">
                                             <span class="title">Sessions</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="<?= ($uri_segment == 'chat_with_attendee') ? 'active' : ''; ?>">
+                                <a href="<?= site_url() ?>admin/chat_with_attendee" id="dash">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-commenting"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title">Attendee Chat</span>
                                         </div>
                                     </div>
                                 </a>

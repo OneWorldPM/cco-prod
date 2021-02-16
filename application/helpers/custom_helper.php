@@ -58,3 +58,26 @@ function sessionRightBarControl($right_bar, $control, $text="success")
 
     return $par;
 }
+
+function themeColour($seesionId = null)
+{
+    $CI =& get_instance();
+
+    $CI->db->select('*');
+    $CI->db->from('sessions');
+    $CI->db->where(array('sessions_id'=>$seesionId));
+
+    $query = $CI->db->get();
+
+    if ( $query->num_rows() > 0 )
+    {
+        $colour = $query->result_array()[0]['theme_color'];
+
+        if ($colour != '')
+            return $query->result_array()[0]['theme_color'];
+        else
+            return 'EF5D21';
+    }else{
+        return 'EF5D21';
+    }
+}

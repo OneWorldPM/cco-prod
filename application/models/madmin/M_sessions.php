@@ -46,6 +46,17 @@ class M_sessions extends CI_Model {
             return '';
         }
     }
+
+    function getAllSessions() {
+        $this->db->select('*');
+        $this->db->from('sessions');
+        $sessions = $this->db->get();
+        if ($sessions->num_rows() > 0) {
+            return $sessions->result_array();
+        } else {
+            return array();
+        }
+    }
 	
 	function getSessionsFilter() {
         $this->db->select('*');
@@ -77,6 +88,7 @@ class M_sessions extends CI_Model {
                  $val->presenter = $this->common->get_presenter($val->presenter_id, $val->sessions_id);
                 $return_array[] = $val;
             }
+            //echo "<pre>"; print_r($return_array);exit("</pre>");
             return $return_array;
         } else {
             return '';
@@ -167,8 +179,7 @@ class M_sessions extends CI_Model {
             "reg_date" => date("Y-m-d h:i"),
             'right_bar' => $session_right_bar,
             'sponsor_type' => $post['sponsor_type'],
-
-
+            'theme_color' => $post['theme_color']
         );
         $this->db->insert("sessions", $set);
         $sessions_id = $this->db->insert_id();
@@ -183,6 +194,15 @@ class M_sessions extends CI_Model {
                 $this->upload->do_upload('sessions_logo');
                 $file_upload_name = $this->upload->data();
                 $this->db->update('sessions', array('sessions_logo' => $file_upload_name['file_name']), array('sessions_id' => $sessions_id));
+            }
+
+            if ($_FILES['sessions_addnl_logo']['name'] != "") {
+
+                $this->load->library('upload');
+                $this->upload->initialize($this->set_upload_logo_options());
+                $this->upload->do_upload('sessions_addnl_logo');
+                $file_upload_name = $this->upload->data();
+                $this->db->update('sessions', array('sessions_addnl_logo' => $file_upload_name['file_name']), array('sessions_id' => $sessions_id));
             }
 
 
@@ -340,6 +360,7 @@ class M_sessions extends CI_Model {
             'link_text' => trim($post['link_text']),
             'sponsor_type' => $post['sponsor_type'],
             'right_bar' => $session_right_bar,
+            'theme_color' => $post['theme_color']
 
         );
         $this->db->update("sessions", $set, array("sessions_id" => $post['sessions_id']));
@@ -360,6 +381,21 @@ class M_sessions extends CI_Model {
                 $this->upload->do_upload('sessions_logo');
                 $file_upload_name = $this->upload->data();
                 $this->db->update('sessions', array('sessions_logo' => $file_upload_name['file_name']), array('sessions_id' => $sessions_id));
+            }
+
+            if ($_FILES['sessions_addnl_logo']['name'] != "") {
+                $this->db->select('sessions_addnl_logo');
+                $this->db->from('sessions');
+                $this->db->where("sessions_id", $post['sessions_id']);
+                $session = $this->db->get()->row();
+                unlink("./uploads/sessions_logo/".$session->sessions_addnl_logo);
+
+
+                $this->load->library('upload');
+                $this->upload->initialize($this->set_upload_logo_options());
+                $this->upload->do_upload('sessions_addnl_logo');
+                $file_upload_name = $this->upload->data();
+                $this->db->update('sessions', array('sessions_addnl_logo' => $file_upload_name['file_name']), array('sessions_id' => $sessions_id));
             }
 
             if ($_FILES['sessions_photo']['name'] != "") {
@@ -531,6 +567,9 @@ class M_sessions extends CI_Model {
         if ($poll_question->num_rows() > 0) {
             $poll_question_array = $poll_question->row();
             $poll_question_array->option = $this->db->get_where("poll_question_option", array("sessions_poll_question_id" => $poll_question_array->sessions_poll_question_id))->result();
+            if ($poll_question_array->poll_comparisons_id != 0)
+                $poll_question_array->comparison_with = $this->db->get_where("sessions_poll_question", array("sessions_poll_question_id" => $poll_question_array->poll_comparisons_id))->result()[0];
+            $poll_question_array->all_other_surveys = $this->db->get_where("sessions_poll_question", array("sessions_id" => $poll_question_array->sessions_id, "sessions_poll_question_id !=" => $poll_question_array->sessions_poll_question_id))->result();
             return $poll_question_array;
         } else {
             return '';
@@ -544,7 +583,8 @@ class M_sessions extends CI_Model {
             'question' => trim($post['question']),
             'poll_name' => trim($post['poll_name']),
 			'slide_number' => trim($post['slide_number']),
-            'poll_type_id' => $post['poll_type_id']
+            'poll_type_id' => $post['poll_type_id'],
+            'poll_comparisons_id' => (isset($post['poll_comparisons_id']))?$post['poll_comparisons_id']:0
         );
         $this->db->update("sessions_poll_question", $set, array("sessions_poll_question_id" => $post['sessions_poll_question_id']));
         $option_result = $this->db->get_where("poll_question_option", array("sessions_poll_question_id" => $post['sessions_poll_question_id']))->result();
@@ -1138,7 +1178,7 @@ class M_sessions extends CI_Model {
                         $presurvey = $presurvey + 1;
                         $polls[] = array(
                             'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
-                            'text' => $sessions_poll_question->poll_type . " " . $presurvey . " : " . $sessions_poll_question->question,
+                            'text' => $sessions_poll_question->poll_name . " : " . $sessions_poll_question->question,
                             'options' => $options,
                             'total_votes' => $total_votes
                         );
@@ -1146,7 +1186,7 @@ class M_sessions extends CI_Model {
                         $poll = $poll + 1;
                         $polls[] = array(
                             'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
-                            'text' => $sessions_poll_question->poll_type . " " . $poll . " : " . $sessions_poll_question->question,
+                            'text' => $sessions_poll_question->poll_name . " : " . $sessions_poll_question->question,
                             'options' => $options,
                             'total_votes' => $total_votes
                         );
@@ -1154,7 +1194,7 @@ class M_sessions extends CI_Model {
                         $assessment = $assessment + 1;
                         $polls[] = array(
                             'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
-                            'text' => $sessions_poll_question->poll_type . " " . $assessment . " : " . $sessions_poll_question->question,
+                            'text' => $sessions_poll_question->poll_name . " : " . $sessions_poll_question->question,
                             'options' => $options,
                             'total_votes' => $total_votes
                         );
@@ -1399,7 +1439,7 @@ class M_sessions extends CI_Model {
                         $presurvey = $presurvey + 1;
                         $polls[] = array(
                             'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
-                            'text' => $sessions_poll_question->poll_type . " " . $presurvey . " : " . $sessions_poll_question->question,
+                            'text' => $sessions_poll_question->poll_name . " : " . $sessions_poll_question->question,
                             'options' => $options,
                             'total_votes' => $total_votes
                         );
@@ -1407,7 +1447,7 @@ class M_sessions extends CI_Model {
                         $poll = $poll + 1;
                         $polls[] = array(
                             'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
-                            'text' => $sessions_poll_question->poll_type . " " . $poll . " : " . $sessions_poll_question->question,
+                            'text' => $sessions_poll_question->poll_name . " : " . $sessions_poll_question->question,
                             'options' => $options,
                             'total_votes' => $total_votes
                         );
@@ -1415,7 +1455,7 @@ class M_sessions extends CI_Model {
                         $assessment = $assessment + 1;
                         $polls[] = array(
                             'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
-                            'text' => $sessions_poll_question->poll_type . " " . $assessment . " : " . $sessions_poll_question->question,
+                            'text' => $sessions_poll_question->poll_name . " : " . $sessions_poll_question->question,
                             'options' => $options,
                             'total_votes' => $total_votes
                         );

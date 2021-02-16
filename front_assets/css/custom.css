@@ -286,3 +286,43 @@
 .displayNone {
     display: none !important;
 }
+
+.adminChatSticky .content .admin-messages {
+    padding: 5px 3px;
+    max-height: 240px;
+    height: 200px;
+    overflow: auto;
+}
+
+.adminChatSticky input {
+    width: 270px;
+    height: 40px;
+    border-radius: 50px;
+    margin: 1px auto 0 auto;
+}
+
+.admin-to-user-text{
+    color: white;
+    background-color: #df941f;
+    text-align: left;
+    display: list-item;
+    list-style: none;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    padding-left: 12px;
+    border-radius: 15px;
+    margin-right: 40px;
+}
+
+.user-to-admin-text{
+    color: white;
+    background-color: #1f8edf;
+    text-align: right;
+    display: list-item;
+    list-style: none;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    padding-right: 12px;
+    border-radius: 15px;
+    margin-left: 50px;
+}

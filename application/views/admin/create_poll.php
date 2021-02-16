@@ -1,3 +1,12 @@
+<?php
+if (isset($_GET['testing']))
+{
+    echo "<pre>";
+    print_r($sessions_data);
+    exit ("</pre>");
+}
+?>
+
 <div class="main-content" >
     <div class="wrap-content container" id="container">
         <div class="container-fluid container-fullw bg-white">
@@ -118,9 +127,9 @@
                                         if (!isset($sessions_data)) {
                                             ?>
                                             <div class="form-group">
-                                                <label class="text-large">Poll Comparisons with us:</label>
+                                                <label class="text-large">Poll Comparisons with:</label>
                                                 <select class="form-control" id="poll_comparisons_with_us" name="poll_comparisons_with_us">
-                                                    <option value="">Select Poll Comparisons</option>
+                                                    <option value="">Select Poll Comparison</option>
                                                     <?php
                                                     if (isset($poll_type) && !empty($poll_type)) {
                                                         foreach ($poll_type as $value) {
@@ -133,7 +142,23 @@
                                                 </select>
                                             </div>
                                             <?php
-                                        }
+                                        }else{ ?>
+                                            <div class="form-group">
+                                                <label class="text-large">Poll Comparisons with:</label>
+                                                <select class="form-control" id="poll_comparisons_id" name="poll_comparisons_id">
+                                                    <option value="0">None</option>
+                                                    <?php
+                                                    if (isset($sessions_data->all_other_surveys) && !empty($sessions_data->all_other_surveys)) {
+                                                        foreach ($sessions_data->all_other_surveys as $survey) {
+                                                            ?>
+                                                            <option value="<?= $survey->sessions_poll_question_id ?>" <?=($survey->sessions_poll_question_id == $sessions_data->comparison_with->sessions_poll_question_id)?"selected": ""?>><?= $survey->poll_name ?></option>
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                       <?php }
                                         ?>
                                         <h5 class="over-title margin-bottom-15">
                                             <button type="button" id="<?= isset($sessions_data) ? "edit_create_poll" : "save_create_poll" ?>" name="<?= isset($sessions_data) ? "edit_create_poll" : "save_create_poll" ?>" class="btn btn-green add-row">
@@ -223,12 +248,13 @@ switch ($msg) {
             } else if ($('#option_2').val() == '') {
                 alertify.error('Please Enter Option 2');
                 return false;
-            } else if ($('#option_3').val() == '') {
-                alertify.error('Please Enter Option 3');
-                return false;
-            } else if ($('#option_4').val() == '') {
-                alertify.error('Please Enter Option 4');
-                return false;
+            //}
+            // else if ($('#option_3').val() == '') {
+            //     alertify.error('Please Enter Option 3');
+            //     return false;
+            // } else if ($('#option_4').val() == '') {
+            //     alertify.error('Please Enter Option 4');
+            //     return false;
 //            } else if ($('#option_1').val().length > 25 || $('#option_2').val().length > 25 || $('#option_3').val().length > 25 || $('#option_4').val().length > 25 || $('#option_5').val().length > 25 || $('#option_6').val().length > 25 || $('#option_7').val().length > 25 || $('#option_8').val().length > 25 || $('#option_9').val().length > 25 || $('#option_10').val().length > 25) {
 //                alertify.error('Polls have 25 character limit including spaces in order to fit in attendee interface. Please reduce your characters');
 //                return false;
@@ -252,12 +278,12 @@ switch ($msg) {
             } else if ($('#option_2').val() == '') {
                 alertify.error('Please Enter Option 2');
                 return false;
-            } else if ($('#option_3').val() == '') {
-                alertify.error('Please Enter Option 3');
-                return false;
-            } else if ($('#option_4').val() == '') {
-                alertify.error('Please Enter Option 4');
-                return false;
+            // } else if ($('#option_3').val() == '') {
+            //     alertify.error('Please Enter Option 3');
+            //     return false;
+            // } else if ($('#option_4').val() == '') {
+            //     alertify.error('Please Enter Option 4');
+            //     return false;
             } else {
                 var sessions_id = $('#sessions_id').val();
                 $('#frm_add_Poll').attr('action', '<?= base_url() ?>admin/sessions/update_poll_data/'+sessions_id);

@@ -55,17 +55,19 @@ class Sessions extends CI_Controller {
     }
 
     public function view($sessions_id) {
+
         $this->load->library('MobileDetect');
         $this->MobileDetect = new MobileDetect();
 
         $sesions = $this->objsessions->viewSessionsData($sessions_id);
 
-        if (date("Y-m-d H:i:s") > date("Y-m-d H:i:s", strtotime($sesions->sessions_date . ' ' . $sesions->end_time))) {
-            header("location:" . base_url() . "sessions/session_end");
+        if (date("Y-m-d H:i:s") > date("Y-m-d H:i:s", strtotime($sesions->sessions_date . ' ' . $sesions->end_time)) && $sessions_id != 25) {
+            header("location:" . base_url() . "sessions/session_end/$sessions_id");
             die();
         }
 
         $header_data["sesions_logo"] = $sesions->sessions_logo;
+        $header_data["sessions_addnl_logo"] = $sesions->sessions_addnl_logo;
         $header_data["sponsor_type"] = $sesions->sponsor_type;
       $header_data["right_bar"] = $sesions->right_bar;
         $header_data["tool_box_status"] = $sesions->tool_box_status;
@@ -77,6 +79,7 @@ class Sessions extends CI_Controller {
         $header_data["attendee_view_links_status"] = $sesions->attendee_view_links_status;
         $header_data["url_link"] = $sesions->url_link;
         $header_data["link_text"] = $sesions->link_text;
+        $header_data['session_id'] = $sessions_id;
 
         $data['isMobile'] = $this->MobileDetect->isMobile();
 
@@ -311,9 +314,12 @@ class Sessions extends CI_Controller {
     }
 
     public function attend($sessions_id) {
+
+        $headerData['session_id'] = $sessions_id;
+
         $data["sessions"] = $this->objsessions->viewSessionsData($sessions_id);
 
-        $this->load->view('header');
+        $this->load->view('header', $headerData);
         $this->load->view('view_attend', $data);
         $this->load->view('footer');
     }
@@ -444,8 +450,15 @@ class Sessions extends CI_Controller {
         echo json_encode(array("status" => "success"));
     }
 	
-	  public function session_end(){
-        $this->load->view('header');
+	  public function session_end($session_id){
+
+          $sesions = $this->objsessions->viewSessionsData($session_id);
+          $header_data["attendee_view_links_status"] = $sesions->attendee_view_links_status;
+          $header_data["url_link"] = $sesions->url_link;
+          $header_data["link_text"] = $sesions->link_text;
+          $header_data['session_id'] = $session_id;
+
+        $this->load->view('header', $header_data);
         $this->load->view('end_session');
         $this->load->view('footer');
     }
@@ -513,5 +526,56 @@ class Sessions extends CI_Controller {
             return false;
         }
     }
+
+
+    public function saveAdminToAttendeeChat()
+    {
+        $post = $this->input->post();
+
+        $data = array(
+            'session_id' => $post['session_id'],
+            'from_id' => $post['from_id'],
+            'to_id' => $post['to_id'],
+            'chat_text' => $post['chat_text'],
+            'date_time' => date("Y-m-d H:i:s")
+        );
+
+        $this->db->insert('admin_to_attendee_chat', $data);
+
+        if ($this->db->affected_rows() > 0)
+            echo 1;
+        else
+            echo 0;
+
+        return;
+    }
+
+    public function getAllAdminToAttendeeChat()
+    {
+        $post = $this->input->post();
+
+        $data = array(
+            'session_id' => $post['session_id']
+        );
+        $or_where = "((from_id = '{$post['from_id']}' AND to_id = '{$post['to_id']}') OR (from_id = '{$post['to_id']}' AND to_id = '{$post['from_id']}'))";
+
+        $this->db->select('*');
+        $this->db->from('admin_to_attendee_chat');
+        $this->db->where($data);
+        $this->db->where($or_where);
+        $this->db->order_by("date_time", "asc");
+
+        $query = $this->db->get();
+
+        if ( $query->num_rows() > 0 )
+        {
+            echo json_encode($query->result_array());
+        }else{
+            echo json_encode(array());
+        }
+
+        return;
+    }
+
 
 }

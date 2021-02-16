@@ -1,4 +1,15 @@
+<?php
+if (isset($_GET['testing']))
+{
+    echo"<pre>"; print_r(themeColour(79)); exit('</pre>');
+}
 
+
+if(isset($session_id))
+    $themeColour = themeColour($session_id);
+else
+    $themeColour = 'EF5D21';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -81,10 +92,15 @@
             }
 
             .logo2 {
-                border-left: 1px solid black;
                 float: left;
                 padding-left: 15px;
-                margin-top: 8px;
+                margin-top: 11px;
+            }
+
+            .logo0 {
+                float: left;
+                margin-top: 11px;
+                margin-right: 11px;
             }
 
             .logo2 img {
@@ -92,9 +108,16 @@
                 width: 79px;
                 height: 50px;
             }
+
+            .logo0 img {
+                object-fit: contain;
+                width: 134px;
+                height: 56px;
+            }
+
             .logo2 span {
                 position: absolute;
-                top: -6px;
+                top: 0px;
                 font-family: sans-serif;
                 font-size: 11px;
             }
@@ -154,7 +177,7 @@
             }
 
             .toolboxCustomDrop li a:hover {
-                color: #ff5e00 !important;
+                /*color: #ff5e00 !important;*/
 
             }
 
@@ -218,6 +241,43 @@
                     width: 115px;
                 }
             }
+
+            #briefcase, #resource_display_status {
+                color: white !important;
+            }
+
+            /****** Theme based colours ****/
+            .hoverThemeColour:hover{
+                color: #<?=$themeColour?> !important;
+            }
+            .rightSticky ul li{
+                background-color: #<?=$themeColour?> !important;
+            }
+            .rightSticykPopup .header{
+                background-color: #<?=$themeColour?> !important;
+            }
+            .rightSticykPopup .contentHeader{
+                color: #<?=$themeColour?> !important;
+            }
+            .button.color, .btn.btn-primary {
+                background-color: #<?=$themeColour?> !important;
+                border-color: #<?=$themeColour?> !important;
+                color: #fff;
+            }
+            ::-moz-selection { /* Code for Firefox */
+                color: white;
+                background: #<?=$themeColour?> !important;
+            }
+
+            ::selection {
+                color: white;
+                background: #<?=$themeColour?> !important;
+            }
+            #mainMenu2 ul li a:hover {
+                color: #<?=$themeColour?> !important;
+            }
+            /****** Theme based colours ****/
+
         </style>
 
     </head>
@@ -227,14 +287,24 @@
             <!-- HEADER -->
             <header id="header" class="header-transparent header-sticky">
                 <div id="header-wrap">
-                    <div style="height: 4px;background-color: #f15a23;"></div>
+                    <div style="height: 4px;background-color: #<?=$themeColour?>;"></div>
                     <div class="container">
                         <!--LOGO-->
+                        <?php
+                        if (isset($sessions_addnl_logo) && $sessions_addnl_logo != '') {
+                            ?>
+                            <div class="logo0">
+                                <img src="<?= base_url() . "uploads/sessions_logo/" . $sessions_addnl_logo ?>" onerror="$(this).parent().remove()">
+                            </div>
+                            <?php
+                        }
+                        ?>
+
                         <?php
                         if ($this->session->userdata('cid') != "") {
                             $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                             ?>
-                            <div id="logo">
+                            <div id="logo" style="margin-right: 7px;">
                                 <a href="#" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png" style="margin-top: 12px; cursor: auto">
                                     <img src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" alt="CCO Logo">
                                 </a>
@@ -317,7 +387,7 @@
                                             <?php } ?>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank">HELP DESK</a></li>
+                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour">HELP DESK</a></li>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
                                             <?php
@@ -331,31 +401,39 @@
                                             ?>
                                         </ul>
                                         <ul class="nav navbar-nav navbar-right">
-                                            <li class="sticky_resources_open" data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
+                                            <?php
+                                            if (isset($right_bar) && isset($tool_box_status)) {
+                                            if ($tool_box_status == "1" && sessionRightBarControl($right_bar, "resources")) {
+                                            ?>
+                                                <li class="sticky_resources_open" data-type="resourcesSticky"><a data-type2="off" class="hoverThemeColour">RESOURCES</a></li>
+                                            <?php
+                                               }}
+                                            ?>
+
                                             <li>
-                                                <a target="_blank">TOOLBOX</a>
+                                                <a target="_blank" class="hoverThemeColour">TOOLBOX</a>
                                                 <ul class="toolboxCustomDrop">
                                                     <?php
                                                     if (isset($right_bar) && isset($tool_box_status)) {
                                                         if ($tool_box_status == "1") {
                                                             if (sessionRightBarControl($right_bar, "questions")) {
                                                                 ?>
-                                                                <li data-type="questionsSticky"><a data-type2="off"><i class="fa fa-question" aria-hidden="true"></i> ASK QUESTIONS</a></li>
+                                                                <li data-type="questionsSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-question" aria-hidden="true"></i> ASK QUESTIONS</a></li>
                                                                 <?php
                                                             }
                                                             if (sessionRightBarControl($right_bar, "notes")) {
                                                                 ?>
-                                                                <li data-type="notesSticky"><a data-type2="off"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> TAKE NOTES</a></li>
+                                                                <li data-type="notesSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> TAKE NOTES</a></li>
                                                                 <?php
                                                             }
                                                             if (sessionRightBarControl($right_bar, "chat")) {
                                                                 ?>
-                                                                <li data-type="messagesSticky"><a data-type2="off"><i class="fa fa-comments" aria-hidden="true"></i> CHAT</a></li>
+                                                                <li data-type="messagesSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-comments" aria-hidden="true"></i> CHAT</a></li>
                                                                 <?php
                                                             }
                                                             if (sessionRightBarControl($right_bar, "resources")) {
                                                                 ?>
-                                                                <li data-type="resourcesSticky"><a data-type2="off"><i class="fa fa-paperclip" aria-hidden="true"></i> RESOURCES</a></li>
+                                                                <li data-type="resourcesSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-paperclip" aria-hidden="true"></i> RESOURCES</a></li>
                                                                 <?php
                                                             }
                                                         }
@@ -366,7 +444,7 @@
                                         </ul>
                                     <?php } else { ?>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank">HELP DESK</a></li>
+                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour">HELP DESK</a></li>
                                         </ul>
                                     <?php } ?>
                                 </nav>

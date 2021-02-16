@@ -157,6 +157,11 @@
     </div>
 </div>
 <script type="text/javascript">
+
+
+    var session_id = "<?=$sessions->sessions_id?>";
+
+
     $(document).ready(function () {
         if ($("#time_second").val() <= 0) {
             timer();

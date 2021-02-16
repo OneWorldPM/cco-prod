@@ -35,6 +35,17 @@ $user_role = $this->session->userdata('role');
                                         <textarea class="form-control" style="color: #000;" name="sessions_description" id="sessions_description"><?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_description : "" ?></textarea>
                                     </div>
 
+                                <div class="form-group">
+                                    <label class="text-large text-bold">Theme Colour</label><br>
+                                    <small style="color: grey;font-size: 13px;font-weight: bold;">This colour will fill the horizontal line at the top of attendee page as well as the toolbox icon boxes.</small>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" style="background-color: grey;border-color: grey;">#</span>
+                                        <input type="text" placeholder="Enter hex code without #" class="form-control" id="themeColor" name="theme_color" value="<?=(isset($sessions_edit->theme_color) && !empty($sessions_edit->theme_color))?$sessions_edit->theme_color:'EF5D21'?>">
+                                    </div>
+                                    <small style="color: grey;">(Enter hex code in the input box or simply pick a colour using colour picker)</small><br>
+                                    <input style="margin-top: 7px" type="color" id="themeColorHex" name="theme_color_hex" value="#<?=(isset($sessions_edit->theme_color) && !empty($sessions_edit->theme_color))?$sessions_edit->theme_color:'EF5D21'?>">
+                                </div>
+
                                     <hr style="border: 2px solid;">
                                     <div class="form-group">
                                         <label class="text-large text-bold">CCO Event ID (cssid)</label>
@@ -174,10 +185,11 @@ $user_role = $this->session->userdata('role');
                                     <div class="row">
                                         <label class="col-md-12 text-large text-bold">Tool Box Items</label>
                                         <div class="form-group col-md-12">
-                                            <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "resources", "checked"):"checked"?> value="resources" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>Resources</label>
-                                            <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "chat", "checked"):""?> value="chat" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>Chat</label>
-                                            <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "notes", "checked"):"checked"?> value="notes" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>Notes</label>
-                                            <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "questions", "checked"):"checked"?> value="questions" <?=($user_role != 'super_admin')?"onclick='return false;' onkeydown='return false; readonly'":''?>>Questions</label>
+                                            <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "resources", "checked"):"checked"?> value="resources">Resources</label>
+                                            <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "chat", "checked"):""?> value="chat">Chat</label>
+                                            <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "notes", "checked"):"checked"?> value="notes">Notes</label>
+                                            <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "questions", "checked"):"checked"?> value="questions">Questions</label>
+                                            <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=$right_bar?sessionRightBarControl($right_bar, "adminChat", "checked"):"checked"?> value="adminChat">Admin Chat</label>
                                         </div>
                                     </div>
 
@@ -217,7 +229,8 @@ $user_role = $this->session->userdata('role');
                                     </div>
 
                                             <div class="form-group" style="position: unset !important; <?=($user_role != 'super_admin')?'display:none':''?>" >
-                                                <label class="col-md-12 text-large text-bold">Sponsor/Additional Logo</label>
+                                                <hr style="border: 2px solid;">
+                                                <label class="col-md-12 text-large text-bold">Sponsor Logo</label>
                                                 <input type="file" class="form-control" name="sessions_logo" id="sessions_logo" <?=($user_role != 'super_admin')?'disabled':''?>>
                                                 <?php
                                                 if (isset($sessions_edit)) {
@@ -228,7 +241,6 @@ $user_role = $this->session->userdata('role');
                                                     }
                                                 }
                                                 ?>
-                                                <hr style="border: 2px solid;">
                                             </div>
 
                                         <div class="row" style="margin-top: 20px; <?=($user_role != 'super_admin')?'display:none':''?>">
@@ -243,6 +255,21 @@ $user_role = $this->session->userdata('role');
                                                 </div>
                                             </div>
                                         </div>
+
+                                <div class="form-group" style="position: unset !important; <?=($user_role != 'super_admin')?'display:none':''?>" >
+                                    <hr style="border: 2px solid;">
+                                    <label class="col-md-12 text-large text-bold">Additional Logo</label>
+                                    <input type="file" class="form-control" name="sessions_addnl_logo" id="sessions_addnl_logo" <?=($user_role != 'super_admin')?'disabled':''?>>
+                                    <?php
+                                    if (isset($sessions_edit->sessions_addnl_logo)) {
+                                        if ($sessions_edit->sessions_addnl_logo != "") {
+                                            ?>
+                                            <img src="<?= base_url() ?>uploads/sessions_logo/<?= $sessions_edit->sessions_addnl_logo ?>" style="object-fit: contain;height: 100px; width: 100px;">
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </div>
 
                                         <div class="form-group">
                                             <h5 class="over-title margin-bottom-15" style="text-align: center;">
@@ -471,5 +498,17 @@ $user_role = $this->session->userdata('role');
                                                 }
                                                 });
                                             });
-                                        });
+
+
+        $('#themeColor').on("change paste keyup", function() {
+            let hex = $(this).val();
+            $('#themeColorHex').val('#'+hex);
+        });
+
+        $('#themeColorHex').on("change paste keyup", function() {
+            let hex = ($(this).val()).replace('#','');
+            $('#themeColor').val(hex.toUpperCase());
+        });
+
+    });
 </script>

@@ -16,6 +16,10 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 <!--            <iframe class="col-md-12 embed-responsive-item" src="https://meet.yourconference.live/conference/share-presentation.html?confId=CCO_AMP_Final_Deck_V3&amp;totalSlides=95&amp;fileExtension=JPG" style="height: inherit;" scrolling="no"></iframe>-->
             <?= isset($sessions) ? $sessions->embed_html_code_presenter : "" ?>
 
+            <div class="viewUser" style="float: right;color: white;">
+                <span class="badge badge-danger">live </span> <i class="fa fa-eye" aria-hidden="true"></i> <span class="userCount userCount<?=getAppName($sessions->sessions_id)?>"> 0 </span>
+            </div>
+
         </div>
         <div class="col-lg-3 col-md-4 rightSide">
 
@@ -80,7 +84,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                 </div>
                 <div class="content">
 
-                    <div class="tab-content">
+                    <div class="tab-content" id="questionsContainer">
                         <div class="tab-pane fade in active" id="attendee_questions">
                             <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
                             <input type="hidden" name="last_sessions_cust_question_id" id="last_sessions_cust_question_id" value="0">
@@ -127,12 +131,6 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
 
 <div class="stickyTimer">
-    <?php if (1==2){ ?>
-        <div class="viewUser">
-            <span>live</span><i class="fa fa-eye" aria-hidden="true"></i><span class="userCount userCount<?=getAppName($sessions->sessions_id)?>">0</span>
-        </div>
-    <?php } ?>
-
     <div id="id_day_time_clock" class="timer"></div>
 </div>
 
@@ -155,4 +153,4 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 </script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=6"></script>
+<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=7"></script>

@@ -294,6 +294,11 @@
        margin-left: 5px;
     }
 
+    .question_attendee_name{
+        cursor: pointer;
+        color: #3838c4;
+    }
+
 </style>
 
 <div class="main-content">
@@ -578,6 +583,249 @@
 
 </div>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@9.17.0/dist/sweetalert2.all.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/fd91b3535c.js" crossorigin="anonymous"></script>
+
+<style>
+    #chatBody{
+        height: 250px;
+        overflow: scroll;
+    }
+
+    #chatBox{
+        bottom: 0;
+    }
+
+    .admin-to-user-text-admin{
+        color: white;
+        background-color: #df941f;
+        display: list-item;
+        list-style: none;
+        margin-top: 7px;
+        margin-bottom: 7px;
+        padding-right: 12px;
+        border-radius: 15px;
+        text-align: right;
+        margin-left: 210px;
+        margin-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 260px;
+    }
+
+    .user-to-admin-text-admin{
+        color: white;
+        background-color: #1f8edf;
+        display: list-item;
+        list-style: none;
+        margin-top: 7px;
+        margin-bottom: 7px;
+        padding-left: 16px;
+        border-radius: 15px;
+        margin-left: 5px;
+        margin-right: 250px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .swal2-container{
+        z-index: 10000;
+    }
+
+</style>
+<!-- Direct attendee chat modal -->
+<div class="modal fade" id="attendeeChatModal" tabindex="-1" role="dialog" aria-labelledby="attendeeChatModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="attendeeChatModalLabel">Chat with <span id="chatAttendeeName"></span></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default">
+                    <div id="chatBody" class="panel-body">
+
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input id="chatToAttendeeText" type="text" class="form-control" placeholder="Enter your message">
+                            <span class="input-group-btn">
+                                <button id="sendMessagetoAttendee" class="btn btn-success" type="button"><i class="fas fa-paper-plane"></i> Send</button>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="endChatBtn" type="button" class="btn btn-danger" userId=""><i class="fas fa-times-circle"></i> End Chat</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fas fa-folder-minus"></i> Minimize</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    let base_url = "<?=base_url()?>";
+    let sessionId = "<?=$sessions->sessions_id?>";
+    var socket_session_name = "<?=getAppName('_admin-to-attendee-chat')?>";
+
+    function attendeeChatPopup(cust_id, cust_name)
+    {
+        $('#chatAttendeeName').text(cust_name);
+
+        $('#sendMessagetoAttendee').attr('user-id', cust_id);
+        $('#endChatBtn').attr('userId', cust_id);
+
+
+        $.post(base_url+"admin/sessions/getAllAdminToAttendeeChat",
+
+            {
+                session_id: sessionId,
+                from_id: cust_id,
+                to_id: "admin"
+            }
+
+        ).done(function(chats) {
+
+                $.get(base_url+"admin/sessions/markAllAsRead/"+sessionId+'/'+cust_id, function( data ) {
+                    if (data == 1)
+                    {
+
+                    }
+                });
+
+                chats = JSON.parse(chats);
+
+                $('#chatBody').html('');
+                $.each(chats, function(index, chat)
+                {
+                    if (chat.from_id == 'admin'){
+                        $('#chatBody').append('' +
+                            '<span class="admin-to-user-text-admin">'+chat.chat_text+'</span>');
+                    }else{
+                        $('#chatBody').append('' +
+                            '<span class="user-to-admin-text-admin"><strong style="margin-right: 10px">'+cust_name+'</strong>'+chat.chat_text+'</span>');
+                    }
+                });
+
+                $("#chatBody").scrollTop($("#chatBody")[0].scrollHeight+100);
+
+            }
+        ).error((error)=>{
+            toastr.error('Unable to load the chat.');
+        });
+
+        $('#attendeeChatModal').modal('show');
+
+    }
+
+
+    $(document).ready(function () {
+
+        $('#question_list').on('click', '.question_attendee_name', function () {
+            let cust_id = $(this).attr('cust-id');
+            let cust_name = $(this).attr('cust-name');
+
+            attendeeChatPopup(cust_id, cust_name);
+        });
+
+        $('#sendMessagetoAttendee').on('click', function () {
+            let userId = $(this).attr('user-id');
+            let message = $('#chatToAttendeeText').val();
+
+            if (userId == '')
+            {
+                toastr.error('You should choose an attendee to send the text.');
+                return false;
+            }
+
+            if (message == '')
+            {
+                toastr.error('Please enter some message.');
+                return false;
+            }
+
+            $.post(base_url+"admin/sessions/saveAdminToAttendeeChat",
+
+                {
+                    session_id: sessionId,
+                    from_id: 'admin',
+                    to_id: userId,
+                    chat_text: message
+                }
+
+            ).done(function( data ) {
+                    if (data == 1)
+                    {
+                        socket.emit('new-attendee-to-admin-chat', {"socket_session_name":socket_session_name, "session_id":sessionId, "from_id":"admin", "to_id":userId, "chat_text":message});
+
+                        $('#chatBody').append('' +
+                            '<span class="admin-to-user-text-admin">'+message+'</span>');
+
+                        $('#chatToAttendeeText').val('');
+
+                        $("#chatBody").scrollTop($("#chatBody")[0].scrollHeight);
+
+                    }else{
+                        toastr.error('Unable to send the text.');
+                    }
+                }
+            ).error((error)=>{
+                toastr.error('Unable to send the text.');
+            });
+
+
+        });
+
+        $('#chatToAttendeeText').keydown(function (e){
+            if(e.keyCode == 13)
+            {
+                $('#sendMessagetoAttendee').click();
+            }
+        });
+
+        socket.on('new-attendee-to-admin-chat-notification', function (data) {
+            if (data.socket_session_name == socket_session_name)
+            {
+                if (data.from_id != 'admin')
+                {
+                    attendeeChatPopup(data.from_id, data.user_name);
+                }
+            }
+        });
+
+        $('#endChatBtn').on('click', function () {
+
+            let userId = $(this).attr('userId');
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Ending chat will disable attendee from sending you texts until you texts attendee.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, end it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    socket.emit('end-attendee-to-admin-chat', {"socket_session_name":socket_session_name, "session_id":sessionId, "from_id":"admin", "to_id":userId});
+
+                    $('#attendeeChatModal').modal('hide');
+                }
+            })
+        });
+
+
+    });
+</script>
+
 
 <script>
     var app_name = "<?=getAppName($sessions->sessions_id) ?>";
@@ -697,8 +945,8 @@
         $("iframe").addClass("embed-responsive-item");
 
 
-        var session_start_datetime = "<?=date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-4'?>";
-        var session_end_datetime = "<?=date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-4'?>";
+        var session_start_datetime = "<?=date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-4'?>";
+        var session_end_datetime = "<?=date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-4'?>";
 
         function timeleft() {
             // Set the date we're counting down to
@@ -1058,7 +1306,7 @@
                             var add_star_class = 'fa fa-star cust_class_star_remove';
                         }
                         $("#last_sessions_cust_question_id").val(val.sessions_cust_question_id);
-                        $('#question_list').prepend('<div id="question_list_key_' + key + '" style="padding-bottom: 15px;"><h5 style="font-weight: 800; font-size: 15px; "><span style="font-size: 12px;">(' + val.first_name + ' ' + val.last_name + ') </span>' + val.question + ' <span class="' + add_star_class + ' " data-sessions_cust_question_id=' + val.sessions_cust_question_id + '></span> <a href="javascript:void(0)" class="hide_question" data-q-id="' + val.sessions_cust_question_id + '" data-listkey-id="question_list_key_' + key + '" title="Hide" ><span class="fa fa-eye-slash" ></span></a></h5><div style="display: flex;"><input type="hidden" ' + readonly_value + ' id="answer_' + key + '" data-key_id="' + key + '" class="form-control input_class" placeholder="Enter Answer"  data-cust_id="' + val.cust_id + '" data-last_id="' + val.sessions_cust_question_id + '" value="' + answer_value + '"><a  class="btn btn-success btn_publish" id="btn_publish" data-answer_btn="answer_' + key + '" ' + disabled_value + ' style="border-radius: 0px; display:none">Send</a></div></div>');
+                        $('#question_list').prepend('<div id="question_list_key_' + key + '" style="padding-bottom: 15px;"><h5 style="font-weight: 800; font-size: 15px; "><span class="question_attendee_name" cust-id="'+val.cust_id+'" cust-name="' + val.first_name + ' ' + val.last_name + '" style="font-size: 12px;">(' + val.first_name + ' ' + val.last_name + ') </span>' + val.question + ' <span class="' + add_star_class + ' " data-sessions_cust_question_id=' + val.sessions_cust_question_id + '></span> <a href="javascript:void(0)" class="hide_question" data-q-id="' + val.sessions_cust_question_id + '" data-listkey-id="question_list_key_' + key + '" title="Hide" ><span class="fa fa-eye-slash" ></span></a></h5><div style="display: flex;"><input type="hidden" ' + readonly_value + ' id="answer_' + key + '" data-key_id="' + key + '" class="form-control input_class" placeholder="Enter Answer"  data-cust_id="' + val.cust_id + '" data-last_id="' + val.sessions_cust_question_id + '" value="' + answer_value + '"><a  class="btn btn-success btn_publish" id="btn_publish" data-answer_btn="answer_' + key + '" ' + disabled_value + ' style="border-radius: 0px; display:none">Send</a></div></div>');
                     });
                 }
             }
@@ -1444,6 +1692,7 @@
             seconds--;
         }
     }
+
 
 
     /*************** Socket IO codes by Athul *****************/
