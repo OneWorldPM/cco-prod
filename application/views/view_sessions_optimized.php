@@ -162,7 +162,7 @@ if (isset($sessions)) {
 <div class="rightSticykPopup notesSticky" style="display: none">
     <div class="header"><span></span>
         <div class="rightTool">
-            <i class="fa fa-minus" aria-hidden="true"></i>
+            <i id="minimizeTakeNote" class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
 <!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
                 <ul class="dropdown-menu">
@@ -213,7 +213,7 @@ if (isset($sessions)) {
 <div class="rightSticykPopup resourcesSticky" style="display: none">
     <div class="header"><span></span>
         <div class="rightTool">
-            <i class="fa fa-minus" aria-hidden="true"></i>
+            <i id="minimizeResources" class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
 <!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
                 <ul class="dropdown-menu">
@@ -280,7 +280,7 @@ if (isset($sessions)) {
 <div class="rightSticykPopup messagesSticky messagesSticky<?=getAppName($sessions->sessions_id) ?>" style="display: none">
     <div class="header"><span></span>
         <div class="rightTool">
-            <i class="fa fa-minus" aria-hidden="true"></i>
+            <i id="minimizeMessages" class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
 <!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
                 <ul class="dropdown-menu">
@@ -375,7 +375,7 @@ if (isset($sessions)) {
 <div class="rightSticykPopup questionsSticky" style="display: none">
     <div class="header"><span></span>
         <div class="rightTool">
-            <i class="fa fa-minus" aria-hidden="true"></i>
+            <i id="minimizeQuestions" class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
 <!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
                 <ul class="dropdown-menu">
