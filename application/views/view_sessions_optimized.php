@@ -441,8 +441,8 @@ if (isset($sessions)) {
     var user_fullname = "<?=$this->session->userdata('fullname')?>";
     var app_name = "<?=getAppName($sessions->sessions_id) ?>";
     var session_id = "<?=$sessions->sessions_id?>";
-    var session_start_datetime =  new Date("<?= date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot ?>");
-    var session_end_datetime =  new Date("<?= date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time ?>");
+    var session_start_datetime =  new Date("<?= date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot ?>");
+    var session_end_datetime =  new Date("<?= date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time ?>");
 
     var socket_session_name = "<?=getAppName('_admin-to-attendee-chat')?>";
 </script>
@@ -455,4 +455,4 @@ if (isset($sessions)) {
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
 <script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=16"></script>
-<script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=<?=rand(1, 100)?>"></script>
+<script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=200"></script>
