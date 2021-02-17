@@ -115,6 +115,10 @@ $(document).ready(function () {
 
                     $('#adminChatStickeyIcon').show();
 
+                    $('#adminChatStickeyIcon').click();
+
+
+
                     $(".admin-messages").scrollTop($(".admin-messages")[0].scrollHeight);
 
                 }
@@ -130,6 +134,7 @@ $(document).ready(function () {
                 if (data.to_id == user_id)
                 {
                     $('#adminChatStickeyIcon').hide();
+
                     $('.minimize-admin-chat').click();
                 }
             }
