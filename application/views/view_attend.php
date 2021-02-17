@@ -101,7 +101,7 @@
                                     if (isset($sessions->presenter) && !empty($sessions->presenter)) {
                                         foreach ($sessions->presenter as $value) {
                                             ?>
-                                            <h3 style="margin-bottom: 0px;  " data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" class="" ><?= $value->presenter_name ?><?= ($value->degree != "") ? "," : "" ?> <?= $value->degree ?></h3>
+                                            <h3 style="margin-bottom: 0px;  cursor: pointer;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" class="presenter_open_modul" ><u style="color: #337ab7;"><?= $value->presenter_name ?></u><?= ($value->degree != "") ? "," : "" ?> <?= $value->degree ?></h3>
                                             <h3 style="margin-bottom: 0px;  cursor: pointer;"> <?= $value->company_name ?></h3>
                                             <!--<p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->bio : "" ?></p>-->
                                             <!--<img alt="" src="<?= base_url() ?>uploads/presenter_photo/<?= (isset($sessions) && !empty($sessions)) ? $sessions->presenter_photo : "" ?>" class="img-circle" height="100" width="100">-->
