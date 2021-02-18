@@ -75,7 +75,7 @@ $user_role = $this->session->userdata('role');
                                     </div>
                                     <div class="form-group">
                                         <label class="text-large text-bold">Zoom Meeting Number</label>
-                                        <input type="text" name="zoom_number" id="zoom_number" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_number : "" ?>" class="form-control" placeholder="Zoom Meeting Number">
+                                        <input type="text" name="zoom_number" id="zoom_number" value="<?= (isset($sessions_edit->zoom_number) && !empty($sessions_edit->zoom_number) ) ? $sessions_edit->zoom_number : "" ?>" class="form-control" placeholder="Zoom Meeting Number">
                                     </div>
                                     <div class="form-group">
                                         <label class="text-large text-bold">Password</label>
