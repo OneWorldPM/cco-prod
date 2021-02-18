@@ -86,6 +86,7 @@ class M_sessions extends CI_Model {
             $return_array = array();
             foreach ($sessions->result() as $val) {
                  $val->presenter = $this->common->get_presenter($val->presenter_id, $val->sessions_id);
+                 $val->moderators = $this->getModerators($val->sessions_id);
                 $return_array[] = $val;
             }
             //echo "<pre>"; print_r($return_array);exit("</pre>");
@@ -167,6 +168,7 @@ class M_sessions extends CI_Model {
             'time_slot' => date("H:i", strtotime($post['time_slot'])),
             'end_time' => date("H:i", strtotime($post['end_time'])),
              'zoom_link' => trim($post['zoom_link']),
+             'zoom_number' => trim($post['zoom_number']),
             'zoom_password' => trim($post['zoom_password']),
             'embed_html_code' => trim($post['embed_html_code']),
             'embed_html_code_presenter' => trim($post['embed_html_code_presenter']),
@@ -346,6 +348,7 @@ class M_sessions extends CI_Model {
             'sessions_description' => trim($post['sessions_description']),
             'sessions_date' => date("Y-m-d", strtotime($post['sessions_date'])),
              'zoom_link' => trim($post['zoom_link']),
+             'zoom_number' => trim($post['zoom_number']),
             'zoom_password' => trim($post['zoom_password']),
             'time_slot' => date("H:i", strtotime($post['time_slot'])),
             'end_time' => date("H:i", strtotime($post['end_time'])),

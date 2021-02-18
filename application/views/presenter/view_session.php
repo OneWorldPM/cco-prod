@@ -111,7 +111,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                     <div class="col-sm-12">
                         <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
                             <div class=""  style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
-                                TIME LEFT : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
+                                TIME REMAINING : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
                             </div>
                         </div>
                         <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 15px;">
@@ -131,7 +131,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
 
 <div class="stickyTimer">
-    <div id="id_day_time_clock" class="timer"></div>
+     <div id="id_day_time_clock" class="timer" style="right:20px;position:fixed"></div>
 </div>
 
 <div class="rightSticky presenterRightSticky" data-screen="presenter">
