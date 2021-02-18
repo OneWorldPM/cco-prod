@@ -62,6 +62,10 @@ $user_role = $this->session->userdata('role');
                                         <input type="text" name="zoom_link" id="zoom_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_link : "" ?>" class="form-control" placeholder="Zoom Meeting Link">
                                     </div>
                                     <div class="form-group">
+                                        <label class="text-large text-bold">Zoom Meeting Number</label>
+                                        <input type="text" name="zoom_number" id="zoom_number" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_number : "" ?>" class="form-control" placeholder="Zoom Meeting Number">
+                                    </div>
+                                    <div class="form-group">
                                         <label class="text-large text-bold">Password</label>
                                         <input type="text" name="zoom_password" id="zoom_password" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_password : "" ?>" class="form-control" placeholder="Password">
                                         <hr style="border: 2px solid;">
