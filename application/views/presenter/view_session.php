@@ -131,7 +131,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
 
 <div class="stickyTimer">
-    <div id="id_day_time_clock" class="timer"></div>
+     <div id="id_day_time_clock" class="timer" style="right:20px;position:fixed"></div>
 </div>
 
 <div class="rightSticky presenterRightSticky" data-screen="presenter">
@@ -153,4 +153,4 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 </script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=7"></script>
+<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=8"></script>

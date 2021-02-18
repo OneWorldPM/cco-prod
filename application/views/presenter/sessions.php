@@ -60,8 +60,8 @@
                                                         <a href="<?= base_url() ?>presenter/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-light-azure btn-sm">View Session</a>
                                                            <a href="<?= base_url() ?>presenter/groupchat/sessions_groupchat/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">Create Chat</a>
                                                         <a href="<?= base_url() ?>presenter/sessions/view_question_answer/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">View Q&A</a>
-                                                        <a href="<?= base_url() ?>presenter/sessions/create_poll/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">Create Poll</a>
-                                                        <a href="<?= base_url() ?>presenter/sessions/view_poll/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">View Poll</a>
+                                                        <!-- <a href="<?= base_url() ?>presenter/sessions/create_poll/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">Create Poll</a> -->
+                                                        <a href="<?= base_url() ?>presenter/sessions/view_poll/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm">View Results</a>
                                                         
                                                      
                                                     </td>

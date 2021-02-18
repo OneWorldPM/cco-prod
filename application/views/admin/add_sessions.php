@@ -35,6 +35,18 @@ $user_role = $this->session->userdata('role');
                                         <textarea class="form-control" style="color: #000;" name="sessions_description" id="sessions_description"><?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_description : "" ?></textarea>
                                     </div>
 
+                                    <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
+                                    <div class="row">
+                                        <label class="col-md-12 text-large text-bold">PPT Status</label>
+                                        <div class="form-group col-md-12">
+
+                                            <label class="checkbox-inline"><input type="checkbox" name="ppt_uploaded" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->ppt_uploaded == "1") ? 'checked' : '' : 'checked' ?> value="1" >PPT Uploaded</label>
+                                            <label class="checkbox-inline"><input type="checkbox" name="ppt_link_shared" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->ppt_link_shared == "1") ? 'checked' : '' : 'checked' ?> value="1">PPT Link Shared</label>
+                                          
+                                          </div>
+                                    </div>
+                                    </div>
+                                    
                                 <div class="form-group">
                                     <label class="text-large text-bold">Theme Colour</label><br>
                                     <small style="color: grey;font-size: 13px;font-weight: bold;">This colour will fill the horizontal line at the top of attendee page as well as the toolbox icon boxes.</small>
@@ -60,6 +72,10 @@ $user_role = $this->session->userdata('role');
                                       <div class="form-group">
                                         <label class="text-large text-bold">Zoom Meeting Link</label>
                                         <input type="text" name="zoom_link" id="zoom_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_link : "" ?>" class="form-control" placeholder="Zoom Meeting Link">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-large text-bold">Zoom Meeting Number</label>
+                                        <input type="text" name="zoom_number" id="zoom_number" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_number : "" ?>" class="form-control" placeholder="Zoom Meeting Number">
                                     </div>
                                     <div class="form-group">
                                         <label class="text-large text-bold">Password</label>
@@ -204,7 +220,11 @@ $user_role = $this->session->userdata('role');
                                                 <img src="<?= base_url() ?>uploads/sessions/<?= $sessions_edit->sessions_photo ?>" style="height: 100px; width: 100px;">
                                                 <?php
                                             }
-                                        }
+                                        }else{
+                                                ?>
+                                                <img src="<?= base_url() ?>uploads/sessions/sessions_82930456.jpg" style="height: 100px; width: 100px;">
+                                                <?php
+                                            }
                                         ?>
                                         <hr style="border: 2px solid;">
                                     </div>
