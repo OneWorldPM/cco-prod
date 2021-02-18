@@ -208,7 +208,11 @@ $user_role = $this->session->userdata('role');
                                                 <img src="<?= base_url() ?>uploads/sessions/<?= $sessions_edit->sessions_photo ?>" style="height: 100px; width: 100px;">
                                                 <?php
                                             }
-                                        }
+                                        }else{
+                                                ?>
+                                                <img src="<?= base_url() ?>uploads/sessions/sessions_82930456.jpg" style="height: 100px; width: 100px;">
+                                                <?php
+                                            }
                                         ?>
                                         <hr style="border: 2px solid;">
                                     </div>
