@@ -181,7 +181,10 @@ class M_sessions extends CI_Model {
             "reg_date" => date("Y-m-d h:i"),
             'right_bar' => $session_right_bar,
             'sponsor_type' => $post['sponsor_type'],
-            'theme_color' => $post['theme_color']
+            'theme_color' => $post['theme_color'],
+            'ppt_uploaded' => (isset($post['ppt_uploaded'])) ? $post['ppt_uploaded'] : 0,
+            'ppt_link_shared' => (isset($post['ppt_link_shared'])) ? $post['ppt_link_shared'] : 0,
+            
         );
         $this->db->insert("sessions", $set);
         $sessions_id = $this->db->insert_id();
@@ -363,7 +366,9 @@ class M_sessions extends CI_Model {
             'link_text' => trim($post['link_text']),
             'sponsor_type' => $post['sponsor_type'],
             'right_bar' => $session_right_bar,
-            'theme_color' => $post['theme_color']
+            'theme_color' => $post['theme_color'],
+            'ppt_uploaded' => (isset($post['ppt_uploaded'])) ? $post['ppt_uploaded'] : 0,
+            'ppt_link_shared' => (isset($post['ppt_link_shared'])) ? $post['ppt_link_shared'] : 0,
 
         );
         $this->db->update("sessions", $set, array("sessions_id" => $post['sessions_id']));
