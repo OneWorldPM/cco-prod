@@ -40,8 +40,8 @@ $user_role = $this->session->userdata('role');
                                         <label class="col-md-12 text-large text-bold">PPT Status</label>
                                         <div class="form-group col-md-12">
 
-                                            <label class="checkbox-inline"><input type="checkbox" name="ppt_uploaded" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->ppt_uploaded == "1") ? 'checked' : '' : 'checked' ?> value="1" >PPT Uploaded</label>
-                                            <label class="checkbox-inline"><input type="checkbox" name="ppt_link_shared" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->ppt_link_shared == "1") ? 'checked' : '' : 'checked' ?> value="1">PPT Link Shared</label>
+                                            <label class="checkbox-inline"><input type="checkbox" name="ppt_uploaded" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->ppt_uploaded == "1") ? 'checked' : '' : '' ?> value="1" >PPT Uploaded</label>
+                                            <label class="checkbox-inline"><input type="checkbox" name="ppt_link_shared" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->ppt_link_shared == "1") ? 'checked' : '' : '' ?> value="1">PPT Link Shared</label>
                                           
                                           </div>
                                     </div>
