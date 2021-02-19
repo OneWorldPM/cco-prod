@@ -63,6 +63,92 @@ class M_sessions extends CI_Model {
         $this->db->from('sessions s');
 
         $post = $this->input->post();
+
+
+
+        if (isset($post['btn_today'])){
+            if ($post['btn_today']){
+                 $session_filter = array(
+                     'start_date' => date('Y-m-d'),
+                     'end_date' => date('Y-m-d')
+                 );
+                 $this->session->set_userdata($session_filter);
+         
+                 ($post['session_type'] != "") ? $where['s.sessions_type_id ='] = trim($post['session_type']) : '';
+         
+                 ($post['btn_today'] != "") ? $where['DATE(s.sessions_date) >='] = date('Y-m-d') : '';
+         
+                 ($post['btn_today'] != "") ? $where['DATE(s.sessions_date) <='] = date('Y-m-d') : '';
+ 
+                 if (!empty($where)) {
+                     $this->db->where($where);
+                 }
+         
+                 $this->db->order_by("s.sessions_date", "asc");
+                 $this->db->order_by("s.time_slot", "asc");
+                 $sessions = $this->db->get();
+                 if ($sessions->num_rows() > 0) {
+                     $return_array = array();
+                     foreach ($sessions->result() as $val) {
+                          $val->presenter = $this->common->get_presenter($val->presenter_id, $val->sessions_id);
+                          $val->moderators = $this->getModerators($val->sessions_id);
+                         $return_array[] = $val;
+                     }
+                     return $return_array;
+                 } else {
+                     return '';
+                 }
+                 
+             }
+             
+         }
+         else if (isset($post['btn_tomorrow'])){
+ 
+             $tomorrow = date("Y-m-d", strtotime("+1 day"));
+ 
+             
+            if ($post['btn_tomorrow']){
+                 $session_filter = array(
+                     'start_date' => date('Y-m-d', strtotime("+1 day")),
+                     'end_date' => date('Y-m-d', strtotime("+1 day"))
+                 );
+                 $this->session->set_userdata($session_filter);
+         
+                 ($post['session_type'] != "") ? $where['s.sessions_type_id ='] = trim($post['session_type']) : '';
+         
+                 ($post['btn_tomorrow'] != "") ? $where['DATE(s.sessions_date) >='] = date('Y-m-d', strtotime("+1 day")) : '';
+         
+                 ($post['btn_tomorrow'] != "") ? $where['DATE(s.sessions_date) <='] = date('Y-m-d', strtotime("+1 day")) : '';
+                 
+                 if (!empty($where)) {
+                     $this->db->where($where);
+                 }
+         
+                 $this->db->order_by("s.sessions_date", "asc");
+                 $this->db->order_by("s.time_slot", "asc");
+                 $sessions = $this->db->get();
+                 if ($sessions->num_rows() > 0) {
+                     $return_array = array();
+                     foreach ($sessions->result() as $val) {
+                          $val->presenter = $this->common->get_presenter($val->presenter_id, $val->sessions_id);
+                          $val->moderators = $this->getModerators($val->sessions_id);
+                         $return_array[] = $val;
+                     }
+                     return $return_array;
+                 } else {
+                     return '';
+                 }
+                 
+             }
+             
+         }
+         else {
+             $session_filter = array(
+                 'start_date' => date('Y-m-d', strtotime($post['start_date'])),
+                 'end_date' => date('Y-m-d', strtotime($post['end_date']))
+             );
+        
+ 
         $session_filter = array(
             'start_date' => date('Y-m-d', strtotime($post['start_date'])),
             'end_date' => date('Y-m-d', strtotime($post['end_date']))
@@ -94,6 +180,7 @@ class M_sessions extends CI_Model {
         } else {
             return '';
         }
+    }
     }
 
     function getSession_Unique_Identifier_ID() {
