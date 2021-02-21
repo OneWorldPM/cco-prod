@@ -580,7 +580,8 @@ class M_sessions extends CI_Model {
             'poll_type_id' => $post['poll_type_id'],
             'question' => trim($post['question']),
             'poll_name' => trim($post['poll_name']),
-			'slide_number' => trim($post['slide_number']),
+            'slide_number' => trim($post['slide_number']),
+            'poll_instruction' => trim($post['poll_instruction']),
             'poll_comparisons_id' => 0,
             "create_poll_date" => date("Y-m-d h:i")
         );
@@ -675,13 +676,28 @@ class M_sessions extends CI_Model {
         }
     }
 
+    
+    function update_poll_instruction($sesion_id){
+        $post = $this->input->post();
+        $set = array(
+            'poll_instruction' => trim($post['poll_instruction']),
+            
+        );
+        $this->db->update("sessions_poll_question", $set, array("sessions_poll_question_id" => $sesion_id));
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     function update_poll_data() {
         $post = $this->input->post();
         $set = array(
             'question' => trim($post['question']),
             'question' => trim($post['question']),
             'poll_name' => trim($post['poll_name']),
-			'slide_number' => trim($post['slide_number']),
+            'slide_number' => trim($post['slide_number']),
+            'poll_instruction' => trim($post['poll_instruction']),
             'poll_type_id' => $post['poll_type_id'],
             'poll_comparisons_id' => (isset($post['poll_comparisons_id']))?$post['poll_comparisons_id']:0
         );
@@ -721,6 +737,7 @@ class M_sessions extends CI_Model {
         return TRUE;
     }
 
+    
     function get_question_list() {
         $post = $this->input->post();
         $this->db->select('*');

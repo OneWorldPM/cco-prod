@@ -27,6 +27,7 @@
                                             <th>Poll Type</th>
                                             <th>Comparison With</th>
                                             <th>Slide Number</th>
+                                            <th>Poll Instruction</th>
                                             <th>Modify</th>
                                             <th>Action</th>
                                         </tr>
@@ -43,6 +44,23 @@
                                                     <td><?= $val->poll_type ?></td>
                                                     <td><?= ($val->poll_comparisons_id == 0)?'None':$val->poll_comparisons_id ?></td>
                                                     <td><?= $val->slide_number ?></td>
+                                                    <td><?= isset($val->poll_instruction)?$val->poll_instruction:''?>
+                                                    <div class="dropdown">
+                                                        <button class="btn <?=(isset($val->poll_instruction))?'btn-blue':'btn-success'?> btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <?=(isset($val->poll_instruction))?'Update Instruction':'Add Instruction'?>
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            
+                                                        <form action="<?=base_url().'admin/sessions/update_poll_instruction/'.$val->sessions_poll_question_id?>" method="POST">
+                                                     <textarea name="poll_instruction"></textarea>
+                                                      <input type="text" name="session_id" value="<?=$val->sessions_id?>" hidden >
+                                                    <input type="submit" value="update" class="btn btn-success btn-sm">
+
+                                                    </form>
+                                                        </div>
+                                                    </div> 
+                                                   
+                                                </td>
                                                     <td>
                                                         <a class="btn btn-primary btn-sm" href="<?= base_url() . 'admin/sessions/editPollQuestion/' . $val->sessions_poll_question_id ?>">
                                                             <i class="fa fa-pencil"></i> Edit
