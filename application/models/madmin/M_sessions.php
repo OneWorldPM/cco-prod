@@ -39,6 +39,9 @@ class M_sessions extends CI_Model {
             foreach ($sessions->result() as $val) {
                 $val->presenter = $this->common->get_presenter($val->presenter_id, $val->sessions_id);
                 $val->moderators = $this->getModerators($val->sessions_id);
+                $val->groupchat= $this->getGroupChatDetails($val->sessions_id);
+                $val->groupchatPresenter= $this->getGroupChatDetailsPresenter($val->sessions_id);
+                
                 $return_array[] = $val;
             }
             return $return_array;
@@ -1791,6 +1794,84 @@ class M_sessions extends CI_Model {
 
         return;
     }
+
+    
+    function getGroupChatDetails($session_id) {
+
+        $moderators = array();
+        $groupChatModerators = array();
+
+
+        $this->db->select('*');
+        $this->db->from('sessions_group_chat');
+        $this->db->where('sessions_id',$session_id);
+        $groupChat = $this->db->get();
+        if ($groupChat->num_rows() > 0) {
+            foreach ($groupChat->result_array() as $row)
+            {
+                $groupChatModerators = explode(',', $row['moderator_id']);
+            }
+
+             foreach ($groupChatModerators as $moderator_id)
+            {
+                $this->db->select('first_name, last_name');
+                $this->db->from('presenter');
+                $this->db->where(array('presenter_id'=>$moderator_id));
+
+                $response = $this->db->get();
+                if ($response->num_rows() > 0)
+                {
+                    foreach ($response->result_array() as $row)
+                    {
+                        $moderators[] = $row['first_name'].' '.$row['last_name'];
+                    }
+                }
+            }
+            
+            return $moderators;
+        } else {
+            return '';
+        }
+    }
+    function getGroupChatDetailsPresenter($session_id) {
+
+        $presenters = array();
+        $groupChatPresenters = array();
+
+
+        $this->db->select('*');
+        $this->db->from('sessions_group_chat');
+        $this->db->where('sessions_id',$session_id);
+        $groupChat = $this->db->get();
+        if ($groupChat->num_rows() > 0) {
+            foreach ($groupChat->result_array() as $row)
+            {
+                $groupChatPresenters = explode(',', $row['presenter_id']);
+            }
+
+             foreach ($groupChatPresenters as $presenter_id)
+            {
+                $this->db->select('first_name, last_name');
+                $this->db->from('presenter');
+                $this->db->where(array('presenter_id'=>$presenter_id));
+
+                $response = $this->db->get();
+                if ($response->num_rows() > 0)
+                {
+                    foreach ($response->result_array() as $row)
+                    {
+                        $presenters[] = $row['first_name'].' '.$row['last_name'];
+                    }
+                }
+            }
+            
+            return $presenters;
+        } else {
+            return '';
+        }
+    }
+
+
 
     private function fixZeroTotalTime($start)
     {

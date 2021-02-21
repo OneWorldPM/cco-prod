@@ -126,22 +126,66 @@ $user_role = $this->session->userdata('role');
                                                         //print_r($val->presenter);
                                                         if (isset($val->presenter) && !empty($val->presenter)) {
                                                             foreach ($val->presenter as $value) {
+                                                                $pres_count=count($val->presenter);
                                                                 echo $value->presenter_name . " <br><br>";
                                                             }
+                                                          
+                                                        }else{
+                                                            $pres_count=0;
                                                         }
+
+                                                        if (isset($val->groupchatPresenter) && !empty($val->groupchatPresenter)) {
+                                                       
+                                                            foreach ($val->groupchatPresenter as $name) {
+                                                              
+                                                             $groupPresCount=count($val->groupchatPresenter);
+                                                           
+                                                            }
+                                                         
+                                                        }else{
+                                                            $groupPresCount=0;
+                                                        }
+                                                       
+                                                       
+                                                    
                                                         ?>
                                                     </td>
                                                     <td>
                                                         <?php
                                                         if (isset($val->moderators) && !empty($val->moderators)) {
                                                             foreach ($val->moderators as $name) {
+                                                                $mod_count=count($val->moderators);
                                                                 echo $name . " <br><br>";
                                                             }
+                                                            
+                                                        }else{
+                                                            $mod_count=0;
                                                         }
+
+                                                        
+                                                      
+                                                        if (isset($val->groupchat) && !empty($val->groupchat)) {
+                                                       
+                                                            foreach ($val->groupchat as $name) {
+                                                              
+                                                             $groupModCount=count($val->groupchat);
+                                                           
+                                                            }
+                                                         
+                                                        }else{
+                                                            $groupModCount=0;
+                                                        }
+                                                       
+                                                       
                                                         ?>
                                                     </td>
                                                     <td><?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                     <td>
+                                                    
+                                                             <?php $total=$mod_count+$pres_count ;  ?>
+                                                        <?php $GroupChatTotal=$groupModCount+$groupPresCount ;  ?>
+                                                       
+                                                 
                                                         Claim Link: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->attendee_view_links_status == 1)?'#0ab50a':'#ff2525'?>;"></i>
                                                         Toolbox: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->tool_box_status == 1)?'#0ab50a':'#ff2525'?>;"></i><br>
                                                         <hr/>
@@ -149,6 +193,9 @@ $user_role = $this->session->userdata('role');
                                                         <small>Chat: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("chat", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
                                                         <small>Notes: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("notes", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
                                                         <small>Questions: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("questions", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
+                                                        <small><span style="float: left;">Presenters + Moderators </span> <?= (isset($total) && !empty($total) ) ?'<span style="float:right">'. $total : "".'</span>' ?></small>
+                                                        <small><span style="float: left;">Chat Participants </span> <?= (isset($GroupChatTotal) && !empty($GroupChatTotal) ) ?'<span style="float:right">'. $GroupChatTotal : "".'</span>' ?></small>
+                                                       
                                                     </td>
                                                     <td>
 													  <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin-bottom: 5px;">View</a>
