@@ -5,23 +5,23 @@
 .progress-bar {
     height: 100%;
     padding: 3px;
-    background: rgb(200, 201, 202);
-    box-shadow: none;
+    color: #000;
+    background: rgba(110, 106, 132, 0.16);
 }
 
 .progress-bar_1 {
     height: 100%;
     padding: 3px;
-    background: rgb(108, 108, 108);
+    background: rgba(0, 0, 0, 0.15);
     box-shadow: none;
-    color: #fff;
+    color: #000;
     padding-top: 0px;
 }
 
 .progress_bar_new {
     height: 100%;
     padding: 3px;
-    background: #99d9ea;
+    background: #45c0ea;
     box-shadow: none;
     text-align: center;
     color: #fff;
@@ -31,7 +31,7 @@
 .progress_bar_new_1 {
     height: 100%;
     padding: 3px;
-    background: #5c915b;
+    background: #035a76;
     box-shadow: none;
     text-align: center;
     color: #fff;
@@ -59,23 +59,19 @@
 }
 
 .progress {
-    height: 26px;
-    margin-bottom: 10px;
+    height: 23px;
+    margin-bottom: unset;
     overflow: hidden;
-    background-color: #e6edf3;
-    border-radius: 5px;
-    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+    background-color: unset;
+    border-radius: unset;
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
 }
 
 .progress_1 {
-    height: 26px;
-    margin-bottom: 10px;
+    height: 23px;
+    margin-bottom: 0px;
     overflow: hidden;
-    background-color: #55c4534f;
-    border-radius: 5px;
-    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
 }
 
 section {
@@ -175,7 +171,7 @@ section {
 .borderFrame{
     margin-top: 100px;
     width: 100%;
-    background-color: #F15A23;
+    background-color: #f58113;
     height: 29px;
     position: absolute;
     bottom: -80px;
@@ -210,9 +206,9 @@ body{
 /*for ios*/
 @supports (-webkit-touch-callout: none) {
     @media only screen and (max-width: 700px) {
-     .videoElement{
-         display: none !important;
-     }
+        .videoElement{
+            display: none !important;
+        }
     }
 }
 
@@ -234,7 +230,7 @@ body{
         font-size: 12px;
     }
     .rightSticky{
-        background-color: #EF5D21;
+        background-color: #f37617;
     }
     .rightSticky ul li{
         width: 32%;
@@ -369,5 +365,5 @@ body{
 }
 
 .resources-link-text:hover{
-    color: #EF5D21 !important;
+    color: #f37617 !important;
 }
