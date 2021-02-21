@@ -150,6 +150,19 @@ class Sessions extends CI_Controller {
             header('location:' . base_url() . 'admin/sessions/view_poll/'.$sessions_id);
         }
     }
+      public function update_poll_instruction($sessions_poll_question_id) {
+        $post = $this->input->post();
+        $sessions_id=  $post['session_id'];
+        $result = $this->msessions->update_poll_instruction($sessions_poll_question_id);
+        echo $sessions_id;
+            if ($result){
+              
+                header('location:' . base_url() . 'admin/sessions/view_poll/'.$sessions_id);
+            }else{
+             
+                header('location:' . base_url() . 'admin/sessions/view_poll/'.$sessions_id);
+            }
+    }
 
     public function open_poll($sessions_poll_question_id) {
         $sessions_poll_question_row = $this->db->get_where("sessions_poll_question", array("sessions_poll_question_id" => $sessions_poll_question_id))->row();
