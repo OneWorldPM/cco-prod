@@ -724,7 +724,7 @@ function timer(status) {
         $("#id_day_time").css("color", "#ef5e25");
         play_music();
 
-        var timeLeft = 15;
+        var timeLeft = 10;
         var pollTimer = setInterval(function() {
             if (timeLeft <= 0) {
                 clearInterval(pollTimer);
