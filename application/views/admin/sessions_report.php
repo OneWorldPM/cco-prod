@@ -49,6 +49,10 @@
                                         ?>
                                     </tbody>
                                 </table>
+                                <?php 
+                                if (isset($sessions_report) && !empty($sessions_report)) { ?>
+                                <a href="<?= base_url().'admin/sessions/reportQuestionToCsv/'.$val->sessions_id?>" class="btn btn-success" style="float:left"> Genrate Report CSV </a>
+                                <?php }?>
                             </div>
                         </div>
                     </div>
