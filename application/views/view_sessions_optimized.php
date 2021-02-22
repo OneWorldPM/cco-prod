@@ -1,7 +1,7 @@
 <link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=200" rel="stylesheet">
 
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
-<link href="<?= base_url() ?>front_assets/css/view_sessions.css?v=12" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/css/view_sessions.css?v=13" rel="stylesheet">
 
 
 <section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/pres_bg.jpg') no-repeat;">
@@ -454,5 +454,5 @@ if (isset($sessions)) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=16"></script>
+<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=17"></script>
 <script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=200"></script>
