@@ -233,6 +233,28 @@ class Sessions extends CI_Controller {
         $this->load->view('admin/footer');
     }
 
+    public function reportQuestionToCsv($sessions_id) {
+        $questionData = $this->msessions->getSessionQuestionReportData($sessions_id);
+        $file_name = 'Attendee Questions/'.date('Y-m-d').'.csv';
+        header("Content-Description: File Transfer"); 
+        header("Content-Disposition: attachment; filename=$file_name"); 
+        header("Content-Type: application/csv;");
+        // get data 
+        // file creation 
+        $file = fopen('php://output', 'w');
+        $header = array("Questions"); 
+        fputcsv($file, $header);
+        $extra_columns = array('column1' => " ");
+        foreach ($questionData->result_array() as $value)
+        { 
+            $csv_data = array_merge($extra_columns,$value);
+            
+            fputcsv($file,$csv_data); 
+        }
+        fclose($file); 
+        exit; 
+    
+ }
     function view_result($sessions_poll_question_id) {
         $data['poll_report'] = $this->msessions->view_result($sessions_poll_question_id);
         $this->load->view('admin/header');

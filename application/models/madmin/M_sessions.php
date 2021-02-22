@@ -780,6 +780,14 @@ class M_sessions extends CI_Model {
         }
     }
 
+    function getSessionQuestionReportData($sessions_id) {
+        $post = $this->input->post();
+        $this->db->select("question");
+        $this->db->from('sessions_cust_question');
+        $this->db->where('sessions_id',$sessions_id);
+        return $this->db->get();
+    }
+
     function get_poll_type() {
         $this->db->select('*');
         $this->db->from('poll_type');
