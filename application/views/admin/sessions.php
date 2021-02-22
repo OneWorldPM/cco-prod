@@ -323,7 +323,7 @@ switch ($msg) {
 
         Swal.fire({
             title: 'Are you sure?',
-            text: "This will delete every data collected from users on this session("+session_name+"), you won't be able to revert this action!",
+            text: "This will delete all data collected from users on this session("+session_name+"), you won't be able to revert this action!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
