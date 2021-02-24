@@ -261,14 +261,18 @@ $user_role = $this->session->userdata('role');
                                                     }
                                                 }
                                                 ?>
+                                                <div class="clearfix" style="height: 5px;"></div>
+                                                <span style="color: blue;">Width: </span><input type="number" class="form-control-sm" style="color: #000;" name="sessions_logo_width" id="sessions_logo_width" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_logo_width : "" ?>" <?=($user_role != 'super_admin')?'readonly':''?>><span style="color: blue;">(pixels)</span>&nbsp;&nbsp;&nbsp;
+                                                <span style="color: red;">Height: </span><input type="number" class="form-control-sm" style="color: #000;" name="sessions_logo_width" id="sessions_logo_height" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_logo_height : "" ?>" <?=($user_role != 'super_admin')?'readonly':''?>><span style="color: red;">(pixels)</span>
                                             </div>
 
                                         <div class="row" style="margin-top: 20px; <?=($user_role != 'super_admin')?'display:none':''?>">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="col-md-12 text-large text-bold" for="sel1">Select Sponsor Type</label>
+                                                    <label class="col-md-12 text-large text-bold" for="sel1">Select Sponsor Text</label>
 
                                                     <select class="form-control" name="sponsor_type" <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>
+                                                        <option value="" <?=isset($sessions_edit)?($sessions_edit->sponsor_type==""?"selected":""):""?>>___No Text___</option>
                                                         <option value="SPONSORED BY" <?=isset($sessions_edit)?($sessions_edit->sponsor_type=="SPONSORED BY"?"selected":""):""?>>SPONSORED BY</option>
                                                         <option value="EDUCATED BY" <?=isset($sessions_edit)?($sessions_edit->sponsor_type=="EDUCATED BY"?"selected":""):""?>>EDUCATED BY</option>
                                                     </select>
