@@ -263,7 +263,7 @@ $user_role = $this->session->userdata('role');
                                                 ?>
                                                 <div class="clearfix" style="height: 5px;"></div>
                                                 <span style="color: blue;">Width: </span><input type="number" class="form-control-sm" style="color: #000;" name="sessions_logo_width" id="sessions_logo_width" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_logo_width : "" ?>" <?=($user_role != 'super_admin')?'readonly':''?>><span style="color: blue;">(pixels)</span>&nbsp;&nbsp;&nbsp;
-                                                <span style="color: red;">Height: </span><input type="number" class="form-control-sm" style="color: #000;" name="sessions_logo_width" id="sessions_logo_height" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_logo_height : "" ?>" <?=($user_role != 'super_admin')?'readonly':''?>><span style="color: red;">(pixels)</span>
+                                                <span style="color: red;">Height: </span><input type="number" class="form-control-sm" style="color: #000;" name="sessions_logo_height" id="sessions_logo_height" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_logo_height : "" ?>" <?=($user_role != 'super_admin')?'readonly':''?>><span style="color: red;">(pixels)</span>
                                             </div>
 
                                         <div class="row" style="margin-top: 20px; <?=($user_role != 'super_admin')?'display:none':''?>">
