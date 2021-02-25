@@ -890,4 +890,39 @@ class Sessions extends CI_Controller {
         return;
     }
 
+    public function notes()
+    {
+        $this->load->view('admin/header');
+       $this->load->view('admin/view_notes');
+       $this->load->view('admin/footer');
+    }
+
+
+    public function add_notes($sessions_id)
+    {
+        $data['sessions_id']=$sessions_id;
+        $data['notes_details']=$this->msessions->getNotesDetails();
+        $this->load->view('admin/header');
+       $this->load->view('admin/add_notes.php',$data);
+       $this->load->view('admin/footer');
+    }
+
+    
+    public function create_notes($sessions_id)
+    {
+        $result = $this->msessions->create_notes($sessions_id);
+        if ($result){
+           
+           redirect(base_url().'admin/sessions?msg=A');
+        }
+    }
+
+        
+    public function delete_notes($note_id)
+    {
+        $data = $this->msessions->delete_notes($note_id);
+        header('location:' . base_url() . 'admin/sessions?msg=D');
+    }
+
+
 }

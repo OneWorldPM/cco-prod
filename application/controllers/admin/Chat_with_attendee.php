@@ -12,7 +12,7 @@ class Chat_with_attendee extends CI_Controller {
 
     function index() {
 
-        $data['sessions'] = $this->msessions->getSessionsAll();
+        $data['sessions'] = $this->msessions->getSessionsAllDesc();
 
         $this->load->view('admin/header');
         $this->load->view('admin/chat_with_attendee', $data);

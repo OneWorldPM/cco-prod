@@ -77,7 +77,7 @@
                         {
                             foreach ($sessions as $session)
                             {
-                                echo '<li class="session-name-item list-group-item" session-id="'.$session->sessions_id.'" session-name="'.$session->session_title.'"><strong>['.$session->sessions_id.']</strong> '.$session->session_title.' <span class="new-badge-session-item"></span></li>';
+                                echo '<li class="session-name-item list-group-item" session-id="'.$session->sessions_id.'" session-name="'.$session->session_title.'"><strong>['.$session->sessions_id.']</strong> '.$session->session_title.' <span class="new-badge-session-item"></span><br><small>'.$session->sessions_date.'</small></li>';
                             }
                         }
                         ?>
