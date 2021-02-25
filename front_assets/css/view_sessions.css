@@ -5,8 +5,12 @@
 .progress-bar {
     height: 100%;
     padding: 3px;
-    color: #000;
-    background: rgba(110, 106, 132, 0.16);
+    color: #fff;
+    background: rgb(3, 90, 118);
+}
+
+.assesment-bar {
+    background: rgb(69, 192, 234) !important;
 }
 
 .progress-bar_1 {
@@ -16,6 +20,12 @@
     box-shadow: none;
     color: #000;
     padding-top: 0px;
+}
+
+.presurvey-bar{
+    background: rgb(3, 90, 118) !important;
+    color: #fff !important;
+    text-align: center !important;
 }
 
 .progress_bar_new {
@@ -366,4 +376,8 @@ body{
 
 .resources-link-text:hover{
     color: #f37617 !important;
+}
+
+.zeroVotes{
+    width: 30px!important;
 }
