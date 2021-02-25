@@ -322,7 +322,7 @@ else
                             ?>
                             <div class="logo2">
                                 <span><?= $sponsor_type ?></span>
-                                <img src="<?= base_url() . "uploads/sessions_logo/" . $sesions_logo ?>" onerror="$(this).parent().remove()">
+                                <img src="<?= base_url() . "uploads/sessions_logo/" . $sesions_logo ?>" onerror="$(this).parent().remove()" style="width: <?=$sesions_logo_width?>px;height: <?=$sesions_logo_height?>px;">
                             </div>
                             <?php
                         }
