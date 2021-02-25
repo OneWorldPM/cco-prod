@@ -1,5 +1,5 @@
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
-<link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=2" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=10" rel="stylesheet">
 
 <?php
 if (isset($_GET['testing']) && $_GET['testing'] == 1) {
@@ -153,4 +153,4 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 </script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=8"></script>
+<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=11"></script>
