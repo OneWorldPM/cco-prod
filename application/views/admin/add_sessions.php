@@ -226,7 +226,15 @@ $user_role = $this->session->userdata('role');
                                                 <?php
                                             }
                                         ?>
+                                         <?php
+                                        if (isset($sessions_edit)) {
+                                            ?><a href="" class="btn btn-danger" style="float:right;margin-top:50px;">Clear All Uploads</a>
+                                        <?php
+                                        }
+                                         ?>
+
                                         <hr style="border: 2px solid;">
+                                       
                                     </div>
 				                    <div class="row">
                                             <label class="col-md-12 text-large text-bold">Claim Credit Link</label>
