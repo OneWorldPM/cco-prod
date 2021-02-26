@@ -1,16 +1,5 @@
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
 <link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=2" rel="stylesheet">
-<style>
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-.sticky + .content {
-  padding-top: 60px;
-}
- </style>
 <?php
 if (isset($_GET['testing']) && $_GET['testing'] == 1) {
     echo date('yy-m-d h:m:i');
