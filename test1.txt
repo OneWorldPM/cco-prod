@@ -1,4 +1,9 @@
 github test
 This is added by Athul
 This is Rexter
+<<<<<<< HEAD
 Test conflict 
+=======
+
+Athul added this
+>>>>>>> ecc151e9bab4fb23d349600ae0e43b0db5403be9
