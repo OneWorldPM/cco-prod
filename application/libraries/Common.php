@@ -36,6 +36,7 @@ class Common {
             return 0;
         }
     }
+    
     public function sendSmtpEmail($toEmail, $emailSubject, $emailBody)
     {
         $this->_CI->load->config('email_config', TRUE);
