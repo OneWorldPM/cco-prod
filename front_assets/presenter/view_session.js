@@ -952,3 +952,17 @@ socket.on('session_chat_closed_notification', (poll_app_name) => {
         get_group_chat_section_status();
 });
 /********* End of socket IO codes by Athul **********/
+
+
+window.onscroll = function() { stickTime() };
+
+var navbar = document.getElementById("stickTimer");
+var sticky = navbar.offsetTop;
+
+function stickTime() {
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+    } else {
+        navbar.classList.remove("sticky");
+    }
+}
