@@ -97,7 +97,7 @@
                                 <button type="submit" class="btn btn-primary" id="btn_login">
                                     Login
                                 </button>
-                                <span><a>Forgot Password</a></span>
+                                <span><a href="<?= base_url().'presenter/forgotpassword/' ?>">Forgot Password</a></span> 
                             </div>
                         </fieldset>
                     </form>
