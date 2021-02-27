@@ -19,7 +19,17 @@ $user_role = $this->session->userdata('role');
                 <div class="col-md-6">
                     <div class="panel panel-primary" id="panel5">
                         <div class="panel-heading">
-                            <h4 class="panel-title text-white text-bold">Session Details</h4>
+                            <h4 class="panel-title text-white text-bold">Session Details
+                            <?php if(isset($sessions_edit->sessions_id)){ ?>
+                        <div class="dropdown" style="float:right">
+                        <button class="fa fa-cogs btn btn-warning btn-sm" type="button" data-toggle="dropdown">
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a data-sessions-id="<?= $sessions_edit->sessions_id ?>" class="btn btn-sm delete-session-photo" >Delete All Session Photos</a></li>
+                        </ul>
+                        </div>
+                        <?php }?> 
+                        <h4>
                         </div>
                         <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                             <div class="col-md-12">
@@ -533,6 +543,29 @@ $user_role = $this->session->userdata('role');
             let hex = ($(this).val()).replace('#','');
             $('#themeColor').val(hex.toUpperCase());
         });
+
+
+               //====== session delete =======//
+        $('.delete-session-photo').on("click", function () {
+            var sesionId = <?= $sessions_edit->sessions_id?>;
+            console.log(sesionId);
+            alertify.confirm('Delete All Sessions Photo', 'This will delete all photo in this session', function(e){ 
+                if(e){
+                $.post("<?= base_url() ?>admin/sessions/delete_all_session_photos/"+sesionId,function (response){
+                    console.log(response);
+                    if(response=="success"){
+                            alertify.success('Session Deleted!');
+                            location.reload();
+                        }else{
+                            alertify.success('No Session Photo to Delete!');
+                            location.reload();
+                        }
+                });   
+             }
+            }, function(){ 
+             });
+        });
+
 
     });
 </script>

@@ -1994,4 +1994,18 @@ class M_sessions extends CI_Model {
         return "success";
     }
 
+    function delete_all_session_photos($session_id) {
+
+        $set = array(
+            'sessions_logo'=>null,
+            'sessions_addnl_logo'=>null,
+            'sessions_photo'=>null,
+        );
+      $result= $this->db->update("sessions", $set, array("sessions_id" => $session_id));
+       if ($result){
+           return true;
+       }else
+       return false;
+    }
+
 }
