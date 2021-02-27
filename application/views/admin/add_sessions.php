@@ -545,7 +545,7 @@ $user_role = $this->session->userdata('role');
         });
 
 
-               //====== session delete =======//
+               //====== session ALL Photo delete =======//
         $('.delete-session-photo').on("click", function () {
             var sesionId = <?= $sessions_edit->sessions_id?>;
             console.log(sesionId);
@@ -554,11 +554,11 @@ $user_role = $this->session->userdata('role');
                 $.post("<?= base_url() ?>admin/sessions/delete_all_session_photos/"+sesionId,function (response){
                     console.log(response);
                     if(response=="success"){
-                            alertify.success('Session Deleted!');
-                            location.reload();
+                            alertify.success('Session Photos Deleted!');
+                            window.setTimeout('location.reload()', 2000);
                         }else{
                             alertify.success('No Session Photo to Delete!');
-                            location.reload();
+                            window.setTimeout('location.reload()', 2000);
                         }
                 });   
              }
