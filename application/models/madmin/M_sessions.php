@@ -43,7 +43,7 @@ class M_sessions extends CI_Model {
                 $val->groupchatPresenter= $this->getGroupChatDetailsPresenter($val->sessions_id);
                 $val->getChatAll= $this->getChatAll($val->sessions_id);
                 $val->getNotesAll= $this->getNotesAll($val->sessions_id);
-
+                $val->check_send_json_exist= $this->check_send_json_exist($val->sessions_id);
 
                 $return_array[] = $val;
             }
@@ -1417,7 +1417,7 @@ class M_sessions extends CI_Model {
             $result = json_decode($result);
             echo "<pre>";
             print_r($result);
-            die;
+            // die;
             if ($result == 1) {
                 return TRUE;
             } else {
@@ -2006,6 +2006,25 @@ class M_sessions extends CI_Model {
            return true;
        }else
        return false;
+    }
+
+    function update_json_status($session_id){
+        $set=array(
+            'send_json_status'=>'1',
+        );
+        $this->db->update('sessions',$set,  array("sessions_id" =>$session_id));
+    }
+
+    // this will check if the json already sent
+    function check_send_json_exist($session_id){
+        $this->db->select('send_json_status');
+        $this->db->from('sessions');
+        $this->db->where('sessions_id',$session_id);
+        $qstr=$this->db->get();
+        if ($qstr->num_rows() > 0) {
+              return $qstr->result();
+            } 
+              return false;
     }
 
 }

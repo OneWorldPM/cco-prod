@@ -239,7 +239,17 @@ $user_role = $this->session->userdata('role');
                                                          <?php if ($user_role == 'super_admin') { ?>
 														 <a data-session-id="<?= $val->sessions_id ?>" class="btn btn-danger btn-sm delete_session"  style="font-size: 10px !important; margin-bottom: 5px;">Delete Session</a>
                                                          <?php } ?>
-                                                         <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">Send JSON</a>
+                                                         <?php if(isset($val->check_send_json_exist) && !empty($val->check_send_json_exist)){
+                                                                foreach ($val->check_send_json_exist as $status) {
+                                                                    if ($status->send_json_status==1) {
+                                                                        ?>
+                                                                         <a data-session-id="<?= $val->sessions_id?>" class="btn btn-purple btn-sm send-json" style="margin-bottom: 5px;">JSON Sent</a>
+                                                                        <?php
+                                                                    } else {
+                                                                        ?>  <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-success btn-sm" style="margin-bottom: 5px;">Send JSON</a><?php
+                                                                    }
+                                                                }
+                                                         }?>
                                                          <a href="<?= base_url() ?>admin/sessions/view_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">View JSON</a>
                                                         <?php if ($user_role == 'super_admin') { ?>
                                                             <button href-url="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" session-name="<?= $val->session_title ?>" style="margin-bottom: 5px;"  class="clear-json-btn btn btn-danger btn-sm">Clear JSON</button>
@@ -284,6 +294,14 @@ switch ($msg) {
         $t = "success";
         break;
     case "E":
+        $m = "Something went wrong, Please try again!!!";
+        $t = "error";
+        break;
+    case "JS":
+        $m = "Json Sent";
+        $t = "success";
+        break;
+    case "JE":
         $m = "Something went wrong, Please try again!!!";
         $t = "error";
         break;
@@ -348,5 +366,26 @@ switch ($msg) {
         })
     });
 
+    // This will confirm to send JSON if already sent
+$('.send-json').on('click', function () {
+
+let sesionId = <?=$val->sessions_id?>;
+let href = $(this).attr('href-url');
+
+Swal.fire({
+    title: 'Are you sure?',
+    text: "This will resend the Json in this session!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, Resend it!'
+}).then((result) => {
+    if (result.isConfirmed) {
+        window.location.href = "<?=base_url()?>admin/sessions/send_json/"+sesionId;
+    }
+})
+});
+// 
     });
 </script>
