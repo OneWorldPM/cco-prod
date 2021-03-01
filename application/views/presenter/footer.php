@@ -1,5 +1,24 @@
 <!-- start: FOOTER -->
 <footer>
+<div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;top: unset;">
+    <input type="hidden" id="push_notification_id" value="">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border: 1px solid #679B41;">
+            <div class="modal-body">
+                <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
+                    <div class="col-sm-12">
+                        <div style="color:#000000; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #f58113; opacity: 1; font-size: 18px; font-weight: 400;" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
     <div class="footer-inner">
         <div class="pull-left">
             &copy; <span class="current-year"></span><span class="text-bold text-uppercase"> </span>. <span>All rights reserved</span>
@@ -96,6 +115,12 @@
 <script src="<?= base_url() ?>assets/js/form-wizard.js"></script>
 <script src="<?= base_url() ?>assets/js/pages-messages.js"></script>
 
+
+<!--  -->
+<script src="<?= base_url() ?>front_assets/js/custom.js?v=3"></script>
+<script src="<?= base_url() ?>assets/alertify/alertify.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+<!--  -->
 <script>
     jQuery(document).ready(function () {
         Main.init();
@@ -106,5 +131,75 @@
 </script>
 <!-- end: JavaScript Event Handlers for this page -->
 <!-- end: CLIP-TWO JAVASCRIPTS -->
+
+<script>
+    var user_id = <?= $this->session->userdata("cid") ?>;
+    var user_name = "<?= $this->session->userdata('fullname') ?>";
+    function extract(variable) {
+        for (var key in variable) {
+            window[key] = variable[key];
+        }
+    }
+
+    $(function() {
+        $.get( "<?=base_url()?>socket_config.php", function( data ) {
+            var config = JSON.parse(data);
+            extract(config);
+            var socketServer = "https://socket.yourconference.live:443";
+            let socket = io(socketServer);
+        
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var app_name_main = "<?=getAppName("") ?>";
+        push_notification_admin();
+        //setInterval(push_notification_admin, 2000);
+        socket.on('push_notification_change', (socket_app_name) => {
+            if (socket_app_name == app_name_main)
+                push_notification_admin();
+        });
+        function push_notification_admin()
+        {
+            var push_notification_id = $("#push_notification_id").val();
+
+            $.ajax({
+                url: "<?= base_url() ?>presenter/push_notification/get_push_notification_admin",
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    if (data.status == "success") {
+                        if (push_notification_id == "0") {
+                            $("#push_notification_id").val(data.result.push_notification_id);
+                        }
+                        if (push_notification_id != data.result.push_notification_id && data.result.session_id == null) {
+                            if (data.result.receiver=="presenter" || data.result.receiver=="both" || data.result.receiver==null){
+                            $("#push_notification_id").val(data.result.push_notification_id);
+                            $('#push_notification').modal('show');
+                            $("#push_notification_message").text(data.result.message);
+                            }
+                        }
+
+                        if (push_notification_id != data.result.push_notification_id && data.result.session_id != null)
+                        {
+                            if (data.result.receiver=="presenter" || data.result.receiver=="both" || data.result.receiver==null){
+                            if (typeof session_id !== 'undefined' && session_id == data.result.session_id)
+                            {
+                                $("#push_notification_id").val(data.result.push_notification_id);
+                                $('#push_notification').modal('show');
+                                $("#push_notification_message").text(data.result.message);
+                            }
+                        }
+                        }
+                    } else {
+                        $('#push_notification').modal('hide');
+                    }
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>

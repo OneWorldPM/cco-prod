@@ -97,6 +97,7 @@ $user_role = $this->session->userdata('role');
                                             <th>Presenters</th>
                                             <th>Moderators</th>
                                             <th>Time Slot</th>
+                                            <th>Session Notes</th>
                                             <th>Other Info</th>
                                             <th style="border-right: 0px solid #ddd;">Action</th>
                                             <th style="border-left: 0px solid #ddd; border-right: 0px solid #ddd;"></th>
@@ -176,11 +177,18 @@ $user_role = $this->session->userdata('role');
                                                         }else{
                                                             $groupModCount=0;
                                                         }
-                                                       
-                                                       
+                                                        
+                                                     
+                                                     
                                                         ?>
                                                     </td>
                                                     <td><?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
+                                                    <td>  <?php if (isset($val->getNotesAll) && !empty($val->getNotesAll)){
+                                                           foreach ($val->getNotesAll as $note){
+                                                              $note_content= $note->note_content;
+                                                            echo "".$note_content ."<br>";
+                                                           }
+                                                       }?></td>
                                                     <td>
                                                     
                                                              <?php $total=$mod_count+$pres_count ;  ?>
@@ -224,13 +232,24 @@ $user_role = $this->session->userdata('role');
                                                         <a href="<?= base_url() ?>admin/sessions/report/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm" style="margin-bottom: 5px;">Report</a>
                                                         <?php } ?>
                                                         <a href="<?= base_url() ?>admin/groupchat/sessions_groupchat/<?= $val->sessions_id ?>" class="btn btn-blue btn-sm" style="margin-bottom: 5px;">Create Chat</a>
-                                                        <a href="<?= base_url() ?>admin/sessions/resource/<?= $val->sessions_id ?>" class="btn btn-success btn-sm">Resources</a>
+                                                        <a href="<?= base_url() ?>admin/sessions/resource/<?= $val->sessions_id ?>" style="margin-bottom: 5px;" class="btn btn-success btn-sm" >Resources</a>
+                                                        <a href="<?= base_url() ?>admin/sessions/add_notes/<?= $val->sessions_id ?>" class="btn btn-light-green btn-sm"> Notes</a>
                                                     </td>
                                                     <td>
                                                          <?php if ($user_role == 'super_admin') { ?>
 														 <a data-session-id="<?= $val->sessions_id ?>" class="btn btn-danger btn-sm delete_session"  style="font-size: 10px !important; margin-bottom: 5px;">Delete Session</a>
                                                          <?php } ?>
-                                                         <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">Send JSON</a>
+                                                         <?php if(isset($val->check_send_json_exist) && !empty($val->check_send_json_exist)){
+                                                                foreach ($val->check_send_json_exist as $status) {
+                                                                    if ($status->send_json_status==1) {
+                                                                        ?>
+                                                                         <a data-session-id="<?= $val->sessions_id?>" class="btn btn-purple btn-sm send-json" style="margin-bottom: 5px;">JSON Sent</a>
+                                                                        <?php
+                                                                    } else {
+                                                                        ?>  <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-success btn-sm" style="margin-bottom: 5px;">Send JSON</a><?php
+                                                                    }
+                                                                }
+                                                         }?>
                                                          <a href="<?= base_url() ?>admin/sessions/view_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">View JSON</a>
                                                         <?php if ($user_role == 'super_admin') { ?>
                                                             <button href-url="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" session-name="<?= $val->session_title ?>" style="margin-bottom: 5px;"  class="clear-json-btn btn btn-danger btn-sm">Clear JSON</button>
@@ -266,7 +285,23 @@ switch ($msg) {
         $m = "Successfully Cleared";
         $t = "success";
         break;
+    case "A":
+        $m = "Successfully Added";
+        $t = "success";
+        break;
+    case "D":
+        $m = "Successfully Deleted";
+        $t = "success";
+        break;
     case "E":
+        $m = "Something went wrong, Please try again!!!";
+        $t = "error";
+        break;
+    case "JS":
+        $m = "Json Sent";
+        $t = "success";
+        break;
+    case "JE":
         $m = "Something went wrong, Please try again!!!";
         $t = "error";
         break;
@@ -331,5 +366,26 @@ switch ($msg) {
         })
     });
 
+    // This will confirm to send JSON if already sent
+$('.send-json').on('click', function () {
+
+let sesionId = <?=$val->sessions_id?>;
+let href = $(this).attr('href-url');
+
+Swal.fire({
+    title: 'Are you sure?',
+    text: "This will resend the Json in this session!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, Resend it!'
+}).then((result) => {
+    if (result.isConfirmed) {
+        window.location.href = "<?=base_url()?>admin/sessions/send_json/"+sesionId;
+    }
+})
+});
+// 
     });
 </script>

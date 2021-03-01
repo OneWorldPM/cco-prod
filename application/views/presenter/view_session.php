@@ -1,4 +1,5 @@
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
+
 <link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=10" rel="stylesheet">
 
 <?php
@@ -131,9 +132,12 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
 
 <div class="stickyTimer">
-     <div id="id_day_time_clock" class="timer" style="right:20px;position:fixed"></div>
+    <?php if (1==2){ ?>
+    <?php } ?>
+    <div class="bg-dark sticky-top" id="stickTimer" style="right:20px;position:fixed;background:black; width:100%">
+        <div id="id_day_time_clock" class="timer" style="right:20px;"></div>
+    </div>
 </div>
-
 <div class="rightSticky presenterRightSticky" data-screen="presenter">
     <ul>
         <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="notify hostChatNotify displayNone">new</span> <span>HOST CHAT</span></li>
@@ -153,4 +157,6 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 </script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
+
 <script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=11"></script>
+

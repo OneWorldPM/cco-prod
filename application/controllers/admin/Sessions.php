@@ -476,12 +476,14 @@ class Sessions extends CI_Controller {
         if ($sessions_id != "") {
             $result = $this->msessions->send_json($sessions_id);
             if ($result) {
-                header('location:' . base_url() . 'admin/sessions?msg=S');
+                $this->msessions->update_json_status($sessions_id);
+                header('location:' . base_url() . 'admin/sessions?msg=JS');
+                
             } else {
-                header('location:' . base_url() . 'admin/sessions?msg=E');
+                header('location:' . base_url() . 'admin/sessions?msg=JE');
             }
         } else {
-            header('location:' . base_url() . 'admin/sessions?msg=E');
+            header('location:' . base_url() . 'admin/sessions?msg=JE');
         }
     }
     
@@ -889,5 +891,69 @@ class Sessions extends CI_Controller {
 
         return;
     }
+
+    public function notes()
+    {
+        $this->load->view('admin/header');
+       $this->load->view('admin/view_notes');
+       $this->load->view('admin/footer');
+    }
+
+
+    public function add_notes($sessions_id)
+    {
+        $data['sessions_id']=$sessions_id;
+        $data['notes_details']=$this->msessions->getNotesDetails();
+        $this->load->view('admin/header');
+       $this->load->view('admin/add_notes.php',$data);
+       $this->load->view('admin/footer');
+    }
+
+    
+    public function create_notes($sessions_id)
+    {
+        $result = $this->msessions->create_notes($sessions_id);
+        if ($result){
+           
+           redirect(base_url().'admin/sessions?msg=A');
+        }
+    }
+
+        
+    public function delete_notes($note_id)
+    {
+        $data = $this->msessions->delete_notes($note_id);
+        header('location:' . base_url() . 'admin/sessions?msg=D');
+    }
+
+            
+    public function delete_all_session_photos($session_id)
+    {
+        $qstr= $this->msessions->edit_sessions($session_id);
+           $sessions_photo_name=$qstr->sessions_photo;
+            $sessions_addnl_logo=$qstr->sessions_addnl_logo;
+            $sessions_logo=$qstr->sessions_logo;
+        if (isset($sessions_photo_name) && !empty($sessions_photo_name)){
+            unlink("uploads/sessions_logo/".$sessions_logo);
+        }
+        if  (isset($sessions_addnl_logo) && !empty($sessions_addnl_logo)){
+            unlink("uploads/sessions_logo/".$sessions_addnl_logo);
+        }
+        if  (isset($sessions_logo) && !empty($sessions_logo)){
+            unlink("uploads/sessions/".$sessions_photo_name);
+        }
+        
+         $res=$this->msessions->delete_all_session_photos($session_id);
+         if($res){
+            
+          echo "success";
+         }
+         else{
+            echo "error";
+            }
+         
+        
+    }
+
 
 }
