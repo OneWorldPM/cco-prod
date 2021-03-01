@@ -1,6 +1,6 @@
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
 
-<link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=10" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=13" rel="stylesheet">
 
 <?php
 if (isset($_GET['testing']) && $_GET['testing'] == 1) {
@@ -127,10 +127,6 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
     </div>
 </div>
 
-
-
-
-
 <div class="stickyTimer">
     <?php if (1==2){ ?>
     <?php } ?>
@@ -158,5 +154,4 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
 
-<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=11"></script>
-
+<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=14"></script>
