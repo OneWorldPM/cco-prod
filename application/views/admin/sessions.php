@@ -168,7 +168,7 @@ $user_role = $this->session->userdata('role');
                                                         }
                                                         ?>
                                                     </td>
-                                                    <td><?=(isset($val->embed_html_code))?$val->embed_html_code: '' ?></td>
+                                                    <td><?=(isset($val->embed_html_code)&& !empty($val->embed_html_code))?$val->embed_html_code: '' ?></td>
                                                     <td><?=(isset($val->embed_html_code_presenter) && !empty($val->embed_html_code_presenter))? 'Yes':'<span style="color:red">X</span>'?> </td>
                                                     <td> <?=(isset($val->session_notes) && !empty($val->session_notes))?$val->session_notes:''?></td>
                                                     <td>
