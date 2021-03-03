@@ -98,6 +98,7 @@ $user_role = $this->session->userdata('role');
                                             <th>Presenters</th>
                                             <th>Moderators</th>
                                             <th>Stream Name</th>
+                                            <th>Presenter PPT Uploaded</th>
                                             <th>Session Notes</th>
                                             <th>Other Info</th>
                                             <th style="border-right: 0px solid #ddd;">Action</th>
@@ -167,9 +168,8 @@ $user_role = $this->session->userdata('role');
                                                         }
                                                         ?>
                                                     </td>
-                                                    <td>
-                                                    <small><?=(isset($val->embed_html_code))?$val->embed_html_code: '' ?></small>
-                                                    </td>
+                                                    <td><small><?=(isset($val->embed_html_code))?$val->embed_html_code: '' ?></small></td>
+                                                    <td><?=(isset($val->embed_html_code_presenter) && !empty($val->embed_html_code_presenter))? 'Yes':'<span style="color:red">X</span>'?> </td>
                                                     <td>  <?php if (isset($val->getNotesAll) && !empty($val->getNotesAll)){
                                                            foreach ($val->getNotesAll as $note){
                                                               $note_content= $note->note_content;
