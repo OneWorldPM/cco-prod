@@ -89,6 +89,7 @@ $user_role = $this->session->userdata('role');
                                 <table class="table table-bordered table-striped text-center " id="sessions_table">
                                     <thead class="th_center">
                                         <tr>
+                                            <th>Time Slot</th>
                                             <th>Date</th>
                                             <th>Unique Identifier</th>
                                             <th>CCO Event ID</th>
@@ -97,7 +98,6 @@ $user_role = $this->session->userdata('role');
                                             <th>Presenters</th>
                                             <th>Moderators</th>
                                             <th>Stream Name</th>
-                                            <th>Time Slot</th>
                                             <th>Session Notes</th>
                                             <th>Other Info</th>
                                             <th style="border-right: 0px solid #ddd;">Action</th>
@@ -112,6 +112,7 @@ $user_role = $this->session->userdata('role');
                                                 $toolboxItems = explode(',', $val->right_bar);
                                                 ?>
                                                 <tr>
+                                                     <td><?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                     <td><?= date("Y-m-d", strtotime($val->sessions_date)) ?></td>
                                                     <td><?= $val->sessions_id ?></td>
                                                     <td><?= $val->cco_envent_id ?></td>
@@ -169,7 +170,6 @@ $user_role = $this->session->userdata('role');
                                                     <td>
                                                     <small><?=(isset($val->embed_html_code))?$val->embed_html_code: '' ?></small>
                                                     </td>
-                                                    <td><?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                     <td>  <?php if (isset($val->getNotesAll) && !empty($val->getNotesAll)){
                                                            foreach ($val->getNotesAll as $note){
                                                               $note_content= $note->note_content;
