@@ -61,6 +61,7 @@ class M_sessions extends CI_Model {
         if (!empty($where)) {
             $this->db->where($where);
         }
+        $this->db->where("(sessions_date < now())");
         $this->db->order_by("s.sessions_date", "desc");
         $this->db->order_by("s.time_slot", "desc");
         $sessions = $this->db->get();
