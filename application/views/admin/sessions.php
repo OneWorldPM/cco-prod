@@ -215,7 +215,6 @@ $user_role = $this->session->userdata('role');
                                                         <?php } ?>
                                                         <a href="<?= base_url() ?>admin/groupchat/sessions_groupchat/<?= $val->sessions_id ?>" class="btn btn-blue btn-sm" style="margin-bottom: 5px;">Create Chat</a>
                                                         <a href="<?= base_url() ?>admin/sessions/resource/<?= $val->sessions_id ?>" style="margin-bottom: 5px;" class="btn btn-success btn-sm" >Resources</a>
-                                                        <a href="<?= base_url() ?>admin/sessions/add_notes/<?= $val->sessions_id ?>" class="btn btn-light-green btn-sm"> Notes</a>
                                                     </td>
                                                     <td>
                                                          <?php if ($user_role == 'super_admin') { ?>

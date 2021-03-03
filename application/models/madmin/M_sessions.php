@@ -1975,28 +1975,6 @@ class M_sessions extends CI_Model {
 
     }
 
-    function create_notes($sessions_id){
-        $post = $this->input->post();
-        $set = array(
-           
-            'sessions_id' => $sessions_id,
-            'date_created' => date('Y-m-d'),
-            'note_title' => $post['note_title'],
-            'note_content' => $post['note_content'],
-        );
-        $result=$this->db->insert("notes", $set);
-        if($result){
-            return $result;
-        }
-        else{
-            return false;
-        }
-    }
-    function delete_notes($note_id) {
-        $this->db->delete("notes", array("note_id" => $note_id));
-        return "success";
-    }
-
     function delete_all_session_photos($session_id) {
 
         $set = array(
