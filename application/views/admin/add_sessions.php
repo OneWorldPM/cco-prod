@@ -44,6 +44,10 @@ $user_role = $this->session->userdata('role');
                                         <label class="text-large text-bold">Sessions Description</label>
                                         <textarea class="form-control" style="color: #000;" name="sessions_description" id="sessions_description"><?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_description : "" ?></textarea>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="text-large text-bold">Session Notes</label>
+                                        <textarea class="form-control" style="color: #000;" name="session_notes" id="sessions_description"><?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->session_notes : "" ?></textarea>
+                                    </div>
 
                                     <div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
                                     <div class="row">
