@@ -260,7 +260,7 @@ $user_role = $this->session->userdata('role');
 
                                             <div class="form-group" style="position: unset !important; <?=($user_role != 'super_admin')?'display:none':''?>" >
                                                 <hr style="border: 2px solid;">
-                                                <label class="col-md-12 text-large text-bold">Sponsor Logo</label>
+                                                <label class="col-md-12 text-large text-bold">Sponsor Logo &nbsp; (uploaded logo is displayed on right side of client logo in attendee view)</label>
                                                 <input type="file" class="form-control" name="sessions_logo" id="sessions_logo" <?=($user_role != 'super_admin')?'disabled':''?>>
                                                 <?php
                                                 if (isset($sessions_edit)) {
@@ -279,7 +279,7 @@ $user_role = $this->session->userdata('role');
                                         <div class="row" style="margin-top: 20px; <?=($user_role != 'super_admin')?'display:none':''?>">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="col-md-12 text-large text-bold" for="sel1">Select Sponsor Text</label>
+                                                    <label class="col-md-12 text-large text-bold" for="sel1">Select Sponsor Text &nbsp;(this text will appear above the Sponsor logo)</label>
 
                                                     <select class="form-control" name="sponsor_type" <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>
                                                         <option value="" <?=isset($sessions_edit)?($sessions_edit->sponsor_type==""?"selected":""):""?>>___No Text___</option>
@@ -292,7 +292,7 @@ $user_role = $this->session->userdata('role');
 
                                 <div class="form-group" style="position: unset !important; <?=($user_role != 'super_admin')?'display:none':''?>" >
                                     <hr style="border: 2px solid;">
-                                    <label class="col-md-12 text-large text-bold">Additional Logo</label>
+                                    <label class="col-md-12 text-large text-bold">Additional Logo &nbsp;(uploaded logo is displayed on LEFT side of client logo in attendee view)</label>
                                     <input type="file" class="form-control" name="sessions_addnl_logo" id="sessions_addnl_logo" <?=($user_role != 'super_admin')?'disabled':''?>>
                                     <?php
                                     if (isset($sessions_edit->sessions_addnl_logo)) {
