@@ -96,6 +96,7 @@ $user_role = $this->session->userdata('role');
                                             <th>Title</th>
                                             <th>Presenters</th>
                                             <th>Moderators</th>
+                                            <th>Stream Name</th>
                                             <th>Time Slot</th>
                                             <th>Session Notes</th>
                                             <th>Other Info</th>
@@ -122,7 +123,6 @@ $user_role = $this->session->userdata('role');
                                                         <?php } ?>    
                                                     </td>
                                                     <td><?= $val->session_title ?></td>
-                                                   
                                                     <td>
                                                         <?php
                                                         //print_r($val->presenter);
@@ -130,12 +130,10 @@ $user_role = $this->session->userdata('role');
                                                             foreach ($val->presenter as $value) {
                                                                 $pres_count=count($val->presenter);
                                                                 echo $value->presenter_name . " <br><br>";
-                                                            }
-                                                          
+                                                            } 
                                                         }else{
                                                             $pres_count=0;
                                                         }
-
                                                         if (isset($val->groupchatPresenter) && !empty($val->groupchatPresenter)) {
                                                        
                                                             foreach ($val->groupchatPresenter as $name) {
@@ -143,13 +141,9 @@ $user_role = $this->session->userdata('role');
                                                              $groupPresCount=count($val->groupchatPresenter);
                                                            
                                                             }
-                                                         
                                                         }else{
                                                             $groupPresCount=0;
                                                         }
-                                                       
-                                                       
-                                                    
                                                         ?>
                                                     </td>
                                                     <td>
@@ -158,29 +152,22 @@ $user_role = $this->session->userdata('role');
                                                             foreach ($val->moderators as $name) {
                                                                 $mod_count=count($val->moderators);
                                                                 echo $name . " <br><br>";
-                                                            }
-                                                            
+                                                            }      
                                                         }else{
                                                             $mod_count=0;
                                                         }
-
-                                                        
-                                                      
                                                         if (isset($val->groupchat) && !empty($val->groupchat)) {
-                                                       
                                                             foreach ($val->groupchat as $name) {
                                                               
-                                                             $groupModCount=count($val->groupchat);
-                                                           
-                                                            }
-                                                         
+                                                             $groupModCount=count($val->groupchat); 
+                                                            } 
                                                         }else{
                                                             $groupModCount=0;
                                                         }
-                                                        
-                                                     
-                                                     
                                                         ?>
+                                                    </td>
+                                                    <td>
+                                                    <small><?=(isset($val->embed_html_code))?$val->embed_html_code: '' ?></small>
                                                     </td>
                                                     <td><?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                     <td>  <?php if (isset($val->getNotesAll) && !empty($val->getNotesAll)){
