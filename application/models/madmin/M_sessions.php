@@ -42,7 +42,6 @@ class M_sessions extends CI_Model {
                 $val->groupchat= $this->getGroupChatDetails($val->sessions_id);
                 $val->groupchatPresenter= $this->getGroupChatDetailsPresenter($val->sessions_id);
                 $val->getChatAll= $this->getChatAll($val->sessions_id);
-                $val->getNotesAll= $this->getNotesAll($val->sessions_id);
                 $val->check_send_json_exist= $this->check_send_json_exist($val->sessions_id);
 
                 $return_array[] = $val;
@@ -1945,30 +1944,7 @@ class M_sessions extends CI_Model {
         }
     }
 
-    function getNotesAll($session){
-        $this->db->select('*');
-        $this->db->from('notes');
-        $this->db->where('sessions_id',$session);
-        $this->db->order_by("date_created", "desc");
-        $notes = $this->db->get();
-        if ($notes->num_rows() > 0) {
-            return $notes->result();
-        } else {
-            return '';
-        }
-    }
 
-    function getNotesDetails(){
-        $this->db->select('*');
-        $this->db->from('notes');
-        $this->db->order_by("date_created", "desc");
-        $notes = $this->db->get();
-        if ($notes->num_rows() > 0) {
-            return $notes->result();
-        } else {
-            return '';
-        }
-    }
 
     private function fixZeroTotalTime($start)
     {
