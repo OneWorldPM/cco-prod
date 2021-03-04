@@ -55,11 +55,6 @@ class M_sessions extends CI_Model {
     function getSessionsAllDesc() {
         $this->db->select('s.*');
         $this->db->from('sessions s');
-		 ($this->session->userdata('start_date') != "") ? $where['DATE(s.sessions_date) >='] = date('Y-m-d', strtotime($this->session->userdata('start_date'))) : '';
-        ($this->session->userdata('end_date') != "") ? $where['DATE(s.sessions_date) <='] = date('Y-m-d', strtotime($this->session->userdata('end_date'))) : '';
-        if (!empty($where)) {
-            $this->db->where($where);
-        }
         $this->db->where("(sessions_date < now())");
         $this->db->order_by("s.sessions_date", "desc");
         $this->db->order_by("s.time_slot", "desc");
