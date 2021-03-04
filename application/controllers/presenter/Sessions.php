@@ -68,9 +68,9 @@ class Sessions extends CI_Controller {
     public function update_poll_data() {
         $result = $this->msessions->update_poll_data();
         if ($result) {
-            header('location:' . base_url() . 'presenter/sessions');
+            header('location:' . base_url() . 'presenter/sessions/view_poll/'.$result);
         } else {
-            header('location:' . base_url() . 'presenter/sessions');
+            header('location:' . base_url() . 'presenter/sessions/view_poll/'.$result);
         }
     }
 
