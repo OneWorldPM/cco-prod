@@ -217,7 +217,7 @@ class M_sessions extends CI_Model {
             }
         }
         
-        return $post['sessions_id'];
+        return TRUE;
     }
 
     function get_question_list() {

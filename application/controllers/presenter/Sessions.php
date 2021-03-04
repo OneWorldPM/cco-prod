@@ -66,11 +66,12 @@ class Sessions extends CI_Controller {
     }
 
     public function update_poll_data() {
+        $post=$this->input->post('sessions_id');
         $result = $this->msessions->update_poll_data();
         if ($result) {
-            header('location:' . base_url() . 'presenter/sessions/view_poll/'.$result);
+            header('location:' . base_url() . 'presenter/sessions/view_poll/'.$post);
         } else {
-            header('location:' . base_url() . 'presenter/sessions/view_poll/'.$result);
+            header('location:' . base_url() . 'presenter/sessions/view_poll/'.$post);
         }
     }
 
