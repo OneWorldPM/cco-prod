@@ -926,7 +926,7 @@ class Sessions extends CI_Controller {
         header('location:' . base_url() . 'admin/sessions?msg=D');
     }
 
-            
+            // delete all session logo
     public function delete_all_session_photos($session_id)
     {
         $qstr= $this->msessions->edit_sessions($session_id);
@@ -951,9 +951,34 @@ class Sessions extends CI_Controller {
          else{
             echo "error";
             }
-         
-        
     }
+            // delete each session logo each
+    public function delete_session_logo()
+    {
+        $post=$this->input->post();
+        $session_id= $post['session_id'];
+        $session_table=$post['session_loc'];
 
 
+       $qstr= $this->msessions->edit_sessions($session_id);
+        $sessions_photo_name=$qstr->$session_table;
+        if($session_table=='sessions_photo') {
+            unlink("uploads/sessions/" .$sessions_photo_name);
+        }
+        if  (isset($session_table) && !empty($session_table)){
+
+                 unlink("uploads/sessions_logo/" .$sessions_photo_name);
+        }
+
+    $res=$this->msessions->delete_session_photo($session_id,$session_table);
+         if($res){
+          echo "success";
+         }
+         else{
+            echo "error";
+            }
+}
+
+
+// 
 }
