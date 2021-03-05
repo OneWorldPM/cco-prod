@@ -958,16 +958,16 @@ class Sessions extends CI_Controller {
         $post=$this->input->post();
         $session_id= $post['session_id'];
         $session_table=$post['session_loc'];
-
-
        $qstr= $this->msessions->edit_sessions($session_id);
         $sessions_photo_name=$qstr->$session_table;
-        if($session_table=='sessions_photo') {
-            unlink("uploads/sessions/" .$sessions_photo_name);
-        }
-        if  (isset($session_table) && !empty($session_table)){
 
-                 unlink("uploads/sessions_logo/" .$sessions_photo_name);
+        if  (isset($session_table) && !empty($session_table)){
+            if($session_table=='sessions_addnl_logo' || $session_table=='sessions_logo') {
+                unlink("uploads/sessions_logo/" . $sessions_photo_name);
+            }
+        }
+        if(empty($qstr)){
+            $res="error";
         }
 
     $res=$this->msessions->delete_session_photo($session_id,$session_table);
