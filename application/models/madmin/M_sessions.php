@@ -800,6 +800,23 @@ class M_sessions extends CI_Model {
         return $this->db->get();
     }
 
+    function getSessionQuestion($sessions_id) {
+        $post = $this->input->post();
+        $this->db->select("CONCAT(first_name, ' ', last_name) AS name");
+        $this->db->select('question');
+        $this->db->from('sessions_cust_question s');
+        $this->db->join('customer_master cm','cm.cust_id=s.cust_id');
+        $this->db->where('sessions_id',$sessions_id);
+        $get_question= $this->db->get();
+            if ($get_question->num_rows() > 0) {
+                return $get_question;
+            
+        }else{
+            $result = '';
+        }
+        
+    }
+
     function get_poll_type() {
         $this->db->select('*');
         $this->db->from('poll_type');
