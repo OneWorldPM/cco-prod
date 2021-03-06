@@ -1000,6 +1000,14 @@ class Sessions extends CI_Controller {
             }
 }
 
+public function archive_session() {
+    // echo "hi";exit;
+    $data['sessions'] = $this->msessions->getArchivedSessions();
+    $data['session_types'] = $this->msessions->getSessionTypes();
+    $this->load->view('admin/header');
+    $this->load->view('admin/sessions', $data);
+    $this->load->view('admin/footer');
+}
 
 // 
 }

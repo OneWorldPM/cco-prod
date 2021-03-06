@@ -31,6 +31,10 @@ class M_sessions extends CI_Model {
         if (!empty($where)) {
             $this->db->where($where);
         }
+        else{
+            $where['DATE(sessions_date) >='] = date('Y-m-d', strtotime("-1 day"));
+            $this->db->where($where);
+        }
         $this->db->order_by("s.sessions_date", "asc");
         $this->db->order_by("s.time_slot", "asc");
         $sessions = $this->db->get();
@@ -64,6 +68,39 @@ class M_sessions extends CI_Model {
             foreach ($sessions->result() as $val) {
                 $val->presenter = $this->common->get_presenter($val->presenter_id, $val->sessions_id);
                 $val->moderators = $this->getModerators($val->sessions_id);
+
+                $return_array[] = $val;
+            }
+            return $return_array;
+        } else {
+            return '';
+        }
+    }
+
+    function getArchivedSessions() {
+        $this->db->select('s.*');
+        $this->db->from('sessions s');
+		 ($this->session->userdata('start_date') != "") ? $where['DATE(s.sessions_date) >='] = date('Y-m-d', strtotime($this->session->userdata('start_date'))) : '';
+        ($this->session->userdata('end_date') != "") ? $where['DATE(s.sessions_date) <='] = date('Y-m-d', strtotime($this->session->userdata('end_date'))) : '';
+        if (!empty($where)) {
+            $this->db->where($where);
+        }
+        else{
+            $where['DATE(sessions_date) <='] = date('Y-m-d', strtotime("-1 day"));
+            $this->db->where($where);
+        }
+        $this->db->order_by("s.sessions_date", "asc");
+        $this->db->order_by("s.time_slot", "asc");
+        $sessions = $this->db->get();
+        if ($sessions->num_rows() > 0) {
+            $return_array = array();
+            foreach ($sessions->result() as $val) {
+                $val->presenter = $this->common->get_presenter($val->presenter_id, $val->sessions_id);
+                $val->moderators = $this->getModerators($val->sessions_id);
+                $val->groupchat= $this->getGroupChatDetails($val->sessions_id);
+                $val->groupchatPresenter= $this->getGroupChatDetailsPresenter($val->sessions_id);
+                $val->getChatAll= $this->getChatAll($val->sessions_id);
+                $val->check_send_json_exist= $this->check_send_json_exist($val->sessions_id);
 
                 $return_array[] = $val;
             }
