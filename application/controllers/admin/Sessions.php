@@ -265,7 +265,7 @@ class Sessions extends CI_Controller {
     // get data 
     // file creation 
     $file = fopen('php://output', 'w');
-    $header = array("Name","Question"); 
+    $header = array("Attendee Name","Question"); 
     fputcsv($file, $header);
     foreach ($questionData->result_array() as $value)
     {   
