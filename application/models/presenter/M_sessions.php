@@ -216,6 +216,7 @@ class M_sessions extends CI_Model {
                 }
             }
         }
+        
         return TRUE;
     }
 

@@ -36,9 +36,11 @@ $user_role = $this->session->userdata('role');
                                         </div>
                                         <input type="submit" name="btn_today" class="btn btn-primary" style="margin-top: 22px;" id="filter_btn" value="Today">
                                         <input type="submit" name="btn_tomorrow" class="btn btn-primary" style="margin-top: 22px;" id="filter_btn" value="Tomorrow">
+                                        
                            
                                     </div>
                                 </div>
+                                <input type="button" onclick="location.href='<?php echo base_url();?>admin/sessions/archive_session'" name="archive_session" class="btn btn-info" style="margin-top: 90px;margin-right:10px;float:right" id="archive_session" value="Archived Sessions">
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Session Type:</label>
@@ -131,7 +133,7 @@ $user_role = $this->session->userdata('role');
                                                         if (isset($val->presenter) && !empty($val->presenter)) {
                                                             foreach ($val->presenter as $value) {
                                                                 $pres_count=count($val->presenter);
-                                                                echo $value->presenter_name .'<span style="color:black"> '.$value->degree.'</span>'. " <br><br>";
+                                                                echo $value->presenter_name .'<span> '.$value->degree.'</span>'. " <br><br>";
                                                             } 
                                                         }else{
                                                             $pres_count=0;
@@ -236,7 +238,8 @@ $user_role = $this->session->userdata('role');
                                                             <button href-url="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" session-name="<?= $val->session_title ?>" style="margin-bottom: 5px;"  class="clear-json-btn btn btn-danger btn-sm">Clear JSON</button>
                                                         <?php } ?>
 														 <a href="<?= base_url() ?>admin/sessions/flash_report/<?= $val->sessions_id ?>" style="margin-bottom: 5px;" class="btn btn-info btn-sm">Flash Report</a>
-                                                         <a href="<?= base_url() ?>admin/sessions/polling_report/<?= $val->sessions_id ?>" class="btn btn-azure btn-sm">Polling Report</a>
+                                                         <a href="<?= base_url() ?>admin/sessions/polling_report/<?= $val->sessions_id ?>" class="btn btn-azure btn-sm" style="margin-bottom: 5px;">Polling Report</a><br>
+                                                         <a href="<?= base_url() ?>admin/sessions/attendee_question_report/<?= $val->sessions_id ?>" class="btn btn-azure btn-sm">Questions Report</a>
                                                     </td>
                                                 </tr>
                                                 <?php

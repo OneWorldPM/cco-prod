@@ -255,6 +255,27 @@ class Sessions extends CI_Controller {
         exit; 
     
  }
+
+ public function attendee_question_report($sessions_id) {
+    $questionData = $this->msessions->getSessionQuestion($sessions_id);
+    $file_name = 'Attendee Questions/'.date('Y-m-d').'.csv';
+    header("Content-Description: File Transfer"); 
+    header("Content-Disposition: attachment; filename=$file_name"); 
+    header("Content-Type: application/csv;");
+    // get data 
+    // file creation 
+    $file = fopen('php://output', 'w');
+    $header = array("Attendee Name","Question"); 
+    fputcsv($file, $header);
+    foreach ($questionData->result_array() as $value)
+    {   
+        // print_r($value);
+         fputcsv($file,$value);    
+    }
+    fclose($file); 
+    exit; 
+}
+
     function view_result($sessions_poll_question_id) {
         $data['poll_report'] = $this->msessions->view_result($sessions_poll_question_id);
         $this->load->view('admin/header');
@@ -926,7 +947,7 @@ class Sessions extends CI_Controller {
         header('location:' . base_url() . 'admin/sessions?msg=D');
     }
 
-            
+            // delete all session logo
     public function delete_all_session_photos($session_id)
     {
         $qstr= $this->msessions->edit_sessions($session_id);
@@ -951,9 +972,42 @@ class Sessions extends CI_Controller {
          else{
             echo "error";
             }
-         
-        
     }
+            // delete each session logo each
+    public function delete_session_logo()
+    {
+        $post=$this->input->post();
+        $session_id= $post['session_id'];
+        $session_table=$post['session_loc'];
+       $qstr= $this->msessions->edit_sessions($session_id);
+        $sessions_photo_name=$qstr->$session_table;
 
+        if  (isset($session_table) && !empty($session_table)){
+            if($session_table=='sessions_addnl_logo' || $session_table=='sessions_logo') {
+                unlink("uploads/sessions_logo/" . $sessions_photo_name);
+            }
+        }
+        if(empty($qstr)){
+            $res="error";
+        }
 
+    $res=$this->msessions->delete_session_photo($session_id,$session_table);
+         if($res){
+          echo "success";
+         }
+         else{
+            echo "error";
+            }
+}
+
+public function archive_session() {
+    // echo "hi";exit;
+    $data['sessions'] = $this->msessions->getArchivedSessions();
+    $data['session_types'] = $this->msessions->getSessionTypes();
+    $this->load->view('admin/header');
+    $this->load->view('admin/sessions', $data);
+    $this->load->view('admin/footer');
+}
+
+// 
 }
