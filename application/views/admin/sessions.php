@@ -93,16 +93,16 @@ $user_role = $this->session->userdata('role');
                                         <tr>
                                             <th>Time Slot</th>
                                             <th>Date</th>
-                                            <th>Unique Identifier</th>
+                                            <th style="padding:0">Uni<br>que<br>Ide<br>nti<br>fier</th>
                                             <th>CCO Event ID</th>
                                             <th>Photo</th>
                                             <th>Title</th>
                                             <th>Presenters</th>
                                             <th>Moderators</th>
-                                            <th>Stream Name</th>
-                                            <th>Presenter PPT Uploaded</th>
+                                            <th>Stream<br>Name</th>
+                                            <th style="padding:0">Pre<br>sen<br>ter<br>PPT<br>Up<br>load<br>ed</th>
                                             <th>Session Notes</th>
-                                            <th>Other Info</th>
+                                            <th style="white-space: nowrap; padding-left:40px;padding-right:40px">Other Info</th>
                                             <th style="border-right: 0px solid #ddd;">Action</th>
                                             <th style="border-left: 0px solid #ddd; border-right: 0px solid #ddd;"></th>
                                             <th style="border-left: 0px solid #ddd;"></th>
@@ -171,7 +171,7 @@ $user_role = $this->session->userdata('role');
                                                         ?>
                                                     </td>
                                                     <td><?=(isset($val->embed_html_code)&& !empty($val->embed_html_code))?$val->embed_html_code: '' ?></td>
-                                                    <td><?=(isset($val->embed_html_code_presenter) && !empty($val->embed_html_code_presenter))? 'Yes':'<span style="color:red">X</span>'?> </td>
+                                                    <td><?=(isset($val->embed_html_code_presenter) && !empty($val->embed_html_code_presenter))? 'Yes':'<i style="color:red">X</i>'?> </td>
                                                     <td> <?=(isset($val->session_notes) && !empty($val->session_notes))?$val->session_notes:''?></td>
                                                     <td>
                                                     
@@ -186,9 +186,9 @@ $user_role = $this->session->userdata('role');
                                                         <small>Chat: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("chat", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
                                                         <small>Notes: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("notes", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
                                                         <small>Questions: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("questions", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
-                                                        <small><span style="float: left;">Presenters + Moderators </span> <?= (isset($total) && !empty($total) ) ?'<span style="float:right">'. $total : "".'</span>' ?></small>
+                                                        <small><span style="float: left;">Presenters + Moderators </span> <?= (isset($total) && !empty($total) ) ?'<span style="float:right">'. $total : "".'</span>' ?></small><br>
                                                         <small><span style="float: left;">Chat Participants </span> <?= (isset($GroupChatTotal) && !empty($GroupChatTotal) ) ?'<span style="float:right">'. $GroupChatTotal : "".'</span>' ?></small>
-                                                        <br><br><br>  <br><hr/>
+                                                        <br><br><hr/>
                                                          <?php if(isset($val->getChatAll) && !empty($val->getChatAll)){
                                                          foreach ($val->getChatAll as $value ){
                                                             $chatModCount=explode(',',($value->moderator_id));
