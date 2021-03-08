@@ -490,12 +490,12 @@ class Sessions extends CI_Controller {
         echo json_encode($result_array);
     }
 
-    function importSessionsPoll() {
+    function importSessionsPoll($sessId) {
         $result = $this->msessions->importSessionsPoll();
         if ($result) {
-            header('location:' . base_url() . 'admin/sessions?msg=S');
+            header('location:' . base_url() . 'admin/sessions/view_poll/'.$sessId.'?msg=PI');
         } else {
-            header('location:' . base_url() . 'admin/sessions?msg=E');
+            header('location:' . base_url() . 'admin/sessions/view_poll/'.$sessId.'?msg=E');
         }
     }
 
