@@ -160,14 +160,6 @@ $user_role = $this->session->userdata('role');
                                                         }else{
                                                             $mod_count=0;
                                                         }
-                                                        if (isset($val->groupchat) && !empty($val->groupchat)) {
-                                                            foreach ($val->groupchat as $name) {
-                                                              
-                                                             $groupModCount=count($val->groupchat); 
-                                                            } 
-                                                        }else{
-                                                            $groupModCount=0;
-                                                        }
                                                         ?>
                                                     </td>
                                                     <td><?php if (isset($val->embed_html_code)&& !empty($val->embed_html_code)){
@@ -185,11 +177,7 @@ $user_role = $this->session->userdata('role');
                                                     <td><?=(isset($val->embed_html_code_presenter) && !empty($val->embed_html_code_presenter))? 'Yes':'<i style="color:red">X</i>'?> </td>
                                                     <td> <?=(isset($val->session_notes) && !empty($val->session_notes))?$val->session_notes:''?></td>
                                                     <td>
-                                                    
-                                                             <?php $total=$mod_count+$pres_count ;  ?>
-                                                        <?php $GroupChatTotal=$groupModCount+$groupPresCount ;  ?>
-                                                       
-                                                 
+
                                                         Claim Link: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->attendee_view_links_status == 1)?'#0ab50a':'#ff2525'?>;"></i><br>
                                                         Toolbox: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->tool_box_status == 1)?'#0ab50a':'#ff2525'?>;"></i><br>
                                                         <hr/>
@@ -197,16 +185,25 @@ $user_role = $this->session->userdata('role');
                                                         <small><span style="float: left;">Chat</span> <i class="fa fa-circle <?=(in_array("chat", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("chat", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
                                                         <small><span style="float: left;">Notes</span> <i class="fa fa-circle <?=(in_array("notes", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("notes", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
                                                         <small><span style="float: left;">Questions</span> <i class="fa fa-circle <?=(in_array("questions", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("questions", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
+                                                        <?php $total=$mod_count+$pres_count;?>
                                                         <small><span style="float: left;">Presenters + Moderators </span> <?= (isset($total) && !empty($total) ) ?'<span style="float:right">'. $total : "".'</span>' ?></small><br>
-                                                        <small><span style="float: left;">Chat Participants </span> <?= (isset($GroupChatTotal) && !empty($GroupChatTotal) ) ?'<span style="float:right">'. $GroupChatTotal : "".'</span>' ?></small><br>
-                                                        <hr style="width:100%;height:2px"> 
+                                                        <?php if(isset($val->getChatAll) && !empty($val->getChatAll)){
+                                                         foreach ($val->getChatAll as $value ){
+                                                            $chatModCount=explode(',',($value->moderator_id));
+                                                            $chatPresCount=explode(',',($value->presenter_id));
+                                                            $sessionChatCount = count  ($chatModCount)+count  ($chatPresCount);
+                                                            if ($value->status=='1'){
+                                                                ?><small><span style="float: left;">Chat Participants</span><span style="float:right"><?=$sessionChatCount.'</span>'?></small><br><?php
+                                                            }
+                                                        }}?>
+                                                            <hr style="width:100%;height:2px"> 
                                                          <?php if(isset($val->getChatAll) && !empty($val->getChatAll)){
                                                          foreach ($val->getChatAll as $value ){
                                                             $chatModCount=explode(',',($value->moderator_id));
                                                             $chatPresCount=explode(',',($value->presenter_id));
                                                             $sessionChatCount = count  ($chatModCount)+count  ($chatPresCount);
                                                             ?>
-                                                           <small><?= (isset($value) && !empty($value)) ?'<span style="float: left;">'.$value->group_chat_title.', '.$sessionChatCount.'/'.$total:""  ?><i class="fa fa-circle" aria-hidden="true" style="color: <?=($value->status==1)?'#0ab50a':(($value->status==0)?'#ff8205':'#ff2525')?>;"></i></small><br>          
+                                                        <small><?= (isset($value) && !empty($value)) ?'<span style="float: left;">'.$value->group_chat_title.': '.$sessionChatCount.'/'.$total:""  ?></span><span style="float:right"><?=($value->status==1)?'Open':(($value->status==0)?'Pending':'Closed')?></small></span><br>
                                                         <?php
                                                          } 
                                                         }
