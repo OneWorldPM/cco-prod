@@ -123,6 +123,10 @@ switch ($msg) {
         $m = "Something went wrong, Please try again!!!";
         $t = "error";
         break;
+    case "PI":
+        $m = "Poll Imported";
+        $t = "success";
+        break; 
     default:
         $m = 0;
         break;

@@ -267,11 +267,17 @@ class Sessions extends CI_Controller {
     $file = fopen('php://output', 'w');
     $header = array("Attendee Name","Question"); 
     fputcsv($file, $header);
-    foreach ($questionData->result_array() as $value)
-    {   
-        // print_r($value);
-         fputcsv($file,$value);    
+    if($questionData){
+        foreach ($questionData->result_array() as $value)
+        {   
+            // print_r($value);
+             fputcsv($file,$value);    
+        }
+    }else{
+        $content=array('','');
+        fputcsv($file, $content);        
     }
+    
     fclose($file); 
     exit; 
 }
@@ -484,12 +490,12 @@ class Sessions extends CI_Controller {
         echo json_encode($result_array);
     }
 
-    function importSessionsPoll() {
+    function importSessionsPoll($sessId) {
         $result = $this->msessions->importSessionsPoll();
         if ($result) {
-            header('location:' . base_url() . 'admin/sessions?msg=S');
+            header('location:' . base_url() . 'admin/sessions/view_poll/'.$sessId.'?msg=PI');
         } else {
-            header('location:' . base_url() . 'admin/sessions?msg=E');
+            header('location:' . base_url() . 'admin/sessions/view_poll/'.$sessId.'?msg=E');
         }
     }
 

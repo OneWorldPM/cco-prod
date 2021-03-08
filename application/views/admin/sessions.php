@@ -93,16 +93,16 @@ $user_role = $this->session->userdata('role');
                                         <tr>
                                             <th>Time Slot</th>
                                             <th>Date</th>
-                                            <th>Unique Identifier</th>
+                                            <th style="padding:0">Uni<br>que<br>Ide<br>nti<br>fier</th>
                                             <th>CCO Event ID</th>
                                             <th>Photo</th>
                                             <th>Title</th>
                                             <th>Presenters</th>
                                             <th>Moderators</th>
-                                            <th>Stream Name</th>
-                                            <th>Presenter PPT Uploaded</th>
+                                            <th>Stream<br>Name</th>
+                                            <th style="padding:0">Pre<br>sen<br>ter<br>PPT<br>Up<br>load<br>ed</th>
                                             <th>Session Notes</th>
-                                            <th>Other Info</th>
+                                            <th style="white-space: nowrap; padding-left:40px;padding-right:60px">Other Info</th>
                                             <th style="border-right: 0px solid #ddd;">Action</th>
                                             <th style="border-left: 0px solid #ddd; border-right: 0px solid #ddd;"></th>
                                             <th style="border-left: 0px solid #ddd;"></th>
@@ -170,8 +170,19 @@ $user_role = $this->session->userdata('role');
                                                         }
                                                         ?>
                                                     </td>
-                                                    <td><?=(isset($val->embed_html_code)&& !empty($val->embed_html_code))?$val->embed_html_code: '' ?></td>
-                                                    <td><?=(isset($val->embed_html_code_presenter) && !empty($val->embed_html_code_presenter))? 'Yes':'<span style="color:red">X</span>'?> </td>
+                                                    <td><?php if (isset($val->embed_html_code)&& !empty($val->embed_html_code)){
+                                                        if (strlen($val->embed_html_code)>19){
+                                                          echo preg_replace('/([^\s]{10})(?=[^\s])/', '$1'.'</br>', $val->embed_html_code);
+                                                        }
+                                                        else{
+                                                            echo $val->embed_html_code;
+                                                        }
+                                                       
+                                                           
+                                                    }else{
+                                                        echo "";
+                                                    } ?></td>
+                                                    <td><?=(isset($val->embed_html_code_presenter) && !empty($val->embed_html_code_presenter))? 'Yes':'<i style="color:red">X</i>'?> </td>
                                                     <td> <?=(isset($val->session_notes) && !empty($val->session_notes))?$val->session_notes:''?></td>
                                                     <td>
                                                     
@@ -179,16 +190,16 @@ $user_role = $this->session->userdata('role');
                                                         <?php $GroupChatTotal=$groupModCount+$groupPresCount ;  ?>
                                                        
                                                  
-                                                        Claim Link: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->attendee_view_links_status == 1)?'#0ab50a':'#ff2525'?>;"></i>
+                                                        Claim Link: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->attendee_view_links_status == 1)?'#0ab50a':'#ff2525'?>;"></i><br>
                                                         Toolbox: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->tool_box_status == 1)?'#0ab50a':'#ff2525'?>;"></i><br>
                                                         <hr/>
-                                                        <small>Resources: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("resources", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
-                                                        <small>Chat: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("chat", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
-                                                        <small>Notes: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("notes", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
-                                                        <small>Questions: <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("questions", $toolboxItems))?'#0ab50a':'#ff2525'?>;"></i></small><br>
-                                                        <small><span style="float: left;">Presenters + Moderators </span> <?= (isset($total) && !empty($total) ) ?'<span style="float:right">'. $total : "".'</span>' ?></small>
-                                                        <small><span style="float: left;">Chat Participants </span> <?= (isset($GroupChatTotal) && !empty($GroupChatTotal) ) ?'<span style="float:right">'. $GroupChatTotal : "".'</span>' ?></small>
-                                                        <br><br><br>  <br><hr/>
+                                                        <small><span style="float: left;">Resources</span> <i class="fa fa-circle <?=(in_array("resources", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("resources", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
+                                                        <small><span style="float: left;">Chat</span> <i class="fa fa-circle <?=(in_array("chat", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("chat", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
+                                                        <small><span style="float: left;">Notes</span> <i class="fa fa-circle <?=(in_array("notes", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("notes", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
+                                                        <small><span style="float: left;">Questions</span> <i class="fa fa-circle <?=(in_array("questions", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("questions", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
+                                                        <small><span style="float: left;">Presenters + Moderators </span> <?= (isset($total) && !empty($total) ) ?'<span style="float:right">'. $total : "".'</span>' ?></small><br>
+                                                        <small><span style="float: left;">Chat Participants </span> <?= (isset($GroupChatTotal) && !empty($GroupChatTotal) ) ?'<span style="float:right">'. $GroupChatTotal : "".'</span>' ?></small><br>
+                                                        <hr style="width:100%;height:2px"> 
                                                          <?php if(isset($val->getChatAll) && !empty($val->getChatAll)){
                                                          foreach ($val->getChatAll as $value ){
                                                             $chatModCount=explode(',',($value->moderator_id));

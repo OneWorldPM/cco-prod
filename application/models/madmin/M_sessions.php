@@ -1139,12 +1139,28 @@ class M_sessions extends CI_Model {
                 $csv_array = $this->csvimport->get_array($file_path);
                 if (!empty($csv_array)) {
                     foreach ($csv_array as $val) {
+                        $poll_type_id=$val['poll_type_id'];
+                        if (trim(strtolower($poll_type_id)) == "presurvey"){
+                            $poll_type="1";
+                        }
+                        elseif (trim(strtolower($poll_type_id)) =="poll" ){
+                            $poll_type="2";
+                        }
+                        elseif (trim(strtolower($poll_type_id)) =='assessment'){
+                            $poll_type="3";
+                        }else{
+                            $poll_type=$poll_type_id;
+                        }
+
                         if ($val['question'] != "" && $val['poll_type_id'] != "") {
                             $post = $this->input->post();
                             $set = array(
                                 'sessions_id' => trim($post['sessions_id']),
-                                'poll_type_id' => $val['poll_type_id'],
+                                'poll_type_id' => $poll_type,
+                                'poll_name' => trim($val['poll_name']),
                                 'question' => trim($val['question']),
+                                'slide_number'=>$val['slide_number'],
+                                'poll_instruction'=>trim($val['poll_instruction']),
                                 'poll_comparisons_id' => 0,
                                 "create_poll_date" => date("Y-m-d h:i")
                             );
