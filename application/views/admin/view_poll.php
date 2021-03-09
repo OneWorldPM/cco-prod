@@ -39,7 +39,7 @@
                                                 ?>
                                                 <tr>
                                                     <td><?= $val->sessions_poll_question_id ?></td>
-                                                    <td><?= $val->question ?></td>
+                                                    <td style="text-align:left"><?= $val->question ?></td>
                                                     <td><?= $val->poll_name ?></td>
                                                     <td><?= $val->poll_type ?></td>
                                                     <td><?= ($val->poll_comparisons_id == 0)?'None':$val->poll_comparisons_id ?></td>

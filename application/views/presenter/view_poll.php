@@ -35,7 +35,7 @@
                                             foreach ($poll_data as $val) {
                                                 ?>
                                                 <tr>
-                                                    <td><?= $val->question ?></td>
+                                                    <td style="text-align:left !important"><?= $val->question ?></td>
 													 <td><?= $val->slide_number ?></td>
                                                     <td><?= $val->poll_type ?></td>
                                                     <td>
