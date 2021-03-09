@@ -203,7 +203,7 @@ $user_role = $this->session->userdata('role');
                                                             $chatPresCount=explode(',',($value->presenter_id));
                                                             $sessionChatCount = count  ($chatModCount)+count  ($chatPresCount);
                                                             ?>
-                                                        <small><?= (isset($value) && !empty($value)) ?'<span style="float: left;">'.$value->group_chat_title.': '.$sessionChatCount.'/'.$total:""  ?></span><span style="float:right"><?=($value->status==1)?'Open':(($value->status==0)?'Pending':'Closed')?></small></span><br>
+                                                        <small><?= (isset($value) && !empty($value)) ?'<span style="float: left;">'.$value->group_chat_title.': '.$sessionChatCount.'/'.$total:""  ?></span><span style="float:right;color:<?=($value->status==1)?'green':(($value->status==0)?'orange':'red')?>"><?=($value->status==1)?'Open':(($value->status==0)?'Pending':'Closed')?></small></span><br>
                                                         <?php
                                                          } 
                                                         }
