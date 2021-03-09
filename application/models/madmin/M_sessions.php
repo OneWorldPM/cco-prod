@@ -34,6 +34,7 @@ class M_sessions extends CI_Model {
         else{
             $where['DATE(sessions_date) >='] = date('Y-m-d', strtotime("-1 day"));
             $this->db->where($where);
+            $this->db->or_where('s.sessions_id=',25);
         }
         $this->db->order_by("s.sessions_date", "asc");
         $this->db->order_by("s.time_slot", "asc");
@@ -87,6 +88,7 @@ class M_sessions extends CI_Model {
         else{
             $where['DATE(sessions_date) <='] = date('Y-m-d', strtotime("-1 day"));
             $this->db->where($where);
+            $this->db->or_where('s.sessions_id=',25);
         }
         $this->db->order_by("s.sessions_date", "asc");
         $this->db->order_by("s.time_slot", "asc");
