@@ -7,6 +7,7 @@
                     <h1 class="mainTitle">List Of Tracking Sessions</h1>
                 </div>
             </div>
+            
         </section>
         <!-- end: PAGE TITLE -->
         <!-- start: DYNAMIC TABLE -->
@@ -19,6 +20,7 @@
                     <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                         <div class="row">
                             <div class="col-md-12 table-responsive">
+                                <div> <a href="<?=base_url().'admin/tracking/export_all_tracking_csv'?>" class="btn btn-success btn-m">Export All CSV</a></div><br>
                                 <table class="table table-bordered table-striped text-center " id="sessions_table">
                                     <thead class="th_center">
                                         <tr>
