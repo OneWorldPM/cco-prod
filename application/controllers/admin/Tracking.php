@@ -52,4 +52,22 @@ class Tracking extends CI_Controller {
         $this->load->view('admin/footer');
     }
 
+    function export_all_tracking_csv(){
+       $getAllInfo=$this->mtracking->getExportAllTracking();
+       $file_name = 'LES_Tracking_Report/'.date('Y-m-d').'.csv';
+       header("Content-Description: File Transfer"); 
+       header("Content-Disposition: attachment; filename=$file_name"); 
+       header("Content-Type: application/csv;");
+       $file = fopen('php://output', 'w');
+       $header = array('','SessionsID',"User",'IP Address','Operating System','Browser','Resolution', 'Entry Time', 'End Time'); 
+       fputcsv($file, $header);
+       $extra_columns = array('column1' => " ");
+       foreach ($getAllInfo->result_array() as $value)
+       { 
+           $csv_data = array_merge($extra_columns,$value);
+           fputcsv($file,$csv_data); 
+       }
+       fclose($file); 
+       exit; 
+    }
 }
