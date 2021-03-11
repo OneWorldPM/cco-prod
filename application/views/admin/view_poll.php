@@ -244,7 +244,7 @@ switch ($msg) {
     }
 
     $(document).ready(function(){
-        $('#num-width').css('width','20px');
+        $('#num-width').css('width','30px');
         $('#quest-id-width').css('width','50px');
         $('#quest-width').css('padding-right','150px');
     })
