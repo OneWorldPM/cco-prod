@@ -133,7 +133,7 @@ $user_role = $this->session->userdata('role');
                                                         if (isset($val->presenter) && !empty($val->presenter)) {
                                                             foreach ($val->presenter as $value) {
                                                                 $pres_count=count($val->presenter);
-                                                                echo $value->presenter_name .'<span> '.$value->degree.'</span>'. " <br><br>";
+                                                                echo $value->presenter_name .'<span> '.$value->degree.'</span>'. "<br>($value->email)<br>";
                                                             } 
                                                         }else{
                                                             $pres_count=0;
