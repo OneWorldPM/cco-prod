@@ -255,7 +255,7 @@ $user_role = $this->session->userdata('role');
                                         <?php if (isset($sessions_edit)) {
                                         if ($sessions_edit->sessions_photo != "") {?>
                                         <div class="clearfix" style="height: 5px;"></div>
-                                        <button class="btn btn-warning btn-sm delete-photo" id="sessions_photo" style="float:right">Delete</button><br>
+                                        <button data-sessions-id="<?= $sessions_edit->sessions_id ?>" class="btn btn-warning btn-sm delete-photo" id="sessions_photo" style="float:right">Delete</button><br>
                                         <?php }}?>
                                         <?php
                                         if (isset($sessions_edit)) {
@@ -299,7 +299,7 @@ $user_role = $this->session->userdata('role');
                                                 <?php if (isset($sessions_edit)) {
                                                     if ($sessions_edit->sessions_logo != "") { ?>
                                                         <div class="clearfix" style="height: 5px;"></div>
-                                                        <button class="btn btn-warning btn-sm delete-photo" id="sessions_logo" style="float:right">Delete</button><br>
+                                                        <button data-sessions-id="<?= $sessions_edit->sessions_id ?>" class="btn btn-warning btn-sm delete-photo" id="sessions_logo" style="float:right">Delete</button><br>
                                                     <?php }}?>
                                                 <?php
                                                 if (isset($sessions_edit)) {
@@ -336,7 +336,7 @@ $user_role = $this->session->userdata('role');
                                     <?php if (isset($sessions_edit->sessions_addnl_logo)) {
                                         if ($sessions_edit->sessions_addnl_logo != "") {?>
                                             <div class="clearfix" style="height: 5px;"></div>
-                                            <button class="btn btn-warning btn-sm delete-photo" id="sessions_addnl_logo" style="float:right">Delete</button>
+                                            <button data-sessions-id="<?= $sessions_edit->sessions_id ?>" class="btn btn-warning btn-sm delete-photo" id="sessions_addnl_logo" style="float:right">Delete</button>
                                         <?php }}?>
                                     <?php
                                     if (isset($sessions_edit->sessions_addnl_logo)) {
@@ -593,11 +593,11 @@ $user_role = $this->session->userdata('role');
                //====== session ALL Photo delete =======//
         $('.delete-session-photo').on("click", function (event) {
             event.preventDefault()
-            var sesionId = <?= $sessions_edit->sessions_id?>;
+            var sesionId = $(this).attr("data-sessions-id");
             console.log(sesionId);
-            alertify.confirm('Delete All Sessions Photo', 'This will delete all photo in this session', function(e){ 
+            alertify.confirm('Delete All Sessions Photo', 'This will delete all photo in this session', function(e){
                 if(e){
-                    
+
                 $.post("<?= base_url() ?>admin/sessions/delete_all_session_photos/"+sesionId,function (response){
                     console.log(response);
                     if(response=="success"){
@@ -607,15 +607,15 @@ $user_role = $this->session->userdata('role');
                             alertify.success('No Session Photo to Delete!');
                             window.setTimeout('location.reload()', 2000);
                         }
-                });   
+                });
              }
-            }, function(){ 
+            }, function(){
              });
         });
 
         $('.delete-photo').on("click", function (event) {
             event.preventDefault()
-            var sesionId = <?= $sessions_edit->sessions_id?>;
+            var sesionId =$(this).attr("data-sessions-id");
             var session_loc=this.id;
 
             alertify.confirm('Are you sure?', 'This will delete photo in this session', function(e){
@@ -628,9 +628,9 @@ $user_role = $this->session->userdata('role');
                             alertify.success('No Session Photo to Delete!');
                         window.setTimeout('location.reload()', 2000);
                         }
-                });   
+                });
              }
-            }, function(){ 
+            }, function(){
              });
         });
 
