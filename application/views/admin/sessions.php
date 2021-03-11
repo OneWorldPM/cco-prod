@@ -91,8 +91,8 @@ $user_role = $this->session->userdata('role');
                                 <table class="table table-bordered table-striped text-center " id="sessions_table">
                                     <thead class="th_center">
                                         <tr>
-                                            <th>Time Slot</th>
-                                            <th>Date</th>
+                                            <th style="padding-left:60px;padding-right:60px">Time Slot</th>
+                                            <th style="padding-left:30px;padding-right:40px">Date</th>
                                             <th style="padding:0">Uni<br>que<br>Ide<br>nti<br>fier</th>
                                             <th>CCO Event ID</th>
                                             <th>Photo</th>
@@ -133,7 +133,7 @@ $user_role = $this->session->userdata('role');
                                                         if (isset($val->presenter) && !empty($val->presenter)) {
                                                             foreach ($val->presenter as $value) {
                                                                 $pres_count=count($val->presenter);
-                                                                echo $value->presenter_name .'<span> '.$value->degree.'</span>'. " <br><br>";
+                                                                echo $value->presenter_name .'<span> '.$value->degree.'</span>'. "<br>($value->email)<br>";
                                                             } 
                                                         }else{
                                                             $pres_count=0;

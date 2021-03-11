@@ -21,8 +21,9 @@
                                 <table class="table table-bordered table-striped text-center" id="user">
                                     <thead class="th_center">
                                         <tr>
-                                            <th>Question ID</th>
-                                            <th>Question</th>
+                                            <th id="num-width">#</th>
+                                            <th id="quest-id-width">Question ID</th>
+                                            <th id="quest-width">Question</th>
                                             <th>Poll Name</th>
                                             <th>Poll Type</th>
                                             <th>Comparison With</th>
@@ -35,9 +36,15 @@
                                     <tbody>
                                         <?php
                                         if (isset($poll_data) && !empty($poll_data)) {
+                                            $i=count($poll_data);
+                                            $a=0;
                                             foreach ($poll_data as $val) {
+                                                $a++;
                                                 ?>
                                                 <tr>
+                                                    <td> <?php if ($a<=$i){
+                                                        echo $a;
+                                                    }?></td>
                                                     <td><?= $val->sessions_poll_question_id ?></td>
                                                     <td style="text-align:left"><?= $val->question ?></td>
                                                     <td><?= $val->poll_name ?></td>
@@ -235,6 +242,12 @@ switch ($msg) {
 
         return hash;
     }
+
+    $(document).ready(function(){
+        $('#num-width').css('width','30px');
+        $('#quest-id-width').css('width','50px');
+        $('#quest-width').css('padding-right','150px');
+    })
 </script>
 
 
