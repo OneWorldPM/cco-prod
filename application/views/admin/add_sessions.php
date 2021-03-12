@@ -478,16 +478,15 @@ $user_role = $this->session->userdata('role');
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function ()
-    {
+    $(document).ready(function () {
 
         $('input[readonly]').on('click', function () {
             alertify.error("You are not authorized to edit this field!");
         });
 
 
-    $('.datepicker').datepicker({dateFormat: 'mm/dd/yyyy' });
-    $("#btn_add_new_presenter").on("click", function () {
+        $('.datepicker').datepicker({dateFormat: 'mm/dd/yyyy'});
+        $("#btn_add_new_presenter").on("click", function () {
             $("#presenter_list").append("<div class='p-15' id='add_new_presenter_section' style='margin-bottom: 20px; padding: 10px; border: 1px solid #b2b7bb;'>\n\
                                         <div class='row'><input type='hidden' name='status[]' value='insert'><div class='col-md-6'><div class='form-group'>\n\
                                             <label class='text-large'>Order No.:</label>\n\
@@ -498,8 +497,8 @@ $user_role = $this->session->userdata('role');
                                             <select class='form-control select_presenter_id' id='select_presenter_id' name='select_presenter_id[]'>\n\
                                                 <option selected='' value=''>Select Presenter</option>\n\
                                                 \n\<?php if (isset($presenter) && !empty($presenter)) {
-                                                foreach ($presenter as $val) {
-                                                    ?>
+                foreach ($presenter as $val) {
+                ?>
                                                     <option value='<?= $val->presenter_id ?>'><?= $val->presenter_name ?></option>\n\
                                                     <?php } }?></select>\n\
                                         </div></div></div>\n\
@@ -531,110 +530,111 @@ $user_role = $this->session->userdata('role');
                                         </div></div></div>\n\
                                     </div>");
         });
-                                                                                
-                                    $("#btn_sessions").on("click", function ()
-                                    {
+
+        $("#btn_sessions").on("click", function () {
             var sum = 0;
-    $(".select_presenter_id").each(function () {
-    sum += 1;
-                                                                                                                                                                                                        });
-                                                                                                                                                                                                        if ($("#session_title").val() == "")
-                                            {
-            alertify.error("Enter Sessions Title");
-    return false;
-                                                                            } else if ($("#sessions_date").val() == "") {
-            alertify.error("Select Date");
-    return false;
-                                    } else if ($("#time_slot").val() == "") {
-            alertify.error("Enter Time Slot");
-    return false;
-    //  } else if ($("#embed_html_code").val() == "") {
-    //         alertify.error("Enter Embed HTML Code");
-    // return false;
-    //  }else if(sum == 0){
-    //         alertify.error("Please Add presenter");
-    // return false;
-                                    }else if(sum > 15){
-            alertify.error("Maximum add 15 Presenter");
-    return false;
-                                            } else {
-            return true;
-                                                }
-                                                return false;
-                                                });
-                                                
-                                                $(document).on("click", ".btn_remove_presenter", function () {
+            $(".select_presenter_id").each(function () {
+                sum += 1;
+            });
+            if ($("#session_title").val() == "") {
+                alertify.error("Enter Sessions Title");
+                return false;
+            } else if ($("#sessions_date").val() == "") {
+                alertify.error("Select Date");
+                return false;
+            } else if ($("#time_slot").val() == "") {
+                alertify.error("Enter Time Slot");
+                return false;
+            } else if (sum > 15) {
+                alertify.error("Maximum add 15 Presenter");
+                return false;
+            } else if ($('#attendee_view_links').is(':checked')) {
+                if ($('#link_text').val() == '') {
+                    alertify.error("Enter Link");
+                    return false;
+                } else {
+                    return true;
+                }
+            }else{
+                return true;
+            }
+                return false;
+            }
+        );
+
+        $(document).on("click", ".btn_remove_presenter", function () {
             var sessions_add_presenter_id = $(this).attr("data-sessions_add_presenter_id");
-    $.ajax({
-    url: "<?= base_url() ?>admin/sessions/remove_presenter_by_session",
-            type: "post",
-             data: {'sessions_add_presenter_id': sessions_add_presenter_id,'sessions_id':$("#sessions_id").val()},
-                                                dataType: "json",
-                                                success: function (data) {
+            $.ajax({
+                url: "<?= base_url() ?>admin/sessions/remove_presenter_by_session",
+                type: "post",
+                data: {'sessions_add_presenter_id': sessions_add_presenter_id, 'sessions_id': $("#sessions_id").val()},
+                dataType: "json",
+                success: function (data) {
                     if (data.status == "success") {
-            location.reload();
-                                                }
-                                                }
-                                                });
-                                            });
-
-
-        $('#themeColor').on("change paste keyup", function() {
-            let hex = $(this).val();
-            $('#themeColorHex').val('#'+hex);
+                        location.reload();
+                    }
+                }
+            });
         });
 
-        $('#themeColorHex').on("change paste keyup", function() {
-            let hex = ($(this).val()).replace('#','');
+
+        $('#themeColor').on("change paste keyup", function () {
+            let hex = $(this).val();
+            $('#themeColorHex').val('#' + hex);
+        });
+
+        $('#themeColorHex').on("change paste keyup", function () {
+            let hex = ($(this).val()).replace('#', '');
             $('#themeColor').val(hex.toUpperCase());
         });
 
 
-               //====== session ALL Photo delete =======//
+        //====== session ALL Photo delete =======//
         $('.delete-session-photo').on("click", function (event) {
             event.preventDefault()
             var sesionId = $(this).attr("data-sessions-id");
             console.log(sesionId);
-            alertify.confirm('Delete All Sessions Photo', 'This will delete all photo in this session', function(e){
-                if(e){
+            alertify.confirm('Delete All Sessions Photo', 'This will delete all photo in this session', function (e) {
+                if (e) {
 
-                $.post("<?= base_url() ?>admin/sessions/delete_all_session_photos/"+sesionId,function (response){
-                    console.log(response);
-                    if(response=="success"){
+                    $.post("<?= base_url() ?>admin/sessions/delete_all_session_photos/" + sesionId, function (response) {
+                        console.log(response);
+                        if (response == "success") {
                             alertify.success('Session Photos Deleted!');
                             window.setTimeout('location.reload()', 2000);
-                        }else{
+                        } else {
                             alertify.success('No Session Photo to Delete!');
                             window.setTimeout('location.reload()', 2000);
                         }
-                });
-             }
-            }, function(){
-             });
+                    });
+                }
+            }, function () {
+            });
         });
 
         $('.delete-photo').on("click", function (event) {
             event.preventDefault()
-            var sesionId =$(this).attr("data-sessions-id");
-            var session_loc=this.id;
+            var sesionId = $(this).attr("data-sessions-id");
+            var session_loc = this.id;
 
-            alertify.confirm('Are you sure?', 'This will delete photo in this session', function(e){
-                if(e){
-                $.post("<?= base_url() ?>admin/sessions/delete_session_logo/",{session_id:sesionId,session_loc:session_loc},function (response){
-                    if(response=="success"){
+            alertify.confirm('Are you sure?', 'This will delete photo in this session', function (e) {
+                if (e) {
+                    $.post("<?= base_url() ?>admin/sessions/delete_session_logo/", {
+                        session_id: sesionId,
+                        session_loc: session_loc
+                    }, function (response) {
+                        if (response == "success") {
                             alertify.success('Session Photo Deleted!');
-                        window.setTimeout('location.reload()', 2000);
-                        }else{
+                            window.setTimeout('location.reload()', 2000);
+                        } else {
                             alertify.success('No Session Photo to Delete!');
-                        window.setTimeout('location.reload()', 2000);
+                            window.setTimeout('location.reload()', 2000);
                         }
-                });
-             }
-            }, function(){
-             });
+                    });
+                }
+            }, function () {
+            });
         });
-
-
 
 
     });
