@@ -102,6 +102,7 @@ class Sessions extends CI_Controller {
     public function create_poll($sessions_id) {
         $data['sessions'] = $this->msessions->edit_sessions($sessions_id);
         $data['poll_type'] = $this->msessions->get_poll_type();
+        $data['presenter']=$this->msessions->getPollPresenter($sessions_id);
         $this->load->view('admin/header');
         $this->load->view('admin/create_poll', $data);
         $this->load->view('admin/footer');

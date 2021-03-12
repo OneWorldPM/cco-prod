@@ -50,7 +50,15 @@ if (isset($_GET['testing']))
                 <div class="col-md-6 col-md-offset-3">
                     <div class="panel panel-primary" id="panel5">
                         <div class="panel-heading">
-                            <h4 class="panel-title text-white">Create Poll</h4>
+                            <h4 class="panel-title text-white">Create Poll
+                                <?php if(isset($presenter)): ?>
+                                    Session <?=$presenter->sessions_id?> -
+                                    <?php foreach($presenter->presenter as $presenterData): ?>
+                                        <?=$presenterData->presenter_name?> |
+                                    <?php endforeach; ?>
+                                    <?=$presenter->session_title?>
+                                <?php endif; ?>
+                            </h4>
                         </div>
                         <div class="panel-body bg-white" style="border: 1px solid #b2b7bb;">
                             <form name="frm_add_Poll" id="frm_add_Poll" method="POST" >
