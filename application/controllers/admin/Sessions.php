@@ -118,6 +118,7 @@ class Sessions extends CI_Controller {
 
     public function view_poll($sessions_id) {
         $data['poll_data'] = $this->msessions->get_poll_details($sessions_id);
+        $data['presenter']=$this->msessions->getPollPresenter($sessions_id);
         $data['session_id'] = $sessions_id;
 
         $this->load->view('admin/header');

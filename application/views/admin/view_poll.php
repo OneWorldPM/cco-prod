@@ -12,7 +12,19 @@
             <div class="row">
                 <div class="panel panel-primary" id="panel5">
                     <div class="panel-heading" style="margin-bottom: 15px;">
-                        <h4 class="panel-title text-white">Poll</h4>
+                        <h4 class="panel-title text-white">Poll <?= (isset($session_id) && !empty($session_id))?'Session '.$session_id.' -':''; ?>
+                            <?php
+                            if (isset($presenter) && !empty($presenter)) {
+                                foreach ($presenter as $value) {
+                                }
+                                if (isset($value) && !empty($value)) {
+                                    foreach ($value as $val) {
+                                        echo ($val->first_name) . ' ' . ($val->last_name) . ', ';
+                                    }
+                                }
+                                echo (isset($presenter->session_title) && !empty($presenter->session_title)) ? $presenter->session_title : '';
+                            } ?>
+                        </h4>
                     </div>
                     <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                         <div class="row">
