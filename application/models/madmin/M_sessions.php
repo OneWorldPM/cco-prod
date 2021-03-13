@@ -132,6 +132,7 @@ class M_sessions extends CI_Model {
                      'end_date' => date('Y-m-d')
                  );
                  $this->session->set_userdata($session_filter);
+                $this->session->set_userdata('session_viewing','Today');
                  ($post['session_type'] != "") ? $where['s.sessions_type_id ='] = trim($post['session_type']) : '';
                  ($post['btn_today'] != "") ? $where['DATE(s.sessions_date) >='] = date('Y-m-d') : '';
                  ($post['btn_today'] != "") ? $where['DATE(s.sessions_date) <='] = date('Y-m-d') : '';
@@ -163,6 +164,7 @@ class M_sessions extends CI_Model {
                      'end_date' => date('Y-m-d', strtotime("+1 day"))
                  );
                  $this->session->set_userdata($session_filter);
+                $this->session->set_userdata('session_viewing','Tomorrow');
                  ($post['session_type'] != "") ? $where['s.sessions_type_id ='] = trim($post['session_type']) : '';
                  ($post['btn_tomorrow'] != "") ? $where['DATE(s.sessions_date) >='] = date('Y-m-d', strtotime("+1 day")) : '';
                  ($post['btn_tomorrow'] != "") ? $where['DATE(s.sessions_date) <='] = date('Y-m-d', strtotime("+1 day")) : '';

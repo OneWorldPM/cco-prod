@@ -76,7 +76,8 @@ $user_role = $this->session->userdata('role');
             <div class="row">
                 <div class="panel panel-primary" id="panel5">
                     <div class="panel-heading">
-                        <h4 class="panel-title text-white">Sessions <span id="session-span"></span></h4>
+                        <h4 class="panel-title text-white">Sessions
+                            <?= ($this->session->userdata('session_viewing'))?'| Now Viewing: '.$this->session->userdata('session_viewing'):''; ?></h4>
                     </div>
                     <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                         <?php if ($user_role == 'super_admin') { ?>
