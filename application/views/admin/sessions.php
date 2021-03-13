@@ -76,7 +76,8 @@ $user_role = $this->session->userdata('role');
             <div class="row">
                 <div class="panel panel-primary" id="panel5">
                     <div class="panel-heading">
-                        <h4 class="panel-title text-white">Sessions</h4>
+                        <h4 class="panel-title text-white">Sessions
+                            <?= ($this->session->userdata('session_viewing'))?'| Now Viewing: '.$this->session->userdata('session_viewing'):''; ?></h4>
                     </div>
                     <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                         <?php if ($user_role == 'super_admin') { ?>
@@ -155,7 +156,7 @@ $user_role = $this->session->userdata('role');
                                                         if (isset($val->moderators) && !empty($val->moderators)) {
                                                             foreach ($val->moderators as $name) {
                                                                 $mod_count=count($val->moderators);
-                                                                echo $name . " <br><br>";
+                                                                echo $name . " <br>";
                                                             }      
                                                         }else{
                                                             $mod_count=0;
@@ -181,10 +182,10 @@ $user_role = $this->session->userdata('role');
                                                         Claim Link: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->attendee_view_links_status == 1)?'#0ab50a':'#ff2525'?>;"></i><br>
                                                         Toolbox: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->tool_box_status == 1)?'#0ab50a':'#ff2525'?>;"></i><br>
                                                         <hr/>
-                                                        <small><span style="float: left;">Resources</span> <i class="fa fa-circle <?=(in_array("resources", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("resources", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
-                                                        <small><span style="float: left;">Chat</span> <i class="fa fa-circle <?=(in_array("chat", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("chat", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
-                                                        <small><span style="float: left;">Notes</span> <i class="fa fa-circle <?=(in_array("notes", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("notes", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
                                                         <small><span style="float: left;">Questions</span> <i class="fa fa-circle <?=(in_array("questions", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("questions", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
+                                                        <small><span style="float: left;">Resources</span> <i class="fa fa-circle <?=(in_array("resources", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("resources", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
+                                                        <small><span style="float: left;">Attendee Chat</span> <i class="fa fa-circle <?=(in_array("chat", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("chat", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
+                                                        <small><span style="float: left;">Notes</span> <i class="fa fa-circle <?=(in_array("notes", $toolboxItems))?'':'blink-element'?>" aria-hidden="true" style="color: <?=(in_array("notes", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
                                                         <?php $total=$mod_count+$pres_count;?>
                                                         <small><span style="float: left;">Presenters + Moderators </span> <?= (isset($total) && !empty($total) ) ?'<span style="float:right">'. $total : "".'</span>' ?></small><br>
                                                         <?php if(isset($val->getChatAll) && !empty($val->getChatAll)){
@@ -193,7 +194,7 @@ $user_role = $this->session->userdata('role');
                                                             $chatPresCount=explode(',',($value->presenter_id));
                                                             $sessionChatCount = count  ($chatModCount)+count  ($chatPresCount);
                                                             if ($value->status=='1'){
-                                                                ?><small><span style="float: left;">Chat Participants</span><span style="float:right"><?=$sessionChatCount.'</span>'?></small><br><?php
+                                                                ?><small><span style="float: left;">Host Chat Participants</span><span style="float:right"><?=$sessionChatCount.'</span>'?></small><br><?php
                                                             }
                                                         }}?>
                                                             <hr style="width:100%;height:2px"> 
@@ -203,7 +204,7 @@ $user_role = $this->session->userdata('role');
                                                             $chatPresCount=explode(',',($value->presenter_id));
                                                             $sessionChatCount = count  ($chatModCount)+count  ($chatPresCount);
                                                             ?>
-                                                        <small><?= (isset($value) && !empty($value)) ?'<span style="float: left;">'.$value->group_chat_title.': '.$sessionChatCount.'/'.$total:""  ?></span><span style="float:right;color:<?=($value->status==1)?'green':(($value->status==0)?'orange':'red')?>"><?=($value->status==1)?'Open':(($value->status==0)?'Pending':'Closed')?></small></span><br>
+                                                        <small><?= (isset($value) && !empty($value)) ?'<span style="float: left;">Host Chat: '.$sessionChatCount.'/'.$total:""  ?></span><strong><span style="float:right;color:<?=($value->status==1)?'green':(($value->status==0)?'orange':'red')?>"><?=($value->status==1)?'Open':(($value->status==0)?'Pending':'Closed')?></small></span></strong><br>
                                                         <?php
                                                          } 
                                                         }
@@ -217,8 +218,7 @@ $user_role = $this->session->userdata('role');
                                                         <?php } ?>
                                                     </td>
                                                     <td>
-                                                        <a href="<?= base_url() ?>admin/sessions/create_poll/<?= $val->sessions_id ?>" class="btn btn-success btn-sm" style="margin-bottom: 5px;">Create Poll</a>
-														<a href="<?= base_url() ?>admin/sessions/view_poll/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin-bottom: 5px;">View Poll</a>
+														<a href="<?= base_url() ?>admin/sessions/view_poll/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin-bottom: 5px;">Polls</a>
                                                         <?php if ($user_role == 'super_admin') { ?>
                                                         <a href="<?= base_url() ?>admin/sessions/view_question_answer/<?= $val->sessions_id ?>" class="btn btn-primary btn-sm" style="margin-bottom: 5px;">View Q&A</a>
                                                         <a href="<?= base_url() ?>admin/sessions/report/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm" style="margin-bottom: 5px;">Report</a>
@@ -227,17 +227,14 @@ $user_role = $this->session->userdata('role');
                                                         <a href="<?= base_url() ?>admin/sessions/resource/<?= $val->sessions_id ?>" style="margin-bottom: 5px;" class="btn btn-success btn-sm" >Resources</a>
                                                     </td>
                                                     <td>
-                                                         <?php if ($user_role == 'super_admin') { ?>
-														 <a data-session-id="<?= $val->sessions_id ?>" class="btn btn-danger btn-sm delete_session"  style="font-size: 10px !important; margin-bottom: 5px;">Delete Session</a>
-                                                         <?php } ?>
                                                          <?php if(isset($val->check_send_json_exist) && !empty($val->check_send_json_exist)){
                                                                 foreach ($val->check_send_json_exist as $status) {
                                                                     if ($status->send_json_status==1) {
                                                                         ?>
-                                                                         <a data-session-id="<?= $val->sessions_id?>" class="btn btn-purple btn-sm send-json" style="margin-bottom: 5px;">JSON Sent</a>
+                                                                         <a data-session-id="<?= $val->sessions_id ?>" class="btn btn-purple btn-sm send-json" style="margin-bottom: 5px;">JSON Sent</a>
                                                                         <?php
                                                                     } else {
-                                                                        ?>  <a href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-success btn-sm" style="margin-bottom: 5px;">Send JSON</a><?php
+                                                                        ?>  <a data-session-id="<?= $val->sessions_id ?>" href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-success btn-sm" style="margin-bottom: 5px;">Send JSON</a><?php
                                                                     }
                                                                 }
                                                          }?>
@@ -245,6 +242,10 @@ $user_role = $this->session->userdata('role');
                                                         <?php if ($user_role == 'super_admin') { ?>
                                                             <button href-url="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" session-name="<?= $val->session_title ?>" style="margin-bottom: 5px;"  class="clear-json-btn btn btn-danger btn-sm">Clear JSON</button>
                                                         <?php } ?>
+                                                        <?php if ($user_role == 'super_admin') { ?>
+                                                            <a data-session-id="<?= $val->sessions_id ?>" class="btn btn-danger btn-sm delete_session"  style="font-size: 10px !important; margin-bottom: 5px;">Delete Session</a>
+                                                        <?php } ?>
+                                                        <br><br>
 														 <a href="<?= base_url() ?>admin/sessions/flash_report/<?= $val->sessions_id ?>" style="margin-bottom: 5px;" class="btn btn-info btn-sm">Flash Report</a>
                                                          <a href="<?= base_url() ?>admin/sessions/polling_report/<?= $val->sessions_id ?>" class="btn btn-azure btn-sm" style="margin-bottom: 5px;">Polling Report</a><br>
                                                          <a href="<?= base_url() ?>admin/sessions/attendee_question_report/<?= $val->sessions_id ?>" class="btn btn-azure btn-sm">Questions Report</a>
@@ -361,7 +362,8 @@ switch ($msg) {
     // This will confirm to send JSON if already sent
 $('#sessions_table').on('click','.send-json', function () {
 
-let sesionId = <?=$val->sessions_id?>;
+let sesionId = $(this).data("session-id");
+    console.log(sesionId);
 let href = $(this).attr('href-url');
 
 Swal.fire({
@@ -377,7 +379,8 @@ Swal.fire({
         window.location.href = "<?=base_url()?>admin/sessions/send_json/"+sesionId;
     }
 })
+
 });
-// 
+//
     });
 </script>

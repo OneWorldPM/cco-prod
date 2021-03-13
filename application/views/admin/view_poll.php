@@ -12,7 +12,15 @@
             <div class="row">
                 <div class="panel panel-primary" id="panel5">
                     <div class="panel-heading" style="margin-bottom: 15px;">
-                        <h4 class="panel-title text-white">Poll</h4>
+                        <h4 class="panel-title text-white">Poll
+                            <?php if(isset($presenter)): ?>
+                                Session <?=$presenter->sessions_id?> -
+                                <?php foreach($presenter->presenter as $presenterData): ?>
+                                    <?=$presenterData->presenter_name?> |
+                                <?php endforeach; ?>
+                                <?=$presenter->session_title?>
+                            <?php endif; ?>
+                        </h4>
                     </div>
                     <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                         <div class="row">

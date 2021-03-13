@@ -47,6 +47,7 @@ class Sessions extends CI_Controller {
 	public function filter_clear() {
         $this->session->unset_userdata('start_date');
         $this->session->unset_userdata('end_date');
+        $this->session->unset_userdata('session_viewing');
         header('location:' . base_url() . 'admin/sessions');
     }
 
@@ -102,6 +103,7 @@ class Sessions extends CI_Controller {
     public function create_poll($sessions_id) {
         $data['sessions'] = $this->msessions->edit_sessions($sessions_id);
         $data['poll_type'] = $this->msessions->get_poll_type();
+        $data['presenter']=$this->msessions->getPollPresenter($sessions_id);
         $this->load->view('admin/header');
         $this->load->view('admin/create_poll', $data);
         $this->load->view('admin/footer');
@@ -118,6 +120,7 @@ class Sessions extends CI_Controller {
 
     public function view_poll($sessions_id) {
         $data['poll_data'] = $this->msessions->get_poll_details($sessions_id);
+        $data['presenter']=$this->msessions->getPollPresenter($sessions_id);
         $data['session_id'] = $sessions_id;
 
         $this->load->view('admin/header');
@@ -1010,6 +1013,7 @@ public function archive_session() {
     // echo "hi";exit;
     $data['sessions'] = $this->msessions->getArchivedSessions();
     $data['session_types'] = $this->msessions->getSessionTypes();
+    $this->session->set_userdata('session_viewing','Archived');
     $this->load->view('admin/header');
     $this->load->view('admin/sessions', $data);
     $this->load->view('admin/footer');
