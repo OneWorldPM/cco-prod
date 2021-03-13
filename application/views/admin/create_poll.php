@@ -53,9 +53,11 @@ if (isset($_GET['testing']))
                             <h4 class="panel-title text-white">Create Poll
                                 <?php if(isset($presenter)): ?>
                                     Session <?=$presenter->sessions_id?> -
+                                <?php if(isset($presenter->presenter)&& !empty($presenter->presenter)): ?>
                                     <?php foreach($presenter->presenter as $presenterData): ?>
                                         <?=$presenterData->presenter_name?> |
                                     <?php endforeach; ?>
+                                    <?php endif;?>
                                     <?=$presenter->session_title?>
                                 <?php endif; ?>
                             </h4>
