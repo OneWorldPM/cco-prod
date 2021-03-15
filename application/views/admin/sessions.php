@@ -179,8 +179,8 @@ $user_role = $this->session->userdata('role');
                                                     <td> <?=(isset($val->session_notes) && !empty($val->session_notes))?$val->session_notes:''?></td>
                                                     <td>
 
-                                                        Claim Link: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->attendee_view_links_status == 1)?'#0ab50a':'#ff2525'?>;"></i><br>
-                                                        Toolbox: <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->tool_box_status == 1)?'#0ab50a':'#ff2525'?>;"></i><br>
+                                                        <span style="float:left">  Claim Link: </span><span style="float:right"><i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->attendee_view_links_status == 1)?'#0ab50a':'#ff2525'?>;"></i></span><br>
+                                                        <span style="float:left"> Toolbox:</span><span style="float:right"> <i class="fa fa-circle" aria-hidden="true" style="color: <?=($val->tool_box_status == 1)?'#0ab50a':'#ff2525'?>;"></i></span><br>
                                                         <hr/>
                                                         <small><span style="float: left;">Questions</span> <i class="fa fa-circle" aria-hidden="true" style="color: <?=(in_array("questions", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
                                                         <small><span style="float: left;">Resources</span> <i class="fa fa-circle " aria-hidden="true" style="color: <?=(in_array("resources", $toolboxItems))?'#0ab50a':'#ff2525'?>;float: right;"></i></small><br>
