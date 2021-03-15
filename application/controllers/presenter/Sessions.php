@@ -187,7 +187,7 @@ class Sessions extends CI_Controller {
     public function hide_question() {
         $post = $this->input->post();
         if ($post['sessions_question_id'] != '') {
-            $this->db->update('sessions_cust_question', array('hide_status' => 1), array('sessions_cust_question_id' => $post['sessions_question_id']));
+            $this->db->update('sessions_cust_question', array('hide_status' => 2), array('sessions_cust_question_id' => $post['sessions_question_id']));
             $this->db->update('tbl_favorite_question', array('hide_status' => 1), array('sessions_cust_question_id' => $post['sessions_question_id']));
             if ($this->db->affected_rows()) {
                 $result_array = array("status" => "success");

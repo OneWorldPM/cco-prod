@@ -645,6 +645,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+                <br>
+                <div class="text-dark">Question: <span id="chattAttendeeQuestion" ></span></div>
             </div>
             <div class="modal-body">
                 <div class="panel panel-default">
@@ -676,10 +678,10 @@
     let sessionId = "<?=$sessions->sessions_id?>";
     var socket_session_name = "<?=getAppName('_admin-to-attendee-chat')?>";
 
-    function attendeeChatPopup(cust_id, cust_name)
+    function attendeeChatPopup(cust_id, cust_name,cust_question)
     {
         $('#chatAttendeeName').text(cust_name);
-
+        $('#chattAttendeeQuestion').text(cust_question);
         $('#sendMessagetoAttendee').attr('user-id', cust_id);
         $('#endChatBtn').attr('userId', cust_id);
 
@@ -732,8 +734,8 @@
         $('#question_list').on('click', '.question_attendee_name', function () {
             let cust_id = $(this).attr('cust-id');
             let cust_name = $(this).attr('cust-name');
-
-            attendeeChatPopup(cust_id, cust_name);
+            let cust_question = $(this).attr('cust-question');
+            attendeeChatPopup(cust_id, cust_name,cust_question);
         });
 
         $('#sendMessagetoAttendee').on('click', function () {
@@ -1306,7 +1308,7 @@
                             var add_star_class = 'fa fa-star cust_class_star_remove';
                         }
                         $("#last_sessions_cust_question_id").val(val.sessions_cust_question_id);
-                        $('#question_list').prepend('<div id="question_list_key_' + key + '" style="padding-bottom: 15px;"><h5 style="font-weight: 800; font-size: 15px; "><span class="question_attendee_name" cust-id="'+val.cust_id+'" cust-name="' + val.first_name + ' ' + val.last_name + '" style="font-size: 12px;">(' + val.first_name + ' ' + val.last_name + ') </span>' + val.question + ' <span class="' + add_star_class + ' " data-sessions_cust_question_id=' + val.sessions_cust_question_id + '></span> <a href="javascript:void(0)" class="hide_question" data-q-id="' + val.sessions_cust_question_id + '" data-listkey-id="question_list_key_' + key + '" title="Hide" ><span class="fa fa-eye-slash" ></span></a></h5><div style="display: flex;"><input type="hidden" ' + readonly_value + ' id="answer_' + key + '" data-key_id="' + key + '" class="form-control input_class" placeholder="Enter Answer"  data-cust_id="' + val.cust_id + '" data-last_id="' + val.sessions_cust_question_id + '" value="' + answer_value + '"><a  class="btn btn-success btn_publish" id="btn_publish" data-answer_btn="answer_' + key + '" ' + disabled_value + ' style="border-radius: 0px; display:none">Send</a></div></div>');
+                        $('#question_list').prepend('<div id="question_list_key_' + key + '" style="padding-bottom: 15px;"><h5 style="font-weight: 800; font-size: 15px; "><span class="question_attendee_name" cust-question="'+val.question+'" cust-id="'+val.cust_id+'" cust-name="' + val.first_name + ' ' + val.last_name + '" style="font-size: 12px;">(' + val.first_name + ' ' + val.last_name + ') </span>' + val.question + ' <span class="' + add_star_class + ' " data-sessions_cust_question_id=' + val.sessions_cust_question_id + '></span> <a href="javascript:void(0)" class="hide_question" data-q-id="' + val.sessions_cust_question_id + '" data-listkey-id="question_list_key_' + key + '" title="Hide" ><span class="fa fa-eye-slash" ></span></a></h5><div style="display: flex;"><input type="hidden" ' + readonly_value + ' id="answer_' + key + '" data-key_id="' + key + '" class="form-control input_class" placeholder="Enter Answer"  data-cust_id="' + val.cust_id + '" data-last_id="' + val.sessions_cust_question_id + '" value="' + answer_value + '"><a  class="btn btn-success btn_publish" id="btn_publish" data-answer_btn="answer_' + key + '" ' + disabled_value + ' style="border-radius: 0px; display:none">Send</a></div></div>');
                     });
                 }
             }

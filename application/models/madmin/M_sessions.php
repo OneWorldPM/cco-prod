@@ -808,7 +808,8 @@ class M_sessions extends CI_Model {
         $this->db->select('*');
         $this->db->from('sessions_cust_question s');
         $this->db->join('customer_master c', 's.cust_id=c.cust_id');
-        $this->db->where(array("s.sessions_id" => $post['sessions_id'], 'sessions_cust_question_id >' => $post['list_last_id'], 'hide_status' => 0));
+        $this->db->where(array("s.sessions_id" => $post['sessions_id'], 'sessions_cust_question_id >' => $post['list_last_id']));
+        $this->db->where('hide_status!=',1);
         //  $this->db->order_by("s.sessions_cust_question_id", "DESC");
         $result = $this->db->get();
         if ($result->num_rows() > 0) {
