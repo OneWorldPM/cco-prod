@@ -645,7 +645,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <div class="m-auto ">Question: <span id="chattAttendeeQuestion" class=""></span></div>
+                <br>
+                <div class="text-dark">Question: <span id="chattAttendeeQuestion" ></span></div>
             </div>
             <div class="modal-body">
                 <div class="panel panel-default">
