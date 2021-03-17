@@ -191,9 +191,8 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
     var user_id = "<?=$this->session->userdata('cid')?>";
     var app_name = "<?=getAppName($sessions->sessions_id) ?>";
     var session_id = "<?=$sessions->sessions_id?>";
-    let sessionId = "<?=$sessions->sessions_id?>";
-    var session_start_datetime = "<?= date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-5' ?>";
-    var session_end_datetime = "<?=date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-5' ?>";
+    var session_start_datetime = "<?= date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-4' ?>";
+    var session_end_datetime = "<?=date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-4' ?>";
 </script>
 <script>
 
