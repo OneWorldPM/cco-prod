@@ -133,7 +133,7 @@
 <!-- end: CLIP-TWO JAVASCRIPTS -->
 
 <script>
-    var user_id = <?= $this->session->userdata("cid") ?>;
+    var user_id = "<?= $this->session->userdata("cid") ?>";
     var user_name = "<?= $this->session->userdata('fullname') ?>";
     function extract(variable) {
         for (var key in variable) {

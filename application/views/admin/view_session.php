@@ -635,6 +635,15 @@
         z-index: 10000;
     }
 
+    .user-question{
+        color: white;
+        background-color: #1f8edf;
+        padding-top:6px;
+        padding-bottom:6px;
+        border-radius: 7px;
+        text-align:center;
+    }
+
 </style>
 <!-- Direct attendee chat modal -->
 <div class="modal fade" id="attendeeChatModal" tabindex="-1" role="dialog" aria-labelledby="attendeeChatModalLabel" aria-hidden="true">
@@ -646,7 +655,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <br>
-                <div class="text-dark">Question: <span id="chattAttendeeQuestion" ></span></div>
+                <div class="user-question">Question: <span id="chattAttendeeQuestion" ></span></div>
             </div>
             <div class="modal-body">
                 <div class="panel panel-default">

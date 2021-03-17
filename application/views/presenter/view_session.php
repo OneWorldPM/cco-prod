@@ -1,6 +1,6 @@
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
 
-<link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=13" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=15" rel="stylesheet">
 
 <?php
 if (isset($_GET['testing']) && $_GET['testing'] == 1) {
@@ -9,16 +9,58 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
     print_r($sessions);
     exit("</pre>");
 }
+
 ?>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@9.17.0/dist/sweetalert2.all.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/fd91b3535c.js" crossorigin="anonymous"></script>
+
+<!-- Direct attendee chat modal -->
+<div class="modal fade" id="attendeeChatModal" tabindex="-1" role="dialog" aria-labelledby="attendeeChatModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="attendeeChatModalLabel">Chat with <span id="chatAttendeeName"></span></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <br>
+                <div class="user-question">Question: <span id="chattAttendeeQuestion" ></span><br></div>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default">
+                    <div id="chatBody" class="panel-body">
+
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input id="chatToAttendeeText" type="text" class="form-control" placeholder="Enter your message">
+                            <span class="input-group-btn">
+                                <button id="sendMessagetoAttendee" class="btn btn-success" type="button"><i class="fas fa-paper-plane"></i> Send</button>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="endChatBtn" type="button" class="btn btn-danger" userId=""><i class="fas fa-times-circle"></i> End Chat</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fas fa-folder-minus"></i> Minimize</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container-fluid presenterContainer">
     <div class="row">
         <div class="col-lg-12 col-md-12 leftSide">
-<!--            <iframe class="col-md-12 embed-responsive-item" src="https://meet.yourconference.live/conference/share-presentation.html?confId=CCO_AMP_Final_Deck_V3&amp;totalSlides=95&amp;fileExtension=JPG" style="height: inherit;" scrolling="no"></iframe>-->
+            <!--            <iframe class="col-md-12 embed-responsive-item" src="https://meet.yourconference.live/conference/share-presentation.html?confId=CCO_AMP_Final_Deck_V3&amp;totalSlides=95&amp;fileExtension=JPG" style="height: inherit;" scrolling="no"></iframe>-->
             <?= isset($sessions) ? $sessions->embed_html_code_presenter : "" ?>
-
-            <div class="viewUser" style="float: right;color: white;">
-                <span class="badge badge-danger">live </span> <i class="fa fa-eye" aria-hidden="true"></i> <span class="userCount userCount<?=getAppName($sessions->sessions_id)?>"> 0 </span>
+            <div class="viewUser" style="float:right;color: white">
+                <span class="badge badge-danger">live </span> <i class="fa fa-eye" aria-hidden="true"></i> <span class="userCount userCount<?=getAppName($sessions->sessions_id)?>"> 0</span>
             </div>
 
         </div>
@@ -29,7 +71,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                     <div class="rightTool">
                         <i class="fa fa-minus" aria-hidden="true" data-right-id="1"></i>
                         <div class="dropdown">
-<!--                            <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>-->
+                            <!--                            <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>-->
                             <ul class="dropdown-menu">
                                 <li data-type="questionFavorites"><a data-type2="off">Questions</a></li>
                             </ul>
@@ -76,7 +118,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                     <div class="rightTool">
                         <i class="fa fa-minus" aria-hidden="true" data-right-id="2"></i>
                         <div class="dropdown">
-<!--                            <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>-->
+                            <!--                            <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>-->
                             <ul class="dropdown-menu">
                                 <li data-type="hostChat"><a data-type2="off">Host Chat</a></li>
                             </ul>
@@ -134,6 +176,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
         <div id="id_day_time_clock" class="timer" style="right:20px;"></div>
     </div>
 </div>
+
 <div class="rightSticky presenterRightSticky" data-screen="presenter">
     <ul>
         <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="notify hostChatNotify displayNone">new</span> <span>HOST CHAT</span></li>
@@ -151,7 +194,31 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
     var session_start_datetime = "<?= date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-4' ?>";
     var session_end_datetime = "<?=date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-4' ?>";
 </script>
+<script>
 
+    var socket_session_name = "<?=getAppName('_admin-to-attendee-chat')?>";
+    socket.emit("getSessionViewUsers", "<?=getAppName($sessions->sessions_id) ?>", function (resp) {
+        if (resp) {
+            var totalUsers = resp.users ? resp.users.length : 0;
+            var sessionId = resp.sessionId;
+            $(".totalAttende" + sessionId + " b").html(totalUsers);
+        }
+    });
+</script>
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
+<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=15"></script>
 
-<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=14"></script>
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var navbar = document.getElementById("stickTimer");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
