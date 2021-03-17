@@ -464,3 +464,53 @@
     .sticky+.content {
         padding-top: 60px;
     }
+
+    .question_attendee_name{
+        cursor: pointer;
+        color: #3838c4;
+    }
+
+    #chatBody{
+        height: 250px;
+        overflow: scroll;
+    }
+
+    #chatBox{
+        bottom: 0;
+    }
+
+    .admin-to-user-text-admin{
+        color: white;
+        background-color: #df941f;
+        display: list-item;
+        list-style: none;
+        margin-top: 7px;
+        margin-bottom: 7px;
+        padding-right: 12px;
+        border-radius: 15px;
+        text-align: right;
+        margin-left: 210px;
+        margin-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 260px;
+    }
+
+    .user-to-admin-text-admin{
+        color: white;
+        background-color: #1f8edf;
+        display: list-item;
+        list-style: none;
+        margin-top: 7px;
+        margin-bottom: 7px;
+        padding-left: 16px;
+        border-radius: 15px;
+        margin-left: 5px;
+        margin-right: 250px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .swal2-container{
+        z-index: 10000;
+    }
