@@ -514,3 +514,11 @@
     .swal2-container{
         z-index: 10000;
     }
+    .user-question{
+        color: white;
+        background-color: #1f8edf;
+        padding-top:6px;
+        padding-bottom:6px;
+        border-radius: 7px;
+        text-align:center;
+    }

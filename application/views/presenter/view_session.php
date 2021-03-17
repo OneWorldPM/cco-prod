@@ -1,6 +1,6 @@
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
 
-<link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=14" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=15" rel="stylesheet">
 
 <?php
 if (isset($_GET['testing']) && $_GET['testing'] == 1) {
@@ -28,7 +28,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <br>
-                <div class="text-dark">Question: <span id="chattAttendeeQuestion" ></span><br></div>
+                <div class="user-question">Question: <span id="chattAttendeeQuestion" ></span><br></div>
             </div>
             <div class="modal-body">
                 <div class="panel panel-default">
