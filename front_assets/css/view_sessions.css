@@ -181,7 +181,8 @@ section {
 .borderFrame{
     margin-top: 100px;
     width: 100%;
-    background-color: #f58113;
+    background-color: #0077cc;
+    /*background-color: #f58113;*/
     height: 29px;
     position: absolute;
     bottom: -80px;
@@ -240,7 +241,8 @@ body{
         font-size: 12px;
     }
     .rightSticky{
-        background-color: #f37617;
+        background-color: #0077cc;
+        /*background-color: #f37617;*/
     }
     .rightSticky ul li{
         width: 32%;
@@ -375,7 +377,8 @@ body{
 }
 
 .resources-link-text:hover{
-    color: #f37617 !important;
+    color: #0077cc !important;
+    /*color: #f37617 !important;*/
 }
 
 .zeroVotes{
