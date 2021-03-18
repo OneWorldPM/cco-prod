@@ -194,6 +194,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
     var sessionId = "<?=$sessions->sessions_id?>";
     var session_start_datetime = "<?= date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-4' ?>";
     var session_end_datetime = "<?=date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-4' ?>";
+    var cp_id = "<?= $this->session->userdata('pid')?>";
 </script>
 <script>
 

@@ -80,7 +80,7 @@ $(document).ready(function () {
                 ).done(function( data ) {
                     if (data == 1)
                     {
-                        socket.emit('new-attendee-to-admin-chat', {"socket_session_name":socket_session_name, "session_id":session_id, "from_id":user_id, "user_name":user_fullname, "to_id":"admin", "chat_text":$('#sendAdminChat').val()});
+                        socket.emit('new-attendee-to-admin-chat', {"socket_session_name":socket_session_name, "session_id":session_id, "from_id":user_id, "user_name":user_fullname, "to_id":"admin", "chat_text":$('#sendAdminChat').val(), "sent_from":$('#sendAdminChat').attr('sent_from')});
 
                         $('.admin-messages').append('' +
                             '<span class="user-to-admin-text">'+$('#sendAdminChat').val()+'</span>');
@@ -132,6 +132,8 @@ $(document).ready(function () {
 
 
                     $(".admin-messages").scrollTop($(".admin-messages")[0].scrollHeight);
+
+                    $('#sendAdminChat').attr('sent_from', data.sent_from);
 
                 }
             }

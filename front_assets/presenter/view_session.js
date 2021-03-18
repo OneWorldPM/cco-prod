@@ -405,13 +405,14 @@ $(document).ready(function () {
                 session_id: sessionId,
                 from_id: 'admin',
                 to_id: userId,
-                chat_text: message
+                chat_text: message,
+                sent_from: cp_id
             }
 
         ).done(function( data ) {
                 if (data == 1)
                 {
-                    socket.emit('new-attendee-to-admin-chat', {"socket_session_name":socket_session_name, "session_id":sessionId, "from_id":"admin", "to_id":userId, "chat_text":message});
+                    socket.emit('new-attendee-to-admin-chat', {"socket_session_name":socket_session_name, "session_id":sessionId, "from_id":"admin", "to_id":userId, "chat_text":message, "sent_from":cp_id });
 
                     $('#chatBody').append('' +
                         '<span class="admin-to-user-text-admin">'+message+'</span>');
@@ -443,7 +444,9 @@ $(document).ready(function () {
         {
             if (data.from_id != 'admin')
             {
-                attendeeChatPopup(data.from_id, data.user_name);
+                if(data.sent_from == cp_id){
+                    attendeeChatPopup(data.from_id, data.user_name);
+                }
             }
         }
     });
