@@ -18,8 +18,7 @@
     }
 
     .icon-home {
-        color: #0077cc;
-        /*color: #f05d1f;*/
+        color: #f05d1f;
         font-size: 1.5em;
         font-weight: 700;
         vertical-align: middle;
@@ -38,8 +37,7 @@
     }
 
     .box_home_active {
-        /*background-color: #f05d1f;*/
-        background-color: #0077cc;
+        background-color: #f05d1f;
         border-radius: 20px;
         max-width: 250px;
         min-width: 250px;
@@ -51,12 +49,11 @@
     }
 
     .box-home:hover {
-        background-color: #0077cc;
-        /*background-color: #f05d1f;*/
+        background-color: #f05d1f;
         color: #fff !important;
     }
 </style>
-<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/CCO-login-blue.png); top: 0; padding-top: 0px;">
+<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/attend_background.png); top: 0; padding-top: 0px;">
 <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
     <div class="container container-fullscreen" style="min-height: 700px;">
         <div class="">
@@ -112,7 +109,7 @@
 
                                                 <div class="post-title">
                                                     <h6 style="font-weight: 600"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?> ET</h6>
-                                                    <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" style="color: #0077cc; font-weight: 900;"><?= $val->session_title ?></a></h3>
+                                                    <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" style="color: #f05d1f; font-weight: 900;"><?= $val->session_title ?></a></h3>
                                                 </div>
                                                 <?php
                                                 if (isset($val->presenter) && !empty($val->presenter)) {
@@ -126,7 +123,7 @@
                                                 ?>
                                                 <div class="post-description">
                                                     <p style="margin-bottom: 10px;"><?= $val->sessions_description ?></p>
-                                                    <a class="button btn-primary button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                    <a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
                                                 </div>
                                             </div>
                                         </div>

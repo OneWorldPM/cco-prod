@@ -434,8 +434,7 @@ button:focus {
     border: 0;
 }
 .button.black-light {
-    background-color: #0077cc;
-    /*background-color: #f05d1f;*/
+    background-color: #f05d1f;
 }
 .button.grey-dark {
     background-color: #404051;
