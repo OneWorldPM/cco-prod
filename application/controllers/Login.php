@@ -108,8 +108,8 @@ class Login extends CI_Controller {
                 if ($customer->num_rows() > 0) {
                     $user_details = $customer->row();
                     $set_update_array = array(
-                        'first_name' => $member_array->firstName,
-                        'last_name' => $member_array->lastName,
+                        'first_name' => ($member_array->firstName == '')?'_Empty_':$member_array->firstName,
+                        'last_name' => ($member_array->lastName == '')?'_Empty_':$member_array->lastName,
                         'email' => $member_array->emailAddress,
                         'specialty' => $member_array->specialty,
                         'degree' => $member_array->degree,
@@ -196,7 +196,7 @@ class Login extends CI_Controller {
                     }
                 }
             }else{
-                echo "User details not recieved from CCO";
+                echo "Account error. Please contact the administrator.";
             }
         }
     }
