@@ -53,7 +53,7 @@
         }
     }
 </style>
-<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bg_login.png); top: 0; padding-top: 0px;">
+<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/CCO-login-blue.png); top: 0; padding-top: 0px;">
     <div class="container container-fullscreen" id="home_first_section">
         <div class="text-middle">
             <div class="row">
