@@ -8,7 +8,7 @@ if (isset($_GET['testing']))
 if(isset($session_id))
     $themeColour = themeColour($session_id);
 else
-    $themeColour = '0077cc';
+    $themeColour = 'EF5D21';
 ?>
 <!DOCTYPE html>
 <html lang="en">
