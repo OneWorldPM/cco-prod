@@ -11,7 +11,16 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 }
 
 ?>
+<?php
+if (isset($sessions->presenter) && !empty($sessions->presenter)){
+    foreach ($sessions->presenter as $presenters) {
+        if ($this->session->userdata('pid') == $presenters->presenter_id) {
+            $c_name = $presenters->presenter_name;
+        }
+    }
+}
 
+?>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@9.17.0/dist/sweetalert2.all.min.js"></script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
@@ -192,6 +201,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
     var app_name = "<?=getAppName($sessions->sessions_id) ?>";
     var session_id = "<?=$sessions->sessions_id?>";
     var sessionId = "<?=$sessions->sessions_id?>";
+    var cp_name = "<?= $c_name ?>";
     var session_start_datetime = "<?= date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-4' ?>";
     var session_end_datetime = "<?=date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-4' ?>";
     var cp_id = "<?= $this->session->userdata('pid')?>";
@@ -208,7 +218,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
     });
 </script>
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=15"></script>
+<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=16"></script>
 
 <script>
     window.onscroll = function() {myFunction()};
