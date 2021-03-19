@@ -406,13 +406,14 @@ $(document).ready(function () {
                 from_id: 'admin',
                 to_id: userId,
                 chat_text: message,
-                sent_from: cp_id
+                sent_from: cp_id,
+                presenter_name: cp_name,
             }
 
         ).done(function( data ) {
                 if (data == 1)
                 {
-                    socket.emit('new-attendee-to-admin-chat', {"socket_session_name":socket_session_name, "session_id":sessionId, "from_id":"admin", "to_id":userId, "chat_text":message, "sent_from":cp_id });
+                    socket.emit('new-attendee-to-admin-chat', {"socket_session_name":socket_session_name, "session_id":sessionId, "from_id":"admin", "to_id":userId, "chat_text":message, "sent_from":cp_id, "presenter_name": cp_name });
 
                     $('#chatBody').append('' +
                         '<span class="admin-to-user-text-admin">'+message+'</span>');

@@ -110,5 +110,7 @@
             }
             return false; //Prevent form to submitting
         });
+
+        $('#toolbox').hide();
     });
 </script>

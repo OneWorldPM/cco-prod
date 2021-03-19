@@ -411,7 +411,7 @@ else
                                             ?>
 
                                             <li>
-                                                <a target="_blank" class="hoverThemeColour">TOOLBOX</a>
+                                                <a target="_blank" class="hoverThemeColour" id="toolbox" >TOOLBOX</a>
                                                 <ul class="toolboxCustomDrop">
                                                     <?php
                                                     if (isset($right_bar) && isset($tool_box_status)) {

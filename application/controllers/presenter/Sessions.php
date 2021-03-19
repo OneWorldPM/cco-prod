@@ -320,7 +320,8 @@ class Sessions extends CI_Controller {
             'to_id' => $post['to_id'],
             'chat_text' => $post['chat_text'],
             'date_time' => date("Y-m-d H:i:s"),
-            'sent_from'=>$post['sent_from']
+            'sent_from'=>$post['sent_from'],
+            'presenter_name'=>$post['presenter_name']
         );
 
         $this->db->insert('admin_to_attendee_chat', $data);

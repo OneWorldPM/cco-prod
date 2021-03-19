@@ -198,6 +198,42 @@ switch ($msg) {
 ?>
 <script>
     $(document).ready(function () {
+        var cr_id = "<?=$presenter_id?>";
+        if (cr_id != '') {
+            $.ajax({
+                url: "<?= base_url() ?>admin/presenters/get_presenter_byid/" + cr_id,
+                type: "post",
+                success: function (response) {
+                    cr_data = JSON.parse(response);
+                    //$('#email').prop('readonly', true);
+                    if (cr_data.msg == "success")
+                    {
+                        $('#first_name').val(cr_data.data.first_name);
+                        $('#last_name').val(cr_data.data.last_name);
+                        $('#designation').val(cr_data.data.designation);
+                        $('#title').val(cr_data.data.title);
+                        $('#degree').val(cr_data.data.degree);
+                        $('#specialty').val(cr_data.data.specialty);
+                        $('#facebook').val(cr_data.data.facebook);
+                        $('#linkin').val(cr_data.data.linkin);
+                        $('#twitter').val(cr_data.data.twitter);
+                        $('#bio').val(cr_data.data.bio);
+                        $('#company_name').val(cr_data.data.company_name);
+                        $('#email').val(cr_data.data.email);
+                        $('#password').val(cr_data.data.password);
+                        $('#presenter_id').val(cr_data.data.presenter_id);
+                        $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/" + cr_data.data.presenter_photo);
+                        $('#presenter_profile').show();
+                        $('#cr_type').val('update');
+
+                        alertify.success('Save Success');
+                    } else {
+                    }
+                }
+            });
+        } else {
+        }
+
 <?php if ($msg): ?>
             alertify.<?= $t ?>("<?= $m ?>");
 <?php endif; ?>
