@@ -153,8 +153,8 @@ class Login extends CI_Controller {
                     }
                     $set = array(
                         "register_id" => $register_id,
-                        'first_name' => $member_array->firstName,
-                        'last_name' => $member_array->lastName,
+                        'first_name' => ($member_array->firstName == '')?'_Empty_':$member_array->firstName,
+                        'last_name' => ($member_array->lastName == '')?'_Empty_':$member_array->lastName,
                         'email' => $member_array->emailAddress,
                         'password' => base64_encode(123),
                         'specialty' => $member_array->specialty,
@@ -196,7 +196,7 @@ class Login extends CI_Controller {
                     }
                 }
             }else{
-                echo "Account error. Please contact the administrator.";
+                echo "User details not recieved from CCO";
             }
         }
     }
