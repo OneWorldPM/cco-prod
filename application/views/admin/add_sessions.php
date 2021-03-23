@@ -324,6 +324,7 @@ $user_role = $this->session->userdata('role');
                                                         <option value="" <?=isset($sessions_edit)?($sessions_edit->sponsor_type==""?"selected":""):""?>>___No Text___</option>
                                                         <option value="SPONSORED BY" <?=isset($sessions_edit)?($sessions_edit->sponsor_type=="SPONSORED BY"?"selected":""):""?>>SPONSORED BY</option>
                                                         <option value="EDUCATED BY" <?=isset($sessions_edit)?($sessions_edit->sponsor_type=="EDUCATED BY"?"selected":""):""?>>EDUCATED BY</option>
+                                                        <option value="PARTNERING WITH" <?=isset($sessions_edit)?($sessions_edit->sponsor_type=="PARTNERING WITH"?"selected":""):""?>>PARTNERING WITH</option>
                                                     </select>
                                                 </div>
                                             </div>
