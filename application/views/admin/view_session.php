@@ -776,6 +776,7 @@
                     if (data == 1)
                     {
                         socket.emit('new-attendee-to-admin-chat', {"socket_session_name":socket_session_name, "session_id":sessionId, "from_id":"admin", "to_id":userId, "chat_text":message});
+                        socket.emit('update-admin-attendee-chat', {"socket_session_name":socket_session_name, "session_id":sessionId, "to_id":userId, "to_name":$('#chatAttendeeName').val() });
 
                         $('#chatBody').append('' +
                             '<span class="admin-to-user-text-admin">'+message+'</span>');
@@ -809,6 +810,13 @@
                 {
                     attendeeChatPopup(data.from_id, data.user_name);
                 }
+            }
+        });
+
+        socket.on('update-admin-attendee-chat', function (data) {
+            if (data.socket_session_name == socket_session_name)
+            {
+                attendeeChatPopup(data.to_id, data.to_name);
             }
         });
 
