@@ -290,11 +290,25 @@ class M_sessions extends CI_Model {
         if ($sessions->num_rows() > 0) {
             $result_sessions = $sessions->row();
             $result_sessions->presenter = $this->common->get_presenter($result_sessions->presenter_id, $result_sessions->sessions_id);
+            $result_sessions->moderator = $this->getModerators($result_sessions->moderator_id,$sessions_id);
             return $result_sessions;
         } else {
             return '';
         }
     }
+
+    // #################### get moderator name added by Rexter #####################################
+    function getModerators($moderator_id, $sessions_id)
+    {
+        $where_in = explode(",", $moderator_id);
+        $this->db->select('p.*');
+        $this->db->from('presenter p');
+        $this->db->where_in('p.presenter_id', $where_in);
+        $result = $this->db->get();
+        return ($result->num_rows() > 0) ? $result->result() : '';
+    }
+
+    ##########################End get moderator name #############################
 
     function likeQuestion() {
         $post = $this->input->post();

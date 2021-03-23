@@ -16,7 +16,7 @@ toastr.options = {
     "hideMethod": "fadeOut"
 };
 
-
+let admin_chat_presenter_ids=[];
 $(document).ready(function () {
 
 
@@ -88,7 +88,7 @@ $(document).ready(function () {
                 ).done(function( data ) {
                     if (data == 1)
                     {
-                        socket.emit('new-attendee-to-admin-chat', {"socket_session_name":socket_session_name, "session_id":session_id, "from_id":user_id, "user_name":user_fullname, "to_id":"admin", "chat_text":$('#sendAdminChat').val(), "sent_from":$('#sendAdminChat').attr('sent_from')});
+                        socket.emit('new-attendee-to-admin-chat', {"socket_session_name":socket_session_name, "session_id":session_id, "from_id":user_id, "user_name":user_fullname, "to_id":"admin", "chat_text":$('#sendAdminChat').val(), "cp_ids":admin_chat_presenter_ids });
 
                         $('.admin-messages').append('' +
                             '<span class="user-to-admin-text">'+$('#sendAdminChat').val()+'</span>');
@@ -147,7 +147,8 @@ $(document).ready(function () {
 
                     $(".admin-messages").scrollTop($(".admin-messages")[0].scrollHeight);
 
-                    $('#sendAdminChat').attr('sent_from', data.sent_from);
+                    admin_chat_presenter_ids.push(data.sent_from);
+                    admin_chat_presenter_ids=Array.from(new Set(admin_chat_presenter_ids));
 
                 }
             }

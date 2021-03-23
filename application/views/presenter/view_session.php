@@ -19,6 +19,16 @@ if (isset($sessions->presenter) && !empty($sessions->presenter)){
         }
     }
 }
+if(isset($sessions->moderator) && !empty($sessions->moderator)){
+    foreach ($sessions->moderator as $moderators){
+        if ($this->session->userdata('pid') == $moderators->presenter_id) {
+            $c_name = $moderators->presenter_name;
+        }
+    }
+}
+else{
+    $c_name="";
+}
 
 ?>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@9.17.0/dist/sweetalert2.all.min.js"></script>
