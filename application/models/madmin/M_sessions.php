@@ -90,8 +90,8 @@ class M_sessions extends CI_Model {
             $this->db->where($where);
             $this->db->or_where('s.sessions_id=',25);
         }
-        $this->db->order_by("s.sessions_date", "asc");
-        $this->db->order_by("s.time_slot", "asc");
+        $this->db->order_by("s.sessions_date", "desc");
+        $this->db->order_by("s.time_slot", "desc");
         $sessions = $this->db->get();
         if ($sessions->num_rows() > 0) {
             $return_array = array();
@@ -735,6 +735,7 @@ class M_sessions extends CI_Model {
             if ($poll_question_array->poll_comparisons_id != 0)
                 $poll_question_array->comparison_with = $this->db->get_where("sessions_poll_question", array("sessions_poll_question_id" => $poll_question_array->poll_comparisons_id))->result()[0];
             $poll_question_array->all_other_surveys = $this->db->get_where("sessions_poll_question", array("sessions_id" => $poll_question_array->sessions_id, "sessions_poll_question_id !=" => $poll_question_array->sessions_poll_question_id))->result();
+//            echo "<pre>";print_r($poll_question_array);exit;
             return $poll_question_array;
         } else {
             return '';
