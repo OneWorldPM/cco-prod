@@ -113,8 +113,9 @@ class M_user extends CI_Model {
     }
 
     function get_user_activity($userid) {
-        $this->db->select('*');
-        $this->db->from('user_activity');
+        $this->db->select('ua.*, CONCAT(cm.first_name," ", cm.last_name) as full_name');
+        $this->db->from('user_activity ua');
+        $this->db->join('customer_master cm','ua.user_id=cm.cust_id','left');
         $this->db->where('user_id', $userid);
         $user = $this->db->get();
         if ($user->num_rows() > 0) {

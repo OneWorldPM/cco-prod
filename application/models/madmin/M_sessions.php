@@ -90,8 +90,8 @@ class M_sessions extends CI_Model {
             $this->db->where($where);
             $this->db->or_where('s.sessions_id=',25);
         }
-        $this->db->order_by("s.sessions_date", "asc");
-        $this->db->order_by("s.time_slot", "asc");
+        $this->db->order_by("s.sessions_date", "desc");
+        $this->db->order_by("s.time_slot", "desc");
         $sessions = $this->db->get();
         if ($sessions->num_rows() > 0) {
             $return_array = array();
