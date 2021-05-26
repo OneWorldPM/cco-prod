@@ -231,10 +231,11 @@ $user_role = $this->session->userdata('role');
                                                                 foreach ($val->check_send_json_exist as $status) {
                                                                     if ($status->send_json_status==1) {
                                                                         ?>
-                                                                         <a data-session-id="<?= $val->sessions_id ?>" class="btn btn-purple btn-sm send-json" style="margin-bottom: 5px;">JSON Sent</a>
+                                                                        <a data-session-id="<?= $val->sessions_id ?>"  data-cco_event_id="<?=$val->cco_envent_id?>"  class="btn btn-purple btn-sm send-json" style="margin-bottom: 5px;">JSON Sent</a>
                                                                         <?php
                                                                     } else {
-                                                                        ?>  <a data-session-id="<?= $val->sessions_id ?>" href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-success btn-sm" style="margin-bottom: 5px;">Send JSON</a><?php
+                                                                        ?>
+                                                                          <a data-session-id="<?= $val->sessions_id ?>" data-cco_event_id="<?=$val->cco_envent_id?>" id="btn-send-json" href="<?= base_url() ?>admin/sessions/send_json/<?= $val->sessions_id ?>" class="btn btn-success btn-sm" style="margin-bottom: 5px;">Send JSON</a><?php
                                                                     }
                                                                 }
                                                          }?>
@@ -362,9 +363,14 @@ switch ($msg) {
     // This will confirm to send JSON if already sent
 $('#sessions_table').on('click','.send-json', function () {
 
-let sesionId = $(this).data("session-id");
-    console.log(sesionId);
-let href = $(this).attr('href-url');
+    let sesionId = $(this).data("session-id");
+    let href = $(this).attr('href-url');
+    var cco_event_id = $(this).attr('data-cco_event_id');
+
+    if(cco_event_id=='' ){
+        alertify.error('JSON cannot be sent until Event ID is added. ');
+        return  false;
+    }
 
 Swal.fire({
     title: 'Are you sure?',
@@ -380,7 +386,18 @@ Swal.fire({
     }
 })
 
-});
+    });
 //
+    $('#sessions_table').on('click','#btn-send-json',function(e){
+        e.preventDefault();
+        var cco_event_id = $(this).attr('data-cco_event_id');
+
+        if(cco_event_id=='' ){
+            alertify.error('JSON cannot be sent until Event ID is added. ');
+            return  false;
+        }else{
+            window.location = $(this).attr('href');
+        }
+    });
     });
 </script>
