@@ -78,9 +78,9 @@ else{
         <div class="col-lg-12 col-md-12 leftSide">
             <!--            <iframe class="col-md-12 embed-responsive-item" src="https://meet.yourconference.live/conference/share-presentation.html?confId=CCO_AMP_Final_Deck_V3&amp;totalSlides=95&amp;fileExtension=JPG" style="height: inherit;" scrolling="no"></iframe>-->
             <?= isset($sessions) ? $sessions->embed_html_code_presenter : "" ?>
-            <div class="viewUser" style="float:right;color: white">
-                <span class="badge badge-danger">live </span> <i class="fa fa-eye" aria-hidden="true"></i> <span class="userCount userCount<?=getAppName($sessions->sessions_id)?>"> 0</span>
-            </div>
+          <!--  <div class="viewUser" style="float:right;color: white">
+                <span class="badge badge-danger">live </span> <i class="fa fa-eye" aria-hidden="true"></i> <span class="userCount userCount<?/*=getAppName($sessions->sessions_id)*/?>"> 0</span>
+            </div>-->
 
         </div>
         <div class="col-lg-3 col-md-4 rightSide">

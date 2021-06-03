@@ -56,6 +56,7 @@ class Sessions extends CI_Controller {
         $data['sessions_type'] = $this->msessions->getSessionTypes();
         $data['session_tracks'] = $this->msessions->getSessionTracks();
         $data['unique_identifier_id'] = $this->msessions->getSession_Unique_Identifier_ID();
+        $data['millicast_stream_names']=$this->msessions->getMillicast_Stream_Name();
         $this->load->view('admin/header');
         $this->load->view('admin/add_sessions', $data);
         $this->load->view('admin/footer');
@@ -75,6 +76,7 @@ class Sessions extends CI_Controller {
         $data['presenter'] = $this->msessions->getPresenterDetails();
         $data['sessions_type'] = $this->msessions->getSessionTypes();
         $data['session_tracks'] = $this->msessions->getSessionTracks();
+        $data['millicast_stream_names']=$this->msessions->getMillicast_Stream_Name();
         $this->load->view('admin/header');
         $this->load->view('admin/add_sessions', $data);
         $this->load->view('admin/footer');
@@ -1019,5 +1021,35 @@ public function archive_session() {
     $this->load->view('admin/footer');
 }
 
-// 
+//
+
+    public function streamNames(){
+        $data['millicast_stream_names']=$this->msessions->getMillicast_Stream_Name();
+        $this->load->view('admin/header');
+        $this->load->view('admin/manageStreamNames',$data);
+        $this->load->view('admin/footer');
+    }
+
+    public function saveStreamName(){
+        $post = $this->input->post();
+        $result=$this->msessions->saveStreamName($post);
+        if($result){
+            $this->session->set_flashdata('msg','success');
+            redirect('admin/sessions/streamNames');
+        }else{
+            $this->session->set_flashdata('msg','error');
+            redirect('admin/sessions/streamNames');
+        }
+    }
+    public function deleteStreamName($stream_id){
+        $result=$this->msessions->deleteStreamName($stream_id);
+        if($result){
+            $this->session->set_flashdata('msg','deleted');
+            redirect('admin/sessions/streamNames');
+        }else{
+            $this->session->set_flashdata('msg','error');
+            redirect('admin/sessions/streamNames');
+        }
+    }
+
 }
