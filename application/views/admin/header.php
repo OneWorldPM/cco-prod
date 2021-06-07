@@ -116,6 +116,19 @@ $user_name = ucfirst($this->session->userdata('uname'));
                                 </a>
                             </li>
 
+                            <li class="<?= ($uri_segment == 'live_support_chat') ? 'active' : ''; ?>" >
+                                <a href="<?= site_url() ?>admin/live_support_chat" id="live_support_chat">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-life-ring" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title">Live Support Chat</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
                             <?php if ($user_role == 'super_admin') { ?>
                                 <li class="<?= ($uri_segment == 'user') ? 'active' : ''; ?>" >
                                     <a href="<?= site_url() ?>admin/admins" id="dash">
