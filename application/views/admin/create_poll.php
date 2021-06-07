@@ -138,6 +138,27 @@ if (isset($_GET['testing']))
                                                 <input type="text" name="option_10" id="option_10" placeholder="Option 10"class="form-control input_cust_class">
                                             <?php } ?>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label class="text-large">Correct Answer:</label><br>
+                                            <select class="form-control" name="correct_answer">
+                                                <option value=""></option>
+                                                <?php
+                                                $max_option = 10;
+                                                for ($i = 1; $i <= $max_option ; $i++){
+                                                    if($sessions_data->correct_answer == $i){
+                                                        $correct_answer = 'selected';
+                                                    }else{
+                                                        $correct_answer = '';
+                                                    }
+                                                    ?>
+                                                    <option value="<?=$i?>" id="option_<?=$i?>" <?=$correct_answer?>>Option <?=$i?></option>
+                                                    <?php
+                                                }?>
+                                            </select>
+                                            <p><small style="color:red"> If this field is empty, no correct answer will be indicated on poll result. If correct answer will be activated, then a green checkmark appears beside the correct answer on the poll result </small></p>
+                                        </div>
+
                                         <?php
                                         if (!isset($sessions_data)) {
                                             ?>
