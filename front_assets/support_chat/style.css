@@ -1,0 +1,92 @@
+.live-support-open-button {
+    z-index: 10;
+    background-color: #07c;
+    color: white;
+    padding: 10px;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    width: 205px;
+    font-weight: bold;
+    margin-top: -5px;
+    border-radius: 20px;
+}
+
+.live-support-chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: #e3e3e3;
+    border: 3px solid #f1f1f1;
+    z-index: 11;
+    width: 350px;
+    height: 535px;
+}
+
+.live-support-chat-title{
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    color: black;
+    border-bottom: 2px solid gray;
+    padding: 3px 5px;
+    background: #ddd;
+}
+
+.live-support-chat-body{
+    height: 85%;
+    margin-top: 35px;
+}
+
+.live-support-chat-texts{
+    height: 89%;
+    overflow: scroll;
+}
+
+.live-support-text-admin{
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 0 10px 0 10px;
+}
+
+.live-support-admin-desc{
+    font-weight: bold;
+}
+
+.live-support-admin-text{
+    padding-left: 10px;
+}
+
+.live-support-text-attendee{
+    display: block;
+    text-align: right;
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 0 10px 0 10px;
+}
+
+.live-support-attendee-desc{
+    font-weight: bold;
+}
+
+.live-support-attendee-text{
+    padding-right: 10px;
+}
+
+.end-chat-btn {
+    position: absolute;
+    bottom: 0;
+    color: white;
+    background-color: #ff5353;
+    width: 100%;
+}
+.end-chat-btn:hover {
+    color: white;
+    background-color: #ff3434;
+}

@@ -31,6 +31,50 @@
 
 <script src="https://kit.fontawesome.com/fd91b3535c.js" crossorigin="anonymous"></script>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@9.17.0/dist/sweetalert2.all.min.js"></script>
+
+<!-- Live Support Chat -->
+<script>
+    var base_url = "<?=base_url()?>";
+    let support_app_name = "<?=getAppName("") ?>";
+    let attendee_id = "<?=$this->session->userdata('cid')?>";
+    let attendee_name = "<?=$this->session->userdata('fullname')?>";
+</script>
+
+
+<!--****** PubNub Stuff *****-->
+<!-- DO NOT use production keys on the localhost-->
+<!--<script>let pubnub_channel_total = "GME_Total";</script>-->
+<!--<script src="--><?//= base_url() ?><!--front_assets/js/pubnub_total_live_users.js?v=2"></script>-->
+
+
+<script src="https://athulak.com/socket.io/socket.io.js"></script>
+<link rel="stylesheet" href="<?=base_url()?>front_assets/support_chat/style.css?v=2">
+<script src="<?= base_url() ?>front_assets/support_chat/live-support-chat.js?v=2"></script>
+<div class="live-support-chat-popup" id="liveSupportChatForm">
+    <span class="live-support-chat-title"><i class="far fa-life-ring"></i> Live Technical Support</span>
+    <div class="live-support-chat-body">
+
+        <div id="live-support-chat-texts" class="live-support-chat-texts">
+            <!-- Will be filled by fillAllPreviousChats() function on pageReady -->
+        </div>
+
+        <div class="input-group text-center" style="width: 100%;position: absolute;bottom: 90px;">
+            <span id="adminTypingHint" style="display: none;">Admin is typing...</span>
+        </div>
+        <div class="input-group" style="position: absolute;bottom: 45px;">
+            <input id="liveSupportText" type="text" class="form-control" placeholder="Enter your message here...">
+            <span class="input-group-btn">
+                <button id="sendLiveSupportText" class="btn btn-default" type="button"><i class="far fa-paper-plane"></i> Send</button>
+            </span>
+        </div>
+
+    </div>
+    <button type="button" class="btn btn-sm end-chat-btn" onclick="endLiveSupportChat()">End Chat <i class="fas fa-times-circle"></i></button>
+</div>
+<!-- End of Live Support Chat -->
+
+
 <script>
     var user_id = <?= $this->session->userdata("cid") ?>;
     var user_name = "<?= $this->session->userdata('fullname') ?>";
@@ -39,6 +83,8 @@
             window[key] = variable[key];
         }
     }
+
+
 
     $(function() {
 
