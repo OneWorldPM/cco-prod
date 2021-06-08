@@ -140,23 +140,41 @@ if (isset($_GET['testing']))
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="text-large">Correct Answer:</label><br>
-                                            <select class="form-control" name="correct_answer">
+                                            <label class="text-large">Correct Answer1:</label><br>
+                                            <select class="form-control" name="correct_answer1">
                                                 <option value=""></option>
                                                 <?php
                                                 $max_option = 10;
                                                 for ($i = 1; $i <= $max_option ; $i++){
-                                                    if($sessions_data->correct_answer == $i){
-                                                        $correct_answer = 'selected';
+                                                    if($sessions_data->correct_answer1 == $i){
+                                                        $correct_answer1 = 'selected';
                                                     }else{
-                                                        $correct_answer = '';
+                                                        $correct_answer1 = '';
                                                     }
                                                     ?>
-                                                    <option value="<?=$i?>" id="option_<?=$i?>" <?=$correct_answer?>>Option <?=$i?></option>
+                                                    <option value="<?=$i?>" id="option_<?=$i?>" <?=$correct_answer1?>>Option <?=$i?></option>
                                                     <?php
                                                 }?>
                                             </select>
-                                            <p><small style="color:red"> If this field is empty, no correct answer will be indicated on poll result. If correct answer will be activated, then a green checkmark appears beside the correct answer on the poll result </small></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-large">Correct Answer 2:</label><br>
+                                            <select class="form-control" name="correct_answer2">
+                                                <option value=""></option>
+                                                <?php
+                                                $max_option = 10;
+                                                for ($i = 1; $i <= $max_option ; $i++){
+                                                    if($sessions_data->correct_answer2 == $i){
+                                                        $correct_answer2 = 'selected';
+                                                    }else{
+                                                        $correct_answer2 = '';
+                                                    }
+                                                    ?>
+                                                    <option value="<?=$i?>" id="option_<?=$i?>" <?=$correct_answer2?>>Option <?=$i?></option>
+                                                    <?php
+                                                }?>
+                                            </select>
+                                            <p><small style="color:red"> If answers are empty, no correct answer will be indicated on poll result. If correct answer will be activated, then a green checkmark appears beside the correct answer on the poll result </small></p>
                                         </div>
 
                                         <?php

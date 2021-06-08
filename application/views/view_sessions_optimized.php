@@ -454,5 +454,5 @@ if (isset($sessions)) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=19"></script>
+<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=20"></script>
 <script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=203"></script>

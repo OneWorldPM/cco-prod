@@ -643,7 +643,8 @@ class M_sessions extends CI_Model {
             'question' => trim($post['question']),
             'poll_name' => trim($post['poll_name']),
             'slide_number' => trim($post['slide_number']),
-            'correct_answer' => trim($post['correct_answer']),
+            'correct_answer1' => trim($post['correct_answer1']),
+            'correct_answer2' => trim($post['correct_answer2']),
             'poll_instruction' => trim($post['poll_instruction']),
             'poll_comparisons_id' => 0,
             "create_poll_date" => date("Y-m-d h:i")
@@ -676,7 +677,8 @@ class M_sessions extends CI_Model {
             'question' => trim($post['question']),
             'poll_name' => trim($post['poll_name']),
 			'slide_number' => trim($post['slide_number']),
-            'correct_answer' => trim($post['correct_answer']),
+            'correct_answer1' => trim($post['correct_answer1']),
+            'correct_answer2' => trim($post['correct_answer2']),
             'poll_comparisons_id' => $insert_id,
             "create_poll_date" => date("Y-m-d h:i")
         );
@@ -775,7 +777,8 @@ class M_sessions extends CI_Model {
             'question' => trim($post['question']),
             'poll_name' => trim($post['poll_name']),
             'slide_number' => trim($post['slide_number']),
-            'correct_answer' => trim($post['correct_answer']),
+            'correct_answer1' => trim($post['correct_answer1']),
+            'correct_answer2' => trim($post['correct_answer2']),
             'poll_instruction' => trim($post['poll_instruction']),
             'poll_type_id' => $post['poll_type_id'],
             'poll_comparisons_id' => (isset($post['poll_comparisons_id']))?$post['poll_comparisons_id']:0
