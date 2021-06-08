@@ -781,7 +781,7 @@ function get_poll_vot_section() {
 
                                 if(!window.isComparisonpoll)
                                 {
-                                    $('.progress_bar_new').css('background', '#035a76');
+                                    $('.progress_bar_new').css('background', '#45c0ea');
                                     $("#result_section").append("<label id='label_"+key+"'>"+pollIteration+". " + val.option + "</label>");
 
                                 }
@@ -790,7 +790,7 @@ function get_poll_vot_section() {
                             } else {
                                 if(!window.isComparisonpoll)
                                 {
-                                    $('.progress_bar_new').css('background', '#035a76');
+                                    $('.progress_bar_new').css('background', '#45c0ea');
                                     $("#result_section").append("<label id='label_"+key+"'>"+pollIteration+". " + val.option + "</label>");
                                 }
 
