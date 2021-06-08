@@ -799,8 +799,19 @@ function get_poll_vot_section() {
 
                             pollIteration++;
 
-                            if(data.result.correct_answer ==  key) {
-                                $("#result_section #label_"+data.result.correct_answer).prepend('<span class="fa fa-check fa-2x "></span>').addClass('text-success');
+                            if(data.result.correct_answer1 !== "0" || data.result.correct_answer2 !=='0'){
+                                console.log(data.result.correct_answer);
+                                if(data.result.correct_answer1 ==  key) {
+                                    $("#result_section #label_"+data.result.correct_answer1).prepend('<span class="fa fa-check fa-2x "></span>').css({'margin-left':'-30px', 'color':'#22B14C'});
+                                    $("#result_section").append("<div style='border-bottom: 1px solid gray; margin-left: -30px; margin-bottom: 5px'></div>");
+                                }else if (data.result.correct_answer2 ==  key){
+                                    $("#result_section #label_"+data.result.correct_answer2).prepend('<span class="fa fa-check fa-2x "></span>').css({'margin-left':'-30px', 'color':'#22B14C'});
+                                    $("#result_section").append("<div style='border-bottom: 1px solid gray; margin-left: -30px; margin-bottom: 5px'></div>");
+                                }
+                                else{
+                                    $("#result_section").css('margin-left','30px');
+                                    $("#result_section").append("<div style='border-bottom: 1px solid gray;  margin-left: -30px; margin-bottom: 5px'></div>");
+                                }
                             }
 
                         });
