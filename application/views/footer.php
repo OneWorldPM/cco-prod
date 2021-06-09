@@ -42,10 +42,11 @@
 </script>
 
 
+
 <!--****** PubNub Stuff *****-->
 <!-- DO NOT use production keys on the localhost-->
-<!--<script>let pubnub_channel_total = "GME_Total";</script>-->
-<!--<script src="--><?//= base_url() ?><!--front_assets/js/pubnub_total_live_users.js?v=2"></script>-->
+<script>let pubnub_channel_total = "PCE_Total";</script>
+<script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_total_live_users.js?v=2"></script>
 
 
 <script src="https://athulak.com/socket.io/socket.io.js"></script>

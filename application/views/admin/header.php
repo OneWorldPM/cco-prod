@@ -69,11 +69,17 @@ $user_name = ucfirst($this->session->userdata('uname'));
         <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch-onload.js"></script> -->
         <script src="<?= base_url() ?>front_assets/js/custom.js?v=4"></script>
         <?= getSocketScript()?>
+
+        <!--****** PubNub Stuff *****-->
+        <!-- DO NOT use production keys on the localhost-->
+        <?=pubnub_keys()?>
+        <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.14.0.min.js"></script>
+
         <script>
         
         // let socket = io("https://socket.yourconference.live:443");
         //let socket = io("<?//=getSocketUrl()?>//");
-        
+
         socket.on("newViewUsers",function(resp){
             if(resp){
             var totalUsers=resp.users?resp.users.length:0;

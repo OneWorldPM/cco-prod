@@ -453,6 +453,11 @@ if (isset($sessions)) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
 
+<!--****** PubNub Stuff *****-->
+<!-- DO NOT use production keys on the localhost-->
+<script> var pubnub_channel = "PCE_Session_<?=$sessions->sessions_id?>"; </script>
+<script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users.js?v=2"></script>
+
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
 <script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=21"></script>
 <script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=203"></script>
