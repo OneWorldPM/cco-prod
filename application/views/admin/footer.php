@@ -1,3 +1,8 @@
+<!--****** PubNub Stuff *****-->
+<!-- DO NOT use production keys on the localhost-->
+<script>let pubnub_channel_total = "PCE_Total";</script>
+<script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_total_live_users_admin.js?v=4"></script>
+
 <!-- start: FOOTER -->
 <footer>
     <div class="footer-inner">

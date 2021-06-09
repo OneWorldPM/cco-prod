@@ -54,6 +54,13 @@ else
 
         <link href="<?= base_url() ?>assets/alertify/alertify.core.css" rel="stylesheet" type="text/css" />
         <link href="<?= base_url() ?>assets/alertify/alertify.default.css" rel="stylesheet" type="text/css" />
+
+
+        <!--****** PubNub Stuff *****-->
+        <!-- DO NOT use production keys on localhost-->
+        <?=pubnub_keys()?>
+        <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.14.0.min.js"></script>
+
         <style>
             @media (min-width: 1200px){
                 .container {
