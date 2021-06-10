@@ -455,7 +455,7 @@ if (isset($sessions)) {
 
 <!--****** PubNub Stuff *****-->
 <!-- DO NOT use production keys on the localhost-->
-<script> var pubnub_channel = "PCE_Session_<?=$sessions->sessions_id?>"; </script>
+<script> var pubnub_channel = "CCO_Session_<?=$sessions->sessions_id?>"; </script>
 <script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users.js?v=2"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->

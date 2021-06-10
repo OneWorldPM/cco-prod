@@ -1771,5 +1771,5 @@
 
 <!--****** PubNub Stuff *****-->
 <!-- DO NOT use production keys on the localhost-->
-<script>let pubnub_channel = "PCE_Session_<?=$sessions->sessions_id?>";</script>
+<script>let pubnub_channel = "CCO_Session_<?=$sessions->sessions_id?>";</script>
 <script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users_admin.js?v=3"></script>
