@@ -251,6 +251,6 @@ else{
 <!--****** PubNub Stuff *****-->
 <!-- DO NOT use production keys on the localhost-->
 <?=pubnub_keys()?>
-<script>let pubnub_channel = "PCE_Session_<?=$sessions->sessions_id?>";</script>
+<script>let pubnub_channel = "CCO_Session_<?=$sessions->sessions_id?>";</script>
 <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.14.0.min.js"></script>
 <script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users_presenter.js?v=3"></script>
