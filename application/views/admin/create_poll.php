@@ -166,7 +166,7 @@ if (isset($_GET['testing']))
                                                     if (isset($sessions_data->all_other_surveys) && !empty($sessions_data->all_other_surveys)) {
                                                         foreach ($sessions_data->all_other_surveys as $survey) {
                                                             ?>
-                                                            <option value="<?= $survey->sessions_poll_question_id ?>" <?=($survey->sessions_poll_question_id == $sessions_data->comparison_with->sessions_poll_question_id)?"selected": ""?>><?= $survey->poll_name ?></option>
+                                                            <option value="<?= $survey->sessions_poll_question_id ?>" <?=($survey->sessions_poll_question_id == $sessions_data->poll_comparisons_id)?"selected": ""?>><?= $survey->poll_name ?></option>
                                                             <?php
                                                         }
                                                     }
