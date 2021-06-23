@@ -19,11 +19,14 @@ $(document).ready(function () {
         if(data.room == "CCO_live_support") {
 
             if (data.room == live_support_chat_room)
+                $('#helpdesk_link').hide();
                 supportChatStatus = data.status;
 
             if (data.status == 1) {
+                $('#helpdesk_link').hide();
                 $('.live-support-open-button').show();
             } else {
+                $('#helpdesk_link').show();
                 $('.live-support-open-button').hide();
                 $('#liveSupportChatForm').hide();
             }

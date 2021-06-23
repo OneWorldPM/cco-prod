@@ -397,7 +397,7 @@ else
                                             <?php } ?>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour">HELP DESK</a></li>
+                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour" id="helpdesk_link">HELP DESK</a></li>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
                                             <?php
@@ -454,7 +454,7 @@ else
                                         </ul>
                                     <?php } else { ?>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour">HELP DESK</a></li>
+                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour" id="helpdesk_link">HELP DESK</a></li>
                                         </ul>
                                     <?php } ?>
                                 </nav>
