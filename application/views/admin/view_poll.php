@@ -62,12 +62,7 @@
                                                     <td><?= $val->poll_type ?></td>
                                                     <td><?= ($val->poll_comparisons_id == 0)?'None':$val->poll_comparisons_id ?></td>
                                                     <td><?= $val->slide_number ?></td>
-                                                    <td><?= isset($val->poll_instruction)?$val->poll_instruction:''?></td>
-                                                    <td style="width: 80px">
-                                                        Answer 1: <strong style="font-size: 18px; color: red"><?=($val->correct_answer1 !=='0')?$val->correct_answer1:''?></strong><br>
-                                                        Answer 2: <strong style="font-size: 18px; color: orangered"><?=($val->correct_answer2 !=='0')?$val->correct_answer2:''?></strong>
-                                                    </td>
-                                                    <td>
+                                                    <td><?= isset($val->poll_instruction)?$val->poll_instruction:''?>
                                                     <div class="dropdown">
                                                         <button class="btn <?=(isset($val->poll_instruction))?'btn-blue':'btn-success'?> btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <?=(isset($val->poll_instruction))?'Update Instruction':'Add Instruction'?>
@@ -78,12 +73,14 @@
                                                      <textarea name="poll_instruction"></textarea>
                                                       <input type="text" name="session_id" value="<?=$val->sessions_id?>" hidden >
                                                     <input type="submit" value="update" class="btn btn-success btn-sm">
-
                                                     </form>
                                                         </div>
-                                                    </div> 
-                                                   
-                                                </td>
+                                                    </div>
+                                                    </td>
+                                                    <td style="width: 80px">
+                                                        Answer 1: <strong style="font-size: 18px; color: red"><?=($val->correct_answer1 !=='0')?$val->correct_answer1:''?></strong><br>
+                                                        Answer 2: <strong style="font-size: 18px; color: orangered"><?=($val->correct_answer2 !=='0')?$val->correct_answer2:''?></strong>
+                                                    </td>
                                                     <td>
                                                         <a class="btn btn-primary btn-sm" href="<?= base_url() . 'admin/sessions/editPollQuestion/' . $val->sessions_poll_question_id ?>">
                                                             <i class="fa fa-pencil"></i> Edit
