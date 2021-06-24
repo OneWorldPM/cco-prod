@@ -24,6 +24,7 @@
                                             <th>Question</th>
 											 <th>Slide Number</th>
                                             <th>Poll Type</th>
+                                            <th>Instruction</th>
                                             <th>Options</th>
                                             <th>People Voted</th>
                                             <th>Action</th>
@@ -38,6 +39,7 @@
                                                     <td style="text-align:left !important"><?= $val->question ?></td>
 													 <td><?= $val->slide_number ?></td>
                                                     <td><?= $val->poll_type ?></td>
+                                                    <td><?= $val->poll_instruction ?></td>
                                                     <td>
                                                         <?php
                                                         if (isset($val->option) && !empty($val->option)) {
