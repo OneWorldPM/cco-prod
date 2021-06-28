@@ -186,3 +186,11 @@ function endLiveSupportChat() {
         }
     });
 }
+
+$(function(){
+    if($('.live-support-open-button').is(':visible')){
+        $('#helpdesk_link').css('display','none');
+    }else{
+        $('#helpdesk_link').css('display','block');
+    }
+})
