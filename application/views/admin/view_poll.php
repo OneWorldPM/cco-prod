@@ -39,6 +39,7 @@
                                             <th>Comparison With</th>
                                             <th>Slide Number</th>
                                             <th>Poll Instruction</th>
+                                            <th>Correct Answer</th>
                                             <th>Modify</th>
                                             <th>Action</th>
                                         </tr>
@@ -72,12 +73,14 @@
                                                      <textarea name="poll_instruction"></textarea>
                                                       <input type="text" name="session_id" value="<?=$val->sessions_id?>" hidden >
                                                     <input type="submit" value="update" class="btn btn-success btn-sm">
-
                                                     </form>
                                                         </div>
-                                                    </div> 
-                                                   
-                                                </td>
+                                                    </div>
+                                                    </td>
+                                                    <td style="width: 80px">
+                                                        Answer 1: <strong style="font-size: 18px; color: red"><?=($val->correct_answer1 !=='0')?$val->correct_answer1:''?></strong><br>
+                                                        Answer 2: <strong style="font-size: 18px; color: orangered"><?=($val->correct_answer2 !=='0')?$val->correct_answer2:''?></strong>
+                                                    </td>
                                                     <td>
                                                         <a class="btn btn-primary btn-sm" href="<?= base_url() . 'admin/sessions/editPollQuestion/' . $val->sessions_poll_question_id ?>">
                                                             <i class="fa fa-pencil"></i> Edit
