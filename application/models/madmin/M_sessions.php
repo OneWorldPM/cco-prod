@@ -241,6 +241,7 @@ class M_sessions extends CI_Model {
     function getPresenterDetails() {
         $this->db->select('*');
         $this->db->from('presenter');
+        $this->db->order_by('first_name', 'asc');
         $presenter = $this->db->get();
         if ($presenter->num_rows() > 0) {
             return $presenter->result();
