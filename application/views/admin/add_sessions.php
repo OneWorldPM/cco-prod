@@ -1,4 +1,32 @@
 <style>
+    .multiselect{
+        overflow: scroll;
+    }
+    .selectBox{
+        position: relative;
+    }
+    .selectBox select{
+        width: 100%;
+        font-weight: bold;
+    }
+    .overSelect {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        top: 0;
+    }
+
+    #checkboxes label {
+        display: block;
+    }
+    #checkboxes label:hover{
+        background-color: #1e90ff;
+    }
+    .checkbox-container{
+        height: 350px;
+        scroll
+    }
 @media screen and (-webkit-min-device-pixel-ratio:0) {  /*safari and chrome*/
     select {
         height:30px;
@@ -122,23 +150,43 @@ $user_role = $this->session->userdata('role');
                                         <hr style="border: 2px solid;">
                                     </div>
 
-									<div class="form-group" <?=($user_role != 'super_admin')?'style="display:none"':''?>>
-                                        <label class="text-large text-bold">Moderator</label>
-                                        <select class="form-control" style="height:400px;line-height:300px" id="moderator_id" name="moderator_id[]" multiple <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>
-                                            <?php if(!isset($sessions_edit)){ ?>
-                                            <option selected="" value="">Select Moderator</option> 
-                                            <?php } ?>
+                                <div class="multiselect form-group">
+                                    <div class="selectBox" onclick="" >
+                                        <select class="form-control" style="margin-bottom: 5px;height: 45px;">
+                                            <option class="" style=""> Select Moderator</option>
+                                        </select>
+                                        <div class="overSelect"></div>
+                                    </div>
+                                        <div id="checkboxes" class="checkbox-container">
                                             <?php
                                             if (isset($presenter) && !empty($presenter)) {
                                                 foreach ($presenter as $val) {
                                                     ?>
-                                                    <option value="<?= $val->presenter_id ?>" <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? in_array($val->presenter_id, explode(",", $sessions_edit->moderator_id)) ? "selected" : "" : "" ?>><?= $val->presenter_name ?></option> 
+                                                    <label class="form-control text-dark"><input type="checkbox" value="<?= $val->presenter_id ?>" class="" id="moderator_id" name="moderator_id[]" <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? in_array($val->presenter_id, explode(",", $sessions_edit->moderator_id)) ? "checked" : "" : "" ?>> <?=$val->presenter_name ?></label>
                                                     <?php
                                                 }
                                             }
                                             ?>
-                                        </select>
                                     </div>
+                                </div>
+
+<!--									<div class="form-group" --><?//=($user_role != 'super_admin')?'style="display:none"':''?><!-->-->
+<!--                                        <label class="text-large text-bold">Moderator</label>-->
+<!--                                        <select class="form-control" style="height:400px;line-height:300px" id="moderator_id" name="moderator_id[]" multiple --><?//=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?><!-->-->
+<!--                                            --><?php //if(!isset($sessions_edit)){ ?>
+<!--                                            <option selected="" value="">Select Moderator</option>-->
+<!--                                            --><?php //} ?>
+<!--                                            --><?php
+//                                            if (isset($presenter) && !empty($presenter)) {
+//                                                foreach ($presenter as $val) {
+//                                                    ?>
+<!--                                                    <option value="--><?//= $val->presenter_id ?><!--" --><?//= (isset($sessions_edit) && !empty($sessions_edit) ) ? in_array($val->presenter_id, explode(",", $sessions_edit->moderator_id)) ? "selected" : "" : "" ?><!-->--><?//= $val->presenter_name ?><!--</option>-->
+<!--                                                    --><?php
+//                                                }
+//                                            }
+//                                            ?>
+<!--                                        </select>-->
+<!--                                    </div>-->
                                     <!--                                    <div class="form-group">
                                                                             <label class="text-large">Presenter:</label>
                                                                             <select class="form-control" id="presenter_id" name="presenter_id">
