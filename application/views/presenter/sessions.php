@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="panel panel-primary" id="panel5">
                     <div class="panel-heading">
-                        <h4 class="panel-title text-white">Sessions</h4>
+                        <h4 class="panel-title text-white">Presenter Sessions</h4>
                     </div>
                     <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                         <div class="row">
@@ -45,7 +45,7 @@
                                                             <img src="<?= base_url() ?>front_assets/images/session_avtar.jpg" style="height: 40px; width: 40px;">
                                                         <?php } ?>
                                                     </td>
-                                                    <td><?= date("h:i A", strtotime($val->time_slot)) .' - '. date("h:i A", strtotime($val->end_time)) ?></td>
+                                                    <td><?= date("Y-m-d h:i A", strtotime($val->time_slot)) .' - '. date("h:i A", strtotime($val->end_time)) ?></td>
                                                    <td><?= $val->sessions_id?></td>
                                                     <td><?= $val->session_title ?></td>
                                                     <td><?php
