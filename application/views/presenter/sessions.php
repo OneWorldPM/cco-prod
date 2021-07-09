@@ -45,7 +45,7 @@
                                                             <img src="<?= base_url() ?>front_assets/images/session_avtar.jpg" style="height: 40px; width: 40px;">
                                                         <?php } ?>
                                                     </td>
-                                                    <td><?= date("Y-m-d h:i A", strtotime($val->time_slot)) .' - '. date("h:i A", strtotime($val->end_time)) ?></td>
+                                                    <td style="white-space: nowrap; text-align: right;"><?= date("m-d-Y h:i A", strtotime($val->time_slot)) .' - '. date("h:i A", strtotime($val->end_time)) ?></td>
                                                    <td><?= $val->sessions_id?></td>
                                                     <td><?= $val->session_title ?></td>
                                                     <td><?php
