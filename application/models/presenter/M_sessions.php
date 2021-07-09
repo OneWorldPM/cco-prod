@@ -10,7 +10,7 @@ class M_sessions extends CI_Model {
         $this->db->select('*');
         $this->db->from('sessions s');
         $this->db->like('s.presenter_id', $this->session->userdata("pid"));
-        $this->db->where('sessions_date > ', date('Y-m-d'));
+        $this->db->where('sessions_date >=', date('Y-m-d'));
         $this->db->or_where('sessions_id ','25');
         $this->db->order_by("s.sessions_date", "asc");
         $this->db->order_by("s.time_slot", "asc");
@@ -34,7 +34,7 @@ class M_sessions extends CI_Model {
         $this->db->select('*');
         $this->db->from('sessions s');
         $this->db->like('s.moderator_id', $this->session->userdata("pid"));
-        $this->db->where('sessions_date > ', date('Y-m-d'));
+        $this->db->where('sessions_date >=', date('Y-m-d'));
         $this->db->or_where('sessions_id ','25');
         $this->db->order_by("s.sessions_date", "asc");
         $this->db->order_by("s.time_slot", "asc");
