@@ -460,8 +460,13 @@ class Sessions extends CI_Controller {
           $header_data["link_text"] = $sesions->link_text;
           $header_data['session_id'] = $session_id;
 
+          $this->db->select('*')
+              ->from('sessions')
+              ->where('sessions_id', $session_id)
+          ;
+          $data['sessions'] = $this->db->get()->result();
         $this->load->view('header', $header_data);
-        $this->load->view('end_session');
+        $this->load->view('end_session', $data);
         $this->load->view('footer');
     }
 

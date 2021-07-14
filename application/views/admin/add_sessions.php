@@ -288,6 +288,34 @@ $user_role = $this->session->userdata('role');
                                         </select>
                                         <hr style="border: 2px solid;"/>
                                     </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <fieldset>
+                                            <legend>
+                                                Session End  <span class="badge badge-success"> new</span>
+                                            </legend>
+                                            <label class="text-large text-bold">Set Session End Message</label>
+                                            <textarea class="form-control" type="text" name="session_end_message" id="session-end-message" placeholder="This session is now closed."><?=(isset($sessions_edit) && !empty($sessions_edit))?$sessions_edit->session_end_message:''?></textarea>
+                                            <label class="text-large text-bold " style="margin-top: 5px;">Set Session End Image</label>
+                                            <input type="file" class="form-control" name="session_end_image">
+                                            <?php if(isset($sessions_edit) && $sessions_edit->session_end_image):?>
+                                                <img id="session_end_img" src="<?= base_url() ?>uploads/session_end/<?= $sessions_edit->session_end_image ?>" style="height: 100px; width: 100px; margin-top: 5px">
+                                                <span style="float: right"><a href="" data-sessions-id="<?= $sessions_edit->sessions_id ?>" id="delete_session_end_image" class="btn btn-warning btn-sm mt" style="margin-top: 5px">Delete</a></span>
+                                            <?php endif; ?>
+                                            <div class="row" style="margin-top: 10px;">
+                                                <div class="col-md-6">
+                                                    <label >Image width</label>
+                                                    <input type="number" name="end_image_width" class="form-group" value="<?=(isset($sessions_edit) && !empty($sessions_edit))?$sessions_edit->end_image_width:''?>"><small style="color:red">(pixels)</small>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label >Image height</label>
+                                                    <input type="number" name="end_image_height" class="form-group" value="<?=(isset($sessions_edit) && !empty($sessions_edit))?$sessions_edit->end_image_height:''?>"><small style="color:red">(pixels)</small>
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+                                    </div>
+                                </div>
                                     <?php if (isset($sessions_edit)) { ?>
                                         <div class="row">
                                             <label class="col-md-12 text-large text-bold">Tool Box</label>
@@ -543,6 +571,8 @@ $user_role = $this->session->userdata('role');
 </div>
 </div>
 
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -702,6 +732,47 @@ $user_role = $this->session->userdata('role');
             });
         });
 
+
+        $('#delete_session_end_image').on("click", function (event) {
+            event.preventDefault()
+            var sesionId = $(this).attr("data-sessions-id");
+
+            alertify.confirm('Are you sure?', 'This will delete session end image', function (e) {
+                if (e) {
+                    $.post("<?= base_url() ?>admin/sessions/delete_session_end_image/", {
+                        'session_id': sesionId,
+                    }, function (response) {
+                        if (response == "success") {
+                            alertify.success('Session End Image Deleted!');
+                            $('#delete_session_end_image').hide();
+                            $('#session_end_img').hide();
+
+                        } else {
+                            alertify.success('No Session Photo to Delete!');
+                            window.setTimeout('location.reload()', 2000);
+                        }
+                    });
+                }
+            }, function () {
+            });
+        });
+
+        $('#session-end-message').summernote({
+            height: 100,
+            toolbar:
+                [
+                    ["history", ["undo", "redo"]],
+                    ["style", ["style"]],
+                    ["font", ["bold", "italic", "underline", "fontname", "strikethrough", "superscript", "subscript", "clear"]],
+                    ['fontsize', ['fontsize']],
+                    ["color", ["forecolor", "backcolor", "color"]],
+                    ["paragraph", ["ul", "ol", "paragraph", "height"]],
+                    ["table", ["table"]],
+                    ["insert", ["link", "resizedDataImage", "picture", "video"]],
+                    ["view", ["codeview"] ]
+                ],
+            fontSizes: ['8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '36', '48' , '64', '82', '150']
+        });
 
     });
 

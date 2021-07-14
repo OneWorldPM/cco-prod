@@ -331,6 +331,9 @@ class M_sessions extends CI_Model {
             'ppt_uploaded' => (isset($post['ppt_uploaded'])) ? $post['ppt_uploaded'] : 0,
             'ppt_link_shared' => (isset($post['ppt_link_shared'])) ? $post['ppt_link_shared'] : 0,
             'session_notes'=>$post['session_notes'],
+            'session_end_message'=>$post['session_end_message'],
+            'end_image_height'=>$post['end_image_height'],
+            'end_image_width'=>$post['end_image_width'],
             
         );
         $this->db->insert("sessions", $set);
@@ -369,6 +372,15 @@ class M_sessions extends CI_Model {
                 $this->upload->do_upload('sessions_photo');
                 $file_upload_name = $this->upload->data();
                 $this->db->update('sessions', array('sessions_photo' => $file_upload_name['file_name']), array('sessions_id' => $sessions_id));
+            }
+
+            if ($_FILES['session_end_image']['name'] != "") {
+
+                $this->load->library('upload');
+                $this->upload->initialize($this->set_upload_session_end_image());
+                $this->upload->do_upload('session_end_image');
+                $file_upload_name = $this->upload->data();
+                $this->db->update('sessions', array('session_end_image' => $file_upload_name['file_name']), array('sessions_id' => $sessions_id));
             }
 
             if (isset($post['select_presenter_id']) && !empty($post['select_presenter_id'])) {
@@ -439,6 +451,17 @@ class M_sessions extends CI_Model {
         $config['allowed_types'] = 'jpg|png';
         $config['overwrite'] = FALSE;
         $config['file_name'] = "logo_" . $randname;
+        return $config;
+    }
+
+    function set_upload_session_end_image() {
+        $this->load->helper('string');
+        $randname = random_string('numeric', '8');
+        $config = array();
+        $config['upload_path'] = './uploads/session_end/';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['overwrite'] = FALSE;
+        $config['file_name'] = "session_end_" . $randname;
         return $config;
     }
 
@@ -524,6 +547,9 @@ class M_sessions extends CI_Model {
             'ppt_uploaded' => (isset($post['ppt_uploaded'])) ? $post['ppt_uploaded'] : 0,
             'ppt_link_shared' => (isset($post['ppt_link_shared'])) ? $post['ppt_link_shared'] : 0,
             'session_notes'=>$post['session_notes'],
+            'session_end_message'=>$post['session_end_message'],
+            'end_image_height'=>$post['end_image_height'],
+            'end_image_width'=>$post['end_image_width'],
 
         );
         $this->db->update("sessions", $set, array("sessions_id" => $post['sessions_id']));
@@ -559,6 +585,15 @@ class M_sessions extends CI_Model {
                 $this->upload->do_upload('sessions_addnl_logo');
                 $file_upload_name = $this->upload->data();
                 $this->db->update('sessions', array('sessions_addnl_logo' => $file_upload_name['file_name']), array('sessions_id' => $sessions_id));
+            }
+
+            if ($_FILES['session_end_image']['name'] != "") {
+
+                $this->load->library('upload');
+                $this->upload->initialize($this->set_upload_session_end_image());
+                $this->upload->do_upload('session_end_image');
+                $file_upload_name = $this->upload->data();
+                $this->db->update('sessions', array('session_end_image' => $file_upload_name['file_name']), array('sessions_id' => $sessions_id));
             }
 
             if ($_FILES['sessions_photo']['name'] != "") {
