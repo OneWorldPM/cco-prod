@@ -295,21 +295,23 @@ $user_role = $this->session->userdata('role');
                                                 Session End  <span class="badge badge-success"> new</span>
                                             </legend>
                                             <label class="text-large text-bold">Set Session End Message</label>
-                                            <textarea class="form-control" type="text" name="session_end_message" id="session-end-message" placeholder="This session is now closed."><?=(isset($sessions_edit) && !empty($sessions_edit))?$sessions_edit->session_end_message:''?></textarea>
+                                            <textarea class="form-control" type="text" name="session_end_message" id="session-end-message" placeholder="This session is now closed."><?=(isset($sessions_edit) && !empty($sessions_edit))?$sessions_edit->session_end_message:"<p><span style='font-size: 36px;'>Thank you for attending today's session.</span></p>"?></textarea>
                                             <label class="text-large text-bold " style="margin-top: 5px;">Set Session End Image</label>
                                             <input type="file" class="form-control" name="session_end_image">
                                             <?php if(isset($sessions_edit) && $sessions_edit->session_end_image):?>
                                                 <img id="session_end_img" src="<?= base_url() ?>uploads/session_end/<?= $sessions_edit->session_end_image ?>" style="height: 100px; width: 100px; margin-top: 5px">
                                                 <span style="float: right"><a href="" data-sessions-id="<?= $sessions_edit->sessions_id ?>" id="delete_session_end_image" class="btn btn-warning btn-sm mt" style="margin-top: 5px">Delete</a></span>
+                                            <?php else:?>
+                                                <img id="session_end_img" src="<?= base_url() ?>uploads/session_end/session_end_default.png" style="height: 100px; width: 100px; margin-top: 5px">
                                             <?php endif; ?>
                                             <div class="row" style="margin-top: 10px;">
                                                 <div class="col-md-6">
                                                     <label >Image width</label>
-                                                    <input type="number" name="end_image_width" class="form-group" value="<?=(isset($sessions_edit) && !empty($sessions_edit))?$sessions_edit->end_image_width:''?>"><small style="color:red">(pixels)</small>
+                                                    <input type="number" name="end_image_width" class="form-group" value="<?=(isset($sessions_edit) && !empty($sessions_edit))?$sessions_edit->end_image_width:'320'?>"><small style="color:red">(pixels)</small>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label >Image height</label>
-                                                    <input type="number" name="end_image_height" class="form-group" value="<?=(isset($sessions_edit) && !empty($sessions_edit))?$sessions_edit->end_image_height:''?>"><small style="color:red">(pixels)</small>
+                                                    <input type="number" name="end_image_height" class="form-group" value="<?=(isset($sessions_edit) && !empty($sessions_edit))?$sessions_edit->end_image_height:'100'?>"><small style="color:red">(pixels)</small>
                                                 </div>
                                             </div>
 
