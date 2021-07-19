@@ -145,14 +145,18 @@
 
                     <div class="col-md-4">
                         <div class="panel panel-default">
-                            <div class="col-lg-3 col-md-12" style="margin-top: 6px">
-                                <h3 class="attendees-list-title panel-title">Users</h3>
-                            </div>
-                            <div class="col-lg-9 col-md-12">
-                                <div class="input-group mb-3">
-                                    <input type="text" id="search-attendee-chat" class="form-control shadow-none pull-left">
-                                    <div class="input-group-btn">
-                                        <span class="btn bg-blue" aria-hidden="true" ><i class="fa fa-search text-white"></i></span>
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-12" style="margin-top: 6px">
+                                        <h3 class="attendees-list-title panel-title">Users</h3>
+                                    </div>
+                                    <div class="col-lg-9 col-md-12">
+                                        <div class="input-group mb-3">
+                                            <input type="text" id="search-attendee-chat" class="form-control shadow-none pull-left">
+                                            <div class="input-group-btn">
+                                                <span class="btn bg-blue" aria-hidden="true" ><i class="fa fa-search text-white"></i></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
