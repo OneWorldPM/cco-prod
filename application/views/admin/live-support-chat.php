@@ -146,7 +146,19 @@
                     <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="attendees-list-title panel-title">Users</h3>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-12" style="margin-top: 6px">
+                                        <h3 class="attendees-list-title panel-title">Users</h3>
+                                    </div>
+                                    <div class="col-lg-9 col-md-12">
+                                        <div class="input-group mb-3">
+                                            <input type="text" id="search-attendee-chat" class="form-control shadow-none pull-left">
+                                            <div class="input-group-btn">
+                                                <span class="btn bg-blue" aria-hidden="true" ><i class="fa fa-search text-white"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="panel-body users-list-body">
                                 <ul class="users-list list-group">
@@ -481,4 +493,27 @@
     function newtext_dec_sort(a, b) {
         return ($(b).attr('new-text')) > ($(a).attr('new-text')) ? 1 : -1;
     }
+
+    $(function(){
+        $('#search-attendee-chat').keyup(function () {
+            var filter = $(this).val();
+            search_attendee(filter);
+
+        });
+
+        $('#clear-search').on('click', function () {
+            var filter = $('#search-attendee-chat').val('');
+            search_attendee(filter);
+        });
+
+        function search_attendee(filter) {
+            $(".users-list-body .users-list-item").each(function () {
+                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        }
+    })
 </script>
