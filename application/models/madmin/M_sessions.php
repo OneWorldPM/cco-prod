@@ -47,6 +47,7 @@ class M_sessions extends CI_Model {
                 $val->groupchatPresenter= $this->getGroupChatDetailsPresenter($val->sessions_id);
                 $val->getChatAll= $this->getChatAll($val->sessions_id);
                 $val->check_send_json_exist= $this->check_send_json_exist($val->sessions_id);
+                $val->get_stream_name =  $this->get_stream_name($val->embed_html_code);
 
                 $return_array[] = $val;
             }
@@ -101,6 +102,7 @@ class M_sessions extends CI_Model {
                 $val->groupchatPresenter= $this->getGroupChatDetailsPresenter($val->sessions_id);
                 $val->getChatAll= $this->getChatAll($val->sessions_id);
                 $val->check_send_json_exist= $this->check_send_json_exist($val->sessions_id);
+                $val->get_stream_name =  $this->get_stream_name($val->embed_html_code);
 
                 $return_array[] = $val;
             }
