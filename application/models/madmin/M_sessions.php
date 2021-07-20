@@ -47,6 +47,7 @@ class M_sessions extends CI_Model {
                 $val->groupchatPresenter= $this->getGroupChatDetailsPresenter($val->sessions_id);
                 $val->getChatAll= $this->getChatAll($val->sessions_id);
                 $val->check_send_json_exist= $this->check_send_json_exist($val->sessions_id);
+                $val->get_stream_name =  $this->get_stream_name($val->embed_html_code);
 
                 $return_array[] = $val;
             }
@@ -101,6 +102,7 @@ class M_sessions extends CI_Model {
                 $val->groupchatPresenter= $this->getGroupChatDetailsPresenter($val->sessions_id);
                 $val->getChatAll= $this->getChatAll($val->sessions_id);
                 $val->check_send_json_exist= $this->check_send_json_exist($val->sessions_id);
+                $val->get_stream_name =  $this->get_stream_name($val->embed_html_code);
 
                 $return_array[] = $val;
             }
@@ -1168,7 +1170,7 @@ class M_sessions extends CI_Model {
                 $this->upload->initialize($this->set_upload_options_resource());
                 $this->upload->do_upload('resource_file');
                 $file_upload_name = $this->upload->data();
-                $this->db->update('session_resource', array('resource_file' => $file_upload_name['file_name']), array('session_resource_id' => $id));
+                $this->db->update('session_resource', array('resource_file' => $file_upload_name['file_name'],  'file_name' =>   $file_upload_name['client_name']), array('session_resource_id' => $id));
             }
             return TRUE;
         } else {

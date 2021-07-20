@@ -261,7 +261,7 @@ if (isset($sessions)) {
                             if ($val->upload_published_name) {
                                 if ($val->resource_file != "") {
                                     ?>
-                                    <div class="col-md-12"><a class="resources-link-text" href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
+                                    <div class="col-md-12"><a class="resources-link-text" href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download="<?= $val->file_name ?>"> <?= $val->upload_published_name ?> </a></div>
                                     <?php
                                 }
                             }

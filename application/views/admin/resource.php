@@ -75,7 +75,7 @@
                                                     ?>
                                                     <tr>
                                                         <td><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></td>
-                                                        <td><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?></a></a></td>
+                                                        <td><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download="<?= $val->file_name ?>"> <?= $val->upload_published_name ?></a></a></td>
                                                         <td>
                                                             <a class="btn btn-danger btn-sm delete_promo_code" href="<?= base_url() . 'admin/sessions/delete_resource/' . $val->session_resource_id . '?sessions_id=' . $val->sessions_id ?>">
                                                                 <i class="fa fa-trash-o"></i> Delete

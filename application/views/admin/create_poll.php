@@ -75,7 +75,7 @@ if (isset($_GET['testing']))
                                     <div class="col-md-10 col-md-offset-1">
                                         <div class="form-group">
                                             <label class="text-large">Question:</label>
-                                            <input type="text" name="question" id="question" value="<?= isset($sessions_data) ? $sessions_data->question : "" ?>" placeholder="Question" class="form-control">
+                                            <textarea type="text" name="question" id="question"  placeholder="Question" class="form-control text-dark" rows="3"><?= isset($sessions_data) ? $sessions_data->question : "" ?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label class="text-large">Poll Name:</label>
