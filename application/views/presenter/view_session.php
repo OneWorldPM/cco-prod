@@ -171,6 +171,11 @@ else{
 <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
+            <div class="modal-header" style="height: 0">
+                <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body" style="padding: 0px;">
                 <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
                     <div class="col-sm-12">
