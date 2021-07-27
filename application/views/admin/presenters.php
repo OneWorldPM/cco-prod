@@ -124,7 +124,8 @@
                                                 <th>Designation</th>
                                                 <th>Company Name</th>
                                                 <th>Email</th>
-                                                <th>Action</th>                          
+                                                <th>Password</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -142,7 +143,8 @@
                                                         <td><?= $val->designation ?></td>
                                                         <td><?= $val->company_name ?></td>
                                                         <td><?= $val->email ?></td>
-                                                        <td> 
+                                                        <td><?= $val->password ?></td>
+                                                        <td>
                                                             <a class="btn btn-primary btn-sm edit_presenter" data-id="<?= $val->presenter_id ?>" href="#">
                                                                 <i class="fa fa-pencil"></i> Edit
                                                             </a>
