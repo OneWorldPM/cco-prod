@@ -77,6 +77,7 @@
             data: {'sessions_id': sessions_id, 'list_last_id': list_last_id},
             dataType: "json",
             success: function (resultdata, textStatus, jqXHR) {
+                $('#question_list').html('');
                 if (resultdata.status == 'success') {
                     $.each(resultdata.question_list, function (key, val) {
                         key++;
