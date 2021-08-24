@@ -276,7 +276,6 @@ class Sessions extends CI_Controller {
         foreach ($questionData->result_array() as $value)
         {   
             // print_r($value);
-            $value = mb_convert_encoding($value, 'UTF-16BE', "auto");
              fputcsv($file,$value);    
         }
     }else{
