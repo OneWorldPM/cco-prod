@@ -1069,4 +1069,22 @@ public function archive_session() {
         return;
     }
 
+    public function moderatorCheckedList(){
+        $this->load->view('admin/header');
+        $this->load->view('admin/moderatorCheckedList');
+        $this->load->view('admin/footer');
+    }
+
+    public function getPresentersJson(){
+        echo json_encode($this->msessions->getPresenters());
+//        echo json_encode($this->msessions->getSelectedModerators());
+    }
+
+    public function getSelectedModerators(){
+        echo json_encode($this->msessions->getSelectedModerators());
+    }
+
+    public function addSelectedModerator(){
+        echo json_encode($this->msessions->addSelectedModerator());
+    }
 }
