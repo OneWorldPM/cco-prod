@@ -162,12 +162,16 @@ $user_role = $this->session->userdata('role');
                                             if (isset($presenter) && !empty($presenter)) {
                                                 foreach ($presenter as $val) {
                                                     ?>
-                                                    <label class="form-control text-dark"><input type="checkbox" value="<?= $val->presenter_id ?>" class="" id="moderator_id" name="moderator_id[]" <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? in_array($val->presenter_id, explode(",", $sessions_edit->moderator_id)) ? "checked" : "" : "" ?>> <?=$val->presenter_name ?></label>
+                                                    <label class="form-control text-dark"><input type="checkbox" value="<?= $val->presenter_id ?>" class="" id="moderator_id" name="moderator_id[]" <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? in_array($val->presenter_id, explode(",", $sessions_edit->moderator_id)) ? "checked" : "" : "" ?> <?= isset($default_moderators) && !empty($default_moderators)? (in_array($val->presenter_id, $default_moderators)?'checked':''):''?>> <?=$val->presenter_name ?></label>
                                                     <?php
                                                 }
                                             }
                                             ?>
                                     </div>
+                                </div>
+                                <div>
+                                    <label> Create Moderator Checked list</label>
+                                    <a href="<?=base_url().'admin/sessions/moderatorCheckedList'?>"> Moderator Checked List</a>
                                 </div>
 
 <!--									<div class="form-group" --><?//=($user_role != 'super_admin')?'style="display:none"':''?><!-->-->
