@@ -373,11 +373,15 @@
             }
         });
 
+        var order = 0;
         supportSocket.on("newLiveSupportText", function (data){
+            order = order +1;
             if (data.room == live_support_chat_room && data.fromType == "attendee")
             {
+                $('.users-list li[user-id="' + data.fromId + '"]').attr('new-text-order', order);
                 $('.users-list li[user-id="' + data.fromId + '"]').attr('new-text', 1);
                 $('.users-list li[user-id="' + data.fromId + '"] > .badge').show();
+                $(".users-list li").sort(newtext_order_dec_sort).appendTo('.users-list');
                 $(".users-list li").sort(newtext_dec_sort).appendTo('.users-list');
 
                 if ($('.send-text-btn').attr('user-id') == data.fromId)
@@ -474,7 +478,7 @@
             users = JSON.parse(users);
             $.each(users, function(i, user) {
                 $('.users-list').append(
-                    '<li class="users-list-item list-group-item" user-id="'+user.cust_id+'" user-name="'+user.first_name+' '+user.last_name+'" new-text="0">'+user.first_name+' '+user.last_name+'<img class="typingHint" src="'+base_url+'front_assets/support_chat/typing-animation-3x.gif" style="margin-left: 20px;width: 30px;display: none;"> <span class="badge" style="display: none;">new</span></li>'
+                    '<li class="users-list-item list-group-item" user-id="'+user.cust_id+'" user-name="'+user.first_name+' '+user.last_name+'" new-text="0" new-text-order="0">'+user.first_name+' '+user.last_name+'<img class="typingHint" src="'+base_url+'front_assets/support_chat/typing-animation-3x.gif" style="margin-left: 20px;width: 30px;display: none;"> <span class="badge" style="display: none;">new</span></li>'
                 );
             });
 
@@ -492,6 +496,9 @@
     }
     function newtext_dec_sort(a, b) {
         return ($(b).attr('new-text')) > ($(a).attr('new-text')) ? 1 : -1;
+    }
+    function newtext_order_dec_sort(a, b) {
+        return ($(b).attr('new-text-order')) > ($(a).attr('new-text-order')) ? 1 : -1;
     }
 
     $(function(){
