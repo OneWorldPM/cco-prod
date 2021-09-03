@@ -276,8 +276,12 @@ class Sessions extends CI_Controller {
     if($questionData){
         foreach ($questionData->result_array() as $value)
         {   
-            // print_r($value);
-             fputcsv($file,$value);    
+//             print_r($value);
+            $name = mb_convert_encoding($value['name'], 'UTF-16BE', "auto");
+            $question = mb_convert_encoding($value['question'], 'UTF-16BE', "auto");
+            $value = array($name, $question);
+
+             fputcsv($file, $value);
         }
     }else{
         $content=array('','');
@@ -556,6 +560,8 @@ class Sessions extends CI_Controller {
     }
 
     public function polling_report($sessions_id) {
+        ini_set('max_execution_time', '300'); //300 seconds = 5 minutes
+
         $data['poll_list'] = $this->msessions->get_poll($sessions_id);
         $data['flash_report_list'] = $this->msessions->get_polling_report($sessions_id,$data['poll_list']);
         $data['session_id'] = $sessions_id;
