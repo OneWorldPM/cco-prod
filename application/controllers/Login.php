@@ -140,7 +140,8 @@ class Login extends CI_Controller {
                     if ($sessions->num_rows() > 0) {
                         redirect('sessions/attend/' . $response_array->session);
                     } else {
-                        redirect('home');
+//                        redirect('home');
+                        echo "<h1>There is an error in the session number</h1>";
                     }
                 } else {
                     $this->db->order_by("cust_id", "desc");
@@ -191,7 +192,8 @@ class Login extends CI_Controller {
                         if ($sessions->num_rows() > 0) {
                             redirect('sessions/attend/' . $response_array->session);
                         } else {
-                            redirect('home');
+//                            redirect('home');
+                            echo "<h1>There is an error in the session number</h1>";
                         }
                     }
                 }
