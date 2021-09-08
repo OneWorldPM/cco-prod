@@ -141,7 +141,10 @@ class Login extends CI_Controller {
                         redirect('sessions/attend/' . $response_array->session);
                     } else {
 //                        redirect('home');
-                        echo "<h1>There is an error in the session number</h1>";
+                        echo '<div style="align-content:center; text-align:center; margin-top: 10%">
+    <img src="https://yourconference.live/CCO/front_assets/images/YCL_logo.png">
+    <h1 style="text-align:center">There is an error in the session number</h1>
+</div>';
                     }
                 } else {
                     $this->db->order_by("cust_id", "desc");
@@ -193,7 +196,10 @@ class Login extends CI_Controller {
                             redirect('sessions/attend/' . $response_array->session);
                         } else {
 //                            redirect('home');
-                            echo "<h1>There is an error in the session number</h1>";
+                            echo '<div style="align-content:center; text-align:center; margin-top: 10%">
+    <img src="https://yourconference.live/CCO/front_assets/images/YCL_logo.png">
+    <h1 style="text-align:center">There is an error in the session number</h1>
+</div>';
                         }
                     }
                 }
