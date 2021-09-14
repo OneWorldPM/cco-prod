@@ -464,11 +464,7 @@
         min-height: 240px;
     }
 }
-@media (min-width: 768px) and (max-width: 991px) {
-    .navbar-nav>li>a{
-        padding-bottom: 0px !important;
-    }
-}
+@media (min-width: 768px) and (max-width: 991px) {}
 @media (min-width: 480px) and (max-width: 767px) {
     #page-title:not(.page-title-small) h1 {
         font-size: 30px !important;
