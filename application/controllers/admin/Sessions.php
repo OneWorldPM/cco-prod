@@ -277,7 +277,11 @@ class Sessions extends CI_Controller {
         foreach ($questionData->result_array() as $value)
         {   
             // print_r($value);
-             fputcsv($file,$value);    
+            $name = mb_convert_encoding($value['name'], 'Windows-1252', "UTF-8");
+            $question = mb_convert_encoding($value['question'], 'Windows-1252', "UTF-8");
+            $value = array($name, $question);
+
+            fputcsv($file, $value);
         }
     }else{
         $content=array('','');
