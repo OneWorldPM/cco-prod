@@ -267,7 +267,7 @@ class Sessions extends CI_Controller {
     $file_name = 'Attendee Questions/'.date('Y-m-d').'.csv';
     header("Content-Description: File Transfer"); 
     header("Content-Disposition: attachment; filename=$file_name"); 
-    header("Content-Type: application/csv;");
+    header("Content-Type: application/csv; charset-UTF8");
     // get data 
     // file creation 
     $file = fopen('php://output', 'w');
@@ -277,7 +277,11 @@ class Sessions extends CI_Controller {
         foreach ($questionData->result_array() as $value)
         {   
             // print_r($value);
-             fputcsv($file,$value);    
+            $name = mb_convert_encoding($value['name'], 'Windows-1252', "UTF-8");
+            $question = mb_convert_encoding($value['question'], 'Windows-1252', "UTF-8");
+            $value = array($name, $question);
+
+            fputcsv($file, $value);
         }
     }else{
         $content=array('','');
