@@ -267,7 +267,7 @@ class Sessions extends CI_Controller {
     $file_name = 'Attendee Questions/'.date('Y-m-d').'.csv';
     header("Content-Description: File Transfer"); 
     header("Content-Disposition: attachment; filename=$file_name"); 
-    header("Content-Type: application/csv; charset-UTF8");
+    header("Content-Type: application/csv");
     // get data 
     // file creation 
     $file = fopen('php://output', 'w');
