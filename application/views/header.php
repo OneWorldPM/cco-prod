@@ -330,7 +330,9 @@ else
                                 <?php if($sponsor_type!=''):?>
                                     <span style="white-space: nowrap"><?= $sponsor_type ?></span>
                                 <?php endif;?>
-                                <img src="<?= base_url() . "uploads/sessions_logo/" . $sesions_logo ?>" onerror="$(this).parent().remove()" style="width: <?=$sesions_logo_width?>px;height: <?=$sesions_logo_height?>px;">
+                                <div class="img-div" style="width: <?=$sesions_logo_width?>px;height: <?=$sesions_logo_height?>px;">
+                                <img src="<?= base_url() . "uploads/sessions_logo/" . $sesions_logo ?>" onerror="$(this).parent().remove()" style="width: 100%;height: 100%;" >
+                                </div>
                             </div>
                             <?php
                         }
