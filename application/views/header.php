@@ -28,13 +28,13 @@ else
         <link href="<?= base_url() ?>front_assets/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
         <!-- Template base -->
-        <link href="<?= base_url() ?>front_assets/css/theme-base.css?v=7" rel="stylesheet">
+        <link href="<?= base_url() ?>front_assets/css/theme-base.css?v=8" rel="stylesheet">
 
         <!-- Template elements -->
         <link href="<?= base_url() ?>front_assets/css/theme-elements.css" rel="stylesheet">
 
         <!-- Responsive classes -->
-        <link href="<?= base_url() ?>front_assets/css/responsive.css?v=2" rel="stylesheet">
+        <link href="<?= base_url() ?>front_assets/css/responsive.css?v=3" rel="stylesheet">
 
         <!-- [if lt IE 9]>
         <script src="https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -111,9 +111,6 @@ else
             }
 
             .logo2 img {
-                object-fit: contain;
-                width: 79px;
-                height: 50px;
             }
 
             .logo0 img {
@@ -124,9 +121,11 @@ else
 
             .logo2 span {
                 position: absolute;
-                top: 0px;
+                top: 0;
+                margin-top: -30px;
                 font-family: sans-serif;
                 font-size: 11px;
+                float:left;
             }
 
             #mainMenu2 {
@@ -198,13 +197,13 @@ else
 
             @media screen and (max-width: 1290px) {
                 #header-wrap {
-                    padding: 16px 30px;
+                    /*padding: 16px 30px;*/
                 }
             }
 
             @media screen and (max-width: 1200px) {
                 #header-wrap {
-                    padding: 16px 10px;
+                    /*padding: 16px 10px;*/
                 }
 
                 #header .container {
@@ -312,13 +311,13 @@ else
                             $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                             ?>
                             <div id="logo" style="margin-right: 7px;">
-                                <a href="#" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png" style="margin-top: 12px; cursor: auto">
+                                <a href="#" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png" style="<?=(isset($sponsor_type) && $sponsor_type)?'margin-top: 25px; ':'margin-top: 12px; '?>cursor: auto">
                                     <img src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" alt="CCO Logo">
                                 </a>
                             </div>
                         <?php } else { ?>
                             <div id="logo">
-                                <a href="#" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png">
+                                <a href="#" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png" style="<?=(isset($sponsor_type) && $sponsor_type)?'margin-top: 25px; ':'margin-top: 12px; '?>cursor: auto">
                                     <img src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" alt="CCO Logo">
                                 </a>
                             </div>
@@ -327,8 +326,10 @@ else
                         <?php
                         if (isset($sesions_logo)) {
                             ?>
-                            <div class="logo2">
-                                <span><?= $sponsor_type ?></span>
+                            <div class="logo2 col-lg-2 col-md-4 col-sm-12" style=" <?=(isset($sponsor_type) && $sponsor_type!='')?'margin-top: 28px;':'margin-top: 12px;'?> width: <?=$sesions_logo_width?>px; height: <?=$sesions_logo_height?>px">
+                                <?php if($sponsor_type!=''):?>
+                                    <span style="white-space: nowrap"><?= $sponsor_type ?></span>
+                                <?php endif;?>
                                 <img src="<?= base_url() . "uploads/sessions_logo/" . $sesions_logo ?>" onerror="$(this).parent().remove()" style="width: <?=$sesions_logo_width?>px;height: <?=$sesions_logo_height?>px;">
                             </div>
                             <?php
