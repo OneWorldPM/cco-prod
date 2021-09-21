@@ -417,9 +417,10 @@ $user_role = $this->session->userdata('role');
                                         <div class="row" style="margin-top: 20px; <?=($user_role != 'super_admin')?'display:none':''?>">
                                             <div class="col-md-12">
                                                 <div class="form-group">
+                                                    <p style="color: red"> logo maximum height should be 55 with sponsor text & 75 if sponsor text is empty</p>
                                                     <label class="col-md-12 text-large text-bold" for="sel1">Select Sponsor Text &nbsp;(this text will appear above the Sponsor logo)</label>
 
-                                                    <select class="form-control" name="sponsor_type" <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>
+                                                    <select class="form-control" name="sponsor_type" id="sponsor_type" <?=($user_role != 'super_admin')?"style='pointer-events:none;' readonly":''?>>
                                                         <option value="" <?=isset($sessions_edit)?($sessions_edit->sponsor_type==""?"selected":""):""?>>___No Text___</option>
                                                         <option value="SPONSORED BY" <?=isset($sessions_edit)?($sessions_edit->sponsor_type=="SPONSORED BY"?"selected":""):""?>>SPONSORED BY</option>
                                                         <option value="EDUCATED BY" <?=isset($sessions_edit)?($sessions_edit->sponsor_type=="EDUCATED BY"?"selected":""):""?>>EDUCATED BY</option>
@@ -650,14 +651,21 @@ $user_role = $this->session->userdata('role');
             } else if (sum > 15) {
                 alertify.error("Maximum add 15 Presenter");
                 return false;
-            } else if ($('#attendee_view_links').is(':checked')) {
+            } else if ( $('#sponsor_type').val()=='' && $('#sessions_logo_height').val() > 75){
+                alertify.error("Logo maximum height should be 75");
+                return false;
+            } else if ( $('#sponsor_type').val()!=='' && $('#sessions_logo_height').val() > 55){
+                alertify.error("Logo maximum height should be 55");
+                return false;
+            }else if ($('#attendee_view_links').is(':checked')) {
                 if ($('#link_text').val() == '') {
                     alertify.error("Claim Credit Link Empty");
                     return false;
                 } else {
                     return true;
                 }
-            }else{
+            }
+            else{
                 return true;
             }
                 return false;
