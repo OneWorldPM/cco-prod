@@ -204,9 +204,78 @@ class Login extends CI_Controller {
                     }
                 }
             }else{
-                echo "User details not recieved from CCO";
+                echo "User details not received from CCO";
             }
         }
+    }
+
+    public function unauthorizedUser($session_id, $token)
+    {
+        if ($token != 'Q0NPVW5hdXRob3JpemVkVXNlclRva2Vu')
+        {
+            redirect('login');
+        }
+
+        $this->db->select('cust_id');
+        $this->db->from('customer_master');
+        $this->db->where('is_unauthorized', 1);
+        $this->db->limit(1);
+        $this->db->order_by('cust_id', 'DESC');
+        $last_unauthorized = $this->db->get();
+
+        if ($last_unauthorized->num_rows() > 0) {
+            $cust_id = $last_unauthorized->result()[0]->cust_id;
+            $email = "unauthorized_user_{$cust_id}@yourconference.live";
+            $set = array(
+                'first_name' => 'Unauthorized',
+                'last_name' => 'Unauthorized',
+                'email' => $email,
+                'country' => 'Unknown',
+                'password' => base64_encode('unauthorized123#'),
+                'is_unauthorized' => 1,
+                'register_date' => date("Y-m-d h:i")
+            );
+            $this->db->insert("customer_master", $set);
+        } else {
+            $email = 'unauthorized_user_0@yourconference.live';
+            $set = array(
+                'first_name' => 'Unauthorized',
+                'last_name' => 'Unauthorized',
+                'email' => $email,
+                'country' => 'Unknown',
+                'password' => base64_encode('unauthorized123#'),
+                'is_unauthorized' => 1,
+                'register_date' => date("Y-m-d h:i")
+            );
+            $this->db->insert("customer_master", $set);
+        }
+
+        $cust_id = $this->db->insert_id();
+
+        $token = $this->objlogin->update_user_token($cust_id);
+        $session = array(
+            'cid' => $cust_id,
+            'cname' => 'Unauthorized',
+            'fullname' => 'Unauthorized Unauthorized',
+            'email' => $email,
+            'token' => $token,
+            'userType' => 'user'
+        );
+        $this->session->set_userdata($session);
+        $sessions = $this->db->get_where('sessions', array('sessions_id' => $session_id));
+        if ($sessions->num_rows() > 0) {
+            redirect('sessions/attend/' . $session_id);
+        }
+        else
+        {
+            echo '
+                    <div style="align-content:center; text-align:center; margin-top: 10%">
+                    <img src="https://yourconference.live/CCO/front_assets/images/YCL_logo.png">
+                    <h1 style="text-align:center">Session ID '.$session_id.' not found in our database.</h1>
+                    <h2 style="text-align:center">Please contact system administrator.</h2>
+                    </div>';
+        }
+
     }
 
 }
