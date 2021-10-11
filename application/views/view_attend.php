@@ -221,6 +221,9 @@
             window.location = "<?= site_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>";
                     } else {
                         seconds--;
+            setTimeout(function(){
+                window.location.reload(1);
+            }, 5*60000);
                     }
                 }
 </script>
