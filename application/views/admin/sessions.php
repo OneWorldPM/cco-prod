@@ -231,6 +231,7 @@ $user_role = $this->session->userdata('role');
                                                         <?php } ?>
                                                         <a href="<?= base_url() ?>admin/groupchat/sessions_groupchat/<?= $val->sessions_id ?>" class="btn btn-blue btn-sm" style="margin-bottom: 5px;">Create Chat</a>
                                                         <a href="<?= base_url() ?>admin/sessions/resource/<?= $val->sessions_id ?>" style="margin-bottom: 5px;" class="btn btn-success btn-sm" >Resources</a>
+                                                        <a href="" data-session_id="<?= $val->sessions_id ?>" id="generate-qrcode"  style="margin-bottom: 5px;" class="btn btn-dark-azure btn-sm" >Generate QR Code</a>
                                                     </td>
                                                     <td>
                                                          <?php if(isset($val->check_send_json_exist) && !empty($val->check_send_json_exist)){
@@ -405,5 +406,22 @@ Swal.fire({
             window.location = $(this).attr('href');
         }
     });
+
+    $('#sessions_table').on('click','#generate-qrcode', function(e){
+        e.preventDefault();
+        var session_id = $(this).attr('data-session_id');
+        $.post('<?= base_url() ?>admin/sessions/generateQRCode/'+session_id,
+            {}, function(success){
+                    if(success=="success"){
+                        Swal.fire({
+                            text:'<?=base_url()?>mobile/sessions/id/'+session_id,
+                            imageUrl: '<?=base_url()?>assets/qrcode/qrcode_'+session_id+'.png',
+                            imageHeight: 300,
+                            imageAlt: 'QRCODE'
+                        })
+                    }
+        })
+    })
+
     });
 </script>
