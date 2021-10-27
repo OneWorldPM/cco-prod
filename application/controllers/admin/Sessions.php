@@ -14,7 +14,6 @@ class Sessions extends CI_Controller {
         }
         $this->load->model('madmin/m_sessions', 'msessions');
 
-
     }
 
     public function addBriefcase() {
@@ -1091,5 +1090,23 @@ public function archive_session() {
 
     public function addSelectedModerator(){
         echo json_encode($this->msessions->addSelectedModerator());
+    }
+
+    public function generateQRCode($session_id){
+
+        $this->load->library('ciqrcode');
+
+        $params['data'] = base_url().'mobile/sessions/id/'.$session_id;
+        $params['level'] = 'H';
+        $params['size'] = 10;
+        $params['savename'] = FCPATH.'assets/qrcode/qrcode_'.$session_id.'.png';
+
+        if($this->ciqrcode->generate($params)){
+            echo 'success';
+        }else{
+            echo 'error';
+        }
+
+//        echo '<img src="'.base_url().'assets/qrcode/qrcode.png" />';
     }
 }
