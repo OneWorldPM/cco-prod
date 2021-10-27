@@ -4,6 +4,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 class Live_support_chat extends CI_Controller {
     function __construct() {
         parent::__construct();
+        $this->common->set_timezone();
         $login_type = $this->session->userdata('aname');
         if ($login_type != 'admin') {
             redirect('admin/alogin');
