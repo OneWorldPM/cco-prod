@@ -25,10 +25,12 @@ $(document).ready(function () {
             if (data.status == 1) {
                 $('#helpdesk_link').hide();
                 $('.live-support-open-button').show();
+                $('#live_support-btn').show();
             } else {
                 $('#helpdesk_link').show();
                 $('.live-support-open-button').hide();
                 $('#liveSupportChatForm').hide();
+                $('#live_support-btn').hide();
             }
         }
     });

@@ -67,47 +67,53 @@ $(document).ready(function () {
 
     $(".admin-messages").scrollTop($(".admin-messages")[0].scrollHeight);
 
+    $('#sendAdminChatBtn').click(function (){
+        sendmsgs();
+    });
+
     $('#sendAdminChat').keydown(function (e){
         if(e.keyCode == 13){
-
-            if ($('#sendAdminChat').val() == '')
-            {
-                toastr.info('You need to enter some text.');
-                return false;
-            }
-
-            $.post(base_url+"sessions/saveAdminToAttendeeChat",
-
-                {
-                    session_id: session_id,
-                    from_id: user_id,
-                    to_id: 'admin',
-                    chat_text: $('#sendAdminChat').val()
-                }
-
-                ).done(function( data ) {
-                    if (data == 1)
-                    {
-                        socket.emit('new-attendee-to-admin-chat', {"socket_session_name":socket_session_name, "session_id":session_id, "from_id":user_id, "user_name":user_fullname, "to_id":"admin", "chat_text":$('#sendAdminChat').val(), "cp_ids":admin_chat_presenter_ids });
-
-                        $('.admin-messages').append('' +
-                            '<span class="user-to-admin-text">'+$('#sendAdminChat').val()+'</span>');
-
-                        $('#sendAdminChat').val('');
-
-                        $(".admin-messages").scrollTop($(".admin-messages")[0].scrollHeight);
-
-                    }else{
-                        toastr.error('Unable to send the text.');
-                    }
-                }
-                ).error((error)=>{
-                    toastr.error('Unable to send the text.');
-            });
-
+            sendmsgs();
         }
     });
 
+    function sendmsgs(){
+        if ($('#sendAdminChat').val() == '')
+        {
+            toastr.info('You need to enter some text.');
+            return false;
+        }
+
+        $.post(base_url+"sessions/saveAdminToAttendeeChat",
+
+            {
+                session_id: session_id,
+                from_id: user_id,
+                to_id: 'admin',
+                chat_text: $('#sendAdminChat').val()
+            }
+
+        ).done(function( data ) {
+                if (data == 1)
+                {
+                    socket.emit('new-attendee-to-admin-chat', {"socket_session_name":socket_session_name, "session_id":session_id, "from_id":user_id, "user_name":user_fullname, "to_id":"admin", "chat_text":$('#sendAdminChat').val(), "cp_ids":admin_chat_presenter_ids });
+
+                    $('.admin-messages').append('' +
+                        '<span class="user-to-admin-text">'+$('#sendAdminChat').val()+'</span>');
+
+                    $('#sendAdminChat').val('');
+
+                    $(".admin-messages").scrollTop($(".admin-messages")[0].scrollHeight);
+
+                }else{
+                    toastr.error('Unable to send the text.');
+                }
+            }
+        ).error((error)=>{
+            toastr.error('Unable to send the text.');
+        });
+
+    }
 
     socket.on('new-attendee-to-admin-chat-notification', function (data) {
         if (data.socket_session_name == socket_session_name)
@@ -143,6 +149,7 @@ $(document).ready(function () {
 
                     $('#adminChatStickeyIcon').click();
 
+                    $('.adminChatStickybox').css('display', 'block');
 
 
                     $(".admin-messages").scrollTop($(".admin-messages")[0].scrollHeight);
