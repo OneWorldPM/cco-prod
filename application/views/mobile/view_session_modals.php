@@ -52,8 +52,10 @@
             <div class="card " style="height: 400px; width: 65%; left:35%; ">
                 <div class="card-header text-white" style="background-color: #EF5D21">Question <button id="stickyQuestionboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
                 <div class="content">
-                    <div class="questionElement" style="max-height: 300px; !important;">
+                    <div class="questionElement" style="max-height: 270px; !important;">
                     </div>
+                    <span id='error_questions' style='color:red;'></span>
+                    <span id='success_questions' style='color:green;'></span>
                     <div id="ask_questions_section" style="border-radius: 5px; position: absolute; bottom: 0; width: 100%;">
                         <div style="padding:5px;">
                             <div style="text-align: center; display: flex; " id="questions_section">
@@ -73,8 +75,6 @@
                                 <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_down.png" title="Thumbs Down" id="questions_thumbs_down" data-title_name="&#128078" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
                                 <img src="<?= base_url() ?>front_assets/images/emoji/clapping.png" title="Clapping" id="questions_clapping" data-title_name="&#128079;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
                             </div>
-                            <span id='error_questions' style='color:red;'></span>
-                            <span id='success_questions' style='color:green;'></span>
                         </div>
                     </div>
                 </div>

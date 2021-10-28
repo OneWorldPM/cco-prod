@@ -454,6 +454,7 @@ function update_viewsessions_history_open()
                     dataType: "json",
                     success: function (data) {
                         if (data.status == "success") {
+                            $(".questionElement").append(`<p>${questions}</p>`)
                             $("#questions").val("");
                             $("#success_questions").text("Question Added Successfully").fadeIn('slow').fadeOut(5000);
 
