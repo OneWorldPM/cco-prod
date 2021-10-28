@@ -84,51 +84,57 @@ function fillAllPreviousChats()
     });
 }
 
-function sendNewText()
-{
-    if (!supportChatStatus)
-    {
+function sendNewText() {
+    if (!supportChatStatus) {
         toastr.warning("Live support chat is turned off by the admin");
         return false;
     }
 
     let text = $('#liveSupportText').val();
-    if (text == '')
-    {
+    if (text == '') {
         toastr.warning("Please enter your message");
         return false;
     }
 
-    $.post(base_url+"live_support_chat/newText",
+    $.post(base_url + "live_support_chat/newText",
         {
-            text:text
+            text: text
         },
-        function (response)
-        {
-            try { $.parseJSON(response);}
-            catch(error) { toastr.error("You are not logged-in"); return false; }
+        function (response) {
+            try {
+                $.parseJSON(response);
+            } catch (error) {
+                toastr.error("You are not logged-in");
+                return false;
+            }
 
             response = JSON.parse(response);
-            if (response.status == 'success')
-            {
-                supportSocket.emit('newLiveSupportText', {'room':live_support_chat_room, 'text':text, 'fromType':'attendee', 'fromName':attendee_name, 'fromId':attendee_id});
+            if (response.status == 'success') {
+                supportSocket.emit('newLiveSupportText', {
+                    'room': live_support_chat_room,
+                    'text': text,
+                    'fromType': 'attendee',
+                    'fromName': attendee_name,
+                    'fromId': attendee_id
+                });
 
                 $('#liveSupportText').val('');
                 $('#live-support-chat-texts').append(
                     '<span class="live-support-text-attendee">\n' +
                     '  <span class="live-support-attendee-desc">You <i class="fas fa-user"></i></span><br>\n' +
-                    '  <span class="live-support-attendee-text">'+text+'</span>\n' +
+                    '  <span class="live-support-attendee-text">' + text + '</span>\n' +
                     '</span>'
                 );
                 document.getElementById("live-support-chat-texts").scrollTop = document.getElementById("live-support-chat-texts").scrollHeight;
-            }else{
+            } else {
                 toastr.error("Unable to send");
             }
 
-        }).fail(()=>{
-            toastr.error("Unable to send");
+        }).fail(() => {
+        toastr.error("Unable to send");
     });
 
+}
 
     /*** Listen for new texts ***/
     supportSocket.on("newLiveSupportText", function (data) {
@@ -154,7 +160,7 @@ function sendNewText()
             }, 1000);
         }
     });
-}
+
 
 
 function openLiveSupportChat() {
