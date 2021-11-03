@@ -67,6 +67,10 @@
                                         <span id="errorlast_name" style="color:red"></span>
                                     </div>
                                     <div class="form-group">
+                                        <input type="text" id="username"  class="form-control shadow-none mb-1" name="username" placeholder="Username">
+                                        <span id="errorusername" style="color:red"></span>
+                                    </div>
+                                    <div class="form-group">
                                     <input type="text" id="email"  class="form-control shadow-none mb-1" name="email" placeholder="Email">
                                         <span id="erroremail" style="color:red"></span>
                                     </div>
@@ -374,7 +378,7 @@
 $msg = $this->input->get("msg");
 switch ($msg) {
     case "A":
-        $m = "Email Alredy Exist!!!";
+        $m = "Username Alredy Exist!!!";
         $t = "error";
         break;
     case "E":
@@ -406,7 +410,11 @@ switch ($msg) {
             } else if ($("#last_name").val().trim() == "") {
                 $("#errorlast_name").text("Please Enter Last Name").fadeIn('slow').fadeOut(5000);
                 return false;
-            // } else if ($("#email").val().trim() == "") {
+            } else if ($("#username").val().trim() == ""){
+                $("#errorusername").text("Please Enter Username").fadeIn('slow').fadeOut(5000);
+                return false;
+            }
+                //else if ($("#email").val().trim() == "") {
             //     $("#erroremail").text("Please Enter Email").fadeIn('slow').fadeOut(5000);
             //     return false;
             // } else if (!validateEmail($("#email").val().trim())) {

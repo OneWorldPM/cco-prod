@@ -44,8 +44,8 @@
                         <form id="login-form" name="frm_login" method="post" action="<?= base_url() ?>mobile/login/authentication">
                         <div class="mx-5" style="">
                             <div class="form-group mb-1">
-                                <input type="text" name="sess_id" class="form-control shadow-none" value="<?=$this->session->userdata('sess_id')?>" placeholder="Email" style="display: none" >
-                                <input type="text" name="email" class="form-control shadow-none" value="" placeholder="Email" >
+                                <input type="text" name="sess_id" class="form-control shadow-none" value="<?=$this->session->userdata('sess_id')?>" placeholder="Username" style="display: none" >
+                                <input type="text" name="username" class="form-control shadow-none" value="" placeholder="Username" >
                             </div>
                             <div class="form-group">
                                 <input type="password" name="password" class="form-control shadow-none" value="" placeholder="Password">
@@ -76,8 +76,8 @@
     $(document).ready(function () {
 
         $("#btn_login").on("click", function () {
-            if ($("#email").val().trim() == "") {
-                $("#erroremail").text("Please Enter Email").fadeIn('slow').fadeOut(5000);
+            if ($("#username").val().trim() == "") {
+                $("#erroremail").text("Please Enter Username").fadeIn('slow').fadeOut(5000);
 
                 return false;
             } else if ($("#password").val() == "") {

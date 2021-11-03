@@ -8,8 +8,13 @@ class M_register extends CI_Model {
 
     public function add_customer() {
         $post = $this->input->post();
-        if ($post['first_name'] != '' && $post['last_name'] != '') {
-
+        if ($post['username'] != '' && $post['last_name'] != '') {
+            $or_where = '(username = "' . trim($post['username']) . '")';
+            $this->db->where($or_where);
+            $customer = $this->db->get('customer_master');
+            if ($customer->num_rows() > 0) { //Check Email or Phone exist with new User
+                return "exist";
+            } else {
                 $this->db->order_by("cust_id", "desc");
                 $row_data = $this->db->get("customer_master")->row();
                 if (!empty($row_data)) {
@@ -23,9 +28,10 @@ class M_register extends CI_Model {
                     "register_id" => $register_id,
                     'first_name' => trim($post['first_name']),
                     'last_name' => trim($post['last_name']),
+                    'username' => trim($post['username']),
                     'email' => trim($post['email']),
                     'country' => $post['country'],
-                    'password' => base64_encode($post['password']),
+                    'password' => base64_encode(strtolower($post['last_name'])),
                     'register_date' => date("Y-m-d h:i"),
                     'isMobileUser' => 1,
                 );
@@ -36,7 +42,7 @@ class M_register extends CI_Model {
                 } else {
                     return "error";
                 }
-
+            }
         } else {
             return "error";
         }
