@@ -41,12 +41,12 @@
                         <div class="row justify-content-center">
                             <div class="col-sm-6 col-md-6 col-lg-12" style=" margin-left: 20px; margin-right: 20px;">
                                 <div class="card text-center align-items-center justify-content-center align-content-center mx-auto mt-2" style="background-image: url(https://yourconference.live/CCO/front_assets/images/bg_login.png); top: 0; padding-top: 0px; height: 100%; background-size: cover">
-                                    <button id="resource-btn" type="button"  class="btn btn-sm text-white" style="width: 80%; height: 30px; margin-top: 30px; background-color: #EF5D21;">Resources <i class="fas fa-paperclip"></i></button>
+                                    <button id="resource-btn" type="button"  class="btn btn-sm text-white" style="width: 80%; height: 40px; margin-top: 30px; background-color: #EF5D21;">Resources <i class="fas fa-paperclip"></i></button>
 
 <!--                                    <button id="notes-btn" class="btn btn-sm mt-2 text-white" style="width: 80%; height: 30px; background-color: #EF5D21;">Take Notes <i class="far fa-edit"></i></button>-->
-                                    <button id="question-btn" class="btn btn-sm mt-2 text-white" style="width: 80%; height: 30px; background-color: #EF5D21;">Question</button>
-                                    <button onclick="window.open('<?=isset($url_link)?$url_link:''?>', '_blank')" class="btn btn-sm mt-2 text-white" style="width: 80%; height: 30px; background-color: #EF5D21;" >Claim Credit</button>
-                                    <button id="live_support-btn" onclick="openLiveSupportChat()" style="display: <?=(liveSupportChatStatus())?'block':'none'?>;width: 80%; height: 30px; margin-bottom: 30px; background-color: #EF5D21;" class="btn btn-sm mt-2 text-white" >Live Technical Support <i class="far fa-life-ring"></i></button>
+                                    <button id="question-btn" class="btn btn-sm mt-2 text-white" style="width: 80%; height: 40px; background-color: #EF5D21;">Question</button>
+                                    <button onclick="window.open('<?=isset($url_link)?$url_link:''?>', '_blank')" class="btn btn-sm mt-2 text-white" style="width: 80%; height: 40px; background-color: #EF5D21;" >Claim Credit</button>
+                                    <button id="live_support-btn" onclick="openLiveSupportChat()" style="display: <?=(liveSupportChatStatus())?'block':'none'?>;width: 80%; height: 40px; margin-bottom: 30px; background-color: #EF5D21;" class="btn btn-sm mt-2 text-white" >Live Technical Support <i class="far fa-life-ring"></i></button>
                                     <div class="mb-5"></div>
                                 </div>
                             </div>
