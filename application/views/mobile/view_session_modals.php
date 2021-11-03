@@ -163,7 +163,7 @@
 
                     <div class="input-group">
                         <input type="text" class="form-control shadow-none" placeholder="Enter message" id='sendAdminChat'>
-                        <button class="btn" id="sendAdminChatBtn">Send <i class="fas fa-paper-plane-o"></i></button>
+                        <button class="btn text-white" id="sendAdminChatBtn" style="background-color: #EF5D21">Send <i class="fas fa-paper-plane-o"></i></button>
                     </div>
 
 

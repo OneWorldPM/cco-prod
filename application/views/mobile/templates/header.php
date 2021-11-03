@@ -29,6 +29,10 @@
     <link href="<?= base_url() ?>assets/alertify/alertify.default.css" rel="stylesheet" type="text/css" />
     <script src="<?= base_url() ?>assets/alertify/alertify.js"></script>
 
+    <!--****** PubNub Stuff *****-->
+    <!-- DO NOT use production keys on localhost-->
+    <?=pubnub_keys()?>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.14.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -40,6 +44,7 @@
             </button>
             <div class="collapse navbar-collapse mt-5" id="navbarText">
                 <ul class="navbar-nav mr-auto">
+                    <?php if($this->session->userdata('cid')):?>
                     <li class="nav-item active">
                         <button id="live_support-btn"  onclick="openLiveSupportChat()"  class="nav-link btn btn-sm text-white shadow-none" href="#"  style="display: <?=(liveSupportChatStatus())?'block':'none'?>;background-color: #EF5D21; width: 100%">Live Technical Support <i class="far fa-life-ring"></i><span class="sr-only">(current)</span></button>
                     </li>
@@ -52,14 +57,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Toolbox</a>
                     </li>
-                    <?php if($this->session->userdata('cid')):?>
                     <li class="nav-item">
                         <a href="<?=base_url().'mobile/login/logout'?>" class="nav-link btn btn-sm text-white shadow-none" href="#" style="background-color: #EF5D21">Log Out</a>
                     </li>
-                    <?php else:?>
-                        <li class="nav-item">
-                            <a href="<?=base_url().'mobile/login/index/'.$this->session->userdata('sess_id')?>" class="nav-link btn btn-sm text-white shadow-none" href="#" style="background-color: #EF5D21">Log In</a>
-                        </li>
+
+<!--                        <li class="nav-item">
+                            <a href="<?/*=base_url().'mobile/login/index/'.$this->session->userdata('sess_id')*/?>" class="nav-link btn btn-sm text-white shadow-none" href="#" style="background-color: #EF5D21">Log In</a>
+                        </li>-->
                     <?php endif;?>
                 </ul>
                 <span class="navbar-text">
