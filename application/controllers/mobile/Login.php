@@ -24,7 +24,7 @@ class Login extends CI_Controller {
     }
 
     public function authentication() {
-        $username = $this->input->post('email');
+        $username = $this->input->post('username');
         $password = $this->input->post('password');
         $sess_id = $this->input->post('sess_id');
 
@@ -34,7 +34,7 @@ class Login extends CI_Controller {
             redirect('mobile/login/index/'.$sess_id);
         } else {
             $arr = array(
-                'email' => $username,
+                'username' => $username,
                 'password' => base64_encode($password)
             );
             $data = $this->objlogin->user_login($username,base64_encode($password));
