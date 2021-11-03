@@ -355,7 +355,7 @@
                                 </div>-->
                             <div class="text-left ml-3">
 
-                                <button type="submit" href="" class="btn btn-sm text-white" id="reg_login" style="background-color:#EF5D21" disabled>Submit</button>
+                                <button type="submit" href="" class="btn btn-sm text-white" id="reg_login" style="background-color:#EF5D21" >Submit</button>
                                 <a href="" class="btn btn-sm btn-danger " >Cancel</a>
                             </div>
                         </div>
