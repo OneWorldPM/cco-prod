@@ -49,7 +49,7 @@
 <div class="row stickyQuestionbox" style="display: none">
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
-            <div class="card " style="height: 400px; width: 65%; left:35%; ">
+            <div class="card " style="height: 400px; width: 100%; left:0%; ">
                 <div class="card-header text-white" style="background-color: #EF5D21">Question <button id="stickyQuestionboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
                 <div class="content">
                     <div class="questionElement" style="max-height: 270px; !important;">
@@ -87,7 +87,7 @@
 <div class="row stickyNotesbox" style="display: none">
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
-            <div class="card " style="height: 300px; width: 65%; left:35%; ">
+            <div class="card " style="height: 300px; width: 100%; left:0%; ">
                 <div class="card-header text-white" style="background-color: #EF5D21">Add Notes <button id="stickyNotesboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
                 <div class="content" style="">
                     <div id="briefcase_section">
@@ -111,7 +111,7 @@
 <div class="row resourcesStickybox" style="display: none">
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
-            <div class="card " style="height: 300px; width: 65%; left:35%; ">
+            <div class="card " style="height: 300px; width: 100%; left:0%; ">
                 <div class="card-header" style="background-color: #EF5D21">Resources</div>
                 <div class="content">
                     <div class="contentHeader">
@@ -155,7 +155,7 @@
 <div class="row adminChatStickybox" style="display: none">
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
-            <div class="card " style="height: 400px; width: 65%; left:35%; ">
+            <div class="card " style="height: 400px; width: 100%; left:0%; ">
                 <div class="card-header text-white" style="background-color: #EF5D21">Chat with Admin <button id="adminChatStickyboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
                 <div class="content">
                     <div class="admin-messages">
@@ -196,9 +196,9 @@
 <div class="row " id="liveSupportChatForm" style="display: none">
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
-            <div class="card " style="height: 400px; width: 65%; left:35%; ">
+            <div class="card " style="height: 400px; width: 100%; left:0%; ">
                 <div class="card-header text-white" style="background-color: #EF5D21">Live Technical Support <button id="liveSupportChatFormHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
-                <div class="live-support-chat-body" style="height: 250px">
+                <div class="live-support-chat-body" style="height: 00px">
 
                     <div id="live-support-chat-texts" class="live-support-chat-texts" style="">
                         <!-- Will be filled by fillAllPreviousChats() function on pageReady -->
@@ -225,7 +225,7 @@
 <div class="row resourcesStickybox" style="display: none">
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
-            <div class="card " style="height: 400px; width: 65%; left:35%; ">
+            <div class="card " style="height: 400px; width: 100%; left:0%; ">
                 <div class="card-header text-white" style="background-color: #EF5D21">Resource <button id="resourcesStickyboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
                         <?php
                         if (!empty($session_resource)) {
