@@ -324,35 +324,35 @@
                                         <option value="Zimbabwe">Zimbabwe</option>
                                     </select>
                                     </div>
-                                    <div class="form-group">
-                                    <input type="password" id="password" class="form-control shadow-none mb-1" name="password" placeholder="Password">
-                                        <span id="errorpassword" style="color:red"></span>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8 col-md-offset-2">
-                                            <div id="message" style="display: none">
-                                                <h6 style="padding-bottom: 3px; border-bottom: 2px solid #ebebeb">Password Strength:</h6>
-                                                <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                                                <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-                                                <p id="number" class="invalid">A <b>number</b></p>
-                                                <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                    <input type="password" id="confirm_password" class="form-control shadow-none mb-1" name="password" placeholder="Confirm password">
-                                        <span id="errorconfirm_password" style="color:red"></span>
-                                    </div>
+<!--                                    <div class="form-group">-->
+<!--                                    <input type="password" id="password" class="form-control shadow-none mb-1" name="password" placeholder="Password">-->
+<!--                                        <span id="errorpassword" style="color:red"></span>-->
+<!--                                    </div>-->
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-md-8 col-md-offset-2">-->
+<!--                                            <div id="message" style="display: none">-->
+<!--                                                <h6 style="padding-bottom: 3px; border-bottom: 2px solid #ebebeb">Password Strength:</h6>-->
+<!--                                                <p id="letter" class="invalid">A <b>lowercase</b> letter</p>-->
+<!--                                                <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>-->
+<!--                                                <p id="number" class="invalid">A <b>number</b></p>-->
+<!--                                                <p id="length" class="invalid">Minimum <b>8 characters</b></p>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                    <input type="password" id="confirm_password" class="form-control shadow-none mb-1" name="password" placeholder="Confirm password">-->
+<!--                                        <span id="errorconfirm_password" style="color:red"></span>-->
+<!--                                    </div>-->
 
                             </div>
     <!--                        <div style="height: 2px;background-color: #EF5D21;" class="mb-5 mx-3"></div>-->
-                                <div class="row">
+<!--                                <div class="row">
                                     <div class="col-md-6 form-group">
                                         <div class="g-recaptcha" data-callback="recaptchaCallback" style="text-align: -webkit-center;" data-sitekey="6LfbHKQZAAAAAA9nhI-4GNOmLakkRGGaBTJgHFbF"></div>
                                         <div class="gaps-2x"></div>
                                         <span id="errorcaptcha" style="color:red"></span>
                                     </div>
-                                </div>
+                                </div>-->
                             <div class="text-left ml-3">
 
                                 <button type="submit" href="" class="btn btn-sm text-white" id="reg_login" style="background-color:#EF5D21" disabled>Submit</button>
@@ -406,40 +406,40 @@ switch ($msg) {
             } else if ($("#last_name").val().trim() == "") {
                 $("#errorlast_name").text("Please Enter Last Name").fadeIn('slow').fadeOut(5000);
                 return false;
-            } else if ($("#email").val().trim() == "") {
-                $("#erroremail").text("Please Enter Email").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if (!validateEmail($("#email").val().trim())) {
-                $("#erroremail").text("Enter Valid Email Id..").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if ($("#confirm_email").val() == "") {
-                $("#errorconfirm_email").text("Please Enter Confirm Email").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if ($("#email").val() != $("#confirm_email").val()) {
-                $("#errorconfirm_email").text("Email and Confirm Email Doesn't Match").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if ($("#password").val() == "") {
-                $("#errorpassword").text("Please Enter Password").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if (!lowerCaseLetters.test(pwd)) {
-                $("#errorpassword").text("Enter Lowercase Letter").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if (!upperCaseLetters.test(pwd)) {
-                $("#errorpassword").text("Enter Uppercase Letter").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if (!numbers.test(pwd)) {
-                $("#errorpassword").text("Enter Numbers").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if ($('#password').val().length < 8) {
-                $("#errorpassword").text("Minimum 8 Characters").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if ($("#confirm_password").val() == "") {
-                $("#errorconfirm_password").text("Please Enter Confirm Password").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if ($("#password").val() != $("#confirm_password").val()) {
-                $("#errorconfirm_password").text("Password and Confirm Passwords Doesn't Match").fadeIn('slow').fadeOut(5000);
-                return false;
-            }
+            // } else if ($("#email").val().trim() == "") {
+            //     $("#erroremail").text("Please Enter Email").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // } else if (!validateEmail($("#email").val().trim())) {
+            //     $("#erroremail").text("Enter Valid Email Id..").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // } else if ($("#confirm_email").val() == "") {
+            //     $("#errorconfirm_email").text("Please Enter Confirm Email").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // } else if ($("#email").val() != $("#confirm_email").val()) {
+            //     $("#errorconfirm_email").text("Email and Confirm Email Doesn't Match").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // } else if ($("#password").val() == "") {
+            //     $("#errorpassword").text("Please Enter Password").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // } else if (!lowerCaseLetters.test(pwd)) {
+            //     $("#errorpassword").text("Enter Lowercase Letter").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // } else if (!upperCaseLetters.test(pwd)) {
+            //     $("#errorpassword").text("Enter Uppercase Letter").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // } else if (!numbers.test(pwd)) {
+            //     $("#errorpassword").text("Enter Numbers").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // } else if ($('#password').val().length < 8) {
+            //     $("#errorpassword").text("Minimum 8 Characters").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // } else if ($("#confirm_password").val() == "") {
+            //     $("#errorconfirm_password").text("Please Enter Confirm Password").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // } else if ($("#password").val() != $("#confirm_password").val()) {
+            //     $("#errorconfirm_password").text("Password and Confirm Passwords Doesn't Match").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // }
             else {
                 return true; //submit form
             }

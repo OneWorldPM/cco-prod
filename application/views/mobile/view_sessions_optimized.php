@@ -21,9 +21,9 @@
                                             <h4  style="color:#EF5D21"><b>CCO Learner Resource App</b></h4>
                                             <div style="height: 1px;background-color: #EF5D21;" class="my-3"></div>
 
-                                            <?php if(isset($sess_data) && !empty($sessions)): ?>
+                                            <?php if(isset($sess_data) && !empty($sess_data)): ?>
 
-                                                <b><p id="sessionTitle"><?=$sess_data[0]->session_title?></b>
+                                                <b><p class="mx-3" id="sessionTitle"><?=$sess_data[0]->session_title?></b>
 
                                                 <?php foreach ($sess_data[0]->presenter as $presenter):?>
                                                     <p id="moderators" style="font-size: 14px; line-height: 0">
@@ -94,7 +94,7 @@
                         if (isset($music_setting)) {
                             if ($music_setting->music_setting != "") {
                                 ?>
-                                <audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/music/<?= $music_setting->music_setting ?>"></audio>
+                                <audio allow="autoplay" id="audio" src=""></audio>
                                 <?php
                             }
                         }

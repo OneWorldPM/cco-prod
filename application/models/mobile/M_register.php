@@ -8,13 +8,8 @@ class M_register extends CI_Model {
 
     public function add_customer() {
         $post = $this->input->post();
-        if ($post['email'] != '' && $post['password'] != '') {
-            $or_where = '(email = "' . trim($post['email']) . '")';
-            $this->db->where($or_where);
-            $customer = $this->db->get('customer_master');
-            if ($customer->num_rows() > 0) { //Check Email or Phone exist with new User 
-                return "exist";
-            } else {
+        if ($post['first_name'] != '' && $post['last_name'] != '') {
+
                 $this->db->order_by("cust_id", "desc");
                 $row_data = $this->db->get("customer_master")->row();
                 if (!empty($row_data)) {
@@ -41,7 +36,7 @@ class M_register extends CI_Model {
                 } else {
                     return "error";
                 }
-            }
+
         } else {
             return "error";
         }

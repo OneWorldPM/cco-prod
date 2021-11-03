@@ -35,7 +35,7 @@ class Sessions extends CI_Controller {
         if ($this->session->userdata('cid') != "100028") {
             $get_user_token_details = $this->common->get_user_details($this->session->userdata('cid'));
             if ($this->session->userdata('token') != $get_user_token_details->token) {
-                redirect('login');
+                redirect('mobile/login/index/'.$this->session->userdata('sess_id'));
             }
         }
 
@@ -82,7 +82,7 @@ class Sessions extends CI_Controller {
 
 
         }else{
-            redirect(base_url()."mobile/sessions/".$sessions_id);
+            redirect(base_url()."mobile/sessions/id/".$sessions_id);
         }
 
     }
