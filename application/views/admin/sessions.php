@@ -218,8 +218,8 @@ $user_role = $this->session->userdata('role');
                                                     </td>
                                                     <td>
 													  <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin-bottom: 5px;">View</a>
-                                                        <a href="<?= base_url() ?>admin/sessions/edit_sessions/<?= $val->sessions_id ?>" class="btn btn-green btn-sm">Edit</a>
                                                         <?php if ($user_role == 'super_admin') { ?>
+                                                        <a href="<?= base_url() ?>admin/sessions/edit_sessions/<?= $val->sessions_id ?>" class="btn btn-green btn-sm">Edit</a>
                                                         <button class="reload-attendee btn btn-danger" app-name="<?=getAppName($val->sessions_id) ?>">Reload Attendee</button>
                                                         <?php } ?>
                                                     </td>
@@ -233,7 +233,9 @@ $user_role = $this->session->userdata('role');
                                                         <a href="<?= base_url() ?>admin/sessions/resource/<?= $val->sessions_id ?>" style="margin-bottom: 5px;" class="btn btn-success btn-sm" >Resources</a>
                                                         <a href="" data-session_id="<?= $val->sessions_id ?>" id="generate-qrcode"  style="margin-bottom: 5px;" class="btn btn-dark-azure btn-sm" >Generate QR Code</a>
                                                     </td>
+
                                                     <td>
+                                                        <?php if ($user_role == 'super_admin') { ?>
                                                          <?php if(isset($val->check_send_json_exist) && !empty($val->check_send_json_exist)){
                                                                 foreach ($val->check_send_json_exist as $status) {
                                                                     if ($status->send_json_status==1) {
@@ -247,17 +249,19 @@ $user_role = $this->session->userdata('role');
                                                                 }
                                                          }?>
                                                          <a href="<?= base_url() ?>admin/sessions/view_json/<?= $val->sessions_id ?>" class="btn btn-purple btn-sm" style="margin-bottom: 5px;">View JSON</a>
-                                                        <?php if ($user_role == 'super_admin') { ?>
+
                                                             <button href-url="<?= base_url() ?>admin/sessions/reset_sessions/<?= $val->sessions_id ?>" session-name="<?= $val->session_title ?>" style="margin-bottom: 5px;"  class="clear-json-btn btn btn-danger btn-sm">Clear JSON</button>
-                                                        <?php } ?>
-                                                        <?php if ($user_role == 'super_admin') { ?>
+
+
                                                             <a data-session-id="<?= $val->sessions_id ?>" class="btn btn-danger btn-sm delete_session"  style="font-size: 10px !important; margin-bottom: 5px;">Delete Session</a>
-                                                        <?php } ?>
+
                                                         <br><br>
 														 <a href="<?= base_url() ?>admin/sessions/flash_report/<?= $val->sessions_id ?>" style="margin-bottom: 5px;" class="btn btn-info btn-sm">Flash Report</a>
                                                          <a href="<?= base_url() ?>admin/sessions/polling_report/<?= $val->sessions_id ?>" class="btn btn-azure btn-sm" style="margin-bottom: 5px;">Polling Report</a><br>
                                                          <a href="<?= base_url() ?>admin/sessions/attendee_question_report/<?= $val->sessions_id ?>" class="btn btn-azure btn-sm">Questions Report</a>
+                                                        <?php } ?>
                                                     </td>
+
                                                 </tr>
                                                 <?php
                                             }
