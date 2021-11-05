@@ -50,7 +50,7 @@
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
             <div class="card " style="height: 400px; width: 100%; left:0%; ">
-                <div class="card-header text-white" style="background-color: #EF5D21">Question <button id="stickyQuestionboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
+                <div class="card-header text-white" style="background-color: #EF5D21; font-size: 22px">Ask a Question <i class="fas fa-question"></i><button id="stickyQuestionboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
                 <div class="content">
                     <div class="questionElement" style="max-height: 270px; !important;">
                     </div>
@@ -156,7 +156,7 @@
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
             <div class="card " style="height: 400px; width: 100%; left:0%; ">
-                <div class="card-header text-white" style="background-color: #EF5D21">Chat with Admin <button id="adminChatStickyboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
+                <div class="card-header text-white" style="background-color: #EF5D21; font-size: 22px">Chat with Admin <button id="adminChatStickyboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
                 <div class="content">
                     <div class="admin-messages">
                     </div>
@@ -197,8 +197,8 @@
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
             <div class="card " style="height: 400px; width: 100%; left:0%; ">
-                <div class="card-header text-white" style="background-color: #EF5D21">Live Technical Support <button id="liveSupportChatFormHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
-                <div class="live-support-chat-body" style="height: 00px">
+                <div class="card-header text-white" style="background-color: #EF5D21; font-size: 22px">Live Technical Support <i class="far fa-life-ring"></i><button id="liveSupportChatFormHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
+                <div class="live-support-chat-body" style="height: 250px">
 
                     <div id="live-support-chat-texts" class="live-support-chat-texts" style="">
                         <!-- Will be filled by fillAllPreviousChats() function on pageReady -->
@@ -226,20 +226,20 @@
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
             <div class="card " style="height: 400px; width: 100%; left:0%; ">
-                <div class="card-header text-white" style="background-color: #EF5D21">Resource <button id="resourcesStickyboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
+                <div class="card-header text-white" style="background-color: #EF5D21; font-size: 22px">Resources <i class="fas fa-paperclip"></i><button id="resourcesStickyboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
                         <?php
                         if (!empty($session_resource)) {
                             foreach ($session_resource as $val) {
                                 ?>
                                 <div class="row" style="margin-bottom: 10px; padding-bottom: 5px">
                                     <?php if ($val->resource_link != "") { ?>
-                                        <div class="col-md-12"><a class="resources-link-text" href="<?= $val->resource_link ?>" target="_blank" style="color: #EF5D21 !important;"><?= $val->link_published_name ?></a></div>
+                                        <div class="col-md-12"><a class="resources-link-text" href="<?= $val->resource_link ?>" target="_blank" style="color: #EF5D21 !important; font-size: 22px"><?= $val->link_published_name ?></a></div>
                                     <?php } ?>
                                     <?php
                                     if ($val->upload_published_name) {
                                         if ($val->resource_file != "") {
                                             ?>
-                                            <div class="col-md-12"><a class="resources-link-text" href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download="<?= $val->file_name ?>" style="color: #EF5D21 !important"> <?= $val->upload_published_name ?> </a></div>
+                                            <div class="col-md-12"><a class="resources-link-text" href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download="<?= $val->file_name ?>" style="color: #EF5D21 !important; font-size: 22px"> <?= $val->upload_published_name ?> </a></div>
                                             <?php
                                         }
                                     }
