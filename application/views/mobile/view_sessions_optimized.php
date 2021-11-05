@@ -53,7 +53,7 @@
                         </div>
                         <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; margin-top: 50px !important;" data-keyboard="false" data-backdrop="static">
                             <div class="modal-dialog" style="overflow-y: initial !important">
-                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; overflow: scroll">
+                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
                                     <div class="modal-header" style="height: 0">
                                         <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
