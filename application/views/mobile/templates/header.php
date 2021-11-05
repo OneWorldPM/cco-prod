@@ -46,19 +46,19 @@
                 <ul class="navbar-nav mr-auto">
                     <?php if($this->session->userdata('cid')):?>
                     <li class="nav-item active">
-                        <button id="live_support-btn"  onclick="openLiveSupportChat()"  class="nav-link btn btn-sm text-white shadow-none" href="#"  style="display: <?=(liveSupportChatStatus())?'block':'none'?>;background-color: #EF5D21; width: 100%">Live Technical Support <i class="far fa-life-ring"></i><span class="sr-only">(current)</span></button>
+                        <button id="live_support-btn"  onclick="openLiveSupportChat()"  class="nav-link btn btn-sm text-white shadow-none" href="#"  style="display: <?=(liveSupportChatStatus())?'block':'none'?>;background-color: #EF5D21; width: 100%; font-size: 20px">Live Technical Support <i class="far fa-life-ring"></i><span class="sr-only">(current)</span></button>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=isset($url_link)?$url_link:'';?>" target="_blank"><?=isset($link_text)?$link_text:'';?></a>
+                        <a class="nav-link" href="<?=isset($url_link)?$url_link:'';?>" target="_blank" style="font-size: 20px"><?=isset($link_text)?$link_text:'';?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="header-resource-btn">Resources</a>
+                        <a class="nav-link" href="#" id="header-resource-btn" style="font-size: 20px">Resources</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Toolbox</a>
+                        <a class="nav-link" href="#" style="font-size: 20px">Toolbox</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?=base_url().'mobile/login/logout'?>" class="nav-link btn btn-sm text-white shadow-none" href="#" style="background-color: #EF5D21">Log Out</a>
+                        <a href="<?=base_url().'mobile/login/logout'?>" class="nav-link btn btn-sm text-white shadow-none" href="#" style="background-color: #EF5D21; font-size: 20px">Log Out</a>
                     </li>
 
 <!--                        <li class="nav-item">
