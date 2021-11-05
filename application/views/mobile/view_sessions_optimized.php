@@ -5,17 +5,17 @@
 
 <section class="parallax" style="background-color: #FFFFFF; overflow: scroll" >
     <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
-    <div class="container-fullscreen">
+    <div class="container-fluid">
         <!-- CONTENT -->
         <section class="content">
             <div>
                 <div class="videContent">
 
                         <div class="row justify-content-center">
-                            <div class="col-sm-6 col-md-6 col-lg-12" style="margin-top: 30px; margin-left: 20px; margin-right: 20px;">
+                            <div class="col-12" style="margin-top: 30px; margin-left: 20px; margin-right: 20px;">
                                 <div class="card m-auto text-center">
                                     <div class="row">
-                                        <div class="col-sm-12" style="margin: 30px 0px" >
+                                        <div class="col-sm-12 " style="margin: 30px 0px" >
                                             <h6 style="color:#EF5D21; font-size: 18px">Welcome to the</h6>
                                             <h4  style="color:#EF5D21"><b>CCO Learner Resource App</b></h4>
                                             <div style="height: 1px;background-color: #EF5D21;" class="my-3"></div>
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="row justify-content-center mb-3">
-                            <div class="col-sm-6 col-md-6 col-lg-12" style=" margin-left: 20px; margin-right: 20px;">
+                            <div class="col-12" style=" margin-left: 20px; margin-right: 20px;">
                                 <div class="card text-center align-items-center justify-content-center align-content-center mx-auto mt-2" style="background-image: url(https://yourconference.live/CCO/front_assets/images/bg_login.png); top: 0; padding-top: 0px; height: 100%; background-size: cover">
                                     <button id="resource-btn" type="button"  class="btn btn-sm text-white" style="width: 95%; height: 70px; margin-top: 30px; background-color: #EF5D21; font-size: 20px; font-weight: 700">Resources <i class="fas fa-paperclip"></i></button>
 
@@ -51,9 +51,9 @@
                             </div>
 
                         </div>
-                        <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
-                            <div class="modal-dialog">
-                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
+                        <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; margin-top: 50px !important;" data-keyboard="false" data-backdrop="static">
+                            <div class="modal-dialog" style="overflow-y: initial !important">
+                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; overflow: scroll">
                                     <div class="modal-header" style="height: 0">
                                         <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -63,7 +63,7 @@
                                                                                                     <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
                                                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                                                 </div>-->
-                                    <div class="modal-body" style="padding: 0px;">
+                                    <div class="modal-body" style="padding: 0px; max-height: 80vh; overflow-y: auto;">
                                         <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
                                             <div class="col-sm-12">
                                                 <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
@@ -144,7 +144,7 @@
 <script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users.js?v=2"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/mobile/view_sessions.js?v=22"></script>
+<script src="<?= base_url() ?>front_assets/mobile/view_sessions.js?v=23"></script>
 <script src="<?= base_url() ?>front_assets/mobile/admin-to-attendee-chat.js?v=203"></script>
 
 <script>
