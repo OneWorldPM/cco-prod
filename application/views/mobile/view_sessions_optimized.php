@@ -3,8 +3,7 @@
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
 <link href="<?= base_url() ?>front_assets/css/view_sessions.css?v=19" rel="stylesheet">
 
-
-<section class="parallax" style="background-color: #FFFFFF" >
+<section class="parallax" style="background-color: #FFFFFF; overflow: scroll" >
     <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
     <div class="container-fullscreen">
         <!-- CONTENT -->
@@ -17,16 +16,16 @@
                                 <div class="card m-auto text-center">
                                     <div class="row">
                                         <div class="col-sm-12" style="margin: 30px 0px" >
-                                            <h6 style="color:#EF5D21">Welcome to the</h6>
+                                            <h6 style="color:#EF5D21; font-size: 18px">Welcome to the</h6>
                                             <h4  style="color:#EF5D21"><b>CCO Learner Resource App</b></h4>
                                             <div style="height: 1px;background-color: #EF5D21;" class="my-3"></div>
 
                                             <?php if(isset($sess_data) && !empty($sess_data)): ?>
 
-                                                <b><p class="mx-3" id="sessionTitle" style="font-size: 20px"><?=$sess_data[0]->session_title?></b>
+                                                <b><p class="mx-3" id="sessionTitle" style="font-size: 25px; line-height: 1.2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</b>
 
                                                 <?php foreach ($sess_data[0]->presenter as $presenter):?>
-                                                    <p id="moderators" style="font-size: 14px; line-height: 0">
+                                                    <p id="moderators" style="font-size: 18px; line-height: 0.3">
                                                         <?=$presenter->first_name.' '.$presenter->last_name.', '.$presenter->degree?>
                                                     </p>
                                                 <?php endforeach;?>
@@ -38,16 +37,16 @@
                             </div>
                         </div>
 
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center mb-3">
                             <div class="col-sm-6 col-md-6 col-lg-12" style=" margin-left: 20px; margin-right: 20px;">
                                 <div class="card text-center align-items-center justify-content-center align-content-center mx-auto mt-2" style="background-image: url(https://yourconference.live/CCO/front_assets/images/bg_login.png); top: 0; padding-top: 0px; height: 100%; background-size: cover">
-                                    <button id="resource-btn" type="button"  class="btn btn-sm text-white" style="width: 80%; height: 70px; margin-top: 30px; background-color: #EF5D21; font-size: 20px; font-weight: 700">Resources <i class="fas fa-paperclip"></i></button>
+                                    <button id="resource-btn" type="button"  class="btn btn-sm text-white" style="width: 95%; height: 70px; margin-top: 30px; background-color: #EF5D21; font-size: 20px; font-weight: 700">Resources <i class="fas fa-paperclip"></i></button>
 
 <!--                                    <button id="notes-btn" class="btn btn-sm mt-2 text-white" style="width: 80%; height: 30px; background-color: #EF5D21;">Take Notes <i class="far fa-edit"></i></button>-->
-                                    <button id="question-btn" class="btn btn-sm mt-2 text-white" style="width: 80%; height: 70px; background-color: #EF5D21;font-size: 20px; font-weight: 700">Ask a Question</button>
-                                    <button onclick="window.open('<?=isset($url_link)?$url_link:''?>', '_blank')" class="btn btn-sm mt-2 text-white" style="width: 80%; height: 70px; background-color: #EF5D21;font-size: 20px; font-weight: 700" >Claim Credit</button>
-                                    <button id="live_support-btn" onclick="openLiveSupportChat()" style="display: <?=(liveSupportChatStatus())?'block':'none'?>;width: 80%; height: 70px; margin-bottom: 30px; background-color: #EF5D21;font-size: 20px; font-weight: 700" class="btn btn-sm mt-2 text-white" >Live Technical Support <i class="far fa-life-ring"></i></button>
-                                    <div class="mb-5"></div>
+                                    <button id="question-btn" class="btn btn-sm mt-3 text-white" style="width: 95%; height: 70px; background-color: #EF5D21;font-size: 20px; font-weight: 700">Ask a Question <i class="fas fa-question"></i></button>
+                                    <button onclick="window.open('<?=isset($url_link)?$url_link:''?>', '_blank')" class="btn btn-sm mt-3 text-white" style="width: 95%; height: 70px; background-color: #EF5D21;font-size: 20px; font-weight: 700" >Claim Credit</button>
+                                    <button id="live_support-btn" onclick="openLiveSupportChat()" style="display: <?=(liveSupportChatStatus())?'block':'none'?>;width: 95%; height: 70px; margin-bottom: 30px; background-color: #EF5D21;font-size: 20px; font-weight: 700" class="btn btn-sm mt-3 text-white" >Live Technical Support <i class="far fa-life-ring"></i></button>
+                                    <div class="mb-3"></div>
                                 </div>
                             </div>
 
