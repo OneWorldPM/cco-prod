@@ -44,46 +44,48 @@
 
 <?php //echo"<pre>"; print_r($sessions[0]->presenter);exit;?>
 <section class="parallax" style="background-image: url(https://yourconference.live/CCO/front_assets/images/bg_login.png); top: 0; padding-top: 0px; height: 100%" >
-    <div class="row justify-content-center">
-        <div class="col-sm-6 col-md-6 col-lg-12" style="margin-top: 20%; margin-left: 20px; margin-right: 20px;">
-            <div class="card text-center">
-                <div class="row">
-                    <div class="col" style="margin: 30px 0px" >
-                        <div class="mx-3">
-                            <h6  style="color:#EF5D21"><b>CCO Learner Resource App</b></h6>
-                            <div style="height: 1px;background-color: #EF5D21; " class="mt-3 mb-1" ></div>
-                            <div class="text-left">
-                                <h6>Create User</h6>
-                                <div style="height: 1px;background-color: darkgray;margin-top: -5px" class="mb-2" ></div>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12" style="margin-top: 20%; margin-left: 20px; margin-right: 20px;">
+                <div class="card text-center">
+                    <div class="row">
+                        <div class="col-12" style="margin: 30px 0px" >
+                            <div class="mx-3">
+                                <h6  style="color:#EF5D21"><b>CCO Learner Resource App</b></h6>
+                                <div style="height: 1px;background-color: #EF5D21; " class="mt-3 mb-1" ></div>
+                                <div class="text-left">
+                                    <h6>Create User</h6>
+                                    <div style="height: 1px;background-color: darkgray;margin-top: -5px" class="mb-2" ></div>
 
-                                    <form id="frm_reg" name="frm_reg" method="post" action="<?= base_url() ?>mobile/register/register_user">
+                                        <form id="frm_reg" name="frm_reg" method="post" action="<?= base_url() ?>mobile/register/register_user">
 
-                                    <div class="form-group">
-                                    <input type="text" id="first_name" class="form-control shadow-none" name="first_name" placeholder="First Name" >
-                                        <span id="errorfirst_name" style="color:red"></span>
-                                    </div>
-                                    <div class="form-group">
-                                    <input type="text" id="last_name" class="form-control shadow-none mb-1" name="last_name" placeholder="Last Name">
-                                        <span id="errorlast_name" style="color:red"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" id="username"  class="form-control shadow-none mb-1" name="username" placeholder="Username">
-                                        <span id="errorusername" style="color:red"></span>
-                                    </div>
-                                    <div class="form-group">
-                                    <input type="text" id="email"  class="form-control shadow-none mb-1" name="email" placeholder="Email">
-                                        <span id="erroremail" style="color:red"></span>
-                                    </div>
-                                    <div class="form-group">
-                                    <input type="text" id="confirm_email"  class="form-control shadow-none mb-1" name="confirm_email" placeholder="Confirm email">
-                                        <span id="errorconfirm_email" style="color:red"></span>
-                                    </div>
-                            </div>
+                                        <div class="form-group">
+                                        <input type="text" id="first_name" class="form-control shadow-none" name="first_name" placeholder="First Name" >
+                                            <span id="errorfirst_name" style="color:red"></span>
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="text" id="last_name" class="form-control shadow-none mb-1" name="last_name" placeholder="Last Name">
+                                            <span id="errorlast_name" style="color:red"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" id="username"  class="form-control shadow-none mb-1" name="username" placeholder="Username">
+                                            <span id="errorusername" style="color:red"></span>
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="text" id="email"  class="form-control shadow-none mb-1" name="email" placeholder="Email">
+                                            <span id="erroremail" style="color:red"></span>
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="text" id="confirm_email"  class="form-control shadow-none mb-1" name="confirm_email" placeholder="Confirm email">
+                                            <span id="errorconfirm_email" style="color:red"></span>
+                                        </div>
+                                </div>
 
-                            <div class="text-left ml-1">
+                                <div class="text-left ml-1">
 
-                                <button type="submit" href="" class="btn text-white" id="reg_login" style="background-color:#EF5D21"  >Submit</button>
-                                <a href="" class="btn btn-danger " >Cancel</a>
+                                    <button type="submit" href="" class="btn text-white" id="reg_login" style="background-color:#EF5D21"  >Submit</button>
+                                    <a href="" class="btn btn-danger " >Cancel</a>
+                                </div>
                             </div>
                         </div>
                     </div>
