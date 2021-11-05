@@ -3,7 +3,8 @@
         text-rendering: optimizelegibility;
         margin-top: 0;
         color: #222222;
-        font-family: "Open Sans", sans-serif
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
     }
     .parallax {
         /* Set a specific height */
@@ -14,6 +15,9 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+    }
+    .form-control{
+        font-size: 18px;
     }
 </style>
 
@@ -30,10 +34,10 @@
                         <div class="mx-3">
                         <?php if(isset($sessions) && !empty($sessions)): ?>
 
-                            <b><p id="sessionTitle"><?=$sessions[0]->session_title?></b>
+                            <b><p style="font-size: 20px" id="sessionTitle"><?=$sessions[0]->session_title?></b>
 
                             <?php foreach ($sessions[0]->presenter as $presenter):?>
-                                <p id="moderators" style="font-size: 14px; line-height: 0">
+                                <p id="moderators" style=" line-height: 0">
                                     <?=$presenter->first_name.' '.$presenter->last_name.', '.$presenter->degree?>
                                 </p>
                             <?php endforeach;?>
@@ -53,7 +57,7 @@
                         </div>
 
                         <div class="text-left mx-5">
-                            <button type="submit" href="<?=base_url().'mobile/register'?>" class="btn btn-sm text-white" style="background-color:#EF5D21">Login</button>
+                            <button type="submit" href="<?=base_url().'mobile/register'?>" class="btn btn text-white" style="background-color:#EF5D21">Login</button>
                         </div>
                         </form>
                     </div>
