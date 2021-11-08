@@ -29,9 +29,8 @@ class M_register extends CI_Model {
                     'first_name' => trim($post['first_name']),
                     'last_name' => trim($post['last_name']),
                     'username' => trim($post['username']),
-                    'email' => trim($post['email']),
                     'country' => $post['country'],
-                    'password' => base64_encode(strtolower($post['last_name'])),
+                    'password' => base64_encode(strtolower($post['password'])),
                     'register_date' => date("Y-m-d h:i"),
                     'isMobileUser' => 1,
                 );

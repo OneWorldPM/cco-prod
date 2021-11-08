@@ -146,6 +146,7 @@ function sendNewText() {
                 '  <span class="live-support-admin-text">'+data.text+'</span>\n' +
                 '</span>'
             );
+            $('#liveSupportChatForm').css('display', 'block');
             document.getElementById("live-support-chat-texts").scrollTop = document.getElementById("live-support-chat-texts").scrollHeight;
         }
     });
