@@ -72,12 +72,12 @@
                                             <span id="errorusername" style="color:red"></span>
                                         </div>
                                         <div class="form-group">
-                                        <input type="text" id="email"  class="form-control shadow-none mb-1" name="email" placeholder="Email">
-                                            <span id="erroremail" style="color:red"></span>
+                                        <input type="password" id="password"  class="form-control shadow-none mb-1" name="password" placeholder="Password">
+                                            <span id="errorpassword" style="color:red"></span>
                                         </div>
                                         <div class="form-group">
-                                        <input type="text" id="confirm_email"  class="form-control shadow-none mb-1" name="confirm_email" placeholder="Confirm email">
-                                            <span id="errorconfirm_email" style="color:red"></span>
+                                        <input type="password" id="confirm_password"  class="form-control shadow-none mb-1" name="confirm_password" placeholder="Confirm password">
+                                            <span id="errorconfirm_password" style="color:red"></span>
                                         </div>
                                 </div>
 
@@ -134,6 +134,12 @@ switch ($msg) {
                 return false;
             } else if ($("#username").val().trim() == ""){
                 $("#errorusername").text("Please Enter Username").fadeIn('slow').fadeOut(5000);
+                return false;
+            } else if ($("#password").val().trim() == ""){
+                $("#errorpassword").text("Please Enter Password").fadeIn('slow').fadeOut(5000);
+                return false;
+            } else if ($("#password").val().trim() !== $("#confirm_password").val().trim()){
+                $("#errorconfirm_password").text("Password Did Not Match").fadeIn('slow').fadeOut(5000);
                 return false;
             }
             else {
