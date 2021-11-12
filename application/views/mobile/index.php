@@ -34,11 +34,13 @@
 
                             <b><p id="sessionTitle"><?=$sessions[0]->session_title?></b>
 
-                            <?php foreach ($sessions[0]->presenter as $presenter):?>
+                            <?php if(isset($sessions[0]->presenter) && !empty($sessions[0]->presenter)) :
+                                foreach ($sessions[0]->presenter as $presenter): ?>
                            <p id="moderators" style="line-height: 0">
                             <?=$presenter->first_name.' '.$presenter->last_name.', '.$presenter->degree?>
                            </p>
                                 <?php endforeach;?>
+                            <?php endif;?>
                             <?php endif; ?>
                             </div>
                             <div style="height: 2px;background-color: #EF5D21;" class="mb-5"></div>
