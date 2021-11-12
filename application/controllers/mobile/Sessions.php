@@ -51,7 +51,7 @@ class Sessions extends CI_Controller {
             $sesions = $this->mobileSession->viewSessionsData($sessions_id);
 
             if (date("Y-m-d H:i:s") > date("Y-m-d H:i:s", strtotime($sesions->sessions_date . ' ' . $sesions->end_time)) && $sessions_id != 25) {
-                header("location:" . base_url() . "sessions/session_end/$sessions_id");
+                header("location:" . base_url() . "mobile/sessions/session_end/$sessions_id");
                 die();
             }
 
@@ -87,5 +87,22 @@ class Sessions extends CI_Controller {
 
     }
 
+    public function session_end($session_id){
+
+        $sesions = $this->mobileSession->viewSessionsData($session_id);
+        $header_data["attendee_view_links_status"] = $sesions->attendee_view_links_status;
+        $header_data["url_link"] = $sesions->url_link;
+        $header_data["link_text"] = $sesions->link_text;
+        $header_data['session_id'] = $session_id;
+
+        $this->db->select('*')
+            ->from('sessions')
+            ->where('sessions_id', $session_id)
+        ;
+        $data['sessions'] = $this->db->get()->result();
+        $this->load->view('mobile/templates/header', $header_data);
+        $this->load->view('mobile/end_session', $data);
+        $this->load->view('mobile/templates/footer');
+    }
 
 }
