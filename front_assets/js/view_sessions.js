@@ -754,7 +754,7 @@ function get_poll_vot_section() {
                                     var result_calculate_compere = (val.compere_option * 100) / total_vote_compere_option;
                                 }
 
-                                if(result_calculate_compere.toFixed(0) == 0)
+                                if(parseInt(result_calculate_compere.toFixed(0)) <= 5)
                                 {
                                     var zeroVotes = "zeroVotes";
                                 }else{
@@ -770,7 +770,7 @@ function get_poll_vot_section() {
                                 window.isComparisonpoll = false;
                             }
 
-                            if(result_calculate.toFixed(0) == 0)
+                            if(parseInt(result_calculate.toFixed(0)) <= 5)
                             {
                                 var zeroVotes = "zeroVotes";
                             }else{
