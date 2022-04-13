@@ -365,12 +365,12 @@ else
                                                 <li class="dropdown" style="margin-top: -9px;">
                                                     <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                         <?php if ($profile_data->profile != "") { ?>
-                                                            <span class="glyphicon glyphicon-user"></span> Profile
+                                                            <span class="glyphicon glyphicon-user"></span> Perfil
 
                                                                                                                                                                        <!-- <img src="<?/*= base_url() */?>uploads/customer_profile/<?/*= $profile_data->profile */?>"style="height: 50px; width: 50px;;">-->
 
                                                         <?php } else { ?>
-                                                            <span class="glyphicon glyphicon-user"></span> Profile
+                                                            <span class="glyphicon glyphicon-user"></span> Perfil
                                                         <?php } ?>
                                                     </a>
                                                     <ul class="dropdown-menu">
@@ -382,17 +382,17 @@ else
                                                         </li>
                                                         <li>
                                                             <a href="<?= base_url() ?>register/user_profile/<?= $profile_data->cust_id ?>">
-                                                                EDIT PROFILE
+                                                                EDITAR PERFIL
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="<?= base_url() ?>home/notes">
-                                                                My Briefcase
+                                                                Mi Maletin
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="<?= base_url() ?>login/logout">
-                                                                Log Out
+                                                                Cerrar Sesión
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -400,7 +400,7 @@ else
                                             <?php } ?>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour" id="helpdesk_link" style=" display: <?=(liveSupportChatStatus())?'none':'block'?>">HELP DESK</a></li>
+                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour" id="helpdesk_link" style=" display: <?=(liveSupportChatStatus())?'none':'block'?>">Assistance</a></li>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
                                             <?php
@@ -418,25 +418,25 @@ else
                                             if (isset($right_bar) && isset($tool_box_status)) {
                                             if ($tool_box_status == "1" && sessionRightBarControl($right_bar, "resources")) {
                                             ?>
-                                                <li class="sticky_resources_open" data-type="resourcesSticky"><a data-type2="off" class="hoverThemeColour">RESOURCES</a></li>
+                                                <li class="sticky_resources_open" data-type="resourcesSticky"><a data-type2="off" class="hoverThemeColour">Recursos</a></li>
                                             <?php
                                                }}
                                             ?>
 
                                             <li>
-                                                <a target="_blank" class="hoverThemeColour" id="toolbox" >TOOLBOX</a>
+                                                <a target="_blank" class="hoverThemeColour" id="toolbox" >Herramienta</a>
                                                 <ul class="toolboxCustomDrop">
                                                     <?php
                                                     if (isset($right_bar) && isset($tool_box_status)) {
                                                         if ($tool_box_status == "1") {
                                                             if (sessionRightBarControl($right_bar, "questions")) {
                                                                 ?>
-                                                                <li data-type="questionsSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-question" aria-hidden="true"></i> ASK QUESTIONS</a></li>
+                                                                <li data-type="questionsSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-question" aria-hidden="true"></i> Preguntas</a></li>
                                                                 <?php
                                                             }
                                                             if (sessionRightBarControl($right_bar, "notes")) {
                                                                 ?>
-                                                                <li data-type="notesSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> TAKE NOTES</a></li>
+                                                                <li data-type="notesSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Toma Nota</a></li>
                                                                 <?php
                                                             }
                                                             if (sessionRightBarControl($right_bar, "chat")) {
@@ -446,7 +446,7 @@ else
                                                             }
                                                             if (sessionRightBarControl($right_bar, "resources")) {
                                                                 ?>
-                                                                <li data-type="resourcesSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-paperclip" aria-hidden="true"></i> RESOURCES</a></li>
+                                                                <li data-type="resourcesSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-paperclip" aria-hidden="true"></i> Recursos</a></li>
                                                                 <?php
                                                             }
                                                         }
@@ -457,7 +457,7 @@ else
                                         </ul>
                                     <?php } else { ?>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour" id="helpdesk_link" style=" display: <?=(liveSupportChatStatus())?'none':'block'?>">HELP DESK</a></li>
+                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour" id="helpdesk_link" style=" display: <?=(liveSupportChatStatus())?'none':'block'?>">Assistance</a></li>
                                         </ul>
                                     <?php } ?>
                                 </nav>
