@@ -4,7 +4,7 @@
         <section id="page-title">
             <div class="row">
                 <div class="col-sm-8">
-                    <h1 class="mainTitle">List Of Sessions</h1>
+                    <h1 class="mainTitle">Lista de Sesiones</h1>
                 </div>
             </div>
         </section>
@@ -14,7 +14,9 @@
             <div class="row">
                 <div class="panel panel-primary" id="panel5">
                     <div class="panel-heading">
-                        <h4 class="panel-title text-white">Presenter Sessions</h4>
+
+                        <h4 class="panel-title text-white">Sesiones</h4>
+
                     </div>
                     <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                         <div class="row">
