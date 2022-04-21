@@ -59,7 +59,7 @@ else{
                         <div class="input-group">
                             <input id="chatToAttendeeText" type="text" class="form-control" placeholder="Enter your message">
                             <span class="input-group-btn">
-                                <button id="sendMessagetoAttendee" class="btn btn-success" type="button"><i class="fas fa-paper-plane"></i> Send</button>
+                                <button id="sendMessagetoAttendee" class="btn btn-success" type="button"><i class="fas fa-paper-plane"></i> Enviar</button>
                             </span>
                         </div>
                     </div>
@@ -95,7 +95,7 @@ else{
                         <div class="dropdown">
                             <!--                            <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>-->
                             <ul class="dropdown-menu">
-                                <li data-type="questionFavorites"><a data-type2="off">Questions</a></li>
+                                <li data-type="questionFavorites"><a data-type2="off">PREGUNTAS</a></li>
                             </ul>
                         </div>
                     </div>
@@ -136,13 +136,13 @@ else{
                 </div>
             </div>
             <div class="rightSticykPopup questionFavorites presenterRightSticykPopup" style="display: none">
-                <div class="header"><span><a href="#attendee_questions" data-toggle="tab">QUESTIONS</a> | <a href="#favorites" data-toggle="tab">FAVORITES</a></span>
+                <div class="header"><span><a href="#attendee_questions" data-toggle="tab">PREGUNTAS</a> | <a href="#favorites" data-toggle="tab">FAVORITOS</a></span>
                     <div class="rightTool">
                         <i class="fa fa-minus" aria-hidden="true" data-right-id="2"></i>
                         <div class="dropdown">
                             <!--                            <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>-->
                             <ul class="dropdown-menu">
-                                <li data-type="hostChat"><a data-type2="off">Host Chat</a></li>
+                                <li data-type="hostChat"><a data-type2="off">Chat del/la moderador/a</a></li>
                             </ul>
                         </div>
                     </div>
@@ -181,7 +181,7 @@ else{
                     <div class="col-sm-12">
                         <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
                             <div class=""  style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
-                                TIME LEFT : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
+                                TIEMPO RESTANTE : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
                             </div>
                         </div>
                         <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 15px;">
@@ -206,8 +206,8 @@ else{
 
 <div class="rightSticky presenterRightSticky" data-screen="presenter">
     <ul>
-        <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="notify hostChatNotify displayNone">new</span> <span>HOST CHAT</span></li>
-        <li data-type="questionFavorites" class="2"><i class="fa fa-question" aria-hidden="true"></i> <span class="notify questionNotify displayNone">new</span> <span>QUESTIONS</span></li>
+        <li data-type="hostChat" class="1"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="notify hostChatNotify displayNone">new</span> <span>Chat del/la moderador/a</span></li>
+        <li data-type="questionFavorites" class="2"><i class="fa fa-question" aria-hidden="true"></i> <span class="notify questionNotify displayNone">new</span> <span>PREGUNTAS</span></li>
     </ul>
 </div>
 

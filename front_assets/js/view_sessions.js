@@ -448,7 +448,7 @@ function update_viewsessions_history_open()
 
         $(document).on("click", "#ask_questions_send", function () {
             if ($("#questions").val() == "") {
-                $("#error_questions").text("Enter Questions").fadeIn('slow').fadeOut(5000);
+                $("#error_questions").text("Introducir pregunta").fadeIn('slow').fadeOut(5000);
             } else {
                 var questions = $("#questions").val();
                 var sessions_id = $("#sessions_id").val();
@@ -460,7 +460,7 @@ function update_viewsessions_history_open()
                     success: function (data) {
                         if (data.status == "success") {
                             $("#questions").val("");
-                            $("#success_questions").text("Question Added Successfully").fadeIn('slow').fadeOut(5000);
+                            $("#success_questions").text("La pregunta se envió correctamente.").fadeIn('slow').fadeOut(5000);
 
                             socket.emit('new_question', app_name);
                         }
@@ -474,7 +474,7 @@ function update_viewsessions_history_open()
             if (key == 13)  // the enter key code
             {
                 if ($("#questions").val() == "") {
-                    $("#error_questions").text("Enter Questions").fadeIn('slow').fadeOut(5000);
+                    $("#error_questions").text("Introducir pregunta").fadeIn('slow').fadeOut(5000);
                 } else {
                     var questions = $("#questions").val();
                     var sessions_id = $("#sessions_id").val();
@@ -487,7 +487,7 @@ function update_viewsessions_history_open()
                             if (data.status == "success") {
                                 $(".questionElement").append(`<p>${questions}</p>`)
                                 $("#questions").val("");
-                                $("#success_questions").text("Question Added Successfully").fadeIn('slow').fadeOut(5000);
+                                $("#success_questions").text("La pregunta se envió correctamente.").fadeIn('slow').fadeOut(5000);
 
                                 socket.emit('new_question', app_name);
                             }

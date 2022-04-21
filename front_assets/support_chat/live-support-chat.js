@@ -175,18 +175,19 @@ supportSocket.on("liveSupportChatStarted", function (data) {
 });
 
 supportSocket.on("liveSupportChatOffline", function (data) {
-    toastr.error("Live support chat is unavailable at this moment");
+    toastr.error("El chat de asistencia en vivo no está disponible por el momento.");
 });
 
 function endLiveSupportChat() {
     Swal.fire({
-        title: 'Are you sure?',
-        text: "You are about to end this chat",
+        title: '¿Seguro?',
+        text: "Está a punto de finalizar este chat.",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#28A745',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes'
+        confirmButtonText: 'Sí',
+        cancelButtonText: 'Cancelar',
     }).then((result) => {
         if (result.isConfirmed) {
             supportSocket.emit("endLiveSupportChat", {'room':live_support_chat_room, 'by':'attendee', 'id':attendee_id});

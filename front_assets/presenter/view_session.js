@@ -898,7 +898,7 @@ $(document).ready(function() {
                 }
             });
         } else {
-            alertify.error('Write Message');
+            alertify.error('Escribir mensaje');
         }
     });
 
@@ -922,7 +922,7 @@ $(document).ready(function() {
                     }
                 });
             } else {
-                alertify.error('Write Message');
+                alertify.error('Escribir mensaje');
             }
         }
     });
@@ -1029,7 +1029,7 @@ $(document).ready(function() {
                 timer_string = hours + "h " + timer_string;
             if (days != 0 && days)
                 timer_string = days + "d " + timer_string;
-            timer_string = "Time Remaining: " + timer_string;
+            timer_string = "Tiempo restante: " + timer_string;
 
             // Display the result in the element with id="demo"
             //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
@@ -1039,7 +1039,7 @@ $(document).ready(function() {
             // If the count down is finished,
             if (distance < 0) {
                 clearInterval(x);
-                $('#id_day_time_clock').text('Time Remaining: 0s');
+                $('#id_day_time_clock').text('Tiempo restante: 0s');
                 $('#id_day_time_clock').css('color', '#d30e0e')
             }
         }, 1000);
@@ -1075,7 +1075,7 @@ $(document).ready(function() {
                 timer_string = hours + "h " + timer_string;
             if (days != 0 && days)
                 timer_string = days + "d " + timer_string;
-            timer_string = "Starts In: " + timer_string;
+            timer_string = "Comienza en: " + timer_string;
 
             // Display the result in the element with id="demo"
             //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");

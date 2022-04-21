@@ -199,7 +199,7 @@ if (isset($sessions)) {
         <div id="briefcase_section">
             <div id="briefcase_section">
                 <div class="col-md-12 input-group">
-                    <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""><?= isset($sessions_notes_download) ? $sessions_notes_download : "" ?></textarea>
+                    <textarea type="text" id="briefcase" class="form-control" placeholder="Entrar Nota" value=""><?= isset($sessions_notes_download) ? $sessions_notes_download : "" ?></textarea>
                 </div>
                 <a class="button color btn"  id="briefcase_send"><span>Guardar</span></a>
                 <a class="button color btn" id="downloadbriefcase"><span>Descargar</span></a>
@@ -319,7 +319,7 @@ if (isset($sessions)) {
 
         </div>
 
-        <input type="text" class="form-control" placeholder="Enter message" id='sendGroupChat'>
+        <input type="text" class="form-control" placeholder="Escribir mensaje" id='sendGroupChat'>
 
     </div>
 
@@ -366,7 +366,7 @@ if (isset($sessions)) {
         <div class="admin-messages">
         </div>
 
-        <input type="text" class="form-control" placeholder="Enter message" id='sendAdminChat'>
+        <input type="text" class="form-control" placeholder="Escribir mensaje" id='sendAdminChat'>
 
     </div>
 
@@ -414,9 +414,9 @@ if (isset($sessions)) {
 
                     <div class="col-md-12 input-group">
                         <span class="input-group-addon" style="padding: 5px 6px"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png" id="questions_emjis_section_show" title="Check to Show Emoji" data-questions_emjis_section_show_status="0" style="width: 20px; height: 20px;" alt=""/></span>
-                        <input type="text" id="questions" class="form-control" placeholder="Enter Question" value="">
+                        <input type="text" id="questions" class="form-control" placeholder="Introducir Pregunta" value="">
                     </div>
-                    <a class="button color btn" style="margin: 0px; padding: 15px 7px;" id="ask_questions_send"><span>Send</span></a>
+                    <a class="button color btn" style="margin: 0px; padding: 15px 7px;" id="ask_questions_send"><span>Enviar</span></a>
                 </div>
                 <div style="text-align: left; padding-left: 10px; display: flex;" id="questions_emojis_section">
                     <img src="<?= base_url() ?>front_assets/images/emoji/happy.png" title="Happy" id="questions_happy" data-title_name="&#128578;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
