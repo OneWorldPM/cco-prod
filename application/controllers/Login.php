@@ -224,11 +224,11 @@ class Login extends CI_Controller {
         $last_unauthorized = $this->db->get();
 
         if ($last_unauthorized->num_rows() > 0) {
-            $cust_id = $last_unauthorized->result()[0]->cust_id;
+            $cust_id = ($last_unauthorized->result()[0]->cust_id)+1;
             $email = "unauthorized_user_{$cust_id}@yourconference.live";
             $set = array(
-                'first_name' => 'Unauthorized',
-                'last_name' => 'Unauthorized',
+                'first_name' => "Learner_{$cust_id}",
+                'last_name' => "Learner_{$cust_id}",
                 'email' => $email,
                 'country' => 'Unknown',
                 'password' => base64_encode('unauthorized123#'),
@@ -237,10 +237,11 @@ class Login extends CI_Controller {
             );
             $this->db->insert("customer_master", $set);
         } else {
-            $email = 'unauthorized_user_0@yourconference.live';
+            $cust_id = 0;
+            $email = "unauthorized_user_{$cust_id}@yourconference.live";
             $set = array(
-                'first_name' => 'Unauthorized',
-                'last_name' => 'Unauthorized',
+                'first_name' => "Learner_{$cust_id}",
+                'last_name' => "Learner_{$cust_id}",
                 'email' => $email,
                 'country' => 'Unknown',
                 'password' => base64_encode('unauthorized123#'),
@@ -255,8 +256,8 @@ class Login extends CI_Controller {
         $token = $this->objlogin->update_user_token($cust_id);
         $session = array(
             'cid' => $cust_id,
-            'cname' => 'Unauthorized',
-            'fullname' => 'Unauthorized Unauthorized',
+            'cname' => "Learner_{$cust_id}",
+            'fullname' => "Learner_{$cust_id}",
             'email' => $email,
             'token' => $token,
             'userType' => 'user'
