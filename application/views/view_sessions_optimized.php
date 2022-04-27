@@ -42,7 +42,7 @@
                                             <div class="col-sm-12">
                                                 <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
                                                     <div class=""  style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
-                                                        TIME LEFT : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
+                                                        TIEMPO RESTANTE : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
                                                     </div>
                                                 </div>
                                                 <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 15px;">
@@ -459,5 +459,5 @@ if (isset($sessions)) {
 <script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users.js?v=2"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=22"></script>
+<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=23"></script>
 <script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=203"></script>
