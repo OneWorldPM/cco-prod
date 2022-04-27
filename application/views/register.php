@@ -93,26 +93,26 @@
                     <div class="col-md-6 col-md-offset-3 background-white" style="border-radius: 10px; padding: 30px 80px 20px 80px;">
                         <div class="row">
                             <div class="col-md-12">
-                                <h5 style="padding-bottom: 3px; border-bottom: 2px solid #ebebeb">Create User</h5>
+                                <h5 style="padding-bottom: 3px; border-bottom: 2px solid #ebebeb">Crear Usuario</h5>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <input type="text" value="" placeholder="First Name" name="first_name" id="first_name" class="form-control">
+                                <input type="text" value="" placeholder="Nombre" name="first_name" id="first_name" class="form-control">
                                 <span id="errorfirst_name" style="color:red"></span>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="text" value="" placeholder="Last Name" name="last_name" id="last_name" class="form-control">
+                                <input type="text" value="" placeholder="Apellidos" name="last_name" id="last_name" class="form-control">
                                 <span id="errorlast_name" style="color:red"></span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <input type="email" value="" placeholder="Email" name="email" id="email" class="form-control">
+                                <input type="email" value="" placeholder="Correo electrónico" name="email" id="email" class="form-control">
                                 <span id="erroremail" style="color:red"></span>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="email" value="" placeholder="Confirm Email" name="confirm_email" id="confirm_email" class="form-control">
+                                <input type="email" value="" placeholder="Confirmar correo electrónico" name="confirm_email" id="confirm_email" class="form-control">
                                 <span id="errorconfirm_email" style="color:red"></span>
                             </div>
                         </div>
@@ -368,24 +368,24 @@
                                 </select>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="password" value="" id="password" name="password" placeholder="Password" class="form-control input-lg">
+                                <input type="password" value="" id="password" name="password" placeholder="Contraseña" class="form-control input-lg">
                                 <span id="errorpassword" style="color:red"></span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div id="message">
-                                    <h6 style="padding-bottom: 3px; border-bottom: 2px solid #ebebeb">Password Strength:</h6>
-                                    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                                    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-                                    <p id="number" class="invalid">A <b>number</b></p>
-                                    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                                    <h6 style="padding-bottom: 3px; border-bottom: 2px solid #ebebeb">Solidez de la contraseña:</h6>
+                                    <p id="letter" class="invalid">Una letra minúscula</p>
+                                    <p id="capital" class="invalid">Una letra mayúscula</p>
+                                    <p id="number" class="invalid">Un número</b></p>
+                                    <p id="length" class="invalid">Mínimo de 8 caractéres</b></p>
                                 </div>
                             </div>
                         </div>
                         <div class="row p-t-10">
                             <div class="col-md-6 form-group">
-                                <input type="password" value="" id="confirm_password" name="confirm_password" placeholder="Confirm Password" class="form-control input-lg">
+                                <input type="password" value="" id="confirm_password" name="confirm_password" placeholder="Confirmar contraseña" class="form-control input-lg">
                                 <span id="errorconfirm_password" style="color:red"></span>
                             </div>
                         </div>
@@ -398,8 +398,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
-                                <button class="btn btn-primary" id="btn_register" type="submit">Submit</button>
-                                <button type="button" class="btn btn-danger m-l-10">Cancel</button>
+                                <button class="btn btn-primary" id="btn_register" type="submit">Enviar</button>
+                                <button type="button" class="btn btn-danger m-l-10">Cancelar</button>
                             </div>
                         </div>
                     </div>
@@ -439,16 +439,16 @@ switch ($msg) {
 
             if ($("#first_name").val().trim() == "")
             {
-                $("#errorfirst_name").text("Please Enter First Name").fadeIn('slow').fadeOut(5000);
+                $("#errorfirst_name").text("Introduzca su nombre.").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if ($("#last_name").val().trim() == "") {
-                $("#errorlast_name").text("Please Enter Last Name").fadeIn('slow').fadeOut(5000);
+                $("#errorlast_name").text("Introduzca sus apellidos.").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if ($("#email").val().trim() == "") {
-                $("#erroremail").text("Please Enter Email").fadeIn('slow').fadeOut(5000);
+                $("#erroremail").text("Introduzca su correo electrónico.").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if (!validateEmail($("#email").val().trim())) {
-                $("#erroremail").text("Enter Valid Email Id..").fadeIn('slow').fadeOut(5000);
+                $("#erroremail").text("Introduzca su contraseña.").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if ($("#confirm_email").val() == "") {
                 $("#errorconfirm_email").text("Please Enter Confirm Email").fadeIn('slow').fadeOut(5000);
@@ -457,28 +457,28 @@ switch ($msg) {
                 $("#errorconfirm_email").text("Email and Confirm Email Doesn't Match").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if ($("#password").val() == "") {
-                $("#errorpassword").text("Please Enter Password").fadeIn('slow').fadeOut(5000);
+                $("#errorpassword").text("Introduzca su contraseña.").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if (!lowerCaseLetters.test(pwd)) {
-                $("#errorpassword").text("Enter Lowercase Letter").fadeIn('slow').fadeOut(5000);
+                $("#errorpassword").text("Introduzca la letra minúscula.").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if (!upperCaseLetters.test(pwd)) {
-                $("#errorpassword").text("Enter Uppercase Letter").fadeIn('slow').fadeOut(5000);
+                $("#errorpassword").text("Introduzca la letra mayúscula.").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if (!numbers.test(pwd)) {
-                $("#errorpassword").text("Enter Numbers").fadeIn('slow').fadeOut(5000);
+                $("#errorpassword").text("Introduzca un número.").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if ($('#password').val().length < 8) {
-                $("#errorpassword").text("Minimum 8 Characters").fadeIn('slow').fadeOut(5000);
+                $("#errorpassword").text("Introduzca un mínimo de 8 caractéres.").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if ($("#confirm_password").val() == "") {
                 $("#errorconfirm_password").text("Please Enter Confirm Password").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if ($("#password").val() != $("#confirm_password").val()) {
-                $("#errorconfirm_password").text("Password and Confirm Passwords Doesn't Match").fadeIn('slow').fadeOut(5000);
+                $("#errorconfirm_password").text("La contraseña y la confirmación de la contraseña no coinciden.").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if (response.length == 0) {
-                $("#errorcaptcha").text("Please check captcha").fadeIn('slow').fadeOut(5000);
+                $("#errorcaptcha").text("Por favor verifique el texto de Captcha.").fadeIn('slow').fadeOut(5000);
                 return false;
             } else {
                 return true; //submit form
