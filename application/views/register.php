@@ -398,8 +398,10 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
+
                                 <button class="btn btn-primary" id="btn_register" type="submit">Enviar</button>
                                 <button type="button" class="btn btn-danger m-l-10">Cancelar</button>
+
                             </div>
                         </div>
                     </div>
@@ -481,6 +483,7 @@ switch ($msg) {
                 $("#errorcaptcha").text("Por favor verifique el texto de Captcha.").fadeIn('slow').fadeOut(5000);
                 return false;
             } else {
+                $('#submit-btn-loader').show();
                 return true; //submit form
             }
             return false; //Prevent form to submitting

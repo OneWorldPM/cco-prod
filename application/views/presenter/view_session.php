@@ -220,8 +220,8 @@ else{
     var session_id = "<?=$sessions->sessions_id?>";
     var sessionId = "<?=$sessions->sessions_id?>";
     var cp_name = "<?= $c_name ?>";
-    var session_start_datetime = "<?= date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-4' ?>";
-    var session_end_datetime = "<?=date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-4' ?>";
+    var session_start_datetime = "<?= date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-5' ?>";
+    var session_end_datetime = "<?=date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-5' ?>";
     var cp_id = "<?= $this->session->userdata('pid')?>";
 </script>
 <script>
