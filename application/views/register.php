@@ -398,7 +398,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
-                                <button class="btn btn-primary" id="btn_register" type="submit">Submit</button>
+                                <button class="btn btn-primary" id="btn_register" type="submit">Submit <i id="submit-btn-loader" class="fas fa-circle-notch fa-spin" style="display: none;"></i></button>
                                 <button type="button" class="btn btn-danger m-l-10">Cancel</button>
                             </div>
                         </div>
@@ -481,6 +481,7 @@ switch ($msg) {
                 $("#errorcaptcha").text("Please check captcha").fadeIn('slow').fadeOut(5000);
                 return false;
             } else {
+                $('#submit-btn-loader').show();
                 return true; //submit form
             }
             return false; //Prevent form to submitting

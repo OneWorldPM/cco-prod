@@ -211,6 +211,8 @@ class Login extends CI_Controller {
 
     public function unauthorizedUser($session_id, $token)
     {
+        redirect('register');
+
         if ($token != 'Q0NPVW5hdXRob3JpemVkVXNlclRva2Vu')
         {
             redirect('login');
