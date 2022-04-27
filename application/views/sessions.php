@@ -1,4 +1,4 @@
-<?php ini_set('default_charset', 'windows-1252');?>
+
 <style>
     .post-info {
         margin-bottom: 0px; 
@@ -78,7 +78,7 @@
                                         <?php } else { ?>
                                             <div class="col-lg box-home text-center">
                                             <?php } ?>
-                                            <label style="margin-bottom: 20px; margin-top: 20px;   font-size: 30px; font-weight: 700;"><?= ucwords( strftime("%A", strtotime($val->daydate))) ?></label><br>
+                                                <label style="margin-bottom: 20px; margin-top: 20px;   font-size: 30px; font-weight: 700;"><?= mb_convert_encoding(ucwords( strftime("%A", strtotime($val->daydate))),'Windows-1252') ?></label><br>
                                             <label><?= (strftime(" %d de %B de %Y", strtotime($val->sessions_date))); ?></label>
                                         </div>
                                 </a>
