@@ -358,7 +358,7 @@ else
                                         $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                                         ?>
 
-                                        <button class="live-support-open-button nav navbar-nav navbar-right" onclick="openLiveSupportChat()" style="background-color: #<?=$themeColour?>; display: <?=(liveSupportChatStatus())?'block':'none'?>;"><i class="far fa-life-ring"></i> LivAsistencia Técnica en Vivo</button>
+                                        <button class="live-support-open-button nav navbar-nav navbar-right" onclick="openLiveSupportChat()" style="background-color: #<?=$themeColour?>; display: <?=(liveSupportChatStatus())?'block':'none'?>;"><i class="far fa-life-ring"></i> Asistencia técnica en vivo</button>
 
                                         <ul class="main-menu nav navbar-nav navbar-right">
                                             <?php if (1 == 2) { ?>
