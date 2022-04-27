@@ -195,26 +195,26 @@
             return (n < 10 ? "0" + n : n);
         }
         if (pad(days) > 1) {
-            var days_lable = "days";
+            var days_lable = "dias";
         } else {
-            var days_lable = "day";
+            var days_lable = "dia";
         }
 
         if (pad(hours) > 1) {
-            var hours_lable = "hours";
+            var hours_lable = "horas";
         } else {
-            var hours_lable = "hour";
+            var hours_lable = "hora";
         }
 
         if (pad(minutes) > 1) {
-            var minutes_lable = "minutes";
+            var minutes_lable = "minutos";
         } else {
-            var minutes_lable = "minute";
+            var minutes_lable = "minuto";
         }
         if (pad(remainingSeconds) > 1) {
-            var remainingSeconds_lable = "seconds";
+            var remainingSeconds_lable = "segundos";
         } else {
-            var remainingSeconds_lable = "second";
+            var remainingSeconds_lable = "segundo";
         }
         document.getElementById('id_day_time').innerHTML = pad(days) + " " + days_lable + ", " + pad(hours) + " " + hours_lable + ", " + pad(minutes) + " " + minutes_lable + ", " + pad(remainingSeconds) + " " + remainingSeconds_lable;
         if (seconds <= 0) {
