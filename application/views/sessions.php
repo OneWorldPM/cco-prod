@@ -1,3 +1,4 @@
+<?php ini_set('default_charset', 'windows-1252');?>
 <style>
     .post-info {
         margin-bottom: 0px; 
@@ -60,6 +61,7 @@
             <div class="row">
                 <div class="col-md-12 m-t-50" style="text-align: -webkit-center;">
                     <?php
+                    setlocale(LC_ALL, "es_ES");
                     if (isset($all_sessions_week) && !empty($all_sessions_week)) {
                         foreach ($all_sessions_week as $val) {
                             ?>
@@ -76,8 +78,8 @@
                                         <?php } else { ?>
                                             <div class="col-lg box-home text-center">
                                             <?php } ?>
-                                            <label style="margin-bottom: 20px; margin-top: 20px;   font-size: 30px; font-weight: 700;"><?= $val->dayname ?></label><br>
-                                            <label><?= date('M-d-Y', strtotime($val->sessions_date)); ?></label>
+                                            <label style="margin-bottom: 20px; margin-top: 20px;   font-size: 30px; font-weight: 700;"><?= ucwords( strftime("%A", strtotime($val->daydate))) ?></label><br>
+                                            <label><?= (strftime(" %d de %B de %Y", strtotime($val->sessions_date))); ?></label>
                                         </div>
                                 </a>
                             </div>
