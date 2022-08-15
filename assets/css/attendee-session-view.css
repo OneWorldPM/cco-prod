@@ -14,3 +14,17 @@
 #modal{
     margin-top: 150px;
 }
+
+/* Large */
+@media (min-width: 64em) {
+    .view-session-user-modal .modal-lg{
+        width: 90vw;
+    }
+}
+
+/* X-Large */
+@media (min-width: 80em) {
+    .view-session-user-modal .modal-lg{
+        width: 90vw;
+    }
+}

@@ -1,4 +1,4 @@
-<link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=201" rel="stylesheet">
+<link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=202" rel="stylesheet">
 
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
 <link href="<?= base_url() ?>front_assets/css/view_sessions.css?v=19" rel="stylesheet">
@@ -25,9 +25,9 @@
                             <span id="btnFS" class="glyphicon glyphicon-resize-full" data-toggle="tooltip" title="Full Screen"></span>
                         </div>
                         </div>
-                        <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
-                            <div class="modal-dialog">
-                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
+                        <div class="modal fade view-session-user-modal" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; font-size: 2rem;">
                                     <div class="modal-header" style="height: 0">
                                         <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
