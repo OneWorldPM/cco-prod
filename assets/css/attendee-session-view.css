@@ -14,11 +14,19 @@
 #modal{
     margin-top: 150px;
 }
+.view-session-user-modal .modal-lg {
+    font-size: 2rem;
+}
 
 /* Large */
 @media (min-width: 64em) {
     .view-session-user-modal .modal-lg{
         width: 90vw;
+        font-size: 3rem;
+    }
+    .view-session-user-modal .modal-content{
+        width: 90vw;
+        font-size: 3rem;
     }
 }
 
@@ -26,5 +34,10 @@
 @media (min-width: 80em) {
     .view-session-user-modal .modal-lg{
         width: 90vw;
+        font-size: 3rem;
+    }
+    .view-session-user-modal .modal-content{
+        width: 90vw;
+        font-size: 3rem;
     }
 }

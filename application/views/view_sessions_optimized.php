@@ -27,7 +27,7 @@
                         </div>
                         <div class="modal fade view-session-user-modal" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
                             <div class="modal-dialog modal-lg">
-                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; font-size: 2rem;">
+                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
                                     <div class="modal-header" style="height: 0">
                                         <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
