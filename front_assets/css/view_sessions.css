@@ -4,9 +4,12 @@
 
 .progress-bar {
     height: 100%;
-    padding: 3px;
+    padding: 0;
     color: #fff;
     background: rgb(3, 90, 118);
+    font-size: 1.5rem;
+    /*padding-top: .2rem;*/
+    line-height:2rem !important;
 }
 
 .assesment-bar {
@@ -15,11 +18,11 @@
 
 .progress-bar_1 {
     height: 100%;
-    padding: 3px;
+    /*padding: 3px;*/
     background: rgba(0, 0, 0, 0.15);
     box-shadow: none;
     color: #000;
-    padding-top: 0px;
+    /*padding-top: .2rem;*/
 }
 
 .presurvey-bar{
@@ -30,22 +33,22 @@
 
 .progress_bar_new {
     height: 100%;
-    padding: 3px;
+    /*padding: 3px;*/
     background: #45c0ea;
     box-shadow: none;
     text-align: center;
     color: #fff;
-    padding-top: 0px;
+    /*padding-top: .2rem;*/
 }
 
 .progress_bar_new_1 {
     height: 100%;
-    padding: 3px;
+    /*padding: 3px;*/
     background: #035a76;
     box-shadow: none;
     text-align: center;
     color: #fff;
-    padding-top: 0px;
+    /*padding-top: 3px;*/
 }
 
 .option_section_css {
@@ -69,7 +72,7 @@
 }
 
 .progress {
-    height: 23px;
+    height: 2rem;
     margin-bottom: unset;
     overflow: hidden;
     background-color: unset;
@@ -79,7 +82,7 @@
 }
 
 .progress_1 {
-    height: 23px;
+    height: 2rem;
     margin-bottom: 0px;
     overflow: hidden;
 }
@@ -379,5 +382,5 @@ body{
 }
 
 .zeroVotes{
-    width: 30px!important;
+    width: 2.5rem!important;
 }
