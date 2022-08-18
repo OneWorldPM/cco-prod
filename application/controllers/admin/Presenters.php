@@ -31,6 +31,9 @@ class Presenters extends CI_Controller {
         if (!empty($post)) {
             $res = $this->mpresenters->add_presenters($post);
             if ($res) {
+                if($res == 'presenter_exist')
+                    header('Location: ' . base_url() . 'admin/presenters?msg=Exist');
+                else
                 header('Location: ' . base_url() . 'admin/presenters/index/'.$post['presenter_id']);
             } else {
                 header('Location: ' . base_url() . 'admin/presenters?msg=E');
