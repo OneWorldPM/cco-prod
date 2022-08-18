@@ -193,6 +193,10 @@ switch ($msg) {
         $m = "Something went wrong, Please try again!!!";
         $t = "error";
         break;
+    case "Exist":
+        $m = "Presenter is already added";
+        $t = "warning";
+        break;
     default:
         $m = 0;
         break;

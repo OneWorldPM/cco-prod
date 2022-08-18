@@ -23,7 +23,7 @@ class M_presenters extends CI_Model {
             $this->db->where($or_where);
             $presenter = $this->db->get('presenter');
             if ($presenter->num_rows() > 0) {
-                return '';
+                return 'presenter_exist';
             } else {
                 $data = array(
                     'first_name' => $post['first_name'],
