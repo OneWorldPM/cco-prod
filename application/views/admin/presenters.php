@@ -194,8 +194,8 @@ switch ($msg) {
         $t = "error";
         break;
     case "Exist":
-        $m = "Presenter is already added";
-        $t = "warning";
+        $m = "This presenter is already in the database";
+        $t = "error";
         break;
     default:
         $m = 0;
