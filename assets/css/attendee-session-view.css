@@ -15,34 +15,38 @@
     margin-top: 150px;
 }
 .view-session-user-modal .modal-lg {
-    font-size: 1.5rem;
+
 }
 .view-session-user-modal-body #poll_vot_section{
-    font-size: 1.5rem;
+
+}
+
+h5{
+    font-size: unset;
 }
 
 #popup_title_lbl{
     margin-bottom: 20px;
     color: #000;
     font-weight: 800;
-    font-size: 1.2rem;
+    /*font-size: 1.2rem;*/
     padding: 15px 5px 25px 10px;
     background-color: #ebeaea;
 }
 
 #result_section{
-    line-height: 2rem !important;
+    /*line-height: 2rem !important;*/
 }
 
 /* Large */
 @media (min-width: 64em) {
     .view-session-user-modal .modal-lg{
         width: 90vw;
-        font-size: 1.5rem;
+
     }
     .view-session-user-modal .modal-content{
         width: 90vw;
-        font-size: 1.5rem;
+
     }
 }
 
@@ -50,11 +54,11 @@
 @media (min-width: 80em) {
     .view-session-user-modal .modal-lg{
         width: 90vw;
-        font-size: 1.5rem;
+
     }
     .view-session-user-modal .modal-content{
         width: 90vw;
-        font-size: 1.5rem;
+
     }
 }
 

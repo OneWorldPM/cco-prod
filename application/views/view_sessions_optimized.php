@@ -27,8 +27,8 @@
                         </div>
                         <div class="modal fade view-session-user-modal" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
                             <div class="modal-dialog modal-lg">
-                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
-                                    <div class="modal-header" style="height: 0">
+                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; font-size: <?=$sessions->poll_font.' !important'?>">
+                                    <div class="modal-header" style="height: 0; font-size: <?=$sessions->poll_font.' !important'?>">
                                         <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -445,6 +445,8 @@ if (isset($sessions)) {
     var session_end_datetime =  new Date("<?= date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time ?>");
 
     var socket_session_name = "<?=getAppName('_admin-to-attendee-chat')?>";
+
+    var customFont = "<?=($sessions->poll_font)? $sessions->poll_font:'17px'?>"
 </script>
 <?= getSocketScript()?>
 <script src="<?= base_url() ?>front_assets/js/custom-fullscreen.js"></script>
