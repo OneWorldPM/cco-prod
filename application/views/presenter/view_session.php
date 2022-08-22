@@ -1,6 +1,6 @@
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
 
-<link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=15" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/presenter/view_session.css?v=16" rel="stylesheet">
 
 <?php
 if (isset($_GET['testing']) && $_GET['testing'] == 1) {
@@ -89,7 +89,7 @@ else{
         <div class="col-lg-3 col-md-4 rightSide">
 
             <div class="rightSticykPopup hostChat presenterRightSticykPopup" style="display: none">
-                <div class="header"><span>HOST CHAT</span>
+                <div class="header"><span>Conversacion de Alfitrion </span>
                     <div class="rightTool">
                         <i class="fa fa-minus" aria-hidden="true" data-right-id="1"></i>
                         <div class="dropdown">
@@ -126,7 +126,7 @@ else{
 
                         <div class="input-group">
                             <span class="input-group-addon"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png" id="emjis_section_show" title="Check to Show Emoji" data-emjis_section_show_status="0"/></span>
-                            <input type="text" placeholder="Message..." id="message" name="message" class="form-control">
+                            <input type="text" placeholder="Enviar Mensaje" id="message" name="message" class="form-control">
                             <span class="btn btn-primary input-group-addon" id="send" ><i class="fa fa-send"></i></span>
 
                         </div>
@@ -190,7 +190,7 @@ else{
                 </div>
             </div>
             <div class="modal-footer" style="text-align: center;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">HIDE</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Esconder</button>
             </div>
         </div>
     </div>
