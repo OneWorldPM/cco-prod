@@ -369,6 +369,13 @@ $user_role = $this->session->userdata('role');
                                                 <?php
                                             }
                                         ?>
+
+                                        <div class="input-group" style="margin-top:5px">
+                                            <span class="input-group-addon " style="background-color:unset; color:#1F1F1F; border:1px solid lightgrey;">Poll Font Size</span>
+                                            <input type="text" name="session_poll_font" class="form-control" aria-label="font size" value="<?=(isset($sessions_edit) && !empty($sessions_edit->poll_font))? $sessions_edit->poll_font : '17px' ?>">
+                                        </div>
+                                        <small style="color:red"> Font sizes example: 17px, 24px, 2rem, etc.</small>
+
                                         <hr style="border: 2px solid;">
                                     </div>
 				                    <div class="row">

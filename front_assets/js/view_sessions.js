@@ -600,7 +600,7 @@ function update_viewsessions_history_open()
                     dataType: "json",
                     success: function (data) {
                         if (data.status == "success") {
-                            $('#btn_vote_label').html('VOTED <i class="fa fa-check" id="fa_fa_check" style="font-size: 13px;"></i>');
+                            $('#btn_vote_label').html('VOTED <i class="fa fa-check" id="fa_fa_check" style=""></i>');
                             $('#fa_fa_check').show();
 
                         }
@@ -687,35 +687,35 @@ function get_poll_vot_section() {
 
 
                         $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 id='popup_title_lbl' style='margin-bottom: 20px; color: #000; font-weight: 800;font-size: 24px; padding: 15px 5px 25px 10px; background-color: #ebeaea;'>" + data.result.question + "</h2>\n\
+            \n\<h2 id='popup_title_lbl' style='margin-bottom: 20px; color: #000; font-weight: 800; padding: 15px 5px 25px 10px; background-color: #ebeaea; font-size:"+customFont+"'>" + data.result.question + "</h2>\n\
 <div class='col-md-12'>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
 <div class='col-md-12' id='option_section'></div>\n\
 \n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px;'></span>\n\
-<div style='padding-right: 20px;text-align: center;'><a class='button small color rounded' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; font-size: 16px;'><span id='btn_vote_label'>VOTE <i class='fa fa-check' id='fa_fa_check' style='font-size: 13px; display:none'></i></span></a></div>\n\
+<div style='padding-right: 20px;text-align: center;'><a class='button small color rounded' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; '><span id='btn_vote_label'>VOTE <i class='fa fa-check' id='fa_fa_check' style=' display:none'></i></span></a></div>\n\
 </form>");
                         if (data.result.exist_status == 1) {
                             $.each(data.result.option, function (key, val) {
                                 key++;
                                 if (data.result.select_option_id == val.poll_question_option_id) {
-                                    $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css_selected' style='line-height:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                                 } else {
-                                    $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                                 }
                             });
                         } else {
 
                             $.each(data.result.option, function (key, val) {
                                 key++;
-                                $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                             });
 
 
                         }
                         if (data.result.exist_status == 1) {
                             $(':radio:not(:checked)').attr('disabled', true);
-                            $('#btn_vote_label').html('VOTED <i class="fa fa-check" id="fa_fa_check" style="font-size: 13px;"></i>');
+                            $('#btn_vote_label').html('VOTED <i class="fa fa-check" id="fa_fa_check" style=""></i>');
 
                         }
                     } else {
@@ -726,8 +726,8 @@ function get_poll_vot_section() {
                         });
                         $('#modal').modal('show');
 
-                        $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 1rem; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Resultados de Encusta Envivo</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 1.5rem; border-bottom: 1px solid #b1b1b1; padding-bottom: 20px; line-height:2rem'>" + data.result.question + "</h5>\n\
-                                                        \n\<div id='result_section' style='padding-bottom: 10px;'></div></div></div></div>");
+                        $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='margin-bottom: 0px; color: #fff; font-weight: 700; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Resultados de Encusta Envivo</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; border-bottom: 1px solid #b1b1b1; padding-bottom: 20px; line-height:"+customFont+"'>" + data.result.question + "</h5>\n\
+                                                        \n\<div id='result_section' style='padding-bottom: 10px; line-height:"+customFont+"'></div></div></div></div>");
                         var total_vote = 0;
                         var total_vote_compere_option = 0;
                         $.each(data.result.option, function (key, val) {
@@ -763,14 +763,15 @@ function get_poll_vot_section() {
                                 if(parseInt(result_calculate_compere.toFixed(0)) <= 5)
                                 {
                                     var zeroVotes = "zeroVotes";
+
                                 }else{
                                     var zeroVotes = "";
                                 }
 
                                 if (data.result.compere_max_value == val.compere_option) {
-                                    $("#result_section").append("<label id='label_"+key+"'>"+pollIteration+". " + val.option + "</label><div class='progress_1'><div class='progress_bar_new_1 "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
+                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:"+customFont+" !important'>"+pollIteration+". " + val.option + "</label><div class='progress_1'><div class='progress_bar_new_1 "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style=' font-size:"+customFont+" !important, width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
                                 } else {
-                                    $("#result_section").append("<label id='label_"+key+"'>"+pollIteration+". " + val.option + "</label><div class='progress_1'><div class='progress-bar_1 presurvey-bar "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
+                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:"+customFont+" !important'>"+pollIteration+". " + val.option + "</label><div class='progress_1'><div class='progress-bar_1 presurvey-bar "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style=' font-size:"+customFont+" !important, width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
                                 }
                             }else{
                                 window.isComparisonpoll = false;
@@ -788,19 +789,19 @@ function get_poll_vot_section() {
                                 if(!window.isComparisonpoll)
                                 {
                                     $('.progress_bar_new').css('background', '#45c0ea');
-                                    $("#result_section").append("<label id='label_"+key+"'>"+pollIteration+". " + val.option + "</label>");
+                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:"+customFont+" !important'>"+pollIteration+". " + val.option + "</label>");
 
                                 }
 
-                                $("#result_section").append("<div class='progress' style='margin-bottom: 10px;'><div class='progress_bar_new "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
+                                $("#result_section").append("<div class='progress' style='margin-bottom: 10px; height:"+customFont+" !important'><div class='progress_bar_new "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size:"+customFont+" !important,width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
                             } else {
                                 if(!window.isComparisonpoll)
                                 {
                                     $('.progress_bar_new').css('background', '#45c0ea');
-                                    $("#result_section").append("<label id='label_"+key+"'>"+pollIteration+". " + val.option + "</label>");
+                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:"+customFont+" !important'>"+pollIteration+". " + val.option + "</label>");
                                 }
 
-                                $("#result_section").append("<div class='progress' style='margin-bottom: 10px;'><div class='progress-bar assesment-bar "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
+                                $("#result_section").append("<div class='progress' style='margin-bottom: 10px; height:"+customFont+" !important'><div class='progress-bar assesment-bar "+zeroVotes+"'  role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size: "+customFont+" !important, width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
                             }
 
                             pollIteration++;
@@ -848,22 +849,22 @@ function get_poll_vot_section() {
                     success: function (data) {
                         if (data.status == "success") {
                             $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Live Poll</h2>\n\
+            \n\<h2 style='margin-bottom: 0px; color: #fff; font-weight: 700; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Live Poll</h2>\n\
 <div class='col-md-12'>\n\
-\n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5></div>\n\
+\n\<h5 style='letter-spacing: 0px; padding-top: 10px;  border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5></div>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
 <div class='col-md-12' id='option_section'></div>\n\
 \n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px;'></span>\n\
-<div style='text-align: center;'><p style='color:red; font-weight: 700;'>Poll Now Closed</p></div><div style='padding-right: 20px;text-align: right;'><a class='button small color rounded icon-left' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; font-size: 16px;'><span>VOTE <i class='fa fa-check' id='fa_fa_check_close_poll' style='display:none'></i></span></a></div>\n\
+<div style='text-align: center;'><p style='color:red; font-weight: 700;'>Poll Now Closed</p></div><div style='padding-right: 20px;text-align: right;'><a class='button small color rounded icon-left' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; '><span>VOTE <i class='fa fa-check' id='fa_fa_check_close_poll' style='display:none'></i></span></a></div>\n\
 </form>");
 
                             $.each(data.result.option, function (key, val) {
                                 key++;
                                 if (data.result.select_option_id == val.poll_question_option_id) {
-                                    $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css_selected' style='line-height:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                 } else {
-                                    $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                 }
                             });
 

@@ -310,6 +310,10 @@ switch ($msg) {
         $m = "Something went wrong, Please try again!!!";
         $t = "error";
         break;
+    case "U":
+        $m = "Session Updated";
+        $t = "success";
+        break;
     default:
         $m = 0;
         break;

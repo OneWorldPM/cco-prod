@@ -336,7 +336,8 @@ class M_sessions extends CI_Model {
             'session_end_message'=>$post['session_end_message'],
             'end_image_height'=>$post['end_image_height'],
             'end_image_width'=>$post['end_image_width'],
-            
+            'poll_font'=>(isset($post['session_poll_font']) && $post['session_poll_font'] !== '') ? $post['session_poll_font'] : '17px',
+
         );
         $this->db->insert("sessions", $set);
         $sessions_id = $this->db->insert_id();
@@ -552,7 +553,7 @@ class M_sessions extends CI_Model {
             'session_end_message'=>$post['session_end_message'],
             'end_image_height'=>$post['end_image_height'],
             'end_image_width'=>$post['end_image_width'],
-
+            'poll_font'=>(isset($post['session_poll_font']) && $post['session_poll_font'] !== '') ? $post['session_poll_font'] : '17px',
         );
         $this->db->update("sessions", $set, array("sessions_id" => $post['sessions_id']));
         $sessions_id = $post['sessions_id'];
