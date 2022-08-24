@@ -448,6 +448,7 @@ if (isset($sessions)) {
 
     var customFont = "<?=($sessions->poll_font)? $sessions->poll_font:'17px'?>"
     var customFont2 = "<?=($sessions->poll_font)? $sessions->poll_font:'17px'?>"
+    var custPollModalWidth = "<?=($sessions->poll_modal_width)? $sessions->poll_modal_width:''?>"
 </script>
 <?= getSocketScript()?>
 <script src="<?= base_url() ?>front_assets/js/custom-fullscreen.js"></script>
