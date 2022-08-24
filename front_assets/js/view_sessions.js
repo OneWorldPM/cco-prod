@@ -1120,6 +1120,7 @@ $(function(){
         console.log(screen.width)
         customFont = "1rem";
         $('.modal-content').css('font-size', '17px');
+        $('.view-session-user-modal .modal-dialog').css('width','90%');
     }else
         customFont = customFont2;
 
