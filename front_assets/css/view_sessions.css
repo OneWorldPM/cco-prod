@@ -72,7 +72,7 @@
 }
 
 .progress {
-    height: 2rem;
+    /*height: 2rem;*/
     margin-bottom: unset;
     overflow: hidden;
     background-color: unset;
@@ -82,7 +82,7 @@
 }
 
 .progress_1 {
-    height: 2rem;
+    /*height: 2rem;*/
     margin-bottom: 0px;
     overflow: hidden;
 }
