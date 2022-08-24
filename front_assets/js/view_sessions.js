@@ -1113,3 +1113,21 @@ function calcTime(offset) {
 
     return nd;
 }
+
+
+if(screen.width < 800){
+    console.log(screen.width)
+    customFont = "1rem";
+    $('.modal-content').css('font-size', '17px');
+}
+
+$( window ).resize(function() {
+    if(screen.width < 800){
+        console.log(screen.width)
+        customFont = "1rem";
+        $('.modal-content').css('font-size', '17px');
+    }else{
+        customFont = customFont2;
+        $('.modal-content').css('font-size', customFont2);
+    }
+});
