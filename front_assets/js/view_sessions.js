@@ -1119,15 +1119,19 @@ if(screen.width < 800){
     console.log(screen.width)
     customFont = "1rem";
     $('.modal-content').css('font-size', '17px');
-}
+}else
+    customFont = customFont2;
 
 $( window ).resize(function() {
     if(screen.width < 800){
         console.log(screen.width)
         customFont = "1rem";
         $('.modal-content').css('font-size', '17px');
+
+        $('.view-session-user-modal .modal-dialog').css('width','90%');
     }else{
         customFont = customFont2;
         $('.modal-content').css('font-size', customFont2);
+        $('.view-session-user-modal .modal-dialog').css('width', custPollModalWidth);
     }
 });
