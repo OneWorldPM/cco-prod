@@ -1,7 +1,7 @@
-<link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=202" rel="stylesheet">
+<link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=203" rel="stylesheet">
 
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
-<link href="<?= base_url() ?>front_assets/css/view_sessions.css?v=19" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/css/view_sessions.css?v=20" rel="stylesheet">
 
 
 <section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/pres_bg.jpg') no-repeat;">
@@ -463,5 +463,5 @@ if (isset($sessions)) {
 <script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users.js?v=2"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=23"></script>
+<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=24"></script>
 <script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=203"></script>
