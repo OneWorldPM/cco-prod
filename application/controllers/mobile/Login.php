@@ -47,7 +47,7 @@ class Login extends CI_Controller {
                     'email' => $data['email'],
                     'token' => $token,
                     'userType' => 'user',
-                    'isMobileUser' => $data['isMobileUser'],
+//                    'isMobileUser' => $data['isMobileUser'],
                 );
                 $this->session->set_userdata($session);
                 redirect('mobile/sessions/view/'.$sess_id);

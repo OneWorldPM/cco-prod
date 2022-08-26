@@ -29,9 +29,9 @@ class Sessions extends CI_Controller {
         if ($login_type != 'user') {
             redirect('mobile/register');
         }
-        if ($mobileUser != 1) {
-            redirect('mobile/register');
-        }
+//        if ($mobileUser != 1) {
+//            redirect('mobile/register');
+//        }
         if ($this->session->userdata('cid') != "100028") {
             $get_user_token_details = $this->common->get_user_details($this->session->userdata('cid'));
             if ($this->session->userdata('token') != $get_user_token_details->token) {
