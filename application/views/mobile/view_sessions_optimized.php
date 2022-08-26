@@ -23,12 +23,13 @@
                                             <?php if(isset($sess_data) && !empty($sess_data)): ?>
 
                                                 <b><p class="mx-3" id="sessionTitle" style="font-size: 25px; line-height: 1.2"><?=$sess_data[0]->session_title?></b>
-
-                                                <?php foreach ($sess_data[0]->presenter as $presenter):?>
-                                                    <p id="moderators" style="font-size: 18px; line-height: 0.3">
-                                                        <?=$presenter->first_name.' '.$presenter->last_name.', '.$presenter->degree?>
-                                                    </p>
-                                                <?php endforeach;?>
+                                                <?php if(isset ($sess_data[0]->presenter) && !empty($sess_data[0]->presenter)): ?>
+                                                    <?php foreach ($sess_data[0]->presenter as $presenter):?>
+                                                        <p id="moderators" style="font-size: 18px; line-height: 0.3">
+                                                            <?=$presenter->first_name.' '.$presenter->last_name.', '.$presenter->degree?>
+                                                        </p>
+                                                    <?php endforeach;?>
+                                                <?php endif ?>
                                             <?php endif; ?>
 
                                         </div>
