@@ -186,7 +186,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                When polls are launched, they appear simultaneously and automatically in both the onsite and mobile app.
+                When polls are launched, they appear simultaneously and automatically in both the onsite room screen as well as in the mobile app.
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

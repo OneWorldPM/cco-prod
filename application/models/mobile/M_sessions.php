@@ -53,4 +53,17 @@ class M_sessions extends CI_Model {
             return '';
         }
     }
+
+    function checkSessionWithPoll($session_id){
+        $result = $this->db->select('*')
+            ->from('sessions_poll_question')
+            ->where('sessions_id', $session_id)
+            ->get();
+
+        if($result->num_rows()>0){
+            return $result->result();
+        }else{
+            return '';
+        }
+    }
 }
