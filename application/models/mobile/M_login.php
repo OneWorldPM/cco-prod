@@ -11,7 +11,7 @@ class M_login extends CI_Model {
         $this->db->from('customer_master');
         $this->db->where("(email = '$username' OR username = '$username')");
         $this->db->where("password", $password);
-        $this->db->where("isMobileUser", 1);
+//        $this->db->where("isMobileUser", 1);
         $result = $this->db->get();
         if ($result->num_rows() > 0) {
             return $result->row_array();
