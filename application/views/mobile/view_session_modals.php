@@ -175,7 +175,25 @@
     </div>
 </div>
 
-
+<!-- Modal Poll Guide -->
+<div class="modal fade" id="pollGuideModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Polling Guide</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                When polls are launched, they appear simultaneously and automatically in both the onsite and mobile app.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Live Support Chat -->
 <script>
     var base_url = "<?=base_url()?>";
