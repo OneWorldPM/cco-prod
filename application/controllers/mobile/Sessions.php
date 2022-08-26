@@ -74,6 +74,9 @@ class Sessions extends CI_Controller {
 
             $data['isMobile'] = $this->MobileDetect->isMobile();
             $data["url_link"] = $sesions->url_link;
+
+            $data['isSessionWithPoll'] = $this->mobileSession->checkSessionWithPoll($sessions_id);
+
             $this->load->view('mobile/templates/header',$header_data);
             $this->load->view('mobile/view_sessions_optimized', $data);
             $this->load->view('mobile/view_session_modals', $data);
