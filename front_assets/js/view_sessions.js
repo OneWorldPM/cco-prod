@@ -699,16 +699,16 @@ function get_poll_vot_section() {
                             $.each(data.result.option, function (key, val) {
                                 key++;
                                 if (data.result.select_option_id == val.poll_question_option_id) {
-                                    $("#option_section").append("<div class='option_section_css_selected' style='line-height:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css_selected' style='line-height:"+customFont+";'><input style='min-height:"+customFont+"; min-width:"+customFont+"; vertical-align: middle;' name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                                 } else {
-                                    $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+";'><input name='option' style='min-height:"+customFont+"; min-width:"+customFont+"; vertical-align: middle;' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                                 }
                             });
                         } else {
 
                             $.each(data.result.option, function (key, val) {
                                 key++;
-                                $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+"'><input name='option' style='min-height:"+customFont+"; min-width:"+customFont+";vertical-align: middle;' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                             });
 
 
