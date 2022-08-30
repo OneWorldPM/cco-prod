@@ -699,16 +699,16 @@ function get_poll_vot_section() {
                             $.each(data.result.option, function (key, val) {
                                 key++;
                                 if (data.result.select_option_id == val.poll_question_option_id) {
-                                    $("#option_section").append("<div class='option_section_css_selected' style='line-height:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css_selected' style='line-height:"+customFont+";margin-bottom:"+customFont+"'><input style='min-height:"+customFont+"; min-width:"+customFont+"; vertical-align: middle;' name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                                 } else {
-                                    $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+";margin-bottom:"+customFont+"'><input name='option' style='min-height:"+customFont+"; min-width:"+customFont+"; vertical-align: middle;' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                                 }
                             });
                         } else {
 
                             $.each(data.result.option, function (key, val) {
                                 key++;
-                                $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+";margin-bottom:"+customFont+"'><input name='option' style='min-height:"+customFont+"; min-width:"+customFont+";vertical-align: middle;' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                             });
 
 
@@ -793,7 +793,7 @@ function get_poll_vot_section() {
 
                                 }
 
-                                $("#result_section").append("<div class='progress' style='margin-bottom: 10px; height:"+customFont+" !important'><div class='progress_bar_new "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size:"+customFont+" !important,width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
+                                $("#result_section").append("<div class='progress' style='margin-bottom: "+customFont+"; height:"+customFont+" !important'><div class='progress_bar_new "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size:"+customFont+" !important,width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
                             } else {
                                 if(!window.isComparisonpoll)
                                 {
@@ -801,7 +801,7 @@ function get_poll_vot_section() {
                                     $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:"+customFont+" !important'>"+pollIteration+". " + val.option + "</label>");
                                 }
 
-                                $("#result_section").append("<div class='progress' style='margin-bottom: 10px; height:"+customFont+" !important'><div class='progress-bar assesment-bar "+zeroVotes+"'  role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size: "+customFont+" !important, width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
+                                $("#result_section").append("<div class='progress' style='margin-bottom: "+customFont+"; height:"+customFont+" !important'><div class='progress-bar assesment-bar "+zeroVotes+"'  role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size: "+customFont+" !important, width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
                             }
 
                             pollIteration++;
@@ -862,9 +862,9 @@ function get_poll_vot_section() {
                             $.each(data.result.option, function (key, val) {
                                 key++;
                                 if (data.result.select_option_id == val.poll_question_option_id) {
-                                    $("#option_section").append("<div class='option_section_css_selected' style='line-height:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css_selected' style='line-height:"+customFont+"; margin-bottom:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                 } else {
-                                    $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+"; margin-bottom:"+customFont+"'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                 }
                             });
 
