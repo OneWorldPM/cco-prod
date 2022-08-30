@@ -55,7 +55,7 @@
                                     <?php }} ?>
 
                                     <?php if(isset($isSessionWithPoll) && !empty($isSessionWithPoll)) : ?>
-                                        <button id="polling-guide-btn" style="width: 95%; height: 70px; background-color: #EF5D21;font-size: 20px; font-weight: 700" class="btn btn-sm mt-3 text-white" >Polling Guide<i class="fa fa-book"></i></button>
+                                        <button id="polling-guide-btn" style="width: 95%; height: 70px; background-color: #EF5D21;font-size: 20px; font-weight: 700" class="btn btn-sm mt-3 text-white" >Polling Guide <i class="fa fa-book"></i></button>
                                     <?php endif ?>
 
                                     <button id="live_support-btn" onclick="openLiveSupportChat()" style="display: <?=(liveSupportChatStatus())?'block':'none'?>;width: 95%; height: 70px; margin-bottom: 30px; background-color: #EF5D21;font-size: 20px; font-weight: 700" class="btn btn-sm mt-3 text-white" >Live Technical Support <i class="far fa-life-ring"></i></button>
