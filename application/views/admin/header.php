@@ -407,7 +407,7 @@ $user_name = ucfirst($this->session->userdata('uname'));
                         <ul class="nav navbar-right">
                             <li class="dropdown current-user">
                                 <a href class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="<?= base_url() ?>assets/images/Avatar.png" alt="admin"> <span class="username"><?=$user_name?> <i class="ti-angle-down"></i></i></span>
+                                    <img src="<?= base_url() ?>assets/images/OW_logo.png" alt="admin"> <span class="username"><?=$user_name?> <i class="ti-angle-down"></i></i></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-dark">
                                     <li>
