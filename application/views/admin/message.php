@@ -34,7 +34,7 @@ if (isset($messages) && !empty($messages)) {
                     ?>  
                 <li class="messages-item">
 
-                    <img class="messages-item-avatar bordered border-primary" style="float:right; height: 40px; width: 40px;" alt="admin" src="<?= base_url() ?>assets/images/Avatar.png">
+                    <img class="messages-item-avatar bordered border-primary" style="float:right; height: 40px; width: 40px;" alt="admin" src="<?= base_url() ?>assets/images/OW_logo.png">
                     <span class="messages-item-from" style="text-transform: capitalize;text-align: right;padding-right: 50px;">Admin</span>
                     <div class="messages-item-time-left">
                         <span class="text" style="font-size: 10px;"><?= date('d-m-Y H:i:s', strtotime($val->message_date)) ?></span>
