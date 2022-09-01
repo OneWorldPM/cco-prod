@@ -600,7 +600,8 @@ function update_viewsessions_history_open()
                     dataType: "json",
                     success: function (data) {
                         if (data.status == "success") {
-                            $('#btn_vote_label').html('VOTED <i class="fa fa-check" id="fa_fa_check" style=""></i>');
+                            $('#btn_vote_label').html('VOTED <i class="fa fa-check" id="fa_fa_check" style="font-size:2.5rem; padding-top:0"></i>');
+                            $('#btn_vote').css('padding-top','0');
                             $('#fa_fa_check').show();
 
                         }
@@ -692,8 +693,8 @@ function get_poll_vot_section() {
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
 <div class='col-md-12' id='option_section'></div>\n\
-\n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px;'></span>\n\
-<div style='padding-right: 20px;text-align: center;'><a class='button small color rounded' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; '><span id='btn_vote_label'>VOTE <i class='fa fa-check' id='fa_fa_check' style=' display:none'></i></span></a></div>\n\
+\n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px; font-size:2.5rem'></span>\n\
+<div style='padding-right: 20px;text-align: center;'><a class='button small color rounded' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; height:3rem; padding-top:10px'><span id='btn_vote_label' style='font-size:2.5rem; '>VOTE <i class='fa fa-check' id='fa_fa_check' style=' display:none; font-size:2.5rem'></i></span></a></div>\n\
 </form>");
                         if (data.result.exist_status == 1) {
                             $.each(data.result.option, function (key, val) {
@@ -715,7 +716,8 @@ function get_poll_vot_section() {
                         }
                         if (data.result.exist_status == 1) {
                             $(':radio:not(:checked)').attr('disabled', true);
-                            $('#btn_vote_label').html('VOTED <i class="fa fa-check" id="fa_fa_check" style=""></i>');
+                            $('#btn_vote_label').html('VOTED <i class="fa fa-check" id="fa_fa_check" style="font-size: 2.5rem; padding-top:0"></i>');
+                            $('#btn_vote').css('padding-top','0');
 
                         }
                     } else {
@@ -855,8 +857,8 @@ function get_poll_vot_section() {
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
 <div class='col-md-12' id='option_section'></div>\n\
-\n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px;'></span>\n\
-<div style='text-align: center;'><p style='color:red; font-weight: 700;'>Poll Now Closed</p></div><div style='padding-right: 20px;text-align: right;'><a class='button small color rounded icon-left' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; '><span>VOTE <i class='fa fa-check' id='fa_fa_check_close_poll' style='display:none'></i></span></a></div>\n\
+\n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px; font-size:2.5rem'></span>\n\
+<div style='text-align: center;'><p style='color:red; font-weight: 700;'>Poll Now Closed</p></div><div style='padding-right: 20px;text-align: right;'><a class='button  color rounded icon-left' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; width: 200px'><span>VOTE <i class='fa fa-check' id='fa_fa_check_close_poll' style='display:none'></i></span></a></div>\n\
 </form>");
 
                             $.each(data.result.option, function (key, val) {
