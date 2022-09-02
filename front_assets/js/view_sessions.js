@@ -67,13 +67,13 @@ function startCounting(){
 
     Swal.fire({
         title: 'INFO',
-        text: "Asegúrese de reactivar el repoductor de el volume ubicado en la parte inferior derecha de la pagina.",
+        text: "Be sure to unmute player located at the bottom right side of the page.",
         icon: 'warning',
-        confirmButtonText: 'Aceptar'
+        confirmButtonText: 'Accept'
     });
     // Swal.fire(
     //     'INFO',
-    //     'Asegúrese de reactivar el repoductor de el volume ubicado en la parte inferior derecha de la pagina.',
+    //     'Be sure to unmute player located at the bottom right side of the page.',
     //     'warning'
     // );
 
@@ -454,7 +454,7 @@ function update_viewsessions_history_open()
 
         $(document).on("click", "#ask_questions_send", function () {
             if ($("#questions").val() == "") {
-                $("#error_questions").text("Introducir pregunta").fadeIn('slow').fadeOut(5000);
+                $("#error_questions").text("Enter question").fadeIn('slow').fadeOut(5000);
             } else {
                 var questions = $("#questions").val();
                 var sessions_id = $("#sessions_id").val();
@@ -466,7 +466,7 @@ function update_viewsessions_history_open()
                     success: function (data) {
                         if (data.status == "success") {
                             $("#questions").val("");
-                            $("#success_questions").text("La pregunta se envió correctamente.").fadeIn('slow').fadeOut(5000);
+                            $("#success_questions").text("Question sent successfully.").fadeIn('slow').fadeOut(5000);
 
                             socket.emit('new_question', app_name);
                         }
@@ -480,7 +480,7 @@ function update_viewsessions_history_open()
             if (key == 13)  // the enter key code
             {
                 if ($("#questions").val() == "") {
-                    $("#error_questions").text("Introducir pregunta").fadeIn('slow').fadeOut(5000);
+                    $("#error_questions").text("Enter question").fadeIn('slow').fadeOut(5000);
                 } else {
                     var questions = $("#questions").val();
                     var sessions_id = $("#sessions_id").val();
@@ -493,7 +493,7 @@ function update_viewsessions_history_open()
                             if (data.status == "success") {
                                 $(".questionElement").append(`<p>${questions}</p>`)
                                 $("#questions").val("");
-                                $("#success_questions").text("La pregunta se envió correctamente.").fadeIn('slow').fadeOut(5000);
+                                $("#success_questions").text("Question sent successfully.").fadeIn('slow').fadeOut(5000);
 
                                 socket.emit('new_question', app_name);
                             }

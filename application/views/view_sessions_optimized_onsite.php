@@ -42,7 +42,7 @@
                                             <div class="col-sm-12">
                                                 <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
                                                     <div class=""  style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
-                                                        TIEMPO RESTANTE : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
+                                                        Time remaining : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
                                                     </div>
                                                 </div>
                                                 <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 15px;">
@@ -87,7 +87,7 @@
                             <div class="col-md-3">
                                 <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
                                     <div>
-                                        <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Recursos <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
+                                        <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Resources <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
                                     </div>
                                     <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 240px;" id="resource_display_status">
                                         <?php
@@ -127,22 +127,22 @@ if (isset($sessions)) {
                 <?php
                 if(sessionRightBarControl($sessions->right_bar, "notes")){
                     ?>
-                    <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>Entrar Nota</span></li>
+                    <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>Enter Note</span></li>
                     <?php
                 }
                 if(sessionRightBarControl($sessions->right_bar, "resources")){
                     ?>
-                    <li data-type="resourcesSticky"><i class="fa fa-paperclip" aria-hidden="true"></i> <span>Recursos</span></li>
+                    <li data-type="resourcesSticky"><i class="fa fa-paperclip" aria-hidden="true"></i> <span>Resources</span></li>
                     <?php
                 }
                 if(sessionRightBarControl($sessions->right_bar, "chat")){
                     ?>
-                    <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify notify<?=getAppName($sessions->sessions_id) ?> displayNone"></span> <span>Mensajes</span></li>
+                    <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify notify<?=getAppName($sessions->sessions_id) ?> displayNone"></span> <span>Chat</span></li>
                     <?php
                 }
                 if(sessionRightBarControl($sessions->right_bar, "questions")){
                     ?>
-                    <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>Preguntas</span></li>
+                    <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>Questions</span></li>
                     <?php
                 }
                     ?>
@@ -169,17 +169,17 @@ if (isset($sessions)) {
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
                         ?>
-                        <li data-type="resourcesSticky"><a data-type2="off">Recursos</a></li>
+                        <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
                         ?>
-                        <li data-type="messagesSticky"><a data-type2="off">Mensajes</a></li>
+                        <li data-type="messagesSticky"><a data-type2="off">Chat</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "questions")){
                         ?>
-                        <li data-type="questionsSticky"><a data-type2="off">Preguntas</a></li>
+                        <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "adminChat")){
@@ -195,11 +195,11 @@ if (isset($sessions)) {
         </div>
     </div>
    <div class="content">
-        <div class="contentHeader">Entrar Nota</div>
+        <div class="contentHeader">Enter Note</div>
         <div id="briefcase_section">
             <div id="briefcase_section">
                 <div class="col-md-12 input-group">
-                    <textarea type="text" id="briefcase" class="form-control" placeholder="Entrar Nota" value=""><?= isset($sessions_notes_download) ? $sessions_notes_download : "" ?></textarea>
+                    <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""><?= isset($sessions_notes_download) ? $sessions_notes_download : "" ?></textarea>
                 </div>
                 <a class="button color btn"  id="briefcase_send"><span>Guardar</span></a>
                 <a class="button color btn" id="downloadbriefcase"><span>Descargar</span></a>
@@ -220,17 +220,17 @@ if (isset($sessions)) {
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
                         ?>
-                        <li data-type="messagesSticky"><a data-type2="off">Mensajes</a></li>
+                        <li data-type="messagesSticky"><a data-type2="off">Chat</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "questions")){
                         ?>
-                        <li data-type="questionsSticky"><a data-type2="off">Preguntas</a></li>
+                        <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
                         ?>
-                        <li data-type="notesSticky"><a data-type2="off">Entrar Nota</a></li>
+                        <li data-type="notesSticky"><a data-type2="off">Enter Note</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "adminChat")){
@@ -245,7 +245,7 @@ if (isset($sessions)) {
     </div>
     <div class="content">
         <div class="contentHeader">
-            Recursos
+            Resources
         </div>
         <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
             <div style="padding: 0px 15px 15px 15px; overflow-y: auto; height: 240px;" id="resource_display_status">
@@ -287,17 +287,17 @@ if (isset($sessions)) {
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
                         ?>
-                        <li data-type="resourcesSticky"><a data-type2="off">Recursos</a></li>
+                        <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "questions")){
                         ?>
-                        <li data-type="questionsSticky"><a data-type2="off">Preguntas</a></li>
+                        <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
                         ?>
-                        <li data-type="notesSticky"><a data-type2="off">Entrar Nota</a></li>
+                        <li data-type="notesSticky"><a data-type2="off">Enter Note</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "adminChat")){
@@ -313,13 +313,13 @@ if (isset($sessions)) {
     </div>
     <div class="content">
         <div class="contentHeader">
-            Mensajes
+            Chat
         </div>
         <div class="messages">
 
         </div>
 
-        <input type="text" class="form-control" placeholder="Escribir mensaje" id='sendGroupChat'>
+        <input type="text" class="form-control" placeholder="Write message" id='sendGroupChat'>
 
     </div>
 
@@ -366,7 +366,7 @@ if (isset($sessions)) {
         <div class="admin-messages">
         </div>
 
-        <input type="text" class="form-control" placeholder="Escribir mensaje" id='sendAdminChat'>
+        <input type="text" class="form-control" placeholder="Write message" id='sendAdminChat'>
 
     </div>
 
@@ -382,18 +382,18 @@ if (isset($sessions)) {
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
                         ?>
-                        <li data-type="resourcesSticky"><a data-type2="off">Recursos</a></li>
+                        <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
                         ?>
-                        <li data-type="messagesSticky"><a data-type2="off">Mensajes</a></li>
+                        <li data-type="messagesSticky"><a data-type2="off">Chat</a></li>
                         <?php
                     }
 
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
                         ?>
-                        <li data-type="notesSticky"><a data-type2="off">Entrar Nota</a></li>
+                        <li data-type="notesSticky"><a data-type2="off">Enter Note</a></li>
                         <?php
                     }
                     ?>
@@ -404,7 +404,7 @@ if (isset($sessions)) {
     </div>
     <div class="content">
         <div class="contentHeader">
-            Preguntas
+            Questions
         </div>
         <div class="questionElement">
         </div>
@@ -414,9 +414,9 @@ if (isset($sessions)) {
 
                     <div class="col-md-12 input-group">
                         <span class="input-group-addon" style="padding: 5px 6px"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png" id="questions_emjis_section_show" title="Check to Show Emoji" data-questions_emjis_section_show_status="0" style="width: 20px; height: 20px;" alt=""/></span>
-                        <input type="text" id="questions" class="form-control" placeholder="Introducir Pregunta" value="">
+                        <input type="text" id="questions" class="form-control" placeholder="Enter question" value="">
                     </div>
-                    <a class="button color btn" style="margin: 0px; padding: 15px 7px;" id="ask_questions_send"><span>Enviar</span></a>
+                    <a class="button color btn" style="margin: 0px; padding: 15px 7px;" id="ask_questions_send"><span>Send</span></a>
                 </div>
                 <div style="text-align: left; padding-left: 10px; display: flex;" id="questions_emojis_section">
                     <img src="<?= base_url() ?>front_assets/images/emoji/happy.png" title="Happy" id="questions_happy" data-title_name="&#128578;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
@@ -451,6 +451,7 @@ if (isset($sessions)) {
     //var custPollModalWidth = "<?//=($sessions->poll_modal_width)? $sessions->poll_modal_width:''?>//"
 
     let customFont = '3rem';
+    let customFont2 = '3rem';
 </script>
 <?= getSocketScript()?>
 <script src="<?= base_url() ?>front_assets/js/custom-fullscreen.js"></script>

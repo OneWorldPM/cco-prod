@@ -42,7 +42,7 @@
                                             <div class="col-sm-12">
                                                 <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
                                                     <div class=""  style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
-                                                        TIEMPO RESTANTE : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
+                                                        Time remaining : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
                                                     </div>
                                                 </div>
                                                 <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 15px;">
@@ -137,12 +137,12 @@ if (isset($sessions)) {
                 }
                 if(sessionRightBarControl($sessions->right_bar, "chat")){
                     ?>
-                    <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify notify<?=getAppName($sessions->sessions_id) ?> displayNone"></span> <span>Mensajes</span></li>
+                    <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify notify<?=getAppName($sessions->sessions_id) ?> displayNone"></span> <span>Messages</span></li>
                     <?php
                 }
                 if(sessionRightBarControl($sessions->right_bar, "questions")){
                     ?>
-                    <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>Preguntas</span></li>
+                    <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>Questions</span></li>
                     <?php
                 }
                     ?>
@@ -174,12 +174,12 @@ if (isset($sessions)) {
                     }
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
                         ?>
-                        <li data-type="messagesSticky"><a data-type2="off">Mensajes</a></li>
+                        <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "questions")){
                         ?>
-                        <li data-type="questionsSticky"><a data-type2="off">Preguntas</a></li>
+                        <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "adminChat")){
@@ -220,12 +220,12 @@ if (isset($sessions)) {
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
                         ?>
-                        <li data-type="messagesSticky"><a data-type2="off">Mensajes</a></li>
+                        <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "questions")){
                         ?>
-                        <li data-type="questionsSticky"><a data-type2="off">Preguntas</a></li>
+                        <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
@@ -292,7 +292,7 @@ if (isset($sessions)) {
                     }
                     if(sessionRightBarControl($sessions->right_bar, "questions")){
                         ?>
-                        <li data-type="questionsSticky"><a data-type2="off">Preguntas</a></li>
+                        <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
@@ -313,13 +313,13 @@ if (isset($sessions)) {
     </div>
     <div class="content">
         <div class="contentHeader">
-            Mensajes
+            Messages
         </div>
         <div class="messages">
 
         </div>
 
-        <input type="text" class="form-control" placeholder="Escribir mensaje" id='sendGroupChat'>
+        <input type="text" class="form-control" placeholder="Write message" id='sendGroupChat'>
 
     </div>
 
@@ -366,7 +366,7 @@ if (isset($sessions)) {
         <div class="admin-messages">
         </div>
 
-        <input type="text" class="form-control" placeholder="Escribir mensaje" id='sendAdminChat'>
+        <input type="text" class="form-control" placeholder="Write message" id='sendAdminChat'>
 
     </div>
 
@@ -387,7 +387,7 @@ if (isset($sessions)) {
                     }
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
                         ?>
-                        <li data-type="messagesSticky"><a data-type2="off">Mensajes</a></li>
+                        <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
                         <?php
                     }
 
@@ -404,7 +404,7 @@ if (isset($sessions)) {
     </div>
     <div class="content">
         <div class="contentHeader">
-            Preguntas
+            Questions
         </div>
         <div class="questionElement">
         </div>
@@ -414,9 +414,9 @@ if (isset($sessions)) {
 
                     <div class="col-md-12 input-group">
                         <span class="input-group-addon" style="padding: 5px 6px"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png" id="questions_emjis_section_show" title="Check to Show Emoji" data-questions_emjis_section_show_status="0" style="width: 20px; height: 20px;" alt=""/></span>
-                        <input type="text" id="questions" class="form-control" placeholder="Introducir Pregunta" value="">
+                        <input type="text" id="questions" class="form-control" placeholder="Enter question" value="">
                     </div>
-                    <a class="button color btn" style="margin: 0px; padding: 15px 7px;" id="ask_questions_send"><span>Enviar</span></a>
+                    <a class="button color btn" style="margin: 0px; padding: 15px 7px;" id="ask_questions_send"><span>Send</span></a>
                 </div>
                 <div style="text-align: left; padding-left: 10px; display: flex;" id="questions_emojis_section">
                     <img src="<?= base_url() ?>front_assets/images/emoji/happy.png" title="Happy" id="questions_happy" data-title_name="&#128578;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>

@@ -80,7 +80,7 @@
                             <?php
                             echo ($this->session->flashdata('msg')) ? $this->session->flashdata('msg') : '';
                             ?> 
-                            <h4 class="box-title">Credenciales de el Presentador</h4>
+                            <h4 class="box-title">Credenciales de el Presenter</h4>
                             <div class="form-group">
                                 <span class="input-icon">
                                     <input type="text" class="form-control" id="email" name="email" placeholder="Entrar Correo Electronico">
@@ -89,16 +89,16 @@
                             </div>
                             <div class="form-group form-actions">
                                 <span class="input-icon">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Entrar contraseña">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Entrar Password">
                                     <i class="fa fa-lock"></i>
                                 </span><span id="errorpassword" style="color:red"></span>
                             </div>
                             <div class="form-actions" style="padding-left: 20px;">
                                 <button type="submit" class="btn btn-primary" id="btn_login">
-                                    Inicio de sesión
+                                    Login
                                 </button>
 
-                                <span><a href="<?= base_url().'presenter/forgotpassword/' ?>">Olvido la contraseña</a></span>
+                                <span><a href="<?= base_url().'presenter/forgotpassword/' ?>">Olvido la Password</a></span>
 
                             </div>
                         </fieldset>

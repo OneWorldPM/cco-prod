@@ -118,8 +118,8 @@
                                 <div class="col-md-12 m-t-40">
                                     <div class="col-md-4 col-md-offset-4" style="text-align: center; text-align: center; padding: 10px; background-color: #fff; border: 1px solid;">
                                         <p><i class="fa fa-info-circle" aria-hidden="true" style="font-size: 20px;"></i></p>
-                                        <p>Ingresará automáticamente a la sesión 15 minutos antes de que comience.</p>
-                                        <p>El ingreso se habilitará en <span id="id_day_time" ></span></p>
+                                        <p>You will automatically enter the session 15 minutes before it is due to begin. </p>
+                                        <p>Entry will be enabled in… <span id="id_day_time" ></span></p>
                                     </div>
                                 </div>
                                 <?php if (1 == 2){ ?>
