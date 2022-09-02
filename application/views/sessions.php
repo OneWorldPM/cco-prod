@@ -61,7 +61,7 @@
             <div class="row">
                 <div class="col-md-12 m-t-50" style="text-align: -webkit-center;">
                     <?php
-                    setlocale(LC_ALL, "es_ES");
+//                    setlocale(LC_ALL, "es_ES");
                     if (isset($all_sessions_week) && !empty($all_sessions_week)) {
                         foreach ($all_sessions_week as $val) {
                             ?>
@@ -79,7 +79,7 @@
                                             <div class="col-lg box-home text-center">
                                             <?php } ?>
                                                 <label style="margin-bottom: 20px; margin-top: 20px;   font-size: 30px; font-weight: 700;"><?= mb_convert_encoding(ucwords( strftime("%A", strtotime($val->daydate))),'Windows-1252') ?></label><br>
-                                            <label><?= (strftime(" %d de %B de %Y", strtotime($val->sessions_date))); ?></label>
+                                            <label><?= (strftime(" %d  %B  %Y", strtotime($val->sessions_date))); ?></label>
                                         </div>
                                 </a>
                             </div>
