@@ -542,7 +542,7 @@ function get_question_list() {
                         var add_comment_class='';
                     }
                     $("#last_sessions_cust_question_id").val(val.sessions_cust_question_id);
-                    $('#question_list').prepend('<div id="question_list_key_' + key + '" style="padding-bottom: 15px;"><h5 style="font-weight: 800; font-size: 15px; "><span class="question_attendee_name" comment-question-id="comment_question_id_' + val.sessions_cust_question_id + '" marked-replied="'+val.marked_replied+'" cust-question-id="'+val.sessions_cust_question_id+'" cust-question="'+ val.question +'" cust-id="'+val.cust_id+'" cust-name="' + val.first_name + ' ' + val.last_name + '" style="font-size: 12px;">(' + val.first_name + ' ' + val.last_name + ') </span>' + val.question + ' <span class="' + add_star_class + ' " data-sessions_cust_question_id=' + val.sessions_cust_question_id + ' title="Favoritos"></span><a href="javascript:void(0)" class="hide_question" data-q-id="' + val.sessions_cust_question_id + '" data-listkey-id="question_list_key_' + key + '" title="Esconder" ><span class="fa fa-eye-slash" ></span></a><span data-comment-id="' + val.sessions_cust_question_id + '" id="comment_question_id_' + val.sessions_cust_question_id+ '" comment-question-id="comment_id_' + val.sessions_cust_question_id + '" class="'+ add_comment_class +'"></span></h5><div style="display: flex;"><input type="hidden" ' + readonly_value + ' id="answer_' + key + '" data-key_id="' + key + '" class="form-control input_class" placeholder="Enter Answer"  data-cust_id="' + val.cust_id + '" data-last_id="' + val.sessions_cust_question_id + '" value="' + answer_value + '"><a  class="btn btn-success btn_publish" id="btn_publish" data-answer_btn="answer_' + key + '" ' + disabled_value + ' style="border-radius: 0px; display:none">Send</a></div></div>');
+                    $('#question_list').prepend('<div id="question_list_key_' + key + '" style="padding-bottom: 15px;"><h5 style="font-weight: 800; font-size: 15px; "><span class="question_attendee_name" comment-question-id="comment_question_id_' + val.sessions_cust_question_id + '" marked-replied="'+val.marked_replied+'" cust-question-id="'+val.sessions_cust_question_id+'" cust-question="'+ val.question +'" cust-id="'+val.cust_id+'" cust-name="' + val.first_name + ' ' + val.last_name + '" style="font-size: 12px;">(' + val.first_name + ' ' + val.last_name + ') </span>' + val.question + ' <span class="' + add_star_class + ' " data-sessions_cust_question_id=' + val.sessions_cust_question_id + ' title="Favorites"></span><a href="javascript:void(0)" class="hide_question" data-q-id="' + val.sessions_cust_question_id + '" data-listkey-id="question_list_key_' + key + '" title="Esconder" ><span class="fa fa-eye-slash" ></span></a><span data-comment-id="' + val.sessions_cust_question_id + '" id="comment_question_id_' + val.sessions_cust_question_id+ '" comment-question-id="comment_id_' + val.sessions_cust_question_id + '" class="'+ add_comment_class +'"></span></h5><div style="display: flex;"><input type="hidden" ' + readonly_value + ' id="answer_' + key + '" data-key_id="' + key + '" class="form-control input_class" placeholder="Enter Answer"  data-cust_id="' + val.cust_id + '" data-last_id="' + val.sessions_cust_question_id + '" value="' + answer_value + '"><a  class="btn btn-success btn_publish" id="btn_publish" data-answer_btn="answer_' + key + '" ' + disabled_value + ' style="border-radius: 0px; display:none">Send</a></div></div>');
                 });
             }
         }, error: function(){
@@ -658,7 +658,7 @@ function get_poll_vot_section() {
                     });
                     if (data.result.poll_status == 1) {
                         $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 style='border:1px solid #b79700;margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Encuesta en Vivo</h2>\n\
+            \n\<h2 style='border:1px solid #b79700;margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>LIVE POLL</h2>\n\
 <div class='col-md-12'>\n\
 \n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5></div>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
@@ -898,7 +898,7 @@ $(document).ready(function() {
                 }
             });
         } else {
-            alertify.error('Escribir mensaje');
+            alertify.error('Write message');
         }
     });
 
@@ -922,7 +922,7 @@ $(document).ready(function() {
                     }
                 });
             } else {
-                alertify.error('Escribir mensaje');
+                alertify.error('Write message');
             }
         }
     });
@@ -1029,7 +1029,7 @@ $(document).ready(function() {
                 timer_string = hours + "h " + timer_string;
             if (days != 0 && days)
                 timer_string = days + "d " + timer_string;
-            timer_string = "Tiempo restante: " + timer_string;
+            timer_string = "Time remaining: " + timer_string;
 
             // Display the result in the element with id="demo"
             //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
@@ -1039,7 +1039,7 @@ $(document).ready(function() {
             // If the count down is finished,
             if (distance < 0) {
                 clearInterval(x);
-                $('#id_day_time_clock').text('Tiempo restante: 0s');
+                $('#id_day_time_clock').text('Time remaining: 0s');
                 $('#id_day_time_clock').css('color', '#d30e0e')
             }
         }, 1000);
@@ -1075,7 +1075,7 @@ $(document).ready(function() {
                 timer_string = hours + "h " + timer_string;
             if (days != 0 && days)
                 timer_string = days + "d " + timer_string;
-            timer_string = "Comienza en: " + timer_string;
+            timer_string = "Starts in: " + timer_string;
 
             // Display the result in the element with id="demo"
             //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");

@@ -115,10 +115,10 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
     <div class="collapse navbar-collapse" id="myNavbar">
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?= base_url() ?>presenter/sessions">Mis Sesiones</a></li>
+            <li><a href="<?= base_url() ?>presenter/sessions">MY SESSIONS</a></li>
 
             <li class="active"><a data-toggle="modal" data-target="#zoomModal">Zoom</a></li>
-            <li><a href="<?= base_url() ?>presenter/sessions/view_poll/<?= $sessions->sessions_id ?>" target="_blank">Encuesta</a></li>
+            <li><a href="<?= base_url() ?>presenter/sessions/view_poll/<?= $sessions->sessions_id ?>" target="_blank">Polls</a></li>
             <?php
             if(sessionRightBarControl($sessions->right_bar, "resources")){
                 ?>
@@ -132,7 +132,7 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
                 <ul class="dropdown-menu">
                     <li>
                         <a href="<?= base_url() ?>presenter/login/logout">
-                            Cerrar Sesión
+                            Log Out
                         </a>
                     </li>
                 </ul>

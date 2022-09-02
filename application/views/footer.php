@@ -53,7 +53,7 @@
 <link rel="stylesheet" href="<?=base_url()?>front_assets/support_chat/style.css?v=4">
 <script src="<?= base_url() ?>front_assets/support_chat/live-support-chat.js?v=3"></script>
 <div class="live-support-chat-popup" id="liveSupportChatForm">
-    <span class="live-support-chat-title"><i class="far fa-life-ring"></i> Asistencia Técnica en Vivo</span>
+    <span class="live-support-chat-title"><i class="far fa-life-ring"></i> Live technical support</span>
     <div class="live-support-chat-body">
 
         <div id="live-support-chat-texts" class="live-support-chat-texts">
@@ -64,9 +64,9 @@
             <span id="adminTypingHint" style="display: none;">Admin is typing...</span>
         </div>
         <div class="input-group" style="position: absolute;bottom: 45px;">
-            <input id="liveSupportText" type="text" class="form-control" placeholder="Introduzca su mensaje aquí...">
+            <input id="liveSupportText" type="text" class="form-control" placeholder="Enter your message here...">
             <span class="input-group-btn">
-                <button id="sendLiveSupportText" class="btn btn-default" type="button"><i class="far fa-paper-plane"></i> Enviar</button>
+                <button id="sendLiveSupportText" class="btn btn-default" type="button"><i class="far fa-paper-plane"></i> Send</button>
             </span>
         </div>
 

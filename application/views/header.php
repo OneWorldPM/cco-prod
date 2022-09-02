@@ -358,7 +358,7 @@ else
                                         $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                                         ?>
 
-                                        <button class="live-support-open-button nav navbar-nav navbar-right" onclick="openLiveSupportChat()" style="background-color: #<?=$themeColour?>; display: <?=(liveSupportChatStatus())?'block':'none'?>;"><i class="far fa-life-ring"></i> Asistencia técnica en vivo</button>
+                                        <button class="live-support-open-button nav navbar-nav navbar-right" onclick="openLiveSupportChat()" style="background-color: #<?=$themeColour?>; display: <?=(liveSupportChatStatus())?'block':'none'?>;"><i class="far fa-life-ring"></i> Live technical support</button>
 
                                         <ul class="main-menu nav navbar-nav navbar-right">
                                             <?php if (1 == 2) { ?>
@@ -392,7 +392,7 @@ else
                                                         </li>
                                                         <li>
                                                             <a href="<?= base_url() ?>login/logout">
-                                                                Cerrar Sesión
+                                                                Log Out
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -424,19 +424,19 @@ else
                                             ?>
 
                                             <li>
-                                                <a target="_blank" class="hoverThemeColour" id="toolbox" >Herramienta</a>
+                                                <a target="_blank" class="hoverThemeColour" id="toolbox" >TOOLBOX</a>
                                                 <ul class="toolboxCustomDrop">
                                                     <?php
                                                     if (isset($right_bar) && isset($tool_box_status)) {
                                                         if ($tool_box_status == "1") {
                                                             if (sessionRightBarControl($right_bar, "questions")) {
                                                                 ?>
-                                                                <li data-type="questionsSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-question" aria-hidden="true"></i> Preguntas</a></li>
+                                                                <li data-type="questionsSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-question" aria-hidden="true"></i> Questions</a></li>
                                                                 <?php
                                                             }
                                                             if (sessionRightBarControl($right_bar, "notes")) {
                                                                 ?>
-                                                                <li data-type="notesSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Toma Nota</a></li>
+                                                                <li data-type="notesSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Take Note</a></li>
                                                                 <?php
                                                             }
                                                             if (sessionRightBarControl($right_bar, "chat")) {

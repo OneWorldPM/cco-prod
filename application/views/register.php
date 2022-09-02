@@ -368,14 +368,14 @@
                                 </select>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="password" value="" id="password" name="password" placeholder="Contraseña" class="form-control input-lg">
+                                <input type="password" value="" id="password" name="password" placeholder="Password" class="form-control input-lg">
                                 <span id="errorpassword" style="color:red"></span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div id="message">
-                                    <h6 style="padding-bottom: 3px; border-bottom: 2px solid #ebebeb">Solidez de la contraseña:</h6>
+                                    <h6 style="padding-bottom: 3px; border-bottom: 2px solid #ebebeb">Solidez de la Password:</h6>
                                     <p id="letter" class="invalid">Una letra minúscula</p>
                                     <p id="capital" class="invalid">Una letra mayúscula</p>
                                     <p id="number" class="invalid">Un número</b></p>
@@ -385,7 +385,7 @@
                         </div>
                         <div class="row p-t-10">
                             <div class="col-md-6 form-group">
-                                <input type="password" value="" id="confirm_password" name="confirm_password" placeholder="Confirmar contraseña" class="form-control input-lg">
+                                <input type="password" value="" id="confirm_password" name="confirm_password" placeholder="Confirmar Password" class="form-control input-lg">
                                 <span id="errorconfirm_password" style="color:red"></span>
                             </div>
                         </div>
@@ -399,8 +399,8 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
 
-                                <button class="btn btn-primary" id="btn_register" type="submit">Enviar</button>
-                                <button type="button" class="btn btn-danger m-l-10">Cancelar</button>
+                                <button class="btn btn-primary" id="btn_register" type="submit">Send</button>
+                                <button type="button" class="btn btn-danger m-l-10">Cancel</button>
 
                             </div>
                         </div>
