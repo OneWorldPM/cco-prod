@@ -122,7 +122,7 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
             <?php
             if(sessionRightBarControl($sessions->right_bar, "resources")){
                 ?>
-                <li><a data-toggle="modal" data-target="#reourcesModal">Recursos</a></li>
+                <li><a data-toggle="modal" data-target="#reourcesModal">RESOURCES</a></li>
                 <?php
             }
             ?>

@@ -87,7 +87,7 @@
                             <div class="col-md-3">
                                 <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
                                     <div>
-                                        <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Recursos <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
+                                        <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> RESOURCES <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
                                     </div>
                                     <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 240px;" id="resource_display_status">
                                         <?php
@@ -132,7 +132,7 @@ if (isset($sessions)) {
                 }
                 if(sessionRightBarControl($sessions->right_bar, "resources")){
                     ?>
-                    <li data-type="resourcesSticky"><i class="fa fa-paperclip" aria-hidden="true"></i> <span>Recursos</span></li>
+                    <li data-type="resourcesSticky"><i class="fa fa-paperclip" aria-hidden="true"></i> <span>RESOURCES</span></li>
                     <?php
                 }
                 if(sessionRightBarControl($sessions->right_bar, "chat")){
@@ -169,7 +169,7 @@ if (isset($sessions)) {
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
                         ?>
-                        <li data-type="resourcesSticky"><a data-type2="off">Recursos</a></li>
+                        <li data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
@@ -245,7 +245,7 @@ if (isset($sessions)) {
     </div>
     <div class="content">
         <div class="contentHeader">
-            Recursos
+            RESOURCES
         </div>
         <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
             <div style="padding: 0px 15px 15px 15px; overflow-y: auto; height: 240px;" id="resource_display_status">
@@ -287,7 +287,7 @@ if (isset($sessions)) {
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
                         ?>
-                        <li data-type="resourcesSticky"><a data-type2="off">Recursos</a></li>
+                        <li data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "questions")){
@@ -382,7 +382,7 @@ if (isset($sessions)) {
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
                         ?>
-                        <li data-type="resourcesSticky"><a data-type2="off">Recursos</a></li>
+                        <li data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "chat")){

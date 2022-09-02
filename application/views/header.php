@@ -418,7 +418,7 @@ else
                                             if (isset($right_bar) && isset($tool_box_status)) {
                                             if ($tool_box_status == "1" && sessionRightBarControl($right_bar, "resources")) {
                                             ?>
-                                                <li class="sticky_resources_open" data-type="resourcesSticky"><a data-type2="off" class="hoverThemeColour">Recursos</a></li>
+                                                <li class="sticky_resources_open" data-type="resourcesSticky"><a data-type2="off" class="hoverThemeColour">RESOURCES</a></li>
                                             <?php
                                                }}
                                             ?>
@@ -446,7 +446,7 @@ else
                                                             }
                                                             if (sessionRightBarControl($right_bar, "resources")) {
                                                                 ?>
-                                                                <li data-type="resourcesSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-paperclip" aria-hidden="true"></i> Recursos</a></li>
+                                                                <li data-type="resourcesSticky"><a data-type2="off" class="hoverThemeColour"><i class="fa fa-paperclip" aria-hidden="true"></i> RESOURCES</a></li>
                                                                 <?php
                                                             }
                                                         }
