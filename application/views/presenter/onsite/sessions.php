@@ -31,7 +31,7 @@
                                             <th>Presenter</th>
 <!--                                            <th>Zoom Link</th>-->
 <!--                                             <th>Password</th>-->
-<!--                                            <th>Action</th>-->
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -58,8 +58,6 @@
                                                         }
                                                         ?>
                                                     </td>
-                                                     <td><a target="_blank" href="<?= $val->zoom_link ?>"><?= $val->zoom_link ?></a></td>
-                                                     <td><?= $val->zoom_password ?></td>
                                                     <td>
                                                         <a href="<?= base_url() ?>presenter/onsite/view_session/<?= $val->sessions_id ?>" class="btn btn-light-azure btn-sm">View Sessions</a>
                                                     </td>
