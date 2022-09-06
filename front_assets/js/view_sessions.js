@@ -726,7 +726,7 @@ function get_poll_vot_section() {
                         });
                         $('#modal').modal('show');
 
-                        $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='font-size:"+customFont+";margin-bottom: 0px; color: #fff; font-weight: 700; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Resultados de Encusta Envivo</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; border-bottom: 1px solid #b1b1b1; padding-bottom: 20px; line-height:"+customFont+"'>" + data.result.question + "</h5>\n\
+                        $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='font-size:"+customFont+";margin-bottom: 0px; color: #fff; font-weight: 700; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>LIVE POLL RESULTS</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; border-bottom: 1px solid #b1b1b1; padding-bottom: 20px; line-height:"+customFont+"'>" + data.result.question + "</h5>\n\
                                                         \n\<div id='result_section' style='padding-bottom: 10px; line-height:"+customFont+"'></div></div></div></div>");
                         var total_vote = 0;
                         var total_vote_compere_option = 0;
