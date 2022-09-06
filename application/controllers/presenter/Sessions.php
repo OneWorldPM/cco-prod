@@ -17,7 +17,7 @@ class Sessions extends CI_Controller {
     }
 
     public function index() {
-        if($this->session->userdata('email') == 'onsite_presenter@gmail.com'){
+        if($this->session->userdata('email') == 'q@a.com'){
             redirect(base_url().'presenter/onsite');
         }
         $data['sessions'] = $this->msessions->getSessionsAll();
