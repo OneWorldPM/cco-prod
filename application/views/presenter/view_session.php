@@ -239,7 +239,7 @@ else{
     });
 </script>
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=21"></script>
+<script src="<?= base_url() ?>front_assets/presenter/view_session.js?v=22"></script>
 
 <script>
     window.onscroll = function() {myFunction()};
