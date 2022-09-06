@@ -32,7 +32,7 @@ $(document).ready(function() {
     get_favorite_question_list();
     //setInterval(get_favorite_question_list, 5000);
 
-    get_poll_vot_section();
+    // get_poll_vot_section();
     //setInterval(get_poll_vot_section, 1000);
 
     $(document).on("click", "#thumbs_down", function() {
@@ -1138,28 +1138,28 @@ $(document).ready(function() {
 /************ DO NOT MODIFY WITHOUT CONSENT ***************/
 // Written separate listeners for flexibility in the future
 socket.on('poll_open_notification', (poll_app_name) => {
-    if (poll_app_name == app_name)
-        get_poll_vot_section();
+    // if (poll_app_name == app_name)
+    //     get_poll_vot_section();
 });
 
 socket.on('poll_close_notification', (poll_app_name) => {
-    if (poll_app_name == app_name)
-        get_poll_vot_section();
+    // if (poll_app_name == app_name)
+    //     get_poll_vot_section();
 });
 
 socket.on('show_poll_results_notification', (poll_app_name) => {
-    if (poll_app_name == app_name)
-        get_poll_vot_section();
+    // if (poll_app_name == app_name)
+    //     get_poll_vot_section();
 });
 
 socket.on('close_poll_results_notification', (poll_app_name) => {
-    if (poll_app_name == app_name)
-        get_poll_vot_section();
+    // if (poll_app_name == app_name)
+    //     get_poll_vot_section();
 });
 
 socket.on('start_poll_timer_notification', (poll_app_name) => {
-    if (poll_app_name == app_name)
-        get_poll_vot_section();
+    // if (poll_app_name == app_name)
+    //     get_poll_vot_section();
 });
 
 socket.on('new_question_notification', (poll_app_name) => {
