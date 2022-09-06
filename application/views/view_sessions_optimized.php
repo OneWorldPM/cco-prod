@@ -127,7 +127,7 @@ if (isset($sessions)) {
                 <?php
                 if(sessionRightBarControl($sessions->right_bar, "notes")){
                     ?>
-                    <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>Entrar Nota</span></li>
+                    <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>Enter Note</span></li>
                     <?php
                 }
                 if(sessionRightBarControl($sessions->right_bar, "resources")){
@@ -195,11 +195,11 @@ if (isset($sessions)) {
         </div>
     </div>
    <div class="content">
-        <div class="contentHeader">Entrar Nota</div>
+        <div class="contentHeader">Enter Note</div>
         <div id="briefcase_section">
             <div id="briefcase_section">
                 <div class="col-md-12 input-group">
-                    <textarea type="text" id="briefcase" class="form-control" placeholder="Entrar Nota" value=""><?= isset($sessions_notes_download) ? $sessions_notes_download : "" ?></textarea>
+                    <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""><?= isset($sessions_notes_download) ? $sessions_notes_download : "" ?></textarea>
                 </div>
                 <a class="button color btn"  id="briefcase_send"><span>Guardar</span></a>
                 <a class="button color btn" id="downloadbriefcase"><span>Descargar</span></a>
@@ -230,7 +230,7 @@ if (isset($sessions)) {
                     }
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
                         ?>
-                        <li data-type="notesSticky"><a data-type2="off">Entrar Nota</a></li>
+                        <li data-type="notesSticky"><a data-type2="off">Enter Note</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "adminChat")){
@@ -297,7 +297,7 @@ if (isset($sessions)) {
                     }
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
                         ?>
-                        <li data-type="notesSticky"><a data-type2="off">Entrar Nota</a></li>
+                        <li data-type="notesSticky"><a data-type2="off">Enter Note</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "adminChat")){
@@ -393,7 +393,7 @@ if (isset($sessions)) {
 
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
                         ?>
-                        <li data-type="notesSticky"><a data-type2="off">Entrar Nota</a></li>
+                        <li data-type="notesSticky"><a data-type2="off">Enter Note</a></li>
                         <?php
                     }
                     ?>
@@ -463,5 +463,5 @@ if (isset($sessions)) {
 <script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users.js?v=2"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=25"></script>
+<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=26"></script>
 <script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=203"></script>
