@@ -101,18 +101,6 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
         <div class="sidebar-container">
             <nav>
                 <ul class="main-navigation-menu">
-                    <li class="<?= ($uri_segment == 'dashboard') ? 'active' : ''; ?>" id="dashboard-active">
-                        <a href="<?= base_url() ?>presenter/dashboard" id="dash">
-                            <div class="item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-desktop"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <span class="title">Dashboard</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
                     <li class="<?= ($uri_segment == 'sessions') ? 'active' : ''; ?>">
                         <a href="<?= site_url() ?>presenter/sessions" id="dash">
                             <div class="item-content">
