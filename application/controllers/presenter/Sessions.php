@@ -17,6 +17,9 @@ class Sessions extends CI_Controller {
     }
 
     public function index() {
+        if($this->session->userdata('email') == 'onsite_presenter@gmail.com'){
+            redirect(base_url().'presenter/onsite');
+        }
         $data['sessions'] = $this->msessions->getSessionsAll();
 		 $data['moderator_sessions'] = $this->msessions->getModeratorSessionsAll();
         $this->load->view('presenter/header');
