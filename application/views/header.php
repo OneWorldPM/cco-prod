@@ -400,7 +400,7 @@ else
                                             <?php } ?>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour" id="helpdesk_link" style=" display: <?=(liveSupportChatStatus())?'none':'block'?>">Assistance</a></li>
+                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour" id="helpdesk_link" style=" display: <?=(liveSupportChatStatus())?'none':'block'?>">Help Desk</a></li>
                                         </ul>
                                         <ul class="main-menu nav navbar-nav navbar-right">
                                             <?php
@@ -457,7 +457,7 @@ else
                                         </ul>
                                     <?php } else { ?>
                                         <ul class="main-menu nav navbar-nav navbar-right">
-                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour" id="helpdesk_link" style=" display: <?=(liveSupportChatStatus())?'none':'block'?>">Assistance</a></li>
+                                            <li><a href="https://yourconference.live/support" target="_blank" class="hoverThemeColour" id="helpdesk_link" style=" display: <?=(liveSupportChatStatus())?'none':'block'?>">Help Desk</a></li>
                                         </ul>
                                     <?php } ?>
                                 </nav>

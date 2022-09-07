@@ -126,7 +126,7 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
                 <?php
             }
             ?>
-            <li><a href="https://yourconference.live/support/submit_ticket" target="_blank">Assistance</a></li>
+            <li><a href="https://yourconference.live/support/submit_ticket" target="_blank">Help Desk</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= $this->session->userdata('pname') ?> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
