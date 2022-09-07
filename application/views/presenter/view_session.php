@@ -190,7 +190,7 @@ else{
                 </div>
             </div>
             <div class="modal-footer" style="text-align: center;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Esconder</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hide</button>
             </div>
         </div>
     </div>
