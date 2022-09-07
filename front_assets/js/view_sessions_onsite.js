@@ -795,7 +795,7 @@ function get_poll_vot_section() {
 
                                 }
 
-                                $("#result_section").append("<span class='progress' style='margin-bottom: 0.5rem; height:"+customFont+" !important'><span class='progress_bar_new "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size:"+customFont+" !important,width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</span></span>");
+                                $("#result_section").append("<span class='progress' style='margin-bottom: 0.5rem; height:"+customFont+" !important'><span class='progress_bar_new "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size:"+customFont+" !important,width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</span></span><br>");
                             } else {
                                 if(!window.isComparisonpoll)
                                 {
@@ -803,7 +803,7 @@ function get_poll_vot_section() {
                                     $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important'>"+pollIteration+". " + val.option + "</label>");
                                 }
 
-                                $("#result_section").append("<span class='progress' style='margin-bottom:0.5rem ; height:"+customFont+" !important'><span class='progress-bar assesment-bar "+zeroVotes+"'  role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size: "+customFont+" !important, width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</span></span>");
+                                $("#result_section").append("<span class='progress' style='margin-bottom:0.5rem ; height:"+customFont+" !important'><span class='progress-bar assesment-bar "+zeroVotes+"'  role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size: "+customFont+" !important, width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</span></span><br>");
                             }
 
                             pollIteration++;
