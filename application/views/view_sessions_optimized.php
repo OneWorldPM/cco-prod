@@ -463,5 +463,5 @@ if (isset($sessions)) {
 <script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users.js?v=2"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=26"></script>
+<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=27"></script>
 <script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=203"></script>
