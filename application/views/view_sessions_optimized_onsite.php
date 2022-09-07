@@ -201,8 +201,8 @@ if (isset($sessions)) {
                 <div class="col-md-12 input-group">
                     <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""><?= isset($sessions_notes_download) ? $sessions_notes_download : "" ?></textarea>
                 </div>
-                <a class="button color btn"  id="briefcase_send"><span>Guardar</span></a>
-                <a class="button color btn" id="downloadbriefcase"><span>Descargar</span></a>
+                <a class="button color btn"  id="briefcase_send"><span>Save</span></a>
+                <a class="button color btn" id="downloadbriefcase"><span>Download</span></a>
             </div>
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>

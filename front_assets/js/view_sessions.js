@@ -67,13 +67,13 @@ function startCounting(){
 
     Swal.fire({
         title: 'INFO',
-        text: "Be sure to unmute player located at the bottom right side of the page.",
+        text: "Be sure to unmute the player located on the bottom right side of the page.",
         icon: 'warning',
         confirmButtonText: 'Accept'
     });
     // Swal.fire(
     //     'INFO',
-    //     'Be sure to unmute player located at the bottom right side of the page.',
+    //     'Be sure to unmute the player located on the bottom right side of the page.',
     //     'warning'
     // );
 

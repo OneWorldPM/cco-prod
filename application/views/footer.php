@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #EF5D21; opacity: 1; font-size: 18px; font-weight: 400;" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #EF5D21; opacity: 1; font-size: 18px; font-weight: 400;" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
 <link rel="stylesheet" href="<?=base_url()?>front_assets/support_chat/style.css?v=4">
 <script src="<?= base_url() ?>front_assets/support_chat/live-support-chat.js?v=3"></script>
 <div class="live-support-chat-popup" id="liveSupportChatForm">
-    <span class="live-support-chat-title"><i class="far fa-life-ring"></i> Live technical support</span>
+    <span class="live-support-chat-title"><i class="far fa-life-ring"></i> Live Technical Support</span>
     <div class="live-support-chat-body">
 
         <div id="live-support-chat-texts" class="live-support-chat-texts">
@@ -71,7 +71,7 @@
         </div>
 
     </div>
-    <button type="button" class="btn btn-sm end-chat-btn" onclick="endLiveSupportChat()">Finalizar chat <i class="fas fa-times-circle"></i></button>
+    <button type="button" class="btn btn-sm end-chat-btn" onclick="endLiveSupportChat()">End Chat <i class="fas fa-times-circle"></i></button>
 </div>
 <!-- End of Live Support Chat -->
 

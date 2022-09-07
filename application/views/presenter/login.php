@@ -80,7 +80,7 @@
                             <?php
                             echo ($this->session->flashdata('msg')) ? $this->session->flashdata('msg') : '';
                             ?> 
-                            <h4 class="box-title">Credenciales de el Presenter</h4>
+                            <h4 class="box-title">Presenters Log In</h4>
                             <div class="form-group">
                                 <span class="input-icon">
                                     <input type="text" class="form-control" id="email" name="email" placeholder="Entrar Correo Electronico">
@@ -98,7 +98,7 @@
                                     Login
                                 </button>
 
-                                <span><a href="<?= base_url().'presenter/forgotpassword/' ?>">Olvido la Password</a></span>
+                                <span><a href="<?= base_url().'presenter/forgotpassword/' ?>">Forgot Password</a></span>
 
                             </div>
                         </fieldset>
