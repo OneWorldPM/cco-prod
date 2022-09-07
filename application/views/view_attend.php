@@ -84,7 +84,7 @@
                                             <?php
                                             setlocale(LC_ALL,"es_ES");
                                             ?>
-                                            <small><i class="fa fa-calendar" aria-hidden="true"></i> <?= ucFirst(strftime(" %d de %B de %Y", strtotime($sessions->sessions_date))) . ' ' . date("h:i A", strtotime($sessions->time_slot)) . ' - ' . date("h:i A", strtotime($sessions->end_time)) ?></small>  ET
+                                            <small><i class="fa fa-calendar" aria-hidden="true"></i> <?= ucFirst(strftime(" %d %B %Y", strtotime($sessions->sessions_date))) . ' ' . date("h:i A", strtotime($sessions->time_slot)) . ' - ' . date("h:i A", strtotime($sessions->end_time)) ?></small>  ET
                                             <p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_description : "" ?></p>
                                         </div>    
                                     </div>
@@ -198,26 +198,26 @@
             return (n < 10 ? "0" + n : n);
         }
         if (pad(days) > 1) {
-            var days_lable = "dias";
+            var days_lable = "days";
         } else {
-            var days_lable = "dia";
+            var days_lable = "day";
         }
 
         if (pad(hours) > 1) {
-            var hours_lable = "horas";
+            var hours_lable = "hours";
         } else {
-            var hours_lable = "hora";
+            var hours_lable = "hour";
         }
 
         if (pad(minutes) > 1) {
-            var minutes_lable = "minutos";
+            var minutes_lable = "minutes";
         } else {
-            var minutes_lable = "minuto";
+            var minutes_lable = "minute";
         }
         if (pad(remainingSeconds) > 1) {
-            var remainingSeconds_lable = "segundos";
+            var remainingSeconds_lable = "seconds";
         } else {
-            var remainingSeconds_lable = "segundo";
+            var remainingSeconds_lable = "second";
         }
         document.getElementById('id_day_time').innerHTML = pad(days) + " " + days_lable + ", " + pad(hours) + " " + hours_lable + ", " + pad(minutes) + " " + minutes_lable + ", " + pad(remainingSeconds) + " " + remainingSeconds_lable;
         if (seconds <= 0) {

@@ -201,8 +201,8 @@ if (isset($sessions)) {
                 <div class="col-md-12 input-group">
                     <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""><?= isset($sessions_notes_download) ? $sessions_notes_download : "" ?></textarea>
                 </div>
-                <a class="button color btn"  id="briefcase_send"><span>Guardar</span></a>
-                <a class="button color btn" id="downloadbriefcase"><span>Descargar</span></a>
+                <a class="button color btn"  id="briefcase_send"><span>Save</span></a>
+                <a class="button color btn" id="downloadbriefcase"><span>Download</span></a>
             </div>
             <span id='error_briefcase' style='color:red;'></span>
             <span id='success_briefcase' style='color:green;'></span>
@@ -463,5 +463,5 @@ if (isset($sessions)) {
 <script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users.js?v=2"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=27"></script>
+<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=28"></script>
 <script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=203"></script>
