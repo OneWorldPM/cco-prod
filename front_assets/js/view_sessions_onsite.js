@@ -771,9 +771,9 @@ function get_poll_vot_section() {
                                 }
 
                                 if (data.result.compere_max_value == val.compere_option) {
-                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important'>"+pollIteration+". " + val.option + "</label><div class='progress_1'><div class='progress_bar_new_1 "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style=' font-size:"+customFont+" !important, width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
+                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important'>"+pollIteration+". " + val.option + "</label><span class='progress_1'><span class='progress_bar_new_1 "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style=' font-size:"+customFont+" !important, width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</span></span>");
                                 } else {
-                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important'>"+pollIteration+". " + val.option + "</label><div class='progress_1'><div class='progress-bar_1 presurvey-bar "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style=' font-size:"+customFont+" !important, width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
+                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important'>"+pollIteration+". " + val.option + "</label><span class='progress_1'><span class='progress-bar_1 presurvey-bar "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style=' font-size:"+customFont+" !important, width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</span></span>");
                                 }
                             }else{
                                 window.isComparisonpoll = false;
@@ -795,7 +795,7 @@ function get_poll_vot_section() {
 
                                 }
 
-                                $("#result_section").append("<div class='progress' style='margin-bottom: 0.5rem; height:"+customFont+" !important'><div class='progress_bar_new "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size:"+customFont+" !important,width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
+                                $("#result_section").append("<span class='progress' style='margin-bottom: 0.5rem; height:"+customFont+" !important'><span class='progress_bar_new "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size:"+customFont+" !important,width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</span></span>");
                             } else {
                                 if(!window.isComparisonpoll)
                                 {
@@ -803,7 +803,7 @@ function get_poll_vot_section() {
                                     $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important'>"+pollIteration+". " + val.option + "</label>");
                                 }
 
-                                $("#result_section").append("<div class='progress' style='margin-bottom:0.5rem ; height:"+customFont+" !important'><div class='progress-bar assesment-bar "+zeroVotes+"'  role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size: "+customFont+" !important, width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
+                                $("#result_section").append("<span class='progress' style='margin-bottom:0.5rem ; height:"+customFont+" !important'><span class='progress-bar assesment-bar "+zeroVotes+"'  role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size: "+customFont+" !important, width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</span></span>");
                             }
 
                             pollIteration++;

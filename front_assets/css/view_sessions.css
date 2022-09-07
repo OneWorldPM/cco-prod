@@ -3,13 +3,15 @@
 }
 
 .progress-bar {
+    margin-left:30px;
+    float:unset;
     height: 100%;
     padding: 0;
     color: #fff;
     background: rgb(3, 90, 118);
     font-size: unset;
     /*padding-top: .2rem;*/
-    line-height:unset;
+    line-height: 80px;
 }
 
 .assesment-bar {
@@ -32,6 +34,8 @@
 }
 
 .progress_bar_new {
+    line-height:80px;
+    margin-left:30px;
     height: 100%;
     /*padding: 3px;*/
     background: #45c0ea;
