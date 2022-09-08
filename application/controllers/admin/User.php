@@ -50,7 +50,12 @@ class User extends CI_Controller {
 
     public function deleteuser($userid) {
         $this->db->delete("customer_master", array("cust_id" => $userid));
-        header('location:' . base_url() . 'admin/user?msg=D');
+        if($this->db->affected_rows() > 0){
+            echo json_encode(array('status'=>'success', 'msg'=>'Successfully Deleted'));
+        }else{
+            echo json_encode(array('status'=>'error', 'msg'=>'Something went wrong!'));
+        }
+//        header('location:' . base_url() . 'admin/user?msg=D');
     }
 
     public function user_activity($userid) {
@@ -64,5 +69,9 @@ class User extends CI_Controller {
     public function allUsersJson()
     {
         echo json_encode($this->muser->getUserData());
+    }
+
+    public function getUsersAjax(){
+        echo $this->muser->getUsersAjax();
     }
 }
