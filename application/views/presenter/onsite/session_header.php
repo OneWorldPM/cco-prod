@@ -109,7 +109,7 @@ $presenter_details = $this->common->get_presenter_data($this->session->userdata(
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">
-            <img src="https://yourconference.live/CCO/front_assets/images/CCO_CORP_Logo_310wide.png" width="175">
+<!--            <img src="https://yourconference.live/CCO/front_assets/images/CCO_CORP_Logo_310wide.png" width="175">-->
         </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
