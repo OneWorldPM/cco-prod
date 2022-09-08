@@ -125,4 +125,67 @@ class M_user extends CI_Model {
         }
     }
 
+    function getUsersAjax(){
+        $post = $this->input->post();
+//        echo '<pre>';
+//        print_r($post['search']);exit;
+        $this->db->select('cust_id, register_date, register_id, profile, CONCAT(first_name, " ", last_name) as full_name, email, country')
+            ->from('customer_master');
+
+        $tempDbObj = clone $this->db;
+        $total_results = $tempDbObj->count_all_results();
+
+        $tempDbObj = clone $this->db;
+        $total_filtered_results = $tempDbObj->count_all_results();
+
+        if (isset($post['start']) && isset($post['length']))
+            $this->db->limit($post['length'], $post['start']);
+
+
+        if($post['columns'][$post['order'][0]['column']]['name'] != 'action'){
+            $this->db->order_by($post['columns'][$post['order'][0]['column']]['name'], $post['order'][0]['dir']);
+        }
+
+
+        if($post['search']['value']!= ''){
+            $this->db->like('cust_id', $post['search']['value']);
+            $this->db->or_like('first_name', $post['search']['value']);
+            $this->db->or_like('last_name', $post['search']['value']);
+            $this->db->or_like('email', $post['search']['value']);
+            $this->db->or_like('country', $post['search']['value']);
+            $this->db->or_like('CONCAT(first_name, " ", last_name)', $post['search']['value']);
+        }
+//        foreach ($post['columns'] as $column)
+//        {
+//            if ($column['search']['value']!='') {
+//                print_r($post);
+//                $this->db->like($column['search']['value']);
+//            }
+//        }
+
+
+        $result = $this->db->get();
+
+        if ($result->num_rows() > 0)
+        {
+            $response_array = array(
+                "draw" => $post['draw'],
+                "recordsTotal" => $total_results,
+                "recordsFiltered" => $total_filtered_results,
+                "data" => $result->result()
+            );
+
+            return json_encode($response_array);
+        }
+
+        $response_array = array(
+            "draw" => $post['draw'],
+            "recordsTotal" => 0,
+            "recordsFiltered" => 0,
+            "data" => new stdClass()
+        );
+
+        return json_encode($response_array);
+    }
+
 }
