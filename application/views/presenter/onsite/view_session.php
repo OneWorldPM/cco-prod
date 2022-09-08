@@ -105,10 +105,10 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                     <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
                 </div>
             </div>
-            <div class="rightSticykPopup questionFavorites presenterRightSticykPopup" style="display: none">
+            <div class="rightSticykPopup questionFavorites presenterRightSticykPopup" style="display: block">
                 <div class="header"><span><a href="#attendee_questions" data-toggle="tab">Questions</a> | <a href="#favorites" data-toggle="tab">Favorites</a></span>
                     <div class="rightTool">
-                        <i class="fa fa-minus" aria-hidden="true" data-right-id="2"></i>
+<!--                        <i class="fa fa-minus" aria-hidden="true" data-right-id="2"></i>-->
                         <div class="dropdown">
                             <!--                            <span class="fa fa-ellipsis-v" aria-hidden="true" data-toggle="dropdown"></span>-->
                             <ul class="dropdown-menu">
@@ -168,7 +168,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 
 <div class="rightSticky presenterRightSticky" data-screen="presenter">
     <ul>
-        <li data-type="questionFavorites" class="2"><i class="fa fa-question" aria-hidden="true"></i> <span class="notify questionNotify displayNone">new</span> <span>Questions</span></li>
+        <li data-type="questionFavorites" style="display:none" class="2"><i class="fa fa-question" aria-hidden="true"></i> <span class="notify questionNotify displayNone">new</span> <span>Questions</span></li>
     </ul>
 </div>
 
