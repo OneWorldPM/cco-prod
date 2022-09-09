@@ -305,7 +305,7 @@ else
                             <?php
                         }
                         ?>
-
+                        <?php if( ($this->session->userdata('email')) != 'onsite@polling.com'): ?>
                         <?php
                         if ($this->session->userdata('cid') != "") {
                             $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
@@ -322,7 +322,7 @@ else
                                 </a>
                             </div>
                         <?php } ?>
-
+                        <?php endif ?>
                         <?php
                         if (isset($sesions_logo)) {
                             ?>
@@ -422,7 +422,7 @@ else
                                             <?php
                                                }}
                                             ?>
-
+                                            <?php if( ($this->session->userdata('email')) != 'onsite@polling.com'): ?>
                                             <li>
                                                 <a target="_blank" class="hoverThemeColour" id="toolbox" >TOOLBOX</a>
                                                 <ul class="toolboxCustomDrop">
@@ -454,6 +454,7 @@ else
                                                     ?>
                                                 </ul>
                                             </li>
+                                        <?php endif ?>
                                         </ul>
                                     <?php } else { ?>
                                         <ul class="main-menu nav navbar-nav navbar-right">
