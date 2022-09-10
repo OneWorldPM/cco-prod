@@ -11,12 +11,39 @@
         <section class="content">
             <div>
                 <div class="videContent">
-
+                    <div class="modal fade view-session-user-modal" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="margin-top:20px;display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
+                        <div class="modal-dialog modal-lg" style="width:90vw; margin:auto">
+                            <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; font-size: 3rem !important ">
+                                <div class="modal-header" style="height: 0; font-size: <?=$sessions->poll_font.' !important'?>">
+                                    <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <!--                                                <div class="modal-header" style="padding: 0px;">
+                                                                                                    <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
+                                                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                                                </div>-->
+                                <div class="modal-body view-session-user-modal-body" style="padding: 0px;">
+                                    <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
+                                        <div class="col-sm-12">
+                                            <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
+                                                <div class=""  style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
+                                                    Time remaining : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
+                                                </div>
+                                            </div>
+                                            <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 15px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <?php if (1==2) { ?>
                         <div style="background-color: #B2B7BB;">
                             <h3 class="videoTitle" style="margin-bottom: 2px; margin-left: 10px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
                         </div>
-                    <?php } ?>
+
 
                     <div id="embededVideo">
                         <div id="iframeDiv" class="row embed-responsive embed-responsive-16by9">
@@ -25,35 +52,9 @@
                             <span id="btnFS" class="glyphicon glyphicon-resize-full" data-toggle="tooltip" title="Full Screen"></span>
                         </div>
                         </div>
-                        <div class="modal fade view-session-user-modal" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
-                            <div class="modal-dialog modal-lg" style="width:90vw; margin:auto">
-                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; font-size: 3rem !important ">
-                                    <div class="modal-header" style="height: 0; font-size: <?=$sessions->poll_font.' !important'?>">
-                                        <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <!--                                                <div class="modal-header" style="padding: 0px;">
-                                                                                                    <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
-                                                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                                                </div>-->
-                                    <div class="modal-body view-session-user-modal-body" style="padding: 0px;">
-                                        <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
-                                            <div class="col-sm-12">
-                                                <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
-                                                    <div class=""  style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
-                                                        Time remaining : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
-                                                    </div>
-                                                </div>
-                                                <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 15px;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
+                    <?php } ?>
 <!--                    <p class="currentTime">
                         CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>
 
