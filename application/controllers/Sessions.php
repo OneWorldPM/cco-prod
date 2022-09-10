@@ -86,7 +86,7 @@ class Sessions extends CI_Controller {
         $data['isMobile'] = $this->MobileDetect->isMobile();
 
 
-        if($this->session->userdata('cid') == "102899" || $this->session->userdata('cid') == "116667"  ){
+        if($this->session->userdata('email') == "onsite@polling.com" || $this->session->userdata('email') == "onsite2@polling.com" ){
             $this->load->view('onsite_header', $header_data);
             $this->load->view('view_sessions_optimized_onsite', $data);
         }else {
