@@ -77,7 +77,7 @@
 			<div class="row">
                 <div class="panel panel-primary" id="panel5">
                     <div class="panel-heading">
-                        <h4 class="panel-title text-white">Sessions del Moderador</h4>
+                        <h4 class="panel-title text-white">Moderator Sessions</h4>
                     </div>
                     <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                         <div class="row">
