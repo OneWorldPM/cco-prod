@@ -1,7 +1,7 @@
-<link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=203" rel="stylesheet">
+<link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=201" rel="stylesheet">
 
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
-<link href="<?= base_url() ?>front_assets/css/view_sessions.css?v=20" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/css/view_sessions.css?v=19" rel="stylesheet">
 
 
 <section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/pres_bg.jpg') no-repeat;">
@@ -21,14 +21,14 @@
                     <div id="embededVideo">
                         <div id="iframeDiv" class="row embed-responsive embed-responsive-16by9">
                             <?= isset($sessions) ? '<iframe src="https://viewer.millicast.com/v2?streamId=pYVHx2/'.str_replace(' ', '', $sessions->embed_html_code).'&autoPlay=true&muted=true&disableFull=true" width="100%" height="100%"></iframe>' : "" ?>
-                        <div class="videoElement">
-                            <span id="btnFS" class="glyphicon glyphicon-resize-full" data-toggle="tooltip" title="Full Screen"></span>
+                            <div class="videoElement">
+                                <span id="btnFS" class="glyphicon glyphicon-resize-full" data-toggle="tooltip" title="Full Screen"></span>
+                            </div>
                         </div>
-                        </div>
-                        <div class="modal fade view-session-user-modal" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
-                            <div class="modal-dialog <?=(isset($sessions->poll_modal_width) && !empty($sessions->poll_modal_width))? '':'modal-lg' ?>" style="width:<?=(isset($sessions->poll_modal_width) && !empty($sessions->poll_modal_width))?$sessions->poll_modal_width:'' ?>; margin:auto">
-                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; font-size: <?=$sessions->poll_font.' !important'?>">
-                                    <div class="modal-header" style="height: 0; font-size: <?=$sessions->poll_font.' !important'?>">
+                        <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
+                                    <div class="modal-header" style="height: 0">
                                         <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -37,12 +37,12 @@
                                                                                                     <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
                                                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                                                 </div>-->
-                                    <div class="modal-body view-session-user-modal-body" style="padding: 0px;">
+                                    <div class="modal-body" style="padding: 0px;">
                                         <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
                                             <div class="col-sm-12">
                                                 <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
                                                     <div class=""  style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
-                                                        Time remaining : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
+                                                        TIME REMAINING : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
                                                     </div>
                                                 </div>
                                                 <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 15px;">
@@ -54,13 +54,13 @@
                             </div>
                         </div>
                     </div>
-<!--                    <p class="currentTime">
-                        CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>
+                    <!--                    <p class="currentTime">
+                                            CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>
 
-                    </p>
+                                        </p>
 
-                        <span class="borderFooter">test</span>
-                    </p>-->
+                                            <span class="borderFooter">test</span>
+                                        </p>-->
 
                     <div class="col-md-12">
                         <?php
@@ -87,7 +87,7 @@
                             <div class="col-md-3">
                                 <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
                                     <div>
-                                        <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> RESOURCES <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
+                                        <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Resources <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
                                     </div>
                                     <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 240px;" id="resource_display_status">
                                         <?php
@@ -127,7 +127,7 @@ if (isset($sessions)) {
                 <?php
                 if(sessionRightBarControl($sessions->right_bar, "notes")){
                     ?>
-                    <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>Enter Note</span></li>
+                    <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>TAKE NOTES</span></li>
                     <?php
                 }
                 if(sessionRightBarControl($sessions->right_bar, "resources")){
@@ -137,15 +137,15 @@ if (isset($sessions)) {
                 }
                 if(sessionRightBarControl($sessions->right_bar, "chat")){
                     ?>
-                    <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify notify<?=getAppName($sessions->sessions_id) ?> displayNone"></span> <span>Messages</span></li>
+                    <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify notify<?=getAppName($sessions->sessions_id) ?> displayNone"></span> <span>MESSAGES</span></li>
                     <?php
                 }
                 if(sessionRightBarControl($sessions->right_bar, "questions")){
                     ?>
-                    <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>Questions</span></li>
+                    <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>QUESTIONS</span></li>
                     <?php
                 }
-                    ?>
+                ?>
                 <li id="adminChatStickeyIcon" data-type="adminChatSticky" class="admin-chat-stickey-icon" style="display: <?=(sessionRightBarControl($sessions->right_bar, "adminChat"))?'block':'none'?>;">
                     <span class="new-admin-chat-badge badge" style="position: absolute;margin-left: -29px;margin-top: -10px;border-radius: 9px;font-size: 10px;background-color: red;padding-right: 7px;padding-left: 4px;padding-bottom: 4px; display: none;">New</span>
                     <i class="fas fa-user-tie"></i> <span class="adminChat<?=getAppName($sessions->sessions_id) ?> displayNone"></span> <span>CHAT WITH ADMIN</span>
@@ -164,12 +164,12 @@ if (isset($sessions)) {
         <div class="rightTool">
             <i id="minimizeTakeNote" class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
-<!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
+                <!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
                 <ul class="dropdown-menu">
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
                         ?>
-                        <li data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
+                        <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
@@ -194,8 +194,8 @@ if (isset($sessions)) {
             </div>
         </div>
     </div>
-   <div class="content">
-        <div class="contentHeader">Enter Note</div>
+    <div class="content">
+        <div class="contentHeader">Take Notes</div>
         <div id="briefcase_section">
             <div id="briefcase_section">
                 <div class="col-md-12 input-group">
@@ -215,7 +215,7 @@ if (isset($sessions)) {
         <div class="rightTool">
             <i id="minimizeResources" class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
-<!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
+                <!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
                 <ul class="dropdown-menu">
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
@@ -230,7 +230,7 @@ if (isset($sessions)) {
                     }
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
                         ?>
-                        <li data-type="notesSticky"><a data-type2="off">Enter Note</a></li>
+                        <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "adminChat")){
@@ -245,7 +245,7 @@ if (isset($sessions)) {
     </div>
     <div class="content">
         <div class="contentHeader">
-            RESOURCES
+            Resources
         </div>
         <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
             <div style="padding: 0px 15px 15px 15px; overflow-y: auto; height: 240px;" id="resource_display_status">
@@ -282,12 +282,12 @@ if (isset($sessions)) {
         <div class="rightTool">
             <i id="minimizeMessages" class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
-<!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
+                <!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
                 <ul class="dropdown-menu">
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
                         ?>
-                        <li data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
+                        <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "questions")){
@@ -297,7 +297,7 @@ if (isset($sessions)) {
                     }
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
                         ?>
-                        <li data-type="notesSticky"><a data-type2="off">Enter Note</a></li>
+                        <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "adminChat")){
@@ -319,7 +319,7 @@ if (isset($sessions)) {
 
         </div>
 
-        <input type="text" class="form-control" placeholder="Write message" id='sendGroupChat'>
+        <input type="text" class="form-control" placeholder="Enter message" id='sendGroupChat'>
 
     </div>
 
@@ -366,7 +366,7 @@ if (isset($sessions)) {
         <div class="admin-messages">
         </div>
 
-        <input type="text" class="form-control" placeholder="Write message" id='sendAdminChat'>
+        <input type="text" class="form-control" placeholder="Enter message" id='sendAdminChat'>
 
     </div>
 
@@ -377,12 +377,12 @@ if (isset($sessions)) {
         <div class="rightTool">
             <i id="minimizeQuestions" class="fa fa-minus" aria-hidden="true"></i>
             <div class="dropdown">
-<!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
+                <!--                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>-->
                 <ul class="dropdown-menu">
                     <?php
                     if(sessionRightBarControl($sessions->right_bar, "resources")){
                         ?>
-                        <li data-type="resourcesSticky"><a data-type2="off">RESOURCES</a></li>
+                        <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
                         <?php
                     }
                     if(sessionRightBarControl($sessions->right_bar, "chat")){
@@ -393,7 +393,7 @@ if (isset($sessions)) {
 
                     if(sessionRightBarControl($sessions->right_bar, "notes")){
                         ?>
-                        <li data-type="notesSticky"><a data-type2="off">Enter Note</a></li>
+                        <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
                         <?php
                     }
                     ?>
@@ -414,7 +414,7 @@ if (isset($sessions)) {
 
                     <div class="col-md-12 input-group">
                         <span class="input-group-addon" style="padding: 5px 6px"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png" id="questions_emjis_section_show" title="Check to Show Emoji" data-questions_emjis_section_show_status="0" style="width: 20px; height: 20px;" alt=""/></span>
-                        <input type="text" id="questions" class="form-control" placeholder="Enter question" value="">
+                        <input type="text" id="questions" class="form-control" placeholder="Enter Question" value="">
                     </div>
                     <a class="button color btn" style="margin: 0px; padding: 15px 7px;" id="ask_questions_send"><span>Send</span></a>
                 </div>
@@ -445,10 +445,6 @@ if (isset($sessions)) {
     var session_end_datetime =  new Date("<?= date('M d, Y', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time ?>");
 
     var socket_session_name = "<?=getAppName('_admin-to-attendee-chat')?>";
-
-    var customFont = "<?=($sessions->poll_font)? $sessions->poll_font:'17px'?>"
-    var customFont2 = "<?=($sessions->poll_font)? $sessions->poll_font:'17px'?>"
-    var custPollModalWidth = "<?=($sessions->poll_modal_width)? $sessions->poll_modal_width:''?>"
 </script>
 <?= getSocketScript()?>
 <script src="<?= base_url() ?>front_assets/js/custom-fullscreen.js"></script>
@@ -463,5 +459,5 @@ if (isset($sessions)) {
 <script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users.js?v=2"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=28"></script>
+<script src="<?= base_url() ?>front_assets/js/view_sessions.js?v=21"></script>
 <script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=203"></script>
