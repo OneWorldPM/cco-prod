@@ -36,9 +36,9 @@
 
                             <?php if(isset($sessions[0]->presenter) && !empty($sessions[0]->presenter)) :
                                 foreach ($sessions[0]->presenter as $presenter): ?>
-                           <p id="moderators" style="line-height: 1">
+                           <div id="moderators" style="line-height: 1">
                             <?=$presenter->first_name.' '.$presenter->last_name.', '.$presenter->degree?>
-                           </p>
+                           </div>
                                 <?php endforeach;?>
                             <?php endif;?>
                             <?php endif; ?>
