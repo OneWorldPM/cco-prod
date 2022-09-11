@@ -32,13 +32,13 @@
                             <div class="mx-3">
                             <?php if(isset($sessions) && !empty($sessions)): ?>
 
-                            <b><p id="sessionTitle"><?=$sessions[0]->session_title?></b>
+                            <b><div id="sessionTitle"><?=$sessions[0]->session_title?></b>
 
                             <?php if(isset($sessions[0]->presenter) && !empty($sessions[0]->presenter)) :
                                 foreach ($sessions[0]->presenter as $presenter): ?>
-                           <p id="moderators" style="line-height: 0">
+                           <div id="moderators" style="line-height: 0">
                             <?=$presenter->first_name.' '.$presenter->last_name.', '.$presenter->degree?>
-                           </p>
+                           </div>
                                 <?php endforeach;?>
                             <?php endif;?>
                             <?php endif; ?>
