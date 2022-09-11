@@ -82,7 +82,7 @@
                                         <div class="col-md-8">
                                             <h2 style="margin-bottom: 0px;"><?= (isset($sessions) && !empty($sessions)) ? $sessions->session_title : "" ?></h2>
                                             <?php
-                                            setlocale(LC_ALL,"es_ES");
+//                                            setlocale(LC_ALL,"es_ES");
                                             ?>
                                             <small><i class="fa fa-calendar" aria-hidden="true"></i> <?= ucFirst(strftime(" %d %B %Y", strtotime($sessions->sessions_date))) . ' ' . date("h:i A", strtotime($sessions->time_slot)) . ' - ' . date("h:i A", strtotime($sessions->end_time)) ?></small>  ET
                                             <p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_description : "" ?></p>
