@@ -688,6 +688,7 @@ function get_poll_vot_section() {
                         });
 
                         $('#modal').modal('show');
+                        $("#rowLivePoll").show();
 
 
                         $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
