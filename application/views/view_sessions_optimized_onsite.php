@@ -1,7 +1,7 @@
 <link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=203" rel="stylesheet">
 
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
-<link href="<?= base_url() ?>front_assets/css/view_sessions_onsite.css?v=20" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/css/view_sessions_onsite.css?v=22" rel="stylesheet">
 
 
 <section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/pres_bg.jpg') no-repeat;">
@@ -469,10 +469,10 @@ if (isset($sessions)) {
 <script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users.js?v=2"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/js/view_sessions_onsite.js?v=27"></script>
+<script src="<?= base_url() ?>front_assets/js/view_sessions_onsite.js?v=28"></script>
 <script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=203"></script>
 
-<script src="<?= base_url() ?>front_assets/js/content-zoom-slider.min.js"></script>
+<script src="<?= base_url() ?>front_assets/js/content-zoom-slider.min.js?v=2"></script>
 <script>
     $(function () {
         $("#content").contentZoomSlider({
