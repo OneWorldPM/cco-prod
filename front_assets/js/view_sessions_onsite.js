@@ -688,7 +688,7 @@ function get_poll_vot_section() {
 
 
                         $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 id='popup_title_lbl' style='margin-bottom: 20px; color: #000; font-weight: 800; padding: 15px 5px 25px 10px; background-color: #ebeaea; font-size:"+customFont+" !important'>" + data.result.question + "</h2>\n\
+            \n\<h2 id='popup_title_lbl' style='margin-bottom: 20px; color: #000; font-weight: 800; padding: 15px 5px 25px 10px; background-color: #ebeaea; font-size:"+customFont+" !important'><span style='margin-left:30px'>" + data.result.question + "</span></h2>\n\
 <div class='col-md-12'>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
@@ -702,16 +702,16 @@ function get_poll_vot_section() {
                             $.each(data.result.option, function (key, val) {
                                 key++;
                                 if (data.result.select_option_id == val.poll_question_option_id) {
-                                    $("#option_section").append("<div class='option_section_css_selected' style='line-height:"+customFont+";margin-bottom:0.5rem'><input style='min-height:"+customFont+"; min-width:"+customFont+"; vertical-align: middle;' name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css_selected' style='line-height:"+customFont+";margin-bottom:0.5rem'><input style='min-height:"+radioFontSize+"; min-width:"+radioFontSize+"; vertical-align: middle;' name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                                 } else {
-                                    $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+";margin-bottom:0.5rem;'><input name='option' style='min-height:"+customFont+"; min-width:"+customFont+"; vertical-align: middle;' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+";margin-bottom:0.5rem;'><input name='option' style='min-height:"+radioFontSize+"; min-width:"+radioFontSize+"; vertical-align: middle;' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                                 }
                             });
                         } else {
 
                             $.each(data.result.option, function (key, val) {
                                 key++;
-                                $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+";margin-bottom:0.5rem;'><input name='option' style='min-height:"+customFont+"; min-width:"+customFont+";vertical-align: middle;' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
+                                $("#option_section").append("<div class='option_section_css' style='line-height:"+customFont+";margin-bottom:0.5rem;'><input name='option' style='min-height:"+radioFontSize+"; min-width:"+radioFontSize+";vertical-align: middle;' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label class='option_lable' for='option_" + key + "'>" + val.option + "</label></div>");
                             });
 
 

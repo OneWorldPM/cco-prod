@@ -13,7 +13,7 @@
                 <div class="videContent">
                     <div class="modal fade view-session-user-modal" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="margin-top:20px;display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
                         <div class="modal-dialog modal-lg" style="width:90vw; margin:auto">
-                            <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; font-size: 3rem !important; min-height: 95vh ">
+                            <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; font-size: 3rem !important; height: 95vh ">
                                 <div class="modal-header" style="height: 0; font-size: <?=$sessions->poll_font.' !important'?>">
                                     <i class="zoom-tool-bar" style="width:50%"></i>
                                     <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
@@ -27,9 +27,9 @@
                                 <div class="modal-body view-session-user-modal-body" style="padding: 0px; content" id="content">
                                     <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
                                         <div class="col-sm-12">
-                                            <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
-                                                <div class=""  style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
-                                                    Time remaining : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
+                                            <div class="" id="timer_sectiom" style="padding-top: 10px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
+                                                <div class=""  style="text-align: right; font-size: 30px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
+                                                    Time remaining : <span id="id_day_time" style=" font-size: 30px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
                                                 </div>
                                             </div>
                                             <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 15px;">
@@ -455,6 +455,7 @@ if (isset($sessions)) {
 
     let customFont = '3rem';
     let customFont2 = '3rem';
+    let radioFontSize = '2rem';
 </script>
 <?= getSocketScript()?>
 <script src="<?= base_url() ?>front_assets/js/custom-fullscreen.js"></script>
