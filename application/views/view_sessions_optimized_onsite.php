@@ -13,7 +13,7 @@
                 <div class="videContent">
                     <div class="modal fade view-session-user-modal" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="margin-top:20px;display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
                         <div class="modal-dialog modal-lg" style="width:90vw; margin:auto">
-                            <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; font-size: 3rem !important; height: 95vh ">
+                            <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; font-size: 3rem !important; min-height: 95vh ">
                                 <div class="modal-header" style="height: 0; font-size: <?=$sessions->poll_font.' !important'?>">
                                     <i class="zoom-tool-bar" style="width:50%"></i>
                                     <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
