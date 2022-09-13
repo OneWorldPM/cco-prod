@@ -696,7 +696,9 @@ function get_poll_vot_section() {
 \n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px; font-size:2.5rem'></span>\n\
 <div style='padding-right: 20px;text-align: center;'><a class='button small color rounded' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; height:3rem; padding-top:10px'><span id='btn_vote_label' style='font-size:2.5rem; '>VOTE <i class='fa fa-check' id='fa_fa_check' style=' display:none; font-size:2.5rem'></i></span></a></div>\n\
 </form>");
+                        console.log(data);
                         if (data.result.exist_status == 1) {
+
                             $.each(data.result.option, function (key, val) {
                                 key++;
                                 if (data.result.select_option_id == val.poll_question_option_id) {
@@ -1117,26 +1119,26 @@ function calcTime(offset) {
 }
 
 
-$(function(){
-    if(screen.width < 800){
-        console.log(screen.width)
-        customFont = "1rem";
-        $('.modal-content').css('font-size', '17px');
-        $('.view-session-user-modal .modal-dialog').css('width','90%');
-    }else
-        customFont = customFont2;
-
-    $( window ).resize(function() {
-        if(screen.width < 800){
-            console.log(screen.width)
-            customFont = "1rem";
-            $('.modal-content').css('font-size', '17px');
-
-            $('.view-session-user-modal .modal-dialog').css('width','90%');
-        }else{
-            customFont = customFont2;
-            $('.modal-content').css('font-size', customFont2);
-            $('.view-session-user-modal .modal-dialog').css('width', custPollModalWidth);
-        }
-    });
-})
+// $(function(){
+//     if(screen.width < 800){
+//         console.log(screen.width)
+//         customFont = "1rem";
+//         $('.modal-content').css('font-size', '17px');
+//         $('.view-session-user-modal .modal-dialog').css('width','90%');
+//     }else
+//         customFont = customFont2;
+//
+//     $( window ).resize(function() {
+//         if(screen.width < 800){
+//             console.log(screen.width)
+//             customFont = "1rem";
+//             $('.modal-content').css('font-size', '17px');
+//
+//             $('.view-session-user-modal .modal-dialog').css('width','90%');
+//         }else{
+//             customFont = customFont2;
+//             $('.modal-content').css('font-size', customFont2);
+//             $('.view-session-user-modal .modal-dialog').css('width', custPollModalWidth);
+//         }
+//     });
+// })

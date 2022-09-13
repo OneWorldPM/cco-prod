@@ -13,8 +13,9 @@
                 <div class="videContent">
                     <div class="modal fade view-session-user-modal" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="margin-top:20px;display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
                         <div class="modal-dialog modal-lg" style="width:90vw; margin:auto">
-                            <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; font-size: 3rem !important ">
+                            <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; font-size: 3rem !important; min-height: 95vh ">
                                 <div class="modal-header" style="height: 0; font-size: <?=$sessions->poll_font.' !important'?>">
+                                    <i class="zoom-tool-bar" style="width:50%"></i>
                                     <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -23,7 +24,7 @@
                                                                                                     <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
                                                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                                                 </div>-->
-                                <div class="modal-body view-session-user-modal-body" style="padding: 0px;">
+                                <div class="modal-body view-session-user-modal-body" style="padding: 0px; content" id="content">
                                     <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
                                         <div class="col-sm-12">
                                             <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
@@ -470,3 +471,12 @@ if (isset($sessions)) {
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
 <script src="<?= base_url() ?>front_assets/js/view_sessions_onsite.js?v=27"></script>
 <script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=203"></script>
+
+<script src="<?= base_url() ?>front_assets/js/content-zoom-slider.min.js"></script>
+<script>
+    $(function () {
+        $("#content").contentZoomSlider({
+            toolContainer: ".zoom-tool-bar",
+        });
+    });
+</script>
