@@ -3,6 +3,7 @@
 }
 
 .progress-bar {
+    border-radius:20px;
     margin-left:30px;
     float:unset;
     height: 100%;
@@ -11,14 +12,18 @@
     background: rgb(3, 90, 118);
     font-size: unset;
     /*padding-top: .2rem;*/
-    line-height: 80px;
+    line-height: unset;
 }
 
 .assesment-bar {
-    background: rgb(69, 192, 234) !important;
+    background: #A0A0A0 !important;
+}
+#result_section label{
+    margin-left:30px
 }
 
 .progress-bar_1 {
+    margin-left:30px;
     height: 100%;
     /*padding: 3px;*/
     background: rgba(0, 0, 0, 0.15);
@@ -34,11 +39,12 @@
 }
 
 .progress_bar_new {
-    line-height:80px;
+    border-radius:20px;
+    /*line-height:80px;*/
     margin-left:30px;
     height: 100%;
     /*padding: 3px;*/
-    background: #45c0ea;
+    background: #00AF17;
     box-shadow: none;
     text-align: center;
     color: #fff;
@@ -46,6 +52,9 @@
 }
 
 .progress_bar_new_1 {
+    margin-bottom:5px;
+    border-radius:20px;
+    margin-left:30px;
     height: 100%;
     /*padding: 3px;*/
     background: #035a76;
