@@ -1,7 +1,7 @@
 <link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=203" rel="stylesheet">
 
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
-<link href="<?= base_url() ?>front_assets/css/view_sessions_onsite.css?v=22" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/css/view_sessions_onsite.css?v=23" rel="stylesheet">
 
 
 <section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/pres_bg.jpg') no-repeat;">
@@ -13,8 +13,8 @@
                 <div class="videContent">
                     <div class="modal fade view-session-user-modal" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="margin-top:20px;display: none; text-align: left;" data-keyboard="false" data-backdrop="static">
                         <div class="modal-dialog modal-lg" style="width:90vw; margin:auto">
-                            <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px; font-size: 3rem !important; min-height: 95vh ">
-                                <div class="modal-header" style="height: 0; font-size: <?=$sessions->poll_font.' !important'?>; padding-top:0">
+                            <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;  ">
+                                <div class="modal-header" style="height: 0; padding-top:0">
                                     <i class="zoom-tool-bar" style="width:50%"></i>
                                     <button type="button" class="poll-modal-close close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -27,9 +27,9 @@
                                 <div class="modal-body view-session-user-modal-body" style="padding: 0px; content" id="content">
                                     <div class="row" style="padding-top: 0px; padding-bottom: 20px; margin-left:5px">
                                         <div class="col-sm-12 col-md-12">
-                                            <div class="row" id="rowLivePoll" style="margin-left:10px;text-align:left; font-size: 30px; font-weight: 700; margin-top:10px;display: none;"> <img src="<?=base_url()?>front_assets/images/cco_sm.png"><span>LIVE POLL</span>
-                                                <span class="" id=""  style=" font-size: 30px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
-                                                <span id="timer_sectiom" style="display: none !important; text-align:right; float:right; padding-right:15px; font-size: 30px; font-weight: 700;">Time remaining : <span id="id_day_time" style=" text-align: right;font-size: 30px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span></span>
+                                            <div class="row" id="rowLivePoll" style="margin-left:10px;text-align:left; font-size: 20px; font-weight: 700; margin-top:10px;display: none;"> <img src="<?=base_url()?>front_assets/images/cco_sm.png"><span>LIVE POLL</span>
+                                                <span class="" id=""  style=" font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
+                                                <span id="timer_sectiom" style="display: none !important; text-align:right; float:right; padding-right:15px; font-size: 20px; font-weight: 700;">Time remaining : <span id="id_day_time" style=" text-align: right;font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span></span>
                                             </span></div>
                                             <div id="poll_vot_section" style=" padding: 0px 0px 0px 0px background-color: #fff; border-radius: 15px;">
                                             </div>
@@ -452,9 +452,11 @@ if (isset($sessions)) {
     //var customFont2 = "<?//=($sessions->poll_font)? $sessions->poll_font:'17px'?>//"
     //var custPollModalWidth = "<?//=($sessions->poll_modal_width)? $sessions->poll_modal_width:''?>//"
 
-    let customFont = '3rem';
-    let customFont2 = '3rem';
-    let radioFontSize = '2rem';
+    let customFont = '20px';
+    let customFont2 = '20px';
+    let radioFontSize = '20px';
+
+    let labelFont ;
 </script>
 <?= getSocketScript()?>
 <script src="<?= base_url() ?>front_assets/js/custom-fullscreen.js"></script>
@@ -469,7 +471,7 @@ if (isset($sessions)) {
 <script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users.js?v=2"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/js/view_sessions_onsite.js?v=28"></script>
+<script src="<?= base_url() ?>front_assets/js/view_sessions_onsite.js?v=29"></script>
 <script src="<?= base_url() ?>front_assets/js/admin-to-attendee-chat.js?v=203"></script>
 
 <script src="<?= base_url() ?>front_assets/js/content-zoom-slider.min.js?v=2"></script>
