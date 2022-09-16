@@ -50,7 +50,7 @@
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
             <div class="card " style="height: 400px; width: 100%; left:0%; ">
-                <div class="card-header text-white" style="background-color: #EF5D21; font-size: 22px">Ask a Question <i class="fas fa-question"></i><button id="stickyQuestionboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
+                <div class="card-header text-white" style="background-color: #004290; font-size: 22px">Ask a Question <i class="fas fa-question"></i><button id="stickyQuestionboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
                 <div class="content">
                     <div class="questionElement" style="max-height: 270px; !important;">
                     </div>
@@ -63,7 +63,7 @@
                                 <div class="col-md-12 input-group">
                                     <span class="input-group-addon" style="padding: 5px 6px"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png" id="questions_emjis_section_show" title="Check to Show Emoji" data-questions_emjis_section_show_status="0" style="width: 20px; height: 20px;" alt=""/></span>
                                     <input type="text" id="questions" class="form-control" placeholder="Enter Question" value="">
-                                    <a class="button color btn btn-sm text-white" style="background-color: #EF5D21" id="ask_questions_send"><span>Send</span></a>
+                                    <a class="button color btn btn-sm text-white" style="background-color: #004290" id="ask_questions_send"><span>Send</span></a>
                                 </div>
 
                             </div>
@@ -88,7 +88,7 @@
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
             <div class="card " style="height: 300px; width: 100%; left:0%; ">
-                <div class="card-header text-white" style="background-color: #EF5D21">Add Notes <button id="stickyNotesboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
+                <div class="card-header text-white" style="background-color: #004290">Add Notes <button id="stickyNotesboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
                 <div class="content" style="">
                     <div id="briefcase_section">
                         <div id="briefcase_section">
@@ -112,7 +112,7 @@
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
             <div class="card " style="height: 300px; width: 100%; left:0%; ">
-                <div class="card-header" style="background-color: #EF5D21">Resources</div>
+                <div class="card-header" style="background-color: #004290">Resources</div>
                 <div class="content">
                     <div class="contentHeader">
                         Resources
@@ -156,14 +156,14 @@
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
             <div class="card " style="height: 400px; width: 100%; left:0%; ">
-                <div class="card-header text-white" style="background-color: #EF5D21; font-size: 22px">Chat with Admin <button id="adminChatStickyboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
+                <div class="card-header text-white" style="background-color: #004290; font-size: 22px">Chat with Admin <button id="adminChatStickyboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
                 <div class="content">
                     <div class="admin-messages">
                     </div>
 
                     <div class="input-group">
                         <input type="text" class="form-control shadow-none" placeholder="Enter message" id='sendAdminChat'>
-                        <button class="btn text-white" id="sendAdminChatBtn" style="background-color: #EF5D21">Send <i class="fas fa-paper-plane-o"></i></button>
+                        <button class="btn text-white" id="sendAdminChatBtn" style="background-color: #004290">Send <i class="fas fa-paper-plane-o"></i></button>
                     </div>
 
 
@@ -215,7 +215,7 @@
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
             <div class="card " style="height: 400px; width: 100%; left:0%; ">
-                <div class="card-header text-white" style="background-color: #EF5D21; font-size: 22px">Live Technical Support <i class="far fa-life-ring"></i><button id="liveSupportChatFormHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
+                <div class="card-header text-white" style="background-color: #004290; font-size: 22px">Live Technical Support <i class="far fa-life-ring"></i><button id="liveSupportChatFormHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
                 <div class="live-support-chat-body" style="height: 250px">
 
                     <div id="live-support-chat-texts" class="live-support-chat-texts" style="">
@@ -244,20 +244,20 @@
     <div class="col d-flex" >
         <div  class="fixed-bottom " >
             <div class="card " style="height: 400px; width: 100%; left:0%; ">
-                <div class="card-header text-white" style="background-color: #EF5D21; font-size: 22px">Resources <i class="fas fa-paperclip"></i><button id="resourcesStickyboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
+                <div class="card-header text-white" style="background-color: #004290; font-size: 22px">Resources <i class="fas fa-paperclip"></i><button id="resourcesStickyboxHide" class="btn fa fa-minus float-right text-white shadow-none"></button></div>
                         <?php
                         if (!empty($session_resource)) {
                             foreach ($session_resource as $val) {
                                 ?>
                                 <div class="row" style="margin-bottom: 10px; padding-bottom: 5px">
                                     <?php if ($val->resource_link != "") { ?>
-                                        <div class="col-md-12"><a class="resources-link-text" href="<?= $val->resource_link ?>" target="_blank" style="color: #EF5D21 !important; font-size: 22px"><?= $val->link_published_name ?></a></div>
+                                        <div class="col-md-12"><a class="resources-link-text" href="<?= $val->resource_link ?>" target="_blank" style="color: #004290 !important; font-size: 22px"><?= $val->link_published_name ?></a></div>
                                     <?php } ?>
                                     <?php
                                     if ($val->upload_published_name) {
                                         if ($val->resource_file != "") {
                                             ?>
-                                            <div class="col-md-12"><a class="resources-link-text" href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download="<?= $val->file_name ?>" style="color: #EF5D21 !important; font-size: 22px"> <?= $val->upload_published_name ?> </a></div>
+                                            <div class="col-md-12"><a class="resources-link-text" href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download="<?= $val->file_name ?>" style="color: #004290 !important; font-size: 22px"> <?= $val->upload_published_name ?> </a></div>
                                             <?php
                                         }
                                     }
