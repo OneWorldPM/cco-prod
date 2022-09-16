@@ -698,7 +698,8 @@ function get_poll_vot_section() {
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
 <div class='col-md-12' id='option_section'></div>\n\
 \n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px; font-size:20px'></span>\n\
-<div style='padding-right: 20px;text-align: center;'><a class='button small color rounded' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; height:40px;'><span id='btn_vote_label' style='font-size:20px; line-height:40px '>VOTE <i class='fa fa-check' id='fa_fa_check' style=' display:none; font-size:20px'></i></span></a></div>\n\
+<div style='padding-right: 20px;text-align: center;'>\
+<!--<a class='button small color rounded' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; height:40px;'><span id='btn_vote_label' style='font-size:20px; line-height:40px '>VOTE <i class='fa fa-check' id='fa_fa_check' style=' display:none; font-size:20px'></i></span></a>--></div>\n\
 </form>");
                         console.log(data);
                         if (data.result.exist_status == 1) {
