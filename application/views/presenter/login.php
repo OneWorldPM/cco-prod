@@ -73,7 +73,7 @@
                     <form class="form-login" id="frm_login" name="frm_login" method="post" action="<?= base_url() ?>presenter/login/authentication">
                         <div class="row">
                             <div  style="text-align: center;">                           
-                                <img src="<?= base_url() ?>assets/images/logo.png" alt="" style="text-align: center;" >
+                                <img src="<?= base_url() ?>front_assets/images/CCO_CORP_Logo_310wide.png" alt="" style="text-align: center;" >
                             </div>
                         </div>
                         <fieldset>
@@ -94,7 +94,7 @@
                                 </span><span id="errorpassword" style="color:red"></span>
                             </div>
                             <div class="form-actions" style="padding-left: 20px;">
-                                <button type="submit" class="btn btn-primary" id="btn_login">
+                                <button type="submit" class="btn text-white " style="background-color:#004290" id="btn_login">
                                     Login
                                 </button>
 
