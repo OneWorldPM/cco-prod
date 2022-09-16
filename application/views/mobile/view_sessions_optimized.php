@@ -1,7 +1,7 @@
-<link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=201" rel="stylesheet">
+<link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=202" rel="stylesheet">
 
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
-<link href="<?= base_url() ?>front_assets/css/view_sessions.css?v=19" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/css/view_sessions.css?v=20" rel="stylesheet">
 
 <section class="parallax" style="background-color: #FFFFFF; overflow: scroll" >
     <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
@@ -154,11 +154,11 @@
 <!--****** PubNub Stuff *****-->
 <!-- DO NOT use production keys on the localhost-->
 <script> var pubnub_channel = "CCO_Session_<?=$sessions->sessions_id?>"; </script>
-<script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users.js?v=2"></script>
+<script src="<?= base_url() ?>front_assets/js/pubnub/pubnub_live_users.js?v=3"></script>
 
 <!-- Please add scripts only in this JS file, NOT directly on this HTML file -->
-<script src="<?= base_url() ?>front_assets/mobile/view_sessions.js?v=23"></script>
-<script src="<?= base_url() ?>front_assets/mobile/admin-to-attendee-chat.js?v=203"></script>
+<script src="<?= base_url() ?>front_assets/mobile/view_sessions.js?v=24"></script>
+<script src="<?= base_url() ?>front_assets/mobile/admin-to-attendee-chat.js?v=204"></script>
 
 <script>
     $(function(){
