@@ -661,12 +661,12 @@ function get_poll_vot_section() {
                 }
                 if (data.result.poll_status == 1 && data.result.timer_status == 1) {
                     if (poll_vot_section_id_status != data.result.sessions_poll_question_id) {
-                        $("#rowLivePoll").show();
+                        
                         $("#timer_sectiom").show();
                         // $("#popup_title_lbl").css({"border-top-right-radius": "0px", "border-top-left-radius": "0px"});
                         timer(0);
                     } else {
-                        $("#rowLivePoll").show();
+                        
                         $("#timer_sectiom").show();
                         // $("#popup_title_lbl").css({"border-top-right-radius": "0px", "border-top-left-radius": "0px"});
                         timer(1);
@@ -688,7 +688,7 @@ function get_poll_vot_section() {
                         });
 
                         $('#modal').modal('show');
-                        $("#rowLivePoll").show();
+                        
 
 
                         $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
@@ -698,9 +698,10 @@ function get_poll_vot_section() {
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
 <div class='col-md-12' id='option_section'></div>\n\
 \n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px; font-size:20px'></span>\n\
-<div style='padding-right: 20px;text-align: center;'><a class='button small color rounded' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; height:40px;'><span id='btn_vote_label' style='font-size:20px; line-height:40px '>VOTE <i class='fa fa-check' id='fa_fa_check' style=' display:none; font-size:20px'></i></span></a></div>\n\
+<div style='padding-right: 20px;text-align: center;'>\
+<!--<a class='button small color rounded' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; height:40px;'><span id='btn_vote_label' style='font-size:20px; line-height:40px '>VOTE <i class='fa fa-check' id='fa_fa_check' style=' display:none; font-size:20px'></i></span></a>--></div>\n\
 </form>");
-                        console.log(data);
+
                         if (data.result.exist_status == 1) {
 
                             $.each(data.result.option, function (key, val) {
@@ -732,10 +733,11 @@ function get_poll_vot_section() {
                             backdrop: 'static',
                             keyboard: false
                         });
-                        $("#rowLivePoll").hide();
                         $('#modal').modal('show');
 
-                        $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='font-size:1.5rem;margin-bottom: 0px; color: #fff; font-weight: 700; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>LIVE POLL RESULTS</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; border-bottom: 1px solid #b1b1b1; padding-bottom: 20px; line-height:"+customFont+";  font-size:"+customFont+"'>" + data.result.question + "</h5>\n\
+                        $("#poll_vot_section").html("<div class='row'><div class='col-md-12'>" +
+                            /*"<h2 style='font-size:1.5rem;margin-bottom: 0px; color: #fff; font-weight: 700; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>LIVE POLL RESULTS</h2>" +*/
+                            "</div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; font-weight:800; padding-top: 10px; border-bottom: 1px solid #b1b1b1; padding-bottom: 20px; line-height:"+customFont+";  font-size:"+customFont+"'>" + data.result.question + "</h5>\n\
                                                         \n\<div id='result_section' style='padding-bottom: 10px; line-height:"+customFont+"'></div></div></div></div>");
                         var total_vote = 0;
                         var total_vote_compere_option = 0;
@@ -863,7 +865,7 @@ function get_poll_vot_section() {
                             $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
             \n\<h2 style='font-size:"+customFont+"; margin-bottom: 0px; color: #fff; font-weight: 700; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Live Poll</h2>\n\
 <div class='col-md-12'>\n\
-\n\<h5 style='letter-spacing: 0px; padding-top: 10px;  border-bottom: 1px solid #b1b1b1; padding-bottom: 10px; font-size:"+customFont+"'>" + data.result.question + "</h5></div>\n\
+\n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-weight:800;  border-bottom: 1px solid #b1b1b1; padding-bottom: 10px; font-size:"+customFont+"'>" + data.result.question + "</h5></div>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
 <div class='col-md-12' id='option_section'></div>\n\
@@ -1085,19 +1087,16 @@ $('#modal').on('shown.bs.modal', function () {
 // Written separate listeners for flexibility in the future
 socket.on('poll_open_notification', (poll_app_name) => {
     if (poll_app_name == app_name)
-        $('#rowLivePoll').show();
         get_poll_vot_section();
 });
 
 socket.on('poll_close_notification', (poll_app_name) => {
     if (poll_app_name == app_name)
-        $('#rowLivePoll').show();
         get_poll_vot_section();
 });
 
 socket.on('show_poll_results_notification', (poll_app_name) => {
     if (poll_app_name == app_name) {
-        $('#rowLivePoll').hide();
         get_poll_vot_section();
     }
 });
@@ -1105,7 +1104,6 @@ socket.on('show_poll_results_notification', (poll_app_name) => {
 socket.on('close_poll_results_notification', (poll_app_name) => {
     if (poll_app_name == app_name) {
         get_poll_vot_section();
-        $('#rowLivePoll').show();
     }
 });
 
