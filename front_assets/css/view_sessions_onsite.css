@@ -4,7 +4,7 @@
 
 .progress-bar {
     border-radius:20px;
-    margin-left:30px;
+    /*margin-left:30px;*/
     float:unset;
     height: 100%;
     padding: 0;
@@ -23,7 +23,7 @@
 }
 
 .progress-bar_1 {
-    margin-left:30px;
+    /*margin-left:30px;*/
     height: 100%;
     /*padding: 3px;*/
     background: rgba(0, 0, 0, 0.15);
@@ -33,6 +33,7 @@
 }
 
 .presurvey-bar{
+    border-radius:20px;
     background: rgb(3, 90, 118) !important;
     color: #fff !important;
     text-align: center !important;
@@ -41,7 +42,7 @@
 .progress_bar_new {
     border-radius:20px;
     /*line-height:80px;*/
-    margin-left:30px;
+    /*margin-left:30px;*/
     height: 100%;
     /*padding: 3px;*/
     background: #00AF17;
@@ -54,7 +55,7 @@
 .progress_bar_new_1 {
     margin-bottom:5px;
     border-radius:20px;
-    margin-left:30px;
+    /*margin-left:30px;*/
     height: 100%;
     /*padding: 3px;*/
     background: #035a76;
@@ -95,8 +96,9 @@
 }
 
 .progress_1 {
-    /*height: 2rem;*/
-    margin-bottom: 0px;
+    border-radius:20px;
+    height: 20px;
+    margin-bottom: 2px;
     overflow: hidden;
 }
 
@@ -395,5 +397,6 @@ body{
 }
 
 .zeroVotes{
-    width: 10%;
+    width: 2% !important;
+    background-color: gray !important;
 }
