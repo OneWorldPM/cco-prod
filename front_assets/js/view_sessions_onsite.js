@@ -661,12 +661,10 @@ function get_poll_vot_section() {
                 }
                 if (data.result.poll_status == 1 && data.result.timer_status == 1) {
                     if (poll_vot_section_id_status != data.result.sessions_poll_question_id) {
-                        
                         $("#timer_sectiom").show();
                         // $("#popup_title_lbl").css({"border-top-right-radius": "0px", "border-top-left-radius": "0px"});
                         timer(0);
                     } else {
-                        
                         $("#timer_sectiom").show();
                         // $("#popup_title_lbl").css({"border-top-right-radius": "0px", "border-top-left-radius": "0px"});
                         timer(1);
@@ -686,10 +684,8 @@ function get_poll_vot_section() {
                             backdrop: 'static',
                             keyboard: false
                         });
-
                         $('#modal').modal('show');
                         
-
 
                         $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
             \n\<h2 id='popup_title_lbl' style='margin-bottom: 20px; margin-top:10px; color: #000; font-weight: 800; padding: 0; background-color: #ebeaea; border-radius:15px; font-size:"+customFont+" !important'><span style='margin-left:30px; display:inline-block'>" + data.result.question + "</span></h2>\n\
@@ -701,9 +697,7 @@ function get_poll_vot_section() {
 <div style='padding-right: 20px;text-align: center;'>\
 <!--<a class='button small color rounded' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; height:40px;'><span id='btn_vote_label' style='font-size:20px; line-height:40px '>VOTE <i class='fa fa-check' id='fa_fa_check' style=' display:none; font-size:20px'></i></span></a>--></div>\n\
 </form>");
-
                         if (data.result.exist_status == 1) {
-
                             $.each(data.result.option, function (key, val) {
                                 key++;
                                 if (data.result.select_option_id == val.poll_question_option_id) {
@@ -774,16 +768,21 @@ function get_poll_vot_section() {
                                 if(parseInt(result_calculate_compere.toFixed(0)) <= 5)
                                 {
                                     var zeroVotes = "zeroVotes";
-
                                 }else{
                                     var zeroVotes = "";
                                 }
 
                                 if (data.result.compere_max_value == val.compere_option) {
-                                    console.log(data.result.compere_max_value);
-                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important;line-height:"+customLineheight+"; font-size:"+customFont+"'>"+pollIteration+". " + val.option + "</label><div class='progress_1'><div class='progress_bar_new_1 "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style=' font-size:"+customFont+" !important, width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
+                                    if(result_calculate_compere.toFixed(0) < 50)
+                                        $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important; line-height:"+customLineheight+"; font-size:"+customFont+"'>" + val.option + "</label><div style='margin-left:30px'><div class='progress_1' style='font-size:"+customFont+" !important; '><div class='progress_bar_new_1 "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; font-size:"+customFont+" !important; width:" + result_calculate_compere.toFixed(0) + "%'></div><span style='vertical-align:super'>" + result_calculate_compere.toFixed(0) + "%</span></div></div>");
+                                    else
+                                        $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important; line-height:"+customLineheight+"; font-size:"+customFont+"'>" + val.option + "</label><div style='margin-left:30px'><div class='progress_1' style='font-size:"+customFont+" !important; '><div class='progress_bar_new_1 "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; font-size:"+customFont+" !important; width:" + result_calculate_compere.toFixed(0) + "%'><span style='vertical-align:super'>" + result_calculate_compere.toFixed(0) + "%</span></div></div></div>");
                                 } else {
-                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important;line-height:"+customLineheight+";  font-size:"+customFont+"'>"+pollIteration+". " + val.option + "</label><div class='progress_1'><div class='progress-bar_1 presurvey-bar "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style=' font-size:"+customFont+" !important, width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
+                                    if(result_calculate_compere.toFixed(0) < 50)
+                                        $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important; line-height:"+customLineheight+";  font-size:"+customFont+"'>" + val.option + "</label><div style='margin-left:30px'><div class='progress_1' style='font-size:"+customFont+" !important; '><div class='progress-bar_1 presurvey-bar "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; font-size:"+customFont+" !important; width:" + result_calculate_compere.toFixed(0) + "%'></div><span style='vertical-align:super'>" + result_calculate_compere.toFixed(0) + "%</span></div></div>");
+                                    else
+                                        $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important; line-height:"+customLineheight+";  font-size:"+customFont+"'>" + val.option + "</label><div style='margin-left:30px'><div class='progress_1' style='font-size:"+customFont+" !important; '><div class='progress-bar_1 presurvey-bar "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; font-size:"+customFont+" !important; width:" + result_calculate_compere.toFixed(0) + "%'><span style='vertical-align:super'>" + result_calculate_compere.toFixed(0) + "%</span></div></div></div>");
+
                                 }
                             }else{
                                 window.isComparisonpoll = false;
@@ -802,20 +801,23 @@ function get_poll_vot_section() {
                                 {
 
                                     $('.progress_bar_new').css('background', '#00AF17');
-                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important;line-height:"+customLineheight+";  font-size:"+customFont+"'>"+pollIteration+". " + val.option + "</label>");
+                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important;line-height:"+customLineheight+";  font-size:"+customFont+"'>" + val.option + "</label>");
 
                                 }
-
-                                $("#result_section").append("<div class='progress' style='margin-bottom: 0.5rem; height:"+customFont+" !important'><div class='progress_bar_new "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size:"+customFont+" !important,width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div><br>");
-                            } else {
+                                if(result_calculate.toFixed(0)<50 ){
+                                    $("#result_section").append("<div style='margin-left:30px'><div class='progress' style='margin-bottom: 0.5rem; height:"+customFont+" !important; font-size:"+customFont+"'><div class='progress_bar_new "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; line-height:"+customFont+"; font-size:"+customFont+" !important; width:" + result_calculate.toFixed(0) + "%'></div><span style='vertical-align:super'>" + result_calculate.toFixed(0) + "%</span></div></div><br>");
+                                }else{
+                                    $("#result_section").append("<div style='margin-left:30px'><div class='progress' style='margin-bottom: 0.5rem; height:"+customFont+" !important; font-size:"+customFont+"'><div class='progress_bar_new "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; line-height:"+customFont+"; font-size:"+customFont+" !important; width:" + result_calculate.toFixed(0) + "%'><span style='vertical-align:super'>" + result_calculate.toFixed(0) + "%</span></div></div></div><br>");
+                                }
+                             } else {
                                 if(!window.isComparisonpoll)
                                 {
 
                                     $('.progress_bar_new').css('background', '#00AF17');
-                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important;line-height:"+customLineheight+";  font-size:"+customFont+"'>"+pollIteration+". " + val.option + "</label>");
+                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important;line-height:"+customLineheight+";  font-size:"+customFont+"'>" + val.option + "</label>");
                                 }
 
-                                $("#result_section").append("<div class='progress' style='margin-bottom:0.5rem ; height:"+customFont+" !important; font-size:"+customFont+"'><div data-sort='1' class='progress-bar assesment-bar "+zeroVotes+"'  role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='line-height:"+customFont+", font-size: "+customFont+" !important, width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div><br>");
+                                $("#result_section").append("<div style='margin-left:30px'><div class='progress' style='margin-bottom:0.5rem ; height:"+customFont+" !important; font-size:"+customFont+"'><div class='progress-bar assesment-bar "+zeroVotes+"'  role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; line-height:"+customLineheight+"; font-size: "+customFont+" !important; width:" + result_calculate.toFixed(0) + "%'></div><span style='vertical-align:super'>" + result_calculate.toFixed(0) + "%</span></div></div><br>");
                             }
 
                             pollIteration++;
@@ -841,7 +843,7 @@ function get_poll_vot_section() {
                             $("#result_section").append('' +
                                 '<div class="col-md-12 text-center">\n' +
                                 '  <span style="margin-right: 20px;"><i class="fa fa-square" aria-hidden="true" style="color: #035a76;"></i> Presurvey</span>\n' +
-                                '<span><i class="fa fa-square" aria-hidden="true" style="color: #45c0ea;"></i> Assesment</span>\n' +
+                                '<span><i class="fa fa-square" aria-hidden="true" style="color: #00AF17;"></i> Assesment</span>\n' +
                                 '</div>');
                         }
                     }
@@ -863,22 +865,22 @@ function get_poll_vot_section() {
                     success: function (data) {
                         if (data.status == "success") {
                             $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 style='font-size:"+customFont+"; margin-bottom: 0px; color: #fff; font-weight: 700; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Live Poll</h2>\n\
+            \n\<h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase; border-top-right-radius: 15px; border-top-left-radius: 15px;'>Live Poll</h2>\n\
 <div class='col-md-12'>\n\
-\n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-weight:800;  border-bottom: 1px solid #b1b1b1; padding-bottom: 10px; font-size:"+customFont+"; line-height:"+customLineheight+";'>" + data.result.question + "</h5></div>\n\
+\n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5></div>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
 \n\<input type='hidden' id='sessions_id' value='" + data.result.sessions_id + "'>\n\
 <div class='col-md-12' id='option_section'></div>\n\
-\n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px; font-size:2.5rem'></span>\n\
-<div style='text-align: center;'><p style='color:red; font-weight: 700;'>Poll Now Closed</p></div><div style='padding-right: 20px;text-align: right;'><a class='button  color rounded icon-left' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; width: 200px'><span>VOTE <i class='fa fa-check' id='fa_fa_check_close_poll' style='display:none'></i></span></a></div>\n\
+\n\<span id='error_vote' style='color:red; margin-left: 20px;'></span><span id='success_voted' style='color:green; margin-left: 20px;'></span>\n\
+<div style='text-align: center;'><p style='color:red; font-weight: 700;'>Poll Now Closed</p></div><div style='padding-right: 20px;text-align: right;'><a class='button small color rounded icon-left' id='btn_vote' style='background-color: #c3c3c3; border-color: #c3c3c3; font-size: 16px;'><span>VOTE <i class='fa fa-check' id='fa_fa_check_close_poll' style='display:none'></i></span></a></div>\n\
 </form>");
 
                             $.each(data.result.option, function (key, val) {
                                 key++;
                                 if (data.result.select_option_id == val.poll_question_option_id) {
-                                    $("#option_section").append("<div class='option_section_css_selected' style='line-height:"+customLineheight+"; margin-bottom:0.5rem'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                 } else {
-                                    $("#option_section").append("<div class='option_section_css' style='line-height:"+customLineheight+"; margin-bottom:0.5rem'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
+                                    $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                 }
                             });
 
@@ -1065,7 +1067,7 @@ getBrowserDetails = () => {
             return `${browser} ${browserVersion(userAgent, /(opera|opr)\/([\d\.]+)/i)}`;
         case 'IE':
             const version = browserVersion(userAgent, /(trident)\/([\d\.]+)/i);
-            // IE version is mapped using trident version 
+            // IE version is mapped using trident version
             // IE/8.0 = Trident/4.0, IE/9.0 = Trident/5.0
             return version ? `${browser} ${parseFloat(version) + 4.0}` : `${browser}/7.0`;
         default:
@@ -1096,15 +1098,13 @@ socket.on('poll_close_notification', (poll_app_name) => {
 });
 
 socket.on('show_poll_results_notification', (poll_app_name) => {
-    if (poll_app_name == app_name) {
+    if (poll_app_name == app_name)
         get_poll_vot_section();
-    }
 });
 
 socket.on('close_poll_results_notification', (poll_app_name) => {
-    if (poll_app_name == app_name) {
+    if (poll_app_name == app_name)
         get_poll_vot_section();
-    }
 });
 
 socket.on('start_poll_timer_notification', (poll_app_name) => {
@@ -1129,28 +1129,3 @@ function calcTime(offset) {
 
     return nd;
 }
-
-
-// $(function(){
-//     if(screen.width < 800){
-//         console.log(screen.width)
-//         customFont = "1rem";
-//         $('.modal-content').css('font-size', '17px');
-//         $('.view-session-user-modal .modal-dialog').css('width','90%');
-//     }else
-//         customFont = customFont2;
-//
-//     $( window ).resize(function() {
-//         if(screen.width < 800){
-//             console.log(screen.width)
-//             customFont = "1rem";
-//             $('.modal-content').css('font-size', '17px');
-//
-//             $('.view-session-user-modal .modal-dialog').css('width','90%');
-//         }else{
-//             customFont = customFont2;
-//             $('.modal-content').css('font-size', customFont2);
-//             $('.view-session-user-modal .modal-dialog').css('width', custPollModalWidth);
-//         }
-//     });
-// })
