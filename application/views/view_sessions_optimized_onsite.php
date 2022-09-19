@@ -455,7 +455,7 @@ if (isset($sessions)) {
     let customFont = '20px';
     let customFont2 = '20px';
     let radioFontSize = '20px';
-    let customLineheight = '20px';
+    let customLineheight = '30px';
     let labelFont ;
 </script>
 <?= getSocketScript()?>

@@ -16,7 +16,7 @@
 }
 
 .assesment-bar {
-    background: #A0A0A0 !important;
+    background: gray !important;
 }
 #result_section label{
     margin-left:30px
@@ -398,5 +398,5 @@ body{
 
 .zeroVotes{
     width: 2% !important;
-    background-color: gray !important;
+    background-color: #A0A0A0  !important;
 }
