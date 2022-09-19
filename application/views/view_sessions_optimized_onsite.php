@@ -1,7 +1,7 @@
 <link href="<?= base_url() ?>assets/css/attendee-session-view.css?v=203" rel="stylesheet">
 
 <!-- Please add styles only in this CSS file, NOT directly on this HTML file -->
-<link href="<?= base_url() ?>front_assets/css/view_sessions_onsite.css?v=24" rel="stylesheet">
+<link href="<?= base_url() ?>front_assets/css/view_sessions_onsite.css?v=25" rel="stylesheet">
 
 
 <section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/pres_bg.jpg') no-repeat;">
