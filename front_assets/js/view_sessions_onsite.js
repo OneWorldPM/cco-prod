@@ -774,14 +774,14 @@ function get_poll_vot_section() {
 
                                 if (data.result.compere_max_value == val.compere_option) {
                                     if(result_calculate_compere.toFixed(0) < 50)
-                                        $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important; line-height:"+customLineheight+"; font-size:"+customFont+"'>" + val.option + "</label><div style='margin-left:30px'><div class='progress_1' style='font-size:"+customFont+" !important; '><div class='progress_bar_new_1 "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; font-size:"+customFont+" !important; width:" + result_calculate_compere.toFixed(0) + "%'></div><span style='vertical-align:super'>" + result_calculate_compere.toFixed(0) + "%</span></div></div>");
+                                        $("#result_section").append("<label id='label_"+key+"' style='display:inline-flex; margin-bottom:0.5rem !important; line-height:"+customLineheight+"; font-size:"+customFont+"'>" + val.option + "</label><div style='margin-left:30px'><div class='progress_1' style='font-size:"+customFont+" !important; '><div class='progress_bar_new_1 "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; font-size:"+customFont+" !important; width:" + result_calculate_compere.toFixed(0) + "%'></div><span style='vertical-align:super'>" + result_calculate_compere.toFixed(0) + "%</span></div></div>");
                                     else
-                                        $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important; line-height:"+customLineheight+"; font-size:"+customFont+"'>" + val.option + "</label><div style='margin-left:30px'><div class='progress_1' style='font-size:"+customFont+" !important; '><div class='progress_bar_new_1 "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; font-size:"+customFont+" !important; width:" + result_calculate_compere.toFixed(0) + "%'><span style='vertical-align:super'>" + result_calculate_compere.toFixed(0) + "%</span></div></div></div>");
+                                        $("#result_section").append("<label id='label_"+key+"' style='display:inline-flex; margin-bottom:0.5rem !important; line-height:"+customLineheight+"; font-size:"+customFont+"'>" + val.option + "</label><div style='margin-left:30px'><div class='progress_1' style='font-size:"+customFont+" !important; '><div class='progress_bar_new_1 "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; font-size:"+customFont+" !important; width:" + result_calculate_compere.toFixed(0) + "%'><span style='vertical-align:super'>" + result_calculate_compere.toFixed(0) + "%</span></div></div></div>");
                                 } else {
                                     if(result_calculate_compere.toFixed(0) < 50)
-                                        $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important; line-height:"+customLineheight+";  font-size:"+customFont+"'>" + val.option + "</label><div style='margin-left:30px'><div class='progress_1' style='font-size:"+customFont+" !important; '><div class='progress-bar_1 presurvey-bar "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; font-size:"+customFont+" !important; width:" + result_calculate_compere.toFixed(0) + "%'></div><span style='vertical-align:super'>" + result_calculate_compere.toFixed(0) + "%</span></div></div>");
+                                        $("#result_section").append("<label id='label_"+key+"' style='display:inline-flex; margin-bottom:0.5rem !important; line-height:"+customLineheight+";  font-size:"+customFont+"'>" + val.option + "</label><div style='margin-left:30px'><div class='progress_1' style='font-size:"+customFont+" !important; '><div class='progress-bar_1 presurvey-bar "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; font-size:"+customFont+" !important; width:" + result_calculate_compere.toFixed(0) + "%'></div><span style='vertical-align:super'>" + result_calculate_compere.toFixed(0) + "%</span></div></div>");
                                     else
-                                        $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important; line-height:"+customLineheight+";  font-size:"+customFont+"'>" + val.option + "</label><div style='margin-left:30px'><div class='progress_1' style='font-size:"+customFont+" !important; '><div class='progress-bar_1 presurvey-bar "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; font-size:"+customFont+" !important; width:" + result_calculate_compere.toFixed(0) + "%'><span style='vertical-align:super'>" + result_calculate_compere.toFixed(0) + "%</span></div></div></div>");
+                                        $("#result_section").append("<label id='label_"+key+"' style='display:inline-flex; margin-bottom:0.5rem !important; line-height:"+customLineheight+";  font-size:"+customFont+"'>" + val.option + "</label><div style='margin-left:30px'><div class='progress_1' style='font-size:"+customFont+" !important; '><div class='progress-bar_1 presurvey-bar "+zeroVotes+"' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; font-size:"+customFont+" !important; width:" + result_calculate_compere.toFixed(0) + "%'><span style='vertical-align:super'>" + result_calculate_compere.toFixed(0) + "%</span></div></div></div>");
 
                                 }
                             }else{
@@ -799,9 +799,8 @@ function get_poll_vot_section() {
                                 // console.log(val.total_vot)
                                 if(!window.isComparisonpoll)
                                 {
-
                                     $('.progress_bar_new').css('background', '#00AF17');
-                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important;line-height:"+customLineheight+";  font-size:"+customFont+"'>" + val.option + "</label>");
+                                    $("#result_section").append("<label id='label_"+key+"' style='display:inline-flex; margin-bottom:0.5rem !important;line-height:"+customLineheight+";  font-size:"+customFont+"'>" + val.option + "</label>");
 
                                 }
                                 if(result_calculate.toFixed(0)<50 ){
@@ -812,9 +811,8 @@ function get_poll_vot_section() {
                              } else {
                                 if(!window.isComparisonpoll)
                                 {
-
                                     $('.progress_bar_new').css('background', '#00AF17');
-                                    $("#result_section").append("<label id='label_"+key+"' style='margin-bottom:0.5rem !important;line-height:"+customLineheight+";  font-size:"+customFont+"'>" + val.option + "</label>");
+                                    $("#result_section").append("<label id='label_"+key+"' style='display:inline-flex; margin-bottom:0.5rem !important;line-height:"+customLineheight+";  font-size:"+customFont+"'>" + val.option + "</label>");
                                 }
 
                                 $("#result_section").append("<div style='margin-left:30px'><div class='progress' style='margin-bottom:0.5rem ; height:"+customFont+" !important; font-size:"+customFont+"'><div class='progress-bar assesment-bar "+zeroVotes+"'  role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='margin-bottom:5px; display: inline-block; line-height:"+customLineheight+"; font-size: "+customFont+" !important; width:" + result_calculate.toFixed(0) + "%'></div><span style='vertical-align:super'>" + result_calculate.toFixed(0) + "%</span></div></div><br>");
@@ -826,14 +824,14 @@ function get_poll_vot_section() {
                                 console.log('result: '+data.result.correct_answer);
                                 if(data.result.correct_answer1 ==  key) {
                                     $("#result_section #label_"+data.result.correct_answer1).prepend('<span class="fa fa-check fa-2x " style="color:#00AF17;  margin-right:10px"></span>').css({'margin-left':'-20px',});
-                                    $("#result_section").append("<div style='border-bottom: 1px solid gray; 20px; margin-left: -10px; margin-bottom: 5px'></div>");
+                                    // $("#result_section").append("<div style='border-bottom: 1px solid gray; 20px; margin-left: -10px; margin-bottom: 5px'></div>");
                                 }else if (data.result.correct_answer2 ==  key){
                                     $("#result_section #label_"+data.result.correct_answer2).prepend('<span class="fa fa-check fa-2x " style="color:#00AF17; margin-right:10px"></span>').css({'margin-left':'-20px', });
-                                    $("#result_section").append("<div style='border-bottom: 1px solid gray; 20px; margin-left: -10px; margin-bottom: 5px'></div>");
+                                    // $("#result_section").append("<div style='border-bottom: 1px solid gray; 20px; margin-left: -10px; margin-bottom: 5px'></div>");
                                 }
                                 else{
                                     $("#result_section").css('margin-left','30px');
-                                    $("#result_section").append("<div style='border-bottom: 1px solid gray;  20px; margin-left: -10px; margin-bottom: 5px'></div>");
+                                    // $("#result_section").append("<div style='border-bottom: 1px solid gray;  20px; margin-left: -10px; margin-bottom: 5px'></div>");
                                 }
                             }
 
