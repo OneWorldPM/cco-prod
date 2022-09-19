@@ -128,25 +128,25 @@ class M_sessions extends CI_Model {
                 $poll_question_array->poll_status = 1;
                 if (empty($check_exist_data)) {
                     $poll_question_array->exist_status = 0;
-                    $poll_question_array->option = $this->db->order_by('total_vot', 'desc')->get_where("poll_question_option", array("sessions_poll_question_id" => $poll_question_array->sessions_poll_question_id))->result();
+                    $poll_question_array->option = $this->db->get_where("poll_question_option", array("sessions_poll_question_id" => $poll_question_array->sessions_poll_question_id))->result();
                     return $poll_question_array;
                 } else {
                     $poll_question_array->exist_status = 1;
                     $poll_question_array->select_option_id = $check_exist_data->poll_question_option_id;
-                    $poll_question_array->option = $this->db->order_by('total_vot', 'desc')->get_where("poll_question_option", array("sessions_poll_question_id" => $poll_question_array->sessions_poll_question_id))->result();
+                    $poll_question_array->option = $this->db->get_where("poll_question_option", array("sessions_poll_question_id" => $poll_question_array->sessions_poll_question_id))->result();
                     return $poll_question_array;
                 }
             } else if ($poll_question_array->status == 2) {
                 if ($poll_question_array->poll_comparisons_id == 0 || $poll_question_array->poll_type_id == 1) {
                     $poll_question_array->poll_status = 2;
-                    $poll_question_array->option = $this->db->order_by('total_vot', 'desc')->get_where("poll_question_option", array("sessions_poll_question_id" => $poll_question_array->sessions_poll_question_id))->result();
+                    $poll_question_array->option = $this->db->get_where("poll_question_option", array("sessions_poll_question_id" => $poll_question_array->sessions_poll_question_id))->result();
                     $poll_question_array->max_value = $this->get_maxvalue_option($poll_question_array->sessions_poll_question_id);
                     return $poll_question_array;
                 } else {
                     $result_compar_poll = $this->db->get_where("sessions_poll_question", array("sessions_poll_question_id" => $poll_question_array->poll_comparisons_id))->row();
                     if ($result_compar_poll->status == 0) {
                         $poll_question_array->poll_status = 2;
-                        $poll_question_array->option = $this->db->order_by('total_vot', 'desc')->get_where("poll_question_option", array("sessions_poll_question_id" => $poll_question_array->sessions_poll_question_id))->result();
+                        $poll_question_array->option = $this->db->get_where("poll_question_option", array("sessions_poll_question_id" => $poll_question_array->sessions_poll_question_id))->result();
                         $poll_question_array->max_value = $this->get_maxvalue_option($poll_question_array->sessions_poll_question_id);
                         return $poll_question_array;
                     } else {
@@ -172,7 +172,7 @@ class M_sessions extends CI_Model {
         $this->db->select('*');
         $this->db->from('poll_question_option');
         $this->db->where("sessions_poll_question_id", $sessions_poll_question_id);
-        $this->db->order_by('total_vot', 'desc');
+//        $this->db->order_by('total_vot', 'desc');
         $result = $this->db->get();
         if ($result->num_rows() > 0) {
             $result_compar_poll = $this->db->get_where("sessions_poll_question", array("sessions_poll_question_id" => $poll_comparisons_id))->row();
