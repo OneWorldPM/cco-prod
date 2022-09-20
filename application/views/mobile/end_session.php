@@ -22,7 +22,7 @@
         max-width: 100%;
     }
 </style>
-<section class="parallax " style="background-image: url(<?= base_url() ?>front_assets/images/attend_background.png); top: 0; padding-top: 0px;">
+<section class="parallax " style="background-image: url(<?= base_url() ?>front_assets/images/attend_background.png?v=2); top: 0; padding-top: 0px;">
 <div class="container">
     <div class="jumbotron my-5 card text-center" style="top:10px; padding-bottom: 10px; text-align: center">
         <div class="row text-center justify-content-center">

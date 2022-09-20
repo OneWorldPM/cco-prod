@@ -43,7 +43,7 @@
 </style>
 
 <?php //echo"<pre>"; print_r($sessions[0]->presenter);exit;?>
-<section class="parallax" style="background-image: url(https://yourconference.live/CCO/front_assets/images/bg_login.png); top: 0; padding-top: 0px; height: 100%" >
+<section class="parallax" style="background-image: url(https://yourconference.live/CCO/front_assets/images/bg_login.png?v=2); top: 0; padding-top: 0px; height: 100%" >
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12" style="margin-top: 20%; margin-left: 20px; margin-right: 20px;">
