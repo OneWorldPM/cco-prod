@@ -22,7 +22,7 @@
 </style>
 
 <?php //echo"<pre>"; print_r($sessions[0]->presenter);exit;?>
-<section class="parallax" style="background-image: url(https://yourconference.live/CCO/front_assets/images/attend_background.png); top: 0; padding-top: 0; height: 100%" >
+<section class="parallax" style="background-image: url(https://yourconference.live/CCO/front_assets/images/attend_background.png?v=2); top: 0; padding-top: 0; height: 100%" >
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12" style="margin-top: 100px; margin-left: 20px; margin-right: 20px;">
