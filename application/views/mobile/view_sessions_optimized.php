@@ -16,9 +16,9 @@
                                 <div class="card m-auto text-center">
                                     <div class="row">
                                         <div class="col-sm-12 " style="margin: 30px 0px" >
-                                            <h6 style="color:#004290; font-size: 18px">Welcome to the</h6>
-                                            <h4  style="color:#004290"><b>CCO Learner Resource App</b></h4>
-                                            <div style="height: 1px;background-color: #004290;" class="my-3"></div>
+                                            <h6 style="color:#EF5D21; font-size: 18px">Welcome to the</h6>
+                                            <h4  style="color:#EF5D21"><b>CCO Learner Resource App</b></h4>
+                                            <div style="height: 1px;background-color: #EF5D21;" class="my-3"></div>
 
                                             <?php if(isset($sess_data) && !empty($sess_data)): ?>
 
@@ -40,25 +40,25 @@
 
                         <div class="row justify-content-center mb-3">
                             <div class="col-12" style=" margin-left: 20px; margin-right: 20px;">
-                                <div class="card text-center align-items-center justify-content-center align-content-center mx-auto mt-2" style="background-image: url(https://yourconference.live/CCO/front_assets/images/attend_background.png); top: 0; padding-top: 0px; height: 100%; background-size: cover">
+                                <div class="card text-center align-items-center justify-content-center align-content-center mx-auto mt-2" style="background-image: url(https://yourconference.live/CCO/front_assets/images/bg_login.png); top: 0; padding-top: 0px; height: 100%; background-size: cover">
                                     <?php if(sessionRightBarControl($sessions->right_bar, "resources")):?>
-                                    <button id="resource-btn" type="button"  class="btn btn-sm text-white" style="width: 95%; height: 70px; margin-top: 30px; background-color: #004290; font-size: 20px; font-weight: 700">Resources <i class="fas fa-paperclip"></i></button>
+                                    <button id="resource-btn" type="button"  class="btn btn-sm text-white" style="width: 95%; height: 70px; margin-top: 30px; background-color: #EF5D21; font-size: 20px; font-weight: 700">Resources <i class="fas fa-paperclip"></i></button>
                                     <?php endif; ?>
-<!--                                    <button id="notes-btn" class="btn btn-sm mt-2 text-white" style="width: 80%; height: 30px; background-color: #004290;">Take Notes <i class="far fa-edit"></i></button>-->
+<!--                                    <button id="notes-btn" class="btn btn-sm mt-2 text-white" style="width: 80%; height: 30px; background-color: #EF5D21;">Take Notes <i class="far fa-edit"></i></button>-->
                                     <?php if(sessionRightBarControl($sessions->right_bar, "questions")):?>
-                                        <button id="question-btn" class="btn btn-sm mt-3 text-white" style="width: 95%; height: 70px; background-color: #004290;font-size: 20px; font-weight: 700">Ask a Question <i class="fas fa-question"></i></button>
+                                        <button id="question-btn" class="btn btn-sm mt-3 text-white" style="width: 95%; height: 70px; background-color: #EF5D21;font-size: 20px; font-weight: 700">Ask a Question <i class="fas fa-question"></i></button>
                                     <?php endif; ?>
                                     <?php if (isset($attendee_view_links_status) && isset($attendee_view_links_status)) {
                                     if ($attendee_view_links_status == "1") {
                                     ?>
-                                    <button onclick="window.open('<?=isset($url_link)?$url_link:''?>', '_blank')" class="btn btn-sm mt-3 text-white" style="width: 95%; height: 70px; background-color: #004290;font-size: 20px; font-weight: 700" >Claim Credit</button>
+                                    <button onclick="window.open('<?=isset($url_link)?$url_link:''?>', '_blank')" class="btn btn-sm mt-3 text-white" style="width: 95%; height: 70px; background-color: #EF5D21;font-size: 20px; font-weight: 700" >Claim Credit</button>
                                     <?php }} ?>
 
                                     <?php if(isset($isSessionWithPoll) && !empty($isSessionWithPoll)) : ?>
-                                        <button id="polling-guide-btn" style="width: 95%; height: 70px; background-color: #004290;font-size: 20px; font-weight: 700" class="btn btn-sm mt-3 text-white" >Polling Guide <i class="fa fa-book"></i></button>
+                                        <button id="polling-guide-btn" style="width: 95%; height: 70px; background-color: #EF5D21;font-size: 20px; font-weight: 700" class="btn btn-sm mt-3 text-white" >Polling Guide <i class="fa fa-book"></i></button>
                                     <?php endif ?>
 
-                                    <button id="live_support-btn" onclick="openLiveSupportChat()" style="display: <?=(liveSupportChatStatus())?'block':'none'?>;width: 95%; height: 70px; margin-bottom: 30px; background-color: #004290;font-size: 20px; font-weight: 700" class="btn btn-sm mt-3 text-white" >Live Technical Support <i class="far fa-life-ring"></i></button>
+                                    <button id="live_support-btn" onclick="openLiveSupportChat()" style="display: <?=(liveSupportChatStatus())?'block':'none'?>;width: 95%; height: 70px; margin-bottom: 30px; background-color: #EF5D21;font-size: 20px; font-weight: 700" class="btn btn-sm mt-3 text-white" >Live Technical Support <i class="far fa-life-ring"></i></button>
                                     <div class="mb-3"></div>
                                 </div>
                             </div>

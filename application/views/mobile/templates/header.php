@@ -36,9 +36,9 @@
 </head>
 <body>
     <header>
-        <div style="height: 4px;background-color: #004290;"></div>
+        <div style="height: 4px;background-color: #EF5D21;"></div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="col-9 col-md-8"><a class="navbar-brand" href="#"><img src="https://yourconference.live/CCO/front_assets/images/CCO_CORP_Logo_310wide.png?v=2" alt="CCO Logo"   style="height:70px"></a></div>
+            <div class="col-9 col-md-8"><a class="navbar-brand" href="#"><img src="https://yourconference.live/CCO/front_assets/images/CCO_CORP_Logo_310wide.png" alt="CCO Logo"   style="width:100%"></a></div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -46,7 +46,7 @@
                 <ul class="navbar-nav mr-auto">
                     <?php if($this->session->userdata('cid')):?>
                     <li class="nav-item active">
-                        <button id="live_support-btn"  onclick="openLiveSupportChat()"  class="nav-link btn btn-sm text-white shadow-none" href="#"  style="display: <?=(liveSupportChatStatus())?'block':'none'?>;background-color: #004290; width: 100%; font-size: 20px">Live Technical Support <i class="far fa-life-ring"></i><span class="sr-only">(current)</span></button>
+                        <button id="live_support-btn"  onclick="openLiveSupportChat()"  class="nav-link btn btn-sm text-white shadow-none" href="#"  style="display: <?=(liveSupportChatStatus())?'block':'none'?>;background-color: #EF5D21; width: 100%; font-size: 20px">Live Technical Support <i class="far fa-life-ring"></i><span class="sr-only">(current)</span></button>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?=isset($url_link)?$url_link:'';?>" target="_blank" style="font-size: 20px"><?=isset($link_text)?$link_text:'';?></a>
@@ -58,11 +58,11 @@
                         <a class="nav-link" href="#" style="font-size: 20px">Toolbox</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?=base_url().'mobile/login/logout'?>" class="nav-link btn btn-sm text-white shadow-none" href="#" style="background-color: #004290; font-size: 20px">Log Out</a>
+                        <a href="<?=base_url().'mobile/login/logout'?>" class="nav-link btn btn-sm text-white shadow-none" href="#" style="background-color: #EF5D21; font-size: 20px">Log Out</a>
                     </li>
 
 <!--                        <li class="nav-item">
-                            <a href="<?/*=base_url().'mobile/login/index/'.$this->session->userdata('sess_id')*/?>" class="nav-link btn btn-sm text-white shadow-none" href="#" style="background-color: #004290">Log In</a>
+                            <a href="<?/*=base_url().'mobile/login/index/'.$this->session->userdata('sess_id')*/?>" class="nav-link btn btn-sm text-white shadow-none" href="#" style="background-color: #EF5D21">Log In</a>
                         </li>-->
                     <?php endif;?>
                 </ul>
