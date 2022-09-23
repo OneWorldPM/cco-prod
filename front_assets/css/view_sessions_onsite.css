@@ -199,7 +199,7 @@ section {
 .borderFrame{
     margin-top: 100px;
     width: 100%;
-    background-color: #004290;
+    background-color: #EF5D21;
     height: 29px;
     position: absolute;
     bottom: -80px;
@@ -292,7 +292,7 @@ body{
         font-size: 12px;
     }
     .rightSticky{
-        background-color: #004290;
+        background-color: #EF5D21;
     }
     .rightSticky ul li{
         width: 32%;
@@ -427,7 +427,7 @@ body{
 }
 
 .resources-link-text:hover{
-    color: #004290 !important;
+    color: #EF5D21 !important;
 }
 
 .zeroVotes{

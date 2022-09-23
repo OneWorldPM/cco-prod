@@ -51,8 +51,8 @@
                     <div class="row">
                         <div class="col-12" style="margin: 30px 0px" >
                             <div class="mx-3">
-                                <h6  style="color:#004290"><b>CCO Learner Resource App</b></h6>
-                                <div style="height: 1px;background-color: #004290; " class="mt-3 mb-1" ></div>
+                                <h6  style="color:#EF5D21"><b>CCO Learner Resource App</b></h6>
+                                <div style="height: 1px;background-color: #EF5D21; " class="mt-3 mb-1" ></div>
                                 <div class="text-left">
                                     <h6>Create User</h6>
                                     <div style="height: 1px;background-color: darkgray;margin-top: -5px" class="mb-2" ></div>
@@ -83,7 +83,7 @@
 
                                 <div class="text-left ml-1">
 
-                                    <button type="submit" href="" class="btn text-white" id="reg_login" style="background-color:#004290"  >Submit</button>
+                                    <button type="submit" href="" class="btn text-white" id="reg_login" style="background-color:#EF5D21"  >Submit</button>
                                     <a href="" class="btn btn-danger " >Cancel</a>
                                 </div>
                             </div>
