@@ -15,10 +15,10 @@ class Login extends CI_Controller {
     public function index($session_id) {
 
         $this->session->set_userdata('sess_id', $this->uri->segment(4,0));
-        if($session_id == 25){
-            $session_id = 287;
-            $this->session->set_userdata('sess_id', 287);
-        }
+//        if($session_id == 25){
+//            $session_id = 287;
+//            $this->session->set_userdata('sess_id', 287);
+//        }
         $data['sessions'] = $this->mobileSession->getSessionsData($session_id);
 
         $this->load->view('mobile/templates/header');
