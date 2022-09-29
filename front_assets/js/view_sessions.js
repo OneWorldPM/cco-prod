@@ -942,7 +942,7 @@ function ajaxcall() {
 
 function play_music() {
     var audio = document.getElementById("audio");
-    audio.volume = 0.5;
+    audio.volume = 0.3;
     audio.play();
 }
 
