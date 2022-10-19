@@ -12,17 +12,27 @@ class Register extends CI_Controller {
 		$this->load->model('user/m_login', 'objlogin');
     }
 
-    public function index() {
+    public function index($session_id = null) {
+        $data['session_id'] = $session_id;
         $this->load->view('header');
-        $this->load->view('register');
+        $this->load->view('register', $data);
         $this->load->view('footer');
     }
 
     public function add_customer() {
+        $session_id = $this->input->post('session_id');
         $result = $this->objregister->add_customer();
         if ($result == "exist") {
+            if($session_id){
+                header('location:' . base_url() . 'register/index/'.$session_id.'?msg=A'); //email or phone already Exist
+                die;
+            }
             header('location:' . base_url() . 'register?msg=A'); //email or phone already Exist
         } else if ($result == "error") {
+            if($session_id){
+                header('location:' . base_url() . 'register/index/'.$session_id.'?msg=E'); //email or phone already Exist
+                die;
+            }
             header('location:' . base_url() . 'register?msg=E'); //Some Error
         } else {
 			$cust_id = $result;
@@ -37,6 +47,10 @@ class Register extends CI_Controller {
                 'userType' => 'user'
             );
             $this->session->set_userdata($session);
+
+            if($session_id){
+                redirect('sessions/attend/'.$session_id);
+            }
             redirect('sessions');
            // header('location:' . base_url() . 'register/user_profile/' . $result); //Register Success
         }

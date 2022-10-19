@@ -1,5 +1,5 @@
 <!-- SECTION -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<!--<script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
 <style>
     /* The message box is shown when the user clicks on the password field */
 
@@ -85,12 +85,14 @@
         }
     }
 </style>
-<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bg_login.png); top:0;">
+<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/attend_background.png); top:0;">
     <div class="container container-fullscreen" id="home_first_section">
         <div class="text-middle">
-            <div class="row p-b-60">
+            <div class="row p-b-60 justify-content-center" style="text-align: center; justify-content: center">
+                <div class="col-md-8 background-white col-md-offset-2" style="border-radius:5px; padding:2%" >
                 <form id="frm_reg" name="frm_reg" method="post" action="<?= base_url() ?>register/add_customer">
-                    <div class="col-md-6 col-md-offset-3 background-white" style="border-radius: 10px; padding: 30px 80px 20px 80px;">
+                    <input type="text" class="" id="" name="session_id" placeholder="" value="<?=isset($session_id) ? $session_id : ''?>" style="display: none">
+                    <div class="col-md-6  background-white" style="border-radius: 10px; padding: 10px">
                         <div class="row">
                             <div class="col-md-12">
                                 <h5 style="padding-bottom: 3px; border-bottom: 2px solid #ebebeb">Create User</h5>
@@ -372,30 +374,30 @@
                                 <span id="errorpassword" style="color:red"></span>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div id="message">
-                                    <h6 style="padding-bottom: 3px; border-bottom: 2px solid #ebebeb">Password Strength:</h6>
-                                    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                                    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-                                    <p id="number" class="invalid">A <b>number</b></p>
-                                    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-                                </div>
-                            </div>
-                        </div>
+<!--                        <div class="row">-->
+<!--                            <div class="col-md-8 col-md-offset-2">-->
+<!--                                <div id="message">-->
+<!--                                    <h6 style="padding-bottom: 3px; border-bottom: 2px solid #ebebeb">Password Strength:</h6>-->
+<!--                                    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>-->
+<!--                                    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>-->
+<!--                                    <p id="number" class="invalid">A <b>number</b></p>-->
+<!--                                    <p id="length" class="invalid">Minimum <b>8 characters</b></p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="row p-t-10">
                             <div class="col-md-6 form-group">
                                 <input type="password" value="" id="confirm_password" name="confirm_password" placeholder="Confirm Password" class="form-control input-lg">
                                 <span id="errorconfirm_password" style="color:red"></span>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <div class="g-recaptcha" data-callback="recaptchaCallback" style="text-align: -webkit-center;" data-sitekey="6LfbHKQZAAAAAA9nhI-4GNOmLakkRGGaBTJgHFbF"></div>
-                                <div class="gaps-2x"></div>
-                                <span id="errorcaptcha" style="color:red"></span>
-                            </div>
-                        </div>
+<!--                        <div class="row">-->
+<!--                            <div class="col-md-6 form-group">-->
+<!--                                <div class="g-recaptcha" data-callback="recaptchaCallback" style="text-align: -webkit-center;" data-sitekey="6LfbHKQZAAAAAA9nhI-4GNOmLakkRGGaBTJgHFbF"></div>-->
+<!--                                <div class="gaps-2x"></div>-->
+<!--                                <span id="errorcaptcha" style="color:red"></span>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="row">
                             <div class="col-md-12 form-group">
 
@@ -406,9 +408,36 @@
                         </div>
                     </div>
                 </form>
+                    <div class="col-md-6">
+                        <div>
+                            <h4>Returning Users Sign in Below</h4>
+                            <?php
+                            echo ($this->session->flashdata('msg')) ? $this->session->flashdata('msg') : '';
+                            ?>
+                            <form id="login-form" name="frm_login" method="post" action="<?= base_url() ?>login/authentication">
+                                <input type="text" class="" id="" name="session_id" placeholder="" value="<?=isset($session_id) ? $session_id : ''?>" style="display: none">
+                                <div class="form-group">
+                                    <label class="sr-only">Email Address</label>
+                                    <input type="text" class="form-control" id="login_email" name="email" placeholder="Email/Username">
+                                    <span id="errorLoginEemail" style="color:red"></span>
+                                </div>
+                                <div class="form-group m-b-5">
+                                    <label class="sr-only">Password</label>
+                                    <input type="password" id="login_password" name="password" class="form-control" placeholder="Password">
+                                    <span id="errorLoginPassword" style="color:red"></span>
+                                </div>
+                                <div class="form-group form-inline text-left ">
+                                    <a href="<?= base_url() ?>forgotpassword" class="right"><small>Forgot Password?</small></a>
+                                </div>
+                                <div class="text-left form-group">
+                                    <button type="submit" id="btn_login" class="btn btn-primary">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 </section>
 <?php
 $msg = $this->input->get("msg");
@@ -427,17 +456,19 @@ switch ($msg) {
 }
 ?>
 <script type="text/javascript">
+    let session_id = '<?= (isset($session_id))?$session_id:'' ?>';
+    console.log(session_id);
     $(document).ready(function () {
 <?php if ($msg): ?>
             alertify.<?= $t ?>("<?= $m ?>");
 <?php endif; ?>
 
-        $("#btn_register").on("click", function () {
-            var response = grecaptcha.getResponse();
-            var lowerCaseLetters = /[a-z]/g;
-            var upperCaseLetters = /[A-Z]/g;
-            var numbers = /[0-9]/g;
-            var pwd = $("#password").val();
+        $("#btn_register").on("click", function (e) {
+            // var response = grecaptcha.getResponse();
+            // var lowerCaseLetters = /[a-z]/g;
+            // var upperCaseLetters = /[A-Z]/g;
+            // var numbers = /[0-9]/g;
+            // var pwd = $("#password").val();
 
             if ($("#first_name").val().trim() == "")
             {
@@ -450,7 +481,7 @@ switch ($msg) {
                 $("#erroremail").text("Please Enter Email").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if (!validateEmail($("#email").val().trim())) {
-                $("#erroremail").text("Enter Valid Email Id..").fadeIn('slow').fadeOut(5000);
+                $("#erroremail").text(  "Enter Valid Email Id..").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if ($("#confirm_email").val() == "") {
                 $("#errorconfirm_email").text("Please Enter Confirm Email").fadeIn('slow').fadeOut(5000);
@@ -461,27 +492,27 @@ switch ($msg) {
             } else if ($("#password").val() == "") {
                 $("#errorpassword").text("Please Enter Password").fadeIn('slow').fadeOut(5000);
                 return false;
-            } else if (!lowerCaseLetters.test(pwd)) {
-                $("#errorpassword").text("Enter Lowercase Letter").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if (!upperCaseLetters.test(pwd)) {
-                $("#errorpassword").text("Enter Uppercase Letter").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if (!numbers.test(pwd)) {
-                $("#errorpassword").text("Enter Numbers").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if ($('#password').val().length < 8) {
-                $("#errorpassword").text("Minimum 8 Characters").fadeIn('slow').fadeOut(5000);
-                return false;
+            // } else if (!lowerCaseLetters.test(pwd)) {
+            //     $("#errorpassword").text("Enter Lowercase Letter").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // } else if (!upperCaseLetters.test(pwd)) {
+            //     $("#errorpassword").text("Enter Uppercase Letter").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // } else if (!numbers.test(pwd)) {
+            //     $("#errorpassword").text("Enter Numbers").fadeIn('slow').fadeOut(5000);
+            //     return false;
+            // } else if ($('#password').val().length < 8) {
+            //     $("#errorpassword").text("Minimum 8 Characters").fadeIn('slow').fadeOut(5000);
+            //     return false;
             } else if ($("#confirm_password").val() == "") {
                 $("#errorconfirm_password").text("Please Enter Confirm Password").fadeIn('slow').fadeOut(5000);
                 return false;
             } else if ($("#password").val() != $("#confirm_password").val()) {
                 $("#errorconfirm_password").text("Password and Confirm Passwords Doesn't Match").fadeIn('slow').fadeOut(5000);
                 return false;
-            } else if (response.length == 0) {
-                $("#errorcaptcha").text("Please check captcha").fadeIn('slow').fadeOut(5000);
-                return false;
+            // } else if (response.length == 0) {
+            //     $("#errorcaptcha").text("Please check captcha").fadeIn('slow').fadeOut(5000);
+            //     return false;
             } else {
                 $('#submit-btn-loader').show();
                 return true; //submit form
@@ -494,67 +525,85 @@ switch ($msg) {
         var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
         return expr.test(sEmail);
     }
+
+    $(document).ready(function () {
+        $("#btn_login").on("click", function () {
+            if ($("#login_email").val().trim() == "") {
+                $("#errorLoginEmail").text("Please Enter Email").fadeIn('slow').fadeOut(5000);
+
+                return false;
+            } else if ($("#login_password").val() == "") {
+                $("#errorLoginPassword").text("Please Enter Password").fadeIn('slow').fadeOut(5000);
+                return false;
+            } else {
+                return true; //submit form
+            }
+            return false; //Prevent form to submitting
+        });
+
+        $('#toolbox').hide();
+    });
 </script> 
-<script type="text/javascript">
-    function recaptchaCallback() {
-        $('#reg_login').removeAttr('disabled');
-    }
-    ;
-</script>
-<script>
-    var myInput = document.getElementById("password");
-    var letter = document.getElementById("letter");
-    var capital = document.getElementById("capital");
-    var number = document.getElementById("number");
-    var length = document.getElementById("length");
-
-// When the user clicks on the password field, show the message box
-    myInput.onfocus = function () {
-        document.getElementById("message").style.display = "block";
-    }
-
-// When the user starts to type something inside the password field
-    myInput.onkeyup = function () {
-        // Validate lowercase letters
-        var lowerCaseLetters = /[a-z]/g;
-        if (myInput.value.match(lowerCaseLetters)) {
-            letter.classList.remove("invalid");
-            letter.classList.add("valid");
-        } else {
-            letter.classList.remove("valid");
-            letter.classList.add("invalid");
-        }
-
-        // Validate capital letters
-        var upperCaseLetters = /[A-Z]/g;
-        if (myInput.value.match(upperCaseLetters)) {
-            capital.classList.remove("invalid");
-            capital.classList.add("valid");
-        } else {
-            capital.classList.remove("valid");
-            capital.classList.add("invalid");
-        }
-
-        // Validate numbers
-        var numbers = /[0-9]/g;
-        if (myInput.value.match(numbers)) {
-            number.classList.remove("invalid");
-            number.classList.add("valid");
-        } else {
-            number.classList.remove("valid");
-            number.classList.add("invalid");
-        }
-
-        // Validate length
-        if (myInput.value.length >= 8) {
-            length.classList.remove("invalid");
-            length.classList.add("valid");
-        } else {
-            length.classList.remove("valid");
-            length.classList.add("invalid");
-        }
-    }
-</script>
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+<!--<script type="text/javascript">-->
+<!--    function recaptchaCallback() {-->
+<!--        $('#reg_login').removeAttr('disabled');-->
+<!--    }-->
+<!--    ;-->
+<!--</script>-->
+<!--<script>-->
+<!--    var myInput = document.getElementById("password");-->
+<!--    var letter = document.getElementById("letter");-->
+<!--    var capital = document.getElementById("capital");-->
+<!--    var number = document.getElementById("number");-->
+<!--    var length = document.getElementById("length");-->
+<!---->
+<!--// When the user clicks on the password field, show the message box-->
+<!--    myInput.onfocus = function () {-->
+<!--        document.getElementById("message").style.display = "block";-->
+<!--    }-->
+<!---->
+<!--// When the user starts to type something inside the password field-->
+<!--    myInput.onkeyup = function () {-->
+<!--        // Validate lowercase letters-->
+<!--        var lowerCaseLetters = /[a-z]/g;-->
+<!--        if (myInput.value.match(lowerCaseLetters)) {-->
+<!--            letter.classList.remove("invalid");-->
+<!--            letter.classList.add("valid");-->
+<!--        } else {-->
+<!--            letter.classList.remove("valid");-->
+<!--            letter.classList.add("invalid");-->
+<!--        }-->
+<!---->
+<!--        // Validate capital letters-->
+<!--        var upperCaseLetters = /[A-Z]/g;-->
+<!--        if (myInput.value.match(upperCaseLetters)) {-->
+<!--            capital.classList.remove("invalid");-->
+<!--            capital.classList.add("valid");-->
+<!--        } else {-->
+<!--            capital.classList.remove("valid");-->
+<!--            capital.classList.add("invalid");-->
+<!--        }-->
+<!---->
+<!--        // Validate numbers-->
+<!--        var numbers = /[0-9]/g;-->
+<!--        if (myInput.value.match(numbers)) {-->
+<!--            number.classList.remove("invalid");-->
+<!--            number.classList.add("valid");-->
+<!--        } else {-->
+<!--            number.classList.remove("valid");-->
+<!--            number.classList.add("invalid");-->
+<!--        }-->
+<!---->
+<!--        // Validate length-->
+<!--        if (myInput.value.length >= 8) {-->
+<!--            length.classList.remove("invalid");-->
+<!--            length.classList.add("valid");-->
+<!--        } else {-->
+<!--            length.classList.remove("valid");-->
+<!--            length.classList.add("invalid");-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+<!--<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>-->
 <!-- END: SECTION -->
 <!-- END: SECTION -->

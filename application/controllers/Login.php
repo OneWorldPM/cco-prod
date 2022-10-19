@@ -20,6 +20,7 @@ class Login extends CI_Controller {
     public function authentication() {
         $username = $this->input->post('email');
         $password = $this->input->post('password');
+        $session_id = $this->input->post('session_id');
 
         if (strlen(trim(preg_replace('/\xb2\xa0/', '', $username))) == 0 || strlen(trim(preg_replace('/\xb2\xa0/', '', $password))) == 0) {
             $this->session->set_flashdata('msg', '<div class="col-md-12 text-red" style="padding: 0 0 10px 0;">Please enter Username or Password</div><br>');
@@ -41,9 +42,15 @@ class Login extends CI_Controller {
                     'userType' => 'user'
                 );
                 $this->session->set_userdata($session);
+                if($session_id){
+                    redirect('sessions/attend/'.$session_id);
+                }
                 redirect('sessions');
             } else {
                 $this->session->set_flashdata('msg', '<div class="col-md-12 text-red" style="padding: 0 0 10px 0;">Username or Password is Wrong.</div><br>');
+                if($session_id){
+                    redirect('register/index/'.$session_id);
+                }
                 redirect('login');
             }
         }
@@ -211,7 +218,7 @@ class Login extends CI_Controller {
 
     public function unauthorizedUser($session_id, $token)
     {
-//        redirect('register');
+        redirect('register/index/'.$session_id);
 
         if ($token != 'Q0NPVW5hdXRob3JpemVkVXNlclRva2Vu')
         {
