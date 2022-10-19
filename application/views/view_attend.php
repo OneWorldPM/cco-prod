@@ -42,9 +42,9 @@
         padding: 25px 0px;
     }
 </style>
-<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/attend_background.png); top: 0; padding-top: 0px;">
-    <div class="container container-fullscreen"> 
-        <div class="text-middle">
+<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/attend_background.png); top: 0; padding-top: 0px; height: 100vh">
+    <div class="container container-fullscreen" >
+        <div class="text-middle" style="vertical-align:top">
             <div class="row">
                 <div class="col-md-12">
                     <!-- CONTENT -->
