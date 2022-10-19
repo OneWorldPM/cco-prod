@@ -410,7 +410,7 @@
                 </form>
                     <div class="col-md-6">
                         <div>
-                            <h4>Returning Users Sign in Below</h4>
+                            <h4 style="padding-bottom: 3px; border-bottom: 2px solid #ebebeb">Returning Users Sign in Below</h4>
                             <?php
                             echo ($this->session->flashdata('msg')) ? $this->session->flashdata('msg') : '';
                             ?>
@@ -439,6 +439,9 @@
             </div>
         </div>
 </section>
+<?php
+ ($this->session->set_flashdata('msg'));
+?>
 <?php
 $msg = $this->input->get("msg");
 switch ($msg) {
