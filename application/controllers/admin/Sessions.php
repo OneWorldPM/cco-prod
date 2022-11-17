@@ -13,7 +13,7 @@ class Sessions extends CI_Controller {
             redirect('admin/alogin');
         }
         $this->load->model('madmin/m_sessions', 'msessions');
-
+        $this->load->model('M_other_settings', 'mSettings');
     }
 
     public function addBriefcase() {
@@ -303,6 +303,7 @@ class Sessions extends CI_Controller {
         $data["sessions"] = $this->msessions->view_session($sessions_id);
         $data["session_resource"] = $this->msessions->get_session_resource($sessions_id);
         $data['music_setting'] = $this->msessions->get_music_setting();
+        $data['timezone'] = $this->mSettings->getPresenterTimezone();
         $this->load->view('admin/header');
         $this->load->view('admin/view_session', $data);
         $this->load->view('admin/footer');
