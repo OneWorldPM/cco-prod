@@ -687,6 +687,7 @@ class M_sessions extends CI_Model {
             'correct_answer1' => trim($post['correct_answer1']),
             'correct_answer2' => trim($post['correct_answer2']),
             'poll_instruction' => trim($post['poll_instruction']),
+            'question_external_reference' => trim($post['poll_question_uiid']),
             'poll_comparisons_id' => 0,
             "create_poll_date" => date("Y-m-d h:i")
         );
@@ -699,6 +700,7 @@ class M_sessions extends CI_Model {
                         'sessions_poll_question_id' => $insert_id,
                         'sessions_id' => trim($post['sessions_id']),
                         'option' => $post['option_' . $i],
+                        'option_external_reference' => $post['option_' . $i.'_uiid'],
                         "total_vot" => 0
                     );
                     $this->db->insert("poll_question_option", $set_array);
@@ -817,6 +819,7 @@ class M_sessions extends CI_Model {
             'question' => trim($post['question']),
             'question' => trim($post['question']),
             'poll_name' => trim($post['poll_name']),
+            'question_external_reference' => trim($post['poll_question_uiid']),
             'slide_number' => trim($post['slide_number']),
             'correct_answer1' => trim($post['correct_answer1']),
             'correct_answer2' => trim($post['correct_answer2']),
@@ -832,6 +835,7 @@ class M_sessions extends CI_Model {
                 if ($post['option_' . $key] != "") {
                     $set_array = array(
                         'option' => $post['option_' . $key],
+                        'option_external_reference' => $post['option_' . $key.'_uiid'],
                     );
                     $this->db->update("poll_question_option", $set_array, array("poll_question_option_id" => $val->poll_question_option_id));
                 } else {
@@ -1441,6 +1445,7 @@ class M_sessions extends CI_Model {
                                 'option_id' => (int) $val->poll_question_option_id,
                                 'text' => $val->option,
                                 'total_votes' => $val->total_vot,
+                                'external_reference' => $val->option_external_reference,
                                 'votes' => $votes
                             );
 
@@ -1459,6 +1464,7 @@ class M_sessions extends CI_Model {
                         $polls[] = array(
                             'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
                             'text' => $sessions_poll_question->poll_name . " : " . $sessions_poll_question->question,
+                            'external_reference' => $sessions_poll_question->question_external_reference,
                             'options' => $options,
                             'total_votes' => $total_votes
                         );
@@ -1467,6 +1473,7 @@ class M_sessions extends CI_Model {
                         $polls[] = array(
                             'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
                             'text' => $sessions_poll_question->poll_name . " : " . $sessions_poll_question->question,
+                            'external_reference' => $sessions_poll_question->question_external_reference,
                             'options' => $options,
                             'total_votes' => $total_votes
                         );
@@ -1475,6 +1482,7 @@ class M_sessions extends CI_Model {
                         $polls[] = array(
                             'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
                             'text' => $sessions_poll_question->poll_name . " : " . $sessions_poll_question->question,
+                            'external_reference' => $sessions_poll_question->question_external_reference,
                             'options' => $options,
                             'total_votes' => $total_votes
                         );
@@ -1702,6 +1710,7 @@ class M_sessions extends CI_Model {
                                 'option_id' => (int) $val->poll_question_option_id,
                                 'text' => $val->option,
                                 'total_votes' => $val->total_vot,
+                                'external_reference' => $val->option_external_reference,
                                 'votes' => $votes
                             );
 
@@ -1720,6 +1729,7 @@ class M_sessions extends CI_Model {
                         $polls[] = array(
                             'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
                             'text' => $sessions_poll_question->poll_name . " : " . $sessions_poll_question->question,
+                            'external_reference' => $sessions_poll_question->question_external_reference,
                             'options' => $options,
                             'total_votes' => $total_votes
                         );
@@ -1728,6 +1738,7 @@ class M_sessions extends CI_Model {
                         $polls[] = array(
                             'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
                             'text' => $sessions_poll_question->poll_name . " : " . $sessions_poll_question->question,
+                            'external_reference' => $sessions_poll_question->question_external_reference,
                             'options' => $options,
                             'total_votes' => $total_votes
                         );
@@ -1736,6 +1747,7 @@ class M_sessions extends CI_Model {
                         $polls[] = array(
                             'poll_id' => (int) $sessions_poll_question->sessions_poll_question_id,
                             'text' => $sessions_poll_question->poll_name . " : " . $sessions_poll_question->question,
+                            'external_reference' => $sessions_poll_question->question_external_reference,
                             'options' => $options,
                             'total_votes' => $total_votes
                         );

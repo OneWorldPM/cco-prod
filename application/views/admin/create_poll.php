@@ -78,6 +78,10 @@ if (isset($_GET['testing']))
                                             <textarea type="text" name="question" id="question"  placeholder="Question" class="form-control text-dark" rows="3"><?= isset($sessions_data) ? $sessions_data->question : "" ?></textarea>
                                         </div>
                                         <div class="form-group">
+                                            <label class="text-large">Poll Question External Reference:</label>
+                                            <input type="text" name="poll_question_uiid" id="poll_question_uiid" value="<?= isset($sessions_data) ? $sessions_data->question_external_reference : "" ?>" placeholder="eg; 3F8EB1EF-8E9B-4F19-B943-5BF5036619A5" class="form-control">
+                                        </div>
+                                        <div class="form-group">
                                             <label class="text-large">Poll Name:</label>
                                             <input type="text" name="poll_name" id="poll_name" value="<?= isset($sessions_data) ? $sessions_data->poll_name : "" ?>" placeholder="eg; Presurvey 1" class="form-control">
                                         </div>
@@ -114,6 +118,8 @@ if (isset($_GET['testing']))
                                                     $key++;
                                                     ?>
                                                     <input type="text" name="option_<?= $key ?>" id="option_<?= $key ?>" value="<?= $value->option ?>" placeholder="Option <?= $key ?>" class="form-control input_cust_class">
+                                                    <input type="text" name="option_<?= $key ?>_uiid" id="option_<?= $key ?>_uiid" value="<?= $value->option_external_reference?>" placeholder="Option <?= $key ?> External Reference" class="form-control input_cust_class">
+                                                    <br>
                                                     <?php
                                                 }
                                                 $total = 10;
@@ -122,20 +128,53 @@ if (isset($_GET['testing']))
                                                 for ($i = $edit; $i <= $total; $i++) {
                                                     ?>
                                                     <input type="text" name="option_<?= $i ?>" id="option_<?= $i ?>" value="" placeholder="Option <?= $i ?>" class="form-control input_cust_class">
+                                                    <input type="text" name="option_<?= $i ?>_uiid" id="option_<?= $i ?>_uiid" value="" placeholder="Option <?= $i ?> External Reference" class="form-control input_cust_class">
+                                                    <br>
                                                     <?php
                                                 }
                                             } else {
                                                 ?>
+
                                                 <input type="text" name="option_1" id="option_1" placeholder="Option 1" class="form-control input_cust_class">
+                                                <input type="text" name="option_1_uiid" id="option_1_uiid" placeholder="Option 1 External Reference" class="form-control " style="background-color:#DDDDDD;">
+                                                <br>
+
                                                 <input type="text" name="option_2" id="option_2" placeholder="Option 2" class="form-control input_cust_class">
+                                                <input type="text" name="option_2_uiid" id="option_2_uiid" placeholder="Option 2 External Reference" class="form-control " style="background-color:#DDDDDD;">
+                                                <br>
+
                                                 <input type="text" name="option_3" id="option_3" placeholder="Option 3"  class="form-control input_cust_class">
+                                                <input type="text" name="option_3_uiid" id="option_3_uiid" placeholder="Option 3 External Reference" class="form-control " style="background-color:#DDDDDD;">
+                                                <br>
+
                                                 <input type="text" name="option_4" id="option_4" placeholder="Option 4" class="form-control input_cust_class">
+                                                <input type="text" name="option_4_uiid" id="option_4_uiid" placeholder="Option 4 External Reference" class="form-control " style="background-color:#DDDDDD;">
+                                                <br>
+
                                                 <input type="text" name="option_5" id="option_5" placeholder="Option 5"  class="form-control input_cust_class">
+                                                <input type="text" name="option_5_uiid" id="option_5_uiid" placeholder="Option 5 External Reference " class="form-control " style="background-color:#DDDDDD;">
+                                                <br>
+
                                                 <input type="text" name="option_6" id="option_6" placeholder="Option 6" class="form-control input_cust_class">
+                                                <input type="text" name="option_6_uiid" id="option_6_uiid" placeholder="Option 6 External Reference" class="form-control " style="background-color:#DDDDDD;">
+                                                <br>
+
                                                 <input type="text" name="option_7" id="option_7" placeholder="Option 7" class="form-control input_cust_class">
+                                                <input type="text" name="option_7_uiid" id="option_7_uiid" placeholder="Option 7 External Reference" class="form-control " style="background-color:#DDDDDD;">
+                                                <br>
+
                                                 <input type="text" name="option_8" id="option_8" placeholder="Option 8" class="form-control input_cust_class">
+                                                <input type="text" name="option_8_uiid" id="option_8_uiid" placeholder="Option 8 External Reference" class="form-control " style="background-color:#DDDDDD;">
+                                                <br>
+
                                                 <input type="text" name="option_9" id="option_9" placeholder="Option 9" class="form-control input_cust_class">
-                                                <input type="text" name="option_10" id="option_10" placeholder="Option 10"class="form-control input_cust_class">
+                                                <input type="text" name="option_9_uiid" id="option_9_uiid" placeholder="Option 9 External Reference" class="form-control " style="background-color:#DDDDDD;">
+                                                <br>
+
+                                                <input type="text" name="option_10" id="option_10" placeholder="Option 10" class="form-control input_cust_class">
+                                                <input type="text" name="option_10_uiid" id="option_10_uiid" placeholder="Option 10 External Reference" class="form-control" style="background-color:#DDDDDD;">
+                                                <br>
+
                                             <?php } ?>
                                         </div>
 
